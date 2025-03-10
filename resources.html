@@ -125,6 +125,8 @@
         <dd><a href="#printf">Print Formatting</a></dd>
         <dd><a href="#conditionals">Conditionals</a></dd>
         <dd><a href="#return">Void, Return, Calling Methods</a></dd>
+        <dd><a href="#string-methods">String, Length, Substring</a></dd>
+        
         <!-- Future sections can be added here -->
       </dl>
     </div>
@@ -377,6 +379,50 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
       }</code></pre>
         <p>
           In the example above, <strong><code style="color:black">printMessage()</code></strong> is called to print a message, and <strong><code style="color:black">add(5, 7)</code></strong> is called to compute the sum of 5 and 7. The result is stored in a variable and printed to the console.
+        </p>
+      </section>
+
+      <section id="string-methods">
+        <h1 style="color:black">String Methods: length, substring, and charAt</h2>
+        <p>
+          Java strings come with many useful methods. 
+          Here are a few commonly used methods:
+        </p>
+        <ul>
+          <li>
+            <strong>length()</strong>: Returns the number of characters in the string.
+          </li>
+          <li>
+            <strong>substring(int beginIndex, int endIndex)</strong>: Returns a new string that is a portion of 
+            the original string, 
+            starting at <strong><code style="color:darkred">beginIndex</code></strong> (inclusive) and 
+            ending at <strong><code style="color:darkred">endIndex</code></strong> (exclusive).
+          </li>
+          <li>
+            <strong>charAt(int index)</strong>: Returns the character at 
+            the specified index in the string.
+          </li>
+        </ul>
+        
+        <h3>Examples:</h3>
+        <pre><code>// Example of using length()
+      String s = "Hello";
+      System.out.println("The length of the string is: " + s.length());
+      // Expected output: The length of the string is: 5
+      
+      // Example of using substring()
+      String text = "Hello, world!";
+      String sub = text.substring(7, 12);
+      System.out.println("The substring is: " + sub);
+      // Expected output: The substring is: world
+      
+      // Example of using charAt()
+      char c = text.charAt(1);
+      System.out.println("The character at index 1 is: " + c);
+      // Expected output: The character at index 1 is: e</code></pre>
+        
+        <p>
+          Note: String indices start at 0, and for <strong><code style="color:darkred">substring()</code></strong>, the end index is not included in the result.
         </p>
       </section>
   </div>
