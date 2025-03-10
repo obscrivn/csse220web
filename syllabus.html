@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CSSE 220</title>
+
+
+<link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
+<link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>
+    /* Basic Reset and Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    /* Header styling */
+    /* #header {
+      background-color: #333;
+      padding: 10px;
+    } */
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content styling */
+    #content {
+      padding: 20px;
+    }
+    h1 {
+      margin-top: 0;
+    }
+    /* Collapsible Button Styling */
+    .collapsible {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    .collapsible:hover, .collapsible.active {
+      background-color: #ccc;
+    }
+    /* Collapsible content */
+    .content-section {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      background-color: #f9f9f9;
+      margin-bottom: 10px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    /* Responsive styling */
+    @media screen and (max-width: 600px) {
+      #header {
+        text-align: center;
+      }
+      #header a {
+        display: block;
+        margin: 5px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="header">
+        <a id="index_link" href="./index.html">CSSE 220</a>
+        <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
+        <a id="schedule_link" href="./schedule.html">Schedule</a>
+        <a id="quiz_link" href="./worksheets.html">Quizzes</a>
+        <a id="quiz_link" href="./labs.html">Labs</a>
+        <a id="quiz_link" href="./homework.html">Homework</a>
+        <a id="quiz_link" href="./project.html">Final Project</a>
+        <a id="resources_link" href="./resources.html">Resources</a>
+        <div style="clear:both;"></div>
+    </div>
+
+<div id="content">
+    <h1>CSSE220: Object-Oriented Software Development Syllabus</h1>
+    
+    <!-- Collapsible Section 1: Course Information -->
+    <button class="collapsible">Course Information</button>
+    <div class="content-section">
+      <h2>Catalog Description</h2>
+      <p>
+        Object-oriented programming concepts, including the use of inheritance, interfaces, polymorphism, abstract data types, and encapsulation to enable software reuse and assist in software maintenance. Recursion, GUIs, and event handling. Use of common object-based data structures, including stacks, queues, lists, trees, sets, maps, and hash tables. Space/time efficiency analysis. Testing. Introduction to UML.
+      </p>
+      <h2>Course Prerequisites</h2>
+      <p>CSSE 120 - Introduction to Software Development (or demonstrated programming efficiency)</p>
+      <h2>Credit Hours</h2>
+      <p>4</p>
+      <h2>Course Format</h2>
+      <p>
+        This course will be a lecture-lab format class that meets 3 times a week each for 1 hour and 50 minutes. In class, we cover concepts of the day and put them into practice through small programming exercises.
+      </p>
+    </div>
+    
+    <!-- Collapsible Section 2: Contact & Resources -->
+    <button class="collapsible">Contact &amp; Resources</button>
+    <div class="content-section">
+      <h2>Course Location & Time</h2>
+      <p>
+        <strong>Section 02</strong>: 1pm-2:50pm Olin O267<br>
+        <strong>Section 03</strong>: 3pm-4:50pm Olin O267
+      </p>
+      <h2>Contact Info</h2>
+      <p>Dr. Olga Scrivner - scrivner@rose-hulman.edu<br>
+      </p>
+      <p>Debugging help: Submit a request via teams <strong>Debugging Channel</strong>  with a detailed description and screenshots</p>
+      <p>Course-related topics - meet before or after class or schedule a meeting</p>
+
+    </div>
+
+    <!-- Section 3: Optional Textbook & Outside Sources of Help -->
+    <button class="collapsible">Optional Textbook &amp; Outside Sources of Help</button>
+    <div class="content-section">
+      <h2>Optional Textbook</h2>
+      <p>
+        This book is especially good for students who would like some help with Java, as it introduces the language from scratch and also covers later topics of the course. It is completely optional and for extra help only.<br>
+        <strong>Big Java: Early Objects 7/e</strong><br>
+        by Cay Horstman
+      </p>
+      <h2>Outside Sources of Help</h2>
+      <p>
+        There are additional outside of the class opportunity if you prefer 1-1 tutoring: The Learning Center is an excellent resource for CSSE220 students. Tutor schedules for Learning Center tutoring can be found <a href="https://rosehulman.sharepoint.com/sites/LC/SitePages/Learning-Center-Tutor.aspx" target="_blank">here</a>. Additionally, Sophomore Residence (Percopo Hall) has tutors available. Their schedules are available <a href="https://rosehulman.sharepoint.com/sites/LC/SitePages/SRT-Tutoring.aspx" target="_blank">here</a>.
+      </p>
+    </div>
+
+    <!-- Section 4: Help Citation -->
+    <button class="collapsible">Help Citation</button>
+    <div class="content-section">
+      <p>
+        In your homework assignments you should add a “Help Citation”:
+      </p>
+      <pre>
+***************************************************************************************
+*         REQUIRED HELP CITATION
+* 
+*         TODO: cite your help here or say "only used CSSE220 materials"
+***************************************************************************************
+      </pre>
+      <p>
+        If you create a new file, add your own Help Citation. Failure to include a Help Citation (even if it simply states that you “only used CSSE220 materials”) may result in losing points. You MUST list anyone who helps you (instructors, TAs, peers, etc.) or any materials outside the CSSE220 provided material and Oracle documentation.
+      </p>
+    </div>
+
+    <!-- Section 5: Learning Outcomes & Specific Learning Objectives -->
+    <button class="collapsible">Learning Outcomes &amp; Objectives</button>
+    <div class="content-section">
+      <h2>Official Learning Outcomes</h2>
+      <p>
+        Students who successfully complete this course should be able to:
+      </p>
+      <ul>
+        <li>Develop software that incorporates techniques such as 
+            inheritance, class hierarchies, interfaces, polymorphism, 
+            casting, exceptions, collections, event-driven GUIs, 
+            use of large-scale API packages (e.g., GUI libraries), and recursion</li>
+        <li>Perform steps of the software development cycle effectively including design 
+            (as expressed by UML class diagrams), documentation before coding, unit and system testing</li>
+        <li>Explain the implementation of linked lists and analyze 
+            the asymptotic worst-case run time of simple programs</li>
+        <li>Predict the performance of simple algorithms (search and sort) given their asymptotic worst, 
+            best, and average case run times</li>
+        <li>Select basic data structures (arrays, linked lists) 
+            based on typical operation time complexity</li>
+        <li>Work in teams of 2–4 students on a software 
+            development project involving multiple iterative development cycles, 
+            demonstrating effective team roles, decision making, 
+            division of labor, and conflict resolution</li>
+      </ul>
+      <h2>Specific Learning Objectives in the Course</h2>
+      <p>
+        <strong>Key:</strong> HOTS - Higher Order Thinking Skills; LOTS - Lower Order Thinking Skills.
+      </p>
+      <p>
+        After successfully completing CSSE220, students will be able to:
+      </p>
+      <ul>
+        <li>Create an instance of a common Java API class (HOTS) 
+            and write code to invoke its methods</li>
+        <li>Write operations utilizing variables of types such as 
+            String, ArrayList, HashMap, and built-in arrays (both 1D and 2D)</li>
+        <li>Write operations using loops (for, while, do-while) 
+            and conditional statements (if-then, if-then-else, conditional operator ?:)</li>
+        <li>Identify and explain the Five CSSE220 OO Design Principles (LOTS) 
+            and redesign UML designs accordingly (HOTS)</li>
+        <li>Create UML designs and write programs from 
+            scratch that follow these designs (HOTS)</li>
+        <li>Create classes using inheritance, interfaces, 
+            abstract classes, and demonstrate proper class design techniques (HOTS)</li>
+        <li>Define key terms such as polymorphism, inheritance, coupling, 
+            cohesion, encapsulation, etc. (LOTS)</li>
+        <li>Create unit tests based on English 
+            descriptions of behavior (HOTS) and write recursive operations to solve problems (HOTS)</li>
+        <li>Utilize graphics libraries (e.g., Java Swing) to design 
+            and program GUIs that respond to various events (HOTS)</li>
+        <li>Identify and refactor code duplication and analyze 
+            the Big-O performance of algorithms and data structures (HOTS)</li>
+        <li>Design and implement a large program from scratch, 
+            working as part of a small team (HOTS)</li>
+      </ul>
+      
+    </div>
+
+    <!-- Section 6: Late Assignment & Missing Exams Policy -->
+    <button class="collapsible">Late Assignment, Exams Policy</button>
+    <div class="content-section">
+      <h2>Late Assignment Policy</h2>
+      <p>
+        Plan ahead and submit assignments on time. </p>
+        <p>The 24-hour extension is provided by default for any unexpected issues</p>
+        <p>Longer extensions must be requested. Note the following guidelines for the additional extension request:
+      </p>
+      <ul>
+        <li>Make the extension request as soon as possible. The extension will not be granted if the request is made past the 1-day grace period.</li>
+        <li>The extra extension time does not provide any excuse for not completing the subsequent assignments</li>
+      <li>Reques Extensions via email with <strong>Subject header: CSSE220 Extension Request</strong></li>
+    </ul>
+      <h2>Missing Exams Policy</h2>
+      <p>
+        You must contact the professor immediately if you cannot make it to the Exam (e.g., sick).
+      </p>
+      <p>For a special accomodation, please contact the professor at least 1 week prior the exam.</p>
+    </div>
+
+    <!-- Section 7: Grading Details & Exam Rules -->
+    <button class="collapsible">Grading Details &amp; Exam Rules</button>
+    <div class="content-section">
+      <h2>Grading Overview</h2>
+      <p>
+        Over the quarter, the following will be administered:
+      </p>
+      <ul>
+        <li>Daily In-Class Coding Labs</li>
+        <li>Homework Assignments</li>
+        <li>Daily In-class Worksheets/Quizzes</li>
+        <li>Two Exams</li>
+        <li>Final project</li>
+      </ul>
+      <p>
+        Each assignment or exam has an associated point value and rubric. The overall letter grade is determined by the weighted average of the following categories:
+      </p>
+      <pre>
+Category                                Weight (%)
+------------------------------------------------------
+Programming Homework                    15%
+Non-Programming Homework                15%
+In-class Worksheets/Quizzes             10%
+In-class Labs                           15%
+Final Project                           20%
+2 Exams                                 20%
+Attendance                               5%
+
+      </pre>
+      <h2>Final Project Average</h2>
+      <p>
+        The Final Project is critical. You must have at least a 'D' average for the overall project grade to pass the course. An 'F' average on the project (< 60%) results in an F for the course.
+      </p>
+      <h2>Exam Grading Averages</h2>
+      <p>
+        Each exam is out of 100 points. Important rules include:
+      </p>
+      <ul>
+        <li>You must earn at least one exam score ≥ 70% to be eligible for a course grade of C or higher</li>
+        <li>You must have at least a 'D' average over all exams to pass</li>
+        <li>An 'F' average over the exams (< 60%) results in an F for the course</li>
+        <li>You must demonstrate that you can individually write and debug Java programs at the course level</li>
+      </ul>
+      <h2>Attendance Policy</h2>
+      <p>
+        Participation and attendance are required. If you exceed eight absences you may not be allowed to take an exam without a proper documentation (e.g., ilness) and per Institional policy, 
+        exceeding eight absencees may result in failure. </p>
+        <p>Note that you must earn a C or better in CSSE220 to progress to CSSE230.
+      </p>
+      <p>Attendance is taken during the class. If you forget to mark your attendance, please contact the professor immediately.</p>
+      
+    </div>
+
+    
+
+    <!-- Section 9: Academic Integrity & Classroom Conduct -->
+    <button class="collapsible">Academic Integrity &amp; Classroom Conduct</button>
+    <div class="content-section">
+      <h2>Academic Integrity</h2>
+      <p>
+        In addition to the summary below, please read the CSSE220 Academic Integrity Guide. 
+    Rose-Hulman expects students to behave with honor and integrity at all times. 
+    Exams are to be done individually unless explicitly stated otherwise. For Homeworks and In-Class Labs you are allowed to collaborate with another student assigned to you as your peer-collaborator. However, the collaboration is not a copying the code. Your solutions and explanations are individual.
+      </p>
+      <p>
+        <strong>Important:</strong> Sharing Exam code is strictly prohibited and it is against Rose-Hulman code of honors.
+      </p>
+      
+      <h2>Classroom Conduct</h2>
+      <p>
+        To ensure a welcoming and professional classroom climate, please:
+      </p>
+      <ul>
+        <li>Speak to everyone with courtesy and professionalism</li>
+        <li>Do not interupt the lecture. If you have a question, raise your hand, or wait until Discussion. Do not talk loud during In-Class Lab</li>
+        <li>Do not use Phone during the class. Please step out if you need to but promptly return.</li>
+        <li>If you are done with In-Class Work, you can leave early or you can start working on homework. Do not work on external assignments while in class</li>
+      </ul>
+      <p>
+        If you experience issues that hinder your ability to be respectful or focused, please contact your instructor or the Student Counseling Center.
+      </p>
+    </div>
+
+    <!-- Section 10: Institute Policies & Final Notes -->
+    <button class="collapsible">Institute Policies &amp; Final Notes</button>
+    <div class="content-section">
+      <h2>Students with Accessibility Needs</h2>
+      <p>
+        Rose-Hulman is committed to assisting students with special needs or disabilities. For more information or to request accommodations, please visit the Accessibility Services website. All requests must be documented and approved before accommodations are implemented.
+      </p>
+      <h2>Academic Integrity (Institutional)</h2>
+      <p>
+        Refer to the Student Handbook and Rose-Hulman’s Academic Rules and Procedures for detailed information on penalties and processes for academic misconduct.
+      </p>
+      <h2>Diversity Statement</h2>
+      <p>
+        Rose-Hulman Institute of Technology is committed to being an inclusive community that values diverse beliefs, intellectual viewpoints, and cultural perspectives.
+      </p>
+      <h2>Online Access Requirements</h2>
+      <p>
+        While Rose-Hulman welcomes students from around the world, geopolitical conditions and export laws may restrict access to certain technologies or educational experiences.
+      </p>
+      <h2>Emergency Information</h2>
+      <p>
+        To receive emergency alerts (via email or text), register for RAVE alerts or follow <a href="https://twitter.com/Rose-HulmanAlert" target="_blank">@Rose-HulmanAlert</a>. Updates about class delivery will be posted on the Rose-Hulman website.
+      </p>
+      <h2>Policy Revisions</h2>
+      <p>
+        These policies have been written and revised over several terms by the following professors: Claude Anderson, Matt Boutell, Curt Clifton, Delvin Defoe, Micah Taylor, Mike Hewner, Amanda Stouder, Aaron Wilkin, Jason Yoder, Ian Ludden, and Olga Scrivner.
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    // JavaScript for collapsible sections
+    var coll = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+
+
+
+
+
+</html>

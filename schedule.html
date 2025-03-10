@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
+<link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
+<!-- <style>
+th {
+    position: sticky; /* Makes the header row fixed */
+    top: 0; /* Keeps the header at the top of the scrolling container */
+    background-color: #f4f4f4; /* Add a background color to distinguish the header */
+    z-index: 1; /* Ensures the header stays above table content */
+}
+</style> -->
+<style>
+    /* Basic reset and styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    /* Header styling */
+
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-bottom: 50px;
+    }
+    h1 {
+      margin-top: 0;
+    }
+
+    /* Collapsible Button Styling */
+    .collapsible {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    .collapsible:hover, .collapsible.active {
+      background-color: #ccc;
+    }
+    /* Collapsible content wrapper */
+    .content-section {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      background-color: #f9f9f9;
+      margin-bottom: 10px;
+    }
+/* Responsive table container: allows horizontal scroll on mobile */
+.responsive-table {
+      width: 100%;
+      overflow-x: auto;    /* enables horizontal scrolling */
+      margin-top: 10px;
+    }
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      vertical-align: top;
+    }
+    table th {
+      background-color: #f2f2f2;
+    }
+
+    
+
+    /* Color-coded classes */
+    .homework {
+      background-color: #d2f8d2; /* light green */
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .labs {
+      background-color: #fff6ba; /* pale yellow */
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .design {
+      background-color: #bad6ff; /* light blue */
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .milestone {
+      background-color: #ffcaca; /* light pink */
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    /* New style for code links */
+    .quiz {
+      /* background-color: #2d2d2d; */
+      color: #8a10ab;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.9em;
+      padding: 2px 4px;
+      border: 1px solid #555;
+      border-radius: 3px;
+      display: inline-block;
+    }
+    .slides {
+      background-color: #e5c4df; /* light pink */
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* New style for exam rows: color the entire row */
+    tr.exam {
+      background-color: #f4cece; /* A distinct background for exam rows */
+    }
+
+    /* Responsive table: stack columns on small screens */
+    @media screen and (max-width: 600px) {
+      .responsive-table {
+        font-size: 0.9rem; /* Adjust as desired */
+      }
+      /* You could also reduce min-width here if you want more columns to show */
+      table {
+        min-width: 700px;
+      }
+    }
+    /* @media screen and (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+      } */
+      /* thead tr {
+        display: none;
+      } 
+      tbody tr {
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        padding: 10px;
+      }
+      td {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        padding-left: 50%;
+      }
+      td:before {
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+      }
+      /* Match these data-labels to your actual column headers 
+      td:nth-of-type(1):before { content: "Day"; }
+      td:nth-of-type(2):before { content: "Topics"; }
+      td:nth-of-type(3):before { content: "Material"; }
+      td:nth-of-type(4):before { content: "In-Class Labs"; }
+      td:nth-of-type(5):before { content: "Homework"; }
+      td:nth-of-type(6):before { content: "Design"; }
+      td:nth-of-type(7):before { content: "Project Milestones"; }
+    } */
+  </style>
+</head>
+<body>
+    <div id="header">
+        <a id="index_link" href="./index.html">CSSE 220</a>
+        <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
+        <a id="schedule_link" href="./schedule.html">Schedule</a>
+        <a id="quiz_link" href="./worksheets.html">Quizzes</a>
+        <a id="quiz_link" href="./labs.html">Labs</a>
+        <a id="quiz_link" href="./homework.html">Homework</a>
+        <a id="quiz_link" href="./exams.html">Exams</a>
+        <a id="quiz_link" href="./project.html">Final Project</a>
+        <a id="resources_link" href="./resources.html">Resources</a>
+        <div style="clear:both;"></div>
+    </div>
+
+<div id="content">
+
+<h2>CSSE 220 Spring 2024-2025 Schedule </h2>
+<h1>Class Schedule</h1>
+<div>Daily Quizes and Labs are submitted during the class via gradescope. 1-day grace period is enabled.</div>
+<div><strong>Quizzes and Homeworks are your preps for Exams</strong></div>
+<div>Homework and Design problems are due as indicated on the schedule. 1-day grace period is enabled.</div>
+<div>Attendance is taken in Class. Extensions are not applied to Exams.</div>
+    <!-- Week 1 -->
+    <button class="collapsible">Week 1 (2 Homeworks)</button>
+    <div class="content-section">
+
+        <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Topics</th>
+            <th>Material</th>
+            <th>In-Class Labs</th>
+            <th>Homework</th>
+            <th>Design</th>
+            <th>Project Milestones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday <br>10-Mar</td>
+            <td>
+              JavaIntro<br/>
+              <br>
+              <a href="https://onecompiler.com/java" target="_blank">Online Compiler</a>
+            </td>
+            <td><span class="slides">Intro slides</span><br>
+                <span class="slides">Eclipse slides</span><br>
+              
+                <br><span class="quiz">quiz01</span></td>
+                <td><br><span class="lab">Lab01</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Tuesday <br>11-Mar</td>
+            <td>
+            <strong>Arrays And Lists</strong><br/>
+              <br/>
+<br>
+            </td>
+            <td><span class="slides">slides02</span><br>
+               <br> <span class="quiz">quiz02</span></td>
+            <td><br><span class="lab">Lab02</span></td>
+            <td><br>
+              <span class="homework">Submit 03/11<br>
+                Short HWK1</span>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Thursday <br>13-Mar</td>
+            <td><strong>2D Arrays And Maps</strong></td>
+            <td><span class="slides">slides03</span><br>
+                <br><span class="quiz">quiz03</span></td>
+            <td><br><span class="lab">Lab03</span></td>
+            <td>
+              
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <!-- Extra row for Sunday -->
+          <tr>
+            <td>Sunday <br> 16-Mar</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="homework">Submit 03/16<br>
+                Long HWK2 - Twelve Problems</span></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <!-- Week 2 -->
+    <button class="collapsible">Week 2 (2 Homeworks + 1 Design)</button>
+     <div class="content-section"> 
+        <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Topics</th>
+            <th>Material</th>
+            <th>In-Class Labs</th>
+            <th>Homework</th>
+            <th>Design</th>
+            <th>Project Milestones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday <br>17-Mar</td>
+            <td>
+            <strong>Object Intro</strong><br/>
+              - Constructors<br/>
+              - Introduction to Classes
+            </td>
+            <td><span class="slides">slides04</span><br>
+                <br><span class="quiz">quiz04</span></td>
+                <td><span class="lab"><br>Lab04</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Tuesday <br>18-Mar</td>
+            <td>
+              <strong>Simple Objects</strong><br/>
+              - This.Keyword<br/>
+              - StaticMethods &amp; Fields
+            </td>
+            <td><span class="slides">slides05</span><br>
+                <br><span class="quiz">quiz05</span></td>
+                <td><span class="lab"><br>Lab05</span></td>
+            <td>
+              <span class="homework">Submit 03/18<br>
+                Short HWK3 2DArray</span>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Thursday <br>20-Mar</td>
+            <td><strong>
+              SET Techniques</strong><br/>
+              - PlantUML Handout<br/>
+              - OODP Handout
+            </td>
+            <td><span class="slides">slides06</span><br>
+                <br><span class="quiz">quiz06</span></td>
+                <td><span class="lab"><br>Lab06</span></td>
+            <td>
+              
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <!-- Extra row for Sunday -->
+          <tr>
+            <td>Sunday <br> 23-Mar</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="homework">Submit 03/23<br>
+                Long HWK4 Maps</span></td>
+            <td><br><span class="design">Submit 03/23<br>Design<br>Problem1: Quiz</span></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <!-- Week 3 -->
+    <button class="collapsible">Week 3 (1 Homework + 2 Design)</button>
+    <div class="content-section">  
+        <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Topics</th>
+            <th>Material</th>
+            <th>In-Class Labs</th>
+            <th>Homework</th>
+            <th>Design</th>
+            <th>Project Milestones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday<br>24-Mar</td>
+            <td><strong>Encapsulation</strong></td>
+            <td><span class="slides">slides07</span><br>
+                <br><span class="quiz">quiz07</span></td>
+                <td><span class="lab"><br>Lab07</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Tuesday<br>25-Mar</td>
+            <td><strong>Cohesion And Coupling</strong></td>
+            <td><span class="slides">slides08</span><br>
+                <br><span class="quiz">quiz08</span></td>
+                <td><span class="lab"><br>Lab08</span></td>
+            <td></td>
+            <td><span class="design">Submit 03/25<br>Design<br>Problem2: Sales</span></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Thursday<br>27-Mar</td>
+            <td><strong>Intrefaces</strong></td>
+            <td><span class="slides">slides09</span><br>
+                <br><span class="quiz">quiz09</span></td>
+                <td><span class="lab"><br>Lab09</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            </tr>
+            <!-- Extra row for Sunday -->
+          <tr>
+            <td>Sunday <br> 30-Mar</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="homework">Submit 03/30<br>
+                Long HWK5: Quiz</span></td>
+            <td><span class="design">Submit 03/30<br>Design<br>Problem3: Spaceship</span></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <!-- Week 4 -->
+    <button class="collapsible">Week 4 (1 Design + Exam 1 Written & Coding)</button>
+<div class="content-section"> 
+        <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Topics</th>
+            <th>Material</th>
+            <th>In-Class Labs</th>
+            <th>Homework</th>
+            <th>Design</th>
+            <th>Project Milestones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday<br>31-Mar</td>
+            <td><strong>Intro to Graphic</strong></td>
+            <td><span class="slides">slides10</span><br>
+                <br><span class="quiz">quiz10</span></td>
+                <td><span class="lab"><br>Lab10</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Tuesday 1-Apr</td>
+            <td><strong>Recursion Introduction</strong></td>
+            <td><span class="slides">slides11</span><br>
+                <br><span class="quiz">quiz11</span></td>
+                <td><span class="lab"><br>Lab11</span></td>
+            <td></td>
+            <td><span class="design">Submit 04/01<br>Design<br>Problem4: Budget</span></td>
+            <td></td>
+          </tr>
+          <tr class="exam">
+            <td>Thursday<br>3-Apr</td>
+            <td><strong>Written <br>Exam 1</strong><br>In-Class</td>
+            <td></td>
+                <td></td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td></td>
+          </tr>
+            <!-- Extra row for Sunday -->
+            <tr class="exam">
+                <td>Sunday <br> 6-Apr</td>
+                <td>Submit 04/06<br>
+                    <strong>Coding Exam1</strong><br>Take-Home</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+ <!-- Week 5 -->
+ <button class="collapsible">Week 5 (2 Homeworks)</button>
+ <div class="content-section"> 
+         <div class="responsive-table">
+       <table>
+         <thead>
+           <tr>
+             <th>Day</th>
+             <th>Topics</th>
+             <th>Material</th>
+             <th>In-Class Labs</th>
+             <th>Homework</th>
+             <th>Design</th>
+             <th>Project Milestones</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td>Monday<br>7-Apr</td>
+             <td><strong>More Recursion</strong></td>
+             <td><span class="slides">slides12</span><br>
+                 <br><span class="quiz">quiz12</span></td>
+                 <td><span class="lab"><br>Lab12</span></td>
+             <td></td>
+             <td></td>
+             <td></td>
+           </tr>
+           <tr>
+             <td>Tuesday 8-Apr</td>
+             <td><strong>Graphic Scenes</strong></td>
+             <td>No In-Class Meeting</td>
+                 <td>Working with Partner on Graphic Scenes</td>
+             <td><span class="homework">Submit 04/08<br>HWK6 <br>Scenes Part 1</span></td>
+             <td></td>
+             <td></td>
+           </tr>
+           <tr>
+             <td>Thursday<br>10-Apr</td>
+             <td><strong>Graphic Scenes</strong></td>
+             <td>No In-Class Meeting</td>
+                 <td>Working with Partner on Graphic Scenes</td>
+             <td></td>
+             <td></td>
+             <td></td>
+           </tr>
+             <!-- Extra row for Sunday -->
+             <tr>
+                 <td>Sunday <br> 13-Apr</td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td><span class="homework">Submit 04/13<br>HWK7<br>
+                    Scenes Part 2</span></td>
+                 <td></td>
+                 <td></td>
+               </tr>
+         </tbody>
+       </table>
+     </div>
+ </div>
+
+ <button class="collapsible">Happy Spring Break: 14-Apr - 20-Apr</button>
+ <div class="content-section"></div>
+
+<!-- Week 6 -->
+<button class="collapsible">Week 6 (1 Homework + 2 Design)</button>
+<div class="content-section"> 
+        <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Topics</th>
+            <th>Material</th>
+            <th>In-Class Labs</th>
+            <th>Homework</th>
+            <th>Design</th>
+            <th>Project Milestones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday<br>21-Apr</td>
+            <td><strong>Event-Based Programming</strong></td>
+            <td><span class="slides">slides13</span><br>
+                <br><span class="quiz">quiz13</span></td>
+                <td><span class="lab"><br>Lab13</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Tuesday 22-Apr</td>
+            <td><strong>Inheritance</strong></td>
+            <td><span class="slides">slides14</span><br>
+                <br><span class="quiz">quiz14</span></td>
+                <td><span class="lab"><br>Lab14</span></td>
+            <td></td>
+            <td><span class="design">Submit 04/22<br>Design<br>Problem5: Inventory</span></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Thursday<br>24-Apr</td>
+            <td><strong>Polymorphism</strong></td>
+            <td><span class="slides">slides15</span><br>
+                <br><span class="quiz">quiz15</span></td>
+                <td><span class="lab"><br>Lab15</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+            <!-- Extra row for Sunday -->
+            <tr>
+                <td>Sunday <br> 27-Apr</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span class="homework">Submit 04/27<br>HWK8<br>
+                   Recursion</span></td>
+                <td><span class="design">Submit 04/27<br>Design<br>Problem6: Tracing</span></td>
+                <td></td>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+<!-- Week 7 -->
+<button class="collapsible">Week 7 (2 Homeworks + Milestone1)</button>
+<div class="content-section"> 
+        <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Topics</th>
+            <th>Material</th>
+            <th>In-Class Labs</th>
+            <th>Homework</th>
+            <th>Design</th>
+            <th>Project Milestones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday<br>28-Apr</td>
+            <td><strong>Event-Based Gaming</strong></td>
+            <td><span class="slides">slides16</span><br>
+                <br><span class="quiz">quiz16</span></td>
+                <td><span class="lab"><br>Lab16</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Tuesday 29-Apr</td>
+            <td><strong>Errors & Exceptions</strong></td>
+            <td><span class="slides">slides17</span><br>
+                <br><span class="quiz">quiz17</span></td>
+                <td><span class="lab"><br>Lab17</span></td>
+            <td><span class="homework">Submit 04/29<br>HWK9<br>LLO Part 1<br>
+                </span></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Thursday<br>1-May</td>
+            <td><strong>Collision Handling</strong></td>
+            <td><span class="slides">slides18</span><br>
+                <br><span class="quiz">quiz18</span></td>
+                <td><span class="lab"><br>Lab18</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+            <!-- Extra row for Sunday -->
+            <tr>
+                <td>Sunday <br> 4-May</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span class="homework">Submit 05/04<br>HWK10<br>LLO Part 2<br>
+                </span></td>
+                <td></td> 
+                <td><span class="milestone">Submit 05/04<br>Milestone 1</span></td>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<!-- Week 8 -->
+<button class="collapsible">Week 8 (1 Homework + Milestone2)</button>
+<div class="content-section"> 
+        <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Topics</th>
+            <th>Material</th>
+            <th>In-Class Labs</th>
+            <th>Homework</th>
+            <th>Design</th>
+            <th>Project Milestones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday<br>5-May</td>
+            <td><strong>LInkedLIst</strong></td>
+            <td><span class="slides">slides19</span><br>
+                <br><span class="quiz">quiz19</span></td>
+                <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Tuesday 6-May</td>
+            <td><strong>BigO</strong></td>
+            <td><span class="slides">slides20</span><br>
+                <br><span class="quiz">quiz20</span></td>
+                <td></td>
+            <td><span class="homework">Submit 04/29<br>HWK9<br>LLO Part 1<br>
+                </span></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Thursday<br>8-May</td>
+            <td><strong>Unit Testing & Sorting</strong></td>
+            <td><span class="slides">slides21</span><br>
+                <br><span class="quiz">quiz21</span></td>
+                <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+            <!-- Extra row for Sunday -->
+            <tr>
+                <td>Sunday <br> 11-May</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span class="homework">Submit 05/11<br>HWK11<br>LinkedList<br>
+                </span></td>
+                <td></td> 
+                <td><span class="milestone">Submit 05/11<br>Milestone 2</span></td>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<!-- Week 9 -->
+<button class="collapsible">Week 9 (Exam 2 Written & Coding + Milestone3)</button>
+<div class="content-section"> 
+        <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Topics</th>
+            <th>Material</th>
+            <th>In-Class Labs</th>
+            <th>Homework</th>
+            <th>Design</th>
+            <th>Project Milestones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday<br>12-May</td>
+            <td><strong>MergeSort</strong></td>
+            <td><span class="slides">slides22</span><br>
+                <br><span class="quiz">quiz22</span></td>
+                <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Tuesday 13-May</td>
+            <td><strong>Exam Review</strong></td>
+            <td></td>
+                <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="exam">
+            <td>Thursday<br>15-May</td>
+            <td><strong>Written <br>Exam 2</strong><br>In-Class</td>
+            <td></td>
+                <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+            <!-- Extra row for Sunday -->
+            <tr class="exam">
+                <td>Sunday <br> 18-May</td>
+                <td>Submit 04/06<br>
+                    <strong>Coding Exam2</strong><br>Take-Home</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td> 
+                <td><span class="milestone">Submit 05/18<br>Milestone 3</span></td>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<!-- Week 10 -->
+<button class="collapsible">Week 10 (Milestone4)</button>
+<div class="content-section"> 
+        <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Topics</th>
+            <th>Material</th>
+            <th>In-Class Labs</th>
+            <th>Homework</th>
+            <th>Design</th>
+            <th>Project Milestones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday<br>19-May</td>
+            <td>Project Time <br> No In-Person Class</td>
+            <td><br>
+                </td>
+                <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Tuesday 20-May</td>
+            <td>Project Time <br> No In-Person Class</td>
+            <td><br>
+                </td>
+                <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Thursday<br>22-May</td>
+            <td>Project Time <br> No In-Person Class</td>
+            <td><br>
+                </td>
+                <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+            <!-- Extra row for Sunday -->
+            <tr>
+                <td>Sunday <br> 25-May</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td> 
+                <td><span class="milestone">Submit 05/25<br>Milestone 4</span></td>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+
+
+</div><!-- /#content -->
+  <script>
+    // JavaScript for collapsible sections
+    var coll = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+  </body>
+</html>

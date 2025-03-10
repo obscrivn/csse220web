@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CSSE 220</title>
+
+
+<link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
+<link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>
+/* Main content container */
+#content {
+      padding: 20px;
+    }
+    h1, h2 {
+      
+      color: #ffffff;
+    }
+/* Table of Contents styling */
+    .toc {
+      background-color: #3a3a3a;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .toc ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .toc li {
+      margin-bottom: 5px;
+    }
+    .toc a {
+      color: #61dafb;
+      text-decoration: none;
+    }
+    .toc a:hover {
+      text-decoration: underline;
+    }
+    /* Section styling */
+    section {
+      margin-bottom: 40px;
+    }
+    section p, section ul, dl {
+      
+      font-size: 1em;
+      color: black;
+      line-height: 1.6;
+    }
+    section ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+    section li {
+      margin-bottom: 5px;
+    }
+    section dl {
+      background-color: #21252b;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    section dt {
+      font-weight: bold;
+      margin-top: 10px;
+      color: #61dafb;
+    }
+    section dd {
+      margin-left: 20px;
+      margin-bottom: 10px;
+      font-family: "Courier New", Courier, monospace;
+      background-color: #1e1e1e;
+      padding: 4px 8px;
+      border-radius: 3px;
+      display: inline-block;
+      color: #dcdcdc;
+    }
+    /* Code block styling for loop examples */
+    pre {
+      background-color: #1e1e1e;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: "Courier New", Courier, monospace;
+      color: #dcdcdc;
+      font-size: 0.95em;
+    }
+    .output {
+      background-color: #f5f5f5;
+      color: #333;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-family: "Courier New", Courier, monospace;
+      margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+        <div id="header">
+            <a id="index_link" href="./index.html">CSSE 220</a>
+            <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
+            <a id="schedule_link" href="./schedule.html">Schedule</a>
+            <a id="quiz_link" href="./worksheets.html">Quizzes</a>
+            <a id="quiz_link" href="./labs.html">Labs</a>
+            <a id="quiz_link" href="./homework.html">Homework</a>
+            <a id="quiz_link" href="./exams.html">Exams</a>
+            <a id="quiz_link" href="./project.html">Final Project</a>
+            <a id="resources_link" href="./resources.html">Resources</a>
+            <div style="clear:both;"></div>
+        </div>
+
+<!-- Main Content -->
+<div id="content">
+    <h1>Resources</h1>
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <dl>
+        <dd><a href="#syntax">Java Syntax</a></dd>
+        <dd><a href="#java-types">Data Types</a></dd>
+        <dd><a href="#operators">Operators</a></dd>
+        <dd><a href="#loops">Loops</a></dd>
+        <dd><a href="#printf">Print Formatting</a></dd>
+        
+        <dd><a href="#conditionals">Conditionals</a></dd>
+        <dd><a href="#return">Void, Return, Calling Methods</a></dd>
+        <!-- Future sections can be added here -->
+      </dl>
+    </div>
+ <!-- Syntax Section -->
+    <section id="syntax">
+        <h1 style="color:black">Basic Java Class Structure</h1>
+        <p>
+          Every Java program begins with a <strong>class declaration</strong>. 
+          By convention, class names use <strong>PascalCase</strong> (each word capitalized) and 
+          the file name should match the class name.
+        </p>
+        <p>
+          A basic Java program must include a <strong><code style="color:black">public static void main(String[] args)</code></strong> method. This <strong><em>main method</em></strong> 
+          is the entry point for execution.
+        </p>
+        <pre><code>public class HelloWorld {
+    public static void main(String[] args) {
+            // Print a simple message to the console
+            System.out.println("Hello, world!");
+    }
+}</code></pre>
+        <p>
+          To run this program in Eclipse, 
+          simply create a new Java project, 
+          add this class to your <strong><code style="color:black">src</code></strong> folder, 
+          right-click on the file, and 
+          select <strong>Run As &gt; Java Application</strong>.
+        </p>
+        <p>
+            <strong>Variables</strong> should be named using 
+            <strong>camelCase</strong> notation (the first letter is lowercase and subsequent words start with a capital letter). 
+            Every variable must be <em>declared</em> with a type and <em>initialized</em> before use. 
+            For example, you can declare and initialize a variable and then print its value as follows:
+          </p>
+          <pre><code>int myNumber = 42;
+System.out.println("The number is: " + myNumber);</code></pre>
+          <p>
+            In this example, the integer variable <strong><code style="color:black">myNumber</code></strong> is declared and initialized with the value <strong><code style="color:black">42</code></strong>, and its value is printed using <strong><code style="color:black">System.out.println()</code></strong>.
+          </p>
+      </section>
+
+    <!-- Data Types Section -->
+    <section id="java-types">
+      <h1 style="color:black">Data Types</h1>
+      <p>
+        Java provides eight primitive data types that serve as the building blocks for data manipulation.
+      </p>
+      <dl>
+        <dt>byte</dt>
+        <dd><code>byte b = 100;</code></dd>
+        <dt>short</dt>
+        <dd><code>short s = 32000;</code></dd>
+        <dt>int</dt>
+        <dd><code>int x = 5;</code></dd>
+        <dt>long</dt>
+        <dd><code>long l = 1000000L;</code></dd>
+        <dt>float</dt>
+        <dd><code>float f = 3.14f;</code></dd>
+        <dt>double</dt>
+        <dd><code>double d = 3.14159;</code></dd>
+        <dt>boolean</dt>
+        <dd><code>boolean flag = true;</code></dd>
+        <dt>char</dt>
+        <dd><code>char c = 'A';</code></dd>
+      </dl>
+      <p>
+        In addition to these primitive types, Java uses the <strong>String</strong> class to represent sequences of characters. Strings are objects, not primitives, and are immutable, meaning once created their values cannot be changed. They provide a wide array of methods for string manipulation such as concatenation, substring extraction, and searching.
+      </p>
+    <dl>
+      <dt>String</dt>
+      <dd><code>String s = "Hello";</code></dd>
+    </dl>
+    </section>
+<!-- Java Operators Section -->
+<section id="operators">
+    <h1 style="color:black">Java Operators: Math, Logical &amp; Comparison </h1>
+    <p>Java operators perform arithmetic calculations and evaluate logical conditions. Use math operators for numerical computations and logical operators for combining boolean expressions.</p>
+    
+    <h3>Math Operators</h3>
+    <p>Math operators are used for basic arithmetic: addition (+), subtraction (-), 
+        multiplication (*), division (/), and modulus (%).</p>
+    <pre><code>int a = 10;
+int b = 3;
+System.out.println(a + b);   // Output: 13
+System.out.println(a - b);   // Output: 7
+System.out.println(a * b);   // Output: 30
+System.out.println(a / b);   // Output: 3 (integer division)
+System.out.println(a % b);   // Output: 1 (remainder)</code></pre>
+    
+    <h3>Logical Operators</h3>
+    <p>Logical operators combine boolean expressions. The operators are AND (&&), OR (||), and NOT (!).</p>
+    <pre><code>boolean x = true;
+boolean y = false;
+System.out.println(x && y);  // Output: false
+System.out.println(x || y);  // Output: true
+System.out.println(!x);      // Output: false</code></pre>
+<h3>Comparison Operators</h3>
+<p>Comparison operators compare numerical values and return a boolean result:  <code>&gt;</code>, <code>&lt;</code>, 
+    <code>&gt;=</code>, and 
+    <code>&lt;=</code>.</p>
+<pre><code>int a = 10;
+int b = 20;
+System.out.println(a > b);    // Output: false
+System.out.println(a < b);    // Output: true
+System.out.println(a >= 10);  // Output: true
+System.out.println(b <= 15);  // Output: false</code></pre>
+
+
+
+</section>
+    <!-- Loop Constructs Section -->
+    <section id="loops">
+        <h1 style="color:black">Java Loops</h1>
+        <p>Below are examples of two types of <strong>for</strong> loops and a <strong>while</strong> loop:</p>
+        
+        <h3>Standard For Loop</h3>
+        <pre><code>for (int i = 0; i < 10; i++) {
+      // Print numbers 0 through 9
+      System.out.println(i);
+  }</code></pre>
+        <p>This loop uses an index variable to iterate a fixed number of times.</p>
+        
+        <h3>Enhanced For Loop</h3>
+        <pre><code>for (String item : items) {
+      // Process each element in an array or collection
+      System.out.println(item);
+  }</code></pre>
+        <p>This loop iterates over each element in an array or collection directly.</p>
+        
+        <h3>While Loop</h3>
+        <pre><code>int i = 0;
+  while (i < 10) {
+      // Print numbers 0 through 9
+      System.out.println(i);
+      i++;
+  }</code></pre>
+        <p>The while loop continues until the specified condition is false.</p>
+      </section>
+
+ <!-- Formatting Section -->
+      <section id="printf">
+        <h1 style="color:black">Printf &amp; Placeholder Formatting</h1>
+        <p>The <strong><code style="color:darkgreen">System.out.printf()</code></strong> method allows you to format output using placeholders instead of a concatenation operator "+". Below are some examples:</p>
+        
+        <h3 style="color:black">Basic Formatting</h3>
+        <pre><code>System.out.printf("Name: %s, Age: %d", "Alice", 30);</code></pre>
+        <div class="output">
+            Name: Alice, Age: 30
+          </div>
+        <p>This example uses <strong><code style="color:darkgreen">%s</code></strong> for a string and <strong><code style="color:darkgreen">%d</code></strong> for an integer.</p>
+       
+        <h3>Floating-Point Formatting</h3>
+        <pre><code>System.out.printf("Price: $%.2f", 19.99);</code></pre>
+        <div class="output">
+            Price: $19.99
+          </div>
+          <h3>Boolean Formatting</h3>
+        <p>The <strong><code style="color:darkgreen">%b</code></strong> placeholder formats a boolean (true or false).</p>
+      <pre><code>System.out.printf("The store is open: %b", true);</code></pre>
+<div class="output">
+  The store is open: true
+</div>
+<h3>Multiple Variables</h3>
+<pre><code>int x = 10;
+int y = 20;
+System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
+        <div class="output">
+            Coordinates: (10, 20)
+          </div>
+        <p>This example demonstrates using multiple placeholders within one formatted string.</p>
+      </section>
+
+      <section id="conditionals">
+        <h1 style="color:black">Conditionals</h1>
+        <p>Conditionals are used to execute different blocks of code based 
+            on whether a condition is true or false. 
+            They allow your program to make decisions and control its flow.</p>
+        
+        <h3>If Statement</h3>
+        <pre><code>if (condition) {
+    // Code to execute when condition is true
+}</code></pre>
+        <p>The <strong><code style="color:darkred">if</code></strong> statement 
+            executes the code block only if the condition evaluates to true.</p>
+        
+        <h3>If-Else Statement</h3>
+        <pre><code>if (condition) {
+    // Code to execute when condition is true
+} else {
+    // Code to execute when condition is false
+}</code></pre>
+        <p>The <strong><code style="color:darkred">if-else</code></strong> statement allows 
+            you to specify an alternative block of code if the condition is false.</p>
+        
+        <h3>If-Else If-Else Ladder</h3>
+        <pre><code>if (condition1) {
+    // Code to execute if condition1 is true
+} else if (condition2) {
+    // Code to execute if condition1 is false and condition2 is true
+} else {
+    // Code to execute if both conditions are false
+}</code></pre>
+        <p>This structure lets you check multiple conditions in sequence.</p>
+        
+        <h3>Ternary Operator</h3>
+        <pre><code>int result = (condition) ? valueIfTrue : valueIfFalse;</code></pre>
+        <p>The ternary operator provides a shorthand way to choose one of 
+            two values based on a condition.</p>
+      </section>
+
+      <section id="return">
+        <h1 style="color:black">Void, Return, and Calling Methods</h1>
+        <p>
+          Methods that are declared with 
+          the <strong><code style="color:black">void</code></strong> or return <strong>data type</strong>. Void does not return any value. 
+          In contrast, methods with a return data type must return a value of that type. 
+          
+        </p>
+        
+        <h3>Example of a Void Method</h3>
+        <pre><code>public static void printMessage() {
+       System.out.println("Hello from printMessage!");
+      }</code></pre>
+        <p>
+          The <strong><code style="color:black">printMessage()</code></strong> method is declared as <strong><code style="color:black">void</code></strong> because 
+          it does not return any value. 
+          It simply prints a message to the console.
+        </p>
+        
+        <h3>Example of a Method with a Return Value</h3>
+        <pre><code>public static int add(int a, int b) {
+       return a + b;
+      }</code></pre>
+        <p>
+          The <strong><code style="color:black">add()</code></strong> method takes two integers as parameters and returns their sum. 
+          Notice that its return type is declared as <strong><code style="color:black">int</code></strong>.
+        </p>
+        
+        <h3>Calling Methods from <strong><code style="color:black">main()</code></strong></h3>
+        <p>You call methods from the <strong><code style="color:black">main()</code></strong> by simply using the method name and 
+            passing any required arguments.
+        </p>
+            <pre><code>public static void main(String[] args) {
+      // Call the void method
+      printMessage();
+          
+      // Call the method that returns a value and print its result
+      int sum = add(5, 7);
+      System.out.println("Sum: " + sum);
+      }</code></pre>
+        <p>
+          In the example above, <strong><code style="color:black">printMessage()</code></strong> is called to print a message, and <strong><code style="color:black">add(5, 7)</code></strong> is called to compute the sum of 5 and 7. The result is stored in a variable and printed to the console.
+        </p>
+      </section>
+  </div>
+  </body>
+</html>

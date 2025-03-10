@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+     #content {
+
+      padding: 10px;
+
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 01</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Printing</a></li>
+          <li><a href="#lab2">02. Backwards</a></li>
+          <li><a href="#lab3">03. Formatting</a></li>
+          <li><a href="#lab4">04. Methods</a></li>
+          <li><a href="#lab5">05. Loops</a></li>
+          
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+
+      <div id="main-content">
+  
+    
+    <div class="lab-section" id="lab1">
+        <h2>01. Printing</h2>
+        <p>Resources 1: <a href="/resources.html#java-types" class="resource-ref">Data Types</a></p>
+        <p>Resources 2: <a href="/resources.html#syntax" class="resource-ref">Basic Syntax</a></p>
+        <p>
+            Write a program which creates an integer, a string, and a character variable. 
+            First, print each one separately per line. 
+            Then, print all variables together in one statement by concatenating them and separating by a space. Note - you add "Combined:" in the output.
+        </p>
+        <p><strong>Expected Output:</strong></p>
+        <div class="code-window">
+    42
+    Hello, World!
+    A
+    Combined: 42 Hello, World! A
+        </div>
+      </div>
+    <div class="lab-section" id="lab2">
+        <h2>02. For Loops</h2>
+        <p>Resources 1: <a href="/resources.html#loops" class="resource-ref">For Loops</a></p>
+        <p>
+          Write a program <code>BackwardsDigits</code> that prints numbers from 0 to 9, but in the backward order. Do not use arrays in your solution.
+          All numbers must be on the same line, separated by a space character (' ').
+        </p>
+        <p><strong>Expected Output:</strong></p>
+        <div class="code-window">
+    9 8 7 6 5 4 3 2 1 0
+        </div>
+        <!-- <p><strong>Advanced Challenge (Optional)</strong>: propose two different solutions and calculate the time execution</p>
+      <div class="solution-window">
+#HINT:  Use System.nanoTime()
+It requires `long` type
+Calculate the difference between the end time and the start time
+</div> -->
+    </div>
+
+    <div class="lab-section" id="lab3">
+        <h2>03. Formatting a string</h2>
+        <p>Resources 1: <a href="/resources.html#printf" class="resource-ref">Formating String</a></p>
+        <p>Write a program  <code>CoffeeShopInventory</code>  for a coffee shop inventory.
+The program should display the shop's name <code>shopName</code>, number of coffee types <code>coffeeTypes</code>, 
+average price <code>averagePrice</code>, and whether it is open <code>isOpen</code> (Use the print statement below).
+   
+<div class="code-window">
+  Shop: Java Beans
+  Types: 5
+  Average Price: 3.99
+  Open: true
+   </div>
+   <div class="solution-window">
+System.out.printf("Shop: %s\nCoffee Types: %d\nAverage Price: $%.2f\nOpen: %b\n", shopName, coffeeTypes, averagePrice, isOpen);
+   </div>
+</div>
+
+<div class="lab-section" id="lab4">
+  <h2>04. Working with Methods</h2>
+  <p>Resources 1: <a href="/resources.html#return" class="resource-ref">Calling Methods</a></p>
+  <p>Resources 2: <a href="/resources.html#conditionals" class="resource-ref">Conditionals</a></p>
+  <p>In this section, you will use a provided java file, upload it to Eclipse, complete TODO, and execute the program</p>
+
+  <p>Instructions:</p>
+  <ol>
+    <li>Review the code below. Some methods (like <code>computeAverage</code> and <code>printDivisibleBy3</code>)
+        are already implemented.</li>
+    <li>Implement the missing methods (<code>printCubed</code>, <code>guessCubeRoot</code>,
+        <code>isWayBigger</code>, and <code>isGreaterThan3</code>) according to the instructions
+        provided in the comments.</li>
+    <li>Modify the <code>main()</code> method to add additional test cases and print the output of your functions.</li>
+  </ol>
+    
+    
+</div>
+</div>
+</div>
+
+
+        </body>
+        </html>
