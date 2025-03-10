@@ -1,2 +1,2 @@
-# RHIT-CSSE-386
+# RHIT-CSSE-220
 course website
