@@ -127,6 +127,7 @@
         <dd><a href="#return">Void, Return, Calling Methods</a></dd>
         <dd><a href="#string-methods">String, Length, Substring</a></dd>
         <dd><a href="#int-to-string">Convert Int to String</a></dd>
+        <dd><a href="#casting">Convert Int to String</a></dd>
         
         
         <!-- Future sections can be added here -->
@@ -448,6 +449,32 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
         
         <p>
           All these methods will convert the integer <code>123</code> into the string <code>"123"</code>. Choose the one you find most intuitive!
+        </p>
+      </section>
+
+      <section id="casting">
+        <h2>Type Casting in Java</h2>
+        <p>
+          In Java, type casting is used to convert a variable from one data type to another. 
+          This can be especially useful when you need to convert a larger type to a smaller type (explicit casting) or when Java can automatically convert a value (implicit casting).
+        </p>
+        
+        <h3>Explicit Casting (e.g., from double to int)</h3>
+        <pre><code>double pi = 3.14159;
+      int wholePart = (int) pi;  // wholePart becomes 3, as the decimal part is truncated</code></pre>
+        <p>
+          Here, the cast <code>(int)</code> converts the double value to an integer, dropping the fractional part.
+        </p>
+        
+        <h3>Implicit Casting</h3>
+        <pre><code>int a = 100;
+      double b = a;  // b becomes 100.0 automatically</code></pre>
+        <p>
+          In this case, Java performs the conversion automatically because converting an <code>int</code> to a <code>double</code> is safe.
+        </p>
+        
+        <p>
+          Use explicit casting when you need to convert from a larger data type to a smaller one (e.g., from <code>double</code> to <code>int</code>). Always be cautious, as explicit casts may lead to loss of precision.
         </p>
       </section>
   </div>
