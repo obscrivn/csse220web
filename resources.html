@@ -127,7 +127,8 @@
         <dd><a href="#return">Void, Return, Calling Methods</a></dd>
         <dd><a href="#string-methods">String, Length, Substring</a></dd>
         <dd><a href="#int-to-string">Convert Int to String</a></dd>
-        <dd><a href="#casting">Convert Int to String</a></dd>
+        <dd><a href="#casting">Casting</a></dd>
+        <dd><a href="#arrays">Arrays and ArrayList</a></dd>
         
         
         <!-- Future sections can be added here -->
@@ -453,7 +454,7 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
       </section>
 
       <section id="casting">
-        <h2>Type Casting in Java</h2>
+        <h1 style="color:black">Type Casting in Java</h1>
         <p>
           In Java, type casting is used to convert a variable from one data type to another. 
           This can be especially useful when you need to convert a larger type to a smaller type (explicit casting) or when Java can automatically convert a value (implicit casting).
@@ -475,6 +476,40 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
         
         <p>
           Use explicit casting when you need to convert from a larger data type to a smaller one (e.g., from <code>double</code> to <code>int</code>). Always be cautious, as explicit casts may lead to loss of precision.
+        </p>
+      </section>
+
+      <section id="arrays">
+        <h1 style="color:black">Arrays and ArrayLists: Basics</h1>
+        <p>
+          In Java, <strong>arrays</strong> are used to store fixed-size collections of elements of the same type.
+          Once an array is created, its size cannot be changed. In contrast, <strong>ArrayLists</strong> (from the <code>java.util</code> package)
+          are resizable and provide more flexibility when you need to add or remove elements dynamically.
+        </p>
+        
+        <h3>Arrays</h3>
+        <p>
+          Arrays are declared with a fixed size. Here is an example of an integer array:
+        </p>
+        <pre><code>int[] numbers = {1, 2, 3, 4, 5};
+      System.out.println("The first element is: " + numbers[0]);  // Output: 1</code></pre>
+        <p>
+          Note: Arrays are zero-indexed, meaning the first element is at index 0.
+        </p>
+        
+        <h3>ArrayLists</h3>
+        <p>
+          ArrayLists provide a dynamic array that can grow or shrink in size. To use an ArrayList, you must import it from the <code>java.util</code> package.
+        </p>
+        <pre><code>import java.util.ArrayList;
+      
+      ArrayList&lt;String&gt; fruits = new ArrayList<>();
+      fruits.add("apple");
+      fruits.add("banana");
+      fruits.add("cherry");
+      System.out.println("ArrayList: " + fruits);  // Output: [apple, banana, cherry]</code></pre>
+        <p>
+          ArrayLists allow you to easily add, remove, and access elements, and they automatically manage resizing.
         </p>
       </section>
   </div>
