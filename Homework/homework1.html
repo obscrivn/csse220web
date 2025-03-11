@@ -1,31 +1,132 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CSSE 386</title>
+    <title>CSSE 220</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+    
+      margin-top: 0;
+    }
+    p {
+      line-height: 1.6;
+    }
+    ul, ol {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    code {
+      background-color: #e0e0e0;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: "Courier New", Courier, monospace;
+    }
+    .example {
+      background-color: #e7f3fe;
+      border-left: 4px solid #2196F3;
+      padding: 10px;
+      margin: 10px 0;
+      font-family: "Courier New", Courier, monospace;
+    }
+    .note {
+      background-color: #fffbcc;
+      border: 1px solid #ffe58f;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-<div id="header">
-        <a id="index_link" href="../index.html">CSSE 386</a>
+    <div id="header">
+        <a id="index_link" href="../index.html">CSSE 220</a>
         <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
         <a id="schedule_link" href="../schedule.html">Schedule</a>
-        <a id="quiz_link" href="../worksheets.html">Worksheets/Quizzes</a>
+        <a id="quiz_link" href="../worksheets.html">Quizzes</a>
         <a id="quiz_link" href="../labs.html">Labs</a>
+        <a id="quiz_link" href="../homework.html">Homework</a>
+        <a id="quiz_link" href="../exams.html">Exams</a>
+        <a id="quiz_link" href="../project.html">Final Project</a>
         <a id="resources_link" href="../resources.html">Resources</a>
         <div style="clear:both;"></div>
     </div>
-
-<div id="content">
-
-    <h1>Homework 1. </h1>
-
+ 
+  <div class="container">
+    <h1>Homework 1</h1>
+    <h2>How to Import a ZIP File into Eclipse</h1>
+  <p>Follow these steps to import a ZIP file containing an Eclipse project:</p>
+  <ol>
+    <li>
+      <strong>Download the ZIP File (containing a project)</strong> to your computer but do not place in the eclipse workspace folder: <a href="HW1.zip">Click here to donwload ZIP</a>
+    </li>
+    <li>
+      <strong>Open Eclipse:</strong> <em>You do not need to create a new project</em> because the ZIP file contains an existing project.
+    </li>
+    <li>
+      <strong>Import the Project:</strong>
+      <ol>
+        <li>Click on <code>File</code> in the menu bar and select <code>Import...</code>.</li>
+        <li>In the Import Wizard, expand the <strong>General</strong> category and select <strong>Existing Projects into Workspace</strong>. Click <strong>Next</strong>.</li>
+        <li>Select the <strong>Select archive file</strong> option and click the <strong>Browse...</strong> button</li>
+        <li>Navigate to the location where you saved the ZIP file, select it, and click <strong>Open</strong></li>
+        <li>The wizard will display the project(s) contained in the ZIP file. Make sure the desired project is checked</li>
+        <li>Check if the box <strong>Copy projects into workspace</strong> is selected</li>
+        <li>Click <strong>Finish</strong> to complete the import process</li>
+      </ol>
+    </li>
+    <li>
+      <strong>Verify the Imported Project:</strong> The project should now appear in your Package Explorer. Double-click it to open and review its contents.
+    </li>
+  </ol>
+  
+    <h2>Overview</h2>
+    <p>
+      The primary objective of this assignment is to ensure that you become comfortable with 
+      checking out homework projects in Eclipse.
+    </p>
+    <p>Additional Hints: see <a href="../resources.html#int-to-string" target="_blank"></a></p>
+    <h2>Rubric</h2>
+    <p>
+      All JUnit tests for each operation must succeed in order to earn 100% on this assignment.
+      Your score for the assignment is calculated as:
+    </p>
+    <p><strong>Your Score = (Percentage of JUnit Tests Passed) * (HW1 Total Points)</strong></p>
+    <div class="example">
+      Example: If 80% of the JUnit tests pass and HW1 Total Points is 25, then your score = 0.80 * 25 = 20 points.
+    </div>
     
-        <p>Objective:</p>
-        
-        
-        <h2>Instructions</h2>
-        </div>
+    <h2>To Do</h2>
+    <ol>
+      <li>
+        Implement the two operations in <code>HW1.java</code>.
+      </li>
+      <li>
+        Run the included JUnit tests by executing <code>RunAllTests.java</code> to ensure your solution passes all tests.
+      </li>
+      <li>
+        Upload your completed <code>HW1.java</code> file to the HW1 Gradescope.
+      </li>
+    </ol>
+    
+    
+  </div>
+
 </body>
 </html>
