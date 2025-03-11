@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+     #content {
+
+      padding: 10px;
+
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 02</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Sum</a></li>
+          <li><a href="#lab2">02. Max Value</a></li>
+          <li><a href="#lab3">03. Reverse</a></li>
+          <li><a href="#lab4">04. Count</a></li>
+          <li><a href="#lab5">05. Concatenate</a></li>
+          
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+<p>This Lab will be executed in one file. Download this file or alternatively you can create a new class Lab02 and paste the content. Make sure to change the package.</p>
+        <div class="lab-section" id="lab1">
+          <h2>Exercise 1: Sum of an Array</h2>
+          <p>Implement the method <code>sumArray</code> that takes an array of integers and returns the sum of all its elements.</p>
+          <div class="hint">
+            Hint: Use a loop to iterate over the array and accumulate the sum in a variable.
+          </div>
+        </div>
+        
+        <div class="lab-section" id="lab2">
+          <h2>Exercise 2: Maximum Value in an Array</h2>
+          <p>Implement the method <code>maxArray</code> that finds and returns the maximum value in a given array of integers.</p>
+          <div class="hint">
+            Hint: Initialize a variable with the first element of the array. Then loop through the array and update the variable whenever a larger value is found.
+          </div>
+        </div>
+        
+        <div class="lab-section" id="lab3">
+          <h2>Exercise 3: Reverse an Array</h2>
+          <p>Implement the method <code>reverseArray</code> that returns a new array with the elements in reverse order compared to the input array.</p>
+          <div class="hint">
+            Hint: Create a new array of the same length as the input array, then use a loop to copy elements from the end of the input array to the beginning of the new array.
+          </div>
+        </div>
+        
+        <div class="lab-section" id="lab4">
+          <h2>Exercise 4: Count Occurrences in an Array</h2>
+          <p>Implement the method <code>countOccurrences</code> that returns the number of times a specified integer appears in an array.</p>
+          <div class="hint">
+            Hint: Loop through the array and increment a counter each time you encounter the target value.
+          </div>
+        </div>
+        
+        <div class="lab-section" id="lab5">
+          <h2>Exercise 5: Concatenate ArrayList Elements</h2>
+          <p>Implement the method <code>concatenateArrayList</code> that takes an ArrayList of Strings and returns a single string with all the elements concatenated, separated by commas.</p>
+          <div class="hint">
+            Hint: Use a loop or a StringBuilder to efficiently concatenate the elements. Add commas between elements, but avoid a trailing comma at the end.
+          </div>
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>
