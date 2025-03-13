@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+     #content {
+
+      padding: 10px;
+
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 03</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. fizzArray</a></li>
+          <li><a href="#lab2">02. filterEvenNumbers</a></li>
+          
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+<p>For this Lab you will be creating 2 separate Classes with their own main methods. Submit 2 java files only</p>
+
+
+  
+
+        <div class="lab-section" id="lab1">
+          <h2>Exercise 1: Fizz Array</h2>
+          <p>Resources 1: <a href="../resources.html#arrays" class="resource-ref">Arrays toString Method</a></p>
+          <p>Resources 2: <a href="../resources.html#javadoc" class="resource-ref">JavaDocs</a></p>
+          <p>
+            Write a program called <code>CodingBatPractice</code> (=create a new Java class called <code>CodingBatPractice</code> with a <code>main</code> method). 
+            This program will have a method called <code>fizzArray3</code>, 
+            which generates an array of consecutive integers starting from a given <code>start</code> value up to, but not including, 
+            a given <code>end</code> value.
+          </p>
+          <h3>fizzArray Method</h3>
+          <p>
+            <code>fizzArray(5, 10)</code> should return an array containing <code>[5, 6, 7, 8, 9]</code>.
+          </p> 
+          <div class="code-window">public static int[] fizzArray(int start, int end) {
+  //TODO finish this method 
+  return null;
+}
+                </div>
+                <h3>Write Your Javadocs</h3>
+                <p>
+                  Include proper Javadoc comments for the fizzArray method (place it above the method declaration).
+                  Your Javadocs should:
+                </p>
+                <ul>
+                  <li>Provide a brief description of what the method does</li>
+                  <li>Use the <code>@param</code> tag to document each parameter (Note: you have 2 parameters)</li>
+                  <li>Use the <code>@return</code> tag to document what the method returns</li>
+                  
+                </ul>
+          <p><strong>Test Your Code:</strong> In the main method, 
+            use the provided example test and then,
+            create at least two additional test cases of your own.</p> 
+            <div class="code-window">System.out.println("fizzArray3(5, 10)");
+System.out.println( "  Expected:  [5, 6, 7, 8, 9]"     );
+System.out.println( "  Actual:" + Arrays.toString(  fizzArray3(5, 10)   )   );
+//TODO create calls to methods to test them here
+                  </div>
+          
+        </div>
+        
+        <div class="lab-section" id="lab2">
+          <h2>Exercise 2: filterEvenNumbers</h2>
+          <p>Resources 1: <a href="../resources.html#size" class="resource-ref">Length vs Size</a></p>
+          <p>
+            Create a new Java class named <code>ArrayListFilter</code> with a <code>main</code> method.
+            Implement a method called <code>filterEvenNumbers</code> that takes an <code>ArrayList&lt;Integer&gt;</code>
+            and returns a new <code>ArrayList&lt;Integer&gt;</code> containing only the even numbers from the original list.
+          </p>
+          <p>
+            For example, if you call <code>filterEvenNumbers</code> with a list containing <code>[3, 4, 7, 8, 10]</code>,
+            the method should return <code>[4, 8, 10]</code>.
+          </p>
+          <p>HINT: // Hint: Use <code>list.isEmpty()</code> to check if the list is empty.</p>
+          <div class="code-window">public static ArrayList&lt;Integer&gt; filterEvenNumbers(ArrayList&lt;Integer&gt; list) {
+  //TODO finish this method 
+  return null;
+}
+  </div>
+  <h3>Write Javadocs</h3>
+  <p>
+    Include proper Javadoc comments for the filterEvenNumbers method (place it above the method declaration).
+  </p>
+  <strong>Test Your Code:</strong> In your <code>main</code> method, use the example below to test the method and add two tests of your own. 
+  <div class="code-window">ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;&gt;();
+numbers.add(3);
+numbers.add(4);
+numbers.add(7);
+numbers.add(8);
+numbers.add(10);
+System.out.println("Even numbers: " + filterEvenNumbers(numbers));
+        </div>
+</div>
+        
+        
+      
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>

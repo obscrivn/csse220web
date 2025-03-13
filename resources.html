@@ -129,6 +129,9 @@
         <dd><a href="#int-to-string">Convert Int to String</a></dd>
         <dd><a href="#casting">Casting</a></dd>
         <dd><a href="#arrays">Arrays and ArrayList</a></dd>
+        <dd><a href="#size">Length vs Size</a></dd>
+        <dd><a href="#math">Math Library</a></dd>
+        <dd><a href="#javadoc">Javadocs</a></dd>
         
         
         <!-- Future sections can be added here -->
@@ -431,16 +434,16 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
       </section>
 
       <section id="int-to-string">
-        <h2>Converting Integers to Strings</h2>
+        <h2 style="color:black">Converting Integers to Strings</h2>
         <p>
           In Java, there are several ways to convert an integer to its string representation. Here are three common methods:
         </p>
         
-        <h3>1. Using <code>String.valueOf()</code></h3>
+        <h3>1. Using <code style="color:red">String.valueOf()</code></h3>
         <pre><code>int number = 123;
       String s = String.valueOf(number);</code></pre>
         
-        <h3>2. Using <code>Integer.toString()</code></h3>
+        <h3>2. Using <code style="color:red">Integer.toString()</code></h3>
         <pre><code>int number = 123;
       String s = Integer.toString(number);</code></pre>
         
@@ -457,25 +460,29 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
         <h1 style="color:black">Type Casting in Java</h1>
         <p>
           In Java, type casting is used to convert a variable from one data type to another. 
-          This can be especially useful when you need to convert a larger type to a smaller type (explicit casting) or when Java can automatically convert a value (implicit casting).
+          This can be especially useful when you need to convert a 
+          larger type to a smaller type (explicit casting) or when Java can automatically convert a value (implicit casting).
         </p>
         
         <h3>Explicit Casting (e.g., from double to int)</h3>
         <pre><code>double pi = 3.14159;
       int wholePart = (int) pi;  // wholePart becomes 3, as the decimal part is truncated</code></pre>
         <p>
-          Here, the cast <code>(int)</code> converts the double value to an integer, dropping the fractional part.
+          Here, the cast <code style="color:red">(int)</code> converts the double value to an integer, 
+          dropping the fractional part.
         </p>
         
         <h3>Implicit Casting</h3>
         <pre><code>int a = 100;
       double b = a;  // b becomes 100.0 automatically</code></pre>
         <p>
-          In this case, Java performs the conversion automatically because converting an <code>int</code> to a <code>double</code> is safe.
+          In this case, Java performs the conversion 
+          automatically because converting an <code style="color:red">int</code> to a <code style="color:red">double</code> is safe.
         </p>
         
         <p>
-          Use explicit casting when you need to convert from a larger data type to a smaller one (e.g., from <code>double</code> to <code>int</code>). Always be cautious, as explicit casts may lead to loss of precision.
+          Use explicit casting when you need to convert from 
+          a larger data type to a smaller one (e.g., from <code style="color:red">double</code> to <code style="color:red">int</code>). Always be cautious, as explicit casts may lead to loss of precision.
         </p>
       </section>
 
@@ -483,7 +490,8 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
         <h1 style="color:black">Arrays and ArrayLists: Basics</h1>
         <p>
           In Java, <strong>arrays</strong> are used to store fixed-size collections of elements of the same type.
-          Once an array is created, its size cannot be changed. In contrast, <strong>ArrayLists</strong> (from the <code>java.util</code> package)
+          Once an array is created, its size cannot be changed. 
+          In contrast, <strong>ArrayLists</strong> (from the <code style="color:red">java.util</code> package)
           are resizable and provide more flexibility when you need to add or remove elements dynamically.
         </p>
         
@@ -499,7 +507,8 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
         
         <h3>ArrayLists</h3>
         <p>
-          ArrayLists provide a dynamic array that can grow or shrink in size. To use an ArrayList, you must import it from the <code>java.util</code> package.
+          ArrayLists provide a dynamic array that can grow or shrink in size. 
+          To use an ArrayList, you must import it from the <code style="color:red">java.util</code> package.
         </p>
         <pre><code>import java.util.ArrayList;
       
@@ -511,6 +520,126 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
         <p>
           ArrayLists allow you to easily add, remove, and access elements, and they automatically manage resizing.
         </p>
+
+        <h3>Using <code style="color:red">Arrays.toString()</code></h3>
+        <p>
+          When you try to print an array directly with <code style="color:red">System.out.println(array)</code>, 
+          you will get a reference (such as a memory address) instead of the actual contents of the array.
+        </p>
+        <p>
+          To display the contents of an array in a human-readable format, 
+          you can use the static method <code style="color:red">Arrays.toString()</code> from the <code style="color:red">java.util.Arrays</code> class.
+        </p>
+        <pre><code>import java.util.Arrays;
+      
+    int[] numbers = {1, 2, 3, 4, 5};
+    System.out.println(Arrays.toString(numbers));
+    // Output: [1, 2, 3, 4, 5]</code></pre>
+        <p>
+          This method converts the array into a string that shows all its elements, 
+          which is especially useful for debugging and verifying your results.
+        </p>
+      </section>
+
+      <section id="javadoc">
+        <h2 style="color:black">Writing Javadocs</h2>
+        <p>
+          Javadocs are used to document your code, making it easier 
+          to understand and maintain. Javadocs are placed before method or class declarations. A well-written Javadoc comment should include:
+        </p>
+        <ul>
+          <li>A brief description of the method's purpose.</li>
+          <li><code style="color:red">@param</code> tags for each parameter, explaining what they are for</li>
+          <li><code style="color:red">@return</code> tag to describe the returned value (if any)</li>
+          <li>Optional tags like <code style="color:red">@throws</code> if the method can throw exceptions</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code>
+       /**
+       * Computes the factorial of a given number.
+       *
+       * The factorial of a number (n!) is defined as:
+       * n! = n * (n-1) * ... * 1.
+       *
+       * @param num a positive integer whose factorial is to be calculated
+       * @return the factorial of num
+       */</code></pre>
+       
+      </section>
+      <section id="size">
+        <h2 style="color:black">Array Length vs. ArrayList Size</h2>
+        <p>
+          In Java, arrays and ArrayLists both allow you to determine the number of elements they contain, but they use different syntax:
+        </p>
+        
+        <h3>Arrays</h3>
+        <p>
+          Arrays have a built-in property called <code style="color:red">length</code> that returns the number of elements in the array. 
+          Note that <code style="color:red">length</code> is a field, so you do not use parentheses.
+        </p>
+        <pre><code>int[] arr = {1, 2, 3, 4, 5};
+      System.out.println("Array length: " + arr.length);  // Output: 5</code></pre>
+        
+        <h3>ArrayLists</h3>
+        <p>
+          ArrayLists, which are part of the <code style="color:red">java.util</code> package, use a method called <code style="color:red">size()</code> to return the number of elements. Unlike arrays, you must call it with parentheses.
+        </p>
+        <pre><code>import java.util.ArrayList;
+      
+      ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+      list.add("apple");
+      list.add("banana");
+      System.out.println("ArrayList size: " + list.size());  // Output: 2</code></pre>
+        
+        <p>
+          Remember:
+          <ul>
+            <li><code style="color:red">array.length</code> — no parentheses because it's a property.</li>
+            <li><code style="color:red">arrayList.size()</code> — parentheses are required because it's a method.</li>
+          </ul>
+        </p>
+      </section>
+      <section id="math">
+        <h2 style="color:black">The Math Library in Java</h2>
+        <p>
+          Java's <code style="color:red">Math</code> class provides a 
+          collection of static methods for performing basic numeric operations,
+          such as exponentiation, square roots, absolute values, and 
+          trigonometric calculations. Since all methods are static,
+          you can call them directly using <code style="color:red">Math.methodName()</code> without 
+          creating an instance of the class.
+        </p>
+        
+        <h3>Common Methods:</h3>
+        <ul>
+          <li><code style="color:red">Math.abs(x)</code> — Returns the absolute value of <code>x</code>.</li>
+          <li><code style="color:red">Math.pow(a, b)</code> — Returns <code>a</code> raised to the power of <code style="color:red">b</code>.</li>
+          <li><code style="color:red">Math.sqrt(x)</code> — Returns the square root of <code style="color:red">x</code>.</li>
+          <li><code style="color:red">Math.max(a, b)</code> — Returns the maximum of <code style="color:red">a</code> and <code style="color:red">b</code>.</li>
+          <li><code style="color:red">Math.min(a, b)</code> — Returns the minimum of <code style="color:red">a</code> and <code style="color:red">b</code>.</li>
+          <li><code style="color:red">Math.floor(x)</code> — Returns the largest integer less than or equal to <code style="color:red">x</code>.</li>
+          <li><code style="color:red">Math.ceil(x)</code> — Returns the smallest integer greater than or equal to <code style="color:red">x</code>.</li>
+          <li><code style="color:red">Math.round(x)</code> — Rounds <code style="color:red">x</code> to the nearest integer.</li>
+        </ul>
+        
+        <h3>Examples:</h3>
+        <pre><code>// Example of Math.abs()
+      int a = -5;
+      System.out.println("Absolute value: " + Math.abs(a));  // Output: 5
+      
+      // Example of Math.pow()
+      double power = Math.pow(2, 3);
+      System.out.println("2 raised to 3: " + power);  // Output: 8.0
+      
+      // Example of Math.sqrt()
+      double root = Math.sqrt(16);
+      System.out.println("Square root of 16: " + root);  // Output: 4.0
+      
+      // Example of Math.max() and Math.min()
+      System.out.println("Max of 10 and 20: " + Math.max(10, 20));  // Output: 20
+      System.out.println("Min of 10 and 20: " + Math.min(10, 20));  // Output: 10</code></pre>
+        
+        
       </section>
   </div>
   </body>
