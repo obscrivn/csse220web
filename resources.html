@@ -8,8 +8,31 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <style>
 /* Main content container */
-#content {
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
       padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
     }
     h1, h2 {
       
@@ -434,7 +457,7 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
       </section>
 
       <section id="int-to-string">
-        <h2 style="color:black">Converting Integers to Strings</h2>
+        <h2 style="color:black">Converting Integers to Strings and Strings to Integer</h2>
         <p>
           In Java, there are several ways to convert an integer to its string representation. Here are three common methods:
         </p>
@@ -452,8 +475,11 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
       String s = "" + number;</code></pre>
         
         <p>
-          All these methods will convert the integer <code>123</code> into the string <code>"123"</code>. Choose the one you find most intuitive!
-        </p>
+          To convert String to Integer use the <code style="color:red">Integer.parseInt()</code> method:  </p> 
+          <pre><code>
+   int number = Integer.parseInt("123");
+        </code></pre>
+      
       </section>
 
       <section id="casting">

@@ -13,6 +13,32 @@
       padding: 20px;
       color: #333;
     }
+    /* Header styling */
+    #header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    }
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -68,7 +94,7 @@
         <div style="clear:both;"></div>
     </div>
  
-  <div class="container">
+  <div id="content">
     <h1>Homework 1</h1>
     <h2>How to Import a ZIP File into Eclipse</h1>
   <p>Follow these steps to import a ZIP file containing an Eclipse project:</p>

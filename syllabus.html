@@ -14,14 +14,19 @@
       padding: 0;
     }
     /* Header styling */
-    /* #header {
-      background-color: #333;
-      padding: 10px;
-    } */
+    /* Header styling */
+    #header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
     #header a {
       color: #fff;
       margin-right: 15px;
       text-decoration: none;
+
     }
     #header a:hover {
       text-decoration: underline;
@@ -29,9 +34,11 @@
     #header div {
       clear: both;
     }
-    /* Content styling */
+    /* Content container */
     #content {
       padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
     }
     h1 {
       margin-top: 0;
@@ -79,13 +86,14 @@
   </style>
 </head>
 <body>
-<div id="header">
+    <div id="header">
         <a id="index_link" href="./index.html">CSSE 220</a>
         <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
         <a id="schedule_link" href="./schedule.html">Schedule</a>
         <a id="quiz_link" href="./worksheets.html">Quizzes</a>
         <a id="quiz_link" href="./labs.html">Labs</a>
         <a id="quiz_link" href="./homework.html">Homework</a>
+        <a id="quiz_link" href="./exams.html">Exams</a>
         <a id="quiz_link" href="./project.html">Final Project</a>
         <a id="resources_link" href="./resources.html">Resources</a>
         <div style="clear:both;"></div>
