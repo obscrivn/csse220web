@@ -253,6 +253,49 @@ printDataType(string) // Expected: The value is an object and the data type is S
   
   
     <p><a href="../labs/MapsArchive.zip">Download Java Archive File. </a></p>
+  <h3>Additional Intsrtuctions</h3>
+  <h2>Understanding the canTravelTo Method</h2>
+  <p>
+    The <code>canTravelTo</code> method is designed to determine whether there is a route from a starting city to a destination city, given a road map.
+    The road map is represented as a <code>HashMap&lt;String, ArrayList&lt;String&gt;&gt;</code>, where each key is a city name, and its value is a list of cities directly reachable from that city.
+  </p>
+  <p>
+    To solve this, we use a simple method similar to exploring a maze:
+  </p>
+  <ol>
+    <li>
+      <strong>Start at the Beginning:</strong> Add the starting city (<em>startCity</em>) to a list called <code>citiesToVisitNext</code>.
+    </li>
+    <li>
+      <strong>Keep Track of Visited Cities:</strong> Create another list called <code>citiesAlreadyVisited</code> to record which cities you have explored so you don’t check them again.
+    </li>
+    <li>
+      <strong>Explore Neighboring Cities:</strong>
+      <ol>
+        <li>
+          While there are still cities to visit and you haven't found the destination, remove the first city from <code>citiesToVisitNext</code>—this is your current city.
+        </li>
+        <li>
+          If you haven't visited this city before, mark it as visited by adding it to <code>citiesAlreadyVisited</code>.
+        </li>
+        <li>
+          Then, add all the neighboring cities (from the road map) of this current city to <code>citiesToVisitNext</code>.
+        </li>
+      </ol>
+    </li>
+    <li>
+      <strong>Check for the Destination:</strong> 
+      The loop stops either because there are no more cities to visit or because the destination city is found in the list of cities to visit.
+      If the destination is found, return <code>true</code>; if not, return <code>false</code>.
+    </li>
+  </ol>
+  <p>
+    In simpler terms, imagine you are trying to find a path in a maze. You start at the entrance (startCity), then you explore all the connected rooms (neighboring cities). As you explore, you keep a list of rooms you have visited to avoid going in circles.
+    If you eventually find the exit (endCity), you know a route exists. Otherwise, if you run out of rooms to explore, no route exists.
+  </p>
+  <p>
+    This method uses a basic form of breadth-first search (BFS) even if you don't know that term yet. The key idea is to explore all options gradually while keeping track of what you've already seen.
+  </p>
   </div>
         
       
