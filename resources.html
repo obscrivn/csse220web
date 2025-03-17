@@ -161,6 +161,8 @@
         <dd><a href="#int-to-string">Convert Int to String</a></dd>
         <dd><a href="#casting">Casting</a></dd>
         <dd><a href="#arrays">Arrays and ArrayList</a></dd>
+        <dd><a href="#hashmap">HasMaps</a></dd>
+        
         <dd><a href="#size">Length vs Size</a></dd>
         <dd><a href="#heterogeneous">Heterogeneous Array List</a></dd>
         <dd><a href="#math">Math Library</a></dd>
@@ -797,6 +799,49 @@ if (value instanceof String) {
     System.out.println("The object is not a String.");
 }
 // Output: The object is a String.</code></pre>
+      </section>
+      <section id="hashmap">
+        <h2 style="color:black">HashMaps</h2>
+        <p>
+          A <strong>HashMap</strong> is a collection that stores key-value pairs. 
+          It allows you to efficiently retrieve, update, and remove values based on a unique key.
+        </p>
+        <p>Keys are unique. Each key maps to one value.
+        </p>
+        <p><code style="color:red">import java.util.HashMap;</code></p>
+        <h3>Common Methods:</h3>
+        <ul>
+          <li><code style="color:red">put(key, value)</code>: Associates the specified value with the specified key</li>
+          <li><code style="color:red">get(key)</code>: Returns the value to which the specified key is mapped, or <code style="color:red">null</code> if this map contains no mapping for the key</li>
+          <li><code style="color:red">containsKey(key)</code>: Returns <code style="color:red">true</code> if the map contains a mapping for the specified key</li>
+          <li><code style="color:red">remove(key)</code>: Removes the mapping for a key from this map if it is present</li>
+          <li><code style="color:red">keySet()</code>: Returns a Set view of the keys contained in the map</li>
+        </ul>
+        
+        <h3>Example Usage:</h3>
+        <pre><code>HashMap&lt;String, Integer&gt; ages = new HashMap&lt;&gt;();
+              
+ages.put("Alice", 30);
+ages.put("Bob", 25);
+              ages.put("Charlie", 35);
+              
+// Retrieve a value using get()
+System.out.println("Alice's age: " + ages.get("Alice"));
+              
+// Check if a key exists
+if (ages.containsKey("Bob")) {
+    System.out.println("Bob is in the map.");
+}
+              
+// Iterate over keys and print values
+for (String name : ages.keySet()) {
+    System.out.println(name + " is " + ages.get(name) + " years old.");
+}
+              
+// Remove an entry
+ages.remove("Charlie");
+System.out.println("Map after removing Charlie: " + ages);</code></pre>
+
       </section>
   </div>
   </body>
