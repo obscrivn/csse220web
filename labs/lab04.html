@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .lab-section::before {
+  content: "";
+  display: block;
+  height: 240px; /* equal to your header's height */
+  margin-top: -240px;
+}
+
+
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+ 
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 04</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Scanner</a></li>
+          <li><a href="#lab2">02. printDataType</a></li>
+          
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+<p>For this Lab, you will be creating 4 separate 
+  Classes with their own main methods. Submit 4 java files</p>
+
+
+  
+
+        <div class="lab-section" id="lab1">
+          <h2>Exercise 1: Scanner Practice</h2>
+          <p>Resources 1: <a href="../resources.html#scanner" class="resource-ref">Scanner Method</a></p>
+          
+          <p>
+            Create a new Java class called <code>ScannerPractice</code> with a <code>main</code> method. 
+            Your goal is to get the user's input and then print it: name, age, salary. </p>
+            <strong>Prompt and Read User Input:</strong>
+            <ul>
+              <li>Prompt the user to enter their full name</li>
+              <li>Prompt the user for their age</li>
+              <li>Prompt the user for their salary</li>
+            </ul>
+            
+            Your example output should be as follows (you can be creative):
+<div class="code-window">The user name is Luke Skywaker
+The user age is 25 years old
+The user salary is 100 galaxy currency
+                  </div>
+          
+        </div>
+        
+        <div class="lab-section" id="lab2">
+          <h2>Exercise 2: Determine Data Types</h2>
+          <p>Resources 1: <a href="../resources.html#data-type" class="resource-ref">How to determine a data type</a></p>
+          <p>Resources 2: <a href="../resources.html#instanceof" class="resource-ref">Instance Of</a></p>
+          <p>
+            Create a class called <code>DataTypePractice</code> that includes a main method and a custom method to print the data type of a given value.
+            The method is called <code>printDataType</code> that takes an <code>Object</code> as an argument.
+            <p>
+              <strong>Important Note:</strong> When you pass a primitive value (like <code>5</code>) to a method that expects an <strong>Object</strong>, it is automatically 
+              converted (autoboxed) to its corresponding wrapper type (e.g., <code>Integer</code>). No need for extra code like <code>((Object)int)</code>.
+            </p>
+
+<div class="code-window">public static void printDataType(Object value){
+  //TODO finish this method
+}
+</div>
+<p>This method should print a statement in the following format for primitives:</p>
+
+<div class="code-window">The value [value] is a primitive and the data type is [TypeName].</div>
+<p>This method should print a statement in the following format for objects:</p>
+<div class="code-window">The value is an object and the data type is [TypeName]</div>
+          <p><em>Example:</em> If the input is <code>5</code>, the output should be:
+          <p>
+          <div class="code-window">The value 5 is a primitive and the data type is Integer.</div>
+
+        
+  <h3>Write Javadocs</h3>
+  <p>
+    Include proper Javadoc comments for the printDataType method (place it above the method declaration).
+  </p>
+  <strong>Test Your Code:</strong> In the main method, call your <code>printDataType</code> method with various values:
+  <ul>
+    <li>An int literal</li>
+    <li>A double literal</li>
+    <li>A char literal</li>
+    <li>A String</li>
+    <li>An object Array</li>
+    <li>An object  ArrayList </li> 
+  </ul>
+  <p>Note you must initialize arrays first before you pass to the method </p>
+  <p>HINT 1: For ArrayList - consider accessing an item of the array. If you just access the class of ArrayList, you will only get <code>ArrayList</code> as a data type</p>
+  <p>HINT 2: instanceof is only used with classes. But if the primitive is converted to an Object, you can use a Wrapper Class.</p>
+  <div class="code-window"><div class="example-output">
+printDataType(5) // Expected: The value 5 is a primitive and the data type is Integer.
+
+printDataType(arr) // Expected: The value is an object and the data type is int[].</div>
+printDataType(arrlist) // Expected: The value is an object and the data type is ArrayList.</div>
+printDataType(string) // Expected: The value is an object and the data type is String.</div>
+</div>
+        
+        
+      
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>

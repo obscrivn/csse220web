@@ -96,6 +96,13 @@
       display: inline-block;
       color: #dcdcdc;
     }
+
+    section::before {
+  content: "";
+  display: block;
+  height: 90px; /* equal to your header's height */
+  margin-top: -90px;
+}
     /* Code block styling for loop examples */
     pre {
       background-color: #1e1e1e;
@@ -142,7 +149,9 @@
       <h2>Table of Contents</h2>
       <dl>
         <dd><a href="#syntax">Java Syntax</a></dd>
-        <dd><a href="#java-types">Data Types</a></dd>
+        <dd><a href="#java-types">Primitive Data Types</a></dd>
+        <dd><a href="#data-type">How to Determine Data Types</a></dd>
+        <dd><a href="#instanceof">Instance Of</a></dd>
         <dd><a href="#operators">Operators</a></dd>
         <dd><a href="#loops">Loops</a></dd>
         <dd><a href="#printf">Print Formatting</a></dd>
@@ -153,8 +162,12 @@
         <dd><a href="#casting">Casting</a></dd>
         <dd><a href="#arrays">Arrays and ArrayList</a></dd>
         <dd><a href="#size">Length vs Size</a></dd>
+        <dd><a href="#heterogeneous">Heterogeneous Array List</a></dd>
         <dd><a href="#math">Math Library</a></dd>
         <dd><a href="#javadoc">Javadocs</a></dd>
+        <dd><a href="#scanner">Scanner</a></dd>
+        
+        
         
         
         <!-- Future sections can be added here -->
@@ -666,6 +679,124 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
       System.out.println("Min of 10 and 20: " + Math.min(10, 20));  // Output: 10</code></pre>
         
         
+      </section>
+
+      <section id="scanner">
+        <h2 style="color:black">Using the Scanner Class in Java</h2>
+        <p>
+          The <code style="color:red">Scanner</code> class is used to read input from various sources (such as keyboard input, files, or strings). 
+          To use it, you first need to import it:
+        </p>
+        <pre><code>import java.util.Scanner;</code></pre>
+        <p>
+          Here are some common methods of the <code>Scanner</code> class:
+        </p>
+        <ul>
+          <li><code style="color:red">nextLine()</code>: Reads an entire line of input as a <code style="color:red">String</code></li>
+          <li><code style="color:red">next()</code>: Reads the next token (=word) as a <code style="color:red">String</code> (no spaces)</li>
+          <li><code style="color:red">nextInt()</code>: Reads the next token as an <code style="color:red">int</code></li>
+          <li><code style="color:red">nextDouble()</code>: Reads the next token as a <code style="color:red">double</code>.</li>
+        </ul>
+        <p>
+          <strong>Example:</strong>
+        </p>
+        <pre><code>Scanner scanner = new Scanner(System.in);
+              
+// Prompt and read the user's full name
+System.out.println("Enter your name:");
+String name = scanner.next();
+
+// Output the values
+System.out.println("Name: " + name);
+// Close the scanner to free resources
+scanner.close();
+</code></pre>
+      </section>
+      <section id="heterogeneous">
+        <h2 style="color:black" >Heterogeneous ArrayLists</h2>
+        <p>
+          By default, ArrayList allows you to create collections that store elements of a specific type (Integer or String etc).
+          If you need a heterogeneous collection (storing elements of different types), you can declare your ArrayList to hold objects of type <code style="color:red">Object</Object></code>.
+        </p>
+        <p>
+          Example of an Array with String, Integer, Double, Boolean:
+        </p>
+        <pre><code>ArrayList&lt;Object&gt; mixedList = new ArrayList&lt;&gt;();
+
+mixedList.add("Hello");
+mixedList.add(10);
+mixedList.add(45.67);
+mixedList.add(true);
+
+System.out.println(mixedList): // Output: [Hello, 10, 45.67, true]</code></pre>
+      </section>
+
+      <section id="data-type">
+        <h2 style="color:black">Determining Data Types for Primitives and Objects</h2>
+        <p>
+          In Java, there are two main categories of data types: <strong>primitive types</strong> and <strong>reference types (objects)</strong>.
+        </p>
+        <p>
+            <ul>
+              <li>Primitive types do not have methods and their type is known at compile time</li>
+              <li>To inspect a primitive’s type at runtime, you can rely on autoboxing to wrap it in its corresponding wrapper class</li>
+              <li>For objects, use <code style="color:red">getClass().getSimpleName()</code> to get the class name</li>
+            </ul>
+          </p>
+        
+        <h3>Primitive Data Types</h3>
+        <p>
+          Java’s primitive types include <code style="color:red">byte</code>, <code style="color:red">short</code>, <code style="color:red">int</code>, <code style="color:red">long</code>, <code style="color:red">float</code>, <code style="color:red">double</code>, <code style="color:red">char</code>, and <code style="color:red">boolean</code>. 
+          Primitives are not objects and do not have methods, so you cannot call methods like <code style="color:red">getClass()</code> on them.
+        </p>
+        <p>
+          To determine the type of a primitive at runtime, you typically rely on compile-time type information. 
+          Alternatively, if you need to inspect a primitive’s type at runtime, you can use <strong>autoboxing</strong> to wrap it in its corresponding wrapper class.
+        </p>
+        <pre><code>int num = 5;
+
+System.out.println(((Object)num).getClass().getSimpleName()); // Prints "Integer"
+        </code></pre>
+        <p>
+          <strong>Note:</strong> When you cast a primitive to <code style="color:red">Object</code>, Java automatically converts (autoboxes) it to its corresponding wrapper type (e.g., <code style="color:red">int</code> becomes <code style="color:red">Integer</code>).
+        </p>
+        
+        <h3>Reference Data Types (Objects)</h3>
+        <p>
+          For objects, you can use the <code style="color:red">getClass()</code> method to determine the runtime type.
+        </p>
+        <pre><code>String str = "Hello";
+
+System.out.println(str.getClass().getSimpleName());  // Output: "String"
+        </code></pre>
+        
+        
+      </section>
+      <section id="instanceof">
+        <h2 style="color:black">Using the <code style="color:red">instanceof</code> Operator</h2>
+        <p>
+          The <code style="color:red">instanceof</code> operator in Java is used to check whether an object is an instance of a specific class.
+          This is useful for ensuring that you can safely cast an object or perform type-specific operations.
+        </p>
+        
+        <h3>Syntax</h3>
+        <pre><code>if (object instanceof ClassName) {
+    // Do something
+}</code></pre>
+        <p>
+          The expression returns <code style="color:red">true</code> 
+          or <code style="color:red">false</code>.
+        </p>
+        
+        <h3>Example</h3>
+        <pre><code>Object value = "Hello, world!";
+
+if (value instanceof String) {
+    System.out.println("The object is a String.");
+} else {
+    System.out.println("The object is not a String.");
+}
+// Output: The object is a String.</code></pre>
       </section>
   </div>
   </body>
