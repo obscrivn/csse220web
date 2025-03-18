@@ -350,7 +350,39 @@ canTravelTo(roadMap,"B", "A") returns false </code></pre>
   <p>
     This method uses a basic form of breadth-first search (BFS) even if you don't know that term yet. The key idea is to explore all options gradually while keeping track of what you've already seen.
   </p>
-  </div>
+
+  <p>if you are still not sure how it works (it is a bit challenging concept), here is a possible solution. Please review, learn from it, feel free to use it but make sure to state in the lab submission that you checked the solution:
+</p>
+<pre><code>
+
+ public static boolean canTravelTo(HashMap&lt;String, ArrayList&lt;String&gt;&gt;roadMap, String startCity, String endCity) {
+     // List of cities you have already visited
+     ArrayList&lt;String&gt; citiesAlreadyVisited = new ArrayList&lt;String&gt;();
+     // List of cities to visit next, initially containing only the startCity.
+     ArrayList&lt;String&gt; citiesToVisitNext = new ArrayList&lt;String&gt;();
+     citiesToVisitNext.add(startCity);
+     
+     // Continue exploring until either the destination is found or there are no more cities to check.
+     while (!citiesToVisitNext.contains(endCity) && !citiesToVisitNext.isEmpty()) {
+         // Remove the first city from the list (this simulates a queue).
+         String currentCityToVisit = citiesToVisitNext.remove(0);
+         // If we haven't already visited this city, process it.
+         if (!citiesAlreadyVisited.contains(currentCityToVisit)) {
+             // Mark the current city as visited.
+             citiesAlreadyVisited.add(currentCityToVisit);
+             // Add all neighboring cities (if any) to the list of cities to visit next.
+             ArrayList<String> neighbors = roadMap.get(currentCityToVisit);
+             if (neighbors != null) {
+                 citiesToVisitNext.addAll(neighbors);
+             }
+         }
+     }
+     
+     // If endCity is in the citiesToVisitNext list, a route was found.
+     return citiesToVisitNext.contains(endCity);
+ }
+</code></pre>
+</div>
         
       
         </div>
