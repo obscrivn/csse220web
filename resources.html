@@ -168,6 +168,7 @@
         <dd><a href="#math">Math Library</a></dd>
         <dd><a href="#javadoc">Javadocs</a></dd>
         <dd><a href="#scanner">Scanner</a></dd>
+        <dd><a href="#fields">Understanding Fields in Classes</a></dd>
         
         
         
@@ -882,6 +883,89 @@ for (String name : ages.keySet()) {
 ages.remove("Charlie");
 System.out.println("Map after removing Charlie: " + ages);</code></pre>
 
+      </section>
+      <section id="fields">
+        <h2 style="color:black">Understanding Fields in Java</h2>
+        <p>
+          In Java, <strong>fields</strong> are variables declared within a class that store data associated with objects. There are two types:
+        </p>
+        <ul>
+          <li>
+            <strong>Instance Fields:</strong> Each object has its own copy. They store information specific to that instance.
+          </li>
+          <li>
+            <strong>Static Fields:</strong> Belong to the class rather than any one object, so they are shared among all instances.
+          </li>
+        </ul>
+        <p>
+          Below is an example of a <code style="color:red">Car</code> class that demonstrates both instance and static fields:
+        </p>
+        <pre><code>public class Car {
+          // Instance fields: each Car has its own make, model, year, and mileage.
+          private String make;
+          private String model;
+          private int year;
+          private double mileage;
+          
+          // Static field: counts how many Car objects have been created.
+          private static int carCount = 0;
+          
+          /**
+           * Constructs a new Car with the specified make, model, and year.
+           * Mileage is set to 0 by default.
+           *
+           * @param make  the manufacturer of the car
+           * @param model the model of the car
+           * @param year  the year the car was made
+           */
+          public Car(String make, String model, int year) {
+              this.make = make;
+              this.model = model;
+              this.year = year;
+              this.mileage = 0;
+              carCount++; // Increase count for every new car created
+          }
+          
+          /**
+           * Simulates driving the car by adding miles to the mileage.
+           *
+           * @param miles the number of miles to add
+           */
+          public void drive(double miles) {
+              mileage += miles;
+          }
+          
+          /**
+           * Returns a description of the car, including its make, model, year, and mileage.
+           *
+           * @return a String describing the car
+           */
+          public String getDescription() {
+              return year + " " + make + " " + model + " with " + mileage + " miles";
+          }
+          
+          /**
+           * Returns the total number of Car objects created.
+           *
+           * @return the number of cars created
+           */
+          public static int getCarCount() {
+              return carCount;
+          }
+          
+          // You can add other methods to update or access the car's information as needed.
+      }</code></pre>
+        <p>
+          In this example:
+        </p>
+        <ul>
+          <li>The instance fields <code style="color:red">make</code>, <code style="color:red">model</code>, <code style="color:red">year</code>, and <code style="color:red">mileage</code> store data for each Car object.</li>
+          <li>The static field <code style="color:red">carCount</code> keeps track of the total number of Car objects created, and is shared among all instances.</li>
+          <li>Methods such as <code style="color:red">drive</code> and <code style="color:red">getDescription</code> work with the instance fields, while <code style="color:red">getCarCount</code> works with the static field.</li>
+        </ul>
+        <p>
+          Understanding fields is crucial because they represent the state of an object. In your labs, you will often declare and use fields to store and manipulate data.
+        </p>
       </section>
   </div>
   </body>
