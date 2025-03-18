@@ -253,14 +253,68 @@ printDataType(string) // Expected: The value is an object and the data type is S
   
   
     <p><a href="../labs/MapsArchive.zip">Download Java Archive File. </a> Import it as <strong>Archive</strong>. The error on the Test file will ask you to add / build missing JUnit library. Select and ok it.</p>
-  <h3>Additional Intstructions</h3>
-  <h2>Understanding the canTravelTo Method</h2>
+  <h2>Additional Intstructions</h2>
+<h3>Working with Sub Arrays - <code>TimesOccur</code></h3>
+<p>This exercice introduces you how to break a statement if the condition is not met.</p>
+  <p>
+    In Java, the <code>break</code> statement immediately exits the current loop.
+    Sometimes, you want to exit early if a certain condition is not met. A common pattern is to use a
+    boolean variable (often called a “flag”) to indicate whether something remains true or if a mismatch
+    or error has occurred.
+  </p>
+
+  <h3>Example: Checking a Subarray Match</h3>
+  <pre><code>boolean match = true;
+for (int i = 0; i &lt; shorter.length; i++) {
+    if (shorter[i] != longer[start + i]) {
+        match = false;
+        break; // Exit the for loop immediately
+    }
+}
+if (match) {
+    // If match stayed true, we found a subarray match
+    count++;
+}</code></pre>
+  <p>
+    In this code:
+  </p>
+  <ul>
+    <li>
+      We assume we’re trying to match every element of <code>shorter</code> with a segment in <code>longer</code> starting at <code>start</code>.
+    </li>
+    <li>
+      The boolean <code>match</code> begins as <code>true</code>. If any element does not match, we set <code>match = false</code> and use <code>break</code> to stop checking further.
+    </li>
+    <li>
+      After the loop, we check if <code>match</code> is still <code>true</code>. If so, the entire subarray matched, and we increment <code>count</code>.
+    </li>
+  </ul>
+  
+  <h3>Why Use <code>break</code>?</h3>
+  <p>
+    Without <code>break</code>, you would continue checking elements even though you already know the match has failed.
+    Using <code>break</code> saves time and makes the code logic clearer.
+  </p>
+  
+  <p>
+    Remember that <code>break</code> only exits the <em>innermost</em> loop. If you have nested loops and want to exit multiple levels, 
+    you’ll need other techniques (like a labeled break or returning from a method).
+  </p>
+
+
+
+  <h3>Understanding the canTravelTo Method</h3>
   <p>
     The <code>canTravelTo</code> method is designed to determine whether there is a route from a starting city to a destination city, given a road map.
     The road map is represented as a <code>HashMap&lt;String, ArrayList&lt;String&gt;&gt;</code>, where each key is a city name, and its value is a list of cities directly reachable from that city.
   </p>
+  <p>Example:</p>
+  <pre><code>if roadMap = {"A"->["B","C"],"B"->"D","C"->[],"D"->[]}
+canTravelTo(roadMap, "A", "D") returns true
+canTravelTo(roadMap, "C", "A") returns false
+canTravelTo(roadMap,"B", "A") returns false </code></pre>
   <p>
-    To solve this, we use a simple method similar to exploring a maze:
+    To solve this, we use a method similar to exploring a maze:
   </p>
   <ol>
     <li>
