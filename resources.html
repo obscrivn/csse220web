@@ -639,6 +639,38 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
             <li><code style="color:red">arrayList.size()</code> — parentheses are required because it's a method.</li>
           </ul>
         </p>
+        <h3>ArrayList Methods: contains() and isEmpty()</h3>
+        <p>
+          Java's <code>ArrayList</code> class provides several useful methods for checking its state. Two of the most commonly used methods are:
+        </p>
+        <ul>
+          <li>
+            <strong>contains():</strong> Returns <code>true</code> if the ArrayList contains the specified element; otherwise, it returns <code>false</code>.
+          </li>
+          <li>
+            <strong>isEmpty():</strong> Returns <code>true</code> if the ArrayList has no elements, and <code>false</code> if it contains one or more elements.
+          </li>
+        </ul>
+        <p>
+          These methods are useful for making decisions in your code based on whether a list is empty or if it contains a particular element.
+        </p>
+        <pre><code>ArrayList<String> fruits = new ArrayList<>();
+// Check if the list is empty
+if (fruits.isEmpty()) {
+    System.out.println("The list is empty.");
+}
+              
+// Add some elements to the list
+fruits.add("apple");
+fruits.add("banana");
+              
+// Check if a specific element is in the list using contains()
+if (fruits.contains("banana")) {
+    System.out.println("The list contains banana.");
+} else {
+    System.out.println("The list does not contain banana.");
+}</code></pre>
+
       </section>
       <section id="math">
         <h2 style="color:black">The Math Library in Java</h2>
