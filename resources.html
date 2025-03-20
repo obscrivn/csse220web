@@ -1022,7 +1022,8 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
       }
         </code></pre>
         <p>
-          Here, the <code style="color:red">add</code> method is declared as static, so it is called using the class name (<code>MathUtil.add(5, 3)</code>) rather than through an object.
+          Here, the <code style="color:red">add</code> method is declared as static, 
+          so it is called using the class name (<code style="color:red">MathUtil.add(5, 3)</code>) rather than through an object.
         </p>
         
         <h3>When to Use Static</h3>
@@ -1035,6 +1036,95 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
         <p>
           Remember: Static members are accessed via the class name and exist independently of any object instances. 
           
+        </p>
+      </section>
+      <section id="uml-rules">
+        <h2 style="color:black">Understanding UML Class Diagrams Using a Car Example</h2>
+        <p>
+          UML (Unified Modeling Language) is a standardized way to visually represent the structure and design of a system. One of the most common UML diagrams is the class diagram, which shows classes, their attributes (fields), and their operations (methods).
+        </p>
+        
+        <h3>1. Class Name</h3>
+        <p>
+          The class name is placed at the top of the diagram and is usually centered and in bold. In our example, the class is named <code>Car</code>.
+        </p>
+        <pre><code>Car</code></pre>
+        
+        <h3>2. Attributes (Fields)</h3>
+        <p>
+          The middle section of the diagram lists the attributes (or fields) of the class. Each attribute is preceded by an access modifier:
+        </p>
+        <ul>
+          <li><code style="color:red">-</code> : private</li>
+          <li><code style="color:red">+</code> : public</li>
+          <li><code style="color:red">#</code> : protected</li>
+        </ul>
+        <p>
+          For our Car class, you might have the following attributes:
+        </p>
+        <pre><code>- make: String
+      - model: String
+      - year: int
+      - mileage: double</code></pre>
+        
+        <h3>3. Operations (Methods)</h3>
+        <p>
+          The bottom section of the diagram shows 
+          the operations (methods) of the class, also with access modifiers.
+        </p>
+        <pre><code>+ Car(make: String, model: String, year: int)
+      + getDescription(): String
+      + drive(miles: double): void</code></pre>
+        <p>
+          In this example:
+          <ul>
+            <li>The constructor <code style="color:red">Car(make, model, year)</code> is public and 
+                initializes the object</li>
+            <li><code style="color:red">getDescription()</code> returns a description of the car</li>
+            <li><code style="color:red">drive(miles)</code> simulates driving by updating the mileage</li>
+          </ul>
+        </p>
+        
+        <h3>4. Diagram Structure</h3>
+        <p>
+          A typical UML class diagram is divided into three compartments:
+        </p>
+        <ol>
+          <li><strong>Top Section:</strong> Contains the class name</li>
+          <li><strong>Middle Section:</strong> Lists the attributes (fields) with their types and access modifiers</li>
+          <li><strong>Bottom Section:</strong> Lists the operations (methods) with parameters, return types, and access modifiers</li>
+        </ol>
+        
+        <h3>5. Example UML Diagram for the Car Class</h3>
+        <p>
+          Here’s how a UML diagram for the Car class might look:
+        </p>
+        <pre><code>---------------------------
+      |          Car            |
+      ---------------------------
+      | - make: String          |
+      | - model: String         |
+      | - year: int             |
+      | - mileage: double       |
+      ---------------------------
+      | + Car(make, model, year)|
+      | + getDescription(): String |
+      | + drive(miles: double): void |
+      ---------------------------
+      </code></pre>
+        <p>
+          This diagram tells us that:
+          <ul>
+            <li>The class is called <code style="color:red">Car</code></li>
+            <li>It has four private instance fields: <code style="color:red">make</code>, <code style="color:red">model</code>, <code style="color:red">year</code>, and <code style="color:red">mileage</code>.</li>
+            <li>It includes a public constructor and two public methods to interact with the car's state</li>
+          </ul>
+        </p>
+        
+        <h3>6. Additional UML Notations</h3>
+        <p>
+          For more complex systems, UML diagrams can also show relationships 
+          between classes (inheritance, associations, dependencies).
         </p>
       </section>
   </div>
