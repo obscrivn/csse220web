@@ -169,6 +169,7 @@
         <dd><a href="#javadoc">Javadocs</a></dd>
         <dd><a href="#scanner">Scanner</a></dd>
         <dd><a href="#fields">Understanding Fields in Classes</a></dd>
+        <dd><a href="#static">Understanding Static Modifier</a></dd>
         
         
         
@@ -965,6 +966,75 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
         </ul>
         <p>
           Understanding fields is crucial because they represent the state of an object. In your labs, you will often declare and use fields to store and manipulate data.
+        </p>
+      </section>
+      <section id="static">
+        <h2 style="color:black">Understanding Static</h2>
+        <p>
+          In Java, the <code style="color:red">static</code> keyword is used to indicate that a field 
+          or method belongs to the class itself rather than to any individual instance (object) of that class.
+          This means that:
+        </p>
+        <ul>
+          <li>Static fields are shared among all instances of a class</li>
+          <li>Static methods can be called without creating an object of the class</li>
+        </ul>
+        
+        <h3>Static Fields</h3>
+        <p>
+          Static fields are useful for storing data that should be common to all instances:
+        </p>
+        <pre><code>public class Example {
+          public static int counter = 0;  // This field is shared by all instances of Example.
+          
+          public Example() {
+              counter++; // Each time an Example object is created, counter increases.
+          }
+          
+          public static void main(String[] args) {
+              new Example();
+              new Example();
+              System.out.println("Counter: " + Example.counter); // Output: Counter: 2
+          }
+      }
+        </code></pre>
+        <p>
+          In this example, <code style="color:red">counter</code> is a static field. 
+          It is updated every time a new object is created, and its value is shared across all instances.
+        </p>
+        
+        <h3>Static Methods</h3>
+        <p>
+          Static methods belong to the class, 
+          so you do not need to create an instance to call them. 
+          They are often used for utility or helper functions.
+        </p>
+        <pre><code>public class MathUtil {
+          public static int add(int a, int b) {
+              return a + b;
+          }
+          
+          public static void main(String[] args) {
+              // Calling the static method without creating an instance of MathUtil.
+              int result = MathUtil.add(5, 3);
+              System.out.println("5 + 3 = " + result); // Output: 5 + 3 = 8
+          }
+      }
+        </code></pre>
+        <p>
+          Here, the <code style="color:red">add</code> method is declared as static, so it is called using the class name (<code>MathUtil.add(5, 3)</code>) rather than through an object.
+        </p>
+        
+        <h3>When to Use Static</h3>
+        <ul>
+          <li>For utility or helper methods that do not depend on the state of an object</li>
+          <li>For fields that are constant or should be shared across all instances</li>
+          <li>For tracking class-wide information, such as the total number of instances created</li>
+        </ul>
+        
+        <p>
+          Remember: Static members are accessed via the class name and exist independently of any object instances. 
+          
         </p>
       </section>
   </div>
