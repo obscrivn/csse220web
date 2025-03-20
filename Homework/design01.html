@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Homework 4</title>
+    <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+    <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+  <style>
+    /* Header styling */
+    #header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    }
+    h1, h2, h3 {
+      color: #00539C;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      margin-top: 100px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    a {
+      color: #0077B6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    .image-container {
+      text-align: center;
+      margin: 15px 0;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+    .note {
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+  </style>
+  </head>
+  <body>
+    <div id="header">
+      <a id="index_link" href="../index.html">CSSE 220</a>
+      <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+      <a id="schedule_link" href="../schedule.html">Schedule</a>
+      <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+      <a id="quiz_link" href="../labs.html">Labs</a>
+      <a id="quiz_link" href="../homework.html">Homework</a>
+      <a id="quiz_link" href="../exams.html">Exams</a>
+      <a id="quiz_link" href="../project.html">Final Project</a>
+      <a id="resources_link" href="../resources.html">Resources</a>
+      <div style="clear:both;"></div>
+  </div>
+
+  <div class="container">
+    <!-- General Description -->
+    <section id="general-description">
+      <h2>Design Problems Overview</h2>
+      <p>
+        This design problem provides opportunities to practice object-oriented design. You will work on these design problems with your partner.
+      </p>
+    </section>
+    
+    <!-- Example Problems -->
+    <section id="example-problems">
+      <h2>Example Problems</h2>
+      <p>
+        The <a href="./ExampleDesignProblemsDP1andDP2.pdf" target="_blank">Example Problems DP1/DP2</a> document includes a set of design problems for you to practice on.
+        Since these are practice problems, you can work on them alone or collaborate with other students.
+      </p>
+      <p>
+        Solutions with commentary and good designs are provided <a href="./SolutionsToExampleDesignProblemsDP1andDP2.pdf" target="_blank">Solutions Example Problems DP1/DP2</a>. Use these to evaluate your proposed solutions.
+      </p>
+      <p>
+        If you would like, you can use 
+        <a href="TEMPLATE_DesignProblemPractice.docx" target="_blank">this template</a> for practicing with these example design problems to prepare your for exam 1 and exam 2. 
+      </p>
+    </section>
+    
+    <!-- Homework Problems List -->
+    <section id="hw-list">
+      <h2>The Design Problems overview</h2>
+      <p>The links for the 5 design problems are provided below:</p>
+      <ul>
+        <li>DesignProbHW1 - Online Quizzes</li>
+        <li>DesignProbHW2 - Vapor Sales Manager</li>
+        <li>DesignProbHW3 - Spaceships</li>
+        <li>DesignProbHW4 - Team Budget</li>
+        <li>DesignProbHW5 - Tag and Inventory</li>
+      </ul>
+    </section>
+    
+    <!-- Turn-In Instructions -->
+    <section id="turn-in">
+      <h2>Turn-In Instructions</h2>
+      <p>
+        Work on each problem (use template as needed), create UML diagrams, complete questions on GradeScope and submit your diagrams.
+      </p>
+    </section>
+    
+    <!-- Grading -->
+    <section id="grading">
+      <h2>Grading</h2>
+      <h3>Assignment Parts and Points</h3>
+      <p>
+        Details on the specific parts and point values are provided in GradeScope.
+      </p>
+      <h3>Proposed Defective Solutions:</h3>
+      <ul>
+        <li>
+          When identifying the principles that a defective solution has violated, you must clearly explain why you believe a principle is violated.
+        </li>
+        <li>
+          Within individual problems, to earn full credit, you must identify the single main problem in each flawed design.
+          You may list several flaws, but there is usually one primary issue that should be identified.
+        </li>
+      </ul>
+      <h3>Your Solution:</h3>
+      <ul>
+        <li>
+          In each problem, your final design must address the issues you have identified and present a solution that is better than the problematic ones.
+        </li>
+        <li>
+          If your design is no better or is worse than the provided solutions, you will not earn full credit.
+        </li>
+<li>To earn full credit, you must submit a solution that improves <strong>at least</strong> one of the two provided solutions by correctly fixing the identified violations. </li>
+      </ul>
+    </section>
+    
+    <!-- Specific Problem: Design Problem 1 -->
+    <section id="design-prob-1">
+      <h2>Design Problem 1 - Online Quizzes</h2>
+      <p>
+        In an online quiz application, teachers update quizzes and students take them. Quizzes and questions have their own unique ID numbers.
+        The same quiz question can appear in multiple quizzes. When a teacher updates the actual query made by a quiz question,
+        the update should be reflected in all quizzes that utilize that question. A student takes a quiz by providing a quiz ID
+        to the application at the time of taking the quiz.
+      </p>
+      
+      <h3>Bad Design A</h3>
+      <div class="image-container">
+        <img src="DP1_A.png" alt="Bad Design A" width="800"/>
+      </div>
+      <p>
+        <a href="http://www.plantuml.com/plantuml/uml/RP11JiCm44NtFiLNDr2W5-W2bIKI5LIb1nZL9Xd5cGHxl4WGTyT984ealB1iF__tPH-YKj1KUnChbfO2rOZQUPVdmDUHv763Dq-Yb-CBFfg0L_4i3gV4FSwDJygDuCcOgwSOn-CZiU3B0BWlIQntbzQIkW6Taej3uFRpT_5izopwWBzzlX2wFSuQM8hjml5ErMZ8IUvp2ZcsDT_BtgcJ9xP4atgDWVyxXzpyY5tWejJTu-PkCslCx5jJxit1YSsVzWC0" target="_blank">Source PlantUML</a>
+      
+      <h3>Bad Design B</h3>
+      <div class="image-container">
+        <img src="DP1_B.png" alt="Bad Design B" width="800"/>
+      </div>
+      <p>
+        <a href="http://www.plantuml.com/plantuml/uml/RO_1Je8n48JlVOe95q7b1JWOF9f8b20FiA4LDko_FxJR0nhVtVwjcbzZ3vjslivCTfcCekLEN3godYXIXsGN2ML6tbLIpXMUXTIsgqUyzX5FAgm1wynlsFIIZNl5lNCxePIgl29Ml3i0DmTIBs5xycHXGEiSqc2Odhyk3tx1QhVuVfSFyRB0nYBhVZRAUA5ZJPYUooWk5DlCVOnxMoStDaOj-ZS6_kySV3zBp2Fl3pQ_crnFQaCbVzIMuPP1VUxa4m00" target="_blank">Source PlantUML</a>
+      </p>
+      
+      <div class="note">
+        <strong>Hint:</strong> Both designs have the worst kind of problem: <em>they don’t function</em>.
+      </div>
+    </section>
+    
+    <!-- Final Submission -->
+    <section id="final-submission">
+      <h2>Turn-In Instructions</h2>
+      <p>
+        You will complete these design problems via GradeScope, which is linked from Moodle.
+      </p>
+      <h2>Grading</h2>
+      <h3>Assignment Parts and Points</h3>
+      <p>
+        Details on the specific parts and point values are provided in GradeScope.
+      </p>
+      <h3>Defective Solutions and Your Response</h3>
+      <ul>
+        <li>
+          When identifying the problems in a defective solution, you must clearly explain why a design principle is violated.
+        </li>
+        <li>
+          You should identify the main flaw in each defective design. While multiple flaws may exist, there is usually one primary issue.
+        </li>
+        <li>
+          Your final solution must address the issues you have identified and propose a design that is better than the problematic solutions.
+        </li>
+        <li>
+          To earn full credit, your design must improve <strong>at least</strong> one of the two provided solutions.
+        </li>
+      </ul>
+    </section>
+    
+  </div>
+  </body>
+</html>

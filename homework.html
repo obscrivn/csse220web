@@ -61,15 +61,15 @@
       transition: transform 0.2s;
       display: block;
     }
-    .hw-card:hover {
+    .hw-card:hover, .design-card:hover {
       transform: scale(1.02);
     }
-    .hw-card h3 {
+    .hw-card h3, .design-card h3 {
       margin: 0 0 8px;
       font-family: "Courier New", Courier, monospace;
       color: #ffffff;
     }
-    .hw-card p {
+    .hw-card p, .design-card p {
       /* font-family: Arial, sans-serif; */
       font-size: 0.9em;
       margin: 0;
@@ -84,15 +84,27 @@
       transition: transform 0.2s ease;
       cursor: pointer;
     }
+
+    .design-card {
+      background-color: #e2ccae; /* light blueish background */
+      padding: 15px;
+      border: 1px solid #3d413d;
+      border-radius: 5px;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(47, 45, 45, 0.2);
+      text-decoration: none;
+      display: block;
+    }
     .hw-card:hover {
       transform: scale(1.02);
     }
-    .hw-card h2 {
+    .hw-card h2, .design-card h2 {
       margin-top: 0;
       font-size: 1.2em;
       
     }
-    .hw-card p {
+    .hw-card p, .design-card p {
       font-size: 1em;
       margin: 0;
       color: black;
@@ -149,21 +161,20 @@
                 </a>
 
               </div>
-              <h2>Week 3</h2>
+              <h2>Week 2</h2>
               <div class="hw-container">
                 <a href="./Homework/homework3.html" class="hw-card" id="hw3">
                 <h2>Homework 3</h2>
                 <p>2D Arrays</p>
               </a>
-              <div class="hw-card" id="hw4">
+              <a href="./Homework/homework4.html" class="hw-card" id="hw4">
                 <h2>Homework 4</h2>
-                <p>View Homework 4 instructions.</p>
-              </div>
-
-              <div class="hw-card" id="hw5">
-                <h2>Homework 5</h2>
-                <p>View Homework 5 instructions.</p>
-              </div>
+                <p>HashMaps</p>
+              </a>
+              <a href="./Homework/design01.html" class="design-card" id="d01">
+                <h2>Design Problem 1</h2>
+                <p>Classes and PlantUML: working with a Partner</p>
+              </a>
             </div>
             <h2>Week 3</h2>
               <div class="hw-container">
