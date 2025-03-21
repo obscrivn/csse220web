@@ -79,6 +79,13 @@
       border-radius: 4px;
       margin-top: 10px;
     }
+
+    section::before {
+  content: "";
+  display: block;
+  height: 90px; /* equal to your header's height */
+  margin-top: -90px;
+}
   </style>
   </head>
   <body>
@@ -125,7 +132,7 @@
       <h2>The Design Problems overview</h2>
       <p>The links for the 5 design problems are provided below:</p>
       <ul>
-        <li>DesignProbHW1 - Online Quizzes</li>
+        <li>DesignProbHW1 - <a href="#design-prob-1">Online Quizzes</a></li>
         <li>DesignProbHW2 - Vapor Sales Manager</li>
         <li>DesignProbHW3 - Spaceships</li>
         <li>DesignProbHW4 - Team Budget</li>
@@ -173,14 +180,18 @@
     <!-- Specific Problem: Design Problem 1 -->
     <section id="design-prob-1">
       <h2>Design Problem 1 - Online Quizzes</h2>
+      <h3>Problem Statement</h3>
       <p>
         In an online quiz application, teachers update quizzes and students take them. Quizzes and questions have their own unique ID numbers.
         The same quiz question can appear in multiple quizzes. When a teacher updates the actual query made by a quiz question,
         the update should be reflected in all quizzes that utilize that question. A student takes a quiz by providing a quiz ID
         to the application at the time of taking the quiz.
       </p>
-      
-      <h3>Bad Design A</h3>
+      <h3>Part 1 in Gradescope</h3>
+      <p>Identify a list of primary nouns (classes), identify attribute (secondary nouns) for each of these classes, identify methods (verbs)</p>
+      <h3> Part 2 in Gradescope</h3>
+
+      <h4>  Bad Design A</h4>
       <div class="image-container">
         <img src="DP1_A.png" alt="Bad Design A" width="800"/>
       </div>
