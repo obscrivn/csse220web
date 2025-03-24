@@ -966,9 +966,7 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
           <li>The static field <code style="color:red">carCount</code> keeps track of the total number of Car objects created, and is shared among all instances.</li>
           <li>Methods such as <code style="color:red">drive</code> and <code style="color:red">getDescription</code> work with the instance fields, while <code style="color:red">getCarCount</code> works with the static field.</li>
         </ul>
-        <p>
-          Understanding fields is crucial because they represent the state of an object. In your labs, you will often declare and use fields to store and manipulate data.
-        </p>
+
       </section>
       <section id="static">
         <h2 style="color:black">Understanding Static</h2>
@@ -1040,6 +1038,79 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
           
         </p>
       </section>
+      <section id="override">
+        <h2 style="color:black">Overridde Method toString()</h2>
+        <p>
+      <p>
+        By default, printing an object in Java calls the <code style="color:red">toString()</code> method from the <code style="color:red">Object</code> class,
+        which typically returns a string that includes the object's class name and hash code.</p>
+        <p>We can customize this method by overriding the <code style="color:red">toString()</code>.</p>
+      </p>
+      
+      <h3>BankAccount Example</h2>
+      <p>
+        In this example, we override the <code style="color:red">toString()</code> method in the <code style="color:red">BankAccount</code> class to print the
+        account's name and balance.
+      </p>
+
+      <pre><code>
+    public class BankAccount {
+        private String name;
+        private double balance;
+        
+        public BankAccount() {
+            this.name = "Unknown user";
+            this.balance = 0;
+        }
+        
+        public BankAccount(String name, double balance) {
+            this.name = name;
+            this.balance = balance;
+        }
+        
+        public String getName() {
+            return name;
+        }
+        
+        public double getBalance() {
+            return balance;
+        }
+        
+        public void deposit(double amount) {
+            balance += amount;
+        }
+        
+        // Overriding the toString() method example to print name and balance
+        @Override
+        public String toString() {
+            return "BankAccount{name='" + name + "', balance=" + balance + "}";
+        }
+        
+        public static void main(String[] args) {
+            BankAccount account1 = new BankAccount("Yoda", 500);
+            BankAccount account2 = new BankAccount("C3PO", 1000);
+            
+            System.out.println(account1);
+            System.out.println(account2);
+        }
+    }
+      </code></pre>
+      
+      <h2>Explanation</h2>
+      <ul>
+        <li>
+          <strong>Default Behavior:</strong> Without overriding <code style="color:red">toString()</code>, printing a BankAccount object would show something like <code>BankAccount@15db9742</code>.
+        </li>
+        <li>
+          <strong>Overridden Method:</strong> We override <code style="color:red">toString()</code> to return a string that clearly shows the account's
+          <code style="color:red">name</code> and <code style="color:red">balance</code>.
+        </li>
+        <li>
+          <strong>Usage:</strong> When you print an instance of <code style="color:red">BankAccount</code>, Java calls your overridden method,
+          displaying the custom string representation.
+        </li>
+      </ul>
+      </div>
       <section id="uml-rules">
         <h2 style="color:black">Understanding UML Class Diagrams Using a Car Example</h2>
         <p>
