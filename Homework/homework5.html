@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    /* Header styling */
+    #header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+    
+      margin-top: 0;
+    }
+    p {
+      line-height: 1.6;
+    }
+    ul, ol {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    code {
+      background-color: #e0e0e0;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: "Courier New", Courier, monospace;
+    }
+    .example {
+      background-color: #e7f3fe;
+      border-left: 4px solid #2196F3;
+      padding: 10px;
+      margin: 10px 0;
+      font-family: "Courier New", Courier, monospace;
+    }
+    .note {
+      background-color: #fffbcc;
+      border: 1px solid #ffe58f;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+    <div id="header">
+        <a id="index_link" href="../index.html">CSSE 220</a>
+        <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+        <a id="schedule_link" href="../schedule.html">Schedule</a>
+        <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+        <a id="quiz_link" href="../labs.html">Labs</a>
+        <a id="quiz_link" href="../homework.html">Homework</a>
+        <a id="quiz_link" href="../exams.html">Exams</a>
+        <a id="quiz_link" href="../project.html">Final Project</a>
+        <a id="resources_link" href="../resources.html">Resources</a>
+        <div style="clear:both;"></div>
+    </div>
+ 
+  <div id="content">
+    <h1>Homework 5 Quiz Problem</h1>
+    <h2>How to Import a ZIP File into Eclipse</h1>
+  <p>Follow these steps to import a ZIP file containing an Eclipse project:</p>
+  <ol>
+    <li>
+      <strong>Download the ZIP File (containing a project)</strong> to your computer but do not place 
+      in the eclipse workspace folder: <a href="HWQuizQuestions.zip">Click here to donwload ZIP</a>
+    </li>
+    <li>
+      <strong>Open Eclipse:</strong> <em>You do not need to create a new project</em> because the ZIP file contains an existing project.
+    </li>
+    <li>
+      <strong>Import the Project:</strong>
+      <ol>
+        <li>Click on <code>File</code> in the menu bar and select <code>Import...</code>.</li>
+        <li>In the Import Wizard, expand the <strong>General</strong> category and select <strong>Existing Projects into Workspace</strong>. Click <strong>Next</strong>.</li>
+        <li>Select the <strong>Select archive file</strong> option and click the <strong>Browse...</strong> button</li>
+        <li>Navigate to the location where you saved the ZIP file, select it, and click <strong>Open</strong></li>
+        <li>The wizard will display the project(s) contained in the ZIP file. Make sure the desired project is checked</li>
+        <li>Check if the box <strong>Copy projects into workspace</strong> is selected</li>
+        <li>Click <strong>Finish</strong> to complete the import process</li>
+      </ol>
+    </li>
+    <li>
+      <strong>Verify the Imported Project:</strong> The project should now appear in your Package Explorer. Double-click it to open and review its contents.
+    </li>
+  </ol>
+  
+  <h2>Overview:</h2>
+  <ul>
+    <li>This exercise is intended to give you practice with implementing the set classes based on a UML diagram of those classes</li>
+    <li>This is an individual exercise/assignment</li>
+  </ul>
+
+  <h2>The problem:</h2>
+  <p>
+    <strong>Online Quizzes:</strong><br>
+    In an online quiz application, teachers update quizzes and students take them. Quizzes and questions have their own unique id number. The same quiz question can appear in multiple different quizzes. If a teacher updates the actual query made by a quiz's question, it's important that this update to the query is reflected in all quizzes that utilize that question. A student takes a quiz by providing a quizId to the app at the time of taking the quiz.
+  </p>
+
+  <h2>To do:</h2>
+  <ol>
+    <li>
+      In Eclipse, import this project (<code>HWQuizQuestions</code>) from your local copy of the CSSE220 repo
+    </li>
+    <li>
+      In the file <em>QuizMain.java</em> there are a number of TODOs. These will have you implement the classes <em>QuizMain.java</em>, <em>Question.java</em>, and <em>Quiz.java</em>
+    </li>
+    <li>
+      Implement <em>QuizMain.java</em>, <em>Question.java</em>, and <em>Quiz.java</em> based on your graded <em>Design Problems 1</em> UML or an alternative, e.g., the UML design presented in class
+    </li>
+    <li>
+      Test your implementation by running the <code>main</code> found in <em>QuizMain.java</em>. Make your output to the console window look similar to that shown in section <strong>Sample Output</strong> (below)
+    </li>
+    <li>
+      Include Javadoc comments in <em>Question.java</em> and <em>Quiz.java</em>
+    </li>
+    <li>
+      Create a computer generated UML diagram that represents your implementation
+    </li>
+    <li>
+      Answer the questions in <em>reflectionQuestions.txt</em> (you can locate it in your zip file)
+    </li>
+    <li>
+      Upload:
+      <br>(1) <code>.java</code> files, (2) your UML diagram, (3) your answers in <em>reflectionQuestions.txt</em>, and (4) any additional <code>.java</code> files that you may have created to solve this problem
+    </li>
+  </ol>
+
+  <p><strong>Additional Instructions:</strong></p>
+  <ul>
+    <li>Each question should have both an <em>id</em> and <em>questionQuery</em></li>
+    <li>The question's <em>questionQuery</em> should be stored as a Java String and contain the actual question to be asked. For example, "What is the capital of Egypt?"</li>
+    <li>Each quiz should have an <em>id</em> along with its <em>questions</em></li>
+    <li>When displaying a quiz, the quiz's <em>id</em> should be displayed in addition to each question's <em>id</em> and <em>questionQuery</em></li>
+  </ul>
+
+  <h2>Rubric:</h2>
+  <ol>
+    <li>
+      <strong>(60% of grade)</strong> The output from your program closely matches that shown in <strong>Sample Output</strong> (below).<br>
+      This means your implementation has to allow creation of questions and quizzes, updating of quizzes, and displaying of quizzes.
+    </li>
+    <li>
+      <strong>(15% of grade)</strong> Javadoc comments for <em>Question.java</em> and <em>Quiz.java</em> - use <a href="src/javadocExample/BankAccount.java">BankAccount.java</a> for guidance with the class-level Javadoc and Javadocs for methods.
+    </li>
+    <li>
+      <strong>(15% of grade)</strong> A UML diagram that resembles your implementation, we recommend using <a href="http://plantuml.com/plantuml" target="_blank">PlantUML</a>.
+    </li>
+    <li>
+      <strong>(10% of grade)</strong> Answers provided to the reflection questions found in <em>reflectionQuestions.txt</em>
+    </li>
+  </ol>
+
+  <h2>Sample Output:</h2>
+  <p>
+    Here is sample output of a working solution in <a href="exampleOutput.txt">exampleOutput.txt</a> that 
+    you can use as a model for your display operation. 
+    You do not have to match this exactly, but try to make it look roughly the same.
+  </p>
+    
+    
+  </div>
+
+</body>
+</html>
