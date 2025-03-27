@@ -170,6 +170,9 @@
         <dd><a href="#scanner">Scanner</a></dd>
         <dd><a href="#fields">Understanding Fields in Classes</a></dd>
         <dd><a href="#static">Understanding Static Modifier</a></dd>
+        <dd><a href="#this-keyword">Understanding Static Modifier</a></dd>
+        <dd><a href="#override">Understanding Override Method</a></dd>
+        <dd><a href="#interface">Understanding Interfaces</a></dd>
         <dd><a href="#uml-rules">Understanding UML Models</a></dd>
         
         
@@ -1038,8 +1041,97 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
           
         </p>
       </section>
+
+      <section id="this-keyword">
+        <h2 style="color:black">Understanding the <code style="color:red">this</code> Keyword</h2>
+        <p>
+          The <code style="color:red">this</code> keyword is a reference to the current object—the instance on which a method or constructor is being called.
+          It is especially useful when you have parameter names that are the same as instance field names.
+        </p>
+        <p>
+          <strong>When to Use <code>this</code>:</strong>
+        </p>
+        <ul>
+          <li>
+            To differentiate between instance variables (fields) and parameters in a constructor or method.
+          </li>
+          <li>
+            To call another constructor in the same class (using <code style="color:red">this()</code>).
+          </li>
+          <li>
+            To pass the current object as an argument to another method.
+          </li>
+        </ul>
+        
+
+        <h3>Example with Fields</h3>
+        <pre><code>public class Person {
+          private String name;
+          
+          public Person(String name) {
+              // Use 'this' to refer to the instance variable
+              this.name = name;
+          }
+          
+          public void printName() {
+              // 'this.name' is optional here since there's no conflict, but it can improve readability.
+              System.out.println("Name: " + this.name);
+          }
+          
+          public static void main(String[] args) {
+              Person person = new Person("Alice");
+              person.printName(); // Output: Name: Alice
+          }
+      }
+      </code></pre>
+      <h3>Using <code style="color:red">this()</code> in Constructors</h3>
+      <p>
+        You can use <code style="color:red">this()</code> inside a constructor to call another constructor in the same class.
+        This technique helps reduce code duplication when you have multiple constructors that share common initialization tasks.
+      </p>
+      <h3>Example with Constructor</h3>
+      <pre><code>public class Book {
+        private String title;
+        private String author;
+        private double price;
+        
+        // Primary constructor that initializes all fields.
+        public Book(String title, String author, double price) {
+            this.title = title;
+            this.author = author;
+            this.price = price;
+        }
+        
+        // Overloaded constructor that provides a default price.
+        public Book(String title, String author) {
+            // Calls the primary constructor with a default price of 0.0.
+            this(title, author, 0.0);
+        }
+        
+        public void printDetails() {
+            System.out.println("Title: " + title + ", Author: " + author + ", Price: $" + price);
+        }
+        
+        public static void main(String[] args) {
+            // Create a Book instance using the constructor with all parameters.
+            Book book1 = new Book("1984", "George Orwell", 9.99);
+            // Create a Book instance using the overloaded constructor with a default price.
+            Book book2 = new Book("Animal Farm", "George Orwell");
+            
+            book1.printDetails(); // Output: Title: 1984, Author: George Orwell, Price: $9.99
+            book2.printDetails(); // Output: Title: Animal Farm, Author: George Orwell, Price: $0.0
+        }
+    }
+    </code></pre>
+      <p>
+        In this example, the second constructor uses <code style="color:red">this(title, author, 0.0);</code> to call the primary constructor,
+        ensuring that all initialization is handled in one place.
+      </p>
+
+      </section>
+
       <section id="override">
-        <h2 style="color:black">Overridde Method toString()</h2>
+        <h2 style="color:black">Understanding Overridde Method - toString()</h2>
         <p>
       <p>
         By default, printing an object in Java calls the <code style="color:red">toString()</code> method from the <code style="color:red">Object</code> class,
@@ -1110,7 +1202,7 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
           displaying the custom string representation.
         </li>
       </ul>
-      </div>
+    </section>
       <section id="uml-rules">
         <h2 style="color:black">Understanding UML Class Diagrams Using a Car Example</h2>
         <p>
@@ -1199,6 +1291,58 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
           For more complex systems, UML diagrams can also show relationships 
           between classes (inheritance, associations, dependencies).
         </p>
+      </section>
+
+      <section id="interface">
+        <h2 style="color:black">Understanding Interfaces in Java</h2>
+        <p>
+          In Java, an <strong>interface</strong> is a reference type that defines 
+          a set of methods without implementing them.
+          It specifies what a class must do, but not how it does it.
+        </p>
+        <p>Key points about interfaces:</p>
+        <ul>
+          <li>Interfaces provide a way to achieve abstraction and allow for multiple inheritance of type</li>
+          <li>A class can implement multiple interfaces, which promotes flexible and modular design</li>
+        </ul>
+        
+        <h3>Example: Defining and Using an Interface</h3>
+        <pre><code>// Define an interface called Drawable
+      public interface Drawable {
+          void draw();
+      }
+      
+      // Implement the Drawable interface in a class called Circle
+      public class Circle implements Drawable {
+          @Override
+          public void draw() {
+              System.out.println("Drawing a circle");
+          }
+      }
+      
+      // Using the interface in a main method
+      public class InterfaceExample {
+          public static void main(String[] args) {
+              // A Circle object is referenced as a Drawable
+              Drawable shape = new Circle();
+              shape.draw(); // Output: Drawing a circle
+          }
+      }</code></pre>
+        
+        <p>
+          In this example:
+        </p>
+        <ul>
+          <li>
+            The <code style="color:red">Drawable</code> interface declares a method <code style="color:red">draw()</code> without providing an implementation.
+          </li>
+          <li>
+            The <code style="color:red">Circle</code> class implements the <code style="color:red">Drawable</code> interface and provides its own implementation of <code style="color:red">draw()</code>.
+          </li>
+          <li>
+            In the main method, a <code style="color:red">Circle</code> object is created and assigned to a variable of type <code style="color:red">Drawable</code>, demonstrating polymorphism.
+          </li>
+        </ul>
       </section>
   </div>
   </body>
