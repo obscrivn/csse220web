@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Homework 4</title>
+    <title>Design</title>
     <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
     <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
   <style>
@@ -134,7 +134,7 @@
       <ul>
         <li>DesignProbHW1 - <a href="#design-prob-1">Online Quizzes</a></li>
         <li>DesignProbHW2 - <a href="#design-prob-2">Vapor Sales Manager</a> </li>
-        <li>DesignProbHW3 - Spaceships</li>
+        <li>DesignProbHW3 - <a href="#design-prob-3">Spaceships</a></li>
         <li>DesignProbHW4 - Team Budget</li>
         <li>DesignProbHW5 - Tag and Inventory</li>
       </ul>
@@ -260,6 +260,56 @@
       <a href="http://www.plantuml.com/plantuml/uml/jPFDQW8n483lynJ1IssnBo15r1xieItY-WAf6TRGRB8a4q6Axzw96zaiIaiFlHWpFr--JDXv8EafDWR2fxQjzB8HWOu6-TVhtJa3EoD349Kq6DwabJLwyGMmbrOPN2YraWsEIPF1gQYuozOJuINnskzRXd5QkVXXyFuIxndBcFwCQqPj4obCnS9xUNpLWPwwujb4M4x_oipG2esvDklB-gfyTWc_egrvGmbtdi86M-Vf9tBkwD1bpyrJSiiAwKNNUmoqmGFQY6V_6rLBBadc7CpoXV09BY-Mslcb1femV1aO315iR9vTgp5KpgYfu1i0t8aQwRrCfDDIAh02HuzfVt1QmSurRIJSEf8cNu5p6LxEfPX8eNwwY7UNOlKqhNzLpPPhz3oilyeEleZ7sUXXbCsXMt8iaM6ELiN6V0C0" target="_blank">Source PlantUML</a>
     </p>
  
+  </section>
+
+  <section id="design-prob-3">
+    <h2>CSSE 220: Design Problem 3 - Spaceships</h2>
+    <p>
+      In a single-player spaceship racing game, the mechanics surrounding ships are particularly important.
+      Each ship has its own current position, rotation, and velocity. The game consists of a single-player ship,
+      controlled by the player, and several "enemy" ships controlled by AI. Rotation and velocity can be increased or
+      decreased to steer any ship.
+    </p>
+    <ul>
+      <li>
+        <strong>Enemy Ships:</strong> AI-controlled ships are steered using a single AI strategy that depends on a <em>flying strategy</em>.
+        This strategy (which could be different for each enemy ship) sets the rotation and velocity at regular intervals (e.g., every 10ms).
+      </li>
+      <li>
+        <strong>Player Ship:</strong> The ship controlled by the player gets its rotation and velocity input from the player’s controller.
+      </li>
+    </ul>
+    <p>
+      There are two commands to consider:
+    </p>
+    <ol>
+      <li>
+        <code>updatePlayerInput(inputData)</code>: Called when a player presses a key on the controller.
+      </li>
+      <li>
+        <code>moveAllShips()</code>: First asks the enemy/AI ships to update their rotation and velocity, then updates the position of <em>all</em> ships in the game based on their current settings.
+      </li>
+    </ol>
+    
+    <h3>Bad Design A</h3>
+    <div class="image-container">
+      <img src="DP3_A.png" alt="Bad Design A" width="800">
+    </div>
+    <p>
+      <a href="http://www.plantuml.com/plantuml/uml/RP11JiCm44NtFiLNDr2W5-W2bIKI5LIb1nZL9Xd5cGHxl4WGTyT984ealB1iF__tPH-YKj1KUnChbfO2rOZQUPVdmDUHv763Dq-Yb-CBFfg0L_4i3gV4FSwDJygDuCcOgwSOn-CZiU3B0BWlIQntbzQIkW6Taej3uFRpT_5izopwWBzzlX2wFSuQM8hjml5ErMZ8IUvp2ZcsDT_BtgcJ9xP4atgDWVyxXzpyY5tWejJTu-PkCslCx5jJxit1YSsVzWC0" target="_blank">Source PlantUML</a>
+    </p>
+    
+    <h3>Bad Design B</h3>
+    <div class="image-container">
+      <img src="DP3_B.png" alt="Bad Design B" width="800">
+    </div>
+    <p>
+      <a href="http://www.plantuml.com/plantuml/uml/TP1DQWCn38NtFeN9AYdq2YKffP15Q67e0SHO9AAAR2nDm9JUlV8a7RfeDaBsU_hqirM3QjEPWtwI5AXmZcgDqMEbSLR2oA0QXnEL0v34hn3Z2IGnVfG4XkyC3UjUocHhwl4533QBwP0lk6FkvRhUXEy_k1a5zCgDv3XOTTYn-HVfbTaz_YnPoIYBfpKRtD8BSXx9kd-wpf7r6HJJcmnevaHljuWTTLDt-zzM_-jtzl79mtA3nwUuUbZDIuGjIl8x_G00" target="_blank">Source PlantUML</a>
+    </p>
+    
+    <div class="note">
+      <strong>Hint:</strong> Both designs have the worst kind of problem: <em>they don’t function</em>.
+    </div>
   </section>
 
     <!-- Final Submission -->
