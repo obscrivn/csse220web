@@ -156,6 +156,8 @@
         <dd><a href="#loops">Loops</a></dd>
         <dd><a href="#printf">Print Formatting</a></dd>
         <dd><a href="#conditionals">Conditionals</a></dd>
+        <dd><a href="#conditionals">How to use switch cases</a></dd>
+        
         <dd><a href="#return">Void, Return, Calling Methods</a></dd>
         <dd><a href="#string-methods">String, Length, Substring</a></dd>
         <dd><a href="#int-to-string">Convert Int to String</a></dd>
@@ -1403,6 +1405,46 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
         <p><strong>Constructor Initialization:</strong> Use when the initialization value depends on parameters or 
             requires additional logic</p>
       </section>
+      <section id="switch-cases">
+        <h2 style="color:black">Using Switch Cases in Java</h2>
+        <p>
+          The <code style="color:red">switch</code> statement in Java allows you to 
+          execute different blocks of code based on the value of a single variable. 
+          It is an alternative to multiple <code style="color:red">if-else</code> statements when testing the same 
+          variable against several constant values.
+        </p>
+        
+        <h3>Syntax</h3>
+        <pre><code>switch (variable) {
+          case value1:
+              // Code block for value1
+              break;
+          case value2:
+              // Code block for value2
+              break;
+          // Additional cases...
+          default:
+              // Code block if no case matches
+      }</code></pre>
+        
+        <p>
+          <strong>Key Points:</strong>
+          <ul>
+            <li>
+              Each <code style="color:red">case</code> represents a potential value of the variable
+            </li>
+            <li>
+              The <code style="color:red">break</code> statement stops 
+              further execution within the switch after a case is matched
+            </li>
+            <li>
+              The <code style="color:red">default</code> case is executed if none of the cases match
+            </li>
+            <li>
+              Switch works with primitive types like <code style="color:red">int</code>, <code style="color:red">char</code>, and also with <code style="color:red">String</code>.
+            </li>
+          </ul>
+        </p>
   </div>
   </body>
 </html>
