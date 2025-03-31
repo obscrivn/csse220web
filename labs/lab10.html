@@ -157,7 +157,7 @@ a.resource-ref:hover {
       </nav>
 <!-- Lab Navigation Menu -->
 <div id="main-content">
-<p>For this Lab you will be submitting Car, MyComponent and MyViewer files.</p>
+<p>Note on Submittion: Car, MyComponent, MyViewer and the screenshot of your graphics in Frame.</p>
 
 
   
@@ -298,8 +298,9 @@ private void drawShapesLines(Graphics2D g2d) {
     <p>Display the text "Some text" at a specified location, using a custom font, and then reset the font to the original.</p>
     <h3>Steps</h3>
     <ol>
-      <li>Store the current font from the <code>Graphics2D</code> context.</li>
-      <li>Set a new font (e.g., "Times New Roman", plain, size 36) using <code>g2d.setFont()</code>.</li>
+      <li>Store the current font from the <code>Graphics2D</code> context using <code>g2d.getFont()</code>. Remember Font is a class</li>
+      <li>Set a new font (e.g., "Times New Roman", plain, size 36) using <code>g2d.setFont()</code>
+      <pre>g2d.setFont(new Font("Times New Roman", Font.PLAIN, 36));</pre></li>
       <li>Draw the text at coordinates (80, 440) using <code>g2d.drawString()</code>.</li>
       <li>Reset the font back to the original font.</li>
     </ol>
@@ -323,9 +324,13 @@ private void drawSomeText(Graphics2D g2d) {
     <h3>Steps</h3>
     <ol>
       <li>Retrieve the component's width and height using <code>this.getWidth()</code> and <code>this.getHeight()</code>.</li>
-      <li>Save the current drawing color.</li>
-      <li>Set a new background color (for example, a semi-transparent purple).</li>
-      <li>Create a <code>Rectangle</code> covering the entire component and fill it using <code>g2d.fill()</code>.</li>
+      <li>Save the current drawing color using <code>g2d.getColor()</code></li>
+      <li>Set a new background color (for example, a semi-transparent purple) <br>
+      Note: In the constructor call <code>new Color(128, 0, 128, 128)</code>, the fourth parameter represents the alpha value, which controls the transparency of the color. The alpha value ranges from 0 (completely transparent) to 255 (completely opaque). Here, an alpha of 128 means the color is approximately 50% transparent, 
+      resulting in a semi-transparent purple </li>
+      <pre>Color backgroundColor = new Color(128, 0, 128, 128);
+ g2d.setColor(backgroundColor);</pre>
+      <li>Create a <code>Rectangle</code> covering the entire component and fill it using <code>g2d.fill()</code></li>
       <li>Restore the original color.</li>
     </ol>
     <h3>Hints</h3>
@@ -341,45 +346,24 @@ private void drawUsingColors(Graphics2D g2d) {
     </pre>
   </section>
   
-  <section id="drawUsingArc">
-    <h2>6. Method: <code>drawUsingArc(Graphics2D g2d)</code></h2>
-    <h3>Objective</h3>
-    <p>Draw a series of colored arcs to create a circular "Pac-Man" effect.</p>
-    <h3>Steps</h3>
-    <ol>
-      <li>Set a degree step size (e.g., 15 degrees) for drawing each arc segment.</li>
-      <li>Compute a color step value to change colors gradually with each arc.</li>
-      <li>Within a loop, set a new color and draw an arc using <code>Arc2D.Double</code> with the PIE closure type.</li>
-      <li>Restore the original drawing color after the loop.</li>
-    </ol>
-    <h3>Hints</h3>
-    <ul>
-      <li>Iterate over a range of angles (e.g., from 15° to 345°) using your degree step size.</li>
-      <li>Use <code>g2d.fill()</code> to draw solid arcs.</li>
-    </ul>
-    <pre>
-// TODO: Implement drawUsingArc
-private void drawUsingArc(Graphics2D g2d) {
-    // Use a loop to draw multiple arcs with gradually changing colors and restore the original color
-}
-    </pre>
-  </section>
+  
   
   <section id="drawRoundedRect">
-    <h2>7. Method: <code>drawRoundedRect(Graphics2D g2d)</code></h2>
+    <h2>6. Method: <code>drawRoundedRect(Graphics2D g2d)</code></h2>
     <h3>Objective</h3>
-    <p>Draw a filled rounded rectangle with a yellow color.</p>
+    <p>Draw a filled rounded rectangle with a yellow color</p>
     <h3>Steps</h3>
     <ol>
-      <li>Define the position (10, 500), dimensions (80 x 40), and corner arc dimensions (15 x 15).</li>
-      <li>Save the current drawing color.</li>
-      <li>Create a <code>RoundRectangle2D.Double</code> with the specified parameters.</li>
-      <li>Set the color to yellow and fill the rectangle using <code>g2d.fill()</code>.</li>
-      <li>Restore the original color.</li>
+      <li>Define the position (10, 500), dimensions (80 x 40), and corner arc dimensions (15 x 15)</li>
+      <li>Save the current drawing color</li>
+      <li>Create a <code>RoundRectangle2D.Double</code> with the specified parameters</li>
+
+      <li>Set the color to yellow (Color.YELLOW) and fill the rectangle using <code>g2d.fill()</code></li>
+      <li>Restore the original color</li>
     </ol>
     <h3>Hints</h3>
     <ul>
-      <li>The <code>RoundRectangle2D.Double</code> class is used for drawing rectangles with rounded corners.</li>
+      <li>The <code>RoundRectangle2D.Double</code> class is used for drawing rectangles with rounded corners</li>
     </ul>
     <pre>
 // TODO: Implement drawRoundedRect
