@@ -148,8 +148,8 @@ a.resource-ref:hover {
     <h1>Lab Assignment 10</h1>
     <nav id="lab-nav">
         <ul>
-          <li><a href="#lab1">01. Initialization & Switch</a></li>
-          <li><a href="#lab2">02. Pets Refactoring</a></li>
+          <li><a href="#lab1">01. Initialization & Switch Cases</a></li>
+          <li><a href="#lab2">02. Basic Graphics with Swing</a></li>
           
          
           <!-- Add more lab links as needed -->
@@ -157,16 +157,17 @@ a.resource-ref:hover {
       </nav>
 <!-- Lab Navigation Menu -->
 <div id="main-content">
-<p>For this Lab you will be submitting all java files from Vehicle and Pets exercices.</p>
+<p>For this Lab you will be submitting Car, MyComponent and MyViewer files.</p>
 
 
   
 
         <div class="lab-section" id="lab1">
-          <h2>Initialization</h2>
+          <h2>Car Application</h2>
           <p>Resources 1: <a href="../resources.html#initialization" target="_blank" class="resource-ref">How to initialize variable: fields vs contstructors</a></p>
-          <p>Resources 2: <a href="../resources.html#switch" target="_blank">How to use switch cases</a></p>
-          
+          <p>Resources 2: <a href="../resources.html#switch" target="_blank" class="resource-ref">How to use switch cases</a></p>
+          <p>Resources 3: <a href="../resources.html#this-keyword" target="_blank" class="resource-ref">How to use this() constructor</a></p>
+ 
 
 <h2>Instructions</h2>
 
@@ -174,9 +175,10 @@ a.resource-ref:hover {
     <p>Create a Java class called <code>Car</code> with the following requirements</p>
     <ul>
       <li><strong>Fields:</strong> Declare a <code>String make</code> and an <code>int year</code>.</li>
-      <li><strong>Field Initialization:</strong> Initialize <code>make</code> to <code>"Unknown"</code> at declaration.</li>
-      <li><strong>Constructor Initialization:</strong> Provide a constructor that accepts both <code>make</code> and <code>year</code> as parameters and assigns them accordingly.</li>
-      <li><strong>Display Method:</strong> Create a method <code>displayInfo()</code> that prints the car's details.</li>
+      <li><strong>Field Initialization:</strong> Initialize <code>make</code> to <code>"Unknown"</code> at declaration</li>
+      <li><strong>Constructor Initialization:</strong> Provide a constructor that accepts both <code>make</code> and <code>year</code> as parameters</li>
+      <li><strong>Constructor Invoking:</strong> Provide a parameterless constructor that invoke the constructor with parameters and provide some default values using <code>this</code></li>
+      <li><strong>Display Method:</strong> Create a method <code>displayInfo()</code> that prints the car's details</li>
     </ul>
     <p>Test your class by creating objects using both the default (field initialization) 
       and parameterized (constructor initialization) approaches.</p>
@@ -192,76 +194,231 @@ a.resource-ref:hover {
         </div>
         
         <div class="lab-section" id="lab2">
-          <h2>Exercise 2: Graphics</h2>
+          <h2>Exercise 2: Graphics with Swing</h2>
           
-          <p>
-            In this lab you will learn about Java interfaces and how they can help reduce duplicate code by defining a common contract. 
-            You will create an interface <code>Pet</code> with three common public methods and modify the provided classes (<code>Cat</code>, <code>Dog</code>, and <code>Fish</code>) 
-            so that they implement this interface. 
-            Then, you will refactor the rest of the code (including <code>Zookeeper</code> and <code>PetMain</code>).
-          </p>
-          <p>Download the zip file: <a href="pets.zip" target="_blank">pets.zip</a>
-            Import it as Archive file under your src folder - it will be shown as package named pets. alternatively, you can unzip and import files separately to your own package.</p>
-        <p>Note - if you notice an external file MACOX shown also, please delete it. </p>
-            <p>Run PetMain to see the current output. Use your UML plugin to see the classes schema and their relationships.</p>
-        <h3>Task 1: Create the Pet Interface</h3>
-            <p>
-              Create an interface called <code>Pet</code> that declares the following three methods:
-            </p>
-            <ul>
-              <li><code>public void eatFood();</code></li>
-              <li><code>public boolean isEating();</code></li>
-              <li><code>public String getName();</code></li>
-            </ul>
-            <p>
-              <strong>Note:</strong> Even though your original method names in the classes are <code>eatFood()</code>, <code>isEating()</code>, and <code>getName()</code>, 
-              ensure that the interface's method signatures exactly match these methods.
-            </p>
+  <section id="gettingStarted">
+    <h2>Getting Started</h2>
+    <p>Use the provided template <code>emptyFrameViewer</code> to create a new class MyViewer. 
+      This class creates a basic JFrame. Your task is to:</p>
+    <ol>
+      <li> Add a title to your JFrame </li>
 
-            <h3>Task 2: Modify the Pet Classes</h3>
-            <p>
-              Update the classes <code>Cat</code>, <code>Dog</code>, and <code>Fish</code> to implement the <code>Pet</code> interface. For each class:
-            </p>
-            <ul>
-              <li>Add <code>implements Pet</code> to the class declaration</li>
-              <li>Ensure that the methods <code>eatFood()</code>, <code>isEating()</code>, and <code>getName()</code> have the same signatures as declared in the interface</li>
-            </ul>
+        <li>Create an instance of <code>MyComponent</code> (the custom JComponent where you will implement drawing methods).</li>
+      <li>Add the <code>MyComponent</code> instance to the frame</li>
+      <li>Run the application first to test, then continue with the methods in <code>MyComponent</code></li>
+      <li>Your final application should be similar to the image MyViewerDisplayed.png provided in the same folder</li>
+    </ol>
+    
+  </section>
 
-            <h3>Task 3: Refactor Zookeeper</h3>
-            <p>
-              To remove duplicate code, modify the <code>Zookeeper</code> class so that it no longer has separate <code>feedCat</code>, <code>feedDog</code>, and <code>feedFish</code> methods. 
-              Instead, create a single method that accepts a <code>Pet</code> object. Recall - (Dog pet) vs (Pet pet).
-            </p>
-
-
-            <h3>Task 4: Update PetMain</h3>
-            <p>
-              Refactor the <code>PetMain</code> class to use a single <code>ArrayList</code> of type <code>Pet</code> instead of separate lists 
-              for each pet type. 
-              This will allow you to iterate through all pets in a unified way.
-            </p>
-
-            <p><p><strong>Note:</strong> In this PetMainclass, you'll notice that pet collections are declared as <code>List&lt;Pet&gt;</code> rather than a specific implementation. This practice, known as "programming to an interface," promotes flexibility and maintainability. For example, by initializing the list as <code>new ArrayList&lt;&gt;()</code>, you can later switch to a different list implementation (like <code>LinkedList</code>) 
-              without having to change the rest of your code. Use the same format whe you refactor: <code>private List&lt;Pet&gt; pets</code></p>
-            <p>
-              Note: The original <code>PetMain</code> had separate lists for cats, dogs, and fishes. Refactoring to a single list of type <code>Pet</code> reduces duplicate code and makes it easier to work with all pets uniformly.
-            </p>
-          </div>
-        
-          <h2>Submission Requirements</h2>
-          <ul>
-            <li>Create and submit the <code>Pet</code> interface file.</li>
-            <li>Submit the modified versions of <code>Cat</code>, <code>Dog</code>, and <code>Fish</code> implementing the <code>Pet</code> interface.</li>
-            <li>Submit the refactored <code>Zookeeper</code> and <code>PetMain</code> classes.</li>
-            <li>Ensure that your program compiles and runs, producing the expected output.</li>
-          </ul>
-        
-          <h2>Hints</h2>
-          <ul>
-            <li>Remember to use the <code>@Override</code> annotation when implementing interface methods.</li>
-            <li>Test your program by ensuring that feeding pets sets their <code>isEating</code> status to true and that the count of eating pets is correct.</li>
-            <li>Utilize polymorphism to reduce duplicate code.</li>
-          </ul>
+  <section id="drawSimpleSquare">
+    <h2>1. Method: <code>drawSimpleSquare(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a simple square. The square should be positioned at (10, 10) with a width and height of 10 pixels.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Create a <code>Rectangle</code> object using the given coordinates and dimensions.</li>
+      <li>Use the <code>g2d.draw()</code> method to draw the square.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>The <code>Rectangle</code> class (from <code>java.awt</code>) can be used to represent the square.</li>
+      <li>Remember that a square is just a rectangle with equal width and height.</li>
+    </ul>
+    <pre>
+// TODO: Implement drawSimpleSquare
+private void drawSimpleSquare(Graphics2D g2d) {
+    // Use constants: sqLocX = 10, sqLocY = 10, sqWidth = 10, sqHeight = 10
+    // Create a Rectangle and use g2d.draw(rectangle);
+}
+    </pre>
+  </section>
+  
+  <section id="drawManyRectangles">
+    <h2>2. Method: <code>drawManyRectangles(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a series of nested rectangles (squares) that increase in size. They should start at (25, 25) with an initial size of 10, and increase by 10 pixels each time.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Obtain the component's width (<code>this.getWidth()</code>). Then substryct the width of rectangle to obtain the limit. This will be the "length" you will use in your for loop </li>
+      <li>Use a <code>for</code> loop starting at 10 and increment the size by 10 until a limit is reached</li>
+      <li>In each iteration, create and draw a new <code>Rectangle</code> at (25, 25) with the current size</li>
+      <li>Draw each rectangle inside the for loop</li>
+      <li>Test the application - squares should fill up the frame regardless even if you stretch it</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>Keep the top-left corner constant at (25, 25)</li>
+      <li>The loop's variable represents both the width and height for each square</li>
+    </ul>
+    <pre>
+// TODO: Implement drawManyRectangles
+private void drawManyRectangles(Graphics2D g2d) {
+  
+    // Use a loop to create a new rectangle and to increment its size
+    // Note square is a rectangle with the same height and width
+}
+    </pre>
+  </section>
+  
+  <section id="drawShapesLines">
+    <h2>3. Method: <code>drawShapesLines(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a circle and two lines starting from the circle's center. One line should be diagonal (from northwest to southeast) and the other horizontal.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Use <code>Ellipse2D.Double</code> to create a circle located at (10, 400) with dimensions 30 x 30</li>
+      <li>Draw circle - if you do not see it it is because you need to stretch your frame window (or adjust the height of the frame): final int frameHeight = 600;</li>
+      <li>Calculate the center of the circle</li>
+      <li>Create a diagonal line that starts at the center and extends 40 pixels down and to the right.</li>
+      <li>Create a horizontal line from the center extending 40 pixels to the right</li>
+      <li>Draw both lines using <code>g2d.draw()</code></li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>Use the <code>Line2D.Double</code> class to define lines.</li>
+      <li>Calculate the center coordinates by adding half the width/height to the starting coordinates</li>
+      <pre>
+      CenterX = X + (Width / 2);
+      CenterY = Y + (Height / 2);
+    </pre>
+    </ul>
+    <pre>
+// TODO: Implement drawShapesLines
+private void drawShapesLines(Graphics2D g2d) {
+    // Create an Ellipse2D.Double for the circle and calculate its center
+    // Define two lines: one diagonal and one horizontal, then draw them
+}
+    </pre>
+  </section>
+  
+  <section id="drawSomeText">
+    <h2>4. Method: <code>drawSomeText(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Display the text "Some text" at a specified location, using a custom font, and then reset the font to the original.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Store the current font from the <code>Graphics2D</code> context.</li>
+      <li>Set a new font (e.g., "Times New Roman", plain, size 36) using <code>g2d.setFont()</code>.</li>
+      <li>Draw the text at coordinates (80, 440) using <code>g2d.drawString()</code>.</li>
+      <li>Reset the font back to the original font.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>Use the <code>Font</code> class to create a new font.</li>
+      <li>Restoring the original font is important for subsequent drawings.</li>
+    </ul>
+    <pre>
+// TODO: Implement drawSomeText
+private void drawSomeText(Graphics2D g2d) {
+    // Save the current font, set a new font, draw the text, then reset the font
+}
+    </pre>
+  </section>
+  
+  <section id="drawUsingColors">
+    <h2>5. Method: <code>drawUsingColors(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Fill the entire component with a semi-transparent background color.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Retrieve the component's width and height using <code>this.getWidth()</code> and <code>this.getHeight()</code>.</li>
+      <li>Save the current drawing color.</li>
+      <li>Set a new background color (for example, a semi-transparent purple).</li>
+      <li>Create a <code>Rectangle</code> covering the entire component and fill it using <code>g2d.fill()</code>.</li>
+      <li>Restore the original color.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>Use the <code>Color</code> constructor that accepts RGBA values.</li>
+      <li>Ensure you fill the entire area by using the component dimensions.</li>
+    </ul>
+    <pre>
+// TODO: Implement drawUsingColors
+private void drawUsingColors(Graphics2D g2d) {
+    // Fill the component background with a semi-transparent color and restore the original color
+}
+    </pre>
+  </section>
+  
+  <section id="drawUsingArc">
+    <h2>6. Method: <code>drawUsingArc(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a series of colored arcs to create a circular "Pac-Man" effect.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Set a degree step size (e.g., 15 degrees) for drawing each arc segment.</li>
+      <li>Compute a color step value to change colors gradually with each arc.</li>
+      <li>Within a loop, set a new color and draw an arc using <code>Arc2D.Double</code> with the PIE closure type.</li>
+      <li>Restore the original drawing color after the loop.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>Iterate over a range of angles (e.g., from 15° to 345°) using your degree step size.</li>
+      <li>Use <code>g2d.fill()</code> to draw solid arcs.</li>
+    </ul>
+    <pre>
+// TODO: Implement drawUsingArc
+private void drawUsingArc(Graphics2D g2d) {
+    // Use a loop to draw multiple arcs with gradually changing colors and restore the original color
+}
+    </pre>
+  </section>
+  
+  <section id="drawRoundedRect">
+    <h2>7. Method: <code>drawRoundedRect(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a filled rounded rectangle with a yellow color.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Define the position (10, 500), dimensions (80 x 40), and corner arc dimensions (15 x 15).</li>
+      <li>Save the current drawing color.</li>
+      <li>Create a <code>RoundRectangle2D.Double</code> with the specified parameters.</li>
+      <li>Set the color to yellow and fill the rectangle using <code>g2d.fill()</code>.</li>
+      <li>Restore the original color.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>The <code>RoundRectangle2D.Double</code> class is used for drawing rectangles with rounded corners.</li>
+    </ul>
+    <pre>
+// TODO: Implement drawRoundedRect
+private void drawRoundedRect(Graphics2D g2d) {
+    // Create a rounded rectangle and fill it with yellow color, then restore the original color
+}
+    </pre>
+  </section>
+  
+  <section id="paintComponent">
+    <h2>8. Method: <code>paintComponent(Graphics g)</code></h2>
+    <h3>Objective</h3>
+    <p>Override the <code>paintComponent</code> method to combine all your drawing methods and render your custom component.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Call <code>super.paintComponent(g)</code> to ensure proper rendering.</li>
+      <li>Cast the <code>Graphics</code> object to <code>Graphics2D</code>.</li>
+      <li>Invoke each of your drawing methods in the desired order.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>This method is automatically called by the Swing framework when the component needs to be repainted.</li>
+      <li>Make sure all helper methods are correctly implemented before integrating them here.</li>
+    </ul>
+    <pre>
+// TODO: Implement paintComponent
+@Override
+protected void paintComponent(Graphics g) {
+    // Always call super.paintComponent(g) first
+    // Cast g to Graphics2D and call your drawing methods
+}
+    </pre>
+  </section>
+  
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>By completing this lab, you'll gain hands-on experience with Java Swing graphics. Follow each instruction carefully and experiment with different values to see how they affect your drawing. Once you have implemented all methods, run your application using the <code>emptyFrameViewer</code> template to view your custom graphics!</p>
+    <p class="note">Note: Do not compare your solution with any provided answers until you have attempted the implementation on your own.</p>
+  </section>
   
       
         </div>
