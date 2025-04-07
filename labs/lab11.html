@@ -309,7 +309,58 @@ a.resource-ref:hover {
           </p>
         
         </div>
-  
+        <div class="lab-section" id="lab3">
+          <h2>Recursion with Triangular Shapes</h1>
+          <p>
+              In this lab, you will practice recursion by computing the area of a triangular shape composed of stacked unit squares.
+              The triangle is formed like this:
+          </p>
+          <pre>
+  []
+  [][]
+  [][][]
+  [][][][]
+          </pre>
+          
+          <h2>Objective</h2>
+          <p>
+              Your task is to implement a <code>Triangle</code> class that calculates its area using recursion.
+              The area is defined as the sum of the number of squares in each row.
+          </p>
+          
+          <h2>Instructions</h2>
+          <ol>
+              <li>
+                  <strong>Create the Triangle Class:</strong>
+                  <ul>
+                      <li>Define a private instance variable <code>width</code> (an integer) representing the number of rows in the triangle.</li>
+                      <li>Implement a constructor that accepts an integer parameter to initialize <code>width</code>.</li>
+                  </ul>
+              </li>
+              <li>
+                  <strong>Implement a Recursive Method:</strong>
+                  <ul>
+                      <li>Create a method (for example, <code>computeAreaRecursively</code>) that takes an integer parameter (representing the current row or width) and returns the area computed recursively.</li>
+                      <li>This method should include:
+                          <ol>
+                              <li>A <em>base case</em> to stop recursion (e.g., if the input width is less than 1, return 0).</li>
+                              <li>A <em>recursive case</em> that adds the current width to the area computed for <code>width - 1</code>.</li>
+                          </ol>
+                      </li>
+                  </ul>
+              </li>
+
+              <li>
+                  <strong>Test Your Implementation:</strong>
+                  <ul>
+                      <li>Add a <code>main</code> method in the same file as your <code>Triangle</code> class</li>
+                      <li>Create one or more instances of <code>Triangle</code> with various widths</li>
+                      <li>Print the computed area for each instance to verify that your recursive method works correctly</li>
+                  </ul>
+              </li>
+          </ol>
+
+        </div>
       
         </div>
         </div>
