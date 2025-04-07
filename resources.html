@@ -177,6 +177,8 @@
         <dd><a href="#interface">Understanding Interfaces</a></dd>
         <dd><a href="#initialization">Understanding Initialization</a></dd>
         <dd><a href="#uml-rules">Understanding UML Models</a></dd>
+        <dd><a href="#swing">Basics Swing Graphics</a></dd>
+        <dd><a href="#transform">Graphics Transform</a></dd>
         
         
         
@@ -1445,6 +1447,172 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
             </li>
           </ul>
         </p>
-  </div>
+
+</section>
+
+<section id="swing">
+    <h2 style="color:black">Creating JPanel, JComponent, and Layouts in JFrame</h1>
+    <p>
+        In Java Swing, you can build GUI applications by combining components like <code style="color:red">JPanel</code> and <code style="color:red">JComponent</code> 
+        within a <code style="color:red">JFrame</code>. You also use layout managers to control the positioning of these components.
+    </p>
+    
+    <h3>JFrame and Layout Managers</h3>
+    <p>
+        A JFrame is the top-level container for your Swing application. 
+        You add your panels or custom components 
+        to the JFrame's content pane and 
+        manage their layout using layout managers like <code style="color:red">FlowLayout</code>, <code style="color:red">BorderLayout</code>, 
+        <code style="color:red">GridLayout</code>, or <code style="color:red">BoxLayout</code>.
+    </p>
+    <pre><code>
+// Create a JFrame and set its layout (BorderLayout is the default for JFrame's content pane)
+JFrame frame = new JFrame("My Application");
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setLayout(new BorderLayout());
+
+// Add components (JPanel or custom JComponent) to the frame
+frame.add(new MyPanel(), BorderLayout.CENTER);
+
+frame.pack();
+frame.setLocationRelativeTo(null);
+frame.setVisible(true);
+    </code></pre>
+    
+    <h3>JPanel vs. JComponent</h3>
+    <p>
+        <strong>JPanel</strong>:
+    </p>
+    <ul>
+        <li>
+            Used as a container to group and organize other components
+        </li>
+        <li>
+            Has a default layout manager (FlowLayout) which can be changed as needed
+        </li>
+    </ul>
+    <p>
+        <strong>JComponent</strong>:
+    </p>
+    <ul>
+        <li>
+            The base class for most Swing components
+        </li>
+        <li>
+            Typically extended to create custom components where you override the <code style="color:red">paintComponent</code> method for custom drawing
+        </li>
+        <li>
+            Does not come with a layout manager by default
+        </li>
+    </ul>
+    
+    <h3>When to Use Which</h3>
+    <p>
+        Use <code style="color:red">JPanel</code> when you need a container to hold and organize multiple components using a layout manager. 
+        Use <code style="color:red">JComponent</code> when you need a custom drawing area or a component with specialized painting behavior. 
+        Often, you'll extend <code style="color:red">JComponent</code> to create custom graphics and then add that component to a <code style="color:red">JPanel</code> if you need to combine it with other controls.
+    </p>
+    
+    <h3>Example: Custom Component in a Panel</h3>
+    <p>
+        Below is an example demonstrating a custom component (extending <code style="color:red">JComponent</code>) added to a <code style="color:red">JPanel</code> 
+        that is then added to a <code style="color:red">JFrame</code>:
+    </p>
+    <pre><code>
+import javax.swing.*;
+import java.awt.*;
+
+// Custom component with custom painting
+class MyCustomComponent extends JComponent {
+@Override
+protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    // Custom drawing code here
+    g.setColor(Color.BLUE);
+    g.fillRect(10, 10, 80, 80);
+}
+}
+
+// JPanel used as a container for components
+class MyPanel extends JPanel {
+public MyPanel() {
+    // Add a label and a custom component
+    add(new JLabel("Hello Swing!"));
+    add(new MyCustomComponent());
+}
+}
+
+public class MainApp {
+public static void main(String[] args) {
+    JFrame frame = new JFrame("My Application");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setLayout(new BorderLayout());
+    frame.add(new MyPanel(), BorderLayout.CENTER);
+    frame.pack();
+    frame.setLocationRelativeTo(null);
+    frame.setVisible(true);
+}
+}
+    </code></pre>
+    
+    <p>
+        This example shows how you can combine standard containers (<code>JPanel</code>) with custom components (<code>JComponent</code>) and manage them within a <code>JFrame</code> using layout managers.
+    </p>
+</section>
+  <section id="transform">
+    <h1 style="color:black">Translation and Rotation in Java Swing</h1>
+    <p>
+        In Java Swing, you can use the <code style="color:red">Graphics2D</code> class to manipulate the coordinate system.
+        Two common operations are <code style="color:red">translate</code> (to move the origin) and <code style="color:red">rotate</code> (to rotate the drawing context).
+        This allows you to reposition and reorient your drawings easily.
+    </p>
+    
+    <h3>Translation Example</h3>
+    <p>
+        The example below shows how to translate the graphics context to the center of the panel:
+    </p>
+    <pre><code>
+int xOffset = getWidth() / 2;
+int yOffset = getHeight() / 2;
+g2d.translate(xOffset, yOffset);
+    </code></pre>
+    
+    <h3>Rotation Example</h3>
+    <p>
+        You can rotate the coordinate system. Here is how you rotate by 45 degrees:
+    </p>
+    <pre><code>
+g2d.rotate(Math.toRadians(45));
+    </code></pre>
+    <h3>Undoing Transformation</h3>
+        <p>
+            There are two common approaches to undo transformations:
+        </p>
+        <ol>
+            <li>
+                <strong>Using Negative Values:</strong> You can undo a translation or rotation by applying the opposite operation:
+                <pre><code>
+g2d.translate(-xOffset, -yOffset);
+g2d.rotate(-Math.toRadians(45));
+                </code></pre> 
+               
+            </li>
+            <li>
+                <strong>Using <code style="color:red">getTransform</code> and <code style="color:red">setTransform</code>:</strong> 
+ <pre><code>
+// Save the original transformation
+AffineTransform originalTransform = g2d.getTransform();
+
+// restore the original
+g2d.setTransform(originalTransform);
+ </code></pre>               
+               
+            </li>
+        </ol>
+
+  </section>
+
+
+
   </body>
 </html>

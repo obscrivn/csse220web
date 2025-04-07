@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 11</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Translating Graphics</a></li>
+          <li><a href="#lab2">02. Rotating Graphics</a></li>
+          <li><a href="#lab3">03. Recursion</a></li>
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+  <h2>Getting Started</h2>
+<p>Use the provided zip and import as existing project: <a href="./Lab11.zip">Donwload Zip</a></p>
+
+
+  
+
+        <div class="lab-section" id="lab1">
+          <h2>Translating and Refactoring a Face Drawing</h2>
+          <p>Resources 1: <a href="../resources.html#transform" target="_blank" class="resource-ref">How to Transform Graphics</a></p>
+          <p>Resources 2: <a href="../resources.html#swin g" target="_blank" class="resource-ref">Basics Swing Graphics</a></p>
+          
+ 
+          <p>For this lab, use the translaterotate package from the project you have imported. You will work with a Java Swing component that draws a face. Your task is twofold:</p>
+          <h2>Instructions</h2>
+          <h3>Step 1: Centering the Face with Translation</h3>
+          <p>
+              You are provided with a <code>TranslateComponent.java</code> file that draws a face (a rectangle for the face, two eyes, and a nose). However, the face is currently drawn with its upper-left corner at (0, 0). 
+          </p>
+          <p>
+              <strong>Your Task:</strong> Modify the <code>paintComponent(Graphics g)</code> method to use a <code>translate</code> command so that the face always appears centered in the window. Use <code>this.getWidth()</code> and <code>this.getHeight()</code> to compute the correct offsets.
+          </p>
+
+          
+          <h3>Step 2: Refactoring Your Code</h3>
+          <p>
+              After you have successfully centered your face drawing, refactor your code to improve its structure and readability by breaking it into methods. This makes your code modular and easier to maintain.
+          </p>
+          <p>
+              <strong>Create the following methods:</strong>
+          </p>
+          <ol>
+              <li>
+                  <code>drawFace(Graphics2D g2d)</code> – Draws the rectangle representing the face
+              </li>
+              <li>
+                  <code>drawLeftEye(Graphics2D g2d)</code> – Draws the left eye
+              </li>
+              <li>
+                  <code>drawRightEye(Graphics2D g2d)</code> – Draws the right eye
+              </li>
+              <li>
+                  <code>drawNose(Graphics2D g2d)</code> – Draws the nose
+              </li>
+          </ol>
+          <h4>Encapsulation</h4>
+<p>
+        These methods are declared as <code>private</code> and <code>void</code>:
+      </p>
+      <ul>
+          <li>
+              <strong>Encapsulation:</strong> They are internal to the class and not intended to be accessed from outside. This keeps the public interface of your class clean.
+          </li>
+          <li>
+              <strong>Implementation Hiding:</strong> Declaring these methods as private prevents other classes from relying on these internal details. This means you can change the implementation later without affecting other parts of your program.
+          </li>
+
+      </ul>
+      
+      <h4>Passing the Graphics Object and Local Variable Initialization</h4>
+      <p>
+        You only pass the <code>Graphics2D</code> object to each method. This object is initialized in the <code>paintComponent</code> method and contains the current state (like transformations) needed for drawing.
+      </p>
+      <p>
+          Inside each method, you declare and initialize the local variables specific to that drawing task. 
+          For example, in the method to draw the right eye, the coordinates and dimensions are defined locally:
+      </p>
+      <pre>
+    // Draw right eye	 Original Implementation	
+    int rightEyeLocX = 130;
+    int rightEyeLocY = 20;
+    int eyeWidth = 50;
+    int eyeHeight = 50;
+    g2d.drawRect(rightEyeLocX, rightEyeLocY, eyeWidth, eyeHeight);
+
+   // Refactored Implementation
+  private void drawRightEye(Graphics2D g2d) {
+      int rightEyeLocX = 130;
+      int rightEyeLocY = 20;
+      int eyeWidth = 50;
+      int eyeHeight = 50;
+      g2d.drawRect(rightEyeLocX, rightEyeLocY, eyeWidth, eyeHeight);
+  }
+      </pre>
+      <p>
+          This design ensures that each method is self-contained, handling its own drawing logic using the shared <code>Graphics2D</code> context.
+      </p>
+      <h3>Paint Component</h3>
+          <p>
+              In your <code>paintComponent</code> method, call these methods in the appropriate order to draw the face. The translation commands should be applied before these method calls and undone afterward.
+          </p>
+          
+          
+          <p>Your <code>paintComponent</code> method should be structured similarly to the following example:</p>
+          <pre>
+      @Override
+      protected void paintComponent(Graphics g) {
+          super.paintComponent(g);
+          Graphics2D g2d = (Graphics2D) g;
+          
+          // Calculate offsets to center the face
+          // tarnslate
+          
+          // Draw the face and its features
+          drawFace(g2d);
+          drawLeftEye(g2d);
+          drawRightEye(g2d);
+          drawNose(g2d);
+          
+          // Undo the translation
+      }
+          </pre>
+          
+         
+
+</div>
+        
+        <div class="lab-section" id="lab2">
+          <h2 style="color:black">Rotating a Face</h2>
+        <p>
+            In this lab, you will work with a Swing component that draws a face and applies rotation. 
+            You are provided with a starting file 
+            (<code>RotateComponent.java</code>)
+        </p>
+        
+        <h3>Task 1: Experiment with Rotation</h3>
+        <p>
+            In the provided code, there is a variable <code>degreesToRotate</code> that controls the angle of rotation. Modify this value 
+            (for example, try 0, 30, 60, or 90 degrees) to observe how the rotation affects the drawn face.
+        </p>
+
+        
+        <h3>Task 2: Rotate Around the Face's Center</h3>
+        <p>
+            Currently, the face rotates around its upper-left corner. Modify the code so that the rotation occurs around the center of the face.
+        </p>
+        <ul>
+            <li>
+                <strong>Hint:</strong> To rotate around the center, adjust the drawing coordinates. 
+            
+        </ul>
+        
+        
+        <h3>Undoing Transformations</h3>
+        <p>
+            After applying translations and rotations, it is important to undo these transformations to avoid affecting subsequent drawing operations.
+        </p>
+        <h3>Step 3: Refactoring Your Code</h3>
+          <p>
+              After you have successfully applied rotation your face drawing, refactor your code to improve its structure and readability by breaking it into methods similar to the above section of the lab.
+          </p>
+        
+        </div>
+  
+      
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>

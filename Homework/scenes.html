@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>scenes</title>
+    <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+    <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+  <style>
+    /* Header styling */
+    #header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    }
+  </style>
+  </head>
+  <body>
+    <div id="header">
+      <a id="index_link" href="../index.html">CSSE 220</a>
+      <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+      <a id="schedule_link" href="../schedule.html">Schedule</a>
+      <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+      <a id="quiz_link" href="../labs.html">Labs</a>
+      <a id="quiz_link" href="../homework.html">Homework</a>
+      <a id="quiz_link" href="../exams.html">Exams</a>
+      <a id="quiz_link" href="../project.html">Final Project</a>
+      <a id="resources_link" href="../resources.html">Resources</a>
+      <div style="clear:both;"></div>
+  </div>
+
+    <div id="content">
+      <h1>Homework Scenes</h1>
+      
+  
+      <h2>How to Import a ZIP File into Eclipse</h1>
+        <p>Follow these steps to import a ZIP file containing an Eclipse project:</p>
+        <ol>
+          <li>
+            <strong>Download the ZIP File (containing a project)</strong> to your computer but do not place in the eclipse workspace folder: 
+            <a href="HWScenes.zip">Click here to donwload ZIP</a>
+          </li>
+          <li>
+            <strong>Open Eclipse:</strong> <em>You do not need to create a new project</em> because the ZIP file contains an existing project.
+          </li>
+          <li>
+            <strong>Import the Project:</strong>
+            <ol>
+              <li>Click on <code>File</code> in the menu bar and select <code>Import...</code>.</li>
+              <li>In the Import Wizard, expand the <strong>General</strong> category and select <strong>Existing Projects into Workspace</strong>. Click <strong>Next</strong>.</li>
+              <li>Select the <strong>Select archive file</strong> option and click the <strong>Browse...</strong> button</li>
+              <li>Navigate to the location where you saved the ZIP file, select it, and click <strong>Open</strong></li>
+              <li>The wizard will display the project(s) contained in the ZIP file. Make sure the desired project is checked</li>
+              <li>Check if the box <strong>Copy projects into workspace</strong> is selected</li>
+              <li>Click <strong>Finish</strong> to complete the import process</li>
+            </ol>
+          </li>
+          <li>
+            <strong>Verify the Imported Project:</strong> The project should now appear in your Package Explorer. Double-click it to open and review its contents.
+          </li>
+        </ol>
+        
+        <h2>Overview</h2>
+  <ul>
+    <li>This exercise is intended to give you practice with Java Swing graphics and will help you with the term project</li>
+    <li>This is a group exercise/assignment</li>
+  </ul>
+
+  <h2>Rubric</h2>
+  <p>
+    To earn a 100% for the assignment, your application must draw each of the images <em>similar</em> to the samples provided for Stages 1–4.
+  </p>
+  <ul>
+    <li>Images for Stages 1, 2, and 3: 20% each</li>
+    <li>Stage 4 image: 40%</li>
+    <li>Total: 100%</li>
+  </ul>
+  <p>
+    Images will be evaluated on: (1) shape, (2) color, (3) individual lines, (4) rotations, and (5) placement.
+  </p>
+  <p>
+    <strong>Penalty Guidelines:</strong>
+  </p>
+  <ul>
+    <li>1 aspect not similar: -10% for that image</li>
+    <li>2 aspects not similar: -25% for that image</li>
+    <li>3 aspects not similar: -50% for that image</li>
+    <li>4 aspects not similar: -100% for that image</li>
+  </ul>
+  <p>
+    <strong>Example:</strong> If Stage 1 and 2 images are similar (20 points each), Stage 3 image has 2 aspects not similar (0.75 × 20 = 15 points), and Stage 4 image has 3 aspects not similar (0.50 × 40 = 20 points), then total score = 20 + 20 + 15 + 20 = 75 points.
+  </p>
+
+  <h2>Assignment Parts</h2>
+  <ol>
+    <li>
+      <strong>Part 1:</strong>
+      <ul>
+        <li>Stage 1 – Draw Houses: <em>HouseViewer</em> should draw an image similar to the sample below.</li>
+        <li>Stage 2 – Draw Trees: <em>PineTreesViewer</em> should draw an image similar to the sample below.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Part 2:</strong>
+      <ul>
+        <li>Stage 3 – Draw Suns: <em>SunViewer</em> should draw an image similar to the sample below</li>
+        <li>Stage 4 – Draw Scene: <em>SceneViewer</em> should draw an image similar to the sample below</li>
+        <li>Stage 5 – Draw Faces: <em>SceneViewer</em> should draw an image similar to the sample below</li>
+      
+      </ul>
+    </li>
+  </ol>
+  
+
+  <h2>To Do</h2>
+  <ol>
+    
+    <li>Stage 0</li>
+    <li>Stage 1</li>
+    <li>Stage 2a and 2b</li>
+    <li>Stage 3a, 3b, and 3c</li>
+    <li>Stage 4a, 4b, and 4c</li>
+    <li>Stage 5</li>
+  </ol>
+
+  <h2>Stage 0 – Study Your Goal</h2>
+  <p>
+    In the final stage, you will draw a scene consisting of houses, trees, a sun, and a background with sky and grass. You will start by drawing these elements in isolation and then combine them.
+  </p>
+  <p>
+    <img src="images/SceneWithRandomTrees.png" alt="Scene with Houses, Trees, and Sun" class="image">
+  </p>
+  <p>
+    <strong>Houses:</strong> Consider three classes:
+  </p>
+  <ul>
+    <li><strong>House</strong>: Allows specification of the (x, y) position (upper-left corner of the house body) and its color. The class includes a <code>drawOn(Graphics2D graphics2)</code> method.</li>
+    <li><strong>HousesComponent</strong>: Draws multiple House objects.</li>
+    <li><strong>HousesViewer</strong>: Constructs and displays a HousesComponent.</li>
+  </ul>
+
+  <h2>Part 1: Stage 1 – Draw Houses</h2>
+  <p>
+    <img src="images/Houses.png" alt="Sample Houses Image" class="image">
+  </p>
+  <p>
+    You are provided with the <strong>House</strong>, <strong>HousesViewer</strong>, and <strong>HousesComponent</strong> classes.
+  </p>
+  <ul>
+    <li>Implement the House constructor.</li>
+    <li>Implement the <code>drawOn(Graphics2D graphics2)</code> method in House. Use a filled rectangle and two additional lines to draw the roof. The house dimensions are fixed:
+      <ul>
+        <li>Width: 100 pixels</li>
+        <li>Height: 50 pixels</li>
+        <li>Roof Height: 20 pixels (the top of the roof is 20 pixels above the given y-coordinate)</li>
+      </ul>
+    </li>
+    <li>Running the HousesViewer should display an image similar to the sample above.</li>
+  </ul>
+
+  <h2>Part 1:  Stage 2a – Create PineTreesViewer and PineTreesComponent</h2>
+  <ul>
+    <li>Create a class <strong>PineTreesViewer</strong> (with a main method) and another class <strong>PineTreesComponent</strong> (extending JComponent).</li>
+    <li>Set the PineTreesViewer frame size to 500×400.</li>
+    <li>Override the <code>paintComponent</code> method in PineTreesComponent. Remember to call <code>super.paintComponent(graphics);</code>.</li>
+  </ul>
+
+  <h2>Part 1: Stage 2b – Creating the PineTree Class</h2>
+  <p>
+    Before drawing a PineTree, note the following:
+  </p>
+  <ul>
+    <li>The PineTree constructor should take four parameters: x, y, width, and height. These represent the upper-left corner and dimensions of the bounding box for the tree.</li>
+    <li>The trunk width is 1/3 of the box width and its height is 1/3 of the box height.</li>
+    <li>The branches (drawn as a triangle) take up the full width and 2/3 of the height.</li>
+    <li>Colors:
+      <ul>
+        <li>Trunk: brown (<code>new Color(145, 112, 33)</code>)</li>
+        <li>Branches: green (<code>new Color(40, 135, 22)</code>)</li>
+      </ul>
+    </li>
+  </ul>
+  <p>
+    In PineTreesComponent's <code>paintComponent</code>:
+  </p>
+  <ul>
+    <li>Create a PineTree instance using your constructor and call its <code>drawOn</code> method.</li>
+    <li>Draw a second tree, half as tall and positioned so that the bottoms of the trunks align.</li>
+    <li>For your final submission, update <code>paintComponent</code> to:
+      <pre><code>
+@Override
+protected void paintComponent(Graphics graphics) {
+  super.paintComponent(graphics);
+  Graphics2D graphics2 = (Graphics2D) graphics;
+
+  PineTree tree = new PineTree(100, 100, 100, 200);
+  tree.drawOn(graphics2);
+
+  PineTree littleTree = new PineTree(300, 200, 50, 100);
+  littleTree.drawOn(graphics2);
+}
+      </code></pre>
+    </li>
+  </ul>
+  <p>
+    The output should look similar to the sample image below:
+  </p>
+  <p>
+    <img src="images/Trees.png" alt="Sample Trees Image" class="image">
+  </p>
+
+  <h2 id="Part2">Part 2: Stage 3a – Create SunViewer and SunComponent</h2>
+  <ul>
+    <li>Create <strong>SunViewer</strong> (with a main method) and <strong>SunComponent</strong> (extending JComponent).</li>
+    <li>Set the SunViewer frame size to 750×600.</li>
+    <li>Override <code>paintComponent</code> in SunComponent.</li>
+    <li>Define the following constants in SunComponent:
+      <pre><code>
+private static final double LITTLE_SUNS_X_OFFSET = 50;
+private static final double LITTLE_SUN_SIZE = 30.0;
+private static final double LITTLE_SUN_SEPARATION = 100.0;
+private static final int NUM_LITTLE_SUNS = 5;
+private static final double LITTLE_SUNS_Y = 400.0;
+private static final Color LITTLE_SUN_COLOR = Color.RED;
+      </code></pre>
+    </li>
+  </ul>
+
+  <h2>Part 2: Stage 3b – Creating the Sun Class</h2>
+  <ul>
+    <li>The Sun’s x and y values represent the upper-left corner of the bounding box for its center circle.</li>
+    <li>
+      The space between the center circle and its rays is 20% of the circle’s diameter.
+    </li>
+    <li>
+      The ray length is 50% of the Sun’s diameter; the ray width is 10%.
+    </li>
+    <li>
+      Create the <strong>Sun</strong> class with:
+      <ul>
+        <li>Constants (e.g., <code>BORDER_COLOR</code>, <code>NUMBER_OF_RAYS</code>, <code>RAY_LENGTH_SCALE</code>, etc.)</li>
+        <li>Instance fields: <code>x</code>, <code>y</code>, <code>circleDiameter</code>, <code>rayLength</code>, <code>rayWidth</code>, <code>rayDistanceFromSun</code>, and <code>color</code>.</li>
+        <li>A default constructor and an overloaded constructor with parameters (<code>x, y, circleDiameter, color</code>).</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>Part 2: Stage 3c – Draw a Sun</h2>
+  <p>
+    Your Sun should appear in two forms:
+  </p>
+  <ul>
+    <li><strong>Without Rays:</strong> A filled circle with a border.</li>
+    <li><strong>With Rays:</strong> The center circle plus rays drawn using a helper method (e.g., <code>drawRay(Graphics2D g2d, double angle)</code>).</li>
+  </ul>
+  <p>
+    Sample images:
+  </p>
+  <p>
+    <img src="images/Suns1.png" alt="Default Sun without rays" class="image">
+    <img src="images/Suns2.png" alt="Default Sun with rays" class="image">
+  </p>
+
+  <h2>Part 2: Stage 3d – Draw More Suns</h2>
+  <ul>
+    <li>Test your positioning by drawing guide rectangles in SunComponent’s <code>paintComponent</code> method.</li>
+    <li>Create multiple little Suns using a loop. Their x positions should start at <code>LITTLE_SUNS_X_OFFSET</code> and be separated by <code>LITTLE_SUN_SEPARATION</code>. They should be drawn in <code>LITTLE_SUN_COLOR</code>.</li>
+    <li>For your final submission, ensure <code>paintComponent()</code> matches the provided sample code:
+      <pre><code>
+@Override
+protected void paintComponent(Graphics g) {
+  super.paintComponent(g);
+  Graphics2D g2 = (Graphics2D)g;
+  Sun s = new Sun();
+  s.drawOn(g2);
+  g2.drawRect(30, 30, 240, 240);
+  s = new Sun(550, 100, 50, Color.BLUE);
+  s.drawOn(g2);
+  g2.drawRect(515, 65, 120, 120);
+  double x = SunComponent.LITTLE_SUNS_X_OFFSET;
+  for (int i = 0; i < SunComponent.NUM_LITTLE_SUNS; i++) {	
+      s = new Sun(x, SunComponent.LITTLE_SUNS_Y, SunComponent.LITTLE_SUN_SIZE, SunComponent.LITTLE_SUN_COLOR);
+      s.drawOn(g2);
+      x += SunComponent.LITTLE_SUN_SEPARATION;
+  }
+}
+      </code></pre>
+    </li>
+  </ul>
+
+  <h2>Part 2: Stage 4a – Create SceneViewer and SceneComponent</h2>
+  <ul>
+    <li>Create <strong>SceneViewer</strong> and <strong>SceneComponent</strong> (like Houses, PineTrees, and Suns). Note: There is no Scene class.</li>
+    <li>Set the frame size to 750×600.</li>
+  </ul>
+
+  <h2>Stage 4b – Create a Scene</h2>
+  <ul>
+    <li>Draw a blue rectangle for the sky in the upper 375 pixels.</li>
+    <li>Draw a green rectangle for the grass in the remaining area.</li>
+  </ul>
+
+  <h2>Part 2: Stage 4c – Finish the Scene</h2>
+  <p>
+    <img src="images/SceneWithTrees.png" alt="Scene with trees" class="image">
+  </p>
+  <ul>
+    <li>Add a Sun at its default location to the SceneComponent.</li>
+    <li>Create a row of red houses in the foreground, evenly spaced using loops.</li>
+    <li>Create a row of 25 little pine trees (10×40 pixels) behind the houses on the horizon.</li>
+    <li>Create a row of 15 bigger pine trees (20×80 pixels) in front of the first trees.</li>
+    <li>(Optional) Randomize the x and y coordinates of the trees slightly for a natural look.</li>
+  </ul>
+
+  <h2>Part 2: Stage 5 – Rotatable Faces</h2>
+  <p>
+    <img src="images/FacesWhenFinished.png" alt="Translated and rotated faces" class="image">
+  </p>
+  <ul>
+    <li>Create a <strong>Face</strong> class, <strong>FacesViewer</strong> class, and <strong>FacesComponent</strong> class.</li>
+    <li>Use an <code>Arc2D.Double</code> for the mouth. Refer to the provided <a href="images/GeometryOfAFace.pdf" target="_blank">Geometry of a Face diagram</a> for dimensions.</li>
+    <li>Draw several faces (in upright position) with varying sizes, colors, and positions to thoroughly test your classes.</li>
+    <li>Implement a <code>translate(double x, double y)</code> method in the Face class to update its coordinates. (This should only change the face’s coordinates.)</li>
+    <li>Implement a <code>rotate(double angleToRotate)</code> method in the Face class to update a field storing the rotation angle. Test this by calling it in a loop within FacesComponent.</li>
+    <li>
+      <strong>Hint:</strong> Because faces and eyes are drawn as circles (<code>Ellipse2D.Double</code>), consider temporarily switching to squares (<code>Rectangle2D.Double</code>) to better observe rotation. Remember to change back before submission.
+    </li>
+  </ul>
+
+  <h2>Submission Guidelines</h2>
+  <ul>
+    <li>Your final submission should include all stages (0–5)</li>
+    <li>Ensure your code draws images similar to the samples provided for each stage</li>
+    <li>Follow the instructions carefully, especially the specifications for shapes, colors, rotations, and placements</li>
+    <li>See gradescope for submissions</li>
+  </ul>
+</div>
+  </body>
+</html>
