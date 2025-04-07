@@ -307,6 +307,20 @@ a.resource-ref:hover {
           <p>
               After you have successfully applied rotation your face drawing, refactor your code to improve its structure and readability by breaking it into methods similar to the above section of the lab.
           </p>
+          <ol>
+            <li>
+                <code>void drawCenteredFace(Graphics2D g2d, int faceLocX, int faceLocY, int faceWidth, int faceHeight)</code> – Draws the rectangle representing the face
+            </li>
+            <li>
+                <code>drawLeftEye(Graphics2D g2d, int faceLocX, int faceLocY)</code> – Draws the left eye on g2d w.r.t. faceLocX and faceLocY
+            </li>
+            <li>
+                <code>drawRightEye(Graphics2D g2d, int faceLocX, int faceLocY)</code> – Draws the right eye on g2d w.r.t. faceLocX and faceLocY
+            </li>
+            <li>
+                <code>drawNose(Graphics2D g2d, int faceLocX, int faceLocY)</code> – Draws the nose w.r.t. faceLocX and faceLocY
+            </li>
+        </ol>
         
         </div>
         <div class="lab-section" id="lab3">
