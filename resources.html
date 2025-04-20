@@ -148,6 +148,7 @@
     <div class="toc">
       <h2>Table of Contents</h2>
       <dl>
+        <p style="color:white">Basics</p>
         <dd><a href="#syntax">Java Syntax</a></dd>
         <dd><a href="#java-types">Primitive Data Types</a></dd>
         <dd><a href="#data-type">How to Determine Data Types</a></dd>
@@ -157,19 +158,19 @@
         <dd><a href="#printf">Print Formatting</a></dd>
         <dd><a href="#conditionals">Conditionals</a></dd>
         <dd><a href="#switch-cases">How to use switch cases</a></dd>
-        
-        <dd><a href="#return">Void, Return, Calling Methods</a></dd>
         <dd><a href="#string-methods">String, Length, Substring</a></dd>
         <dd><a href="#int-to-string">Convert Int to String</a></dd>
         <dd><a href="#casting">Casting</a></dd>
         <dd><a href="#arrays">Arrays and ArrayList</a></dd>
         <dd><a href="#hashmap">HasMaps</a></dd>
-        
         <dd><a href="#size">Length vs Size</a></dd>
         <dd><a href="#heterogeneous">Heterogeneous Array List</a></dd>
         <dd><a href="#math">Math Library</a></dd>
         <dd><a href="#javadoc">Understanding Javadocs</a></dd>
         <dd><a href="#scanner">How to Use Scanner</a></dd>
+        <dd><a href="#recursion">Recursion</a></dd>
+        <p style="color:white">Classes And Methods</p>
+        <dd><a href="#return">Void, Return, Calling Methods</a></dd>
         <dd><a href="#fields">Understanding Fields in Classes</a></dd>
         <dd><a href="#static">Understanding Static Modifier</a></dd>
         <dd><a href="#this-keyword">Understanding This Keyword</a></dd>
@@ -177,8 +178,15 @@
         <dd><a href="#interface">Understanding Interfaces</a></dd>
         <dd><a href="#initialization">Understanding Initialization</a></dd>
         <dd><a href="#uml-rules">Understanding UML Models</a></dd>
+
+        <p style="color:white"> Graphics</p>
+        <dd><a href="#jframe">Making JFrame</a></dd>
+        <dd><a href="#painting">Paint Components: JPanel, JComponent</a></dd>
+        <dd><a href="#threads">Swing Threads</a></dd>
         <dd><a href="#swing">Basics Swing Graphics</a></dd>
         <dd><a href="#transform">Graphics Transform</a></dd>
+        <dd><a href="#events">Event Handling</a></dd>
+        
         
         
         
@@ -250,7 +258,8 @@ System.out.println("The number is: " + myNumber);</code></pre>
         <dd><code>char c = 'A';</code></dd>
       </dl>
       <p>
-        In addition to these primitive types, Java uses the <strong>String</strong> class to represent sequences of characters. Strings are objects, not primitives, and are immutable, meaning once created their values cannot be changed. They provide a wide array of methods for string manipulation such as concatenation, substring extraction, and searching.
+        In addition to these primitive types, Java uses the <strong>String</strong> class to represent sequences of characters. Strings are objects, not primitives, and are immutable, meaning once created their values cannot be changed. They provide a wide array of methods for 
+        string manipulation such as concatenation, substring extraction, and searching.
       </p>
     <dl>
       <dt>String</dt>
@@ -453,7 +462,12 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
             <strong>substring(int beginIndex, int endIndex)</strong>: Returns a new string that is a portion of 
             the original string, 
             starting at <strong><code style="color:darkred">beginIndex</code></strong> (inclusive) and 
-            ending at <strong><code style="color:darkred">endIndex</code></strong> (exclusive).
+            ending at <strong><code style="color:darkred">endIndex</code></strong> (exclusive)
+          </li>
+          <li>
+            <strong>substring(int beginIndex)</strong>: Returns a new string that is a portion of 
+            the original string, 
+            starting at <strong><code style="color:darkred">beginIndex</code></strong> till the end of the string (inclusive)
           </li>
           <li>
             <strong>charAt(int index)</strong>: Returns the character at 
@@ -1209,6 +1223,67 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
         </li>
       </ul>
     </section>
+<section id="recursion">
+    <h2 style="color:black">Key Concepts in Recursion</h2>
+    <ul>
+      <li>
+        <strong>Base Case:</strong> The condition that stops the recursive calls. Without a base case, recursion would continue indefinitely.
+      </li>
+      <li>
+        <strong>Recursive Case:</strong> The part of the method where the function calls itself with a smaller or simpler input.
+      </li>
+      <li>
+        <strong>Helper Methods:</strong> Sometimes used to hide additional parameters that manage state in recursion
+      </li>
+    </ul>
+  
+    <h3>Example 1: Void Recursion Method</h3>
+    <p>
+      This example demonstrates a recursive method that prints a countdown from <code style="color:black">n</code> to 1 and then prints "Lift off!".
+    </p>
+    <pre><code>public void printCountdown(int n) {
+      if (n <= 0) {
+          System.out.println("Lift off!");
+      } else {
+          System.out.println(n);
+          printCountdown(n - 1); // Recursive call
+      }
+  }</code></pre>
+  
+    <h3>Example 2: Recursion with Return</h3>
+    <p>
+      In this example, the recursive method calculates the factorial of a number. 
+      The factorial of a number <code style="color:red">n</code> (denoted as n!) is the product of all positive integers less than or equal to n.
+    </p>
+    <pre><code>public int factorial(int n) {
+      if (n <= 1) {
+          return 1; // Base case
+      } else {
+          return n * factorial(n - 1); // Recursive call with return value
+      }
+  }</code></pre>
+  
+    <h3>Example 3: Recursion with a Helper Function</h3>
+    <p>
+      Sometimes a helper function is used to manage 
+      extra parameters that keep track of state during recursion. 
+      In this example, we compute the sum of all numbers from 1 up to n using a helper method.
+    </p>
+    <pre><code>public int sumUpTo(int n) {
+      return sumHelper(n, 0);
+  }
+  
+  private int sumHelper(int n, int accumulator) {
+      if (n == 0) {
+          return accumulator; // Base case: no more numbers to add
+      } else {
+          return sumHelper(n - 1, accumulator + n); // Recursive call: add current number to accumulator
+      }
+  }</code></pre>
+  
+
+  </section>
+
       <section id="uml-rules">
         <h2 style="color:black">Understanding UML Class Diagrams Using a Car Example</h2>
         <p>
@@ -1560,7 +1635,7 @@ public static void main(String[] args) {
     </p>
 </section>
   <section id="transform">
-    <h1 style="color:black">Translation and Rotation in Java Swing</h1>
+    <h2 style="color:black">Translation and Rotation in Java Swing</h2>
     <p>
         In Java Swing, you can use the <code style="color:red">Graphics2D</code> class to manipulate the coordinate system.
         Two common operations are <code style="color:red">translate</code> (to move the origin) and <code style="color:red">rotate</code> (to rotate the drawing context).
@@ -1611,7 +1686,145 @@ g2d.setTransform(originalTransform);
         </ol>
 
   </section>
+  <section id="threads">
+    <h2 style="color:black">Getting Started &amp; Swing Threading</h2>
+    <p>
+      All Swing UI work must run on the Event Dispatch Thread (EDT) to avoid race conditions
+      and deadlocks. Use <code style="color:red">SwingUtilities.invokeLater(…)</code> in your <code style="color:red">main</code>
+      to kick off any UI creation.
+    </p>
+    <pre><code>// Example: launching your GUI on the EDT
+import javax.swing.*;
 
+public class App {
+  public static void main(String[] args) {
+    SwingUtilities.invokeLater(() -> {
+      MyFrame frame = new MyFrame();
+      frame.setVisible(true);
+    });
+  }
+}
+</code></pre>
+    <p>
+      <strong>Why?</strong> Swing is not thread‑safe—any long task or direct modifications
+      off the EDT can freeze or corrupt your UI.
+    </p>
+  </section>
+
+  <section id="jframe">
+    <h2 style="color:black">Creating Your Window (<code style="color:red">JFrame</code>)</h2>
+    <p>
+      A <code style="color:red">JFrame</code> is the top‑level window for your application.
+      You configure title, size, default close behavior, and add your custom components.
+    </p>
+    <pre><code>import javax.swing.*;
+import java.awt.Dimension;
+
+public class MyFrame extends JFrame {
+  public MyFrame() {
+    super("My Swing App");
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    setPreferredSize(new Dimension(600, 400));
+    // add your drawing panel or other components here:
+    setContentPane(new MyDrawingPanel());
+    pack();            // sizes frame to fit contents
+    setLocationRelativeTo(null);  // centers on screen
+  }
+}
+</code></pre>
+    <p>
+      <strong>Key calls:</strong>
+      <ul>
+        <li><code style="color:red">setDefaultCloseOperation(EXIT_ON_CLOSE)</code> to exit on close</li>
+        <li><code style="color:red">pack()</code> vs. <code style="color:red">setSize(…)</code> &mdash; pack sizes to match child
+            components’ preferred sizes</li>
+        <li><code style="color:red">setLocationRelativeTo(null)</code> to center the window</li>
+      </ul>
+    </p>
+  </section>
+
+  <section id="painting">
+    <h2 style="color:black">Custom Painting with <code style="color:red">JComponent</code></h2>
+    <p>
+      For graphics you subclass <code style="color:red">JComponent</code> (or <code style="color:red">JPanel</code>) and override
+      <code style="color:red">paintComponent(Graphics)</code>. Always call <code style="color:red">super.paintComponent(g)</code>
+      first, then cast to <code style="color:red">Graphics2D</code> for richer APIs.
+    </p>
+    <pre><code>import javax.swing.*;
+import java.awt.*;
+
+public class MyDrawingPanel extends JPanel {
+  @Override
+  protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    Graphics2D g2 = (Graphics2D) g;
+
+    // draw a filled rectangle
+    Color old = g2.getColor();
+    g2.setColor(Color.ORANGE);
+    g2.fillRoundRect(50, 50, 200, 100, 20, 20);
+    g2.setColor(old);
+
+    // draw a string
+    g2.drawString("Hello, Swing!", 100, 120);
+  }
+}
+</code></pre>
+    <p>
+      <strong>Tips:</strong>
+      <ul>
+        <li>Save and restore <code>Graphics2D</code> state when you change color, stroke, or transform</li>
+        
+      </ul>
+    </p>
+  </section>
+
+  <section id="events">
+    <h2 style="color:black">Swing Components &amp; Event Handling</h2>
+    <p>
+      Most UIs combine drawing with interactive controls. Swing components like
+      <code style="color:red">JButton</code>, <code style="color:red">JTextField</code>, etc., fire events you handle
+      by registering listeners.
+    </p>
+    <pre><code>import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class InteractivePanel extends MyDrawingPanel {
+  private JButton clearBtn;
+
+  public InteractivePanel() {
+    setLayout(new BorderLayout());
+    clearBtn = new JButton("Clear");
+    add(clearBtn, BorderLayout.SOUTH);
+
+    // handle button clicks
+    clearBtn.addActionListener(e -> {
+      // e.g., clear internal state and repaint
+      // someGraphicsModel.clear();
+      repaint();
+    });
+
+    // handle mouse clicks
+    addMouseListener(new MouseAdapter() {
+      @Override
+      public void mousePressed(MouseEvent e) {
+        // e.getX(), e.getY() can be used to draw shapes at click
+        // someGraphicsModel.addDot(e.getPoint());
+        repaint();
+      }
+    });
+  }
+}
+</code></pre>
+    <p>
+      <strong>Key points:</strong>
+      <ul>
+        <li>Use lambdas (Java 8+) or anonymous inner classes for listeners</li>
+        <li>Fire <code style="color:red">repaint()</code> after any state change to redraw your component</li>
+      </ul>
+    </p>
+  </section>
 
 
   </body>
