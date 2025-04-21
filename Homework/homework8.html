@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    /* Header styling */
+    #header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+    
+      margin-top: 0;
+    }
+    p {
+      line-height: 1.6;
+    }
+    ul, ol {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    code {
+      background-color: #e0e0e0;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: "Courier New", Courier, monospace;
+    }
+    .example {
+      background-color: #e7f3fe;
+      border-left: 4px solid #2196F3;
+      padding: 10px;
+      margin: 10px 0;
+      font-family: "Courier New", Courier, monospace;
+    }
+    .note {
+      background-color: #fffbcc;
+      border: 1px solid #ffe58f;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+    <div id="header">
+        <a id="index_link" href="../index.html">CSSE 220</a>
+        <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+        <a id="schedule_link" href="../schedule.html">Schedule</a>
+        <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+        <a id="quiz_link" href="../labs.html">Labs</a>
+        <a id="quiz_link" href="../homework.html">Homework</a>
+        <a id="quiz_link" href="../exams.html">Exams</a>
+        <a id="quiz_link" href="../project.html">Final Project</a>
+        <a id="resources_link" href="../resources.html">Resources</a>
+        <div style="clear:both;"></div>
+    </div>
+ 
+  <div id="content">
+    <h1>Homework 8 Recursion</h1>
+    <p>This is an individual assignment</p>
+    
+    <h2>How to Import a ZIP File into Eclipse</h1>
+  <p>Follow these steps to import a ZIP file containing an Eclipse project:</p>
+  <ol>
+    <li>
+      <strong>Download the ZIP File (containing a project)</strong> to your computer but do not place 
+      in the eclipse workspace folder and do not unzip it: <a href="HWRecursion.zip">Click here to donwload ZIP</a>
+    </li>
+    <li>
+      <strong>Open Eclipse:</strong> <em>Do not create a new project</em> because the ZIP file contains an existing project.
+    </li>
+    <li>
+      <strong>Import the Project:</strong>
+      <ol>
+        <li>Click on <code>File</code> in the menu bar and select <code>Import...</code>.</li>
+        <li>In the Import Wizard, expand the <strong>General</strong> category and select <strong>Existing Projects into Workspace</strong>. Click <strong>Next</strong>.</li>
+        <li>Select the <strong>Select archive file</strong> option and click the <strong>Browse...</strong> button</li>
+        <li>Navigate to the location where you saved the ZIP file, select it, and click <strong>Open</strong></li>
+        <li>The wizard will display the project(s) contained in the ZIP file. Make sure the desired project is checked</li>
+        <li>Check if the box <strong>Copy projects into workspace</strong> is selected</li>
+        <li>Click <strong>Finish</strong> to complete the import process</li>
+      </ol>
+    </li>
+    <li>
+      <strong>Verify the Imported Project:</strong> The project should now appear in your Package Explorer. Double-click it to open and review its contents.
+    </li>
+  </ol>
+  
+
+    <h2>Problem Overview:</h2>
+    <ul>
+      <li>This exercise is intended to give you practice writing recursive operations</li>
+      <li>There are two parts:
+        <ul>
+          <li><em>recursionPart1</em> contains 9 unimplemented recursive operations—implement each using recursion (no loops)</li>
+          <li><em>recursionPart2</em> contains 3 unimplemented recursive operations—each requires a recursive **helper** (no loops)</li>
+        </ul>
+      </li>
+      <li>This is an individual exercise/assignment</li>
+    </ul>
+  </section>
+
+  <section id="rubric">
+    <h2>Rubric:</h2>
+    <p>All JUnit tests for each operation must succeed in order to earn a 100% for the assignment.</p>
+    <p>Your score for this assignment = <code>PercentageJUnitTestsPassed × RecursionHWTotalPoints</code></p>
+    <p>For example:</p>
+    <ul>
+      <li>If <code>PercentageJUnitTestsPassed</code> = 80%</li>
+      <li>and if <code>RecursionHWTotalPoints</code> = 25</li>
+      <li>then Your Score = <code>0.80 × 25 = 20</code> points</li>
+    </ul>
+  </section>
+
+  <section id="to-do">
+    <h2>To Do:</h2>
+    <ol>
+      <li>In Eclipse, import this project (<code>HWRecursion</code>)</li>
+      <li>Implement the 9 operations in <code>Part1Problems.java</code></li>
+      <li>Run the included <code>RunAllTestsPart1.java</code> to ensure all tests pass</li>
+      <li>Implement the 3 operations in <code>Part2Problems.java</code></li>
+      <li>Run the included <code>RunAllTestsPart2.java</code> to ensure all tests pass</li>
+      <li>Upload your completed <code>Part1Problems.java</code> to Homework 8 Part 1 and <code>Part2Problems.java</code> submit to Gradescope Homework 8 Part 2</li>
+      <li>Make sure to update your Javadoc comment with your name and any citations (this is individual work)</li>
+    </ol>
+  </section>
+
+  <section id="hint">
+    <h2>Hint:</h2>
+    <p>The last problem is a good challenge. The following image might help guide your approach:</p>
+    <img src="mcss_hint.png" alt="MCSS Hint" />
+  </section>
+
+  <section id="notes" style="border: 2px solid #ffce54; background-color: #fff9e6; padding: 1em; margin: 1em 0;">
+    <h2>Notes:</h2>
+    <ul>
+      <li><strong>No loops allowed:</strong> You should <em>not</em> use any <code>for</code> or <code>while</code> loops; all iteration must be via recursion.</li>
+      <li>If you use loops in your solution you may receive 0% credit even if tests pass.</li>
+      <li>Each method’s specification appears as a comment just above its declaration.</li>
+      <li><em>Part 1:</em> Implement each operation directly using recursion.</li>
+      <li><em>Part 2:</em> For each operation, create and implement a <code>private</code> helper method that carries any extra parameters (e.g., accumulators or indices), then call that helper from the public method.</li>
+      <li>Declaring the helpers as <code>private</code> prevents clients from calling them directly—this is good encapsulation practice.</li>
+    </ul>
+
+  </div>
+
+</body>
+</html>
