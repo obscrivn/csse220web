@@ -244,6 +244,11 @@ if (x > 400) score += 10;</code></pre></li>
 
                 
               </ol>
+<p> Override toString method:</p>
+<pre><code>@Override
+public String toString() {
+return String.format("%s@(%d,%d) score=%d", playerName, x, y, score);
+}</code></pre>
 <p>Step 8. In the main method</p>
 <pre><code>GameEntity e = new PlayerEntity("Alice", 390, 50, 20.0, 100);
 System.out.println(e);
