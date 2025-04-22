@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 12</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. More Recursion Practice</a></li>
+          <li><a href="#lab2">02. Override Methods</a></li>
+
+      
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+ 
+
+
+<div class="lab-section" id="lab1">
+  <h2>01. Recursion Practice</h2>
+
+  <p>Access the practice platform <a href="https://codingbat.com/java">CodingBat</a>. Once completed, paste all codingbat solutions into one java file</p>
+  <ol>
+  <li>
+    In CodingBat complete 3 recursion problems (Recursion-1) with Strings
+  </li>
+    <li>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example MyRecursion.java)</li>
+    
+  </ol>
+</div>
+        
+        <div class="lab-section" id="lab2">
+          <h2 style="color:black">02. Ineritance with Override</h2>
+          <h3> GameEntity Class (with main method)</h3>
+          <p>Step 1. Fields:</p>
+          <ol>
+                <li> 
+                  <code>protected int x, y;</code> – current position </li>
+                <li><code>protected double speed;</code> – horizontal movement per frame</li>
+                <li><code>protected int health;</code> – hit points </li>
+                <li><code>protected static final int SCREEN_WIDTH = 800;</code></li>
+              </ol>
+          <p>Step 2. Constructor with 4 parameters: int startX, int startY, double startSpeed, int startHealth. Make sure to assign the input parameters to fields. </p>
+              
+          <p>Step 3. Override toString method</p>
+          <pre><code>@Override
+public String toString() {
+   return String.format("Entity@(%d,%d) speed=%.2f health=%d", x, y, speed, health);
+}
+
+          </code></pre>
+          <p>Step 4. Create a new method: public void update() that moves horizontally and clamps the object to the screen.</p>
+          <p>Clamping a simple operation in programming and mathematics 
+            to restrict a value so that it never falls outside a specified range.   
+            If a value is below the minimum bound, you get the minimum; if it is above the maximum, you get the maximum; 
+            otherwise, you keep the original value. <code>Math.max(min, Math.min(value, max));</code></p>
+                
+              <ol type="a">
+                <li>Increments <code>x</code> by <code>speed</code>. Note you need to cast speed to int  
+                  </li>
+                <li> 
+                  
+                 <pre><code>// Clamp x within [0, screenWidth] 
+x = Math.max(0, Math.min(screenWidth, x));</code></pre> </li>
+               
+              </ol>
+<p>Step 5. main method
+  <pre><code>GameEntity e = new GameEntity(790, 100, 15.0, 100);
+System.out.println(e);
+e.update();
+// Expect x = 800 (clamped)
+System.out.println(e);
+
+
+  </code></pre>
+</p>
+<p>Step 6. PlayerEntity will inherit GameENtity (also with main method)</p>
+ <p>Additional fields</p>
+ <ol>  
+   <li>              <code>private String playerName;</code>,  
+    <li>             <code>private int score;</code></li>
+    <li>Set flags for keys:
+      <code> public boolean upPressed = true, downPressed = false;</code></li>
+   </ol>
+   <p>Set the PlayerEntity constructor with 5 parameters: String name, int startX, int startY, double speed, int health. 
+    Call super constructor:
+    <pre><code>super(startX, startY, speed, health);</code></pre>
+    set score to 0. Remember to assign only a parameter from Player - you do not assign any fields from superclass </p>
+<p>Step 7. Override <code>update()</code> to:</p>
+              <ol type="a">
+                <li>Call <code>super.update();</code> first to perform base movement </li>
+                <li>Then handle the input flag:  
+                  <pre><code>if (upPressed) y -= 5;
+ if (downPressed)  y = y + 5;
+                  </code></pre> to move vertically</li>
+    <li>Add some score, for example<pre><code>
+      // e.g., increase score if passed x > 400
+if (x > 400) score += 10;</code></pre></li>
+
+                
+              </ol>
+<p>Step 8. In the main method</p>
+<pre><code>GameEntity e = new PlayerEntity("Alice", 390, 50, 20.0, 100);
+System.out.println(e);
+  e.update();
+// After update: x = min(410,800)=410; y=45; score=10
+System.out.println(e);
+</code></pre>
+           
+        </div>
+
+ 
+
+        
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>
