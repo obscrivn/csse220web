@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 14</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Abstract and Interface</a></li>
+          <li><a href="#lab2">02. Polymorphism</a></li>
+
+      
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+ 
+
+
+<div class="lab-section" id="lab1">
+  <h2>01. Abstract and Interface</h2>
+
+  <p>Submit the In-Class exercice </p>
+  <ol>
+  <li>
+    Create an Interface Rendarable with a <code>void render()</code>
+  </li>
+    <li>Create a public abstract class Entity that implements the interface</li>
+    <li> The Entity class has the following:
+      <ul>
+      <li> one private field String id</li>
+      <li>constructor Entity(String id) </li>
+      <li>a getter getId</li>
+      <li>it overrides the interface method
+        <pre><code>@Override
+        public void render() {
+          System.out.println("Rendering " + id);
+        }</code></pre></li>
+        <li>It has an abstract method: <code>public abstract void update();</code></li>
+    </ul>
+    </li>
+    <li>Create a class Player that extends Entity</li>
+    <li> Create a constructor <code>public Player(String id)</code> that invoke superclass constructor</li>
+  <li>It overrides
+    <pre><code>@Override
+      public void update() {
+        System.out.println("updated "+ getId());		
+      }</code></pre></li>
+      <li>it has the main method where you need to create an instance of <code>Entity p = new Player("Alice"); </code></li>
+  <li> Call render and update methods</li>
+    </ol>
+</div>
+        
+        <div class="lab-section" id="lab2">
+          <h2 style="color:black">02. Polymorphism</h2>
+          
+          <p>Follow instructions and answer questiosn at the end of the lab - add yoru asnwers as comments in java file</p>
+          <h2>Lab: Exploring Polymorphism, Upcasting &amp; Downcasting</h2>
+  <p>
+    In this lab you will work with a simple class hierarchy to see how Java chooses which <code>print()</code> method to call at runtime (polymorphism), how upcasts let you treat a subclass as its superclass, 
+    and how downcasts let you recover subclass‐specific behavior, sometimes safely and sometimes resulting in errors if misused
+  </p>
+
+  <section id="setup">
+    <h3>1. Setup &amp; Code</h3>
+    <p>Copy the following into <code>PolymorphismDemo.java</code></p>
+    <pre><code>
+public class PolymorphismDemo {
+    public static void main(String[] args) {
+        A x = new D();
+        x.print();               // (1)
+        D x2 = (D)x;
+        x2.print();              // (2)
+        x2.printC();             // (3)
+        B x3 = (B)x;
+        // x3.printC();         // (4) 
+    }
+}
+
+class A {
+    public void print() { System.out.println("A"); }
+}
+
+class B extends A {
+    @Override public void print() { System.out.println("B"); }
+}
+
+class C extends B {
+    @Override public void print() { System.out.println("C"); }
+    public void printC() { print(); }
+}
+
+class D extends C {
+    @Override public void print() { System.out.println("D"); }
+}
+    </code></pre>
+    <p>
+      Note: removing <code>print()</code> in <code>D</code> will cause Java to invoke the next override up the chain, demonstrating dynamic dispatch 
+    </p>
+  </section>
+
+  <section id="tasks">
+    <h3>2. Tasks</h3>
+    <ol>
+      <li>
+        <strong>Predict the output:</strong> Without running the program, write down what lines (1), (2), and (3) print.  
+      </li>
+      <li>
+        <strong>Verify your prediction:</strong> Run <code>java PolymorphismDemo</code> and confirm the actual output  
+      </li>
+      <li>
+        <strong>Test removing <code>D.print()</code>:</strong> Comment out the <code>@Override public void print()</code> in <code>D</code>, recompile, and rerun. 
+        Explain which version of <code>print()</code> is invoked and why. 
+      </li>
+      <li>
+        <strong>Compile-time vs. runtime error:</strong> Uncomment the line <code>x3.printC();</code>, attempt to compile, and observe the error. 
+        Then change it to:
+        <pre><code>
+if (x3 instanceof C) {
+    ((C)x3).printC();
+}
+        </code></pre>
+        and show that it now compiles and runs without exception
+      </li>
+      <li>
+        <strong>Illegal downcast:</strong> Change the first line to <code>A x = new B();</code> and keep the cast <code>D x2 = (D)x;</code>. 
+        Run the code and observe the <code>ClassCastException</code>. 
+        Explain why this happens
+      </li>
+    </ol>
+  </section>
+
+  <section id="questions">
+    <h3>3. Reflection Questions</h3>
+    <ul>
+      <li>
+        <strong>What is upcasting?</strong> Why does <code>A x = new D();</code> require no explicit cast? 
+      </li>
+      <li>
+        <strong>What is downcasting?</strong> Why must you write <code>(D)x</code> when moving from <code>A</code> back to <code>D</code>? 
+      </li>
+      <li>
+        <strong>Dynamic dispatch:</strong> How does the JVM decide which <code>print()</code> to call at runtime? 
+      </li>
+      
+    </ul>
+  </section>
+
+   
+        </div>
+
+ 
+
+        
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>

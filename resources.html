@@ -161,7 +161,8 @@
         <dd><a href="#string-methods">String, Length, Substring</a></dd>
         <dd><a href="#int-to-string">Convert Int to String</a></dd>
         <dd><a href="#casting">Casting</a></dd>
-        <dd><a href="#arrays">Arrays and ArrayList</a></dd>
+        <dd><a href="#arrays">Arrays</a></dd>
+        <dd><a href="#arrays">Array Lists</a></dd>
         <dd><a href="#hashmap">HasMaps</a></dd>
         <dd><a href="#size">Length vs Size</a></dd>
         <dd><a href="#heterogeneous">Heterogeneous Array List</a></dd>
@@ -560,8 +561,7 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
         <p>
           In Java, <strong>arrays</strong> are used to store fixed-size collections of elements of the same type.
           Once an array is created, its size cannot be changed. 
-          In contrast, <strong>ArrayLists</strong> (from the <code style="color:red">java.util</code> package)
-          are resizable and provide more flexibility when you need to add or remove elements dynamically.
+          
         </p>
         
         <h3>Arrays</h3>
@@ -574,21 +574,7 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
           Note: Arrays are zero-indexed, meaning the first element is at index 0.
         </p>
         
-        <h3>ArrayLists</h3>
-        <p>
-          ArrayLists provide a dynamic array that can grow or shrink in size. 
-          To use an ArrayList, you must import it from the <code style="color:red">java.util</code> package.
-        </p>
-        <pre><code>import java.util.ArrayList;
-      
-      ArrayList&lt;String&gt; fruits = new ArrayList<>();
-      fruits.add("apple");
-      fruits.add("banana");
-      fruits.add("cherry");
-      System.out.println("ArrayList: " + fruits);  // Output: [apple, banana, cherry]</code></pre>
-        <p>
-          ArrayLists allow you to easily add, remove, and access elements, and they automatically manage resizing.
-        </p>
+        
 
         <h3>Using <code style="color:red">Arrays.toString()</code></h3>
         <p>
@@ -610,6 +596,84 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
         </p>
       </section>
 
+
+      <section id="arrayslist">
+        <h2 style="color:black">ArrayLists</h2>
+      <p>   <strong>ArrayLists</strong> (from the <code style="color:red">java.util</code> package)
+          are resizable and provide more flexibility when you need to add or remove elements dynamically.
+      <p>
+        ArrayLists can grow or shrink in size. 
+        To use an ArrayList, you must import it from the <code style="color:red">java.util</code> package.
+      <code style="color:red">import java.util.ArrayList;</code>
+      <h3>1. <code style="color:black">add(element)</code></h3>
+      <p>Appends the element to the end</p>
+      <pre><code>ArrayList<String> fruits = new ArrayList<>();
+fruits.add("apple");
+System.out.println(fruits);      // [apple]
+    </code></pre>
+    <h3>2. <code style="color:black">add(int index, element)</code></h3>
+  <p>
+    Inserts the specified element at the specified position in the list.
+    Shifts the element currently at that position (if any) and any subsequent elements to the right.
+  </p>
+  <pre><code>ArrayList<String> fruits = new ArrayList<>();
+fruits.add("apple");
+fruits.add("cherry");
+System.out.println(fruits);            // [apple, cherry]
+
+fruits.add(1, "banana");               // insert "banana" at index 1
+System.out.println(fruits);            // [apple, banana, cherry]
+</code></pre>
+<h3>3. <code style="color:black">get(int index)</code></h3>
+      <p>Retrieves the element at the given index (0-based). Throws <code>IndexOutOfBoundsException</code> if invalid.</p>
+      <pre><code>System.out.println(fruits.get(0));   // apple
+System.out.println(fruits.get(1));   // banana
+    </code></pre>
+    
+      <h3>4. <code style="color:black">remove(int index)</code> &amp; <code style="color:black">remove(element)</code></h3>
+      <p>
+        - <code style="color:black">remove(int index)</code> removes and returns the element at that position<br>
+        - <code style="color:black">remove(Object o)</code> removes the first occurrence of <code style="color:black">o</code> and returns <code style="color:black">true</code> if found
+      </p>
+      <pre><code>String removed = fruits.remove(0);
+    System.out.println(removed);       // apple
+    System.out.println(fruits);        // [banana]
+    
+    boolean didRemove = fruits.remove("banana");
+    System.out.println(didRemove);     // true
+    System.out.println(fruits);        // []
+    </code></pre>
+    
+      <h3>5. <code style="color:black">size()</code> &amp; <code style="color:black">isEmpty()</code></h3>
+      <p>Check how many elements are in the list, or whether it is empty.</p>
+      <pre><code>fruits.add("cherry");
+    System.out.println(fruits.size());   // 1
+    System.out.println(fruits.isEmpty()); // false
+    
+    fruits.clear();
+    System.out.println(fruits.size());    // 0
+    System.out.println(fruits.isEmpty()); // true
+    </code></pre>
+    
+      <h3>6. <code style="color:black">contains(Object o)</code> &amp; <code  style="color:black">indexOf(Object o)</code></h3>
+      <p>See if a list has a given element, or find its first index (-1 if not found).</p>
+      <pre><code>fruits.add("apple");
+    fruits.add("banana");
+    System.out.println(fruits.contains("banana")); // true
+    System.out.println(fruits.contains("cherry")); // false
+    
+    System.out.println(fruits.indexOf("apple"));   // 0
+    System.out.println(fruits.indexOf("cherry"));  // -1
+    </code></pre>
+    
+      <h3>7. <code style="color:black">clear()</code></h3>
+      <p>Removes all elements; after this, the list is empty</p>
+      <pre><code>fruits.clear();
+    System.out.println(fruits);        // []
+    System.out.println(fruits.size()); // 0
+    </code></pre>
+
+  </section>
       <section id="javadoc">
         <h2 style="color:black">Writing Javadocs</h2>
         <p>
