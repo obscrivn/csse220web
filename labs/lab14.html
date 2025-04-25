@@ -159,7 +159,9 @@ a.resource-ref:hover {
 <!-- Lab Navigation Menu -->
 <div id="main-content">
  
-
+  <p>Resources 1: <a href="../resources.html#abstract" target="_blank" class="resource-ref">Abstract Class</a></p>
+  <p>Resources 2: <a href="../resources.html#upcast" target="_blank" class="resource-ref">Upcasting and Downcasting</a></p>
+  <p>Resources 2: <a href="../resources.html#errors" target="_blank" class="resource-ref">Compile / Run-time Errors</a></p>
 
 <div class="lab-section" id="lab1">
   <h2>01. Abstract and Interface</h2>
@@ -198,11 +200,13 @@ a.resource-ref:hover {
         <div class="lab-section" id="lab2">
           <h2 style="color:black">02. Polymorphism</h2>
           
-          <p>Follow instructions and answer questiosn at the end of the lab - add yoru asnwers as comments in java file</p>
+          <p>Follow instructions and answer questions at the end of the lab - add your answers as comments in java file</p>
           <h2>Lab: Exploring Polymorphism, Upcasting &amp; Downcasting</h2>
   <p>
     In this lab you will work with a simple class hierarchy to see how Java chooses which <code>print()</code> method to call at runtime (polymorphism), how upcasts let you treat a subclass as its superclass, 
-    and how downcasts let you recover subclass‐specific behavior, sometimes safely and sometimes resulting in errors if misused
+    and how downcasts let you recover subclass‐specific behavior, 
+    sometimes safely and sometimes resulting in errors if misused. Note that @Override annotation is optional but strongly recommended whenever 
+    you intend to override a superclass or interface method.
   </p>
 
   <section id="setup">
@@ -250,27 +254,26 @@ class D extends C {
         <strong>Predict the output:</strong> Without running the program, write down what lines (1), (2), and (3) print.  
       </li>
       <li>
-        <strong>Verify your prediction:</strong> Run <code>java PolymorphismDemo</code> and confirm the actual output  
+        <strong>Verify your prediction:</strong> Run <code>PolymorphismDemo</code> and confirm the actual output  
       </li>
       <li>
-        <strong>Test removing <code>D.print()</code>:</strong> Comment out the <code>@Override public void print()</code> in <code>D</code>, recompile, and rerun. 
-        Explain which version of <code>print()</code> is invoked and why. 
+        <strong>Dynamic Dispatch in Action:</strong><br>
+        Comment out the <code>@Override public void print()</code> method in class <code>D</code>, recompile, and rerun. Observe which <code>print()</code> implementation is invoked (hint: it should fall back to <code>C.print()</code>). Why do you think this happened? Hint:
+        Does the JVM pick the most specific overridden method or the most general at runtime?
       </li>
       <li>
-        <strong>Compile-time vs. runtime error:</strong> Uncomment the line <code>x3.printC();</code>, attempt to compile, and observe the error. 
-        Then change it to:
-        <pre><code>
-if (x3 instanceof C) {
+        <strong>Compile-Time Error &amp; Safe Casting:</strong><br>
+      Uncomment <code>x3.printC();</code> and try to compile. Explain why the compiler rejects it (“cannot find symbol: method printC()”)   
+      Then guard the call with an <code>instanceof</code> check:
+      <pre><code>if (x3 instanceof C) {
     ((C)x3).printC();
-}
-        </code></pre>
-        and show that it now compiles and runs without exception
-      </li>
-      <li>
-        <strong>Illegal downcast:</strong> Change the first line to <code>A x = new B();</code> and keep the cast <code>D x2 = (D)x;</code>. 
-        Run the code and observe the <code>ClassCastException</code>. 
-        Explain why this happens
-      </li>
+}</code></pre>
+      Recompile and rerun; confirm it compiles
+    </li>
+    <li>
+      <strong>Illegal Downcast &amp; Exception:</strong><br>
+      Change the first line to <code>A x = new B();</code> but leave <code>D x2 = (D)x;</code>. Run the program, observe the <code>ClassCastException</code>, and explain why a <code>B</code> object cannot be treated as a <code>D</code> at runtime
+    </li>
     </ol>
   </section>
 
@@ -278,13 +281,24 @@ if (x3 instanceof C) {
     <h3>3. Reflection Questions</h3>
     <ul>
       <li>
-        <strong>What is upcasting?</strong> Why does <code>A x = new D();</code> require no explicit cast? 
+        <strong>Upcasting:</strong><br>
+        What does it mean to <em>upcast</em> an object reference?  
+        Why is this cast implicit (no `(Type)` syntax needed) when you write:
+        <pre><code>A x = new D();</code></pre>
+        <em>Hint:</em> Consider the “is-a” relationship and how the compiler and JVM knows subtype→supertype assignments
       </li>
       <li>
-        <strong>What is downcasting?</strong> Why must you write <code>(D)x</code> when moving from <code>A</code> back to <code>D</code>? 
+        <strong>Downcasting:</strong><br>
+        What does it mean to <em>downcast</em> an object reference?  
+        Why must you write an explicit cast when you go from:
+        <pre><code>A x = new D();
+  D d = (D)x;</code></pre>
+        What check does the JVM perform at runtime, and what exception is thrown if the check fails? 
       </li>
       <li>
-        <strong>Dynamic dispatch:</strong> How does the JVM decide which <code>print()</code> to call at runtime? 
+        <strong>Dynamic Dispatch:</strong><br>
+        When you call <code>x.print()</code> on an <code>A</code> reference pointing to a <code>D</code> instance, how does the JVM decide which class’s <code>print()</code> method to execute?  
+        Explain why removing <code>D.print()</code> causes <code>C.print()</code> to be called instead. 
       </li>
       
     </ul>

@@ -175,10 +175,14 @@
         <dd><a href="#fields">Understanding Fields in Classes</a></dd>
         <dd><a href="#static">Understanding Static Modifier</a></dd>
         <dd><a href="#this-keyword">Understanding This Keyword</a></dd>
-        <dd><a href="#override">Understanding Override Method</a></dd>
-        <dd><a href="#interface">Understanding Interfaces</a></dd>
         <dd><a href="#initialization">Understanding Initialization</a></dd>
         <dd><a href="#uml-rules">Understanding UML Models</a></dd>
+
+        <p style="color:white">Polymorphism</p>
+        <dd><a href="#abstract">Abstract Classes</a></dd>
+        <dd><a href="#interface">Interfaces</a></dd>
+        <dd><a href="#upcast">Upcasting and Downcasting</a></dd>
+        <dd><a href="#errors">Compile and Run-Time Errors</a></dd>
 
         <p style="color:white"> Graphics</p>
         <dd><a href="#jframe">Making JFrame</a></dd>
@@ -1894,6 +1898,69 @@ public class InteractivePanel extends MyDrawingPanel {
     </p>
   </section>
 
+
+  <section id="abstract">
+    <h2 style="color:black">Abstract Classes</h2> 
+    <p> An <code style="color:darkred">abstract</code> class in Java is declared with the <code style="color:darkred">abstract</code> modifier and cannot be instantiated directly.
+      It serves as a partial blueprint for its subclasses</p> 
+      <p> Abstract classes may include both <em>abstract methods</em> (without bodies) and <em>concrete methods</em> (with implementations), 
+        as well as instance fields and constructors to initialize shared state</p> 
+        <p> Use an abstract class when you want to share code or data among related classes while forcing them to implement specific behaviors</p> 
+        <h3>Example</h3> 
+        <pre><code> // Abstract base class 
+public abstract class Shape { 
+  protected String color; 
+  protected Shape(String color) { 
+    this.color = color; 
+  } 
+  public abstract double area(); // abstract method 
+  public void describe() { 
+    // concrete method 
+    System.out.println("Color: " + color + ", area=" + area()); 
+   } 
+}
+// Concrete subclass 
+public class Circle extends Shape {
+  private double radius;
+  public Circle(String color, double radius) {
+    super(color); 
+    this.radius = radius; 
+    } 
+  @Override
+  public double area() {
+    return Math.PI * radius * radius;
+   }
+} </code></pre>
+    
+    </section>
+
+    <section id="upcast"> <h2 style="color:black">Upcasting &amp; Downcasting</h2> 
+      <p> <strong>Upcasting</strong> converts a <em>subclass</em> reference to a <em>superclass</em> type implicitly (no cast syntax is needed) and is always safe 
+        because every instance of the subclass <em>is-a</em> instance of its superclass</p> 
+        <p> <strong>Downcasting</strong> converts a <em>superclass</em> reference back to a <em>subclass</em> type and must be done explicitly with this syntax <code style="color:darkred">(Type)</code> operator; 
+          the JVM checks at runtime and throws <code style="color:darkred">ClassCastException</code> if the object is not actually of that subtype</p> 
+          <h3>Examples</h3> 
+          <pre><code> // Upcasting (implicit) 
+  Animal a = new Dog(); // no cast, always safe
+
+  // Downcasting (explicit) 
+    Dog d = (Dog) a; // JVM checks at runtime 
+</code></pre>
+      
+      </section> 
+      <section id="errors"> 
+        <h2 style="color:black">Compile-Time vs. Run-Time Errors</h2> 
+        <p> A <strong>compile-time error</strong> is detected by the Java compiler when code violates syntax or static typing rules.
+          For example, missing semicolons or illegal casts between unrelated types</p> 
+<p> A <strong>run-time error</strong> occurs during program execution after successful compilation.
+  Examples include <code style="color:darkred">NullPointerException</code> or <code style="color:darkred">ClassCastException</code> when logic or environment causes failure</p>
+<pre><code> public class Demo { 
+  public static void main(String[] args) { 
+    String s = null; 
+    System.out.println(s.length()); // throws NullPointerException at runtime 
+  } 
+} </code></pre> 
+</section>
 
   </body>
 </html>
