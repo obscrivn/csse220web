@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>CSSE 386</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
+    <link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
+    <style>/* Base page styles */
+        body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }</style>
+    </head>
+    <body>
+        <div id="header">
+            <a id="index_link" href="./index.html">CSSE 220</a>
+            <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
+            <a id="schedule_link" href="./schedule.html">Schedule</a>
+            <a id="quiz_link" href="./worksheets.html">Quizzes</a>
+            <a id="quiz_link" href="./labs.html">Labs</a>
+            <a id="quiz_link" href="./homework.html">Homework</a>
+            <a id="quiz_link" href="./exams.html">Exams</a>
+            <a id="quiz_link" href="./project.html">Final Project</a>
+            <a id="resources_link" href="./resources.html">Resources</a>
+            <div style="clear:both;"></div>
+        </div>
+    
+        <section id="polymorphism-reference">
+            <h2 style="color:black">Polymorphism Reference (Worksheet 14 Walk Through Solutions)</h2>
+          
+            <!-- Class hierarchy diagram -->
+            <img src="./worksheets_files/w14.png" width="600px" alt="Top → One → Two class diagram" />
+          
+            
+            <section id="declarations">
+              <h3 style="color:black">Check List</h3>
+ 
+<h4>Compile-time lookup</h4>
+
+<p>Look only at the reference type to see if that method exists.</p>
+
+<p>If it is not declared there (or in a superclass/interface), you get a compile-time error.</p>
+
+<h4>Run-time</h4>
+
+<p>Once you have passed compile time, the JVM looks at the actual object’s class and calls the most specific override 
+    it finds up the inheritance chain.</p>
+
+<p>If you never provided an override in the subclass, it falls back to the parent’s version.</p>
+
+<p>If you did override, that iss the one that runs</p>
+            </section>
+          
+            <section id="method-calls">
+              <h3 style="color:black">Method Calls &amp; Outcomes</h3>
+          
+              <h4><code>Two m = new Two();<br>
+                m.alpha();</code></h4>
+
+              <p><strong>Compile-time:</strong>Reference type = <code>Two</code>. Two inherits <code>alpha()</code> from <code>One</code> → <span style="color:darkred">compiles</span></p>
+              <p><strong>Run-time:</strong>Actual object = <code>Two</code>, but <code>Two</code> does not override <code>alpha()</code>, so JVM walks up the chain and finds <code>One.alpha()</code> → prints <span style="color:darkred">A</span></p>
+          
+              <h4><code>Two m = new Two();<br>
+                m.gamma();</code></h4>
+             
+              <p><strong>Compile-time:</strong> <code>Two</code> declares an override <code>gamma()</code> → <span style="color:darkred">compiles</span></p>
+              <p><strong>Run-time:</strong> Calls <code>Two.gamma()</code>. First line calls <code>super.gamma()</code> which invokes <code>One.gamma()</code>
+             and prints <span style="color:darkred">C</span>. Then it
+               prints <span style="color:darkred">F</p>
+
+              <p>Overall output: <span style="color:darkred">CF</span></p>
+          
+              <h4><code>Two m = new Two();<br>
+                m.omega();</code></h4>
+
+              <p><strong>Compile-time:</strong> <code>omega()</code> is not declared in <code>Two</code> or its superclasses → <span style="color:darkred">compile-time error</span></p>
+          
+              <h4><code>Top q = new One(); <br>
+                q.alpha();</code></h4>
+
+              <p><strong>Compile-time:</strong>Reference type  <code>Top</code> interface which declares <code>alpha()</code> → <span style="color:darkred">compiles</span></p>
+              <p><strong>Run-time:</strong> Actual object is <code>One</code>. JVM dispatches to <code>One.alpha()</code> → prints <span style="color:darkred">A</span></p>
+          
+              <h4><code>Top r = new Two(); <br>
+                r.beta();</code></h4>
+
+              <p><strong>Compile-time:</strong> <code>Top</code> declares <code>beta()</code> → <span style="color:darkred">compiles</span></p>
+              <p><strong>Run-time:</strong> Actual object is <code>Two</code>, Two overrides <code>beta()</code> → prints <span style="color:darkred">E</span></p>
+          
+              <h4><code>Top r = new Two(); <br>
+                r.epsilon();</code></h4>
+ 
+              <p><strong>Compile-time:</strong> Reference typ <code>Top</code> which does not declare (=has no method)  <code>epsilon()</code> → <span style="color:darkred">compile-time error</span></p>
+          
+              <h4><code>One s = new Two(); <br>
+                s.beta();</code></h4>
+
+              <p><strong>Compile-time:</strong>Reference type - <code>One</code> which declares <code>beta()</code> → <span style="color:darkred">compiles</span></p>
+              <p><strong>Run-time:</strong> Actual object is <code>Two</code> which overrides <code>beta()</code> → prints <span style="color:darkred">E</span></p>
+            </section>
+          </section>
+</body>
+</html>
