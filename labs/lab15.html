@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+
+body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    } */
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<section id="content">
+<!-- <div id="content"> -->
+    <h1>Lab Assignment 15</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Multiple Buttons</a></li>
+          <li><a href="#lab2">02. Moving Objects with Keys Listeners</a></li>
+
+      
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<!-- <div id="main-content"> -->
+ <section>
+  <p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Events</a></p>
+  <p>Resources 2: <a href="../resources.html#listener" target="_blank" class="resource-ref">Understanding Listener with getActionCommand()</a></p>
+  <p>Resources 3: <a href="../resources.html#focus" target="_blank" class="resource-ref">How to keep focus on Frame for events</a></p>
+  
+</section>
+<!-- <div class="lab-section" id="lab1"> -->
+  <section id="lab1">
+    <p> Download the Viewer.java <a href="Viewer.java" target="_blank">Link</a>  </p>
+  <h2>01. Multiple Buttons</h2>
+
+  <p>
+    In this lab we will create a reusable <code style="color:darkred">MyCounterClass</code> that extends <code style="color:darkred">JPanel</code>, displays a label, a read-only text field, and three buttons, 
+    and updates the counter when the buttons are clicked.</p>  
+    <p><strong>New focus:</strong> instead of using a lambda for <code style="color:darkred">addActionListener</code>, 
+      you will implement a <em>named inner class</em> that implements <code style="color:darkred">ActionListener</code> and overrides <code style="color:darkred">actionPerformed</code>.
+  </p>
+
+  <h3>1. Create the Counter Panel</h3>
+  <p>
+    <image src="Lab15a.png" alt="lab15 a" width="400"/>
+</p>
+  <ol>
+    <li>Define <code style="color:darkred">public class MyCounterClass extends JPanel</code></li>
+    <li>Declare your components and state:
+      <pre><code>private JLabel    label;
+private JTextField text;
+private JButton    up, down, reset;
+private int       count = 0;</code></pre>
+    </li>
+    <li>In the constructor:
+      <ul>
+        <li>Instantiate fields:<br>
+          <code style="color:darkred">label   = new JLabel("Counter");</code><br>
+          <code style="color:darkred">text    = new JTextField(count+"",10); text.setEditable(false);</code><br>
+          <code style="color:darkred">up      = new JButton("Count Up");</code><br>
+          <code style="color:darkred">down    = new JButton("Count Down");</code><br>
+          <code style="color:darkred">reset   = new JButton("Reset");</code>
+        </li>
+        <li>Set your layout and preferred size:
+          <pre><code>setLayout(new FlowLayout());
+setPreferredSize(new Dimension(300, 60));</code></pre>
+        </li>
+        <li>Add them in order:
+          <pre><code>add(label);
+add(text);
+add(up);
+add(down);
+add(reset);</code></pre>
+        </li>
+      </ul>
+    </li>
+  </ol>
+
+  <h3>2. Implement the Named Listener Class</h3>
+  <p>
+    Inside <code style="color:darkred">MyCounterClass</code>, define a <em>private inner class</em>:
+  </p>
+  <pre><code>private class ButtonListener implements ActionListener {
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    String buttonLabel = e.getActionCommand();
+    if (buttonLabel.equals("Count Up")) {
+      count++;
+    } else if (buttonLabel.equals("Count Down")) {
+      count--;
+    } else {  // "Reset"
+      count = 0;
+    }
+    text.setText(count + "");
+  }
+}</code></pre>
+  <p>
+    Then add this Listener to each button:
+    <pre><code>up.addActionListener(new ButtonListener());
+down.addActionListener(new ButtonListener());
+reset.addActionListener(new ButtonListener());</code></pre>
+  </p>
+
+  <h3>3. Compare with Lambda-Based Listener</h3>
+  <p>
+    Previously we have done this:
+  </p>
+  <pre><code>up.addActionListener(e -> myMethod());
+public void myMethod() {
+  count++;
+  text.setText(count + "");
+};</code></pre>
+  <p>
+    <strong>Pros of named inner class:</strong><br>
+    • Centralizes all three button behaviors in one <code style="color:darkred">actionPerformed</code><br>
+    • Easier to add logging or shared preprocessing<br>
+    • Good practice for more complex event handling<br>
+    <strong>Cons:</strong> Slightly more boilerplate than a single lambda
+  </p>
+
+  <h3>4. Testing</h3>
+  <ol>
+    <li>Click each button and verify:
+      <ul>
+        <li><code>Count Up</code> increments</li>
+        <li><code>Count Down</code> decrements</li>
+        <li><code>Reset</code> sets back to zero</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h3>5. Reflection</h3>
+  <ul>
+    <li>Why must the inner class <code style="color:darkred">implement ActionListener</code> and override <code style="color:darkred">actionPerformed</code>?</li>
+    <li>How does <code style="color:darkred">getActionCommand()</code> let you distinguish which button fired the event?</li>
+    <li>When would you choose a named listener class over a lambda (and vice versa)?</li>
+  </ul>
+</section>
+<!-- </div> -->
+      <section id="lab2"> 
+        <!-- <div class="lab-section" id="lab2"> -->
+          <h2 style="color:black">02. Moving Objects and Using Key Listeners</h2>
+          <p>
+            <image src="Lab15b.png" alt="lab15 a" width="400"/>
+        </p>
+        <h2 style="color:black">Part 1. Custom Drawing</h2>
+        <p>
+          <strong>New focus:</strong> overriding <code style="color:darkred">paintComponent()</code> and calling <code style="color:darkred">repaint()</code> to update the drawing.
+        </p>
+        <h3>1. Define <code style="color:darkred">MyCanvas</code> as a <code style="color:darkred">JPanel</code></h3>
+        <pre><code>public class MyCanvas extends JPanel {
+          public static final int WIDTH  = 400;
+          public static final int HEIGHT = 140;
+          public static final Color BG   = Color.CYAN;
+          public static final Color FG   = Color.BLACK;
+      
+          private int x1 = WIDTH/2, x2 = WIDTH/2;
+          private int y1 = HEIGHT/8, y2 = HEIGHT/8*7;
+      
+          public MyCanvas() {
+            setPreferredSize(new Dimension(WIDTH, HEIGHT));
+          }
+      
+          @Override
+          protected void paintComponent(Graphics g) {
+            super.paintComponent(g);           <!-- clear background -->
+            setBackground(BG);                 <!-- fill with cyan -->
+            g.setColor(FG);                    <!-- draw in black -->
+            g.drawLine(x1, y1, x2, y2);
+          }
+      
+          public void moveDelta(int dx) {
+            x1 += dx; x2 += dx;
+            repaint();                         <!-- schedule a redraw -->
+          }
+        }</code></pre>
+        <p>
+          <strong>Key takeaway:</strong> whenever you change state (<code style="color:darkred">x1</code>/<code style="color:darkred">x2</code>), call <code style="color:darkred">repaint()</code> so Swing will invoke <code style="color:darkred">paintComponent()</code> and reflect your changes.
+        </p>
+</section>
+  <section id="task2">
+    <h2 style="color:black">2. Control Panel &amp; KeyListener (<code style="color:darkred">ControlPanel</code>)</h2>
+  <p>
+    In <code style="color:darkred">ControlPanel</code> you will connect buttons and arrow-key events to your canvas panel
+  </p>
+  <h3>Define the panel and store references (see the image for specifications):</h3>
+  <pre><code>public class ControlPanel extends JPanel {
+    private final MyCanvas canvas;
+    private final JFrame parentFrame;
+    private final JButton left, right;
+  </code></pre>
+    <h3>Constructor</h3>
+    <p>
+    The <code style="color:darkred">ControlPanel</code> needs to tell the canvas when to move the line, and it needs to re–focus the frame 
+    after each click so arrow-keys keep working.  
+    That is why its constructor takes <code style="color:darkred">MyCanvas canvas</code> and <code style="color:darkred">JFrame parentFrame</code> as parameters:
+  </p>
+  <pre><code>public ControlPanel(MyCanvas canvas, JFrame parentFrame)</code></pre>
+  <ul>
+    <li>
+      <strong>canvas</strong>: button and key handlers can call <code style="color:darkred">canvas.moveDelta(...)‌</code>  
+    </li>
+    <li>
+      <strong>parentFrame</strong>: after a button click we call <code style="color:darkred">parentFrame.requestFocusInWindow()</code> and restore keyboard focus  
+    </li>
+  </ul>
+
+  <pre><code>
+    public ControlPanel(MyCanvas canvas, JFrame parentFrame) {
+      this.canvas = canvas;
+      this.parentFrame = parentFrame;
+      setLayout(new FlowLayout());
+    </code></pre>
+
+      <h3>Create &amp; Add Buttons</h3>
+      <p>Instantiate your buttons and add them to this panel:</p>
+      <pre><code>left  = new JButton("&lt;- Left");
+    right = new JButton("Right -&gt;");
+    
+    add(left);
+    add(right);</code></pre>
+
+
+
+  <h3>Button listeners</h3>
+  <p>Use lambdas that call helper methods:</p>
+  <pre><code>    left.addActionListener(e -> moveLeft());
+    right.addActionListener(e -> moveRight());</code></pre>
+  <h3>Implement helper methods</h3>
+  <pre><code>  private void moveLeft() {
+    canvas.moveDelta(-10);
+    parentFrame.requestFocusInWindow();
+  }
+
+  private void moveRight() {
+    canvas.moveDelta(+10);
+    parentFrame.requestFocusInWindow();
+  }</code></pre>
+
+  <h3>Add a <code style="color:darkred">KeyListener</code> to the frame</h3>
+  <p>Register an arrow-key listener on the frame:</p>
+  <pre><code>    parentFrame.addKeyListener(new KeyAdapter() {
+      @Override
+      public void keyPressed(KeyEvent e) {
+        switch (e.getKeyCode()) {
+          case KeyEvent.VK_LEFT:  canvas.moveDelta(-10); break;
+          case KeyEvent.VK_RIGHT: canvas.moveDelta(+10); break;
+        }
+      }
+    });</code></pre>
+
+
+    <h4>Why?</h4> 
+    <ul>
+    <li>   <code style="color:darkred">addActionListener</code> handles mouse clicks on buttons</li> 
+    <li>  <code style="color:darkred">KeyListener</code> captures LEFT/RIGHT arrow keys when the frame has focus</li> 
+    </ul> 
+    </section>
+    <section id="task3">
+      <h2 style="color:black">3.Frame Setup &amp; Focus</h2>
+    <p>
+      In your main frame update the layout:
+    </p>
+    <pre><code>
+  frame.setLayout(new BorderLayout());
+  MyCanvas canvas = new MyCanvas();
+  frame.add(canvas, BorderLayout.CENTER);
+  
+  ControlPanel control = new ControlPanel(canvas, frame);
+  frame.add(control, BorderLayout.SOUTH);
+  
+  // Size, center, and show:
+  frame.pack();                        <!-- compute sizes from preferredSize -->
+  frame.setLocationRelativeTo(null);   <!-- center on screen -->
+  frame.setVisible(true);
+</code></pre>
+
+<p> Make sure keystrokes go to frame:</p>
+<pre><code> frame.requestFocusInWindow();   </code></pre>
+    
+</section>
+
+<section id="questions">
+    <h3>4. Reflection Questions</h3>
+    <ul>
+    <li>
+      <strong>Why must we call <code style="color:darkred">repaint()</code> inside <code style="color:darkred">moveDelta()</code>? </strong> 
+      What happens if we update the coordinates without calling <code>repaint()</code>?
+    </li>
+    <li>
+      <strong>Constructor Dependencies:</strong>  
+      Why does <code style="color:darkred">ControlPanel</code> take both the <code>MyCanvas</code> and the <code>JFrame</code> as parameters?  
+      How does this help with loose coupling and single-responsibility?
+    </li>
+    <li>
+      <strong>KeyListener vs. ActionListener:</strong>  
+      What kinds of events does each one handle?  
+      Why do we need a <code style="color:darkred">KeyListener</code> in addition to the button <code>ActionListener</code>s?
+    </li>
+    <li>
+      <strong>Focus Management:</strong>  
+      Why is <code style="color:darkred">requestFocusInWindow()</code> called after each button press?  
+      What would happen if we omitted that call?
+    </li>
+    <li>
+      <strong>Separation of Concerns:</strong>  
+      If you wanted to add a “speed” slider (JSlider) to control how far the line moves per key press, which class would you modify, and how would you pass that new value into your drawing logic?
+    </li>
+  </ul>
+
+
+   
+        <!-- </div> -->
+
+ 
+
+        
+        <!-- </div>
+        </div> -->
+      </section>
+      </section>
+
+
+        </body>
+        </html>

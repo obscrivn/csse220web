@@ -51,7 +51,28 @@ th {
     h1 {
       margin-top: 0;
     }
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
 
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+a.lab:hover {
+  background-color: #04ee5e;
+  color: #ffffff;
+}
+
+a.labs {
+  background-color: #04ee5e;
+  color: #ffffff;
+}
     /* Collapsible Button Styling */
     .collapsible {
       background-color: #eee;
@@ -108,8 +129,9 @@ th {
       border-radius: 4px;
       display: inline-block;
     }
-    .labs {
-      background-color: #fff6ba; /* pale yellow */
+    .lab a {
+      background-color: #e0efdb; /* pale yellow */
+      color:#04ee5e
       font-weight: bold;
       padding: 2px 6px;
       border-radius: 4px;
@@ -705,9 +727,16 @@ th {
           <tr>
             <td>Monday<br>28-Apr</td>
             <td><strong>Event-Based Gaming</strong></td>
-            <td><span class="slides">slides15</span><br>
-                <br><span class="quiz">quiz15</span></td>
-                <td><span class="lab"><br>Lab15</span></td>
+            <td><a href="../resources.html#illegalcast" target="_blank" class="resource-ref">Casting</a><br><br>
+              <a href="../resources.html#listener" target="_blank" class="resource-ref">Listener</a><br><br>
+              
+              <a href="../resources.html#focus" target="_blank" class="resource-ref">Window Focus</a><br>
+
+
+
+
+                <br><span class="quiz"><a href="./worksheets_files/worksheet15.pdf" target="_blank">quiz15</a></span></td>
+                <td><br<<span class="lab"><a href="./labs/lab15.html">Lab15</a></span></span></td>
             <td></td>
             <td></td>
             <td></td>
@@ -718,7 +747,7 @@ th {
             <td><span class="slides">slides16</span><br>
                 <br><span class="quiz">quiz16</span></td>
                 <td><span class="lab"><br>Lab16</span></td>
-            <td><span class="homework">Submit 04/29<br>HWK9<br>LLO Part 1<br>
+            <td><span class="homework">Submit 04/29<br>HWK9<br>Tracing<br> via Gradescope
                 </span></td>
             <td></td>
             <td></td>
@@ -740,7 +769,7 @@ th {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><span class="homework">Submit 05/04<br>HWK10<br>LLO Part 2<br>
+                <td><span class="homework">Submit 05/04<br>HWK10<br>LLO Part 1<br>
                 </span></td>
                 <td></td> 
                 <td><span class="milestone">Submit 05/04<br>Milestone 1</span></td>
@@ -769,7 +798,7 @@ th {
         <tbody>
           <tr>
             <td>Monday<br>5-May</td>
-            <td><strong>Working on Milestone with Teams</strong></td>
+            <td><strong>Working on Milestone 2 with Teams</strong></td>
             <td><span class="slides">No meeting in class</span><br>
                 <br><span class="quiz"></span></td>
                 <td></td>
@@ -783,7 +812,7 @@ th {
             <td><span class="slides">slides19</span><br>
                 <br><span class="quiz">quiz19</span></td>
                 <td></td>
-            <td><span class="homework">Submit 04/29<br>HWK9<br>LLO Part 1<br>
+            <td><span class="homework">Submit 04/29<br>HWK11<br>LLO Part 2<br>
                 </span></td>
             <td></td>
             <td></td>
@@ -804,7 +833,7 @@ th {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><span class="homework">Submit 05/11<br>HWK11<br>LinkedList<br>
+                <td><span class="homework">Submit 05/11<br>HWK12<br>LinkedList (Optional for Bonus)<br>
                 </span></td>
                 <td></td> 
                 <td><span class="milestone">Submit 05/11<br>Milestone 2</span></td>
@@ -843,7 +872,7 @@ th {
           </tr>
           <tr>
             <td>Tuesday 13-May</td>
-            <td><strong>Exam Review</strong></td>
+            <td><strong>Project Milestones + Exam Review</strong></td>
             <td></td>
                 <td></td>
             <td></td>

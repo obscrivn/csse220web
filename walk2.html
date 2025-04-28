@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+    <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>CSSE 220</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
+    <link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
+    <style>/* Base page styles */
+        body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        code {
+  white-space: pre-wrap;   /* allow wrapping */
+  word-break: break-word;   /* break long words if needed */
+}
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }</style>
+    </head>
+    <body>
+        <div id="header">
+            <a id="index_link" href="./index.html">CSSE 220</a>
+            <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
+            <a id="schedule_link" href="./schedule.html">Schedule</a>
+            <a id="quiz_link" href="./worksheets.html">Quizzes</a>
+            <a id="quiz_link" href="./labs.html">Labs</a>
+            <a id="quiz_link" href="./homework.html">Homework</a>
+            <a id="quiz_link" href="./exams.html">Exams</a>
+            <a id="quiz_link" href="./project.html">Final Project</a>
+            <a id="resources_link" href="./resources.html">Resources</a>
+            <div style="clear:both;"></div>
+        </div>
+    
+        <section id="polymorphism-reference">
+            <h2 style="color:black">Polymorphism Reference (Worksheet 15 Walk Through Solutions)</h2>
+          
+            <!-- Class hierarchy diagram -->
+            <img src="./worksheets_files/w14.png" width="600px" alt="Top → One → Two class diagram" />
+          
+            
+            <section id="declarations">
+              
+            <h3>New Questions</h3>
+            <p>For each line below, first ask yourself:</p>
+            <ol>
+              <li><strong>Compile-time:</strong> Does the reference type declare (or allow) that cast or method?</li>
+              <li><strong>Run-time:</strong> If it compiles, what actual object is involved? Does dynamic dispatch pick an override, or do you get <code>ClassCastException</code>? </li>
+            </ol>
+            <section id="method-calls">
+            <table border="1" cellpadding="6" cellspacing="0">
+              <tr>
+                <th>Code</th>
+                <th>Result</th>
+                <th>Detail</th>
+              </tr>
+              <tr>
+                <td><h4><code>Top r = new Two();</code></h4><br>
+                  <code>((Two) r).epsilon();</code></td>
+                <td>G</td>
+                <td>
+                  <ul>
+                    <li>Compile: OK (<code>r</code> is <code>Top</code> → can cast to <code>Two</code>).</li>
+                    <li>Runtime: <code>r</code> is a <code>Two</code>, so <code>Two.epsilon()</code> prints <code>G</code>.</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><h4><code>Top q = new One();</code></h4><br>
+                  <code>((Two) q).epsilon();</code></td>
+                <td><em>Runtime Error</em></td>
+                <td>
+                  <ul>
+                    <li>Compile: OK (cast allowed syntactically).</li>
+                    <li>Runtime: <code>q</code> is actually a <code>One</code>, not a <code>Two</code>, so <code>ClassCastException</code>.</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><h4><code>Two w = new One();</code></h4><br>
+                </td>
+                <td><em>Compile Error</em></td>
+                <td>
+                  <ul>
+                    <li>Compile: <code>One</code> is not a subtype of <code>Two</code> → incompatible types.</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><h4><code>One x = new Two();</code></h4><br>
+                  </td>
+                <td><em>No Output</em></td>
+                <td>
+                  <ul>
+                    <li>Compile: OK (upcast to <code>One</code> is implicit).</li>
+                    <li>Runtime: Just a variable assignment—no method call, so nothing prints.</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><h4><code>Top y = new Top();</code></h4><br>
+                  </td>
+                <td><em>Compile Error</em></td>
+                <td>
+                  <ul>
+                    <li>Compile: <code>Top</code> is an interface and cannot be instantiated.</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><h4><code>Top r = new Two();</code></h4><br>
+                  <code>r.delta();</code></td>
+                <td>DE</td>
+                <td>
+                  <ul>
+                    <li>Compile: OK (<code>Top</code> defines <code>delta()</code>).</li>
+                    <li>Runtime: <code>r</code> is a <code>Two</code>.  
+                      <ol>
+                        <li><code>Two</code> does not override <code>delta()</code>, so <code>One.delta()</code> runs and prints <code>D</code>.</li>
+                        <li><code>One.delta()</code> calls <code>this.beta()</code>.  Since <code>r</code> is a <code>Two</code>, <code>Two.beta()</code> prints <code>E</code>.</li>
+                      </ol>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+          
+            <h3>How to Walk Through</h3>
+            <ol>
+              <li><strong>Reference vs. Implementation:</strong><br>
+                  At compile-time, look only at the *reference* type (e.g. <code>Top</code>, <code>One</code>, or <code>Two</code>) to see if the cast or method call is allowed.</li>
+              <li><strong>Actual Object:</strong><br>
+                  At run-time, see what the variable actually points to (e.g. <code>new One()</code> vs. <code>new Two()</code>).  
+                  - If you downcast, Java checks the real type and throws <code>ClassCastException</code> on mismatch.  
+                  - If you call a method, Java performs dynamic dispatch and invokes the most specific override in the class hierarchy.</li>
+              <li><strong>Interface Instantiation:</strong><br>
+                  You cannot instantiate an interface or abstract class—attempting to do so is a compile-time error.</li>
+            </ol>
+          </section>
+          </section>
+            <section id="declaration">
+             
+              <h3 style="color:black">New Problem Casting</h3>
+              <img src="./worksheets_files/q15b.png" width="600px" alt="class diagram" />
+             
+                <pre><code>
+                  Person   a = new Actor();
+                  Dancer   d = new Dancer();
+                  Performer s = new Star(d);
+                    </code></pre>
+                  
+                    <section id="method-calls">
+                      <table border="1" cellpadding="6" cellspacing="0">
+                      <tr>
+                        <th>Code</th>
+                        <th>Result</th>
+                        <th>Detail</th>
+                      </tr>
+                  
+                      <tr>
+                        <td>
+                          <h4><code>Person a = new Actor();</code><br></h4>
+                            <code>a.rehearse();</code>
+                        </td>
+                        <td><code>No output</code></td>
+                        <td>
+                          <ul>
+                            <li>Compile: OK <code>a</code> is <code>Person</code>, which defines <code>rehearse()</code></li>
+          <li>Runtime: invokes <code>Actor.rehearse()</code>, but since we do not 
+            print or use the returned value, nothing appears on the console</li>
+                          </ul>
+                        </td>
+                      </tr>
+                  
+                      <tr>
+                        <td>
+                          <h4><code>a.perform();</code></h4>
+                        </td>
+                        <td><em>Compile-time error</em></td>
+                        <td>
+                          <ul>
+                            <li>Compile: NO <code>Person</code> does not declare <code>perform()</code>, so the method is not found</li>
+                          </ul>
+                        </td>
+                      </tr>
+                  
+                      <tr>
+                        <td>
+                          <h4><code>((Dancer)a).perform();</code></h4>
+                        </td>
+                        <td><code>Sing and Dance!</code></td>
+                        <td>
+                          <ul>
+                            <li>Compile: OK (<code>a</code> cast to <code>Dancer</code>, which implements <code>perform()</code>).</li>
+                            <li>Runtime: <code>a</code> is actually an <code>Actor</code>, a subtype of <code>Dancer</code>, so cast succeeds.</li>
+                            <li>Dispatch: calls <code>Dancer.perform()</code>, which prints <code>rehearse()</code> result from the <code>Actor</code> object: "Sing and Dance!". 
+                              See note below for more explanation</li>
+                          </ul>
+                        </td>
+                      </tr>
+                  
+                      <tr>
+                        <td>
+                          <h4><code>((Star)a).perform();</code></h4>
+                        </td>
+                        <td><em>Runtime-error</em></td>
+                        <td>
+                          <ul>
+                            <li>Compile: OK <code>a</code> can syntactically cast to <code>Star</code>. The compiler looks only at the <em>declared</em> type of <code>a</code> (<code>Person</code>) and the <em>target</em> type (<code>Star</code>). <code>Star</code> is a subtype (or implementer) of <code>Person</code>, so the compiler allows the cast syntactically).</li>
+                            <li>Runtime: <code>a</code> is an <code>Actor</code>, not a <code>Star</code>, so the cast throws <code>ClassCastException</code>.</li>
+                          </ul>
+                        </td>
+                      </tr>
+                  
+                      <tr>
+                        <td>
+                          <h4><code>Dancer d = new Dancer();</code></h4><br>
+                            <code>d.perform();</code>
+                        </td>
+                        <td><code>Dance!</code></td>
+                        <td>
+                          <ul>
+                            <li>Compile: OK (&mdash; <code>d</code> is <code>Dancer</code>, which implements <code>perform()</code>).</li>
+                            <li>Runtime: calls <code>Dancer.perform()</code>, which prints its own <code>rehearse()</code> ("Dance!").</li>
+                          </ul>
+                        </td>
+                      </tr>
+                  
+                      <tr>
+                        <td>
+                          <h4><code>Performer s = new Star(d);</code></h4><br>
+                            <code>s.perform();</code>
+                        </td>
+                        <td><code>Sing and Dance!Dance!</code></td>
+                        <td>
+                          <ul>
+                            <li>Compile: OK (&mdash; <code>s</code> is <code>Performer</code>, which declares <code>perform()</code>).</li>
+                            <li>Runtime: <code>s</code> is a <code>Star</code>, so <code>Star.perform()</code> runs:
+                              <ol>
+                                <li>Prints <code>rehearse()</code> via <code>Actor.rehearse()</code>: "Sing and Dance!".</li>
+                                <li>Then invokes <code>backupDancer.perform()</code>, where <code>backupDancer</code> is the <code>Dancer</code> we passed in, printing "Dance!".</li>
+                              </ol>
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                  
+                      <tr>
+                        <td>
+                          <h4><code>((Person)s).perform();</code></h4>
+                        </td>
+                        <td><em>Compile-time error</em></td>
+                        <td>
+                          <ul>
+                            <li>Compile: <code>Person</code> does not declare <code>perform()</code>, so the call is invalid.</li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </table>
+                  </section>
+                  <section class="note">
+                    <h3 style="color:black">Note: Casting vs. Dynamic Dispatch</h3>
+                    <p>
+                      When you write <code>((Dancer)a).perform();</code>, the cast to <code>Dancer</code> is only a compile-time mechanism to allow calling <code>perform()</code>. At runtime the JVM still sees the actual object as an <code>Actor</code>:
+                    </p>
+                    <ol>
+                      <li>
+                        <strong>First dispatch:</strong> JVM looks for <code>perform()</code> on <code>Actor</code> → not found → falls back to <code>Dancer.perform()</code>.
+                      </li>
+                      <li>
+                        <strong>Nested dispatch:</strong> Inside <code>Dancer.perform()</code> there is a call to <code>rehearse()</code>, so the JVM again starts at <code>Actor</code>, finds <code>Actor.rehearse()</code>, and executes that override.
+                      </li>
+                    </ol>
+                    <p>
+                      <em>Key point:</em> Casting affects only the compile-time check; dynamic dispatch always uses the object’s real (runtime) class to select method implementations.
+                    </p>
+                  </section>
+          </section>
+</body>
+</html>

@@ -170,6 +170,7 @@
         <dd><a href="#javadoc">Understanding Javadocs</a></dd>
         <dd><a href="#scanner">How to Use Scanner</a></dd>
         <dd><a href="#recursion">Recursion</a></dd>
+
         <p style="color:white">Classes And Methods</p>
         <dd><a href="#return">Void, Return, Calling Methods</a></dd>
         <dd><a href="#fields">Understanding Fields in Classes</a></dd>
@@ -182,6 +183,7 @@
         <dd><a href="#abstract">Abstract Classes</a></dd>
         <dd><a href="#interface">Interfaces</a></dd>
         <dd><a href="#upcast">Upcasting and Downcasting</a></dd>
+        <dd><a href="#illegalcast">How Determine if Cast is Illegal</a></dd>
         <dd><a href="#errors">Compile and Run-Time Errors</a></dd>
 
         <p style="color:white"> Graphics</p>
@@ -191,6 +193,8 @@
         <dd><a href="#swing">Basics Swing Graphics</a></dd>
         <dd><a href="#transform">Graphics Transform</a></dd>
         <dd><a href="#events">Event Handling</a></dd>
+        <dd><a href="#listener">Understanding ActionListener</a></dd>
+        <dd><a href="#focus">Keeping focus for events</a></dd>
         
         
         
@@ -1554,6 +1558,70 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
         <p><strong>Constructor Initialization:</strong> Use when the initialization value depends on parameters or 
             requires additional logic</p>
       </section>
+
+
+      <section id="illegalcast">
+        <h2 style="color:black">Introduction: Determining Illegal Casts</h2>
+        <p>
+          In Java, whether a cast is legal depends on the <em>inheritance hierarchy</em> (or interface relationships) between the types involved.  
+          There are two main checks:
+        </p>
+        <ol>
+          <li>
+            <strong>Compile‐time check:</strong><br>
+            The <em>static type</em> (the variable’s declared type) must be related to the <em>target type</em> by subclassing or interface implementation.  
+            - If the compiler sees that <code style="color:darkred">TypeA</code> and <code style="color:darkred">TypeB</code> share no inheritance path, it rejects 
+              <code style="color:darkred">(TypeB) aVariable</code> as an “inconvertible types” compile‐time error.
+          </li>
+          <li>
+            <strong>Run‐time check (downcasts only):</strong><br>
+            Even if the compile‐time check passes, a <em>downcast</em> (superclass → subclass) must be verified at runtime.  
+            The JVM ensures the actual object is an instance of the <em>target type</em> (or its subclass).  
+            If not, you get a <code style="color:darkred">ClassCastException</code> at runtime.
+          </li>
+        </ol>
+      
+        <h3>Quick Rules</h3>
+        <ul>
+          <li>
+            <strong>Upcast (subclass → superclass or interface):</strong>  
+            Always safe, and often implicit—no explicit <code style="color:darkred">(Type)</code> needed.
+          </li>
+          <li>
+            <strong>Downcast (superclass → subclass):</strong>  
+            Requires an explicit <code style="color:darkred">(TargetType)</code>.  
+            If the object is not really that subtype, you’ll see a <code style="color:darkred">ClassCastException</code> at runtime.
+          </li>
+          <li>
+            <strong>Unrelated types:</strong>  
+            Compiler error—Java will not allow you to cast between classes or interfaces that don’t share any “is-a” relationship.
+          </li>
+        </ul>
+      
+        <h3>Inheritance Hierarchy Example</h3>
+        <pre><code>
+      // Suppose we have:
+      interface Animal { … }
+      class Dog implements Animal { … }
+      class Poodle extends Dog { … }
+      class Cat implements Animal { … }
+      
+      // Legal upcast (implicit):
+      Animal a1 = new Dog();
+      Animal a2 = new Poodle();
+      
+      // Legal downcast (explicit) – allowed at compile time, but must pass runtime check:
+      Dog d1 = (Dog) a1;        // OK if a1 actually refers to a Dog
+      Poodle p1 = (Poodle) a2;  // OK if a2 actually refers to a Poodle
+      
+      // Illegal downcast – compiles but fails at runtime if object mismatches:
+      Poodle p2 = (Poodle) a1; // ClassCastException if a1 is a Dog, not a Poodle
+      
+      // Compile‐time error – unrelated classes:
+      Poodle p3 = (Poodle) new Cat(); // compile‐time error: Cat cannot be converted to Poodle
+        </code></pre>
+      </section>
+
       <section id="switch-cases">
         <h2 style="color:black">Using Switch Cases in Java</h2>
         <p>
@@ -1876,13 +1944,23 @@ public class InteractivePanel extends MyDrawingPanel {
       // someGraphicsModel.clear();
       repaint();
     });
-
+  // handle keys
+  frame.addKeyListener(new java.awt.event.KeyAdapter() {
+    @Override
+    public void keyPressed(java.awt.event.KeyEvent e) {
+      switch(e.getKeyCode()) {
+      case KeyEvent.VK_LEFT:
+        canvas.moveDelta(-10); break;
+      case KeyEvent.VK_RIGHT:
+        canvas.moveDelta(+10); break;
+      }
+    }
+  });
     // handle mouse clicks
     addMouseListener(new MouseAdapter() {
       @Override
       public void mousePressed(MouseEvent e) {
         // e.getX(), e.getY() can be used to draw shapes at click
-        // someGraphicsModel.addDot(e.getPoint());
         repaint();
       }
     });
@@ -1893,8 +1971,87 @@ public class InteractivePanel extends MyDrawingPanel {
       <strong>Key points:</strong>
       <ul>
         <li>Use lambdas (Java 8+) or anonymous inner classes for listeners</li>
-        <li>Fire <code style="color:red">repaint()</code> after any state change to redraw your component</li>
+        <li>Fire <code style="color:red">repaint()</code> after any state change 
+          to redraw your component</li>
       </ul>
+    </p>
+  </section>
+  <section id="listener">
+    <h3 style="color:black">Understanding Listener with <code style="color:darkred">getActionCommand()</code></h3>
+    <p>
+      When a shared <code style="color:darkred">ActionListener</code> handles multiple buttons, 
+      <code style="color:darkred">e.getActionCommand()</code> tells you exactly which button was clicked without comparing objects.
+    </p>
+    <h4>1. Default Behavior</h4>
+    <p>
+      By default, a <code style="color:darkred">JButton</code>’s action command is the same as its label:
+    </p>
+    <pre><code>
+  JButton up = new JButton("Count Up");
+  // clicking this button -> e.getActionCommand() returns "Count Up"
+    </code></pre>
+    <h4>2. Customizing the Command</h4>
+    <p>
+      You can decouple the visible text from the command string:
+    </p>
+    <pre><code>
+  JButton saveBtn = new JButton("Save File");
+  saveBtn.setActionCommand("SAVE");
+  // now e.getActionCommand() returns "SAVE",
+  // even if you later change the button’s label
+    </code></pre>
+    <h4>3. Handling Multiple Buttons</h4>
+    <p>
+      Inside <code style="color:darkred">actionPerformed(ActionEvent e)</code>, 
+      switch on the command:
+    </p>
+    <pre><code>
+  public void actionPerformed(ActionEvent e) {
+    switch (e.getActionCommand()) {
+      case "UP":
+        count++;
+        break;
+      case "DOWN":
+        count--;
+        break;
+      case "RESET":
+        count = 0;
+        break;
+    }
+    text.setText(count + "");
+  }
+    </code></pre>
+    <h4>4. Why Use It?</h4>
+    <ul>
+      <li><strong>Simplicity:</strong> One listener class, no need for separate listeners per button</li>
+      <li><strong>Flexibility:</strong> Change the button’s label without breaking your logic</li>
+      <li><strong>Localization:</strong> Display text in different languages, but keep a fixed internal command</li>
+    </ul>
+  </section>
+
+  <section id="focus">
+    <h2 style="color:black"><code style="color:darkred">requestFocusInWindow()</code></h2>
+    <p>
+      In Swing, only the component that has keyboard focus receives key events.  
+      When you click a button, focus moves to that button, so your frame or canvas loses arrow‐key control.
+    </p>
+    <h3>What it does</h3>
+    <ul>
+      <li>
+        <code style="color:darkred">requestFocusInWindow()</code> asks the windowing system to give <em>this</em> component the focus as soon as it’s safe.  
+      </li>
+
+    </ul>
+    <h3>Typical usage</h3>
+    <pre><code>
+  // after showing your frame or panel:
+  canvas.requestFocusInWindow();
+  
+  // or, in a button callback:
+  parentFrame.requestFocusInWindow();
+    </code></pre>
+    <p>
+      Call it <strong>after</strong> you change UI state (e.g. in your <code style="color:darkred">moveLeft()</code> / <code style="color:darkred">moveRight()</code> methods) so that immediately following the click, your frame/canvas can once again receive arrow‐key events.
     </p>
   </section>
 
