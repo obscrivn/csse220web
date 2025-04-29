@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+
+body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    } */
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<section id="content">
+<!-- <div id="content"> -->
+    <h1>Lab Assignment 16</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Exceptions with Try and Catch</a></li>
+          <li><a href="#lab2">02. Adding Image and Sound</a></li>
+
+      
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<!-- <div id="main-content"> -->
+ <section>
+  <p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Events</a></p>
+  <p>Resources 2: <a href="../resources.html#listener" target="_blank" class="resource-ref">Understanding Listener with getActionCommand()</a></p>
+  <p>Resources 3: <a href="../resources.html#focus" target="_blank" class="resource-ref">How to keep focus on Frame for events</a></p>
+  
+</section>
+<!-- <div class="lab-section" id="lab1"> -->
+  <section id="lab1">
+    
+    <h2 style="color:black">Lab 1: Exception Handling Basics</h2>
+    <p>
+      In this lab you will see how Java throws and catches two common runtime errors:
+      <code>ArithmeticException</code> (division by zero) and <code>NullPointerException</code>.
+      You should wrap it in a <code>try/catch</code> block so the program can recover and continue.
+    </p>
+  
+    <h3>1. Create a new class <code>ExceptionDemo</code></h3>
+    <ol>
+      <li>Define the class and <code>main</code> method:
+        <pre><code>public class ExceptionDemo {
+      public static void main(String[] args) {
+          // TODO: add code here
+      }
+  }</code></pre>
+      </li>
+      <li>Inside <code>main</code>, add a <code>try/catch</code> for division by zero:
+        <pre><code>try {
+      int a = 10;
+      int b = 0;
+      System.out.println("Result: " + (a / b));
+  } catch (ArithmeticException e) {
+      System.err.println("Caught ArithmeticException: " + e.getMessage());
+  }</code></pre>
+      </li>
+      <li>Below it, add a second <code>try/catch</code> for a null reference:
+        <pre><code>try {
+      String s = null;
+      System.out.println("Length: " + s.length());
+  } catch (NullPointerException e) {
+      System.err.println("Caught NullPointerException: " + e.getMessage());
+  }</code></pre>
+      </li>
+      <li>Finally, print a message after both blocks:
+        <pre><code>System.out.println("Program continues after handling exceptions.");</code></pre>
+      </li>
+    </ol>
+  
+    <h3>2. Run and Observe</h3>
+    <ul>
+      <li>Compile and run <code>ExceptionDemo</code></li>
+      <li>Confirm you see messages for each caught exception instead of a crash</li>
+      <li>Notice that the final print runs, showing the program recovered</li>
+    </ul>
+  
+    <h3>3. Reflection</h3>
+    <ul>
+      <li>What happens if you remove the <code>catch</code> block for <code>ArithmeticException</code>?</li>
+      <li>Why are these exceptions unchecked?</li>
+    
+    </ul>
+  </section>
+<!-- </div> -->
+      <section id="lab2"> 
+        <p> You can use the same Viewer.java <a href="Viewer.java" target="_blank">Link</a>  </p>
+        <!-- <div class="lab-section" id="lab2"> -->
+          <section id="lab2">
+            <h2 style="color:black">Lab 2: Image Loading with Exception Handling</h2>
+            <p>
+              Next, you will build a simple Swing application that loads an image file in a custom panel,
+              catches any <code>IOException</code> if the file is missing or unreadable, and displays a fallback message.
+            </p>
+          
+            <h3>1. Project Setup</h3>
+            <ol>
+              <li>You can use the same package from graphics Lab 15. Create two folders under <code>src</code>: 
+                  <code>images</code> (for PNG/JPG) and <code>audio</code></li>
+              <li>Download and place ths image <a href="SquareFaces.png">(Link)</a> into <code>src/images/</code></li>
+            </ol>
+          
+            <h3>2. Write <code>ImagePanel</code></h3>
+            <p>ImagePanel will extend JPanel</p>
+            <p>Add a field <code>private BufferedImage image;</code></p>
+            <p>Create a constructor:</p>
+            <pre><code>
+              public ImagePanel() {
+                    image = ImageIO.read(new File("src/images/imagename.png"));        
+                    setPreferredSize(new Dimension(400, 300));
+            }
+          </code></pre>
+          <p>Add try and catch:</p>
+          <pre><code>
+                  try {
+                      image = ImageIO.read(new File("src/images/imagename.png"));
+                  } catch (IOException e) {
+                      System.err.println("Error loading image: " + e.getMessage());
+                      image = null;
+                  }
+                </code></pre>
+                <p>Why do you think we need image = null?</p> 
+                <p>Add paintComponent</p>   
+              @Override
+              protected void paintComponent(Graphics g) {
+                  super.paintComponent(g);
+                  if (image != null) {
+                      int x = (getWidth()  - image.getWidth())  / 2;
+                      int y = (getHeight() - image.getHeight()) / 2;
+                      g.drawImage(image, x, y, this);
+                  } else {
+                      g.setColor(Color.RED);
+                      g.drawString("Image not found", 20, 20);
+                  }
+              }
+</code></pre>
+     <p>Add ImagePanel to Viewer</p>     
+           
+            <h3>4. Add Sound</h3>
+            <ul>
+              <li>Select and download any audio file : <a href="https://developers.google.com/assistant/tools/sound-library/alarms">Sound Library</a></li>
+              <li>Note: the audio files extension is ogg. Use converter to convert ogg to wav: <a href="https://cloudconvert.com/ogg-to-wav">Link to Converter</a></li>
+           <li>Add wav file to the folder audio in src</li>
+            </ul>
+          <p>In your constructor add <code>playErrorSound(); before <code>image=null</code>. The alarm sound will play when the image is not shown</p>
+            <p>Add a helper to play sound</p>
+            <pre><code>private void playErrorSound() {
+              try {
+                AudioInputStream a = AudioSystem.getAudioInputStream(
+                    new File("src/audio/audioname.wav"));
+                Clip clip = AudioSystem.getClip();
+                clip.open(a);
+                clip.start();
+              } catch (Exception e) {
+                System.err.println("Error playing sound: " + e.getMessage());
+              }
+          }</code></pre>
+          <h3>5. Reflection</h3>
+            <ul>
+              <li>Why must <code>ImageIO.read</code> be wrapped in <code>try/catch</code>?</li>
+              <li>What other exceptions might arise when loading images or audio?</li>
+            </ul>
+          </section>
+      </section>
+
+
+        </body>
+        </html>
