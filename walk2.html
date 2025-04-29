@@ -322,10 +322,13 @@
                         <td><code>Sing and Dance!Dance!</code></td>
                         <td>
                           <ul>
-                            <li>Compile: OK (&mdash; <code>s</code> is <code>Performer</code>, which declares <code>perform()</code>).</li>
+                            <li>Compile: OK (<code>s</code> is <code>Performer</code>, which declares <code>perform()</code>)</li>
                             <li>Runtime: <code>s</code> is a <code>Star</code>, so <code>Star.perform()</code> runs:
                               <ol>
-                                <li>Prints <code>rehearse()</code> via <code>Actor.rehearse()</code>: "Sing and Dance!".</li>
+                                <li>Access <code>rehearse()</code> via <code>Actor.rehearse()</code>: "Sing and"</li>
+                                 <li>Then access <code>super.rehearse()</code>. Note: super is always resolved lexically to the immediate superclass 
+                                  of the class in which the code appears, 
+                                  not to the runtime class of the object - so the code was called in Actor, and superclass for Actor is Dancer. The result:  Dance!"</li>
                                 <li>Then invokes <code>backupDancer.perform()</code>, where <code>backupDancer</code> is the <code>Dancer</code> we passed in, printing "Dance!".</li>
                               </ol>
                             </li>
