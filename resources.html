@@ -194,6 +194,7 @@
         <dd><a href="#transform">Graphics Transform</a></dd>
         <dd><a href="#events">Event Handling</a></dd>
         <dd><a href="#listener">Understanding ActionListener</a></dd>
+        <dd><a href="#images">Images in Java</a></dd>
         <dd><a href="#focus">Keeping focus for events</a></dd>
         
         
@@ -2027,6 +2028,38 @@ public class InteractivePanel extends MyDrawingPanel {
       <li><strong>Flexibility:</strong> Change the button’s label without breaking your logic</li>
       <li><strong>Localization:</strong> Display text in different languages, but keep a fixed internal command</li>
     </ul>
+  </section>
+
+  <section id="images">
+    <h2 style="color:black">Adding Images</h2>
+    <p>
+      You can load and display images in a Swing or JavaFX application using the <code style="color:red">ImageIO</code> class. 
+      Below is a simple example showing how to read a PNG or JPEG file and draw it inside a <code style="color:red">JPanel</code>. 
+    </p>
+    <p>You can create a folder under "src" and called it images. Then you path to the image will be "src/images/imagename.png"</p>
+    <pre><code>
+  // In a class that extends JPanel:
+  
+  private BufferedImage image;
+  
+  public MyImagePanel() {
+      try {
+          image = ImageIO.read(new File("path/to/image.png"));
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+  }
+  
+  @Override
+  protected void paintComponent(Graphics g) {
+      super.paintComponent(g);
+      if (image != null) {
+          // Draw at top-left corner (0,0)
+          g.drawImage(image, 0, 0, this); // this is your panel
+      }
+  }
+    </code></pre>
+    
   </section>
 
   <section id="focus">
