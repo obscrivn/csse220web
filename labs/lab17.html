@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+
+body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    } */
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<section id="content">
+<!-- <div id="content"> -->
+    <h1>Lab Assignment 17</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Moving Ball Timer</a></li>
+          <li><a href="#lab2">02. Moving Image</a></li>
+          <li><a href="#lab3">03. Collision</a></li>
+
+      
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<!-- <div id="main-content"> -->
+ <section>
+  <!-- <p>Resources 1: <a href="../resources.html#images" target="_blank" class="resource-ref">Images</a></p>
+  <p>Resources 2: <a href="../resources.html#audio" target="_blank" class="resource-ref">Audio</a></p> -->
+  
+</section>
+<!-- <div class="lab-section" id="lab1"> -->
+  <section id="timer-refactor-lab">
+    <h2 style="color:black">1. Moving Ball with Animation Timer</h2>
+    <p>
+      In this lab you will assign your <code>Timer</code> to move a ball across the panel. Then you will add an image to repace a Swing graphic.
+    </p>
+    <h3>1. Create a class MovingBallPanel that inherits from JPanel</h3>
+    <p>Add private fields: int x = 0 and final int R = 30</p>
+    <h3>2. Create and start the Timer</h3>
+    <p>In your constructor add timer:</p>
+    <pre><code>// lambda calling your new method
+  Timer animationTimer = new Timer(50, e -> updateListener());
+  animationTimer.start();
+  </code></pre>
+    <h3>3. Add an update method</h3>
+
+    <pre><code>private void updateListener() {
+      x += 5;
+      if (x > getWidth()) {
+        x = -R;
+      }
+      repaint();
+  }</code></pre>
+  <h3>4. Override</h3>
+  <p>Override paintComponent method. Set a color of your choice to the graphics and draw an Oval starting at x coordinate and y must be in the center. 
+    Height and width should be R.
+  </p>
+  <p> Update the viewer (you can use the same viewer)</p>
+
+    <h3>5. Reflection</h3>
+    <ul>
+      <li>Why do you need <code>repaint()</code> method?</li>
+      <li>Why might you want to keep a reference to the <code>Timer</code> instance instead of chaining <code>.start()</code>?</li>
+    </ul>
+  </section>
+<!-- </div> -->
+       
+        <!-- <div class="lab-section" id="lab2"> -->
+          <section id="lab2">
+            <h2 style="color:black">2. Adding Image to the Moving Ball</h2>
+          
+            <h3>1. Add Image</h3>
+            <ol>
+              <li>Find a png image depicting a ball (e.g. tennis ball)</li>
+              <li>Add a field for image (see Lab 15)</li>
+              <li>Read image using ImageIO and surround it by try and catch</li>
+            <li>Add a boolean  spriteLoaded (Sprite just a generic name for images in games)</li>
+            <li>In try block set the spriteLoaded to true and in catch block set it to false</li>
+          </ol>
+          
+            <h3>2. Update paintComponent</code></h3>
+            <p>Set up if-else statement: when image is loaded, it is drawn. When image is not loaded, you draw the oval</p>
+            <pre><code>
+              if (spriteLoaded) {
+                g2.drawImage(image, x, getHeight()/2 - R/2, R, R, this);
+              } else {
+                 g2.setColor(Color.CYAN);
+                 g2.fillOval(x, getHeight()/2 - R/2, R, R);
+              }
+          </code></pre>
+
+          </section>
+          <section id="collision-intro">
+            <h2 style="color:black">Introduction to Collision Detection & Response</h2>
+            <p>
+              In interactive graphics and games, <strong>collision detection</strong> is the process of determining whether two objects—such as a moving sprite and the boundaries of the window—overlap or touch.  
+              Once a collision is detected, <strong>collision response</strong> defines how those objects react: you might bounce, stop, wrap around, or trigger a game‐over event.
+            </p>
+            <p>
+              Common collision techniques include:
+              <ul>
+                <li><strong>Bounding boxes</strong> (axis‐aligned rectangles)</li>
+                <li><strong>Bounding circles</strong> (distance checks between centers)</li>
+                <li><strong>Pixel‐perfect</strong> tests (rarely used in simple 2D games)</li>
+              </ul>
+              For a single moving ball in a rectangular window, the easiest approach is a <em>bounding‐circle vs. boundary</em> check: when the ball’s edge touches or goes past the left/right/top/bottom edges of the panel, we reverse its velocity component along that axis.
+            </p>
+          </section>
+          
+          <section id="lab3">
+            <h2 style="color:black">03. Bouncing Ball Collision</h2>
+            <p>
+              Starting from our <code>MovingBallPanel</code>, we add a horizontal velocity <code>dx</code> and vertical velocity <code>dy</code>.
+               Each timer tick does the following:
+            </p>
+            <ol>
+              <li>Advance the ball’s position by <code>dx</code> and <code>dy</code></li>
+              <li>Check if its next position would cross any panel boundary (<code>x &lt; 0</code>, <code>x + R &gt; getWidth()</code>, similarly for <code>y</code>)</li>
+              <li>If so, we reverse that component of velocity (<code>dx = -dx</code> or <code>dy = -dy</code>), and the ball “bounces” off the wall</li>
+              <li>Then we call <code>repaint()</code> to draw it in its new position</li>
+            </ol>
+          
+            <h3>Modified <code>MovingBallPanel</code> Code</h3>
+            <p>Add velocity and update x, y</p>
+            <p> Replace the image with the new y position: <code>g2.drawImage(image, x, y, R, R, this);</code></p>
+            <pre><code>
+              private int x = 0, y = 100; 
+              private int dx = 5, dy = 3;  
+            </code></pre>  
+            <p>Modify the updateAnimation so that you detect collisions and reverse the velocity</p>
+            <pre><code>
+                  x += dx;
+                  y += dy;
+          
+                  // horizontal collision
+                  if (x < 0 || x + R > getWidth()) {
+                      dx = -dx; 
+                      x += dx;   // nudge back inside
+                  }
+          
+                  // vertical collision
+                  if (y < 0 || y + R > getHeight()) {
+                      dy = -dy;
+                      y += dy;
+                  }
+          </code></pre>
+            <h3>Explanation</h3>
+            <ul>
+              <li><code>dx, dy</code> represent how many pixels the ball moves each tick horizontally and vertically</li>
+              <li>When <code>x &lt; 0</code> or <code>x + R &gt; getWidth()</code>, we invert <code>dx</code> so the ball reverses direction</li>
+              <li>Similarly for the vertical axis with <code>y</code> and <code>dy</code></li>
+              <li>The small “nudge” (<code>x += dx</code> or <code>y += dy</code>) ensures the ball stays inside the panel after bouncing</li>
+            </ul>
+          </section>
+
+
+        </body>
+        </html>
