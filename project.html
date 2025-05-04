@@ -67,6 +67,44 @@ header {
   font-size: 1.2em;
   margin: 10px 0 0;
 }
+
+
+/* Container for all cards */
+#content {
+  display: block;
+  padding: 1rem;
+}
+
+/* Individual milestone cards */
+.milestone-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect to “lift” the card */
+.milestone-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Headings inside cards */
+.milestone-card h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+/* Lists inside cards */
+.milestone-card ul,
+.milestone-card ol {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+}
 </style>
 </head>
     <body>
@@ -87,20 +125,95 @@ header {
     
             <div class="container">
               <h1>Final Project Descriptions</h1>
-              <p>Expectation and Requirements: <a href="https://docs.google.com/document/d/13I9is3bnMznH6agzMstro9AqyXzMaXMC_gmMJV5bthk/edit?usp=sharing" target="_blank">See Example</a></p>
-              <p>Team Roles and Collaboration Requirements: <a href="https://docs.google.com/document/d/1UuBX9u1grfPVFSc0Y0xAbya5be2OcuIDK_OxPJ0Q54g/edit?usp=sharing" target="_blank">See Document and follow the provided example for reporting</a></p>
-              <div class="card-container">
+              <p>For all Milestones - one submission per team</p>
+              <!-- <div class="card-container">
                 <a href="" class="card">
                   <h2>Milestone 1</h2>
-                  <p>Part 1a Instructions (via Gradescope) - Game classes, Teams roles, Github link</p>
-                  <p>Part 1b Instructions (via Gradescope) - UML</p>
+              <p>Classes and UML</p>
                 </a>
 
                 <a href="" class="card">
                   <h2>Milestone 2</h2>
                   <p>Instructions (via Gradescope)</p>
                 </a>
+              </div> -->
+              <div id="content">
+                <div class="milestone-card">
+                  <h3>Resources</h3>
+                  <ul>
+                  <li>Expectation and Requirements (this is just an example): <a href="https://docs.google.com/document/d/13I9is3bnMznH6agzMstro9AqyXzMaXMC_gmMJV5bthk/edit?usp=sharing" target="_blank">See Example</a></li>
+                  <li>Team Roles and Collaboration Requirements (these are suggestions): <a href="https://docs.google.com/document/d/1UuBX9u1grfPVFSc0Y0xAbya5be2OcuIDK_OxPJ0Q54g/edit?usp=sharing" target="_blank">See Document</a></li>
+                  <li>Healing Drops Example: import zip files to view how collision is inheritance is handled: <a href="./resources_files/PracticeInheritanceDesignAdvancedSolution.zip">Import as zip project</a></li>
+                  
+                </ul>
+                </div>
+              <div class="milestone-card">
+                <h3>Milestone 1: Planning & Requirements (50 pts)</h3>
+                <p>Submit to Gradescope in "Milestone 1.a"</p>
+                <ol>
+                  <li>Step 1. Make a list of Classes</li>
+                      <li>Create Team's Github Repo</li>
+                      <li>Discuss Team policies &amp; plans</li>
+                 
+                </ol>
+                <p>Submit to Gradescope in "Milestone 1.b"</p>
+      
+                <ol>
+                  <li>Assign responsibilities</li>
+                  <li>Draw and submit a UML class diagram
+
+                  </li>
+      
+                </ol>
               </div>
+            
+              <div class="milestone-card">
+                
+                <h3>Milestone 2: Design & Skeleton Implementation (50 pts)</h3>
+                <p>Submit Milestone Report to Gradescope in "Milestone 2"</p>
+                <ol>
+                 <li>Build the Swing frame/panels</li>
+                 <li>Sprite-loading classes</li>
+                 <li>Animation loops for players</li>
+                  </li>
+                </ul>
+              </div>
+            
+              
+            
+              <div class="milestone-card">
+                <h3>Milestone 3 – Integration &amp; Gameplay Mechanics (50 pts)</h3>
+                <p>Update and submit Milestone Report to Gradescope in "Milestone 3"</p> 
+                <ol>
+                    <li>Place objects in the start positions</li>
+                    <li>Add levels</li>
+                    <li>Control movements with keys/buttons</li>
+                    <li>Detect collisions
+                    </li>
+                  </ol>
+                </ul>
+              </div>
+            
+              <div class="milestone-card">
+                <h3>Milestone 4 – – Testing, Polish &amp; Final Demo (100 pts)</h3>
+                <p>Update Milestone Report to Gradescope in "Milestone 4 Report" and "Milestone 4 Video LInk" </p> 
+
+                <ol>
+                  <li>Implement and test scoring (lives, health etc) 
+                  </li>
+                  <li>UI/UX look and feel: update pause/menu screens, level‐complete UI
+                  </li>
+                  <li>Extras: implement at least one extra feature (e.g. audio effect)
+                  </li>
+                  <li>Final Documentation: Update UML diagrams and add comprehensive Javadoc/comments to the code
+                  </li>
+                  <li> Record 2-3 video demoying your game (youtube preferred) 
+                    
+                  </li>
+                </ol>
+              </div>
+            
+            </div>
             </div>
           
 </body>
