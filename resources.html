@@ -186,6 +186,7 @@
         <dd><a href="#illegalcast">How Determine if Cast is Illegal</a></dd>
         <dd><a href="#errors">Compile and Run-Time Errors</a></dd>
         <dd><a href="#junit">How to create JUnit Tests</a></dd>
+        <dd><a href="#files">reading and Writing Files</a></dd>
 
         <p style="color:white"> Graphics</p>
         <dd><a href="#jframe">Making JFrame</a></dd>
@@ -1704,10 +1705,66 @@ void testAdd() {
   </p>
 </section>
 
+<section id="files">
+  <h2 style="color:black">File I/O in Java: Writing &amp; Reading</h2>
 
+  <h3>1. Writing to a Text File</h3>
+  <p>
+    Use a <code style="color:black">PrintWriter</code> wrapped around a <code style="color:black">FileWriter</code>
+  </p>
+  <p>Consider creating a class with static helper methods, like FileIOUtils</p>
+  <pre><code>public static void writeLine(String filename, String line) {
+    // 'true' = append mode; set to 'false' to overwrite
+    try (PrintWriter out = new PrintWriter(
+           new FileWriter(filename, true)   // FileWriter in append mode
+         )) {
+      out.println(line);
+    } catch (IOException e) {
+      System.err.println("Write error: " + e.getMessage());
+    }
+  }
+}</code></pre>
+
+  <h3>2. Reading from a Text File</h3>
+  <p>
+    Use a <code style="color:black">BufferedReader</code> or <code style="color:black">Scanner</code>
+  </p>
+  <pre><code>
+  public static List&lt;String&gt; readAllLines(String filename) {
+    List&lt;String&gt; lines = new ArrayList&lt;&gt;>();
+    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+      String line;
+      while ((line = reader.readLine()) != null) {
+        if (!line.isBlank()) {
+          lines.add(line.trim());
+        }
+      }
+    } catch (IOException e) {
+      System.err.println("Read error: " + e.getMessage());
+    }
+    return lines;
+  }
+}</code></pre>
+
+  <h3>3. Usage Example</h3>
+  <pre><code>String file = "scores.txt";
+    // Write a score
+    FileIOUtils.writeLine(file, "Alice, 42");
+    // Read back all scores
+    List&lt;String&gt; scores = FileIOUtils.readAllLines(file);
+  }
+}</code></pre>
+
+  <h3>4. Key Points</h3>
+  <ul>
+    <li>Use <code style="color:black">FileWriter(filename, true)</code> to append vs. overwrite</li>
+    <li>Handle <code style="color:black">IOException</code></li>
+    <li>Trim and filter blank lines when reading for cleaner data</li>
+  </ul>
+</section>
 
 <section id="swing">
-    <h2 style="color:black">File IO in</h1>
+    <h2 style="color:black">Swing Components</h1>
     <p>
         In Java Swing, you can build GUI applications by combining components like <code style="color:red">JPanel</code> and <code style="color:red">JComponent</code> 
         within a <code style="color:red">JFrame</code>. You also use layout managers to control the positioning of these components.
