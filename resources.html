@@ -200,6 +200,8 @@
         <dd><a href="#focus">Keeping focus for events</a></dd>
         <dd><a href="#screens">Making Multiple Screens</a></dd>
         <dd><a href="#levels">Using multiple levels</a></dd>
+        <dd><a href="#sprites">Loading sprites as static properties</a></dd>
+
         
         
         
@@ -1987,6 +1989,55 @@ SwingUtilities.invokeLater(() -&gt; {
     <li>Blank or whitespace-only lines are skipped via <code style="color:red">trim().isEmpty()</code></li>
 
   </ul>
+</section>
+
+<section id="sprites">
+  <h2 style="color:black">Reusing a Single Image for Multiple Sprites</h2>
+  <p> So you have the same image but want to crate multiple Rock objects (as an example).
+    You should load the same image file once into a <code style="color:red">BufferedImage</code>, and then share that in every rock you draw.
+  </p>
+
+  <h3>Why Load Once?</h3>
+  <ul>
+    <li><strong>Performance:</strong> Disk/IO and image‐decoding are expensive operations.</li>
+    <li><strong>Memory:</strong> You avoid keeping duplicate pixel data in memory.</li>
+    <li><strong>Simplicity:</strong> Easier to manage a single shared resource than many duplicates.</li>
+  </ul>
+
+  <h3>How to Do It</h3>
+  <p>
+    Put your image‐loading code in a static field, then each <code>Rock</code> simply references that one image.
+  </p>
+  <pre><code>public class Rock {
+    private static BufferedImage rockSprite;
+    static {
+      try {
+        rockSprite = ImageIO.read(
+          Rock.class.getResource("/images/rock.png")
+        );
+      } catch (IOException e) {
+        System.err.println("Failed to load rock sprite: " + e);
+      }
+    }
+
+    private int x, y;
+
+    public Rock(int x, int y) {
+      this.x = x;
+      this.y = y;
+    }
+
+    public void draw(Graphics g) {
+      g.drawImage(rockSprite, x, y, null);
+    }
+  }</code></pre>
+
+  
+
+  <h3>Key Takeaway</h3>
+  <p>
+    Load once, reuse everywhere.
+  </p>
 </section>
 
   <section id="transform">
