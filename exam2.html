@@ -11,6 +11,50 @@
             margin-bottom: 15px; /* Adds 15px of space below each list item */
             margin-top: 10px;
         }
+        header, footer { background: #2c3e50; color: #fff; padding: 1rem; }
+    header h1, footer p { margin: 0; }
+
+    main { padding: 2rem; max-width: 900px; margin: auto; }
+
+    h2 { color: #2c3e50; margin-top: 2rem; }
+
+    /* Two-column layout for general info */
+    .info { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+    .info li { background: #ecf0f1; padding: 0.5rem; border-radius: 4px; }
+
+    /* Topics grid */
+    .topics-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 1rem;
+      list-style: none;
+      padding: 0;
+    }
+    .topics-list li {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 1rem;
+    }
+    .topics-list a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    .topics-list a:hover {
+      text-decoration: underline;
+    }
+
+    /* Practice section */
+    .practice a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: #2980b9;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .practice a:hover { background: #1f5e7d; }
     </style>
     </head>
     <body>
@@ -27,40 +71,96 @@
             <div style="clear:both;"></div>
         </div>
     
-    <div id="content">
-    <h1>CSSE220 Exam 2 Review Study Guide</h1>
-    <p>To be posted: This study guide covers key concepts, techniques, and example questions to prepare for Exam 2</p>
-    <hr>
-    <h2>Information (Will be updated)</h2>
-    <ul>
-        <li>Allowed material: 1 sheet (2 sided) written notes + you can use notes and handouts from exam 1</li>
-       <li>Format: paper exam during the class scheduled time, 60 min total  </li>
-       
-
-            </ul>
-            <p><strong>Topics Covered (slides link will be updated)</strong>: </p>
-            <ol>
-                <li>Polymorphic Tracing <a href="" target="_blank" >slides</a></li>
-                <li> Recursion (drawing)
- 
-        </li>
-                    <li> Access Modifiers <a href="" target="_blank" >slides</a>
-                    </li>
-                    <li> Inheritance 
-                       
+        <header>
+            <h1>CSSE 220 Exam 2 Review Study Guide</h1>
+            <p>One sheet (2-sided) of handwritten notes allowed. 60-minute in-class paper exam.</p>
+          </header>
+        
+          <main>
+            <section aria-labelledby="info-heading">
+              <h2 id="info-heading">General Information</h2>
+              <ul class="info">
+                <li><strong>Format:</strong> Paper exam, 60 min total.</li>
+                <li><strong>Allowed Material:</strong> One 8½×11″ sheet, double-sided.</li>
+              </ul>
+            </section>
+        
+            <section aria-labelledby="topics-heading">
+              <h2 id="topics-heading">Topics Covered</h2>
+              <ul class="topics-list">
+                <li>
+                  <h3>Abstract Classes</h3>
+                  <a href="resources.html#abstract">Examples</a>
+                  <a href="https://share.evernote.com/note/023c23ec-1025-2356-ef01-ff6382ce4107">Slides</a>
+                  
                 </li>
-                <li> Exceptions/Errors <a href="" target="_blank" >slides</a>
+                <li>
+                  <h3>Interfaces</h3>
+                  <a href="resources.html#interface">Examples</a>
                 </li>
-                    <li> BigO <a href="" target="_blank" >slides</a>
-                    </li>
-                    <li>LinkedList <a href="" target="_blank" >slides</a>
-                    </li>
-                    <li> MergeSort <a href="" target="_blank" >slides</a>
-                    </li>
-                    <li> Event-based programming <a href="" target="_blank" >slides</a>
-                    </li>
-                    
-                    </ol>
-    </div>
+                <li>
+                  <h3>Polymorphism</h3>
+                  <a href="https://share.evernote.com/note/023c23ec-1025-2356-ef01-ff6382ce4107" target="_blank">Slides</a><br>
+                  <a href="walk1.html" target="_blank">Quiz 14 Walkthrough</a><br>
+                  <a href="walk2.html" target="_blank">Quiz 15 Walkthrough</a><br>
+                  Review Homework 8
+                </li>
+                <li>
+                  <h3>Casting</h3>
+                  <a href="../resources.html#illegalcast" target="_blank">Examples</a>
+                </li>
+                <li>
+                  <h3>Recursion</h3>
+                  <a href="https://share.evernote.com/note/33aac93f-cd94-a4a0-63c6-aa0399ea750f">Slides</a><br>
+                  <a href="https://codingbat.com/java" target="_blank">CodingBat Practice</a><br>
+                  Quiz 11 &amp; Quiz 12
+                </li>
+                <li>
+                  <h3>Access Modifiers</h3>
+                  <a href="https://share.evernote.com/note/023c23ec-1025-2356-ef01-ff6382ce4107" target="_blank">Slides</a>
+                </li>
+                <li>
+                  <h3>Inheritance</h3>
+                  <a href="https://share.evernote.com/note/ba7b1898-6c22-a9b4-44ef-aabd8c6c30a4" target="_blank">Slides</a><br>
+                  Review Quiz 13
+                </li>
+                <li>
+                  <h3>Exceptions &amp; Errors</h3>
+                  <a href="https://share.evernote.com/note/d2499a8b-110a-68aa-70c1-6e22f7b40827" target="_blank">Slides</a><br>
+                  Review Quiz 16
+                </li>
+                <li>
+                  <h3>Big-O Analysis</h3>
+                  <a href="https://share.evernote.com/note/5975aaab-ac5f-f3f1-ff50-fdaf15fb9172" target="_blank">Slides</a><br>
+                  Review Quiz 18
+                </li>
+                <li>
+                  <h3>Linked Lists</h3>
+                  <a href="https://share.evernote.com/note/092c9dc2-2682-2edd-3b58-3ee538a05d9e" target="_blank">Slides</a>
+                </li>
+                <li>
+                  <h3>Sorting Algorithms</h3>
+                  <a href="https://www.toptal.com/developers/sorting-algorithms" target="_blank">Interactive Playground</a><br>
+                  <a href="https://share.evernote.com/note/75fdfa66-8cb2-e34d-1557-b4fef5437944" target="_blank">Sorting algorithms Slides</a><br>
+                  <a href="https://share.evernote.com/note/d143e317-dd4d-b846-9f23-b2cf05df707f" target="_blank">Merge Sort Slides</a>
+                </li>
+                <li>
+                  <h3>Event Handling</h3>
+                  <a href="https://share.evernote.com/note/c8ac306c-12c6-669c-d077-c9d813bbcb46" target="_blank">Slides</a>
+                </li>
+              </ul>
+            </section>
+        
+            <section class="practice" aria-labelledby="practice-heading">
+              <h2 id="practice-heading">Practice</h2>
+              <p>Work through sorting Big-O:</p>
+              <a href="./resources_files/Soring practice.pdf" target="_blank">Download Practice Quiz</a>
+            <p>More on Tuesday</p>
+            </section>
+          </main>
+        
+          <footer>
+            <p>CSSE 220 · Good luck on Exam 2!</p>
+          </footer>
 </body>
 </html>
