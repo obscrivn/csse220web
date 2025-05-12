@@ -198,6 +198,8 @@
         <dd><a href="#listener">Understanding ActionListener</a></dd>
         <dd><a href="#images">Images in Java</a></dd>
         <dd><a href="#focus">Keeping focus for events</a></dd>
+        <dd><a href="#screens">Making Multiple Screens</a></dd>
+        <dd><a href="#levels">Using multiple levels</a></dd>
         
         
         
@@ -1872,6 +1874,121 @@ public static void main(String[] args) {
         This example shows how you can combine standard containers (<code>JPanel</code>) with custom components (<code>JComponent</code>) and manage them within a <code>JFrame</code> using layout managers.
     </p>
 </section>
+
+<section id="screens">
+  <h2 style="color:black">Navigating Between Screens</h2>
+
+  <h3>1. Multiple JFrames Approach</h3>
+  <p>
+    You can create a dedicated <code>JFrame</code> for your welcome screen and another for your game.  
+    When the user clicks “Start” you instantiate the game frame and close the welcome frame.
+  </p>
+  <pre><code>// In your WelcomeFrame class:
+startButton.addActionListener(e -&gt; {
+    // 1) Launch the game window
+    GameFrame game = new GameFrame();
+    game.setVisible(true);
+
+    // 2) Close the welcome window
+    this.dispose();
+});</code></pre>
+
+
+  <h3>2. Single JFrame + CardLayout</h3>
+  <p>
+    Embed all “screens” as cards in one main frame.  Switch between them via <code>CardLayout.show(...)</code>.
+  </p>
+  <pre><code>// In your MainFrame class:
+CardLayout cardLayout = new CardLayout();
+JPanel cards = new JPanel(cardLayout);
+
+// Add two cards: welcome and game
+cards.add(new WelcomePanel(cardLayout, cards), "WELCOME");
+cards.add(new GamePanel(),                   "GAME");
+
+this.add(cards);
+cardLayout.show(cards, "WELCOME");
+
+// In WelcomePanel’s constructor:
+startButton.addActionListener(e -&gt; {
+    cardLayout.show(parentPanel, "GAME");
+});</code></pre>
+  <ul>
+    <li><strong>Pros:</strong> single window, smooth transitions, easy state sharing</li>
+    <li><strong>Cons:</strong> slightly more initial setup</li>
+  </ul>
+
+  
+</section>
+
+<section id="levels">
+  <h2 style="color:black">Implementing <code style="color:red">LevelIO.loadLevel</code> with <code style="color:red">BufferedReader</code></h2>
+
+  <p>
+    Since we have just learned to read text files with <code style="color:red">BufferedReader</code>, here is how to build a <code style="color:red">loadLevel(…)</code> method that reads your level file line-by-line and returns a simple <code style="color:red">Level</code> object.
+  </p>
+
+  <h3>Step 1: Define your Level model</h3>
+  <pre><code>
+public class Level {
+    private final List&lt;String&gt; rows;
+    public Level(List&lt;String&gt; rows) {
+        this.rows = rows;
+    }
+    public List&lt;String&gt; getRows() { return rows; }
+    // you can add helpers: getWidth(), getHeight(), charAt(row,col)…
+}
+  </code></pre>
+
+  <h3>Step 2: Implement loadLevel</h3>
+  <pre><code>
+public class LevelIO {
+    /**
+     * Reads a text file, collects each non-blank line into a List,
+     * then constructs and returns a Level.
+     * Use our practice with FileIO
+     */
+    public static Level loadLevel(String filename) {
+        List&lt;String&gt; rows = new ArrayList&lt;&gt;();
+        File file = new File(filename);
+        if (!file.exists()) {
+            throw new RuntimeException("Level file not found: " + filename);
+        }
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (!line.isEmpty()) {
+                    rows.add(line);
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading level file: " + e.getMessage(), e);
+        }
+        return new Level(rows);
+    }
+}
+  </code></pre>
+
+  <h3>Step 3: Using your new loadLevel in the game. You can make a folder if you have many levels (place in java project level, not in package level)</h3>
+  <pre><code>
+SwingUtilities.invokeLater(() -&gt; {
+    Level level = LevelIO.loadLevel("levels/level1.txt");
+    GamePanel panel = new GamePanel(level);
+    JFrame frame = new JFrame("My Game");
+    frame.add(panel);
+    // … setup frame …
+});
+  </code></pre>
+
+  <h3>Key Points</h3>
+  <ul>
+    <li>We read each line from the file until <code style="color:red">readLine()</code> returns <code style="color:red">null</code></li>
+    <li>Blank or whitespace-only lines are skipped via <code style="color:red">trim().isEmpty()</code></li>
+
+  </ul>
+</section>
+
   <section id="transform">
     <h2 style="color:black">Translation and Rotation in Java Swing</h2>
     <p>
