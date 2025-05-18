@@ -200,10 +200,11 @@ header {
               </div>
             
               <div class="milestone-card" id="4">
-                <h3>Milestone 4 – – Testing, Polish &amp; Final Demo (100 pts)</h3>
-                <p>Update Milestone Report to Gradescope in "Milestone 4 Report" and "Milestone 4 Video LInk" </p> 
+                <h3>Milestone 4 – – Testing, Polish &amp; Final Demo</h3>
+                <p>You will be making 2 submissions: "Milestone 4 Final Report" and "Milestone 4 Video LInk" </p> 
+                <p>Final report - template <a href="https://docs.google.com/document/d/1vWtJ_lPwzy_9RlrVKZ-Yj5E8uYG-NmjJbLTCz9C3urA/edit?usp=sharing">NEW TEMPLATE FOR FINAL REPORT</a></p>
                 <p>Meet for your final Check-IN. Be prepare to walk through the game logic and discuss the final issues/implementations <a href ="https://docs.google.com/document/d/1qNayGndsxBsV_23DOisl7I0f04cskV2nJVFGfo9o_QY/edit?usp=sharing">Milestone Sign Up</a></p>
-                <ol>
+                <!-- <ol>
                   <li>Implement and test scoring (lives, health etc) 
                   </li>
                   <li>UI/UX look and feel: update pause/menu screens, level‐complete UI
@@ -211,7 +212,85 @@ header {
                   <li>Extras: implement at least one extra feature (e.g. audio effect)
                   </li>
                   <li>Final Documentation: Update UML diagrams and add comprehensive Javadoc/comments to the code
-                  </li>
+                  </li> -->
+
+                  <section id="milestone-core-game">
+                    <h2>Milestone: Core Game Implementation</h2>
+                  
+                    <p>Here are some of the potential suggestions and approximate point values:</p>
+                    <ul>
+                      <li>Implement different kinds of weapons (~15 points)</li>
+                      <li>Images for the player, enemies, environment, resource items (~8 points)</li>
+                      <li>Have power-ups (~10 points)</li>
+                      <li>Even more qualitatively different kinds of enemies (~10+ points)</li>
+                      <li>Save the game that is in progress, and load previously saved games (~10 points)</li>
+                      <li>Maintain a high score list, where you can enter your initials after a successful game (maybe persisted between runs) (~5–10 points)</li>
+                      <li>Help screen that explains the keys (minor, but very helpful for graders) (~5 points)</li>
+                      <li>Start screen with cool animations (~5–10 points)</li>
+                      <li>Animation of sprites for the hero and/or enemies (~10–15 points)</li>
+                      <li>Vertical scrolling for tall levels (~20–25 points)</li>
+                    </ul>
+                  
+                    
+                    <section id="extra-core-requirements">
+                      <h3>Additional Core-Functionality Requirements</h3>
+                      <ul>
+                        <li>Winning a level and advancing to the next one when the hero reaches the safe zone (15 points)</li>
+                        <li>The player wins the game after completing the last level and has the option to exit or play again (5 points)</li>
+                      </ul>
+                      <p>
+                        <strong>How many points do you expect to earn</strong> based on your completion of these final two requirements?  
+                        (20 points if both are 100% completed)
+                      </p>
+                       </section>
+                  
+                    <section id="self-evaluation">
+                      <h3>Self-Evaluation</h3>
+                      <p>You should check all of these items as you will be assessed based on how well you have addressed them.</p>
+                      <ul>
+                        <li><label><input type="checkbox" name="javadoc"> Has Javadocs for each class and comments for complex code (10 points)</label></li>
+                        <li><label><input type="checkbox" name="collision"> Does collision handling in a reasonable way (10 points)</label></li>
+                        <li><label><input type="checkbox" name="magicNumbers"> Has no magic numbers or suppressed warnings (5 points)</label></li>
+                        <li><label><input type="checkbox" name="methodLength"> Has reasonable method lengths (no excessive scrolling) (5 points)</label></li>
+                        <li><label><input type="checkbox" name="noCommentedOutCode"> Has no commented-out code (5 points)</label></li>
+                        <li><label><input type="checkbox" name="selfDocumented"> Code is self-documented (sensible names, conventions) (10 points)</label></li>
+                        <li><label><input type="checkbox" name="noStatic"> Avoids using static variables; passes objects as parameters (5 points)</label></li>
+                      </ul>
+                    </section>
+                  
+                    <section id="design-principles">
+                      <h3>Design Principles</h3>
+                      <ul>
+                        <li><label><input type="checkbox" name="dp1"> Follows Design Principle #1 (All proper data stored; no duplication) (5 points)</label></li>
+                        <li><label><input type="checkbox" name="dp2"> Follows Design Principle #2 (Right classes & methods with intelligent behaviors) (5 points)</label></li>
+                        <li><label><input type="checkbox" name="dp3"> Follows Design Principle #3 (High cohesion; grade easy on the Component class) (10 points)</label></li>
+                        <li><label><input type="checkbox" name="dp4"> Follows Design Principle #4 (Low coupling) (10 points)</label></li>
+                        <li><label><input type="checkbox" name="dp5abc"> Follows Design Principle #5a–c (Proper use of inheritance; no code duplication) (10 points)</label></li>
+                        <li><label><input type="checkbox" name="dp5d"> Follows Design Principle #5d (No type-predicated code; uses polymorphism) (10 points)</label></li>
+                      </ul>
+                    </section>
+                    <section id="required-functionality">
+                      <h3>Max Points: Self-Evaluation Game Functionality</h3>
+                      <p>Which of the following core requirements have you completed?</p>
+                      <ul>
+                        <li><label><input type="checkbox" checked> Levels loading from files (10 points)</label></li>
+                        <li><label><input type="checkbox" checked> There are multiple levels, and player can switch between with U and D (10 points)</label></li>
+                        <li><label><input type="checkbox" checked> Hero that moves horizontally and can fly (moves up), stands on platforms, falls, and shoots (15 points)</label></li>
+                        <li><label><input type="checkbox" checked> Hero can collect and drop objects (10 points)</label></li>
+                        <li><label><input type="checkbox" checked> Hero has a specific number of lives that can run out and lose the game (5 points)</label></li>
+                        <li><label><input type="checkbox" checked> Moving enemies/drones (10 points)</label></li>
+                        <li><label><input type="checkbox" checked> Enemies/drones killing the hero, appropriate use of lives and final game over when lives run out (10 points)</label></li>
+                        <li><label><input type="checkbox" checked> Enemies/drones that go off screen either respawn at initial location or wrap around to the other side (10 points)</label></li>
+                        <li><label><input type="checkbox" checked> Second kind of enemy/drone and one that shoots at the hero (10 points)</label></li>
+                        <li><label><input type="checkbox" checked> Has a base number of required extra features (not for extra credit) (30 points)</label></li>
+                        <li><label><input type="checkbox" checked> Score tracking: collecting objects increases score (10 points)</label></li>
+                        <li><label><input type="checkbox" checked> After winning or losing, restarting from beginning works properly (10 points)</label></li>
+                        <li><label><input type="checkbox" checked> Other basic game functionalities (10 points)</label></li>
+                      </ul>
+                    </section>
+                    <h2>Milestone: Video Demo</h2>
+            <ol>
+                  
                   <li> Record 5 min video demoying your game (youtube preferred):
                     <ul>
                       <li> The video must be no longer than 5 minutes</li>
