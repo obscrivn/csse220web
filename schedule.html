@@ -44,9 +44,11 @@ th {
     }
     /* Content container */
     #content {
-      padding: 20px;
-      margin-top: 100px; 
-      margin-bottom: 50px;
+       width: 95%; /* Make it responsive */
+      max-width: 1400px; /* Keep a max width for large screens */
+      margin: 100px auto 50px; /* Center the container */
+      padding: 20px; /* Uniform padding */
+      box-sizing: border-box; /* Include padding in the width calculation */
     }
     h1 {
       margin-top: 0;
@@ -84,6 +86,7 @@ a.labs {
       text-align: left;
       outline: none;
       font-size: 18px;
+      box-sizing: border-box; /* Ensure padding is included in width */
       margin-top: 10px;
     }
     .collapsible:hover, .collapsible.active {
@@ -91,30 +94,40 @@ a.labs {
     }
     /* Collapsible content wrapper */
     .content-section {
-      padding: 0 18px;
+      padding: 0; /* Removed horizontal padding */
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.2s ease-out;
       background-color: #f9f9f9;
-      margin-bottom: 10px;
+      margin-bottom: 0; /* Removed bottom margin */
     }
 /* Responsive table container: allows horizontal scroll on mobile */
 .responsive-table {
       width: 100%;
       overflow-x: auto;    /* enables horizontal scrolling */
-      margin-top: 10px;
+      margin-top: 10px; /* This provides the top margin */
     }
     /* Table styling */
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
+      min-width: 1000px; 
+      margin: 0; /* Remove all margins from table itself */
     }
     table th, table td {
       border: 1px solid #ddd;
       padding: 8px;
       vertical-align: top;
     }
+    /* Column width adjustments */
+    table th:nth-child(1), table td:nth-child(1) { width: 5%; }  /* Day */
+    table th:nth-child(2), table td:nth-child(2) { width: 17%; } /* Topics */
+    table th:nth-child(3), table td:nth-child(3) { width: 17%; } /* Material */
+    table th:nth-child(4), table td:nth-child(4) { width: 5%; } /* In-Class Labs */
+    table th:nth-child(5), table td:nth-child(5) { width: 10%; } /* Homework */
+    table th:nth-child(6), table td:nth-child(6) { width: 10%; } /* Design */
+    table th:nth-child(7), table td:nth-child(7) { width: 10%; } /* Project Milestones */
+
     table th {
       background-color: #f2f2f2;
     }
@@ -170,6 +183,12 @@ a.labs {
       display: inline-block;
     }
 
+    /* New style for due date rows */
+    tr.due-date {
+      background-color: #f0f8ff; /* AliceBlue, a very light blue */
+      font-style: italic;
+    }
+
     /* New style for exam rows: color the entire row */
     tr.exam {
       background-color: #f4cece; /* A distinct background for exam rows */
@@ -179,10 +198,6 @@ a.labs {
     @media screen and (max-width: 600px) {
       .responsive-table {
         font-size: 0.9rem; /* Adjust as desired */
-      }
-      /* You could also reduce min-width here if you want more columns to show */
-      table {
-        min-width: 700px;
       }
     }
     /* @media screen and (max-width: 600px) {
@@ -238,12 +253,52 @@ a.labs {
 
 <div id="content">
 
-<h2>CSSE 220 Spring 2024-2025 Schedule </h2>
+<h2>CSSE 220 Fall 2025-2026 Schedule </h2>
 <h1>Class Schedule</h1>
-<div>Daily Quizes and Labs are submitted during the class via gradescope. 1-day grace period is enabled.</div>
-<div><strong>Quizzes and Homeworks are your preps for Exams</strong></div>
+<div>Daily Worksheets and Labs are submitted during class via Gradescope. As a grace period, submissions will remain open until the end of the day (11:59 PM EST). 
+  Work submitted after class but before the end of the day will still be accepted without penalty.</div>
 <div>Homework and Design problems are due as indicated on the schedule. 1-day grace period is enabled.</div>
-<div>Attendance is taken in Class. Extensions are not applied to Exams.</div>
+    <!-- Week 0 -->
+    <button class="collapsible">Week 0 (Course Introduction)</button>
+    <div class="content-section">
+      <div class="responsive-table">
+      <table>
+      <thead>
+      <tr>
+        <th>Day</th>
+        <th>Topics</th>
+        <th>Material</th>
+        <th>In-Class Work</th>
+        <th>Homework</th>
+        <th>Design</th>
+        <th>Project Milestones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Thursday<br>4-Sep</td>
+        <td><strong>Course Overview</strong><br>
+        <br>Java Intro<br/>
+        <br><a href="https://onecompiler.com/java" target="_blank">Online Compiler</a>
+            <br> <br>
+            <a href="./resources_files/csse220_Docs_installing_eclipse.pdf" target="_blank">Eclipse Installation</a>
+            </td>
+            <td><span class="slides"><a href="https://share.evernote.com/note/e7932c35-901d-00c1-8a50-b088330cec27">  Intro slides</a> </span><br><br>
+                <span class="slides"><a href="https://share.evernote.com/note/91c01c1c-bbac-844d-ca80-974ee7263945">Eclipse slides</a>  </span><br>
+              
+                </td>
+                <td><br><span class="lab"><a href="./labs/lab01.html">Lab01</a></span><br>
+                <br><span class="quiz"><a href="./worksheets_files/worksheet01.pdf" >sheet01</a></span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+     
+
     <!-- Week 1 -->
     <button class="collapsible">Week 1 (2 Homeworks)</button>
     <div class="content-section">
@@ -255,7 +310,7 @@ a.labs {
             <th>Day</th>
             <th>Topics</th>
             <th>Material</th>
-            <th>In-Class Labs</th>
+            <th>In-Class Work</th>
             <th>Homework</th>
             <th>Design</th>
             <th>Project Milestones</th>
@@ -263,49 +318,49 @@ a.labs {
         </thead>
         <tbody>
           <tr>
-            <td>Monday <br>10-Mar</td>
-            <td>
-              JavaIntro<br/>
-              <br>
-              <a href="https://onecompiler.com/java" target="_blank">Online Compiler</a>
-            <br> <br>
-            <a href="./resources_files/csse220_Docs_installing_eclipse.pdf" target="_blank">Eclipse Installation</a>
-            </td>
-            <td><span class="slides"><a href="https://share.evernote.com/note/e7932c35-901d-00c1-8a50-b088330cec27">  Intro slides</a> </span><br><br>
-                <span class="slides"><a href="https://share.evernote.com/note/91c01c1c-bbac-844d-ca80-974ee7263945">Eclipse slides</a>  </span><br>
-              
-                <br><span class="quiz"><a href="./worksheets_files/worksheet01.pdf" >quiz01</a></span></td>
-                <td><br><span class="lab"><a href="./labs/lab01.html">Lab01</a></span></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Tuesday <br>11-Mar</td>
+            <td>Monday <br>8-Sep</td>
             <td>
             <strong>Arrays And Lists</strong><br/>
               <br/>
 <br>
             </td>
             <td><span class="slides"><a href="https://share.evernote.com/note/e4cd8309-f3b9-c60e-05e9-488cab6d35c8" target="_blank">slides02</a></span><br>
-               <br> <span class="quiz"><a href="./worksheets_files/worksheet02.pdf" >quiz02</a></span></td>
-            <td><br><span class="lab"><a href="./labs/lab02.html" >Lab02</a></span></td>
-            <td><br>
-              <span class="homework">Submit 03/11<br>
-              <a href="./Homework/homework1.html">Short HWK1</a> (will complete in class) </span>
-            </td>
-            <td>To DO</td>
+               </td>
+                <td><br><span class="lab"><a href="./labs/lab02.html" >Lab02</a></span><br>
+            <br> <span class="quiz"><a href="./worksheets_files/worksheet02.pdf" >sheet02</a></span></td>
+            <td></td>
+            <td></td>
             <td></td>
           </tr>
           <tr>
-            <td>Thursday <br>13-Mar</td>
-            <td><strong>2D Arrays And Javadocs</strong>
+            <td>Tuesday <br>9-Sep</td>
+   <td><strong>2D Arrays And Javadocs</strong>
             <br><br>
         <a href="https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html#styleguide" target="_blank">Oracle Javadoc style</a></td>
             <td><span class="slides"><a href="https://share.evernote.com/note/8ad76d87-9b6d-17b3-85fe-23b475bc85f3" target="_blank">2D Arrays Slides</a></span><br>
                 <br><span class="slides"><a href="https://share.evernote.com/note/a54765e5-b85b-85be-40c6-6ff4d3cfcbaf" target="_blank">Javadoc Slides</a></span>
-                <br><span class="quiz"><a href="./worksheets_files/worksheet03.pdf" >quiz03</a></span></td>
-            <td><br><span class="lab"><a href="./labs/lab03.html" >Lab03</a></span></td>
+                </td>
+            
+            <td><br><span class="lab"><a href="./labs/lab03.html" >Lab03</a></span><br>
+            <br><span class="quiz"><a href="./worksheets_files/worksheet03.pdf" >sheet03</a></span></td>
+            <td><br>
+              <span class="homework">Submit 09/09<br>
+              <a href="./Homework/homework1.html">Short HWK1</a> (will complete in class) </span>
+            </td>
+            <td>To Do</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Thursday <br>11-Sep</td>
+            <td><strong>Maps and Objects</strong><br/>
+            <br><br>
+            </td>
+                <td><span class="slides"><a href="https://share.evernote.com/note/4dad5bb5-82d6-163f-281e-ee8963276a26" target="_blank">Scanner</a></span><br>
+                    <br><span class="slides"><a href="https://share.evernote.com/note/a6c4b351-490e-d31e-d06e-680263e344f2" target="_blank">HashMaps</a></span><br>
+                    <br><span class="slides"><a href="https://share.evernote.com/note/077be9f6-80bc-41ec-1a28-7d7bb32cc533" target="_blank">Intro to Objects</a></span><br>
+                    </td>
+            <td><br><span class="lab"><a href="./labs/lab04.html" >Lab04</a></span><br>
+                <br><span class="quiz"><a href="./worksheets_files/worksheet04.pdf" >sheet04</a></span></td>
             <td>   
               
             </td>
@@ -313,12 +368,12 @@ a.labs {
             <td></td>
           </tr>
           <!-- Extra row for Sunday -->
-          <tr>
-            <td>Sunday <br> 16-Mar</td>
+          <tr class="due-date">
+            <td>Sunday <br> 14-Sep</td>
             <td></td>
             <td></td>
             <td></td>
-            <td><span class="homework">Submit 03/16<br>
+            <td><span class="homework">Submit 09/14<br>
                 <a href="./Homework/homework2.html" >Long HWK2 - Ten Problems</a></span></td>
             <td></td>
             <td></td>
@@ -338,7 +393,7 @@ a.labs {
             <th>Day</th>
             <th>Topics</th>
             <th>Material</th>
-            <th>In-Class Labs</th>
+            <th>In-Class Work</th>
             <th>Homework</th>
             <th>Design</th>
             <th>Project Milestones</th>
@@ -346,22 +401,7 @@ a.labs {
         </thead>
         <tbody>
           <tr>
-            <td>Monday <br>17-Mar</td>
-            <td>
-            <strong>Maps and Objects</strong><br/>
-            <br><br>
-            </td>
-                <td><span class="slides"><a href="https://share.evernote.com/note/4dad5bb5-82d6-163f-281e-ee8963276a26" target="_blank">Scanner</a></span><br>
-                    <br><span class="slides"><a href="https://share.evernote.com/note/a6c4b351-490e-d31e-d06e-680263e344f2" target="_blank">HashMaps</a></span><br>
-                    <br><span class="slides"><a href="https://share.evernote.com/note/077be9f6-80bc-41ec-1a28-7d7bb32cc533" target="_blank">Intro to Objects</a></span><br>
-                    <br><span class="quiz"><a href="./worksheets_files/worksheet04.pdf" >quiz04</a></span></td>
-                <td><br><span class="lab"><a href="./labs/lab04.html" >Lab04</a></span></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Tuesday <br>18-Mar</td>
+            <td>Monday <br>15-Sep</td>
             <td>
               <strong>Simple Objects</strong><br/><br/>
               <strong> This Keyword</strong><br/> <a href="./resources.html#this-keyword" target="_blank">Resources</a><br/>
@@ -369,17 +409,15 @@ a.labs {
             </td>
             <td><span class="slides"><a href="https://share.evernote.com/note/0a00f7e6-0b41-ad9b-0704-4603ea8a3a40" target="_blank">Constructors, This Keyword</a></span><br>
                 
-                <br><span class="quiz"><a href="./worksheets_files/worksheet05.pdf" >quiz05</a></span></td>
-            <td><br><span class="lab"><a href="./labs/lab05.html" >Lab05</a></span></td>
-            <td>
-              <span class="homework">Submit 03/18<br>
-                <a href="./Homework/homework3.html" >Short HWK3 2DArray</a></span>
-            </td>
+                </td>
+            <td><br><span class="lab"><a href="./labs/lab05.html" >Lab05</a></span><br>
+            <br><span class="quiz"><a href="./worksheets_files/worksheet05.pdf" >sheet05</a></span></td>
+            <td></td>
             <td></td>
             <td></td>
           </tr>
           <tr>
-            <td>Thursday <br>20-Mar</td>
+            <td>Tuesday <br>16-Sep</td>
             <td><strong>
               SET Techniques</strong><br/><br>
               - <a href="./resources_files/drawing_box_and_pointer.pdf">How to Draw Box and Pointer Handout</a><br><br>
@@ -394,8 +432,25 @@ a.labs {
 
               
             
-              <br><span class="quiz"><a href="./worksheets_files/worksheet06.pdf" >quiz06</a></span></td>
+              <br><span class="quiz"><a href="./worksheets_files/worksheet06.pdf" >sheet06</a></span></td>
             <td><br><span class="lab"><a href="./resources_files/SimpleObjectsQuiz.pdf" >Lab06 (Boxes and Pointers Practice)</a></span></td>
+            <td>
+              <span class="homework">Submit 09/16<br>
+                <a href="./Homework/homework3.html" >Short HWK3 2DArray</a></span>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Thursday <br>18-Sep</td>
+            <td> <strong>Static keyword</strong><br><a href="./resources.html#static" target="_blank">Resources</a> <br><br>
+                <strong>@Override</strong><br><a href="./resources.html#override" target="_blank">Resources</a><br>
+                <br><strong>Encapsulation</strong></td>
+                <td><span class="slides"><a href="https://share.evernote.com/note/b68b5240-bf04-b07d-4a1e-41686fa135f9" target="_blank">Static, Final, Override Slides</a></span><br><br>
+                    <span class="slides"><a href="https://share.evernote.com/note/f1ee98a3-ace4-a04a-8502-59e01a373cba" target="_blank">Encapsulation Slides</a></span><br><br>
+                <br> <a href="https://docs.google.com/document/d/1DjegZJtGPVahTdU9-Du2T1AbSrzX36c_l-39S0cXMRg/edit?usp=sharing" target="_blank">Practice OOP Principles</a><br>
+                    <br><span class="quiz"><a href="./worksheets_files/worksheet07.pdf" >sheet07</a></span></td>
+                <td><br><span class="lab"><a href="./labs/lab07.html" >Lab07</a></span></td>
             <td>
               
             </td>
@@ -403,16 +458,16 @@ a.labs {
             <td></td>
           </tr>
           <!-- Extra row for Sunday -->
-          <tr>
-            <td>Sunday <br> 23-Mar</td>
+          <tr class="due-date">
+            <td>Sunday <br> 21-Sep</td>
             <td></td>
             <td></td>
             <td></td>
-            <td><span class="homework">Submit 03/23<br>
+            <td><span class="homework">Submit 09/21<br>
                 <a href="./Homework/homework4.html" >HWK4 Maps</a>
 
                 </span></td>
-            <td><br><span class="design">Submit 03/23<br><a href="./Homework/design.html#design-prob-1">Design<br>Problem1: Quiz</a></span></td>
+            <td><br><span class="design">Submit 09/21<br><a href="./Homework/design.html#design-prob-1">Design<br>Problem1: Quiz</a></span></td>
             <td></td>
           </tr>
         </tbody>
@@ -430,7 +485,7 @@ a.labs {
             <th>Day</th>
             <th>Topics</th>
             <th>Material</th>
-            <th>In-Class Labs</th>
+            <th>In-Class Work</th>
             <th>Homework</th>
             <th>Design</th>
             <th>Project Milestones</th>
@@ -438,56 +493,52 @@ a.labs {
         </thead>
         <tbody>
           <tr>
-            <td>Monday<br>24-Mar</td>
-            <td> <strong>Static keyword</strong><br><a href="./resources.html#static" target="_blank">Resources</a> <br><br>
-                <strong>@Override</strong><br><a href="./resources.html#override" target="_blank">Resources</a><br>
-                <br><strong>Encapsulation</strong></td>
-                <td><span class="slides"><a href="https://share.evernote.com/note/b68b5240-bf04-b07d-4a1e-41686fa135f9" target="_blank">Static, Final, Override Slides</a></span><br><br>
-                    <span class="slides"><a href="https://share.evernote.com/note/f1ee98a3-ace4-a04a-8502-59e01a373cba" target="_blank">Encapsulation Slides</a></span><br><br>
-                <br> <a href="https://docs.google.com/document/d/1DjegZJtGPVahTdU9-Du2T1AbSrzX36c_l-39S0cXMRg/edit?usp=sharing" target="_blank">Practice OOP Principles</a><br>
-                    <br><span class="quiz"><a href="./worksheets_files/worksheet07.pdf" >quiz07</a></span></td>
-                <td><br><span class="lab"><a href="./labs/lab07.html" >Lab07</a></span></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Tuesday<br>25-Mar</td>
+            <td>Monday<br>22-Sep</td>
             <td><strong>Cohesion And Coupling</strong></td>
             <td><span class="slides"><a href="https://share.evernote.com/note/4cab6af1-93f0-e797-bfd2-c9d06deefa1d" target="_blank">Coupling/Cohesion Slides</a></span><br><br>
                
                 <a href="./Homework/BoxPointerPractice.html">Additional Resources for BoxPointer</a>
             <br>
-                <br><span class="quiz"><a href="./worksheets_files/worksheet08.pdf" >quiz08</a></span></td>
+                </td>
             <td><br><span class="lab"><a href="./labs/SecondSimpleObjectsQuiz.pdf" >Lab08</a></span><br>
-             </td>
+             <br><br><span class="quiz"><a href="./worksheets_files/worksheet08.pdf" >sheet08</a></span></td>
             <td></td>
-            <td><span class="design">Submit 03/25<br><a href="./Homework/design.html#design-prob-2">Design<br>Problem2: Sales</a><br>Group submission</span></td>
+            <td></td>
             <td></td>
           </tr>
           <tr>
-            <td>Thursday<br>27-Mar</td>
-            <td>Virtual Meeting via Teams<br>
-                <br><strong>Intrefaces</strong><br>
+            <td>Tuesday<br>23-Sep</td>
+            <td><strong>Intrefaces</strong><br>
                 <a href="./resources.html#interface" target="_blank">Resources</a>
             </td>
             <td><span class="slides"><a href="https://share.evernote.com/note/f7eaf36f-0fce-2719-4cfd-fb36758839dd" target="_blank">Intro to Interfaces Slides</a> </span><br>
                 
-                <br><span class="quiz"><a href="./worksheets_files/worksheet09.pdf" target="_blank">quiz09</a></span></td>
-                <td><br><span class="lab"><a href="./labs/lab09.html">Lab09</a></span></td>
+                </td>
+                <td><br><span class="lab"><a href="./labs/lab09.html">Lab09</a></span><br>
+                <br><span class="quiz"><a href="./worksheets_files/worksheet09.pdf" target="_blank">sheet09</a></span></td>
+           <td></td>
+            <td><span class="design">Submit 09/23<br><a href="./Homework/design.html#design-prob-2">Design<br>Problem2: Sales</a><br>Group submission</span></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Thursday<br>25-Sep</td>
+            <td><strong>Review Exam 1</strong></td>
+            <td>
+                <br><span class="quiz"><a href="./exam1.html">Exam 1 practice</a></span></td>
+                <td></td>
             <td></td>
             <td></td>
             <td></td>
             </tr>
             <!-- Extra row for Sunday -->
-          <tr>
-            <td>Sunday <br> 30-Mar</td>
+          <tr class="due-date">
+            <td>Sunday <br> 28-Sep</td>
             <td></td>
             <td></td>
             <td></td>
-            <td><span class="homework">Submit 03/30<br><a href="./Homework/homework5.html" >
+            <td><span class="homework">Submit 09/28<br><a href="./Homework/homework5.html" >
                 Long HWK5: Quiz Questions</a></span> <br><br> <a href="https://marketplace.eclipse.org/content/plantuml-plugin">Plantum Plugin</a> </td>
-            <td><span class="design">Submit 03/30<br><a href="./Homework/design.html#design-prob-3" >Design<br>Problem3: Spaceship</a><br> Group submission</span></td>
+            <td><span class="design">Submit 09/28<br><a href="./Homework/design.html#design-prob-3" >Design<br>Problem3: Spaceship</a><br> Group submission</span></td>
             <td></td>
           </tr>
         </tbody>
@@ -505,54 +556,54 @@ a.labs {
             <th>Day</th>
             <th>Topics</th>
             <th>Material</th>
-            <th>In-Class Labs</th>
+            <th>In-Class Work</th>
             <th>Homework</th>
             <th>Design</th>
             <th>Project Milestones</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Monday<br>31-Mar</td>
+          <tr class="exam">
+            <td>Monday<br>29-Sep</td>
+            <td><strong>Written <br>Exam 1</strong><br>
+                </td>
+            <td><br><a href="./exam1.html#paper">Instructions</a></td>
+                <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="exam">
+            <td>Tuesday<br>30-Sep</td>
+            <td>
+                    <strong>Coding Exam1</strong><br></td>
+                <td><br><a href="./exam1.html#code">Instructions</a></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr >
+            <td>Thursday<br>2-Oct</td>
             <td><strong>Intro to Graphic</strong><br>
            <a href="https://docs.oracle.com/javase/tutorial/2d/basic2d/index.html" target="_blank">Oracle Documentation</a>  
             <br><br> <a href="./resources.html#switch-cases" target="_blank">Switch Cases</a> <br>
             <br> <a href="./resources.html#initialization" target="_blank">Initialization</a></td>
            <td><span class="slides"><a href="https://share.evernote.com/note/9b725b15-0afd-91dd-f179-818d43d662fc" target="_blank">slides10</a></span><br>
-                <br><span class="quiz"><a href="./worksheets_files/worksheet10.pdf" target="_blank">quiz10</a></span></td>
-                <td><br><span class="lab"><a href="./labs/lab10.html">Lab10</a></span></td>
-            <td>Tutorials/Resources for Graphics: <a href="https://docs.oracle.com/javase/tutorial/2d/geometry/index.html">Oracle Documentation</a></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Tuesday 1-Apr</td>
-            <td><strong>Review Exam 1</strong></td>
-            <td>
-                <br><span class="quiz"><a href="./exam1.html">Exam 1 practice</a></span></td>
-                <td></td>
-            <td></td>
-            <td><span class="design">Submit 04/01<br><a href="./Homework/design.html#design-prob-4" >Design<br>Problem4: Budget</a><br>Group Submission</span></td>
-            <td></td>
-          </tr>
-          <tr class="exam">
-            <td>Thursday<br>3-Apr</td>
-            <td><strong>Written <br>Exam 1</strong><br>In-Class (60 min)
                 </td>
-            <td><br><a href="./exam1.html#paper">Instructions</a></td>
-                <td></td>
-            <td>
-            </td>
-            <td>
-            </td>
+                <td><br><span class="lab"><a href="./labs/lab10.html">Lab10</a></span><br>
+                <br><span class="quiz"><a href="./worksheets_files/worksheet10.pdf" target="_blank">sheet10</a></span></td>
             <td></td>
+            <td><span class="design">Submit 09/30<br><a href="./Homework/design.html#design-prob-4" >Design<br>Problem4: Budget</a><br>Group Submission</span></td>
+            <td></td>
+                
+          
           </tr>
             <!-- Extra row for Sunday -->
-            <tr class="exam">
-                <td>Sunday <br> 6-Apr</td>
-                <td>Submit 04/06<br>
-                    <strong>Coding Exam1</strong><br>Take-Home (no grace period)</td>
-                <td><br><a href="./exam1.html#code">Instructions</a></td>
+            <tr class="due-date">
+                <td>Sunday <br> 5-Oct</td>
+                <td></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -573,7 +624,7 @@ a.labs {
              <th>Day</th>
              <th>Topics</th>
              <th>Material</th>
-             <th>In-Class Labs</th>
+             <th>In-Class Work</th>
              <th>Homework</th>
              <th>Design</th>
              <th>Project Milestones</th>
@@ -581,7 +632,7 @@ a.labs {
          </thead>
          <tbody>
            <tr>
-             <td>Monday<br>7-Apr</td>
+             <td>Monday<br>6-Oct</td>
              <td><strong>Recursion</strong><br><br>
             
                  <br>
@@ -591,38 +642,48 @@ a.labs {
                <td><span class="slides"><a href="https://share.evernote.com/note/38ae8cd6-c9ab-010b-bec6-15d439c79366" target="_blank">Translation/Rotation Slides</a></span><br>
 <br>
                 <span class="slides"><a href="https://share.evernote.com/note/33aac93f-cd94-a4a0-63c6-aa0399ea750f" target="_blank">Recursion Slides</a></span><br>
-                    <br><span class="quiz"><a href="./worksheets_files/worksheet11.pdf" target="_blank">quiz11</a></span></td>
-                    <td><br><span class="lab"><a href="./labs/lab11.html">Lab11</a></span></td></td>
+                    </td>
+                    <td><br><span class="lab"><a href="./labs/lab11.html">Lab11</a></span><br>
+                    <br><span class="quiz"><a href="./worksheets_files/worksheet11.pdf" target="_blank">sheet11</a></span></td></td>
              <td></td>
              <td></td>
              <td></td>
            </tr>
            <tr>
-             <td>Tuesday 8-Apr</td>
-             <td><strong>Graphic Scenes</strong></td>
-             <td>No In-Class Meeting</td>
-                 <td>Working with Partner on Graphic Scenes</td>
-             <td><span class="homework">Submit 04/08<br><br><a href="./Homework/scenes.html" >
+             <td>Tuesday<br>7-Oct</td>
+             <td><strong>Recursion Helper</strong><br><br>
+              <a href="https://codingbat.com/java" target="_blank">Coding Java Practice</a>
+            <br> <br> <strong>Event-Based Programming</strong></td>
+            <td><span class="slides"><a href="https://share.evernote.com/note/33aac93f-cd94-a4a0-63c6-aa0399ea750f" target="_blank">Recursion Part 2 Slides</a></span><br>
+              <br>
+                              <span class="slides"><a href="https://share.evernote.com/note/300d6f22-3e90-96e6-6e29-c469ed7014cd" target="_blank">Swing Layouts slides</a></span><br><br>
+
+                              <span class="slides"><a href="https://share.evernote.com/note/c8ac306c-12c6-669c-d077-c9d813bbcb46" target="_blank">Events slides</a></span><br>
+                </td>
+                <td><br><span class="lab"><a href="./labs/lab12.html">Lab12</a></span><br>
+                <br><span class="quiz"><a href="./worksheets_files/worksheet12.pdf" target="_blank">sheet12</a></span></td>
+             <td><span class="homework">Submit 10/07<br><br><a href="./Homework/scenes.html" >
                 HWK6 <br>Scenes Part 1</a> </span></td>
              <td></td>
              <td></td>
            </tr>
            <tr>
-             <td>Thursday<br>10-Apr</td>
-             <td><strong>Graphic Scenes</strong></td>
+             <td>Thursday<br>9-Oct</td>
+             <td><strong>Fall Break No Class Meeting</strong></td>
              <td>No In-Class Meeting</td>
-                 <td>Working with Partner on Graphic Scenes</td>
+                 <td></td>
              <td></td>
              <td></td>
              <td></td>
            </tr>
+           
              <!-- Extra row for Sunday -->
-             <tr>
-                 <td>Sunday <br> 13-Apr</td>
+             <tr class="due-date">
+                 <td>Sunday <br> 12-Oct</td>
                  <td></td>
                  <td></td>
                  <td></td>
-                 <td><span class="homework">Submit 04/13<br><a href="./Homework/scenes.html" >
+                 <td><span class="homework">Submit 10/12<br><a href="./Homework/scenes.html" >
                     HWK7 <br>Scenes Part 2</a> </span></td>
                  <td></td>
                  <td></td>
@@ -631,8 +692,8 @@ a.labs {
        </table>
      </div>
  </div>
-
- <button class="collapsible">Happy Spring Break: 14-Apr - 20-Apr</button>
+ 
+ 
  <div class="content-section"></div>
 
 <!-- Week 6 -->
@@ -645,7 +706,7 @@ a.labs {
             <th>Day</th>
             <th>Topics</th>
             <th>Material</th>
-            <th>In-Class Labs</th>
+            <th>In-Class Work</th>
             <th>Homework</th>
             <th>Design</th>
             <th>Project Milestones</th>
@@ -653,52 +714,52 @@ a.labs {
         </thead>
         <tbody>
           <tr>
-            <td>Monday<br>21-Apr</td>
-            <td><strong>Recursion Helper</strong><br><br>
-              <a href="https://codingbat.com/java" target="_blank">Coding Java Practice</a>
-            <br> <br> <strong>Event-Based Programming</strong></td>
-            <td><span class="slides"><a href="https://share.evernote.com/note/33aac93f-cd94-a4a0-63c6-aa0399ea750f" target="_blank">Recursion Part 2 Slides</a></span><br>
-              <br>
-                              <span class="slides"><a href="https://share.evernote.com/note/300d6f22-3e90-96e6-6e29-c469ed7014cd" target="_blank">Swing Layouts slides</a></span><br><br>
-
-                              <span class="slides"><a href="https://share.evernote.com/note/c8ac306c-12c6-669c-d077-c9d813bbcb46" target="_blank">Events slides</a></span><br>
-                <br><span class="quiz"><a href="./worksheets_files/worksheet12.pdf" target="_blank">quiz12</a></span></td>
-                <td><br><span class="lab"><a href="./labs/lab12.html">Lab12</a></span></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Tuesday 22-Apr</td>
+            <td>Monday<br>20-Oct</td>
             <td><strong>Inheritance</strong></td>
             <td><span class="slides"><a href="https://share.evernote.com/note/ba7b1898-6c22-a9b4-44ef-aabd8c6c30a4" target="_blank">Inheritance Slides</a></span><br><br>
-                <br><span class="quiz"><a href="./worksheets_files/worksheet13.pdf" target="_blank">quiz13</a></span></td>
-                <td><br><span class="lab"><a href="./labs/lab13.html">Lab13</a></span></td>
+                </td>
+                <td><br><span class="lab"><a href="./labs/lab13.html">Lab13</a></span><br>
+                <br><span class="quiz"><a href="./worksheets_files/worksheet13.pdf" target="_blank">sheet13</a></span></td>
             <td></td>
-            <td><span class="design">Submit 04/22<br><a href="./Homework/design.html#design-prob-3" >Design<br>Problem5: Tag</a><br>Group Submission</span></td>
+            <td></td>
             <td></td>
           </tr>
           <tr>
-            <td>Thursday<br>24-Apr</td>
-            <td><strong>Polymorphism</strong></td>
+            <td>Tuesday<br>21-Oct</td>
+             <td><strong>Polymorphism</strong></td>
             <td><span class="slides"><a href="https://share.evernote.com/note/023c23ec-1025-2356-ef01-ff6382ce4107" target="_blank">Polymorphism Slides</a></span><br>
-                <br><span class="quiz"><a href="./worksheets_files/worksheet14.pdf" target="_blank">quiz14</a></span><br><br>
-                <span class="quiz"><a href="walk1.html" target="_blank">Walk through Polymophism Solutions</a></span>
+                
+               <br> <span class="quiz"><a href="walk1.html" target="_blank">Walk through Polymophism Solutions</a></span>
               </td>
-                <td><br><span class="lab"><a href="./labs/lab14.html">Lab14</a></span></td>
+                <td><br><span class="lab"><a href="./labs/lab14.html">Lab14</a></span><br>
+                <br><span class="quiz"><a href="./worksheets_files/worksheet14.pdf" target="_blank">sheet14</a></span><br><br></td>
+            <td></td>
+            <td><span class="design">Submit 10/21<br><a href="./Homework/design.html#design-prob-5" >Design<br>Problem5: Tag</a><br>Group Submission</span></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Thursday<br>23-Oct</td>
+            <td><strong>Event-Based Gaming</strong></td>
+            <td><a href="../resources.html#illegalcast" target="_blank" class="resource-ref">Casting</a><br><br>
+              <a href="../resources.html#listener" target="_blank" class="resource-ref">Listener</a><br><br>
+              
+              <a href="../resources.html#focus" target="_blank" class="resource-ref">Window Focus</a><br>
+               <br> <span class="quiz"><a href="walk2.html" target="_blank">Walk through Polymophism Solutions</a></span></td>
+                <td><br><span class="lab"><a href="./labs/lab15.html">Lab15</a></span><br>
+                <br><span class="quiz"><a href="./worksheets_files/worksheet15.pdf" target="_blank">sheet15</a></span><br><br></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
             <!-- Extra row for Sunday -->
-            <tr>
-                <td>Sunday <br> 27-Apr</td>
+            <tr class="due-date">
+                <td>Sunday <br> 26-Oct</td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><span class="homework">Submit 04/27<br><a href="./Homework/homework8.html" >Homework8 </a><br>Recursion <br> Part 1 and Part 2 <br>
+                <td><span class="homework">Submit 10/26<br><a href="./Homework/homework8.html" >Homework8 </a><br>Recursion <br> Part 1 and Part 2 <br>
                    </span></td>
-                <td><span class="design">Submit 04/27<br><a href="./Homework/design.html#design-prob-6" >Design<br>Problem6: Inventory</a><br>Group Submission</span></td>
+                <td><span class="design">Submit 10/26<br><a href="./Homework/design.html#design-prob-6" >Design<br>Problem6: Inventory</a><br>Group Submission</span></td>
                 <td></td>
               </tr>
         </tbody>
@@ -717,7 +778,7 @@ a.labs {
             <th>Day</th>
             <th>Topics</th>
             <th>Material</th>
-            <th>In-Class Labs</th>
+            <th>In-Class Work</th>
             <th>Homework</th>
             <th>Design</th>
             <th>Project Milestones</th>
@@ -725,20 +786,12 @@ a.labs {
         </thead>
         <tbody>
           <tr>
-            <td>Monday<br>28-Apr</td>
-            <td><strong>Event-Based Gaming</strong></td>
-            <td><a href="../resources.html#illegalcast" target="_blank" class="resource-ref">Casting</a><br><br>
-              <a href="../resources.html#listener" target="_blank" class="resource-ref">Listener</a><br><br>
-              
-              <a href="../resources.html#focus" target="_blank" class="resource-ref">Window Focus</a><br>
-
-
-
-
-                <br><span class="quiz"><a href="./worksheets_files/worksheet15.pdf" target="_blank">quiz15</a></span><br><br>
-                <span class="quiz"><a href="walk2.html" target="_blank">Walk through Polymophism Solutions</a></span></td>
-                
-                <td><br<<span class="lab"><a href="./labs/lab15.html">Lab15</a></span></span></td>
+            <td>Monday<br>27-Oct</td>
+            <td><strong>Errors & Exceptions</strong></td>
+            <td><span class="slides"><a href="https://share.evernote.com/note/d2499a8b-110a-68aa-70c1-6e22f7b40827" target="_blank">Exceptions Slides</a></span><br>
+                </td>
+                <td><br><span class="lab"><a href="./labs/lab16.html">Lab16</a></span><br>
+                <br><span class="quiz"><a href="./worksheets_files/worksheet16.pdf" target="_blank">sheet16</a></span></td>
             <td></td>
             <td></td>
             <td><span class="milestone"><a href="https://www.perforce.com/blog/alm/how-write-software-requirements-specification-srs-document" target="_blank">How to write SRS</a></span><br> <br>
@@ -746,40 +799,49 @@ a.labs {
             </td>
           </tr>
           <tr>
-            <td>Tuesday 29-Apr</td>
-            <td><strong>Errors & Exceptions</strong></td>
-            <td><span class="slides"><a href="https://share.evernote.com/note/d2499a8b-110a-68aa-70c1-6e22f7b40827" target="_blank">Exceptions Slides</a></span><br>
-                <br><span class="quiz"><a href="./worksheets_files/worksheet16.pdf" target="_blank">quiz16</a></span></td>
-                <td><br><span class="lab"><a href="./labs/lab16.html">Lab16</a></span></td>
-            <td><span class="homework">Submit 04/29<br>HWK9<br>Tracing<br> via Gradescope
+            <td>Tuesday<br>28-Oct</td>
+            <td><strong>Collision Handling</strong><br>
+            LinkedList<br></td>
+            <td><span class="slides"><a href="https://share.evernote.com/note/9baff06c-be05-5193-9016-3940528cc86f" target="_blank">Timer and Collision Slides</a></span><br>
+                </td>
+                <td><br><span class="lab"><a href="./labs/lab17.html">Lab17</a></span><br>
+                <br><span class="quiz"><a href="./worksheets_files/worksheet17.pdf" target="_blank">sheet17</a></span></td>
+            <td><span class="homework">Submit 10/28<br>HWK9<br>Tracing<br> via Gradescope
                 </span></td>
             <td></td>
             <td></td>
           </tr>
           <tr>
-            <td>Thursday<br>1-May</td>
-            <td><strong>Collision Handling</strong><br>
-            LinkedList<br></td>
-            <td><span class="slides"><a href="https://share.evernote.com/note/9baff06c-be05-5193-9016-3940528cc86f" target="_blank">Timer and Collision Slides</a></span><br>
-                <br><span class="quiz"><a href="./worksheets_files/worksheet17.pdf" target="_blank">quiz17</a></span></td>
-                <td><br><span class="lab"><a href="./labs/lab17.html">Lab17</a></span></td>
+            <td>Thursday<br>30-Oct</td>
+            <td><strong>BigO Notation <br> LinkedList</strong><br>
+            <br>BigO cheatsheet <a href="https://www.bigocheatsheet.com/" target="_blank">Link</a></td>
+            <td><span class="slides"><a href="https://share.evernote.com/note/5975aaab-ac5f-f3f1-ff50-fdaf15fb9172" target="_blank">Time Complexity Slides</a></span><br><br>
+              <span class="slides"><a href="https://share.evernote.com/note/092c9dc2-2682-2edd-3b58-3ee538a05d9e" target="_blank">LinkedLink Slides</a></span><br>
+              </td>
+                <td><br><span class="quiz"><a href="./worksheets_files/worksheet18.pdf" target="_blank">sheet18</a></span></td>
             <td></td>
-            <td></td>
+
+
+            <td>Making multiple screens in Game <a href="resources.html#screens">Resources Navigating Frames</a><br><br>
+              Using levels in Game <a href="resources.html#screens">Resources Multiple Level</a><br>
+            <br>How to load sprites once for all instances <a href="resources.html#sprites">Resources Sprites</a>
+            </td>
+
             <td><a href="project.html">Read Project/Team Instructions (Sample)</a> <br><br>
               <a href="https://share.evernote.com/note/5729e5f7-ba96-b722-108d-bc80d815c702"> Slides Instructions for GitHub</a><br>
               <a href="https://github.com/maxkratz/How-to-Eclipse-with-Github">Set UP Git Repository</a>
              </td>
           </tr>
             <!-- Extra row for Sunday -->
-            <tr>
-                <td>Sunday <br> 4-May</td>
+            <tr class="due-date">
+                <td>Sunday <br> 2-Nov</td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><span class="homework">Submit 05/04<br><a href="./Homework/homework10.html" >Homework 10</a><br>LLO Part 1<br>
+                <td><span class="homework">Submit 11/02<br><a href="./Homework/homework10.html" >Homework 10</a><br>LLO Part 1<br>
                 </span></td>
                 <td></td> 
-                <td><span class="milestone">Submit 05/04<br><a href="project.html" >Milestone 1a and 1b (Via Gradescope)</a></span></td>
+                <td><span class="milestone">Submit 11/02<br><a href="project.html" >Milestone 1a and 1b (Via Gradescope)</a></span></td>
               </tr>
         </tbody>
       </table>
@@ -796,7 +858,7 @@ a.labs {
             <th>Day</th>
             <th>Topics</th>
             <th>Material</th>
-            <th>In-Class Labs</th>
+            <th>In-Class Work</th>
             <th>Homework</th>
             <th>Design</th>
             <th>Project Milestones</th>
@@ -804,51 +866,54 @@ a.labs {
         </thead>
         <tbody>
           <tr>
-            <td>Monday<br>5-May</td>
-            <td><strong>Working on Milestone 2 with Teams</strong><br>
-            <br>Remember to use Driver/Navigator for coding <br>
-          <br>For github integration issues, please submit detailed issue description 
-          with screenshots to our debugging channel on teams</td>
-            <td><span class="slides">No meeting in class</span><br>
-                <br></td>
-                <td></td>
+            <td>Monday<br>3-Nov</td>
+            <td><strong>Sorting algorithms, Timer</strong><br><br>
+            <a href="https://www.toptal.com/developers/sorting-algorithms" target="_blank">Sorting Playground</a> <br><br>
+            <a href="https://docs.google.com/spreadsheets/d/1reacZrxESNwDcA13tqCsvSknNOox_0AC8zYWBLyqglo/edit?usp=sharing" target="_blank">Sorting Profiling Analysis</a><br>
+          <br><a href="https://big-o.io/"> Big-O and algorithms cheatsheet</a>
+          </td>
+            <td><span class="slides"><a href="https://share.evernote.com/note/75fdfa66-8cb2-e34d-1557-b4fef5437944" target="_blank">Sorting Intro Slides</a></span><br><br>
+              <span class="slides"><a href="https://share.evernote.com/note/d143e317-dd4d-b846-9f23-b2cf05df707f" target="_blank">Merge Sort Slides</a></span><br>
+              
+               <br> 
+              Download <a href="./labs/InsertionSort.java">Insertion.java</a><br><br>
+              Download <a href="./labs/SelectionSort.java">SelectionSort.java</a><br><br>
+              Download Helper class <a href="./labs/StopWatch.java">Timer.java</a><br><br>
+              </td>
+                <td><br><span class="quiz"><a href="./worksheets_files/worksheet19.pdf" target="_blank">sheet19</a></span><br><br></td>
             <td></td>
             <td></td>
             <td>See <a href="https://obscrivn.github.io/csse220web/project.html#2">Milestone2 description</a></td>
           </tr>
           <tr>
-            <td>Tuesday 6-May</td>
-            <td><strong>BigO Notation <br> LinkedList</strong><br>
-            <br>BigO cheatsheet <a href="https://www.bigocheatsheet.com/" target="_blank">Link</a></td>
-            <td><span class="slides"><a href="https://share.evernote.com/note/5975aaab-ac5f-f3f1-ff50-fdaf15fb9172" target="_blank">Time Complexity Slides</a></span><br><br>
-              <span class="slides"><a href="https://share.evernote.com/note/092c9dc2-2682-2edd-3b58-3ee538a05d9e" target="_blank">LinkedLink Slides</a></span><br>
-              <br><span class="quiz"><a href="./worksheets_files/worksheet18.pdf" target="_blank">quiz18</a></span></td>
-                <td></td>
-            <td>
+            <td>Tuesday<br>4-Nov</td>
+<td><strong>Working on Project Milestones</strong></td>
+            <td><span class="slides"><a href="" target="_blank">Slides</a></span><br>
                 </td>
+                <td><br><span class="lab"></span></td>
             <td></td>
             <td></td>
           </tr>
           <tr>
-            <td>Thursday<br>8-May</td>
-            <td><strong>JUnit Testing & File IO</strong></td>
-            <td><span class="slides"><a href="https://share.evernote.com/note/092c9dc2-2682-2edd-3b58-3ee538a05d9e" target="_blank">LinkedLink Slides</a></span><br>
-                <br><span class="quiz"><a href="resources.html#files">Files IO </a></span></td>
-                <td><br><span class="lab"><a href="./labs/lab18.html">Lab18 (no submission)</a></span></td>
-            <td><span class="homework">Submit 05/08<br><a href="./Homework/homework11.html" >Homework 11</a><br>LLO Part 2<br></span></td>
+            <td>Thursday<br>6-Nov</td>
+            <td><strong>Exam Review</strong></td>
+            <td><span class="slides"><a href="" target="_blank">Slides</a></span><br>
+                </td>
+                <td><br><span class="lab"><a href="./labs/lab18.html">Lab18</a></span></td>
+            <td><span class="homework">Submit 11/06<br><a href="./Homework/homework11.html" >Homework 11</a><br>LLO Part 2<br></span></td>
             <td></td>
             <td></td>
           </tr>
             <!-- Extra row for Sunday -->
-            <tr>
-                <td>Sunday <br> 11-May</td>
+            <tr class="due-date">
+                <td>Sunday <br> 9-Nov</td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><span class="homework">Submit 05/13<br><a href="./Homework/homework12.html" >Homework 12</a><br>LinkedList (Optional for Bonus)<br>
+                <td><span class="homework">Submit 11/11<br><a href="./Homework/homework12.html" >Homework 12</a><br>LinkedList (Optional for Bonus)<br>
                 </span></td>
                 <td></td> 
-                <td><span class="milestone">Submit 05/11<br><a href="http://localhost:52330/project.html#2">Milestone 2</a></span></td>
+                <td><span class="milestone">Submit 11/09<br><a href="project.html#2">Milestone 2</a></span></td>
               </tr>
         </tbody>
       </table>
@@ -856,7 +921,7 @@ a.labs {
 </div>
 
 <!-- Week 9 -->
-<button class="collapsible">Week 9 (Exam 2 Written & Coding + Milestone3)</button>
+<button class="collapsible">Week 9 (Exam 2 Written & Coding + Milestone3,4)</button>
 <div class="content-section"> 
         <div class="responsive-table">
       <table>
@@ -865,70 +930,61 @@ a.labs {
             <th>Day</th>
             <th>Topics</th>
             <th>Material</th>
-            <th>In-Class Labs</th>
+            <th>In-Class Work</th>
             <th>Homework</th>
             <th>Design</th>
             <th>Project Milestones</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Monday<br>12-May</td>
-            <td><strong>Sorting algorithms</strong><br><br>
-            <a href="https://www.toptal.com/developers/sorting-algorithms" target="_blank">Sorting Playground</a> <br><br>
-            <a href="https://docs.google.com/spreadsheets/d/1reacZrxESNwDcA13tqCsvSknNOox_0AC8zYWBLyqglo/edit?usp=sharing" target="_blank">Sorting Profiling Analysis</a>
+          <tr class="exam">
+            <td>Monday<br>10-Nov</td>
+            <td><strong>Written Exam 2 </strong><br><br>
+            
           </td>
-            <td><span class="slides"><a href="https://share.evernote.com/note/75fdfa66-8cb2-e34d-1557-b4fef5437944" target="_blank">Sorting Intro Slides</a></span><br><br>
-              <span class="slides"><a href="https://share.evernote.com/note/d143e317-dd4d-b846-9f23-b2cf05df707f" target="_blank">Merge Sort Slides</a></span><br>
-              <br><a href="https://big-o.io/"> Big-O and algorithms cheatsheet</a>
-               <br> <br><span class="quiz"><a href="./worksheets_files/worksheet19.pdf" target="_blank">quiz19</a></span><br><br>
-              Download <a href="./labs/InsertionSort.java">Insertion.java</a><br><br>
-              Download <a href="./labs/SelectionSort.java">SelectionSort.java</a><br><br>
-              Download Helper class <a href="./labs/StopWatch.java">Timer.java</a><br><br>
+            <td>
               </td>
                 <td></td>
             <td></td>
             <td></td>
-            <td>Making multiple screens in Game <a href="resources.html#screens">Resources Navigating Frames</a><br><br>
-              Using levels in Game <a href="resources.html#screens">Resources Multiple Level</a><br>
-            <br>How to load sprites once for all instances <a href="resources.html#sprites">Resources Sprites</a>
+            <td>
             </td>
           </tr>
-          <tr>
-            <td>Tuesday 13-May</td>
-            <td><strong>Exam Review in Class</strong></td>
+          <tr class="exam">
+            <td>Tuesday<br>11-Nov</td>
+            <td><strong>Coding Exam 2</strong></td>
             <td></td>
                 <td></td>
             <td></td>
             <td></td>
-            <td>Sign Up for Milestone 4 <a href ="https://docs.google.com/document/d/1qNayGndsxBsV_23DOisl7I0f04cskV2nJVFGfo9o_QY/edit?usp=sharing">Milestone Sign Up</a></td>
+            <td></td>
           </tr>
-          <tr class="exam">
-            <td>Thursday<br>15-May</td>
-            <td><strong>Written <br>Exam 2</strong><br>In-Class</td>
-            <td>Coding Part: Go to Moodle -> Exam 2 Coding Part</td>
+          <tr>
+            <td>Thursday<br>13-Nov</td>
+            <td><strong>Milestone 4 Demo In Class</strong><br></td>
+            <td></td>
                 <td></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
             <!-- Extra row for Sunday -->
-            <tr class="exam">
-                <td>Sunday <br> 18-May</td>
-                <td>Submit 04/06<br>
-                    <strong>Coding Exam2 (via Moodle)</strong><br>Take-Home</td>
+            <tr>
+                <td>Sunday <br> 16-Nov</td>
+                <td><br>
+                    </td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td> 
-                <td><span class="milestone">Submit 05/18<br>Milestone 3</span></td>
+                <td><span class="milestone">Submit 11/16<br>Milestone 3 Report</span></td>
               </tr>
         </tbody>
       </table>
     </div>
 </div>
 
-<!-- Week 10 -->
+<!-- Week 10
 <button class="collapsible">Week 10 (Milestone4)</button>
 <div class="content-section"> 
         <div class="responsive-table">
@@ -946,7 +1002,7 @@ a.labs {
         </thead>
         <tbody>
           <tr>
-            <td>Monday<br>19-May</td>
+            <td>Monday<br>17-Nov</td>
             <td>Project Time <br> No In-Person Class</td>
             <td><br>
                 </td>
@@ -956,7 +1012,7 @@ a.labs {
             <td></td>
           </tr>
           <tr>
-            <td>Tuesday 20-May</td>
+            <td>Tuesday<br>18-Nov</td>
             <td>Project Time <br> No In-Person Class</td>
             <td><br>
                 </td>
@@ -966,7 +1022,7 @@ a.labs {
             <td></td>
           </tr>
           <tr>
-            <td>Thursday<br>22-May</td>
+            <td>Thursday<br>20-Nov</td>
             <td>Project Time <br> No In-Person Class</td>
             <td><br>
                 </td>
@@ -974,10 +1030,10 @@ a.labs {
             <td></td>
             <td></td>
             <td></td>
-          </tr>
+          </tr>-->
             <!-- Extra row for Sunday -->
-            <tr>
-                <td>Sunday <br> 25-May</td>
+          <!--  <tr class="due-date">
+                <td>Sunday <br> 23-Nov</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -988,7 +1044,7 @@ a.labs {
         </tbody>
       </table>
     </div>
-</div>
+</div> -->
 
 
 
