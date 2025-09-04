@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+   <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
+<link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Basic reset and styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      /* padding: 0; */
+      padding-top: 0;
+    }
+    /* Header styling */
+    #header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+       width: 95%; /* Make it responsive */
+      max-width: 1400px; /* Keep a max width for large screens */
+      margin: 100px auto 50px; /* Center the container */
+      padding: 20px; /* Uniform padding */
+      box-sizing: border-box; /* Include padding in the width calculation */
+    }
+    h1 {
+      margin-top: 0;
+    }
+
+    :root{
+      --bg:#ffffff; --ink:#111; --muted:#666; --card:#f7f7f9; --line:#e8e8ee;
+      --accent:#3b82f6; --accent-ink:#0b4dd9; --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; color:var(--ink); background:var(--bg)}
+    header{padding:18px 20px; border-bottom:1px solid var(--line); display:flex; gap:20px; flex-wrap:wrap; align-items:center}
+    header a{color:var(--ink); text-decoration:none; font-weight:600}
+    header nav{display:flex; gap:14px; flex-wrap:wrap}
+    main{padding:28px 20px; max-width:1100px; margin:0 auto}
+    h1{font-size: clamp(28px, 3.8vw, 36px); margin:8px 0 4px}
+    p.sub{margin:0 0 20px; color:var(--muted)}
+    .grid{display:grid; gap:18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:16px; display:flex; flex-direction:column; gap:10px; transition:transform .12s ease}
+    .card:hover{transform:translateY(-2px)}
+        .card ul {
+  padding-left: 20px;  /* add space inside the card */
+  margin-top: 6px;     /* optional: a little breathing room above list */
+  margin-bottom: 6px;  /* optional: consistent spacing */
+}
+
+    .eyebrow{font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted);padding-left: 4px; }
+    .title{font-weight:700; font-size:18px; margin:0}
+    .card ul {
+  padding-left: 40px;   /* space between edge and bullet */
+  margin: 0.5em 0;      /* optional top/bottom spacing */
+}
+    .links{display:flex; gap:10px; flex-wrap:wrap; margin-top:2px}
+    .chip{display:inline-block; padding:6px 10px; border-radius:10px; background:#eef3ff; border:1px solid #dbe6ff; text-decoration:none; color:var(--accent-ink); font-weight:600; font-size:14px}
+    .skills{display:flex; gap:6px; flex-wrap:wrap; margin-top:2px}
+    .tag{font-size:12px; padding:4px 8px; border:1px solid var(--line); border-radius:999px; color:#333; background:#fff}
+    footer{color:var(--muted); font-size:14px; margin-top:28px}
+ 
+ </style>
+</head>
+<body>
+    <div id="header">
+        <a id="index_link" href="./index.html">CSSE 220</a>
+        <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
+        <a id="schedule_link" href="./schedule.html">Schedule</a>
+        <a id="quiz_link" href="./demos.html">Demos</a>
+        <a id="quiz_link" href="./worksheets.html">Quizzes</a>
+        <a id="quiz_link" href="./labs.html">Labs</a>
+        <a id="quiz_link" href="./homework.html">Homework</a>
+        <a id="quiz_link" href="./exams.html">Exams</a>
+        <a id="quiz_link" href="./project.html">Final Project</a>
+        <a id="resources_link" href="./resources.html">Resources</a>
+        <div style="clear:both;"></div>
+    </div>
+
+<div id="content">
+
+  <main>
+    <h1>Demos</h1>
+    <p class="sub">Live-coded walkthroughs used in class. Each card links to a demo page with slides, code, and “try-it” prompts.</p>
+
+    <section class="grid">
+
+      <!-- Demo Card — duplicate for more demos -->
+      <article class="card">
+        <div class="eyebrow">Demo 1 • Week 0</div>
+        <h3 class="title">From Hello World → Scanner</h3>
+        <ul class="min">
+          <li>Project setup in Eclipse</li>
+          <li>Data types, Operators, Conditionals, for loop basics</li>
+          <li>Arithmetic calculations</li>
+        </ul>
+        <div class="links">
+          <a class="chip" href="labs/Eclipse_Java_File_Import_CSSE220.pdf">File Import</a>
+          <a class="chip" href="labs/Intro to Java & OOP_Demo1.pdf">Instructions</a>
+          <a class="chip" href="labs/demo1starter.zip">Starter</a>
+        </div>
+        <div class="skills">
+          <span class="tag">Eclipse</span><span class="tag">Import</span><span class="tag">Scanner</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="eyebrow">Demo 2 • Week 1</div>
+        <h3 class="title">Arrays: Indexing, Loops & Pitfalls</h3>
+        <ul class="min">
+          <li>For/foreach patterns</li>
+          <li>Off-by-one errors</li>
+          <li>Printing arrays correctly</li>
+        </ul>
+        <div class="links">
+          <a class="chip" href="demos/demo02.html#slides">Slides</a>
+          <a class="chip" href="https://github.com/obscrivn/csse220web/tree/main/demos/demo02">Live Code</a>
+          <a class="chip" href="starter/demo02-starter.zip">Starter</a>
+        </div>
+        <div class="skills">
+          <span class="tag">Loops</span><span class="tag">Debugging</span><span class="tag">Arrays</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="eyebrow">Demo 3 • Week 2</div>
+        <h3 class="title"><a href="demos/demo03.html">Objects: Fields, Methods, Javadoc</a></h3>
+        <ul class="min">
+          <li>Designing a small class</li>
+          <li>Encapsulation & getters/setters</li>
+          <li>Unit tests for behavior</li>
+        </ul>
+        <div class="links">
+          <a class="chip" href="demos/demo03.html#slides">Slides</a>
+          <a class="chip" href="https://github.com/obscrivn/csse220web/tree/main/demos/demo03">Live Code</a>
+          <a class="chip" href="starter/demo03-starter.zip">Starter</a>
+        </div>
+        <div class="skills">
+          <span class="tag">OOP</span><span class="tag">Javadoc</span><span class="tag">Testing</span>
+        </div>
+      </article>
+
+      <!-- Add more demos as needed -->
+
+    </section>
+
+    <footer>Questions? See <a href="resources.html">Resources</a> or the <a href="schedule.html">Schedule</a>.</footer>
+  </main>
+</body>
+</html>
