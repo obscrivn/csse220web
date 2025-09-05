@@ -37,14 +37,15 @@
     /* Content container */
     #content {
       padding: 20px;
-      margin-top: 100px; 
-      margin-bottom: 50px;
+      margin-top: 90px; 
+      margin-bottom: 30px;
     }
     
     .lab-section {
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 15px;
+      scroll-margin-top: 80px;
       margin-bottom: 20px;
       border-radius: 5px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -110,11 +111,38 @@
       white-space: pre;
       margin-top: 10px;
     }
+
+    .run-btn {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #4caf50;   /* green circle */
+  border-radius: 50%;
+  position: relative;
+  top: 4px;
+  margin: 0 4px;
+}
+.run-btn::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  border-style: solid;
+  border-width: 6px 0 6px 10px;
+  border-color: transparent transparent transparent white;
+}
     .solution-header {
       font-weight: bold;
       margin-bottom: 5px;
       color: #2e7d32;
     }
+    /* Optional helpers—safe to omit if you already have similar styles */
+.card { background: var(--card); border:1px solid var(--line); border-radius: var(--radius);  }
+.hint { margin-top: 12px; }
+.hint > summary { cursor: pointer; font-weight: 600; }
+.hint[open] { border-left: 3px solid var(--accent, #4caf50); padding-left: 12px; }
+.muted { color: var(--muted); margin: 6px 0 10px; }
+.tiny-tips { font-size: 0.95rem; margin: 8px 0 0 0; }
 
     a.resource-ref {
   background-color: #444; /* dark background for contrast */
@@ -161,8 +189,7 @@ a.resource-ref:hover {
 <!-- Lab Navigation Menu -->
 
       <div id="main-content">
-  
-    <section id="setup-check" class="card">
+         <div class="lab-section" id="lab0">
   <h3>⚡ 30-Second Setup Check</h3>
   <ol>
     <li>Open <strong>Eclipse</strong> → <em>File → New → Java Project</em> → name it <code>Lab01</code>.</li>
@@ -175,13 +202,13 @@ a.resource-ref:hover {
         <li>Click <em>Finish</em>.</li>
       </ol>
     </li>
-    <li>Run it once (even if it’s empty): click the green <strong>Run</strong> ▶️ button to confirm your setup.</li>
+    <li>Run it once (even if it’s empty): click the green <span class="run-btn">  </span> button to confirm your setup.</li>
   </ol>
-</section>
+</div>
     <div class="lab-section" id="lab1">
         <h2>01. Printing</h2>
-        <p>Resources 1: <a href="../resources.html#java-types" class="resource-ref">Data Types</a></p>
-        <p>Resources 2: <a href="../resources.html#syntax" class="resource-ref">Basic Syntax</a></p>
+        <p>Resources 1: <a href="../resources.html#java-types" class="resource-ref" target="_blank">Data Types</a></p>
+        <p>Resources 2: <a href="../resources.html#syntax" class="resource-ref" target="_blank">Basic Syntax</a></p>
         <p>
             Write a program which creates an integer, a string, and a character variable. 
             First, print each one separately per line. 
@@ -194,11 +221,38 @@ a.resource-ref:hover {
     A
     Combined: 42 Hello, World! A
         </div>
-        
+        <!-- Collapsible hint panel -->
+  <details class="hint">
+    <summary>Need a hint? See what <code>Printing.java</code> should look like</summary>
+    <p class="muted">This is just an example with different values—you can change them later.</p>
+    <pre><code class="language-java">package lab01;
+
+public class Printing {
+    public static void main(String[] args) {
+        int number = 7;               // example int
+        String message = "Welcome!";  // example String
+        char letter = 'Z';            // example char
+
+        // Each on its own line:
+        System.out.println(number);
+        System.out.println(message);
+        System.out.println(letter);
+
+        // One combined line starting with "Combined:"
+        System.out.println("Combined: " + number + " " + message + " " + letter);
+    }
+}
+</code></pre>
+    <ul class="tiny-tips">
+      <li><strong>File name</strong> must match the class name: <code>Printing.java</code>.</li>
+      <li><strong>Package</strong> line should be exactly <code>package lab01;</code>.</li>
+      <li>If you see red squiggles, hover them—fix the first error and re-run.</li>
+    </ul>
+  </details>
       </div>
     <div class="lab-section" id="lab2">
         <h2>02. Backwards</h2>
-        <p>Resources 1: <a href="../resources.html#loops" class="resource-ref">For Loops</a></p>
+        <p>Resources 1: <a href="../resources.html#loops" class="resource-ref" target="_blank">For Loops</a></p>
         <p>
           Write a program <code>BackwardsDigits</code> that prints numbers from 0 to 9, but in the backward order. Do not use arrays in your solution.
           All numbers must be on the same line, separated by a space character (' ').
@@ -207,6 +261,23 @@ a.resource-ref:hover {
         <div class="code-window">
     9 8 7 6 5 4 3 2 1 0
         </div>
+        <details class="hint">
+  <summary>💡 Hint 1: Which loop?</summary>
+  <p>Think about a <code>for</code> loop that starts at 9 and keeps going until it reaches 0. 
+     How would you write the update step so the number decreases each time?</p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 2: Staying on one line</summary>
+  <p>Use <code>System.out.print()</code> instead of <code>println</code> so the numbers don’t each go on a new line. 
+     You can add a space <code>" "</code> after each number. It is ok to have extra space at the end!</p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 3: Concatenation approach</summary>
+  <p>Remember that you can use "+" operator to concatenate variables. To add a space between the numbers you can use <code>varible + " "</code>.</p>
+ 
+</details>
         <!-- <p><strong>Advanced Challenge (Optional)</strong>: propose two different solutions and calculate the time execution</p>
       <div class="solution-window">
 #HINT:  Use System.nanoTime()
@@ -217,7 +288,7 @@ Calculate the difference between the end time and the start time
 
     <div class="lab-section" id="lab3">
         <h2>03. Formatting a string</h2>
-        <p>Resources 1: <a href="../resources.html#printf" class="resource-ref">Formating String</a></p>
+        <p>Resources 1: <a href="../resources.html#printf" class="resource-ref" target="_blank">Formating String</a></p>
         <p>Write a program  <code>CoffeeShopInventory</code>  for a coffee shop inventory.
 The program should display the shop's name <code>shopName</code>, number of coffee types <code>coffeeTypes</code>, 
 average price <code>averagePrice</code>, and whether it is open <code>isOpen</code> (Use the print statement below).
@@ -235,8 +306,8 @@ System.out.printf("Shop: %s\nCoffee Types: %d\nAverage Price: $%.2f\nOpen: %b\n"
 
 <div class="lab-section" id="lab4">
   <h2>04. Working with Methods and Conditionals</h2>
-  <p>Resources 1: <a href="../resources.html#return" class="resource-ref">Calling Methods</a></p>
-  <p>Resources 2: <a href="../resources.html#conditionals" class="resource-ref">Conditionals</a></p>
+  <p>Resources 1: <a href="../resources.html#return" class="resource-ref" target="_blank">Calling Methods</a></p>
+  <p>Resources 2: <a href="../resources.html#conditionals" class="resource-ref" target="_blank">Conditionals</a></p>
   <p>In this section, you will use a provided java file, upload it to Eclipse, complete TODO, and execute the program</p>
   <p><a href="../labs/ConditionalExamples.java">Download Java File (Right-Click the link (save Link as) and unzip). Make sure you know where (which) it is downloaded</a> </p>
   <p>Instructions:</p>
@@ -283,8 +354,8 @@ System.out.printf("Shop: %s\nCoffee Types: %d\nAverage Price: $%.2f\nOpen: %b\n"
 </div>
 <div class="lab-section" id="lab5">
   <h2>05. Working with For Loops</h2>
-  <p>Resources 1: <a href="../resources.html#string-methods" class="resource-ref">String Methods</a></p>
-  <p>Resources 2: <a href="../resources.html#loops" class="resource-ref">For Loops</a></p>
+  <p>Resources 1: <a href="../resources.html#string-methods" class="resource-ref" target="_blank">String Methods</a></p>
+  <p>Resources 2: <a href="../resources.html#loops" class="resource-ref" target="_blank">For Loops</a></p>
   <p>In this section, you will use a provided java file, upload it to Eclipse, complete TODO, and execute the program</p>
   <p><a href="../labs/ForLoops.java">Download Java File. Make sure you know where (which) it is downloaded</a> </p>
   <p>Instructions: you can directly donwload under your current project src package in eclipse</p>
