@@ -197,6 +197,13 @@ a.labs {
       font-style: italic;
     }
 
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
     /* New style for exam rows: color the entire row */
     tr.exam {
       background-color: #f4cece; /* A distinct background for exam rows */
@@ -266,7 +273,8 @@ a.labs {
 <h1>Class Schedule</h1>
 <div>Daily Worksheets and Labs are submitted during class via Gradescope. As a grace period, submissions will remain open until the end of the day (11:59 PM EST). 
   Work submitted after class but before the end of the day will still be accepted without penalty.</div>
-<div>Homework and Design problems are due as indicated on the schedule. 1-day grace period is enabled.</div>
+<div>Homework and Design problems are due as indicated on the schedule. 1-day grace period is enabled for homework, design problemns, and labs.</div>
+
     <!-- Week 0 -->
     <button class="collapsible">Week 0 (Course Introduction)</button>
     <div class="content-section">
@@ -1010,7 +1018,9 @@ a.labs {
       </table>
     </div>
 </div>
-
+<p style="background:#cfcecf; padding:0.5rem 1rem; border-left:4px solid #003366;">
+  💡 See our <a href="./questions.html">Student Q&A page</a> for answers to common questions.
+</p>
 <!-- Week 10
 <button class="collapsible">Week 10 (Milestone4)</button>
 <div class="content-section"> 
@@ -1092,5 +1102,14 @@ a.labs {
       });
     }
   </script>
+  <footer>
+  CSSE 220 • Rose-Hulman Institute of Technology
+  <p id="last-updated"></p>
+  <script>
+    const d = new Date();
+    document.getElementById("last-updated").textContent =
+      "Last updated: " + d.toLocaleDateString();
+  </script>
+</footer>
   </body>
 </html>

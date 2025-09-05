@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSSE 220</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f9fafb;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .qa-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.15s ease;
+    }
+    .qa-card:hover {
+      transform: translateY(-2px);
+    }
+    .question {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #003366;
+    }
+    .answer {
+      margin-left: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CSSE 220 – Student Q&A</h1>
+    <p>Answers to common student questions (updated as we go!)</p>
+  </header>
+  <div style="text-align:center; margin: 2rem 0;">
+  <a href="https://obscrivn.github.io/csse220web/schedule.html" 
+     style="background:#003366; color:white; padding:0.6rem 1.2rem; 
+            border-radius:8px; text-decoration:none; font-weight:bold;">
+    ← Go Back to Schedule
+  </a>
+</div>
+  <main>
+    <div class="qa-card">
+      <div class="question">1. What advantages does Java have over other modern programming languages?</div>
+      <div class="answer">“Modern” isn’t quite accurate – most popular languages like Java, Python, and C++ are decades old. Java stands out because it’s portable (runs anywhere with a JVM), strongly typed, secure, and has true multithreading support (unlike Python’s limited threading).</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">2. Why did String convert like the char to numeric?</div>
+      <div class="answer">When you do math with <code>char</code>, Java uses the character’s numeric Unicode value.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">3. How does interface work / extends?</div>
+      <div class="answer">An interface defines methods a class must implement; <code>extends</code> is for inheriting from a parent class. (We’ll cover in detail in the OOP unit.)</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">4. What is the difference between Javadoc and comment?</div>
+      <div class="answer">Javadoc is a special comment (<code>/** ... */</code>) that generates documentation; regular comments (<code>//</code> or <code>/* ... */</code>) are just for humans reading code.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">5. Will most classes be organized like this?</div>
+      <div class="answer">Yes – most Java classes follow a pattern: fields → constructors → methods.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">6. Can new types be created?</div>
+      <div class="answer">Yes, you can define your own classes, which become new types.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">7. What is the primary use for arrays?</div>
+      <div class="answer">Arrays store multiple values of the same type in a single variable.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">8. I am confused how the parts are labeled.</div>
+      <div class="answer">We’ll review class structure terms (field, constructor, method) in upcoming classes — check the schedule.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">9. I want to know more about heap space.</div>
+      <div class="answer">Heap is memory where objects are stored; managed by the JVM. (We’ll discuss more in the memory management section.)</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">10. Memory aspect of instance and local variables?</div>
+      <div class="answer">Instance variables live on the heap with the object; local variables live on the stack during method execution.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">11. Long and short types are common? Do they prefer doubles or are they preferable for some uses over others?</div>
+      <div class="answer"><code>int</code> and <code>double</code> are most common; <code>long</code> and <code>short</code> are used in special cases where memory or very large numbers matter.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">12. Curious when you add two chars why print behaves like that?</div>
+      <div class="answer">Adding chars gives a numeric sum of their Unicode values, not string concatenation.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">13. Eclipse versus IntelliJ? Is Eclipse popular in industry also?</div>
+      <div class="answer">Both are widely used – IntelliJ is very popular in industry, but Eclipse is also used in many companies and is especially common in education. We’ll use Eclipse to keep everyone on the same page and avoid confusion, while still building transferable skills.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">14. Why does OneDrive cause many problems on Eclipse?</div>
+      <div class="answer">OneDrive sync conflicts with Eclipse’s workspace files – it’s better to keep projects outside of synced folders.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">15. Why Java is used for websites apps and not HTML?</div>
+      <div class="answer">HTML is for structure/layout of webpages; Java is a programming language that adds logic, processing, and server-side features.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">16. How public and private classes affect code?</div>
+      <div class="answer">Public classes are accessible from anywhere; private classes/members restrict access to within the class.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">17. Field, constructors, methods.</div>
+      <div class="answer">Field: stores data · Constructor: creates and initializes objects · Method: defines behavior.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">18. What is the difference between primitive and reference data types?</div>
+      <div class="answer">Primitives store simple values directly (<code>int</code>, <code>char</code>, etc.); references store addresses of objects.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">19. ASCII chars, constructors?</div>
+      <div class="answer">ASCII values are numeric codes for characters; constructors are special methods to build objects.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">20. Why adding chars results in addition of numbers from ASCII table? Is it an established rule?</div>
+      <div class="answer">Yes – Java automatically promotes <code>char</code> to numeric <code>int</code> during arithmetic.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">21. How do we memorize char numbers for adding?</div>
+      <div class="answer">You don’t need to memorize – just remember characters map to Unicode numbers; use casting <code>(int) 'A'</code> to check.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">22. How to debug the code if error is in JDK/JRE/JVM?</div>
+      <div class="answer">Usually update or reinstall Java; most beginner errors are in code, not the JDK/JRE itself.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">23. Polymorphism — what to know more about polymorphism?</div>
+      <div class="answer">Polymorphism lets one interface or superclass be used with many implementations (e.g., calling the same method on different object types). (We’ll cover in detail in the inheritance/polymorphism unit.)</div>
+    </div>
+
+  </main>
+<footer>
+  CSSE 220 • Rose-Hulman Institute of Technology
+  <p id="last-updated"></p>
+  <script>
+    const d = new Date();
+    document.getElementById("last-updated").textContent =
+      "Last updated: " + d.toLocaleDateString();
+  </script>
+</footer>
+</body>
+</html>
