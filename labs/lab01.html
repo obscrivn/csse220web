@@ -309,47 +309,111 @@ System.out.printf("Shop: %s\nCoffee Types: %d\nAverage Price: $%.2f\nOpen: %b\n"
   <p>Resources 1: <a href="../resources.html#return" class="resource-ref" target="_blank">Calling Methods</a></p>
   <p>Resources 2: <a href="../resources.html#conditionals" class="resource-ref" target="_blank">Conditionals</a></p>
   <p>In this section, you will use a provided java file, upload it to Eclipse, complete TODO, and execute the program</p>
-  <p><a href="../labs/ConditionalExamples.java">Download Java File (Right-Click the link (save Link as) and unzip). Make sure you know where (which) it is downloaded</a> </p>
-  <p>Instructions:</p>
-<p>Note - you can directly download to your src folder under the current package in Eclipse or follow the instructions below:</p>
-  <ol>
-    <li>
-      Option A: <strong>Right-Click the <code>src</code> Folder:</strong>  
-      In the Package Explorer, locate your project's <code>src</code> folder and right-click on it.
-    </li>
-    <li>
-      <strong>Select Import:</strong>  
-      From the context menu, choose <em>Import...</em>.
-    </li>
-    <li>
-      <strong>Choose File System:</strong>  
-      In the Import Wizard, expand the <strong>General</strong> folder, select <strong>File System</strong>, and click <strong>Next</strong>.
-    </li>
-    <li>
-      <strong>Browse for the File:</strong>  
-      Click the <strong>Browse...</strong> button next to <em>From directory:</em>. Navigate to the folder where you downloaded your <code>.java</code> file and click <strong>OK</strong>.
-    </li>
-    <li>
-      <strong>Select the Java File:</strong>  
-      In the file list that appears, check the box next to the Java file you want to import (for example, <code>ConditionalExamples.java</code>).
-    </li>
-    <li>
-      <strong>Finish the Import:</strong>  
-      Click <strong>Finish</strong> to import the file into your <code>src</code> folder.
-    </li>
-    <li>Option B: Drag and drop java file into your package under src</li>
-    <li>
-      <strong>Verify the File:</strong>  
-      The file should now appear in your project's <code>src</code> folder. Double-click the file to open it in the Eclipse editor and verify its content.
-    </li>
-    <li>Review your code. Some methods (like <code>computeAverage</code> and <code>printDivisibleBy3</code>)
-        are already implemented.</li>
-    <li>Implement the missing methods (<code>printCubed</code>, <code>guessCubeRoot</code>,
-        <code>isWayBigger</code>, and <code>isGreaterThan3</code>) according to the instructions
-        provided in the comments.</li>
-    <li>Optional: Modify the <code>main()</code> to add additional test cases.</li>
-  </ol>
-    
+  <p><a href="../labs/ConditionalExamples.java">Download Java File (Right-Click the link (save Link as) and unzip). Make sure you know where it is downloaded</a> </p>
+  
+
+
+  <h3>🛠 Where to write your code</h3>
+  <p>For the tasks below, open the provided files and look for comments that say 
+    <code>// TODO Implement this method</code> (or <code>// TODO</code>). 
+    Type your solution <em>inside those spots</em> without changing the method headers.</p>
+
+
+<h3>🛠 Instructions:</h3>
+<p><em>Note:</em> You can either place the file directly into your <code>src</code> folder, 
+or use Eclipse’s Import Wizard. Both work fine -> just pick the method that feels easiest.</p>
+
+<ol>
+  <li>
+    <strong>Option A: Import Wizard (step-by-step)</strong>
+    <ol>
+      <li>In the <strong>Package Explorer</strong>, right-click your project’s <code>src</code> folder (the specific package, e.g. <code>lab01</code>).</li>
+      <li>Choose <strong>Import…</strong> from the menu.</li>
+      <li>In the Import dialog, expand <strong>General</strong>, select <strong>File System</strong>, and click <strong>Next</strong>.</li>
+      <li>Click <strong>Browse…</strong> next to <em>From directory:</em> and navigate to the folder where you downloaded your <code>.java</code> file.</li>
+      <li>Check the box next to the file (e.g., <code>ConditionalExamples.java</code>).</li>
+      <li>Make sure the destination folder is your project’s <code>src</code> (the right package under <code>src</code>).</li>
+      <li>Click <strong>Finish</strong> to complete the import. Choose Copy file instead of Link</li>
+    </ol>
+  </li>
+
+  <li>
+    <strong>Option B: Drag &amp; Drop</strong><br>
+    Simply drag the <code>.java</code> file from your desktop (or file explorer) into your Eclipse package under <code>src</code> and under your package (e.g. <code>lab01</code>). Eclipse will copy it for you.
+  </li>
+
+  <li>
+    <strong>Verify the File:</strong><br>
+    In Eclipse, expand your <code>src</code> folder → your package (e.g. <code>lab01</code>). 
+    You should now see <code>ConditionalExamples.java</code> listed there. Double-click to open it in the editor.
+  </li>
+
+  <li>
+    <strong>Review the Code:</strong><br>
+    Some methods (like <code>computeAverage</code> and <code>printDivisibleBy3</code>) may already have starter code. 
+    Look for lines marked <code>// TODO Implement this method</code>. These are the spots where you need to type your solutions.
+  </li>
+
+  <li>
+    <strong>Implement Missing Methods:</strong><br>
+    Complete <code>printCubed</code>, <code>guessCubeRoot</code>, <code>isWayBigger</code>, and <code>isGreaterThan3</code> according to the lab instructions.
+  </li>
+
+  <li>
+    <strong>Optional:</strong> Add extra test cases in <code>main()</code> to check your methods. 
+    Example: <code>System.out.println(isWayBigger(100, 15));</code>
+  </li>
+</ol>
+
+<p><strong>✅ Quick Checklist:</strong></p>
+<ul>
+  <li>Your <code>.java</code> file shows up under the right package in Eclipse.</li>
+  <li>There are no red ❌ errors in the editor (except possibly TODO placeholders).</li>
+  <li>You can run the file with the <span class="run-btn"></span> <em>green Run button</em> and see some output in the Console.</li>
+</ul>
+
+
+    <details class="hint">
+  <summary>💡 Hint 1: printCubed</summary>
+  <p>Remember: to “cube” a number you multiply it by itself three times: 
+     <code>n * n * n</code>.  
+     This method doesn’t return anything, it just <code>System.out.println</code> the result.</p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 2: isWayBigger</summary>
+  <p>You need to compare two numbers.  
+     Ask: “When is <code>a</code> considered way bigger than <code>b</code>?”  
+     Try defining a rule like “if <code>a</code> is more than 5 times <code>b</code>”.  
+     Then return a boolean expression that captures that.</p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 3: isGreaterThan3</summary>
+  <p>Very short! This can be done in one line:  
+     <code>return n > 3;</code></p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 4: guessCubeRoot</summary>
+  <p>Think of the opposite of cubing: find a number <code>g</code> so that <code>g * g * g</code> is close to <code>x</code>.  
+     You can “guess and check”: start at 0, keep cubing until you reach or pass <code>x</code>, then stop.  
+     Use a <code>while</code> loop to keep trying bigger guesses.</p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 5: printDivisibleBy3</summary>
+  <p>Use the <em>modulo operator</em> <code>%</code> to test divisibility:  
+     <code>if (i % 3 == 0)</code>.  
+     Then print that number.</p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 6: computeAverage</summary>
+  <p>Be careful! If you divide integers by 3, you get integer division.  
+     To keep the decimal part, cast or divide by <code>3.0</code>.  
+     Example: <code>(a + b + c) / 3.0</code></p>
+</details>
     
 </div>
 <div class="lab-section" id="lab5">
