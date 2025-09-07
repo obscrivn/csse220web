@@ -80,9 +80,11 @@
       <div class="answer">When you do math with <code>char</code>, Java uses the character’s numeric Unicode value.</div>
     </div>
 
+
+
     <div class="qa-card">
       <div class="question">3. How does interface work / extends?</div>
-      <div class="answer">An interface defines methods a class must implement; <code>extends</code> is for inheriting from a parent class. (We’ll cover in detail in the OOP unit.)</div>
+      <div class="answer">An interface defines methods a class must implement - the keyword is <code>implements</code>; the keyword <code>extends</code> is used for inheriting from a parent class. (We’ll cover in detail in the OOP unit.)</div>
     </div>
 
     <div class="qa-card">
@@ -183,6 +185,13 @@
     <div class="qa-card">
       <div class="question">23. Polymorphism — what to know more about polymorphism?</div>
       <div class="answer">Polymorphism lets one interface or superclass be used with many implementations (e.g., calling the same method on different object types). (We’ll cover in detail in the inheritance/polymorphism unit.)</div>
+    </div>
+
+     <div class="qa-card">
+      <div class="question">24. Why do we need to uncheck module-info.java and package-info.java when creating projects in Eclipse?</div>
+      <div class="answer"><code>module-info.java</code> is useful for large enterprise apps where you need to define which packages are exposed to other modules. Our projects are single-module, single-package, so module-info.java isn’t needed.
+        <code>package-info.java</code> is just documentation: It’s meant for writing Javadoc for an entire package. In CSSE 220, we’ll focus on class-level Javadoc — package docs are overkill.
+      </div>
     </div>
 
   </main>
