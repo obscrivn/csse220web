@@ -302,6 +302,22 @@ average price <code>averagePrice</code>, and whether it is open <code>isOpen</co
    <div class="solution-window">
 System.out.printf("Shop: %s\nCoffee Types: %d\nAverage Price: $%.2f\nOpen: %b\n", shopName, coffeeTypes, averagePrice, isOpen);
    </div>
+   <details class="hint">
+  <summary>💡 Hint: New Line in printf</summary>
+  <p>You can add a new line in two ways when using <code>printf</code>:</p>
+  <ul>
+    <li><code>\n</code> → works on most systems, commonly seen in examples.</li>
+    <li><code>%n</code> → recommended, because it automatically uses the correct line ending 
+        for the operating system (Windows, Mac, Linux).</li>
+  </ul>
+
+  <p>Both of these will print two lines:</p>
+  <pre><code class="language-java">
+System.out.printf("Shop: %s\nAverage Price: $%.2f\n", shopName, averagePrice);
+System.out.printf("Shop: %s%nAverage Price: $%.2f%n", shopName, averagePrice);
+</code></pre>
+ 
+</details>
 </div>
 
 <div class="lab-section" id="lab4">
