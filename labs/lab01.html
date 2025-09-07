@@ -395,6 +395,21 @@ or use Eclipse’s Import Wizard. Both work fine -> just pick the method that fe
      <code>n * n * n</code>.  
      This method doesn’t return anything, it just <code>System.out.println</code> the result.</p>
 </details>
+<details class="hint">
+  <summary>💡 Hint 2: Printing numbers as <code>int</code> vs <code>double</code></summary>
+  <p>Right now, the method parameter is a <code>double</code> type. That means even if you pass in <code>2</code>, 
+     it will display as <code>2.0</code>. So the output will be:</p>
+  <pre>
+2.0 cubed is 8.0
+</pre>
+  <p>To format the number as an integer, you have an option to cast it to int:</p>
+  <ol>
+    <li><strong>Cast to int (int)</strong> before printing:</li>
+    <pre><code class="language-java">
+System.out.println((int)numberToCube + " cubed is " + numberToCube*numberToCube*numberToCube);
+    </code></pre>
+  </ol>
+  </details>
 
 <details class="hint">
   <summary>💡 Hint 2: isWayBigger</summary>
