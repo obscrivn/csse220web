@@ -492,7 +492,7 @@ public class OnesBuilder {
     }
 }
 </code></pre>
-</details>
+
 
 
     <div class="code-window">
@@ -505,8 +505,27 @@ Example Output (count = 5)
 1111
 11111
 </pre>
+</details>
+<details class="hint">
+  <summary>💡 Hint: How to write a test for <code>countXX</code></summary>
+  <p>When you test a method, you want to:</p>
+  <ol>
+    <li>Call the method with known input</li>
+    <li>Compare the result to the expected output</li>
+    <li>Report or assert the result</li>
+  </ol>
 
+  <p><strong>Simple test in <code>main()</code></strong>. Note for your Lab, choose your own test values!</p>
+  <pre><code class="language-java">
+public static void main(String[] args) {
+    System.out.println(countXX("abcxx")); // expected: 1
+    System.out.println(countXX("xxxx"));  // expected: 3
+    System.out.println(countXX("hi"));    // expected: 0
+}
+</code></pre>
 
+  <p>Here you read the output in the console and check if it matches the expected results.</p>
+</details>
 
           </div>
 
