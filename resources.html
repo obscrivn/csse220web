@@ -159,7 +159,7 @@
         <dd><a href="#conditionals">Conditionals</a></dd>
         <dd><a href="#switch-cases">How to use switch cases</a></dd>
         <dd><a href="#string-methods">String, Length, Substring</a></dd>
-        <dd><a href="#int-to-string">Convert Int to String</a></dd>
+        <dd><a href="#int-to-string">Converting Between Integers, Strings, and Characters</a></dd>
         <dd><a href="#casting">Casting</a></dd>
         <dd><a href="#arrays">Arrays</a></dd>
         <dd><a href="#arrays">Array Lists</a></dd>
@@ -516,30 +516,96 @@ System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
       </section>
 
       <section id="int-to-string">
-        <h2 style="color:black">Converting Integers to Strings and Strings to Integer</h2>
-        <p>
-          In Java, there are several ways to convert an integer to its string representation. Here are three common methods:
-        </p>
-        
-        <h3>1. Using <code style="color:red">String.valueOf()</code></h3>
-        <pre><code>int number = 123;
-      String s = String.valueOf(number);</code></pre>
-        
-        <h3>2. Using <code style="color:red">Integer.toString()</code></h3>
-        <pre><code>int number = 123;
-      String s = Integer.toString(number);</code></pre>
-        
-        <h3>3. Using Concatenation</h3>
-        <pre><code>int number = 123;
-      String s = "" + number;</code></pre>
-        
-        <p>
-          To convert String to Integer use the <code style="color:red">Integer.parseInt()</code> method:  </p> 
-          <pre><code>
-   int number = Integer.parseInt("123");
-        </code></pre>
-      
-      </section>
+        <h2 style="color:black">Converting Between Integers, Strings, and Characters</h2>
+<p>
+    In Java, you’ll often need to convert between numbers, strings, and characters. 
+    Here’s how to do it safely (and avoid the common <em>"why is my number 51 instead of 3?"</em> problem).
+  </p>
+        <h3>1. Integer → String</h3>
+  <p>Use this when you need to display numbers as text (printing, concatenation, etc.).</p>
+  <pre><code>int number = 123;
+
+// Method 1: String.valueOf()
+String s1 = String.valueOf(number);
+
+// Method 2: Integer.toString()
+String s2 = Integer.toString(number);
+
+// Method 3: Concatenation (quick and dirty)
+String s3 = "" + number;</code></pre>
+
+<h3>2. String → Integer</h3>
+  <p>Use this when you’re parsing user input or text data back into a number.</p>
+  <pre><code>String s = "456";
+int number = Integer.parseInt(s);  // 456</code></pre>
+<h3>3. Character ↔ Integer (the tricky part!)</h3>
+  <p>
+    Each digit character like <code style="color:black">'7'</code> has a Unicode/ASCII value (55), 
+    not the numeric digit value (7). To get the actual digit:
+  </p>
+  <pre><code>char c = '7';
+
+// WRONG: gives ASCII/Unicode value
+int asciiValue = (int) c;   // 55
+
+// RIGHT: subtract '0' to get the digit
+int digit = c - '0';        // 7</code></pre>
+
+  <p>
+    To go the other way (digit → character):
+  </p>
+  <pre><code>int digit = 7;
+char c = (char) ('0' + digit);  // '7'</code></pre>
+
+<h3 style="color:darkblue">💡 Hint: Why we use '0'</h3>
+<p>
+  Characters like <code style="color:red">'3'</code> are stored as 
+  <em>character codes</em>, not numeric values. In Unicode/ASCII:
+</p>
+
+<table border="1" cellpadding="6" style="border-collapse:collapse; text-align:center;">
+  <tr><th>Character</th><th>Code Value</th><th>Digit Value</th></tr>
+  <tr><td>'0'</td><td>48</td><td>0</td></tr>
+  <tr><td>'1'</td><td>49</td><td>1</td></tr>
+  <tr><td>'2'</td><td>50</td><td>2</td></tr>
+  <tr><td>...</td><td>...</td><td>...</td></tr>
+  <tr><td>'9'</td><td>57</td><td>9</td></tr>
+</table>
+
+<p>
+  That’s why when you cast <b><code style="color:red">'7'</code></b> directly to an <b><code style="color:red">int</code></b>, you get <b>55</b>, 
+  not <b>7</b>.  
+</p>
+
+<p>
+  ✅ To fix this, always subtract <b><code style="color:red">'0'</code></b> (= code 48).  
+</p>
+
+<pre><code>char c = '7';
+int digit = c - '0';   // 55 - 48 = 7
+</code></pre>
+
+<p>
+  🔄 To go the other direction (digit → character):
+</p>
+
+<pre><code>int digit = 7;
+char c = (char) ('0' + digit);  // 48 + 7 = 55 → '7'
+</code></pre>
+
+<p>
+  Remember: <b>Subtract '0' to get a number, add '0' to get a character.</b>
+</p>
+
+
+  <h3>When to Use</h3>
+  <ul>
+    <li><b>Numbers → Strings:</b> when printing, concatenating, or storing numbers as text.</li>
+    <li><b>Strings → Numbers:</b> when reading input like "123" and doing math with it.</li>
+    <li><b>Characters → Digits:</b> when iterating over characters in a numeric string, e.g., summing digits in "15342".</li>
+    <li><b>Digits → Characters:</b> when building up a string of numbers one digit at a time.</li>
+  </ul>
+</section>
 
       <section id="casting">
         <h1 style="color:black">Type Casting in Java</h1>
