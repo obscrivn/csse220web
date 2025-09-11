@@ -160,7 +160,7 @@ a.resource-ref:hover {
         <ul>
           <li><a href="#lab1">01. Scanner</a></li>
           <li><a href="#lab2">02. printDataType</a></li>
-          <li><a href="#lab3">03. Maps</a></li>
+
           
          
           <!-- Add more lab links as needed -->
@@ -168,8 +168,8 @@ a.resource-ref:hover {
       </nav>
 <!-- Lab Navigation Menu -->
 <div id="main-content">
-<p>For this Lab, you will be working with 3 separate 
-  Classes. Submit 3 java files</p>
+<p>For this Lab, you will be working with 2 separate 
+  Classes. Submit 2 java files</p>
 
 
   
@@ -188,7 +188,7 @@ a.resource-ref:hover {
               <li>Prompt the user for their salary</li>
             </ul>
             
-            Your example output should be as follows (you can be creative):
+            Your example output could be as follows (you can be creative):
 <div class="code-window">The user name is Luke Skywaker
 The user age is 25 years old
 The user salary is 100 galaxy currency
@@ -203,10 +203,7 @@ The user salary is 100 galaxy currency
           <p>
             Create a class called <code>DataTypePractice</code> that includes a main method and a custom method to print the data type of a given value.
             The method is called <code>printDataType</code> that takes an <code>Object</code> as an argument.
-            <p>
-              <strong>Important Note:</strong> When you pass a primitive value (like <code>5</code>) to a method that expects an <strong>Object</strong>, it is automatically 
-              converted (autoboxed) to its corresponding wrapper type (e.g., <code>Integer</code>). No need for extra code like <code>((Object)int)</code>.
-            </p>
+
 
 <div class="code-window">public static void printDataType(Object value){
   //TODO finish this method
@@ -214,14 +211,12 @@ The user salary is 100 galaxy currency
 </div>
 <p>This method should print a statement in the following format for primitives:</p>
 
-<div class="code-window">The value [value] is a primitive and the data type is [TypeName].</div>
-<p>This method should print a statement in the following format for objects:</p>
-<div class="code-window">The value is an object and the data type is [TypeName]</div>
-          <p><em>Example:</em> If the input is <code>5</code>, the output should be:
-          <p>
-          <div class="code-window">The value 5 is a primitive and the data type is Integer.</div>
-
-        
+<h3>Expected Examples</h3>
+  <div class="code-window"><div class="example-output">
+The value 5 is primitive and the data type is Integer.
+The value hello is an object and the data type is String.
+  </div></div>
+    
   <h3>Write Javadocs</h3>
   <p>
     Include proper Javadoc comments for the printDataType method (place it above the method declaration).
@@ -232,20 +227,48 @@ The user salary is 100 galaxy currency
     <li>A double literal</li>
     <li>A char literal</li>
     <li>A String</li>
-    <li>An object Array</li>
-    <li>An object  ArrayList </li> 
   </ul>
-  <p>Note you must initialize arrays first before you pass to the method </p>
-  <p>HINT 1: For ArrayList - consider accessing an item of the array. If you just access the class of ArrayList, you will only get <code>ArrayList</code> as a data type</p>
-  <p>HINT 2: instanceof is only used with classes. But if the primitive is converted to an Object, you can use a Wrapper Class.</p>
+    <p><strong>Important Note:</strong> When you pass a primitive value (like <code>5</code>) to a method that expects an
+    <strong>Object</strong>, Java automatically converts (autoboxes) it to its wrapper type (e.g., <code>Integer</code>).
+    You do <em>not</em> need extra casts like <code>((Object) int)</code>.
+  </p>
   <div class="code-window"><div class="example-output">
-printDataType(5) // Expected: The value 5 is a primitive and the data type is Integer.
-
-printDataType(arr) // Expected: The value is an object and the data type is int[].</div>
-printDataType(arrlist) // Expected: The value is an object and the data type is ArrayList.</div>
-printDataType(string) // Expected: The value is an object and the data type is String.</div>
+printDataType(5) // Expected: The value 5 is primitive and the data type is int.
 </div>
-<div class="lab-section" id="lab3">
+</div>
+<details class="hint">
+    <summary>💡 Hint 1: Getting the runtime type name</summary>
+    <p>Every object has <code>getClass()</code>. To get a short name like <code>Integer</code> or <code>String</code> use:
+      <code>value.getClass().getSimpleName()</code>.</p>
+  </details>
+ <details class="hint">
+    <summary>💡 Hint 2: instanceof Wrapper</summary>
+    <p>You can either:
+      <br>Check wrappers with <code>instanceof Integer</code>, <code>instanceof Double</code>, etc., or
+      <br>Use the class name directly with <code>getClass().getSimpleName()</code>.
+    </p>
+  </details>
+<details class="hint">
+  <summary>💡 Hint3: Why use <code>instanceof</code>?</summary>
+  <p>In this lab, everything you pass into <code>printDataType</code> is technically an <code>Object</code> 
+     (because primitives are automatically converted to their wrapper types). 
+     That means calling <code>value.getClass().getSimpleName()</code> will always tell you something like 
+     <code>Integer</code>, <code>Double</code>, <code>Character</code>, or <code>String</code>.</p>
+  
+  <p>But the assignment asks you to print in <em>two different formats</em>:</p>
+  <ul>
+    <li><strong>Primitive wrappers</strong> (e.g. <code>Integer</code>, <code>Double</code>, <code>Character</code>): 
+        <br><code>The value 5 is a primitive and the data type is Integer.</code></li>
+    <li><strong>Other objects</strong> (like <code>String</code>): 
+        <br><code>The value is an object and the data type is String.</code></li>
+  </ul>
+
+  <p>To make this distinction, you need to check: <br>
+     “Is this Object (=value) one of the primitive wrapper classes?” Use instanceOf to check the class</p>
+
+  
+</details>
+<!-- <div class="lab-section" id="lab3">
   <h2>Exercise 3: HashMaps</h2>
   <p>Resources: <a href="../resources.html#hashmap" class="resource-ref">Using Hashmaps</a></p>
   <p>Download the zip file. Import it as archive. It has already JUnit test that you will be using to run tests. 
@@ -382,7 +405,7 @@ canTravelTo(roadMap,"B", "A") returns false </code></pre>
      return citiesToVisitNext.contains(endCity);
  }
 </code></pre>
-</div>
+</div> -->
         
       
         </div>
