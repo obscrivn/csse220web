@@ -221,10 +221,32 @@ a.resource-ref:hover {
       </p>
     </li>
   </ol>
-  <div class="hint">
-    Hint: Follow the example in <code>StudentGradebookMain.java</code> carefully. Make sure that the assignment names and grades are stored properly so that <code>printGradeReport()</code> can display them. 
-    Also, pay attention to the default constructor's expected name.
-  </div>
+  <details class="hint">
+  <summary><strong>💡 Hint: Constructor + HashMap setup</strong></summary>
+  <ul>
+    <li><code>this.name = name;</code> saves the parameter into the object’s field.</li>
+    <li><strong>Recommended:</strong> Initialize the map in the <em>field</em>:
+  <code>private HashMap&lt;String,Integer&gt; grades = new HashMap&lt;&gt;();</code>
+  This way every object starts with a ready-to-use map <em>before</em> any constructor runs. 
+  Your constructors stay tiny, and you won’t forget to allocate the map.
+</li>
+<li><strong>Constructors then just set the name</strong> (don’t reassign the map inside them):</li>
+
+    <li><strong>Order:</strong> <code>HashMap</code> does not guarantee order. That’s fine for this lab.
+
+  </ul>
+
+</details>
+
+<details class="hint">
+  <summary><strong>💡 Hint: Passing a HashMap into a method</strong></summary>
+  <ul>
+    <li><strong>Signature:</strong> match the generic types, e.g. <code>HashMap&lt;String,Integer&gt;</code>.</li>
+    <li><strong>Mutations stick:</strong> calling <code>put</code>/<code>remove</code> inside the method changes the original map.</li>
+  </ul>
+  <pre><code>static void printGrades(HashMap&lt;String,Integer&gt; grades) {...}
+</code></pre>
+</details>
 </div>
 
 
