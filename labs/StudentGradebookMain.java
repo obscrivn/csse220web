@@ -46,9 +46,9 @@ public class StudentGradebookMain {
 		 one.addAssignment("TwelveProblems", 95);
 
 		  
-		 one.addAssignment("TwelveProblems", 99);
+		 one.addAssignment("WordGames", 99);
 		 
-		 one.addAssignment("TeamGradebook", 92);
+		 one.addAssignment("Faces", 92);
 		  
 		 one.printGradeReport(); System.out.println(); //blank line
 		 two.printGradeReport();
