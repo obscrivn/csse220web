@@ -133,6 +133,31 @@
   <p>This works because <code>map.get(city)</code> returns the list of temperatures for that city,
      and then <code>.add(temp)</code> appends the new reading onto that list.</p>
 </details>
+
+<details class="hint">
+  <summary>💡 Hint: Looping Through an ArrayList</summary>
+  <p>You can use both <strong>index-based</strong> and <strong>enhanced for-loops</strong> with an <code>ArrayList</code>.</p>
+  
+  <ul>
+    <li><strong>Enhanced for-loop</strong> (good when you only need the values):</li>
+  </ul>
+  <pre><code class="language-java">for (int temp : temps) {
+    System.out.println(temp);
+}</code></pre>
+
+  <ul>
+    <li><strong>Index-based for-loop</strong> (good when you need to compare neighbors or know the position):</li>
+  </ul>
+  <pre><code class="language-java">for (int j = 1; j &lt; temps.size(); j++) {
+    if (temps.get(j) &lt; temps.get(j - 1)) {
+        // found a temperature drop
+        return city;
+    }
+}</code></pre>
+
+  <p>👉 In this assignment, you need to compare each temperature to the one before it.  
+     That means you could use the <em>index-based for-loop</em> so you can access both <code>temps.get(j)</code> and <code>temps.get(j - 1)</code>.</p>
+</details>
     </div>
   </body>
 </html>
