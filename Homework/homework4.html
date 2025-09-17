@@ -92,7 +92,47 @@
             Upload your completed <code>HWMaps.java</code> file to the HWK04 Gradescope.
           </li>
         </ol>
-      
+      <details class="hint">
+  <summary>💡 Hint: Storing Multiple Temperatures for Each City</summary>
+  <p>You don’t know in advance how many times each city will appear, so you can’t use a fixed-size array.  
+     Instead, use a <code>HashMap</code> where:</p>
+  <ul>
+    <li>The <strong>key</strong> is the city name (<code>String</code>).</li>
+    <li>The <strong>value</strong> is an <code>ArrayList&lt;Integer&gt;</code> that stores all recorded temperatures for that city.</li>
+  </ul>
+
+  <p>Each time you read a (city, temperature) pair:</p>
+  <ul>
+    <li>If the city isn’t already in the map, create a new empty <code>ArrayList</code> and put it in the map.</li>
+    
+  </ul>
+
+  <p>Example:</p>
+  <pre><code class="language-java">
+    // check if the key does not exist, then create a new entry + empty array list
+    map.put(city, new ArrayList&lt;&gt;());
+</code></pre>
+
+  <p>Once you’ve stored the temperatures for a city, you can compare the latest one with the previous one to see if a drop occurred.</p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint: Adding a Value into a HashMap of ArrayLists</summary>
+  <p>Remember: a <code>HashMap&lt;String, ArrayList&lt;Integer&gt;&gt;</code> means each city name is linked to a
+     <code>ArrayList</code> of temperatures.</p>
+
+
+  <p>You know how to add values to <code>ArrayList</code>. The only difference is you need to get to the values in HashMap first:</p>
+  <pre><code class="language-java">hashmap.get(city); // you get to the value
+</code></pre>
+
+  <p>Then you add your  temperature reading to that list:</p
+
+  <pre><code class="language-java">hashmap.get(city).add(temp);</code></pre>
+
+  <p>This works because <code>map.get(city)</code> returns the list of temperatures for that city,
+     and then <code>.add(temp)</code> appends the new reading onto that list.</p>
+</details>
     </div>
   </body>
 </html>
