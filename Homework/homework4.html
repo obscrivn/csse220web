@@ -158,6 +158,27 @@
   <p>👉 In this assignment, you need to compare each temperature to the one before it.  
      That means you could use the <em>index-based for-loop</em> so you can access both <code>temps.get(j)</code> and <code>temps.get(j - 1)</code>.</p>
 </details>
+
+<details class="hint">
+  <summary>💡 Hint: Building a Reverse HashMap</summary>
+  <p>When you “flip” a <code>HashMap&lt;Integer, String&gt;</code> into a
+     <code>HashMap&lt;String, ArrayList&lt;Integer&gt;&gt;</code>, each value from
+     the original map may become a key in the new one. Multiple original keys can
+     point to the same value, so you must collect them into a list.</p>
+
+  <p>Steps to follow:</p>
+  <ul>
+    <li>Loop through the <em>keys</em> of the original map.</li>
+    <li>Get the <em>value</em> from the original map (this will be the new key).</li>
+    <li>If the new key is not yet in the reverse map:
+      <ul><li>Create a new empty <code>ArrayList&lt;Integer&gt;</code> and put it in the map.</li></ul>
+    </li>
+    <li>Add the original key to the list for that new key.</li>
+  </ul>
+
+  <p>This way, each new value gets its own list the first time you see it,
+     and later keys are added to the existing list.</p>
+</details>
     </div>
   </body>
 </html>
