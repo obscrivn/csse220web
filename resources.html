@@ -193,6 +193,7 @@
         <dd><a href="#painting">Paint Components: JPanel, JComponent</a></dd>
         <dd><a href="#threads">Swing Threads</a></dd>
         <dd><a href="#swing">Basics Swing Graphics</a></dd>
+        <dd><a href="#swinggraphics">Swing Graphics with paintComponent</a></dd>
         <dd><a href="#transform">Graphics Transform</a></dd>
         <dd><a href="#events">Event Handling</a></dd>
         <dd><a href="#listener">Understanding ActionListener</a></dd>
@@ -2250,7 +2251,82 @@ public class MyDrawingPanel extends JPanel {
       </ul>
     </p>
   </section>
+<section id="swinggraphics">
+  <h1 style="color:black">Swing Graphics: Drawing with <code>paintComponent</code></h1>
+  <p>
+    In Java, <strong>Swing</strong> provides a simple way to create custom graphics. 
+    All drawing is done using the <code style="color:red">Graphics</code> object, 
+    which acts like a "pen" or "brush" that Swing passes into your component's 
+    <code style="color:red">paintComponent()</code> method.
+  </p>
 
+  <h3>Basic Setup</h3>
+  <p>
+    To draw shapes or text, we usually create a <code style="color:red">JPanel</code> or <code style="color:red">JComponent</code> subclass 
+    and override its <code style="color:red">paintComponent(Graphics g)</code> method:
+  </p>
+  <pre><code>import javax.swing.*;
+import java.awt.*;
+
+class MyPanel extends JPanel {
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);  // clear background
+
+        g.setColor(Color.BLUE);
+        g.fillRect(50, 50, 100, 60);   // filled rectangle
+
+        g.setColor(Color.RED);
+        g.drawOval(200, 50, 80, 80);   // outlined oval
+
+        g.setColor(Color.BLACK);
+        g.drawString("Hello, Swing!", 50, 150); // text
+    }
+}
+
+public class GraphicsDemo {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Drawing Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.add(new MyPanel());
+        frame.setVisible(true);
+    }
+}
+</code></pre>
+
+  <h3>Common Drawing Methods</h3>
+  <p>
+    The <code style="color:red">Graphics</code> (or <code style="color:red">Graphics2D</code>) 
+    class provides many methods for drawing shapes, images, and text:
+  </p>
+  <ul>
+    <li><code style="color:red">g.drawLine(x1, y1, x2, y2)</code> → Draws a line</li>
+    <li><code style="color:red">g.drawRect(x, y, width, height)</code> → Outline rectangle</li>
+    <li><code style="color:red">g.fillRect(...)</code> → Filled rectangle</li>
+    <li><code style="color:red">g.drawOval(...)</code> / <code style="color:red">g.fillOval(...)</code> → Ovals</li>
+    <li><code style="color:red">g.drawString("text", x, y)</code> → Text</li>
+    <li><code style="color:red">g.drawImage(img, x, y, this)</code> → Draw an image</li>
+  </ul>
+
+  <h3>Colors and Fonts</h3>
+  <p>
+    You can change the pen color and font before drawing:
+  </p>
+  <pre><code>g.setColor(Color.MAGENTA);
+g.fillOval(100, 200, 60, 60);
+
+g.setFont(new Font("Serif", Font.BOLD, 24));
+g.drawString("Styled Text", 180, 220);
+</code></pre>
+
+  <h3>Key Points to Remember</h3>
+  <ul>
+    <li>Always override <code style="color:red">paintComponent(Graphics g)</code>, not <code style="color:red">paint()</code>.</li>
+    <li>Always call <code style="color:red">super.paintComponent(g)</code> first to clear the background.</li>
+    <li>Use <code style="color:red">repaint()</code> to ask Swing to redraw when state changes (e.g., for animation).</li>
+  </ul>
+</section>
   <section id="events">
     <h2 style="color:black">Swing Components &amp; Event Handling</h2>
     <p>
