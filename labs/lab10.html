@@ -313,20 +313,23 @@ switch (choice) {
         
         <div class="lab-section" id="lab2">
           <h2>Exercise 2: Graphics with Swing</h2>
+          <p>You are given two starter files: <code>EmptyFrameViewer.java</code> and <code>MyComponent.java</code>.
           <p>Import as archived zip <a href="./basicShapesCoding.zip">Download Link</a> - it is a package folder so you should be able to import into your src folder (inside your current project)</p>
   <section id="gettingStarted">
-    <h2>Getting Started</h2>
-    <p>Use the provided template <code>emptyFrameViewer</code> to create a new class MyViewer. 
-      This class creates a basic JFrame. Your task is to:</p>
-    <ol>
-      <li> Add a title to your JFrame </li>
+  <h2>Getting Started</h2>
+  <p><strong>Step 1: Run the starter</strong></p>
+  <ol>
+    <li>Open <code>EmptyFrameViewer.java</code>.</li>
+    <li>Set a title for your <code>JFrame</code> (e.g., “Lab 10 Drawing”).</li>
+    <li>Create an instance of <code>MyComponent</code> and add it to the frame.</li>
+    <li>Run the program -> you should see an empty window. ✅</li>
+  </ol>
 
-        <li>Create an instance of <code>MyComponent</code> (the custom JComponent where you will implement drawing methods).</li>
-      <li>Add the <code>MyComponent</code> instance to the frame</li>
-      <li>Run the application first to test, then continue with the methods in <code>MyComponent</code></li>
-      <li>Your final application should be similar to the image MyViewerDisplayed.png provided in the same folder</li>
-    </ol>
-    
+  <p><strong>Step 2: Add drawing tasks</strong></p>
+  <p>All drawing happens inside <code>paintComponent</code> of <code>MyComponent</code>.  
+  For each task, you will complete the provided methods (e.g., <code>drawSimpleSquare</code>). The methods have been alreday called from <code>paintComponent</code>.</p>
+
+  
   </section>
 
   <section id="drawSimpleSquare">
@@ -358,7 +361,7 @@ private void drawSimpleSquare(Graphics2D g2d) {
     <p>Draw a series of nested rectangles (squares) that increase in size. They should start at (25, 25) with an initial size of 10, and increase by 10 pixels each time.</p>
     <h3>Steps</h3>
     <ol>
-      <li>Obtain the component's width (<code>this.getWidth()</code>). Then substryct the width of rectangle to obtain the limit. This will be the "length" you will use in your for loop </li>
+      <li>Obtain the component's width (<code>this.getWidth()</code>). Then subtract the width of rectangle to obtain the limit. This will be the "length" you will use in your for loop </li>
       <li>Use a <code>for</code> loop starting at 10 and increment the size by 10 until a limit is reached</li>
       <li>In each iteration, create and draw a new <code>Rectangle</code> at (25, 25) with the current size</li>
       <li>Draw each rectangle inside the for loop</li>
@@ -385,13 +388,20 @@ private void drawManyRectangles(Graphics2D g2d) {
     <p>Draw a circle and two lines starting from the circle's center. One line should be diagonal (from northwest to southeast) and the other horizontal.</p>
     <h3>Steps</h3>
     <ol>
-      <li>Use <code>Ellipse2D.Double</code> to create a circle located at (10, 400) with dimensions 30 x 30</li>
+      <li>Use <code>Ellipse2D.Double</code> to create a circle.</li>
+      <ul>
+  <li><code>Ellipse2D.Double</code> takes four parameters: 
+    <code>x</code> (left), <code>y</code> (top), <code>width</code>, <code>height</code>.</li>
+  <li>Example: <code>(10, 400, 30, 30)</code> → a circle at position (10,400) with 30 pixels width and height.</li>
+ 
+</ul>
       <li>Draw circle - if you do not see it it is because you need to stretch your frame window (or adjust the height of the frame): final int frameHeight = 600;</li>
       <li>Calculate the center of the circle</li>
       <li>Create a diagonal line that starts at the center and extends 40 pixels down and to the right.</li>
       <li>Create a horizontal line from the center extending 40 pixels to the right</li>
       <li>Draw both lines using <code>g2d.draw()</code></li>
     </ol>
+   
     <h3>Hints</h3>
     <ul>
       <li>Use the <code>Line2D.Double</code> class to define lines.</li>
