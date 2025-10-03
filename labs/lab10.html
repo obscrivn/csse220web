@@ -172,7 +172,34 @@ a.resource-ref:hover {
 <h2>Instructions</h2>
 
 <h3>Step 1: Practice Field and Constructor Initialization</h3>
-    <p>Create a Java class called <code>Car</code> with the following requirements</p>
+<p>Let’s start small and then add features. Make a new Java class called <code>Car</code> and do the following:</p>
+<ul>
+  <li><strong>Add fields:</strong> 
+    <pre><code class="language-java">private String make;
+private int year;</code></pre>
+  </li>
+
+  <li><strong>Give <code>make</code> a default value:</strong>  
+      Right when you declare it, set it to <code>"Unknown"</code>.  
+      This way, if nobody tells us the make, it’s still safe.</li>
+
+  <li><strong>Create a constructor with parameters:</strong>  
+      <pre><code class="language-java">public Car(String make, int year) {
+    this.make = make;
+    this.year = year;
+}</code></pre></li>
+
+  <li><strong>Create a constructor with no parameters:</strong>  
+      Inside this constructor, call the other one with <code>this(...)</code> to reuse your code and provide defaults.  
+      Example: <code>this("Honda", 2000);</code></li>
+
+  <li><strong>Add a display method:</strong>  
+      <pre><code class="language-java">public void displayInfo() {
+    System.out.println("Make: " + make + ", Year: " + year);
+}</code></pre></li>
+</ul>
+<p><strong>Now test!</strong> In your <code>main</code> method, create at least two cars: one with the parameterless constructor, and one with the parameterized constructor, then call <code>displayInfo()</code> on each.</p>
+    <!-- <p>Create a Java class called <code>Car</code> with the following requirements</p>
     <ul>
       <li><strong>Fields:</strong> Declare a <code>String make</code> and an <code>int year</code>.</li>
       <li><strong>Field Initialization:</strong> Initialize <code>make</code> to <code>"Unknown"</code> at declaration</li>
@@ -182,15 +209,106 @@ a.resource-ref:hover {
     </ul>
     <p>Test your class by creating objects using both the default (field initialization) 
       and parameterized (constructor initialization) approaches.</p>
-    
+     -->
     <h3>Step 2: Switch Cases</h3>
     <p>Resources 1: <a href="../resources.html#scanner" target="_blank" class="resource-ref">Scanner</a></p>
+    <p>Now let’s make your <code>Car</code> a little interactive.</p>
+
+<p>Create a method <code>switchMenu()</code> inside <code>Car</code> that asks the user to type a number (1, 2, or 3). 
+  Use <a href="../resources.html#scanner" target="_blank" class="resource-ref">Scanner</a> to read input.</p>
+<p><strong>Important:</strong> For this lab, you do <em>not</em> need to actually update the car’s fields or write a full <code>updateCar()</code> method.  
+Just print out the correct statement for each choice. We are practicing the structure of <code>switch</code>, not full data management.</p>
+<p>Your menu should do this:</p>
+<ul>
+  <li><code>1</code> → call <code>displayInfo()</code> to show the car’s details</li>
+  <li><code>2</code> → call another method (like <code>updateCar()</code>) where you ask the user for a new make or year</li>
+  <li><code>3</code> → print <code>"Exit"</code></li>
+  <li><em>Any other number</em> → print <code>"Invalid choice. Exit."</code></li>
+</ul>
+    <!-- 
     <p>Create a method <code>switchMenu()</code> in your <code>Car</code> class that 
       uses a switch statement to handle user input for a console menu. 
       For example, you will ask user to provide the following option: 1, 2, 3. Your method will display the following information: 
-      <code>1: Display Car Info</code> or <code>2: Update Car</code> or <code>3: Exit</code> and also any other options will be a default exit <code>Exit</code>.
-      
+      <code>1: Display Car Info</code> or <code>2: Update Car</code> or <code>3: Exit</code> and also any other options will be a default exit <code>Exit</code>. -->
+      <details class="hint">
+  <summary>💡 Hint 1: Field initialization</summary>
+  <p>You can give a field a default value right where it’s declared:</p>
+  <pre><code class="language-java">
+private String make = "Unknown";
+</code></pre>
+  <p>This way, if no constructor sets <code>make</code>, it starts with "Unknown".</p>
+</details>
 
+<details class="hint">
+  <summary>💡 Hint 2: Constructor chaining with <code>this()</code></summary>
+  <p>If one constructor should call another, use <code>this(parameters)</code>. 
+     This must be the <strong>first line</strong> in the constructor.</p>
+  <pre><code class="language-java">
+public Car() {
+    this("Unknown", 2000); // calls the other constructor
+}
+</code></pre>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 3: Scanner and switch menu</summary>
+  <p>To read user input:</p>
+  <pre><code class="language-java">
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter choice: ");
+int choice = sc.nextInt();
+</code></pre>
+  <p>Then use a switch:</p>
+  <pre><code class="language-java">
+switch (choice) {
+    case 1:
+        // TODO: show car info
+        break;
+    case 2:
+        // TODO: update car info
+        break;
+    case 3:
+        System.out.println("Exit");
+        break;
+    default:
+        System.out.println("Invalid choice. Exit.");
+}
+</code></pre>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 4: Display method</summary>
+  <p>A good practice is to write a method to show the car details:</p>
+  <pre><code class="language-java">
+public void displayInfo() {
+    System.out.println("Make: " + make + ", Year: " + year);
+}
+</code></pre>
+</details>
+<details class="hint">
+  <summary>💡 Hint 5: Calling methods inside a switch</summary>
+  <p>You don’t need to write all the logic directly in each <code>case</code>.  
+     Instead, call a method you’ve already written. This keeps your code short and reusable.</p>
+
+  <pre><code class="language-java">
+switch (choice) {
+    case 1:
+        displayInfo();   // calls the method to print car info
+        break;
+    case 2:
+        updateCar();     // call a method you write to handle input & updates
+        break;
+    case 3:
+        System.out.println("Exit");
+        break;
+    default:
+        System.out.println("Invalid choice. Exit.");
+}
+</code></pre>
+
+  <p><em>Tip:</em> If the code inside a <code>case</code> is more than 2–3 lines, move it into a method 
+  and just call that method here.</p>
+</details>
         </div>
         
         <div class="lab-section" id="lab2">
