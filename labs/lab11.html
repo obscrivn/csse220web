@@ -324,9 +324,12 @@ a.resource-ref:hover {
         
         </div>
         <div class="lab-section" id="lab3">
-          <h2>Recursion with Triangular Shapes</h1>
+          <h2>Recursion</h2>
+          <p>Part 1: Complete: bunnyEars, bunnyEars2, fibonacci, triangle, sumDigits from <a href="http://codingbat.com/java/Recursion-1" target="_blank">CodingBat</a>. Save each implementation method to eclipse file (
+            <code>RecursionLab.java</code>
+          ) </p>
           <p>
-              In this lab, you will practice recursion by computing the area of a triangular shape composed of stacked unit squares.
+              Part 2: In this lab, you will practice recursion by computing the area of a triangular shape composed of stacked unit squares.
               The triangle is formed like this:
           </p>
           <pre>
@@ -363,6 +366,14 @@ a.resource-ref:hover {
                       </li>
                   </ul>
               </li>
+              <li>Create a public method named <code>getArea()</code> that calls your recursive method.
+This method should call your recursive helper method using the triangle’s width
+<pre>
+  public int getArea() {
+		return computeAreaRecursively(this.width);
+	}
+</pre>
+</li>
 
               <li>
                   <strong>Test Your Implementation:</strong>
