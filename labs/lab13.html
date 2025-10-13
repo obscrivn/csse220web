@@ -45,6 +45,7 @@
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 15px;
+      scroll-margin-top: 80px;
       margin-bottom: 20px;
       border-radius: 5px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -85,9 +86,35 @@
     #lab-nav ul li a:hover {
       background-color: #ddd;
     }
-    code {
+ /*    code {
         color: red;
-    }
+    } */
+
+  pre  code {
+  background-color: #f4f4f4;      /* light gray background */
+  color: #1a1a1a;                 /* dark neutral text */
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.95em;
+}
+
+pre code {
+  display: block;
+  background-color: #e8ebf0;     /* darker cool gray-blue background */
+  color: #1a1a1a;                /* dark text for contrast */
+  padding: 0.85em 1em;
+  border-left: 5px solid #336699; /* subtle blue accent bar */
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.95em;
+  line-height: 1.5em;
+  overflow-x: auto;              /* allows horizontal scroll for long lines */
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
     .code-window {
       background-color: #272822;
       color: #f8f8f2;
@@ -129,6 +156,17 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
   </style>
 </head>
 <body>
@@ -158,9 +196,8 @@ a.resource-ref:hover {
         </ul>
       </nav>
 <!-- Lab Navigation Menu -->
+ <p>Submission: 1) Recursion3.java, 2) MyCounter with Action listener, MyCounterActionListener, 3) GameEntity, PlayerEntity</p>
 <div id="main-content">
- 
-
 
 <div class="lab-section" id="lab1">
   <h2>01. Recursion Practice</h2>
@@ -194,7 +231,8 @@ a.resource-ref:hover {
 </details>
 </div>
         <div class="lab-section" id="lab2">
-           <h3>Part 1. Adding ActionListener to the Button - Lambda</h3>
+          <h2>02. ActionListener Practice</h2>
+          <h3>Part 1. Adding ActionListener to the Button - Lambda</h3>
     <p>
     Now that you have your layout ready, let’s make the button <strong>do something</strong>!
     Whenever the “Count” button is clicked, it should call the <code>increment()</code> method
@@ -325,96 +363,237 @@ button.addActionListener(listener);</code></pre>
     </p>
   </details>
         </div>
-        <div class="lab-section" id="lab3">
-          <h2 style="color:black">03. Ineritance with Override</h2>
-          <h3> GameEntity Class (with main method)</h3>
-          <p>Step 1. Fields:</p>
-          <ol>
-                <li> 
-                  <code>protected int x, y;</code> – current position </li>
-                <li><code>protected double speed;</code> – horizontal movement per frame</li>
-                <li><code>protected int health;</code> – hit points </li>
-                <li><code>protected static final int SCREEN_WIDTH = 800;</code></li>
-              </ol>
-          <p>Step 2. Constructor with 4 parameters: int startX, int startY, double startSpeed, int startHealth. Make sure to assign the input parameters to fields. </p>
-              
-          <p>Step 3. Override toString method</p>
-          <pre><code>@Override
-public String toString() {
-   return String.format("Entity@(%d,%d) speed=%.2f health=%d", x, y, speed, health);
-}
 
-          </code></pre>
-          <p>Step 4. Create a new method: public void update() that moves horizontally and clamps the object to the screen.</p>
-          <p>Clamping a simple operation in programming and mathematics 
-            to restrict a value so that it never falls outside a specified range.   
-            If a value is below the minimum bound, you get the minimum; if it is above the maximum, you get the maximum; 
-            otherwise, you keep the original value. <code>Math.max(min, Math.min(value, max));</code></p>
-                
-              <ol type="a">
-                <li>Increments <code>x</code> by <code>speed</code>. Note you need to cast speed to int  
-                  </li>
-                <li> 
-                  
-                 <pre><code>// Clamp x within [0, screenWidth] 
-x = Math.max(0, Math.min(screenWidth, x));</code></pre> </li>
-               
-              </ol>
-<p>Step 5. main method
-  <pre><code>GameEntity e = new GameEntity(790, 100, 15.0, 100);
-System.out.println(e);
-e.update();
-// Expect x = 800 (clamped)
-System.out.println(e);
+<div class="lab-section" id="lab3">
 
+  <h2 style="color:black">03. Inheritance and Method Overriding: GameEntity and PlayerEntity</h2>
 
-  </code></pre>
-</p>
-<p>Step 6. PlayerEntity will inherit GameENtity (also with main method)</p>
- <p>Additional fields</p>
- <ol>  
-   <li>              <code>private String playerName;</code>,  
-    <li>             <code>private int score;</code></li>
-    <li>Set flags for keys:
-      <code> public boolean upPressed = true, downPressed = false;</code></li>
-   </ol>
-   <p>Set the PlayerEntity constructor with 5 parameters: String name, int startX, int startY, double speed, int health. 
-    Call super constructor:
-    <pre><code>super(startX, startY, speed, health);</code></pre>
-    set score to 0. Remember to assign only a parameter from Player - you do not assign any fields from superclass </p>
-<p>Step 7. Override <code>update()</code> to:</p>
-              <ol type="a">
-                <li>Call <code>super.update();</code> first to perform base movement </li>
-                <li>Then handle the input flag:  
-                  <pre><code>if (upPressed) y -= 5;
- if (downPressed)  y = y + 5;
-                  </code></pre> to move vertically</li>
-    <li>Add some score, for example<pre><code>
-      // e.g., increase score if passed x > 400
-if (x > 400) score += 10;</code></pre></li>
+  <p>
+    In this part of the lab, you will explore how <strong>inheritance</strong> and 
+    <strong>method overriding</strong> work in Java by building a simple 2D game entity system.
+  </p>
 
-                
-              </ol>
-<p> Step 8. Override toString method:</p>
-<pre><code>@Override
-public String toString() {
-return String.format("%s@(%d,%d) score=%d", playerName, x, y, score);
+  <p>
+    You will first create a general <code>GameEntity</code> class that represents any moving object,
+    and then extend it with a <code>PlayerEntity</code> subclass that adds new data and behavior.
+  </p>
+
+  <h3>Step 1: Define Fields in <code>GameEntity</code></h3>
+  <p>
+    Create a class <code>GameEntity</code> with the following <strong>protected</strong> fields 
+    (so they are visible to subclasses):
+  </p>
+
+  <ul>
+    <li><code>protected int x, y;</code> – the current position of the entity</li>
+    <li><code>protected double speed;</code> – how much the entity moves horizontally per frame</li>
+    <li><code>protected int health;</code> – the health or hit points</li>
+    <li><code>protected static final int SCREEN_WIDTH = 800;</code> – screen boundary constant</li>
+  </ul>
+
+  <h3>Step 2: Create the Constructor</h3>
+  <p>
+    Write a constructor that takes 4 parameters and assigns them to the fields:
+  </p>
+
+  <pre><code>public GameEntity(int startX, int startY, double startSpeed, int startHealth) {
+    this.x = startX;
+    this.y = startY;
+    this.speed = startSpeed;
+    this.health = startHealth;
 }</code></pre>
-<p>Step 9. In the main method</p>
-<pre><code>GameEntity e = new PlayerEntity("Alice", 390, 50, 20.0, 100);
+
+  <p>
+    ✅ Recall: The <code>this</code> keyword distinguishes between the instance field (like <code>this.x</code>) 
+    and the parameter <code>startX</code>.
+  </p>
+
+  <h3>Step 3: Override <code>toString()</code></h3>
+  <p>
+    The <code>toString()</code> method defines how the object is displayed when printed.
+    Override it to show all the important data:
+  </p>
+
+  <pre><code>@Override
+public String toString() {
+    return String.format("Entity@(%d,%d) speed=%.2f health=%d", x, y, speed, health);
+}</code></pre>
+<h4>Example: Testing <code>toString()</code> Override</h4>
+<p>
+  The <code>toString()</code> method is automatically called when you print an object. 
+  After overriding it in <code>GameEntity</code>, printing the object shows useful details instead of a memory address.
+</p>
+
+<pre><code>GameEntity e = new GameEntity(100, 50, 10.0, 100);
 System.out.println(e);
-  e.update();
-// After update: x = min(410,800)=410; y=45; score=10
-System.out.println(e);
+
+// Output:
+Entity@(100,50) speed=10.00 health=100
 </code></pre>
-           
-        </div>
+
+<p>
+
+  <p><em>Tip:</em> Use <code>String.format</code> to control number formatting (%.2f = 2 decimal places).</p>
+
+  <h3>Step 4: Add the <code>update()</code> Method</h3>
+  <p>
+    The <code>update()</code> method simulates a single "frame" of movement.
+    Each call will move the entity horizontally and ensure it stays on screen.
+  </p>
+
+  <pre><code>public void update() {
+    // Move horizontally by speed
+    x += (int) speed;
+
+    // Clamp x between 0 and SCREEN_WIDTH
+    x = Math.max(0, Math.min(SCREEN_WIDTH, x));
+}</code></pre>
+
+  <p>
+    🧩 <strong>Clamping</strong> means restricting a value within a certain range.  
+    If x goes below 0 → set it to 0.  
+    If x goes beyond 800 → set it to 800.  
+    Otherwise, keep the same value.
+  </p>
+
+  <h3>Step 5: Test <code>GameEntity</code> in <code>main()</code></h3>
+  <pre><code>public static void main(String[] args) {
+    GameEntity e = new GameEntity(790, 100, 15.0, 100);
+    System.out.println(e);
+    e.update();       // moves to x = 805 but gets clamped to 800
+    System.out.println(e);
+}</code></pre>
+
+  <p>
+    ✅ <strong>Expected Output:</strong><br>
+    Entity@(790,100) speed=15.00 health=100<br>
+    Entity@(800,100) speed=15.00 health=100
+  </p>
+
+  <hr>
+
+  <h3>Step 6: Create a Subclass <code>PlayerEntity</code></h3>
+  <p>
+    Now let’s create a <strong>subclass</strong> that extends <code>GameEntity</code> to represent the player.
+  </p>
+
+  <pre><code>public class PlayerEntity extends GameEntity {</code></pre>
+
+  <p>
+    Add these <strong>extra fields</strong> specific to the player:
+  </p>
+
+  <ul>
+    <li><code>private String playerName;</code> – the player’s name</li>
+    <li><code>private int score;</code> – the player’s current score</li>
+    <li>Flags to simulate key input:<br>
+      <code>public boolean upPressed = true, downPressed = false;</code>
+    </li>
+  </ul>
+
+  <p>
+    The constructor should take 5 parameters and call the <code>GameEntity</code> constructor with <code>super(...)</code>:
+  </p>
+
+  <pre><code>public PlayerEntity(String name, int startX, int startY, double speed, int health) {
+    super(startX, startY, speed, health);  // calls GameEntity constructor
+    this.playerName = name;
+    this.score = 0;
+}</code></pre>
+
+  <p>
+    ✅ Note: The <code>super(...)</code> call must be the first line of the constructor.  
+    It sets up the inherited fields from the <code>GameEntity</code> class.
+  </p>
+
+  <h3>Step 7: Override <code>update()</code></h3>
+  <p>
+    The player moves horizontally (inherited behavior) but also vertically based on key flags.  
+    This is a perfect time to demonstrate <strong>method overriding</strong>:
+  </p>
+
+  <pre><code>@Override
+public void update() {
+    // Step 1: reuse the base movement
+    super.update();
+
+    // Step 2: add vertical movement
+    if (upPressed) {
+        y -= 5;
+    }
+    if (downPressed) {
+        y += 5;
+    }
+
+    // Step 3: increase score if passed a threshold
+    if (x > 400) {
+        score += 10;
+    }
+}</code></pre>
+
+  <p>
+     Notice how <code>super.update()</code> lets us reuse logic from <code>GameEntity</code>  
+    instead of rewriting the same code. This is one of the biggest benefits of inheritance.
+  </p>
+
+  <h3>Step 8: Override <code>toString()</code></h3>
+  <p>
+    Make the player’s version print player-specific information.
+  </p>
+
+  <pre><code>@Override
+public String toString() {
+    return String.format("%s@(%d,%d) score=%d", playerName, x, y, score);
+}</code></pre>
+
+  <h3>Step 9: Test <code>PlayerEntity</code> in <code>main()</code></h3>
+  <pre><code>public static void main(String[] args) {
+    GameEntity e = new PlayerEntity("Alice", 390, 50, 20.0, 100);
+    System.out.println(e);
+    e.update();  // runs PlayerEntity.update() because of overriding
+    System.out.println(e);
+}</code></pre>
+
+  <p>
+    ✅ <strong>Expected Output:</strong><br>
+    Alice@(390,50) score=0<br>
+    Alice@(410,45) score=10
+  </p>
+
+  <p>
+    🎯 This happens because:
+  </p>
+  <ul>
+    <li><code>x</code> increased from 390 → 410 (20 units)</li>
+    <li><code>y</code> decreased by 5 because <code>upPressed = true</code></li>
+    <li><code>score</code> increased by 10 since <code>x > 400</code></li>
+  </ul>
+
+  <hr>
+
+  <h3>🔍 Reflection: What You Learned</h3>
+  <ul>
+    <li>How a subclass inherits fields and methods from its superclass</li>
+    <li>How to call the superclass constructor using <code>super(...)</code></li>
+    <li>How to override a method and reuse superclass logic with <code>super.methodName()</code></li>
+    <li>How to extend functionality without rewriting base class code</li>
+  </ul>
+
+  <details class="hint">
+    <summary>💡 Hint: Overriding vs. Overloading</summary>
+    <p>
+      <strong>Overriding</strong> = same method name and parameters, new behavior in a subclass.<br>
+      <strong>Overloading</strong> = same method name, but different parameter list (in the same class).
+    </p>
+  </details>
+</div>
+        
 
  
 
         
         </div>
-        </div>
+
 
 
 
