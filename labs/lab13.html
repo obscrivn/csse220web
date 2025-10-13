@@ -194,7 +194,7 @@ a.resource-ref:hover {
 </details>
 </div>
         <div class="lab-section" id="lab2">
-           <h3>Adding ActionListener to the Button</h3>
+           <h3>Part 1. Adding ActionListener to the Button - Lambda</h3>
     <p>
     Now that you have your layout ready, let’s make the button <strong>do something</strong>!
     Whenever the “Count” button is clicked, it should call the <code>increment()</code> method
@@ -219,10 +219,7 @@ a.resource-ref:hover {
         <li>Update the text field to display the new count</li>
       </ol>
 
-      <pre><code>private int count = 0;        // instance variable
-private JTextField text;      // declared at class level
-
-private void increment() {
+      <pre><code>private void increment() {
     count++;
     text.setText(Integer.toString(count));
 }</code></pre>
@@ -231,6 +228,9 @@ private void increment() {
         💡 Make sure your <code>count</code> and <code>text</code> are declared
         as instance variables (outside the constructor),
         so they can be accessed inside <code>increment()</code>.
+        <pre><code>private int count = 0;
+private JTextField text; // declared at class level
+</code></pre>
       </p>
     </li>
   </ol>
@@ -254,6 +254,75 @@ private void increment() {
     count++;
     text.setText(Integer.toString(count));
 });</code></pre>
+  </details>
+  <h3>Part 2: Using a Custom ActionListener Class</h3>
+  <p>
+    In this part, you will replace the lambda expression with a <strong>custom ActionListener class</strong>.
+    This will help you see how events can be handled by separate objects in larger programs.
+  </p>
+
+  <ol>
+    <li>
+      Comment out your lambda listener line:
+      <pre><code>// button.addActionListener(e -> increment());</code></pre>
+    </li>
+
+    <li>
+      Create a new class named <code>MyCounterActionListener</code> that implements
+      <code>ActionListener</code> from the <code>java.awt.event</code> package.
+      <br>
+      This class should:
+      <ul>
+        <li>Have a private field of type <code>MyCounter</code></li>
+        <li>Store a reference to the counter in its constructor</li>
+        <li>Call <code>increment()</code> on the counter when the button is clicked</li>
+      </ul>
+      <pre><code>import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MyCounterActionListener implements ActionListener {
+
+    private MyCounter counter;
+
+    public MyCounterActionListener(MyCounter counter) {
+        this.counter = counter;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        counter.increment();
+    }
+}</code></pre>
+    </li>
+
+    <li>
+      In your <code>MyCounter</code> constructor, create an instance of this listener and register it with the button:
+      <pre><code>MyCounterActionListener listener = new MyCounterActionListener(this);
+button.addActionListener(listener);</code></pre>
+    </li>
+  </ol>
+
+  <p>
+    When the button is clicked, Java will automatically create an <code>ActionEvent</code> and call your
+    <code>actionPerformed()</code> method inside <code>MyCounterActionListener</code>.
+  </p>
+
+  <details class="hint">
+    <summary>💡 Hint: Why Pass <code>this</code>?</summary>
+    <p>
+      The <code>this</code> keyword refers to the <code>MyCounter</code> object itself.
+      The listener needs this reference so it can call <code>increment()</code> on the panel when the event occurs.
+      You are passing the whole counter object, not just the button.
+    </p>
+  </details>
+
+  <details class="hint">
+    <summary>💡 Hint: OOP Design Principle</summary>
+    <p>
+      This approach follows <strong>encapsulation</strong> — the button only triggers an event,
+      while the <code>MyCounter</code> decides what to do (update its count and text field).
+      Separating logic like this is good design and prepares you for the Model–View–Controller pattern.
+    </p>
   </details>
         </div>
         <div class="lab-section" id="lab3">
