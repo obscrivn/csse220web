@@ -149,7 +149,8 @@ a.resource-ref:hover {
     <nav id="lab-nav">
         <ul>
           <li><a href="#lab1">01. More Recursion Practice</a></li>
-          <li><a href="#lab2">02. Override Methods</a></li>
+          <li><a href="#lab2">02. ActionListener Practice</a></li>
+          <li><a href="#lab3">03. Override Methods</a></li>
 
       
          
@@ -167,15 +168,96 @@ a.resource-ref:hover {
   <p>Access the practice platform <a href="https://codingbat.com/java">CodingBat</a>. Once completed, paste all codingbat solutions into one java file</p>
   <ol>
   <li>
-    In CodingBat complete 3 recursion problems (Recursion-1) with Strings
+    In CodingBat complete 3 recursion problems (Recursion-1): <a href="https://codingbat.com/java">CodingBat</a> changePi, noX, array6
   </li>
-    <li>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example MyRecursion.java)</li>
+    <li>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example Recursion3.java)</li>
     
   </ol>
+  <details class="hint">
+  <summary>💡 Hint: Check One Element at a Time</summary>
+  <p>
+    Each recursive call should handle just <em>one</em> position in the array.
+    <br>Look at <code>nums[index]</code> — if it equals <code>6</code>, you’re done!
+    <br>Otherwise, move on to the next element.
+  </p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint: Moving to the Next Index</summary>
+  <p>
+    Be careful with how you move forward in the array.
+    <br>
+    <strong>Do not</strong> use <code>index++</code> as that passes the current value, not the next one.
+    <br>
+    Instead, call the recursive method with <code>index + 1</code> or <code>++index</code> so it checks the next element.
+  </p>
+</details>
 </div>
-        
         <div class="lab-section" id="lab2">
-          <h2 style="color:black">02. Ineritance with Override</h2>
+           <h3>Adding ActionListener to the Button</h3>
+    <p>
+    Now that you have your layout ready, let’s make the button <strong>do something</strong>!
+    Whenever the “Count” button is clicked, it should call the <code>increment()</code> method
+    that updates the number in the text field.
+  </p>
+
+  <ol>
+    <li>
+      Inside the constructor (after adding your components), register the listener for the button
+      using a <strong>lambda expression</strong>:
+      <pre><code>button.addActionListener(e -> increment());</code></pre>
+      <p>
+        The expression <code>e -> increment()</code> means:
+        “When the button is clicked, run the <code>increment()</code> method.”
+      </p>
+    </li>
+
+    <li>
+      Implement the <code>increment()</code> method in your class. It should:
+      <ol type="a">
+        <li>Increase the counter value by 1</li>
+        <li>Update the text field to display the new count</li>
+      </ol>
+
+      <pre><code>private int count = 0;        // instance variable
+private JTextField text;      // declared at class level
+
+private void increment() {
+    count++;
+    text.setText(Integer.toString(count));
+}</code></pre>
+
+      <p>
+        💡 Make sure your <code>count</code> and <code>text</code> are declared
+        as instance variables (outside the constructor),
+        so they can be accessed inside <code>increment()</code>.
+      </p>
+    </li>
+  </ol>
+
+  <details class="hint">
+    <summary>💡 Hint: Why Not Declare <code>count</code> Inside <code>increment()</code>?</summary>
+    <p>
+      If you declare <code>int count = 0;</code> inside the <code>increment()</code> method,
+      it will reset to zero each time you click the button. Using an instance variable
+      ensures the value is remembered between clicks.
+    </p>
+  </details>
+
+  <details class="hint">
+    <summary>💡 Hint: One-Line vs Multi-Line Lambdas</summary>
+    <p>
+      A one-line lambda (like <code>e -> increment()</code>) does not need braces or semicolons.
+      If you want to perform multiple actions, use braces and semicolons inside:
+    </p>
+    <pre><code>button.addActionListener(e -> {
+    count++;
+    text.setText(Integer.toString(count));
+});</code></pre>
+  </details>
+        </div>
+        <div class="lab-section" id="lab3">
+          <h2 style="color:black">03. Ineritance with Override</h2>
           <h3> GameEntity Class (with main method)</h3>
           <p>Step 1. Fields:</p>
           <ol>
