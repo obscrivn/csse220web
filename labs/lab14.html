@@ -6,110 +6,11 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-
-body {
-          font-family: Arial, sans-serif;
-          line-height: 1.5;
-          margin: 0;
-          padding: 1rem;
-          background: #f5f7fa;
-          color: #333;
-        }
-        
-        /* Section containers */
-        section {
-          background: #fff;
-          border: 1px solid #ddd;
-          border-radius: 6px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-          margin: 1.5rem 0;
-          padding: 1.2rem;
-        }
-        
-        /* Headings */
-        h2 {
-          margin-top: 0;
-          font-size: 1.6rem;
-          border-bottom: 2px solid #e0e0e0;
-          padding-bottom: 0.3rem;
-        }
-        h3 {
-          font-size: 1.3rem;
-          margin-top: 1rem;
-        }
-        
-        /* Image styling */
-        section img {
-          display: block;
-          max-width: 100%;
-          height: auto;
-          margin: 0.8rem auto;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-        
-        /* Code blocks */
-        /* pre {
-          background: #2d2d2d;
-          color: #f8f8f2;
-          padding: 0.8rem;
-          border-radius: 1px;
-          overflow-x: auto;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.9rem;
-        } */
-        /* pre code {
-          display: block;
-          white-space: pre-wrap;
-          word-wrap: break-word;
-        } */
-        
-        /* Inline code */
-        /* code {
-          background: #eaeaea;
-          color: #c7254e;
-          padding: 0.2rem 0.4rem;
-          border-radius: 1px;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.95em;
-        } */
-        
-        /* Highlight compile / runtime state */
-        strong + span {
-          font-weight: bold;
-          color: #d14;
-        }
-        
-        /* Lists */
-        ul, ol {
-          margin: 0.5rem 0 0.5rem 1.2rem;
-        }
-        li {
-          margin-bottom: 0.5rem;
-        }
-        
-        /* Method call subsections */
-        section#method-calls h4 {
-          margin: 1rem 0 0.3rem;
-          font-size: 1.1rem;
-          color: #444;
-          border-left: 3px solid #007acc;
-          padding-left: 0.5rem;
-        }
-        
-        /* Emphasis for compile/run status */
-        span[style*="darkred"] {
-          font-weight: bold;
-          color: #c00;
-        }
-
-
-
-    /* body {
+    body {
       font-family: Arial, sans-serif;
       margin: 20px;
       background-color: #f5f5f5;
-    } */
+    }
     #main-content {
       padding: 20px;
     }
@@ -144,6 +45,7 @@ body {
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 15px;
+      scroll-margin-top: 80px;
       margin-bottom: 20px;
       border-radius: 5px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -184,9 +86,35 @@ body {
     #lab-nav ul li a:hover {
       background-color: #ddd;
     }
-    code {
+ /*    code {
         color: red;
-    }
+    } */
+
+  pre  code {
+  background-color: #f4f4f4;      /* light gray background */
+  color: #1a1a1a;                 /* dark neutral text */
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.95em;
+}
+
+pre code {
+  display: block;
+  background-color: #e8ebf0;     /* darker cool gray-blue background */
+  color: #1a1a1a;                /* dark text for contrast */
+  padding: 0.85em 1em;
+  border-left: 5px solid #336699; /* subtle blue accent bar */
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.95em;
+  line-height: 1.5em;
+  overflow-x: auto;              /* allows horizontal scroll for long lines */
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
     .code-window {
       background-color: #272822;
       color: #f8f8f2;
@@ -228,6 +156,17 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
   </style>
 </head>
 <body>
@@ -243,13 +182,13 @@ a.resource-ref:hover {
     <a id="resources_link" href="../resources.html">Resources</a>
     <div style="clear:both;"></div>
 </div>
-<section id="content">
-<!-- <div id="content"> -->
+<div id="content">
     <h1>Lab Assignment 14</h1>
     <nav id="lab-nav">
         <ul>
-          <li><a href="#lab1">01. Abstract and Interface</a></li>
-          <li><a href="#lab2">02. Polymorphism</a></li>
+          <li><a href="#lab1">01. More Recursion Practice</a></li>
+          <li><a href="#lab2">02. Exception Handling for Accumulator App</a></li>
+
 
       
          
@@ -257,165 +196,179 @@ a.resource-ref:hover {
         </ul>
       </nav>
 <!-- Lab Navigation Menu -->
-<!-- <div id="main-content"> -->
- <section>
-  <p>Resources 1: <a href="../resources.html#abstract" target="_blank" class="resource-ref">Abstract Class</a></p>
-  <p>Resources 2: <a href="../resources.html#upcast" target="_blank" class="resource-ref">Upcasting and Downcasting</a></p>
-  <p>Resources 3: <a href="../resources.html#errors" target="_blank" class="resource-ref">Compile / Run-time Errors</a></p>
-</section>
-<!-- <div class="lab-section" id="lab1"> -->
-  <section id="lab1">
-  <h2>01. Abstract and Interface</h2>
+ <p>Submission: 1) Recursion4.java, 2) MyAccumulator with Action listener and Exception handling</p>
+<div id="main-content">
 
-  <p>Submit the In-Class exercice </p>
+<div class="lab-section" id="lab1">
+  <h2>01. Recursion Practice</h2>
+
+  <p>Access the practice platform <a href="https://codingbat.com/java">CodingBat</a>. Once completed, paste all codingbat solutions into one java file</p>
   <ol>
   <li>
-    Create an Interface Rendarable with a <code>void render()</code>
+    In CodingBat complete 6 recursion problems (Recursion-1): <a href="https://codingbat.com/java">CodingBat</a> array11, array220, allStar, pairStar, endX, countPairs
   </li>
-    <li>Create a public abstract class Entity that implements the interface</li>
-    <li> The Entity class has the following:
-      <ul>
-      <li> one private field String id</li>
-      <li>constructor Entity(String id) </li>
-      <li>a getter getId</li>
-      <li>it overrides the interface method
-        <pre><code>@Override
-        public void render() {
-          System.out.println("Rendering " + id);
-        }</code></pre></li>
-        <li>It has an abstract method: <code>public abstract void update();</code></li>
-    </ul>
-    </li>
-    <li>Create a class Player that extends Entity</li>
-    <li> Create a constructor <code>public Player(String id)</code> that invoke superclass constructor</li>
-  <li>It overrides
-    <pre><code>@Override
-      public void update() {
-        System.out.println("updated "+ getId());		
-      }</code></pre></li>
-      <li>it has the main method where you need to create an instance of <code>Entity p = new Player("Alice"); </code></li>
-  <li> Call render and update methods</li>
-    </ol>
-    </section>
-<!-- </div> -->
-      <section id="lab2"> 
-        <!-- <div class="lab-section" id="lab2"> -->
-          <h2 style="color:black">02. Polymorphism</h2>
-          
-          <p>Follow instructions and answer questions at the end of the lab - add your answers as comments in java file</p>
-          <h3>Exploring Polymorphism, Upcasting &amp; Downcasting</h3>
+    <li>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example Recursion4.java)</li>
+    
+  </ol>
+  <details class="hint">
+  <summary>💡 Hint: Check One Element at a Time</summary>
   <p>
-    In this lab you will work with a simple class hierarchy to see how Java chooses which <code>print()</code> method to call at runtime (polymorphism), how upcasts let you treat a subclass as its superclass, 
-    and how downcasts let you recover subclass‐specific behavior, 
-    sometimes safely and sometimes resulting in errors if misused. Note that @Override annotation is optional but strongly recommended whenever 
-    you intend to override a superclass or interface method.
+    Each recursive call should handle just <em>one</em> position in the array.
+    <br>Look at <code>nums[index]</code> — if it equals <code>6</code>, you’re done!
+    <br>Otherwise, move on to the next element.
+  </p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint: Moving to the Next Index</summary>
+  <p>
+    Be careful with how you move forward in the array.
+    <br>
+    <strong>Do not</strong> use <code>index++</code> as that passes the current value, not the next one.
+    <br>
+    Instead, call the recursive method with <code>index + 1</code> or <code>++index</code> so it checks the next element.
+  </p>
+</details>
+</div>
+        <div class="lab-section" id="lab2">
+  <h2 style="color:black">02: Handling Exceptions in Event-Based GUIs (Accumulator)</h2>
+  <p>
+    Goal: connect <em>event-based programming</em> with <em>exception handling</em> by upgrading the Accumulator UI.
+    You will (A) see an unhandled crash, (B) handle it with <code>try/catch</code> and console output,
+    and (C) present a user-friendly error using <code>JOptionPane</code>.
   </p>
 
-  <section id="setup">
-    <h3>1. Setup &amp; Code</h3>
-    <p>Copy the following into <code>PolymorphismDemo.java</code></p>
-    <pre><code>
-public class PolymorphismDemo {
-    public static void main(String[] args) {
-        A x = new D();
-        x.print();               // (1)
-        D x2 = (D)x;
-        x2.print();              // (2)
-        x2.printC();             // (3)
-        B x3 = (B)x;
-        // x3.printC();         // (4) 
-    }
-}
 
-class A {
-    public void print() { System.out.println("A"); }
-}
+<h3>Step&nbsp;1: Define Instance Fields</h3>
+  <p>
+    Inside your <code>MyAccumulator</code> class, declare the following fields <strong>outside</strong> the constructor.
+    These will hold state between button presses or Enter key events.
+  </p>
 
-class B extends A {
-    @Override public void print() { System.out.println("B"); }
-}
+  <pre><code class="language-java">private int sum = 0;
+private JTextField inputField;
+private JTextField outputField;
+</code></pre>
 
-class C extends B {
-    @Override public void print() { System.out.println("C"); }
-    public void printC() { print(); }
-}
+<h3>Step&nbsp;2: Update the Constructor</h3>
+  <p>
+    Set up labels and text fields, initialize the fields, and add them to the panel.
+    This code replaces your layout-only version.
+  </p>
 
-class D extends C {
-    @Override public void print() { System.out.println("D"); }
+  <pre><code class="language-java">public MyAccumulator() {
+    JLabel label1 = new JLabel("Enter an integer:");
+    this.inputField = new JTextField("0");
+
+    JLabel label2 = new JLabel("The Accumulator Sum is:");
+    this.outputField = new JTextField("0");
+    this.outputField.setEditable(false);
+
+    this.setLayout(new GridLayout(2, 2, 5, 5));
+    this.add(label1);  this.add(inputField);
+    this.add(label2);  this.add(outputField);
 }
-    </code></pre>
+</code></pre>
+
+<h3>Step&nbsp;3: Add an ActionListener</h3>
+  <p>
+    Add a listener to the <code>inputField</code> so that when the user presses <kbd>Enter</kbd>,
+    it calls a helper method <code>processInput()</code>.
+  </p>
+
+  <pre><code class="language-java">// inside the constructor, after adding components
+inputField.addActionListener(e -> processInput());
+</code></pre>
+
+  <details class="hint">
+    <summary>💡 Hint: When does this fire?</summary>
     <p>
-      Note: removing <code>print()</code> in <code>D</code> will cause Java to invoke the next override up the chain, demonstrating dynamic dispatch 
+      Pressing <kbd>Enter</kbd> while the cursor is inside the text field triggers
+      the ActionListener’s <code>actionPerformed</code> method (here, the lambda).
     </p>
-  </section>
+  </details>
+<h3>Step&nbsp;4: Create <code>processInput()</code> (no catch yet)</h3>
+  <p>
+    Define a new private method below the constructor that reads the text,
+    converts it to an integer, updates the running total, and shows the result.
+  </p>
 
-  <section id="tasks">
-    <h3>2. Tasks</h3>
-    <ol>
-      <li>
-        <strong>Predict the output:</strong> Without running the program, write down what lines (1), (2), and (3) print.  
-      </li>
-      <li>
-        <strong>Verify your prediction:</strong> Run <code>PolymorphismDemo</code> and confirm the actual output  
-      </li>
-      <li>
-        <strong>Dynamic Dispatch in Action:</strong><br>
-        Comment out the <code>@Override public void print()</code> method in class <code>D</code>, recompile, and rerun. Observe which <code>print()</code> implementation is invoked (hint: it should fall back to <code>C.print()</code>). Why do you think this happened? Hint:
-        Does the JVM pick the most specific overridden method or the most general at runtime?
-      </li>
-      <li>
-        <strong>Compile-Time Error &amp; Safe Casting:</strong><br>
-      Uncomment <code>x3.printC();</code> and try to compile. Explain why the compiler rejects it (“cannot find symbol: method printC()”)   
-      Then guard the call with an <code>instanceof</code> check:
-      <pre><code>if (x3 instanceof C) {
-    ((C)x3).printC();
-}</code></pre>
-      Recompile and rerun; confirm it compiles
-    </li>
-    <li>
-      <strong>Illegal Downcast &amp; Exception:</strong><br>
-      Change the first line to <code>A x = new B();</code> but leave <code>D x2 = (D)x;</code>. Run the program, observe the <code>ClassCastException</code>, and explain why a <code>B</code> object cannot be treated as a <code>D</code> at runtime
-    </li>
-    </ol>
-  </section>
+  <pre><code class="language-java">private void processInput() {
+    String txt = inputField.getText().trim();
+    int value = Integer.parseInt(txt);  // risky line (may throw NumberFormatException)
+    sum += value;
+    outputField.setText(Integer.toString(sum));
+    inputField.setText("");
+}
+</code></pre>
 
-  <section id="questions">
-    <h3>3. Reflection Questions</h3>
+  <p>
+    Run your program and try typing a word like <code>abc</code>.  
+    You’ll see a <strong>NumberFormatException</strong> in the console.
+    This shows how unchecked exceptions behave when unhandled.
+  </p>
+
+  <details class="hint">
+    <summary>💡 Hint: What should you notice?</summary>
     <ul>
-      <li>
-        <strong>Upcasting:</strong><br>
-        What does it mean to <em>upcast</em> an object reference?  
-        Why is this cast implicit (no `(Type)` syntax needed) when you write:
-        <pre><code>A x = new D();</code></pre>
-        <em>Hint:</em> Consider the “is-a” relationship and how the compiler and JVM knows subtype→supertype assignments
-      </li>
-      <li>
-        <strong>Downcasting:</strong><br>
-        What does it mean to <em>downcast</em> an object reference?  
-        Why must you write an explicit cast when you go from:
-        <pre><code>A x = new D();
-  D d = (D)x;</code></pre>
-        What check does the JVM perform at runtime, and what exception is thrown if the check fails? 
-      </li>
-      <li>
-        <strong>Dynamic Dispatch:</strong><br>
-        When you call <code>x.print()</code> on an <code>A</code> reference pointing to a <code>D</code> instance, how does the JVM decide which class’s <code>print()</code> method to execute?  
-        Explain why removing <code>D.print()</code> causes <code>C.print()</code> to be called instead. 
-      </li>
-      
+      <li>The program crashes on invalid input.</li>
+      <li>The console shows <code>java.lang.NumberFormatException: For input string: "abc"</code>.</li>
+      <li>Next step: we’ll add <code>try/catch</code> to handle this gracefully.</li>
     </ul>
-  </section>
-
-   
-        <!-- </div> -->
-
+  </details>
+<h3>Step&nbsp;4: Handle with <code>try/catch</code> (console message)</h3>
+  <p>Wrap only the "risky" line(s). On error, print a clear console message and keep the app running.</p>
+  <pre><code class="language-java">
+public void processInput() {
+		String text = this.inputField.getText();
+		try {
+		int value = Integer.parseInt(text);
+		sum+=value;
+		outputField.setText(Integer.toString(sum));
+		inputField.setText("");
+		}
+		catch (NumberFormatException e) {
+			System.out.println("Error " + e.getMessage());
+		}
+	}</code></pre>
+  <h3>Step&nbsp;5: Handle with <code>try/catch</code> JOptionPane</h3>
+  
  
 
+  <p>Instead of only printing to console, notify the user with a dialog (no crash, clear guidance).</p>
+  <pre><code class="language-java">// Replace catch block from Step 4:
+} catch (NumberFormatException ex) {
+    JOptionPane.showMessageDialog(
+        this,
+        "Please enter a valid integer.\nYou typed: \"" + txt + "\"",
+        "Invalid Input",
+        JOptionPane.WARNING_MESSAGE
+    );
+}</code></pre>
+
+  <details class="hint">
+    <summary>💡 Hint: Why dialogs for GUIs?</summary>
+    <p>Console messages are invisible to most end-users. <code>JOptionPane</code> surfaces the problem
+       right where the user is interacting, and your program remains responsive.</p>
+  </details>
+
+  <h3>Quick Checks</h3>
+  <ol>
+    <li>What exception does <code>Integer.parseInt()</code> throw on bad input?</li>
+    <li>Where should the risky code live — inside or outside <code>try { ... }</code>?</li>
+    <li>In a GUI, why is a dialog preferable to only printing to the console?</li>
+  </ol>
+
+  <h3>Optional Extensions</h3>
+  <ul>
+    <li>Add a <strong>Reset</strong> button that sets <code>sum = 0</code> and clears fields.</li>
+    <li>Reject overly large inputs (e.g., &gt; 1,000,000) by showing a warning dialog.</li>
+  </ul>
+</div>
         
-        <!-- </div>
-        </div> -->
-      </section>
-      </section>
+
+
+
 
 
         </body>
