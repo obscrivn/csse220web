@@ -521,7 +521,7 @@ public class GameApp {
         controls.add(center);
         return controls;
     }</code></pre>
-<p>Add setX method to Game component:</p>
+<p>We'll add setX method to Game component (see Step 4):</p>
 
 <pre><code>public void setX(int i) {
 		x1 = i;
@@ -536,7 +536,24 @@ public class GameApp {
       Calling <code>requestFocusInWindow()</code> hands the mic back to the panel so it hears arrow keys again.
     </p>
   </details>
-
+<details class="hint">
+  <summary>💡 Difference Between <code>add()</code> and <code>setContentPane()</code></summary>
+  <p>
+    <strong><code>add()</code></strong> adds a component (like a <code>JPanel</code> or <code>JButton</code>) 
+    <em>inside</em> the container’s layout. It’s used when you want multiple UI pieces to coexist 
+    in the same window, for example, buttons, labels, or nested panels.
+  </p>
+  <p>
+    <strong><code>setContentPane()</code></strong> replaces the <em>entire</em> content area of a 
+    <code>JFrame</code> (or another top-level container) with a new panel. Use it when you want to 
+    swap out the main view completely, e.g. switching game screens.
+  </p>
+  <p>
+    🧠 Think of it like this: <br>
+    <code>add()</code> → "Put this inside the existing layout." <br>
+    <code>setContentPane()</code> → "Replace everything inside with this new panel."
+  </p>
+</details>
 
 
   <h3>Add a <code style="color:darkred">KeyListener</code> to the constructor in Game Panel</h3>
@@ -551,7 +568,44 @@ public class GameApp {
                 canvas.repaint();
             }
         });</code></pre>
+<details class="hint">
+  <summary>💡 New <code>switch</code> Syntax for Panels (No <code>break</code> Needed)</summary>
+  <p>
+    In newer versions of Java (since <strong>Java 14+</strong>), you can use the enhanced 
+    <code>switch</code> expression syntax. Instead of writing multiple <code>case</code> labels 
+    followed by statements and <code>break</code> lines, you can use <code>-></code> to make it 
+    cleaner and safer.
+  </p>
 
+  <pre><code class="language-java">
+switch (panelName) {
+    case "menu" -> showMenuPanel();
+    case "game" -> showGamePanel();
+    case "settings" -> showSettingsPanel();
+    default -> showErrorPanel();
+}
+  </code></pre>
+
+  <p>
+    ✨ No need for <code>break</code> statements: each arrow (<code>-></code>) automatically 
+    ends that branch. It also works nicely with short expressions or even multi-line blocks:
+  </p>
+
+  <pre><code class="language-java">
+switch (panelName) {
+    case "menu" -> {
+        setContentPane(menuPanel);
+        revalidate();
+    }
+    case "game" -> {
+        setContentPane(gamePanel);
+        revalidate();
+    }
+    default -> System.out.println("Unknown panel!");
+}
+  </code></pre>
+
+</details>
 <p>Add focus to constructor</p>
 <pre><code>setFocusable(true);          // must be focusable to get keys
 requestFocusInWindow();      // ask for focus
