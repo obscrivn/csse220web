@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recursion Tips & Patterns</title>
+      <link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
+<link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    :root{
+      --ink:#1f2937;/* slate-800 */
+      --muted:#6b7280;/* gray-500 */
+      --accent:#2563eb;/* blue-600 */
+      --bg:#ffffff;
+      --card:#f8fafc;/* slate-50 */
+      --code:#0f172a;/* slate-900 */
+      --chip:#eef2ff;/* indigo-50 */
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      /* padding: 0; */
+      padding-top: 0;
+    }
+   /* html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"}
+    /* Header styling */
+#header {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 1000;
+
+padding: 0.8rem 1rem;
+}
+#header a {
+color: #fff;
+margin-right: 15px;
+text-decoration: none;
+font-weight: 600;
+}
+#header a:hover {
+text-decoration: underline;
+}
+#header div {
+clear: both;
+}
+.badge {
+background: #fef3c7;
+color: #78350f;
+border-radius: 999px;
+padding: 0.2rem 0.6rem;
+font-size: 0.8rem;
+font-weight: bold;
+}
+main {
+padding: 20px;
+margin-top: 120px;
+}
+   /* main{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem; padding: 20px;}*/
+    h1{font-size:2rem;margin:.2rem 0 1rem}
+    h2{margin:2rem 0 .5rem}
+    h3{margin:1.2rem 0 .4rem}
+    .lead{color:var(--muted)}
+    .grid{display:grid;gap:1rem}
+    @media (min-width:900px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr 1fr}}
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;padding:1rem}
+    .callout{border-left:4px solid var(--accent);background:#eff6ff;padding:0.75rem 1rem;border-radius:8px}
+    code,kbd,pre{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    pre{background:#0b1220;color:#d1d5db;border-radius:12px;padding:1rem;overflow:auto}
+    .table{width:100%;border-collapse:collapse}
+    .table th,.table td{border:1px solid #e5e7eb;padding:.6rem;text-align:left;vertical-align:top}
+    .chips{display:flex;flex-wrap:wrap;gap:.5rem}
+    .chip{background:#f1f5f9;border:1px solid #e2e8f0;padding:.25rem .5rem;border-radius:999px;font-size:.85rem}
+    details{background:#f9fafb;border:1px solid #eceff3;border-radius:12px;padding:.6rem 1rem}
+    details summary{cursor:pointer;font-weight:600}
+    .small{font-size:.9rem;color:var(--muted)}
+    .kbd{border:1px solid #e5e7eb;border-bottom-width:2px;border-radius:6px;padding:.1rem .35rem;background:#fff}
+  </style>
+</head>
+<body>
+
+    <div id="header">
+                <a id="index_link" href="./index.html">CSSE 220</a>
+                <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
+                <a id="schedule_link" href="./schedule.html">Schedule</a>
+                <a id="quiz_link" href="./demos.html">Demos</a>
+                <a id="quiz_link" href="./worksheets.html">Quizzes</a>
+                <a id="quiz_link" href="./labs.html">Labs</a>
+                <a id="quiz_link" href="./homework.html">Homework</a>
+                <a id="quiz_link" href="./exams.html">Exams</a>
+                <a id="quiz_link" href="./project.html">Final Project</a>
+                <a id="resources_link" href="./resources.html">Resources</a>
+                <div style="clear:both;"></div>
+   
+
+</div>
+
+  <main>
+    <h1>Recursion Tips & Patterns</h1>
+    <p class="lead">A fast, practical guide to mastering recursion for CSSE 220. Use this page before quizzes, labs, and exams. Includes base-case patterns, boolean logic (AND/OR), array/string templates, and example solutions.</p>
+
+    <section class="card">
+      <h2>Quick-Start Cheatsheet</h2>
+      <div class="grid grid-3">
+        <div>
+          <h3>How to start</h3>
+          <ul>
+            <li><strong>Define the goal:</strong> What must this function return?</li>
+            <li><strong>Find the simplest case:</strong> empty / last / zero → return a neutral value.</li>
+            <li><strong>Shrink the problem:</strong> move to <code>substring(1)</code>, <code>index+1</code>, or <code>n-1</code>.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Neutral values</h3>
+          <div class="chips">
+            <span class="chip">String build → <code>""</code></span>
+            <span class="chip">Counting → <code>0</code></span>
+            <span class="chip">Product/AND → <code>1</code>/<code>true</code></span>
+            <span class="chip">OR/search → <code>false</code></span>
+          </div>
+        </div>
+        <div>
+  <h3>Golden pattern</h3>
+<pre><code>return result_of_this_step + recurse(smaller_input);
+</code></pre>
+<p class="small">Examples:<br>
+<code>count + recurse(...)</code><br>
+<code>(cond) || recurse(...)</code><br>
+<code>char + recurse(...)</code><br>
+<code>(cond) && recurse(...)</code>
+</p>          
+        </div>
+</div>
+</section>
+
+
+
+
+
+    <section>
+      <h2>Base-Case Patterns</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Strings</h3>
+          <table class="table">
+            <thead><tr><th>Lookahead Need</th><th>Safe Base Case</th><th>Why</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>None (current char only)</td>
+                <td><code>if (str.isEmpty()) return "";</code></td>
+                <td>No chars left; neutral string is empty.</td>
+                <td><code>noX</code>, <code>countX</code></td>
+              </tr>
+              <tr>
+                <td>Needs next char</td>
+                <td><code>if (str.length() &lt;= 1) return str;</code></td>
+                <td>No pair exists; avoid <code>charAt(1)</code> OOB.</td>
+                <td><code>allStar</code>, pair checks</td>
+              </tr>
+              <tr>
+                <td>Needs two ahead</td>
+                <td><code>if (str.length() &lt;= 2) return str;</code></td>
+                <td>No triple exists; avoid <code>charAt(2)</code> OOB.</td>
+                <td>triple patterns</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Arrays (by index)</h3>
+          <table class="table">
+            <thead><tr><th>Access Pattern</th><th>Safe Base Case</th><th>Safe Index Range</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Single element: <code>nums[i]</code></td>
+                <td><code>if (i &gt;= nums.length) return ...;</code></td>
+                <td><code>0..len-1</code></td>
+                <td><code>array11</code> (counting/search)</td>
+              </tr>
+              <tr>
+                <td>Pair: <code>nums[i], nums[i+1]</code></td>
+                <td><code>if (i &gt;= nums.length - 1) return ...;</code></td>
+                <td><code>0..len-2</code></td>
+                <td><code>array220</code>, adjacency checks</td>
+              </tr>
+              <tr>
+                <td>Triple: <code>nums[i], nums[i+1], nums[i+2]</code></td>
+                <td><code>if (i &gt;= nums.length - 2) return ...;</code></td>
+                <td><code>0..len-3</code></td>
+                <td><code>array123</code> style</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="callout small">💡 Use <strong><code>&gt;=</code></strong> in array base cases to cover both the last valid index <em>and</em> empty arrays safely.</div>
+    </section>
+
+    <section class="card">
+<h2>Boolean Recursion (Intro Style)</h2>
+<h3>OR pattern (search for any)</h3>
+<pre><code>boolean contains11(int[] a, int i) {
+if (i &gt;= a.length) {
+return false; // base: nothing left → not found
+}
+
+
+if (a[i] == 11) {
+return true; // found at this step
+}
+
+
+// otherwise, check the rest
+return contains11(a, i + 1);
+}
+</code></pre>
+<h3>AND pattern (all must pass)</h3>
+<pre><code>boolean allLower(String s) {
+if (s.isEmpty()) {
+return true; // base: no violations in empty string
+}
+
+
+char c = s.charAt(0);
+if (!Character.isLowerCase(c)) {
+return false; // found a violation
+}
+
+
+// otherwise, the rest must also be lower-case
+return allLower(s.substring(1));
+}
+</code></pre>
+</section>
+
+    <section>
+      <h2>Canonical Solutions (for practice)</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3><code>noX</code> (remove all 'x')</h3>
+<pre><code>String noX(String s){
+  if (s.isEmpty()) return "";
+  char c = s.charAt(0);
+  String rest = noX(s.substring(1));
+  return (c=='x') ? rest : c + rest;
+}
+</code></pre>
+        </div>
+        <div class="card">
+          <h3><code>allStar</code> (insert '*')</h3>
+<pre><code>String allStar(String s){
+  if (s.length() &lt;= 1) return s; // need lookahead
+  return s.charAt(0) + "*" + allStar(s.substring(1));
+}
+</code></pre>
+        </div>
+        <div class="card">
+          <h3><code>array11</code> (count 11s)</h3>
+<pre><code>int array11(int[] a, int i){
+  if (i &gt;= a.length) return 0;
+  int add = (a[i]==11) ? 1 : 0;
+  return add + array11(a, i+1);
+}
+</code></pre>
+        </div>
+        <div class="card">
+          <h3><code>array220</code> (next is 10× current)</h3>
+<pre><code>boolean array220(int[] nums, int index) {
+if (index &gt;= nums.length - 1) {
+return false; // base: need a pair (index and index+1)
+}
+
+int current = nums[index];
+int next = nums[index + 1];
+if (next == current * 10) {
+return true; // found a valid pair
+}
+
+// otherwise, move forward
+return array220(nums, index + 1);
+}
+</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Trace Template (use with tiny inputs)</h2>
+      <details open>
+        <summary>Copy this for your notebook</summary>
+<pre><code>// Example: array11([11,2,11], 0)
+Call 0: i=0 → (a[0]==11 ? 1 : 0) + array11(a,1)
+Call 1: i=1 → (a[1]==11 ? 1 : 0) + array11(a,2)
+Call 2: i=2 → (a[2]==11 ? 1 : 0) + array11(a,3)
+Call 3: i=3 → base → 0
+Unwind: Call2=1+0=1 → Call1=0+1=1 → Call0=1+1=2
+</code></pre>
+      </details>
+    </section>
+
+    <section>
+      <h2>Common Pitfalls</h2>
+      <ul>
+        <li>For arrays with pair/triple access, use <strong><code>i &gt;= length-1</code></strong> / <strong><code>-2</code></strong> bases (empty arrays included).</li>
+        <li>For strings that look ahead, prefer <strong><code>length() &lt;= 1</code></strong> (or <code>&lt;= 2</code> for triples) over <code>isEmpty()</code>.</li>
+        <li>Every call must <em>shrink</em> the input (e.g., <code>i+1</code>, <code>substring(1)</code>, <code>n-1</code>), otherwise you’ll stack overflow.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>More Practice</h2>
+      <p>Try additional small problems on <a href="https://codingbat.com/java">CodingBat</a> → Java → Recursion. Focus on writing the base case first, then combine current work with the smaller result.</p>
+    </section>
+</main>
+</body>
+</html>
