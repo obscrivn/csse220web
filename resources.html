@@ -125,6 +125,28 @@
       font-family: "Courier New", Courier, monospace;
       margin-top: 10px;
     }
+
+ #toTop {
+    position: fixed;
+    right: 20px;
+    bottom: 24px;
+    padding: 0.55rem 1rem;
+    border: none;
+    border-radius: 999px;
+    background: #111827;          /* near-black gray */
+    color: #f9fafb;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 1001;
+  }
+  #toTop.show{ opacity:1; transform:none; pointer-events:auto; }
+  #toTop:hover{ filter:brightness(1.1); }
 </style>
 </head>
 <body>
@@ -2558,6 +2580,31 @@ public class Circle extends Shape {
   } 
 } </code></pre> 
 </section>
+<button id="toTop" aria-label="Back to top">⬆ To Top</button>
+<script>
+  const toTop = document.getElementById("toTop");
+  const showAfter = 300; // px
 
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > showAfter) toTop.classList.add("show");
+    else toTop.classList.remove("show");
+  });
+
+  toTop.addEventListener("click", () => {
+    const start = window.scrollY;
+    const duration = 800; // ms
+    const startTime = performance.now();
+
+    function animateScroll(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      window.scrollTo(0, 0);
+
+      if (elapsed < duration) requestAnimationFrame(animateScroll);
+    }
+    requestAnimationFrame(animateScroll);
+  });
+</script>
   </body>
 </html>
