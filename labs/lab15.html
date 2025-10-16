@@ -521,6 +521,7 @@ public class GameApp {
         controls.add(center);
         return controls;
     }</code></pre>
+
 <p>We'll add setX method to Game component (see Step 4):</p>
 
 <pre><code>public void setX(int i) {
@@ -529,6 +530,8 @@ public class GameApp {
 	    repaint();
 	}
     </code></pre>
+    <p>Add buttons to Constructor</p>
+    <pre><code>this.add(buildControls(), BorderLayout.SOUTH);</code></pre>
 <details class="hint">
     <summary>💡 Why call <code>requestFocusInWindow()</code> after button clicks?</summary>
     <p>
