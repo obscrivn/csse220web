@@ -369,9 +369,19 @@ Updating Alice</code></pre>
   </p>
 <h4>🧩 Step 1. Set Up a Simple Hierarchy (PolymorphismDemo.java)</h4>
 <p> we are using inner classes A,B,C,D inside PolymorphismDemo class</p>
-  <pre><code class="language-java">
-    
-    class A {
+  <pre><code class="language-java">public class PolymorphismDemo {
+    public static void main(String[] args) {
+        A x = new D();
+        x.print();               // (1)
+        D x2 = (D)x;
+        x2.print();              // (2)
+        x2.printC();             // (3)
+        B x3 = (B)x;
+        // x3.printC();         // (4) 
+    }
+}
+
+class A {
     public void print() { System.out.println("A"); }
 }
 
@@ -381,6 +391,7 @@ class B extends A {
 
 class C extends B {
     @Override public void print() { System.out.println("C"); }
+    public void printC() { print(); }
 }
 
 class D extends C {
