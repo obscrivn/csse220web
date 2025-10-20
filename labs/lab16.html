@@ -245,11 +245,11 @@ a.resource-ref:hover {
 </div>
 <section id="content">
 <!-- <div id="content"> -->
-    <h1>Lab Assignment 16</h1>
+    <h1>Lab Assignment 14</h1>
     <nav id="lab-nav">
         <ul>
-          <li><a href="#lab1">01. Exceptions with Try and Catch</a></li>
-          <li><a href="#lab2">02. Adding Image and Sound</a></li>
+          <li><a href="#lab1">01. Abstract and Interface</a></li>
+          <li><a href="#lab2">02. Polymorphism</a></li>
 
       
          
@@ -259,144 +259,162 @@ a.resource-ref:hover {
 <!-- Lab Navigation Menu -->
 <!-- <div id="main-content"> -->
  <section>
-  <p>Resources 1: <a href="../resources.html#images" target="_blank" class="resource-ref">Images</a></p>
-  <p>Resources 2: <a href="../resources.html#audio" target="_blank" class="resource-ref">Audio</a></p>
-  
+  <p>Resources 1: <a href="../resources.html#abstract" target="_blank" class="resource-ref">Abstract Class</a></p>
+  <p>Resources 2: <a href="../resources.html#upcast" target="_blank" class="resource-ref">Upcasting and Downcasting</a></p>
+  <p>Resources 3: <a href="../resources.html#errors" target="_blank" class="resource-ref">Compile / Run-time Errors</a></p>
 </section>
 <!-- <div class="lab-section" id="lab1"> -->
   <section id="lab1">
-    
-    <h2 style="color:black">Lab 1: Exception Handling Basics</h2>
-    <p>
-      In this lab you will see how Java throws and catches two common runtime errors:
-      <code>ArithmeticException</code> (division by zero) and <code>NullPointerException</code>.
-      You should wrap it in a <code>try/catch</code> block so the program can recover and continue.
-    </p>
-  
-    <h3>1. Create a new class <code>ExceptionDemo</code></h3>
-    <ol>
-      <li>Define the class and <code>main</code> method:
-        <pre><code>public class ExceptionDemo {
-      public static void main(String[] args) {
-          // TODO: add code here
-      }
-  }</code></pre>
-      </li>
-      <li>Inside <code>main</code>, add a <code>try/catch</code> for division by zero:
-        <pre><code>try {
-      int a = 10;
-      int b = 0;
-      System.out.println("Result: " + (a / b));
-  } catch (ArithmeticException e) {
-      System.err.println("Caught ArithmeticException: " + e.getMessage());
-  }</code></pre>
-      </li>
-      <li>Below it, add a second <code>try/catch</code> for a null reference:
-        <pre><code>try {
-      String s = null;
-      System.out.println("Length: " + s.length());
-  } catch (NullPointerException e) {
-      System.err.println("Caught NullPointerException: " + e.getMessage());
-  }</code></pre>
-      </li>
-      <li>Finally, print a message after both blocks:
-        <pre><code>System.out.println("Program continues after handling exceptions.");</code></pre>
-      </li>
+  <h2>01. Abstract and Interface</h2>
+
+  <p>Submit the In-Class exercice </p>
+  <ol>
+  <li>
+    Create an Interface Rendarable with a <code>void render()</code>
+  </li>
+    <li>Create a public abstract class Entity that implements the interface</li>
+    <li> The Entity class has the following:
+      <ul>
+      <li> one private field String id</li>
+      <li>constructor Entity(String id) </li>
+      <li>a getter getId</li>
+      <li>it overrides the interface method
+        <pre><code>@Override
+        public void render() {
+          System.out.println("Rendering " + id);
+        }</code></pre></li>
+        <li>It has an abstract method: <code>public abstract void update();</code></li>
+    </ul>
+    </li>
+    <li>Create a class Player that extends Entity</li>
+    <li> Create a constructor <code>public Player(String id)</code> that invoke superclass constructor</li>
+  <li>It overrides
+    <pre><code>@Override
+      public void update() {
+        System.out.println("updated "+ getId());		
+      }</code></pre></li>
+      <li>it has the main method where you need to create an instance of <code>Entity p = new Player("Alice"); </code></li>
+  <li> Call render and update methods</li>
     </ol>
-  
-    <h3>2. Run and Observe</h3>
-    <ul>
-      <li>Compile and run <code>ExceptionDemo</code></li>
-      <li>Confirm you see messages for each caught exception instead of a crash</li>
-      <li>Notice that the final print runs, showing the program recovered</li>
-    </ul>
-  
-    <h3>3. Reflection</h3>
-    <ul>
-      <li>What happens if you remove the <code>catch</code> block for <code>ArithmeticException</code>?</li>
-      <li>Why are these exceptions unchecked?</li>
-    
-    </ul>
-  </section>
+    </section>
 <!-- </div> -->
       <section id="lab2"> 
-        <p> You can use the same Viewer.java <a href="Viewer.java" target="_blank">Link</a>  </p>
         <!-- <div class="lab-section" id="lab2"> -->
-          <section id="lab2">
-            <h2 style="color:black">Lab 2: Image Loading with Exception Handling</h2>
-            <p>
-              Next, you will build a simple Swing application that loads an image file in a custom panel,
-              catches any <code>IOException</code> if the file is missing or unreadable, and displays a fallback message.
-            </p>
+          <h2 style="color:black">02. Polymorphism</h2>
           
-            <h3>1. Project Setup</h3>
-            <ol>
-              <li>You can use the same package from graphics Lab 15. Create two folders under <code>src</code>: 
-                  <code>images</code> (for PNG/JPG) and <code>audio</code></li>
-              <li>Download and place ths image <a href="SquareFaces.png">(Link)</a> into <code>src/images/</code></li>
-            </ol>
-          
-            <h3>2. Write <code>ImagePanel</code></h3>
-            <p>ImagePanel will extend JPanel</p>
-            <p>Add a field <code>private BufferedImage image;</code></p>
-            <p>Create a constructor:</p>
-            <pre><code>
-              public ImagePanel() {
-                    image = ImageIO.read(new File("src/images/imagename.png"));        
-                    setPreferredSize(new Dimension(400, 300));
-            }
-          </code></pre>
-          <p>Add try and catch:</p>
-          <pre><code>
-                  try {
-                      image = ImageIO.read(new File("src/images/imagename.png"));
-                  } catch (IOException e) {
-                      System.err.println("Error loading image: " + e.getMessage());
-                      image = null;
-                  }
-                </code></pre>
-                <p>Why do you think we need image = null?</p> 
-                <p>Add paintComponent</p>   
-              @Override
-              protected void paintComponent(Graphics g) {
-                  super.paintComponent(g);
-                  if (image != null) {
-                      int x = (getWidth()  - image.getWidth())  / 2;
-                      int y = (getHeight() - image.getHeight()) / 2;
-                      g.drawImage(image, x, y, this);
-                  } else {
-                      g.setColor(Color.RED);
-                      g.drawString("Image not found", 20, 20);
-                  }
-              }
-</code></pre>
-     <p>Add ImagePanel to Viewer</p>     
-           
-            <h3>4. Add Sound</h3>
-            <ul>
-              <li>Select and download any audio file : <a href="https://developers.google.com/assistant/tools/sound-library/alarms">Sound Library</a></li>
-              <li>Note: the audio files extension is ogg. Use converter to convert ogg to wav: <a href="https://cloudconvert.com/ogg-to-wav">Link to Converter</a></li>
-           <li>Add wav file to the folder audio in src</li>
-            </ul>
-          <p>In your constructor add <code>playErrorSound(); before <code>image=null</code>. The alarm sound will play when the image is not shown</p>
-            <p>Add a helper to play sound</p>
-            <pre><code>private void playErrorSound() {
-              try {
-                AudioInputStream a = AudioSystem.getAudioInputStream(
-                    new File("src/audio/audioname.wav"));
-                Clip clip = AudioSystem.getClip();
-                clip.open(a);
-                clip.start();
-              } catch (Exception e) {
-                System.err.println("Error playing sound: " + e.getMessage());
-              }
-          }</code></pre>
-          <h3>5. Reflection</h3>
-            <ul>
-              <li>Why must <code>ImageIO.read</code> be wrapped in <code>try/catch</code>?</li>
-              <li>What other exceptions might arise when loading images or audio?</li>
-            </ul>
-          </section>
+          <p>Follow instructions and answer questions at the end of the lab - add your answers as comments in java file</p>
+          <h3>Exploring Polymorphism, Upcasting &amp; Downcasting</h3>
+  <p>
+    In this lab you will work with a simple class hierarchy to see how Java chooses which <code>print()</code> method to call at runtime (polymorphism), how upcasts let you treat a subclass as its superclass, 
+    and how downcasts let you recover subclass‐specific behavior, 
+    sometimes safely and sometimes resulting in errors if misused. Note that @Override annotation is optional but strongly recommended whenever 
+    you intend to override a superclass or interface method.
+  </p>
+
+  <section id="setup">
+    <h3>1. Setup &amp; Code</h3>
+    <p>Copy the following into <code>PolymorphismDemo.java</code></p>
+    <pre><code>
+public class PolymorphismDemo {
+    public static void main(String[] args) {
+        A x = new D();
+        x.print();               // (1)
+        D x2 = (D)x;
+        x2.print();              // (2)
+        x2.printC();             // (3)
+        B x3 = (B)x;
+        // x3.printC();         // (4) 
+    }
+}
+
+class A {
+    public void print() { System.out.println("A"); }
+}
+
+class B extends A {
+    @Override public void print() { System.out.println("B"); }
+}
+
+class C extends B {
+    @Override public void print() { System.out.println("C"); }
+    public void printC() { print(); }
+}
+
+class D extends C {
+    @Override public void print() { System.out.println("D"); }
+}
+    </code></pre>
+    <p>
+      Note: removing <code>print()</code> in <code>D</code> will cause Java to invoke the next override up the chain, demonstrating dynamic dispatch 
+    </p>
+  </section>
+
+  <section id="tasks">
+    <h3>2. Tasks</h3>
+    <ol>
+      <li>
+        <strong>Predict the output:</strong> Without running the program, write down what lines (1), (2), and (3) print.  
+      </li>
+      <li>
+        <strong>Verify your prediction:</strong> Run <code>PolymorphismDemo</code> and confirm the actual output  
+      </li>
+      <li>
+        <strong>Dynamic Dispatch in Action:</strong><br>
+        Comment out the <code>@Override public void print()</code> method in class <code>D</code>, recompile, and rerun. Observe which <code>print()</code> implementation is invoked (hint: it should fall back to <code>C.print()</code>). Why do you think this happened? Hint:
+        Does the JVM pick the most specific overridden method or the most general at runtime?
+      </li>
+      <li>
+        <strong>Compile-Time Error &amp; Safe Casting:</strong><br>
+      Uncomment <code>x3.printC();</code> and try to compile. Explain why the compiler rejects it (“cannot find symbol: method printC()”)   
+      Then guard the call with an <code>instanceof</code> check:
+      <pre><code>if (x3 instanceof C) {
+    ((C)x3).printC();
+}</code></pre>
+      Recompile and rerun; confirm it compiles
+    </li>
+    <li>
+      <strong>Illegal Downcast &amp; Exception:</strong><br>
+      Change the first line to <code>A x = new B();</code> but leave <code>D x2 = (D)x;</code>. Run the program, observe the <code>ClassCastException</code>, and explain why a <code>B</code> object cannot be treated as a <code>D</code> at runtime
+    </li>
+    </ol>
+  </section>
+
+  <section id="questions">
+    <h3>3. Reflection Questions</h3>
+    <ul>
+      <li>
+        <strong>Upcasting:</strong><br>
+        What does it mean to <em>upcast</em> an object reference?  
+        Why is this cast implicit (no `(Type)` syntax needed) when you write:
+        <pre><code>A x = new D();</code></pre>
+        <em>Hint:</em> Consider the “is-a” relationship and how the compiler and JVM knows subtype→supertype assignments
+      </li>
+      <li>
+        <strong>Downcasting:</strong><br>
+        What does it mean to <em>downcast</em> an object reference?  
+        Why must you write an explicit cast when you go from:
+        <pre><code>A x = new D();
+  D d = (D)x;</code></pre>
+        What check does the JVM perform at runtime, and what exception is thrown if the check fails? 
+      </li>
+      <li>
+        <strong>Dynamic Dispatch:</strong><br>
+        When you call <code>x.print()</code> on an <code>A</code> reference pointing to a <code>D</code> instance, how does the JVM decide which class’s <code>print()</code> method to execute?  
+        Explain why removing <code>D.print()</code> causes <code>C.print()</code> to be called instead. 
+      </li>
+      
+    </ul>
+  </section>
+
+   
+        <!-- </div> -->
+
+ 
+
+        
+        <!-- </div>
+        </div> -->
+      </section>
       </section>
 
 
