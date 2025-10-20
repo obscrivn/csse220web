@@ -397,27 +397,12 @@ class C extends B {
 class D extends C {
     @Override public void print() { System.out.println("D"); }
 }</code></pre>
-<h4>Step 2. Test Run-Time Binding</h4>
-<p>Add main method to <code>PolymorphismDemo.java</code></p>
-  <pre><code class="language-java">public static void main(String[] args) {
-        A x = new D();
-        x.print();               // (1)
-        D x2 = (D)x;
-        x2.print();              // (2)
-        x2.printC();             // (3)
-        B x3 = (B)x;
-        // x3.printC();         // (4) 
-    }</code></pre>
-  
 
-    <p>
-      Note: removing <code>print()</code> in <code>D</code> will cause Java to invoke the next override up the chain, demonstrating dynamic dispatch 
-    </p>
 
     <h3>Step 3. Tasks</h3>
     <ol>
       <li>
-        <strong>Predict the output:</strong> Without running the program, write down what lines (1), (2), and (3) print.  
+        <strong>Predict the output:</strong> Without running the program, write down what lines (1), (2), (3)and (4) print.  
       </li>
       <li>
         <strong>Verify your prediction:</strong> Run <code>PolymorphismDemo</code> and confirm the actual output  
