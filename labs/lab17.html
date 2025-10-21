@@ -144,6 +144,7 @@ body {
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 15px;
+       scroll-margin-top: 80px;
       margin-bottom: 20px;
       border-radius: 5px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -157,6 +158,7 @@ body {
       line-height: 1.5;
       color: #555;
     }
+
 /* Lab Navigation Menu Styling */
 #lab-nav {
       background-color: #faf9fc;
@@ -228,6 +230,26 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
+.hint summary{cursor:pointer;font-weight:700}
+    /* .hint{border:1px dashed #d7dff0;border-radius:12px;padding:.6rem .9rem;background:#fafcff;margin:.8rem 0} */
+    .pill{display:inline-block;padding:.2rem .55rem;border-radius:999px;background:#eef1ff;color:#3b3f66;font-size:.85rem;margin-right:.4rem}
+    .todo li{margin:.45rem 0}
+    .topbtn{position:fixed;right:14px;bottom:14px;background:#222;color:#fff;border:0;border-radius:999px;padding:.6rem .9rem;cursor:pointer}
+    .footnotes{color:var(--muted);font-size:.95rem}
   </style>
 </head>
 <body>
@@ -243,15 +265,13 @@ a.resource-ref:hover {
     <a id="resources_link" href="../resources.html">Resources</a>
     <div style="clear:both;"></div>
 </div>
-<section id="content">
+<div id="content">
 <!-- <div id="content"> -->
-    <h1>Lab Assignment 17</h1>
+    <h1>Lab Assignment 16</h1>
     <nav id="lab-nav">
         <ul>
-          <li><a href="#lab0">01. ArrayList</a></li>
-          <li><a href="#lab1">02a. Moving Ball Timer</a></li>
-          <li><a href="#lab2">02b. Moving Image</a></li>
-          <li><a href="#lab3">02c. Collision</a></li>
+          <li><a href="#lab1">01. Moving One Ball</a></li>
+          <li><a href="#lab2">02. Multiple Balls</a></li>
 
       
          
@@ -260,143 +280,259 @@ a.resource-ref:hover {
       </nav>
 <!-- Lab Navigation Menu -->
 <!-- <div id="main-content"> -->
+ <!-- <section>
+  <p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Events</a></p>
+  <p>Resources 2: <a href="../resources.html#listener" target="_blank" class="resource-ref">Understanding Listener with getActionCommand()</a></p>
+  <p>Resources 3: <a href="../resources.html#focus" target="_blank" class="resource-ref">How to keep focus on Frame for events</a></p>
 
-  <!-- <p>Resources 1: <a href="../resources.html#images" target="_blank" class="resource-ref">Images</a></p>
-  <p>Resources 2: <a href="../resources.html#audio" target="_blank" class="resource-ref">Audio</a></p> -->
-  <p>Submit MovingBallPanel</p>
-  <section id="lab0">
-    <h2 style="color:black">1. Traversing ArrayLists (Practice In Class)</h2>
-    <p>Complete the exercice from the worksheet17 (5,6,7): create a java class (ForLoops) with 2 static methods - regularFor() and enhancedFor()</p>
-    <p>In main: declare an ArrayList with 7,10,13,15 and call each of the methods</p>
-  </section>
-</section>
-<!-- <div class="lab-section" id="lab1"> -->
-  <section id="timer-refactor-lab">
-    <h2 style="color:black">2a. Moving Ball with Animation Timer</h2>
-    <p>
-      In this lab you will assign your <code>Timer</code> to move a ball across the panel. Then you will add an image to repace a Swing graphic.
-    </p>
-    <h3>1. Create a class MovingBallPanel that inherits from JPanel</h3>
-    <p>Add private fields: int x = 0 and final int R = 30</p>
-    <h3>2. Create and start the Timer</h3>
-    <p>In your constructor add timer:</p>
-    <pre><code>// lambda calling your new method
-  Timer animationTimer = new Timer(50, e -> updateListener());
-  animationTimer.start();
-  </code></pre>
-    <h3>3. Add an update method</h3>
+</section>-->
+<p>Submission: 1) Ball, GameComponent, GamePanel, GameApp, Main</p>
+<div id="main-content">
 
-    <pre><code>private void updateListener() {
-      x += 5;
-      if (x > getWidth()) {
-        x = -R;
-      }
-      repaint();
-  }</code></pre>
-  <h3>4. Override</h3>
-  <p>Override paintComponent method. Set a color of your choice to the graphics and draw an Oval starting at x coordinate and y must be in the center. 
-    Height and width should be R.
-  </p>
-  <p> Update the viewer (you can use the same viewer)</p>
+    <div class="lab-section" id="lab1">
+    <h2 style="color:black">01. Moving Ball with Timer</h2>
+    <p class="footnotes">Assumes you have Lab 15 structure: <strong>Main → GameApp (frame) → GamePanel (keys) → GameComponent (draws line)</strong>.</p>
+</header>
 
-    <h3>5. Reflection</h3>
+
+  <p>
+    In this lab,  we will add a tiny <code>Ball</code> that moves automatically using a Swing <code>Timer</code>. Press <kbd>Space</kbd> to <strong>start/stop</strong>. Use <kbd>←</kbd>/<kbd>→</kbd> to move your existing line (from Lab 15). No collisions yet—just simple, constant-velocity motion.</p>
+  <p>
+    <image src="lab16ball.png" alt="lab16 a" width="400"/>
+</p>
+    <h2>Step 1. Add the Ball class</h2>
+  <p>Create <code>Ball.java</code> in the same package as your component.</p>
+  <pre><code>import java.awt.Color;
+import java.awt.Graphics2D;
+
+public class Ball {
+    int x, y;
+    int dx = 3, dy = 2;
+    int radius = 15;
+    Color color = Color.RED;
+
+    public Ball(int x, int y) {
+        this.x = x; this.y = y;
+    }
+
+    // advance and wrap around edges (no collisions yet)
+    public void move(int width, int height) {
+        x += dx; y += dy;
+        if (x &lt; 0) x = width;
+        if (x &gt; width) x = 0;
+        if (y &lt; 0) y = height;
+        if (y &gt; height) y = 0;
+    }
+
+    public void draw(Graphics2D g2) {
+        g2.setColor(color);
+        g2.fillOval(x - radius, y - radius, radius * 2, radius * 2);
+    }
+}
+</code></pre>
+<details class="hint">
+    <summary>💡 What are <code>dx</code>/<code>dy</code>?</summary>
+    <p>This is a straight-line trajectory at constant speed (no acceleration). Changing <code>dx</code>/<code>dy</code> changes direction instantly.</p>
+  </details>
+
+  <h2>Step 2. Introduce a <code>Timer</code> in <code>GameComponent</code></h2>
+  <p>Open your <code>GameComponent.java</code>. Add a field for the ball, a field for the timer, and start/stop helpers. Keep your existing line code intact.</p>
+<pre><code>import javax.swing.Timer;
+
+public class GameComponent extends JComponent {
+    // your existing code ...
+
+    Ball ball = new Ball(100, 100);   // NEW
+    Timer timer;                       // NEW
+
+    // constructor
+    public GameComponent() {
+        // your current code
+
+        // NEW: ~33 fps; on each tick, move the ball and repaint
+        timer = new Timer(30, e -&gt; {
+            ball.move(getWidth(), getHeight());
+            repaint();
+        });
+    }
+
+
+    public void start() { timer.start(); }     // NEW
+    public void stop()  { timer.stop(); }      // NEW
+
+
+    @Override
+    protected void paintComponent(Graphics g) {
+
+        // existing code.... 
+
+        // the ball (add this line)
+        ball.draw(g2);
+    }
+    </code></pre>
+<details class="hint">
+    <summary>How Swing <code>Timer</code> works (simple mental model)</summary>
+    <p><code>Timer</code> fires an event every N milliseconds on the UI thread. In the handler you: <strong>update state</strong> (here: <code>ball.move(...)</code>) then <strong>repaint</strong>. That’s the whole “game loop.” </p>
+  </details>
+  
+<h2>Step 3 — Add keys in <code>GamePanel</code> (keep Lab 15 style)</h2>
+  <p>In <code>GamePanel.java</code> use this exact handler body (your class likely already has the listener shell from Lab 15). This preserves your line movement and toggles the timer with Space.</p>
+
+  <pre><code>public void keyPressed(KeyEvent e) {
+    switch (e.getKeyCode()) {
+        case KeyEvent.VK_LEFT  -&gt; canvas.moveDelta(-10);
+        case KeyEvent.VK_RIGHT -&gt; canvas.moveDelta(10);
+        case KeyEvent.VK_SPACE -&gt; {
+            if (canvas.timer.isRunning()) canvas.stop();
+            else canvas.start();
+        }
+    }
+}
+</code></pre>
+
+
+
+  <h2>Step 4. Run it</h2>
+  <ol class="todo">
+    <li>Launch your existing <code>GameApp</code> (<code>JFrame</code> that adds <code>GamePanel</code>).</li>
+    <li>Press <kbd>Space</kbd> to start/stop the ball motion.</li>
+    <li>Use <kbd>←</kbd>/<kbd>→</kbd> to move your line like before.</li>
+  </ol>
+
+<h2>Tweaks</h2>
+
+  <details class="hint">
+    <summary> Make it faster / slower</summary>
+    <p><strong>Two easy knobs:</strong></p>
     <ul>
-      <li>Why do you need <code>repaint()</code> method?</li>
-      <li>Why might you want to keep a reference to the <code>Timer</code> instance instead of chaining <code>.start()</code>?</li>
+      <li><strong>Change frame rate:</strong> alter the timer delay (e.g., <code>new Timer(16, ...)</code> ≈ 60 fps; <code>new Timer(50, ...)</code> ≈ 20 fps).</li>
+      <li><strong>Change velocity:</strong> edit <code>dx</code>/<code>dy</code> in <code>Ball</code> (e.g., <code>dx = 5; dy = 0;</code> goes faster and purely horizontal).</li>
     </ul>
-  </section>
-<!-- </div> -->
-       
-        <!-- <div class="lab-section" id="lab2"> -->
+  </details>
+
+  <details class="hint">
+    <summary>What defines the trajectory?</summary>
+    <p>The pair (<code>dx</code>, <code>dy</code>) is a constant velocity vector. The ball moves in a straight line with slope <code>dy/dx</code>. We use simple <em>wrap-around</em> at edges so it reappears on the opposite side (no collision/bounce yet).</p>
+  </details>
+
+  
+</div>
+
+    <div class="lab-section" id="lab2">
+    <h2 style="color:black">02. Multiple Balls with One Timer</h2>
+   
+  
+  
+  <p>
+    Goal: Refactor your Part 1 solution (one <code>Ball</code>) into a version that updates and draws
+    <strong>several balls</strong> using the same shared <code>Timer</code> in <code>GameComponent</code>.
+    Keep the same key handler in <code>GamePanel</code>:
+    <kbd>←</kbd>/<kbd>→</kbd> move your line, and <kbd>Space</kbd> starts/stops the loop.
+  </p>
+
+  <div class="hint">
+    <summary>💡 Design idea</summary>
+    <p>
+      In games, we usually keep <em>one</em> update loop (a single <code>Timer</code>) and iterate over a list of entities each tick.
+      That way, <kbd>Space</kbd> pauses/resumes the <em>whole world</em> at once.
+    </p>
+  </div>
+
+  <h3>Step 1. Change <code>GameComponent</code> to hold a list of balls</h3>
+  <p>Replace your single <code>Ball ball</code> field with a list and create a few balls in the constructor.</p>
+  <pre><code>// GameComponent.java (only the parts you change are shown)
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class GameComponent extends JComponent {
+    // existing: your line fields and moveDelta(...) methods here
+
+    public final Timer timer;                 // keep this the same name
+    private final List&lt;Ball&gt; balls = new ArrayList&lt;&gt;(); // NEW
+
+    public GameComponent() {
+
+// existing code....
+        // Create several balls (same simple Ball class from Part 1)
+        balls.add(new Ball( 80,  80));
+        balls.add(new Ball(180, 140));
+        balls.add(new Ball(300, 220));
+
+        // One shared loop updates ALL balls each tick
+        timer = new Timer(30, e -&gt; {
+            for (Ball b : balls) {
+                b.move(getWidth(), getHeight());
+            }
+            repaint();
+        });
+    }
+
+    public void start() { timer.start(); }
+    public void stop()  { timer.stop(); }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        var g2 = (Graphics2D) g;
+
+        // existing: draw your moving LINE here
+
+        // draw ALL balls
+        for (Ball b : balls) {
+            b.draw(g2);
+        }
+    }
+
+    // Optional helper to add more balls at runtime (used below)
+    public void addBall(int x, int y) {
+        balls.add(new Ball(x, y));
+    }
+}
+</code></pre>
+
+  <h3>Step 2. Keep the SAME key handler in <code>GamePanel</code></h3>
+  <p>No change needed for SPACE. The single timer now powers all balls.</p>
+  <pre><code>public void keyPressed(KeyEvent e) {
+    switch (e.getKeyCode()) {
+        case KeyEvent.VK_LEFT  -&gt; canvas.moveDelta(-10);
+        case KeyEvent.VK_RIGHT -&gt; canvas.moveDelta(10);
+        case KeyEvent.VK_SPACE -&gt; {
+            if (canvas.timer.isRunning()) canvas.stop();
+            else canvas.start();
+        }
+    }
+}
+</code></pre>
+
+  <details class="hint">
+    <summary>Why a single <code>Timer</code>?</summary>
+    <p>
+      One shared loop keeps timing consistent and makes pause/resume trivial. Multiple timers (one per object) are fine for tiny demos but get messy as objects grow.
+    </p>
+  </details>
+
+  <h3>Mini-Challenges</h3>
+  <ol>
+    <li><strong>Different speeds:</strong> In <code>Ball</code>, set different <code>dx/dy</code> in the constructor after you add each ball.
+      <pre><code>// Example after balls.add(...)
+balls.get(0).dx = 3; balls.get(0).dy = 2;
+balls.get(1).dx = 1; balls.get(1).dy = 3;
+balls.get(2).dx = 4; balls.get(2).dy = -1;</code></pre>
+    </li>
+    <li><strong>Add ball on key press:</strong> (Optional) Handle <kbd>B</kbd> to spawn a ball at a random spot.
+      <pre><code>// In GamePanel.keyPressed (add a new case)
+case KeyEvent.VK_B -&gt; {
+    int x = (int)(Math.random() * canvas.getWidth());
+    int y = (int)(Math.random() * canvas.getHeight());
+    canvas.addBall(x, y);
+}</code></pre>
+    </li>
     
-            <h3>1. Add Image</h3>
-          <section id="lab2">
-            <h2 style="color:black">2b. Adding Image to the Moving Ball</h2>
-          
-            <h3>1. Add Image</h3>
-            <ol>
-              <li>Find a png image depicting a ball (e.g. tennis ball)</li>
-              <li>Add a field for image (see Lab 15)</li>
-              <li>Read image using ImageIO and surround it by try and catch</li>
-            <li>Add a boolean  spriteLoaded (Sprite just a generic name for images in games)</li>
-            <li>In try block set the spriteLoaded to true and in catch block set it to false</li>
-          </ol>
-          
-            <h3>2. Update paintComponent</code></h3>
-            <p>Set up if-else statement: when image is loaded, it is drawn. When image is not loaded, you draw the oval</p>
-            <pre><code>
-              if (spriteLoaded) {
-                g2.drawImage(image, x, getHeight()/2 - R/2, R, R, this);
-              } else {
-                 g2.setColor(Color.CYAN);
-                 g2.fillOval(x, getHeight()/2 - R/2, R, R);
-              }
-          </code></pre>
+  </ol>
+</div>
 
-          </section>
-          <section id="collision-intro">
-            <h2 style="color:black">Introduction to Collision Detection & Response</h2>
-            <p>
-              In interactive graphics and games, <strong>collision detection</strong> is the process of determining whether two objects—such as a moving sprite and the boundaries of the window—overlap or touch.  
-              Once a collision is detected, <strong>collision response</strong> defines how those objects react: you might bounce, stop, wrap around, or trigger a game‐over event.
-            </p>
-            <p>
-              Common collision techniques include:
-              <ul>
-                <li><strong>Bounding boxes</strong> (axis‐aligned rectangles)</li>
-                <li><strong>Bounding circles</strong> (distance checks between centers)</li>
-                <li><strong>Pixel‐perfect</strong> tests (rarely used in simple 2D games)</li>
-              </ul>
-              For a single moving ball in a rectangular window, the easiest approach is a <em>bounding‐circle vs. boundary</em> check: when the ball’s edge touches or goes past the left/right/top/bottom edges of the panel, we reverse its velocity component along that axis.
-            </p>
-          </section>
-          
-          <section id="lab3">
-            <h2 style="color:black">02c. Bouncing Ball Collision</h2>
-            <p>
-              Starting from our <code>MovingBallPanel</code>, we add a horizontal velocity <code>dx</code> and vertical velocity <code>dy</code>.
-               Each timer tick does the following:
-            </p>
-            <ol>
-              <li>Advance the ball’s position by <code>dx</code> and <code>dy</code></li>
-              <li>Check if its next position would cross any panel boundary (<code>x &lt; 0</code>, <code>x + R &gt; getWidth()</code>, similarly for <code>y</code>)</li>
-              <li>If so, we reverse that component of velocity (<code>dx = -dx</code> or <code>dy = -dy</code>), and the ball “bounces” off the wall</li>
-              <li>Then we call <code>repaint()</code> to draw it in its new position</li>
-            </ol>
-          
-            <h3>Modified <code>MovingBallPanel</code> Code</h3>
-            <p>Add velocity and update x, y</p>
-            <p> Replace the image with the new y position: <code>g2.drawImage(image, x, y, R, R, this);</code></p>
-            <pre><code>
-              private int x = 0, y = 100; 
-              private int dx = 5, dy = 3;  
-            </code></pre>  
-            <p>Modify the updateAnimation so that you detect collisions and reverse the velocity</p>
-            <pre><code>
-                  x += dx;
-                  y += dy;
-          
-                  // horizontal collision
-                  if (x < 0 || x + R > getWidth()) {
-                      dx = -dx; 
-                      x += dx;   // nudge back inside
-                  }
-          
-                  // vertical collision
-                  if (y < 0 || y + R > getHeight()) {
-                      dy = -dy;
-                      y += dy;
-                  }
-          </code></pre>
-            <h3>Explanation</h3>
-            <ul>
-              <li><code>dx, dy</code> represent how many pixels the ball moves each tick horizontally and vertically</li>
-              <li>When <code>x &lt; 0</code> or <code>x + R &gt; getWidth()</code>, we invert <code>dx</code> so the ball reverses direction</li>
-              <li>Similarly for the vertical axis with <code>y</code> and <code>dy</code></li>
-              <li>The small “nudge” (<code>x += dx</code> or <code>y += dy</code>) ensures the ball stays inside the panel after bouncing</li>
-            </ul>
-          </section>
-
-
-        </body>
-        </html>
+</body>
+</html>

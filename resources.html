@@ -112,7 +112,7 @@
     }
     code {
       font-family: "Courier New", Courier, monospace;
-      color: #dcdcdc;
+      color: #ccc5c5;
       font-size: 0.95em;
     }
     .output {
@@ -214,6 +214,8 @@
         <dd><a href="#jframe">Making JFrame</a></dd>
         <dd><a href="#painting">Paint Components: JPanel, JComponent</a></dd>
         <dd><a href="#threads">Swing Threads</a></dd>
+        <dd><a href="#swing-timer">Swing Timer</a></dd>
+        <dd><a href="#animation">Basic Animation Loop</a></dd>
         <dd><a href="#swing">Basics Swing Graphics</a></dd>
         <dd><a href="#swinggraphics">Swing Graphics with paintComponent</a></dd>
         <dd><a href="#transform">Graphics Transform</a></dd>
@@ -2490,6 +2492,181 @@ public class InteractivePanel extends MyDrawingPanel {
     </code></pre>
     
   </section>
+
+<section id="swing-timer">
+  <h2 style="color:black">Swing Timer - Game Loops</h2>
+  <p>
+    A <code style="color:red">javax.swing.Timer</code> fires an action event on a fixed schedule
+    (e.g., every 30 ms) on the Swing Event Dispatch Thread (EDT). In each tick,
+    you (1) update your model (positions, states) and (2) call <code>repaint()</code>.
+    That’s your whole animation/game loop.
+  </p>
+
+  <details class="hint">
+    <summary>💡 Why <code style="color:red">javax.swing.Timer</code> (not <code style="color:red">java.util.Timer</code>)?</summary>
+    <p>
+      <code style="color:red">javax.swing.Timer</code> runs on the EDT and plays nicely with Swing painting.
+      <code style="color:red">java.util.Timer</code> runs on a background thread and can cause UI race conditions.
+      For Swing apps, prefer <code style="color:red">javax.swing.Timer</code>.
+    </p>
+  </details>
+
+  <h3>Minimal Pattern</h3>
+  <pre><code>Timer timer = new Timer(30, e -&gt; {
+    // 1) update model
+    ball.move(getWidth(), getHeight());
+    // 2) request repaint (asynchronous)
+    repaint();
+});
+timer.start();   // timer.stop() to pause</code></pre>
+
+  <details class="hint">
+    <summary>Timer model</summary>
+    <p>
+      Think of the Timer as “call this code ~33 times per second.” Your job inside each tick:
+      make small changes (like position += velocity) and ask Swing to redraw.
+    </p>
+  </details>
+
+  <h3>Speed: Frame Rate vs. Velocity</h3>
+  <p>
+    Two dials control how fast things look:
+  </p>
+  <ul>
+    <li><strong>Frame rate</strong> = Timer delay. Smaller delay → more updates/sec → smoother/faster.</li>
+    <li><strong>Velocity</strong> = your per-tick movement (e.g., <code>dx, dy</code>). Larger values → bigger jumps each tick.</li>
+  </ul>
+  <pre><code>// Higher frame rate (about 60 FPS)
+Timer timer60 = new Timer(16, e -&gt; updateAndRepaint());
+
+// Lower frame rate (about 20 FPS)
+Timer timer20 = new Timer(50, e -&gt; updateAndRepaint());
+
+// Same frame rate, different speed (velocity change)
+ball.dx = 5; ball.dy = 0;  // faster horizontal
+ball.dx = 2; ball.dy = 1;  // slower diagonal</code></pre>
+
+  <details class="hint">
+    <summary>🎯 Which should I change?</summary>
+    <p>
+      Prefer a consistent frame rate (e.g., 16–33 ms) and change velocity for gameplay feel.
+      Only change the delay if you specifically want a different update frequency.
+    </p>
+  </details>
+
+  <h3>Adding Timers to Objects (Two Patterns)</h3>
+
+  <h4>Pattern A — Per-Object Timer (simple demos)</h4>
+  <p>Give the object its own timer. Great for isolated animations or teaching encapsulation.</p>
+  <pre><code>public class Blinker extends JComponent {
+  private boolean on = false;
+  private final Timer timer;
+
+  public Blinker() {
+    setPreferredSize(new Dimension(60, 60));
+    timer = new Timer(300, e -&gt; { on = !on; repaint(); });
+    timer.start();
+  }
+
+  @Override protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    g.setColor(on ? Color.GREEN : Color.GRAY);
+    g.fillOval(10, 10, 40, 40);
+  }
+}</code></pre>
+
+  <details class="hint">
+    <summary>Pros / Cons</summary>
+    <p><strong>Pros:</strong> super easy; object controls its own animation.<br>
+       <strong>Cons:</strong> many objects ⇒ many timers. For games with lots of entities, use one shared loop.</p>
+  </details>
+
+  <h4>Pattern B — One Shared Timer (recommended for games)</h4>
+  <p>Keep a single “game loop” in your component/panel; update all objects each tick.</p>
+  <pre><code>public class GameComponent extends JComponent {
+  private final java.util.List&lt;Ball&gt; balls = new java.util.ArrayList<>();
+  private final Timer loop = new Timer(16, e -&gt; tick());
+
+  public GameComponent() {
+    setPreferredSize(new Dimension(500, 300));
+    balls.add(new Ball(100, 120));
+    balls.add(new Ball(240, 80));
+    loop.start();
+  }
+
+  private void tick() {
+    for (Ball b : balls) b.move(getWidth(), getHeight());
+    repaint();
+  }
+
+  @Override protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    var g2 = (Graphics2D) g;
+    for (Ball b : balls) b.draw(g2);
+  }
+}</code></pre>
+
+  <details class="hint">
+    <summary>💡 Start/Stop controls (Space bar)</summary>
+    <p>Expose <code>start()</code>/<code>stop()</code> methods and bind to keys.</p>
+    <pre><code>public void start() { if (!loop.isRunning()) loop.start(); }
+public void stop()  { if (loop.isRunning()) loop.stop(); }</code></pre>
+    <p>In your <code>GamePanel</code> key handler:</p>
+    <pre><code>case KeyEvent.VK_SPACE -&gt; {
+  if (canvas.loop.isRunning()) canvas.stop();
+  else canvas.start();
+}</code></pre>
+  </details>
+
+  <h3>Example: Minimal Moving Ball (wrap-around)</h3>
+  <pre><code>public class Ball {
+  int x, y, dx = 3, dy = 2, radius = 15;
+  Color color = Color.RED;
+  public Ball(int x, int y) { this.x = x; this.y = y; }
+
+  public void move(int width, int height) {
+    x += dx; y += dy;
+    if (x &lt; 0) x = width;
+    if (x &gt; width) x = 0;
+    if (y &lt; 0) y = height;
+    if (y &gt; height) y = 0;
+  }
+
+  public void draw(Graphics2D g2) {
+    g2.setColor(color);
+    g2.fillOval(x - radius, y - radius, radius * 2, radius * 2);
+  }
+}</code></pre>
+
+  <details class="hint">
+    <summary>🔁 Bounce instead of wrap (optional)</summary>
+    <p>Flip velocity when touching an edge:</p>
+    <pre><code>if (x - radius &lt; 0 || x + radius &gt; width)  dx = -dx;
+if (y - radius &lt; 0 || y + radius &gt; height) dy = -dy;</code></pre>
+  </details>
+
+  <h3>Common Pitfalls</h3>
+  <ul>
+    <li><strong>No repaint:</strong> If nothing moves, ensure you call <code>repaint()</code> in every tick.</li>
+    <li><strong>Focus issues:</strong> Key events need focus: <code>setFocusable(true)</code> and <code>requestFocusInWindow()</code>.</li>
+    <li><strong>EDT safety:</strong> Create/show UI on the EDT: <code>SwingUtilities.invokeLater(...)</code>.</li>
+    <li><strong>Multiple timers:</strong> Avoid stacking multiple loops by accident; check <code>isRunning()</code> before start/stop.</li>
+  </ul>
+
+  <details class="hint">
+    <summary>🧰 Quick Starter Snippet</summary>
+    <pre><code>// In GameComponent constructor:
+Timer timer = new Timer(30, e -&gt; { update(); repaint(); });
+timer.start();
+
+// In paintComponent:
+@Override protected void paintComponent(Graphics g) {
+  super.paintComponent(g);
+  // draw your stuff...
+}</code></pre>
+  </details>
+</section>
+
 
   <section id="focus">
     <h2 style="color:black"><code style="color:darkred">requestFocusInWindow()</code></h2>
