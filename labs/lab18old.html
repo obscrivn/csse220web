@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+
+body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    } */
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<section id="content">
+<!-- <div id="content"> -->
+    <h1>Lab Assignment 18</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. LinkedList</a></li>
+          <li><a href="#lab2">02. File IO</a></li>
+
+
+      
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+      <section>
+<!-- Lab Navigation Menu -->
+<!-- <div id="main-content"> -->
+
+  <p>Resources 1: <a href="../resources.html#junit" target="_blank" class="resource-ref">JUnit Tests</a></p>
+  <p>Resources 2: <a href="../resources.html#files" target="_blank" class="resource-ref">Files IO</a></p> 
+</section>
+  <section id="lab1">
+    <h2 style="color:black">LinkedList and JUnit Practice</h2>
+    <p>Create LinkedList class with inner class Node</p>
+    <pre><code>public class LinkedList {
+      private class Node {
+        int value;
+        Node next; // reference to “another” Node
+        // It simply reserves space for a reference, which defaults to null
+      
+        Node(int value, Node next){
+          this.value = value;
+          this.next = next;
+        }
+      }
+
+      private Node head; //start of the list
+	
+	public LinkedList() {
+		head = null;// empty list
+	}
+
+}
+      </code></pre>
+      
+    <p>Add method to add node at the beginning</p>
+    <pre><code>public void addAtBeginning(int value) {
+      this.head = new Node(value, head); 
+    }
+      </code></pre>
+      <p>Add method to calculate size</p>
+      <pre><code>public int size() {
+        int count = 0;
+        Node current = this.head;
+        while(current!=null) {
+          count++;
+          current = current.next;
+        }
+        return count;
+      }
+        </code></pre>
+
+        <p>Add method to insert a value after a specific value</p>
+        <pre><code>public void addAfterValue(int valueToAdd, int valueToInsertAfter) {
+          Node current = this.head;
+          
+          while(current.value!=valueToInsertAfter) {
+            current = current.next;
+          }
+          current.next = new Node(valueToAdd, current.next);
+        }
+          </code></pre>
+          <p>Add override toString()</p>
+          <pre><code>
+            public String toString() {
+              Node current = this.head;
+              String result ="";
+              while(current!=null) {
+                result+= current.value;
+                result+="->";
+                current=current.next;
+              }
+              result+="null";
+              return result;
+            }
+          </code></pre>
+<p>Create JUnit test</p>
+<pre><code>
+  public class LinkedListTest {
+
+    private LinkedList oneTwoThree;
+    private LinkedList emptyList;
+    @Before
+    public void setUp() throws Exception {
+      oneTwoThree = new LinkedList();
+      oneTwoThree.addAtBeginning(3);
+      oneTwoThree.addAtBeginning(2);
+      oneTwoThree.addAtBeginning(1);
+      emptyList = new LinkedList();
+      
+    }
+</code></pre>
+<p>Add several tests</p>
+<pre><code>
+  @Test
+	public void testAddAtBeginning() {
+		assertEquals("1->2->3->null",oneTwoThree.toString());
+	}
+	
+	@Test
+	public void testSize() {
+		assertEquals(3, oneTwoThree.size());
+		assertEquals(0, emptyList.size());
+	}
+	
+	@Test
+	public void testAddAfterValue() {
+		oneTwoThree.addAfterValue(77, 2);
+		assertEquals("1->2->77->3->null", oneTwoThree.toString());
+	}
+</code></pre>
+<p>Run as JUnit Test</p>
+<p>To continue with LinkedList methods for practice - import this existing project with JUnit already set: <a href="PracticeLinkedListSimple.zip">Practice Lab</a></p>
+<p>For solutions, take a look at this file <a href="LinkedList.java">LinkedList.java</a></p>
+  </section>
+
+<!-- <div class="lab-section" id="lab1"> -->
+  <section id="lab2">
+    <h2 style="color:black">2. File IO in swing</h2>
+    <p>Objective: create a Game panel that stores and displays the scores and save them locally</p>
+
+
+            <h3>1. Fields</h3>
+            <pre><code>private int score = 0;
+private JLabel scoreLabel = new JLabel("Score: 0");
+private JButton addPointButton = new JButton("Add Point");
+private JButton endGameButton = new JButton("End Game");</code></pre>
+            <ul>
+              <li><strong>score</strong>: holds the current game score (model state)</li>
+              <li><strong>scoreLabel</strong>: displays the score to the user (view)</li>
+              <li><strong>addPointButton</strong>: when clicked, increases the score</li>
+              <li><strong>endGameButton</strong>: when clicked, ends the game, saving/loading scores</li>
+            </ul>
+
+          
+
+            <h3>2. Constructor &amp; Layout</h3>
+            <pre><code>public GamePanel() {
+   setLayout(new FlowLayout());
+   scoreLabel.setFont(scoreLabel.getFont().deriveFont(24f));
+   add(scoreLabel);
+  add(addPointButton);
+  add(endGameButton);
+          
+  addPointButton.addActionListener(e -> addScores());
+  endGameButton.addActionListener(e -> onEndGame());
+}</code></pre>
+            <ul>
+              
+              <li><code>deriveFont(24f)</code>: makes the score text larger and more visible</li>
+              
+            </ul>
+
+          
+            <h3>3. Incrementing the Score</h3>
+            <pre><code>private void addScores() {
+            score++;
+            scoreLabel.setText("Score: " + score);
+          }</code></pre>
+            <ul>
+              <li>Increase <code>score</code> by one</li>
+              <li>Update the label so the view matches the model</li>
+            </ul>
+
+          
+            <h3>4. Ending the Game</h3>
+            <pre><code>private void onEndGame() {
+            String player = JOptionPane.showInputDialog(this, "Enter your name", "Player");
+            if (player == null || player.isBlank()) player = "Anonymous";
+          
+            ScoreManager.saveScore(player, score);
+            showLeaderboard();
+          
+            score = 0;
+            scoreLabel.setText("Score: 0");
+          }</code></pre>
+            <ul>
+ 
+              <li>Defaults to “Anonymous” if they cancel or enter nothing.</li>
+              <li><code>ScoreManager.saveScore(...)</code>: appends the name and score to a file (will create later)</li>
+              <li><code>showLeaderboard()</code>: reads and displays top scores (will create later)</li>
+              <li>Resets <code>score</code> and label for a fresh new game</li>
+            </ul>
+
+            <h3>5. Displaying the Leaderboard</h3>
+            <pre><code>private void showLeaderboard() {
+            List<String> lines = ScoreManager.loadScores();
+              StringBuilder html = new StringBuilder(
+                "&lt;html&gt;&lt;h2&gt;Leaderboard&lt;/h2&gt;&lt;ol&gt;"
+            );
+            for (int i = 0; i &lt; lines.size() && i &lt; 5; i++) {
+                String[] parts = lines.get(i).split(",", 2);
+                html.append("&lt;li&gt;")
+                    .append(parts[0])    // player name
+                    .append(": ")
+                    .append(parts[1])    // score
+                    .append("&lt;/li&gt;");
+            }
+            html.append("&lt;/ol&gt;&lt;/html&gt;");
+          
+            JOptionPane.showMessageDialog(
+              this,
+              new JLabel(html.toString()),
+              "Top Scores",
+              JOptionPane.PLAIN_MESSAGE
+            );
+          }</code></pre>
+            <ul>
+              <li><code>ScoreManager.loadScores()</code>: returns raw “name,score” lines from the file</li>
+              <li><code>StringBuilder + HTML</code>: builds a simple ordered list for Swing’s <code>JLabel</code></li>
+              <li><code style="color:black">showMessageDialog</code>: shows the leaderboard in a modal dialog</li>
+              <li style="color:black">Limits to top 5 entries</li>
+            </ul>
+            <h3 style="color:black">ScoreManager</h3>
+            <p>
+              The ScoreManager class handles all file I/O related to persisting and retrieving game scores
+              It exposes two static methods:
+            </p>
+            <ol>
+              <li><code style="color:red">saveScore(String player, int score)</code></li>
+              <li><code style="color:red">loadScores()</code></li>
+            </ol>
+          
+            <h3>1. File Path Constant</h3>
+            <pre><code style="color:red">
+          private static final String SCORES_FILE = "scores.txt";
+            </code></pre>
+            <ul>
+              <li><strong>Why a constant?</strong> Centralizes the filename so if you ever change where scores are saved, you update in one place</li>
+              <li><strong>Relative path:</strong> The file lives in the working directory (usually your project root or wherever the JVM was launched)</li>
+            </ul>
+          
+            <h3>2. Saving a Score</h3>
+            <pre><code style="color:red">
+          public static void saveScore(String player, int score) {
+              try (PrintWriter out = 
+                       new PrintWriter(
+                         new FileWriter(SCORES_FILE, true)  // append mode
+                       )
+                 ) {
+                  out.println(player + "," + score);
+              } catch (IOException e) {
+                  System.err.println("Error saving score: " + e.getMessage());
+              }
+          }
+            </code></pre>
+            <ul>
+              <li><strong>Append mode:</strong> <code style="color:red">new FileWriter(SCORES_FILE, true)</code> opens the file without erasing existing lines</li>
+              <li><strong>PrintWriter:</strong> wraps the <code style="color:red">FileWriter</code> to provide <code style="color:red">println(...)</code> convenience</li>
+              <li><strong>Try block</strong> ensures <code style="color:red">out.close()</code> is called automatically, flushing and releasing the file handle</li>
+              <li><strong>Exception handling:</strong> any <code style="color:red">IOException</code> (disk full, permission denied) is caught and logged to <code style="color:red">System.err</code> without crashing the game</li>
+            </ul>
+          
+            <h3>3. Loading Scores</h3>
+            <pre><code style="color:red">
+          public static List&lt;String&gt; loadScores() {
+              List&lt;String&gt; lines = new ArrayList&lt;&gt;();
+              File file = new File(SCORES_FILE);
+              if (!file.exists()) {
+                  return lines;  // no scores file yet,  return empty list
+              }
+          
+              try (BufferedReader in = 
+                       new BufferedReader(new FileReader(file))
+                 ) {
+                  String line;
+                  while ((line = in.readLine()) != null) {
+                      lines.add(line.trim());
+                  }
+              } catch (IOException e) {
+                  System.err.println("Error loading scores: " + e.getMessage());
+              }
+          
+              return lines;
+          }
+            </code></pre>
+            <ul>
+              <li><strong>Return type:</strong> <code style="color:red">List&lt;String&gt;</code> where each element is a line in <code style="color:red">"player,score"</code> format</li>
+              <li><strong>Existence check:</strong> <code style="color:red">if (!file.exists())</code> avoids a <code style="color:red">FileNotFoundException</code> on first run</li>
+              <li><strong>BufferedReader:</strong> efficient line-by-line reading, auto-closed by try block</li>
+              <li><strong>Trim:</strong> <code style="color:red">line.trim()</code> removes stray whitespace before/after each line</li>
+              <li><strong>Error handling:</strong> logs I/O errors but returns whatever lines were successfully read (or an empty list)</li>
+            </ul>
+          
+            <h3>4. How to Use in Your GamePanel</h3>
+            <pre><code style="color:red">
+          // Save a new score:
+          ScoreManager.saveScore(playerName, currentScore);
+          
+          // Later, display leaderboard:
+          List<String> allLines = ScoreManager.loadScores();
+          // split each "player,score" line in your UI code...
+            </code></pre>
+          
+            <h3>5. Best Practices</h3>
+            <ul>
+              <li><strong>Single Responsibility:</strong> File I/O is isolated in ScoreManager; your UI code does not need to know the details</li>
+              <li><strong>Robustness:</strong> All exceptions are caught and reported; the game continues even if the disk is full or the file is missing</li>
+              <li><strong>Maintainability:</strong> Using constants and standard Java I/O patterns makes the code easy to understand and update</li>
+            </ul>
+          </section>
+
+        </body>
+        </html>

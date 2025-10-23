@@ -144,6 +144,7 @@ body {
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 15px;
+       scroll-margin-top: 80px;
       margin-bottom: 20px;
       border-radius: 5px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -157,6 +158,7 @@ body {
       line-height: 1.5;
       color: #555;
     }
+
 /* Lab Navigation Menu Styling */
 #lab-nav {
       background-color: #faf9fc;
@@ -228,6 +230,26 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
+.hint summary{cursor:pointer;font-weight:700}
+    /* .hint{border:1px dashed #d7dff0;border-radius:12px;padding:.6rem .9rem;background:#fafcff;margin:.8rem 0} */
+    .pill{display:inline-block;padding:.2rem .55rem;border-radius:999px;background:#eef1ff;color:#3b3f66;font-size:.85rem;margin-right:.4rem}
+    .todo li{margin:.45rem 0}
+    .topbtn{position:fixed;right:14px;bottom:14px;background:#222;color:#fff;border:0;border-radius:999px;padding:.6rem .9rem;cursor:pointer}
+    .footnotes{color:var(--muted);font-size:.95rem}
   </style>
 </head>
 <body>
@@ -243,317 +265,236 @@ a.resource-ref:hover {
     <a id="resources_link" href="../resources.html">Resources</a>
     <div style="clear:both;"></div>
 </div>
-<section id="content">
+<div id="content">
 <!-- <div id="content"> -->
     <h1>Lab Assignment 18</h1>
     <nav id="lab-nav">
         <ul>
-          <li><a href="#lab1">01. LinkedList</a></li>
-          <li><a href="#lab2">02. File IO</a></li>
-
+          <li><a href="#lab1">01. Ball Model</a></li>
+          <li><a href="#lab2">02. ImageIO (Sprites)</a></li>
+          <li><a href="#lab3">03. Collision</a></li>
 
       
          
           <!-- Add more lab links as needed -->
         </ul>
       </nav>
-      <section>
 <!-- Lab Navigation Menu -->
 <!-- <div id="main-content"> -->
+ <!-- <section>
+  <p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Events</a></p>
+  <p>Resources 2: <a href="../resources.html#listener" target="_blank" class="resource-ref">Understanding Listener with getActionCommand()</a></p>
+  <p>Resources 3: <a href="../resources.html#focus" target="_blank" class="resource-ref">How to keep focus on Frame for events</a></p>
 
-  <p>Resources 1: <a href="../resources.html#junit" target="_blank" class="resource-ref">JUnit Tests</a></p>
-  <p>Resources 2: <a href="../resources.html#files" target="_blank" class="resource-ref">Files IO</a></p> 
-</section>
-  <section id="lab1">
-    <h2 style="color:black">LinkedList and JUnit Practice</h2>
-    <p>Create LinkedList class with inner class Node</p>
-    <pre><code>public class LinkedList {
-      private class Node {
-        int value;
-        Node next; // reference to “another” Node
-        // It simply reserves space for a reference, which defaults to null
-      
-        Node(int value, Node next){
-          this.value = value;
-          this.next = next;
+</section>-->
+<p>Submission: 1) BallModel, GameComponent, Ball</p>
+<div id="main-content">
+
+    <div class="lab-section" id="lab1">
+      <h2>📦 Starter Project & Assets</h2>
+<ol>
+  <li>Download the provided <b>starter ZIP</b> (refactored code) <a href="./BallApp.zip"   target="_blank" class="resource-ref">here</a>.</li>
+  <li><b>Eclipse import:</b> <em>File → Import → Existing Projects into Workspace → Select archive file</em>. 
+    
+  <li>Download  <a href = "./tennis.png" target="_blank" class="resource-ref"><code>tennis.png</code></a> and place it at the <b>package level</b> with <code>Ball.java</code> (same folder/package).</li>
+</ol>
+    <h2 style="color:black">01. BallModel Refactoring</h2>
+    <p><b>Goal:</b> Move the list and “update all balls” logic into a tiny model class. Keep your existing timer inside <code>GameComponent</code> for now so behavior doesn’t change.</p>
+
+<h3>1.1 Create <code>BallModel</code></h3>
+<pre><code class="language-java">import java.util.ArrayList;
+import java.util.List;
+
+public class BallModel {
+    // Keep it simple for this lab: public so the view can read it directly.
+    public List&lt;Ball&gt; balls = new ArrayList&lt;&gt;();
+
+    public void addBall(int x, int y) {
+        balls.add(new Ball(x, y));
+    }
+
+    public void updateAll(int width, int height) {
+        for (Ball b : balls) {
+          b.move(width, height); 
         }
-      }
-
-      private Node head; //start of the list
-	
-	public LinkedList() {
-		head = null;// empty list
-	}
-
+    }
 }
-      </code></pre>
-      
-    <p>Add method to add node at the beginning</p>
-    <pre><code>public void addAtBeginning(int value) {
-      this.head = new Node(value, head); 
-    }
-      </code></pre>
-      <p>Add method to calculate size</p>
-      <pre><code>public int size() {
-        int count = 0;
-        Node current = this.head;
-        while(current!=null) {
-          count++;
-          current = current.next;
-        }
-        return count;
-      }
-        </code></pre>
-
-        <p>Add method to insert a value after a specific value</p>
-        <pre><code>public void addAfterValue(int valueToAdd, int valueToInsertAfter) {
-          Node current = this.head;
-          
-          while(current.value!=valueToInsertAfter) {
-            current = current.next;
-          }
-          current.next = new Node(valueToAdd, current.next);
-        }
-          </code></pre>
-          <p>Add override toString()</p>
-          <pre><code>
-            public String toString() {
-              Node current = this.head;
-              String result ="";
-              while(current!=null) {
-                result+= current.value;
-                result+="->";
-                current=current.next;
-              }
-              result+="null";
-              return result;
-            }
-          </code></pre>
-<p>Create JUnit test</p>
-<pre><code>
-  public class LinkedListTest {
-
-    private LinkedList oneTwoThree;
-    private LinkedList emptyList;
-    @Before
-    public void setUp() throws Exception {
-      oneTwoThree = new LinkedList();
-      oneTwoThree.addAtBeginning(3);
-      oneTwoThree.addAtBeginning(2);
-      oneTwoThree.addAtBeginning(1);
-      emptyList = new LinkedList();
-      
-    }
 </code></pre>
-<p>Add several tests</p>
-<pre><code>
-  @Test
-	public void testAddAtBeginning() {
-		assertEquals("1->2->3->null",oneTwoThree.toString());
-	}
-	
-	@Test
-	public void testSize() {
-		assertEquals(3, oneTwoThree.size());
-		assertEquals(0, emptyList.size());
-	}
-	
-	@Test
-	public void testAddAfterValue() {
-		oneTwoThree.addAfterValue(77, 2);
-		assertEquals("1->2->77->3->null", oneTwoThree.toString());
-	}
+<h3>1.2 Update <code>GameComponent</code> to use the model</h3>
+<pre><code class="language-java">import javax.swing.*;
+import java.awt.*;
+
+public class GameComponent extends JComponent {
+   //... existing code
+   //New
+    private final BallModel model = new BallModel();
+    private final Timer timer;
+
+    public GameComponent() {
+        setPreferredSize(new Dimension(WIDTH,HEIGHT));
+
+        // seed a couple balls so you see something immediately
+        model.addBall(100, 100);
+        model.addBall(220, 70);
+
+        timer = new Timer(30, e -&gt; {
+            model.updateAll(WIDTH, HEIGHT);
+            repaint();
+        });
+    }
+
+    // Expose simple helpers so panel keys/buttons can keep the same logic:
+    public void start() { timer.start(); }
+    public void stop()  { timer.stop();  }
+    public void addBall(int x, int y) { 
+      model.addBall(x, y); //NEW
+      repaint(); 
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(FG);
+			  g2.drawLine(x1, y1, x2, y2);
+        for (Ball b : model.balls) { //NEW
+          b.draw(g2); 
+        } 
+    }
+}
 </code></pre>
-<p>Run as JUnit Test</p>
-<p>To continue with LinkedList methods for practice - import this existing project with JUnit already set: <a href="PracticeLinkedListSimple.zip">Practice Lab</a></p>
-<p>For solutions, take a look at this file <a href="LinkedList.java">LinkedList.java</a></p>
-  </section>
+<details class="hint">
+  <summary>💡 Why is this better design?</summary>
+  <p><b>Model</b> (BallModel) owns the data &amp; updates; <b>View</b> (GameComponent) just draws. 
+     Timer can stay in the component for now, but in the future consider moving it in GamePanel. 
+     Benefit: collisions can live cleanly in <code>BallModel</code> without touching paint code.</p>
+</details>
+</div>
+<div class="lab-section" id="lab2">
+<h2>02. Add a Sprite (Image)</h2>
 
-<!-- <div class="lab-section" id="lab1"> -->
-  <section id="lab2">
-    <h2 style="color:black">2. File IO in swing</h2>
-    <p>Objective: create a Game panel that stores and displays the scores and save them locally</p>
+<ol>
+  <li>Place <code>tennis.png</code> in the <b>same package</b> as <code>Ball.java</code>.</li>
+  <li>Load with <code>ImageIO.read(Ball.class.getResource("tennis.png"))</code> (works from classpath).</li>
+  <li>Try/Catch: if loading fails, draw a circle so the game still works.</li>
+</ol>
+
+<pre><code class="language-java">import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
+public class Ball {
+    int x, y;
+    int dx = 3, dy = 2;
+    int radius = 15;
+    Color color = Color.RED;
+    private BufferedImage sprite; //new
+    private boolean spriteLoaded = false;//new
+
+    public Ball(int x, int y) {
+        this.x = x; this.y = y;
+        try {
+            sprite = ImageIO.read(Ball.class.getResource("tennis.png"));
+            spriteLoaded = (sprite != null);
+        } catch (IOException | IllegalArgumentException ex) {
+            spriteLoaded = false; // fallback to oval
+        }
+    }
+
+    public void draw(Graphics2D g2) {
+       if (spriteLoaded) {   // new
+    		int drawX = x - radius; 
+    	    int drawY = y - radius;
+    	    int size = radius * 2;
+    	    g2.drawImage(sprite, drawX, drawY, size, size, null);
+    	} else {
+        g2.setColor(color);
+        g2.fillOval(x - radius, y - radius, radius * 2, radius * 2);
+    	}
+    }
+}
+</code></pre>
+  <details class="hint">
+  <summary>💡 I put the image next to <code>src</code>. Can I use <code>ImageIO.read("tennis.png")</code>?</summary>
+  <p>Prefer <code>getResource()</code> with the image in the same package as <code>Ball.java</code>. 
+     Plain file paths can break when exporting JARs or running on different machines.</p>
+</details>
+</div>
+<div class="lab-section" id="lab3">
+<h2>03. Collision</h2>
+<h3>Part 1. Wall Bouncing</h3>
+
+<p>Use center + radius checks. Reverse the corresponding velocity. Work with Ball class</p>
+<pre><code class="language-java">public void move(int width, int height) {
+    x += dx;
+    y += dy;
+
+    // Left/right
+    if (x - radius &lt; 0) { x = radius; dx = -dx; }
+    else if (x + radius &gt; width) { x = width - radius; dx = -dx; }
+
+    // Top/bottom
+    if (y - radius &lt; 0) { y = radius; dy = -dy; }
+    else if (y + radius &gt; height) { y = height - radius; dy = -dy; }
+}
+</code></pre>
+<details class="hint">
+  <summary>💡 It looks like there’s a tiny gap at the bottom?</summary>
+  <p>That’s integer drawing vs. pixel edges. 
+     If you want a visual buffer, tweak the <em>draw</em> size/offset, not the collision math.</p>
+</details>
 
 
-            <h3>1. Fields</h3>
-            <pre><code>private int score = 0;
-private JLabel scoreLabel = new JLabel("Score: 0");
-private JButton addPointButton = new JButton("Add Point");
-private JButton endGameButton = new JButton("End Game");</code></pre>
-            <ul>
-              <li><strong>score</strong>: holds the current game score (model state)</li>
-              <li><strong>scoreLabel</strong>: displays the score to the user (view)</li>
-              <li><strong>addPointButton</strong>: when clicked, increases the score</li>
-              <li><strong>endGameButton</strong>: when clicked, ends the game, saving/loading scores</li>
-            </ul>
+<h3>Part 2. Ball–Ball Bouncing (Cartoonish Physics)</h3>
 
-          
+<p>Detect overlap and do a simple response. Start with “swap velocities” and add a tiny separation to avoid sticking.</p>
 
-            <h3>2. Constructor &amp; Layout</h3>
-            <pre><code>public GamePanel() {
-   setLayout(new FlowLayout());
-   scoreLabel.setFont(scoreLabel.getFont().deriveFont(24f));
-   add(scoreLabel);
-  add(addPointButton);
-  add(endGameButton);
-          
-  addPointButton.addActionListener(e -> addScores());
-  endGameButton.addActionListener(e -> onEndGame());
-}</code></pre>
-            <ul>
-              
-              <li><code>deriveFont(24f)</code>: makes the score text larger and more visible</li>
-              
-            </ul>
+<p>In <code>BallModel.updateAll()</code></p>
+<pre><code class="language-java">public void updateAll(int w, int h) {
+    for (Ball b : balls) b.move(w, h); // wall bounces live in Ball.move()
+    handleCollisions();                 // simple ball–ball bounces
+}
+</code></pre>
 
-          
-            <h3>3. Incrementing the Score</h3>
-            <pre><code>private void addScores() {
-            score++;
-            scoreLabel.setText("Score: " + score);
-          }</code></pre>
-            <ul>
-              <li>Increase <code>score</code> by one</li>
-              <li>Update the label so the view matches the model</li>
-            </ul>
+<p>Add <code>handleCollisions()</code> (BallModel)</p>
+<pre><code class="language-java">private void handleCollisions() {
+    for (int i = 0; i &lt; balls.size(); i++) {
+        for (int j = i + 1; j &lt; balls.size(); j++) {
+            Ball a = balls.get(i), b = balls.get(j);
 
-          
-            <h3>4. Ending the Game</h3>
-            <pre><code>private void onEndGame() {
-            String player = JOptionPane.showInputDialog(this, "Enter your name", "Player");
-            if (player == null || player.isBlank()) player = "Anonymous";
-          
-            ScoreManager.saveScore(player, score);
-            showLeaderboard();
-          
-            score = 0;
-            scoreLabel.setText("Score: 0");
-          }</code></pre>
-            <ul>
- 
-              <li>Defaults to “Anonymous” if they cancel or enter nothing.</li>
-              <li><code>ScoreManager.saveScore(...)</code>: appends the name and score to a file (will create later)</li>
-              <li><code>showLeaderboard()</code>: reads and displays top scores (will create later)</li>
-              <li>Resets <code>score</code> and label for a fresh new game</li>
-            </ul>
+            int dx = a.x - b.x, dy = a.y - b.y;
+            int rSum = a.r + b.r;
 
-            <h3>5. Displaying the Leaderboard</h3>
-            <pre><code>private void showLeaderboard() {
-            List<String> lines = ScoreManager.loadScores();
-              StringBuilder html = new StringBuilder(
-                "&lt;html&gt;&lt;h2&gt;Leaderboard&lt;/h2&gt;&lt;ol&gt;"
-            );
-            for (int i = 0; i &lt; lines.size() && i &lt; 5; i++) {
-                String[] parts = lines.get(i).split(",", 2);
-                html.append("&lt;li&gt;")
-                    .append(parts[0])    // player name
-                    .append(": ")
-                    .append(parts[1])    // score
-                    .append("&lt;/li&gt;");
+            if (dx*dx + dy*dy &lt;= rSum*rSum) {
+                // 1) swap velocities (equal-mass cartoon bounce)
+                    a.dx = -a.dx; a.dy = -a.dy;
+                     b.dx = -b.dx; b.dy = -b.dy;
+
+                // 2) nudge apart one step along their new directions
+                a.x += Integer.signum(a.dx); a.y += Integer.signum(a.dy);
+                b.x += Integer.signum(b.dx); b.y += Integer.signum(b.dy);
             }
-            html.append("&lt;/ol&gt;&lt;/html&gt;");
-          
-            JOptionPane.showMessageDialog(
-              this,
-              new JLabel(html.toString()),
-              "Top Scores",
-              JOptionPane.PLAIN_MESSAGE
-            );
-          }</code></pre>
-            <ul>
-              <li><code>ScoreManager.loadScores()</code>: returns raw “name,score” lines from the file</li>
-              <li><code>StringBuilder + HTML</code>: builds a simple ordered list for Swing’s <code>JLabel</code></li>
-              <li><code style="color:black">showMessageDialog</code>: shows the leaderboard in a modal dialog</li>
-              <li style="color:black">Limits to top 5 entries</li>
-            </ul>
-            <h3 style="color:black">ScoreManager</h3>
-            <p>
-              The ScoreManager class handles all file I/O related to persisting and retrieving game scores
-              It exposes two static methods:
-            </p>
-            <ol>
-              <li><code style="color:red">saveScore(String player, int score)</code></li>
-              <li><code style="color:red">loadScores()</code></li>
-            </ol>
-          
-            <h3>1. File Path Constant</h3>
-            <pre><code style="color:red">
-          private static final String SCORES_FILE = "scores.txt";
-            </code></pre>
-            <ul>
-              <li><strong>Why a constant?</strong> Centralizes the filename so if you ever change where scores are saved, you update in one place</li>
-              <li><strong>Relative path:</strong> The file lives in the working directory (usually your project root or wherever the JVM was launched)</li>
-            </ul>
-          
-            <h3>2. Saving a Score</h3>
-            <pre><code style="color:red">
-          public static void saveScore(String player, int score) {
-              try (PrintWriter out = 
-                       new PrintWriter(
-                         new FileWriter(SCORES_FILE, true)  // append mode
-                       )
-                 ) {
-                  out.println(player + "," + score);
-              } catch (IOException e) {
-                  System.err.println("Error saving score: " + e.getMessage());
-              }
-          }
-            </code></pre>
-            <ul>
-              <li><strong>Append mode:</strong> <code style="color:red">new FileWriter(SCORES_FILE, true)</code> opens the file without erasing existing lines</li>
-              <li><strong>PrintWriter:</strong> wraps the <code style="color:red">FileWriter</code> to provide <code style="color:red">println(...)</code> convenience</li>
-              <li><strong>Try block</strong> ensures <code style="color:red">out.close()</code> is called automatically, flushing and releasing the file handle</li>
-              <li><strong>Exception handling:</strong> any <code style="color:red">IOException</code> (disk full, permission denied) is caught and logged to <code style="color:red">System.err</code> without crashing the game</li>
-            </ul>
-          
-            <h3>3. Loading Scores</h3>
-            <pre><code style="color:red">
-          public static List&lt;String&gt; loadScores() {
-              List&lt;String&gt; lines = new ArrayList&lt;&gt;();
-              File file = new File(SCORES_FILE);
-              if (!file.exists()) {
-                  return lines;  // no scores file yet,  return empty list
-              }
-          
-              try (BufferedReader in = 
-                       new BufferedReader(new FileReader(file))
-                 ) {
-                  String line;
-                  while ((line = in.readLine()) != null) {
-                      lines.add(line.trim());
-                  }
-              } catch (IOException e) {
-                  System.err.println("Error loading scores: " + e.getMessage());
-              }
-          
-              return lines;
-          }
-            </code></pre>
-            <ul>
-              <li><strong>Return type:</strong> <code style="color:red">List&lt;String&gt;</code> where each element is a line in <code style="color:red">"player,score"</code> format</li>
-              <li><strong>Existence check:</strong> <code style="color:red">if (!file.exists())</code> avoids a <code style="color:red">FileNotFoundException</code> on first run</li>
-              <li><strong>BufferedReader:</strong> efficient line-by-line reading, auto-closed by try block</li>
-              <li><strong>Trim:</strong> <code style="color:red">line.trim()</code> removes stray whitespace before/after each line</li>
-              <li><strong>Error handling:</strong> logs I/O errors but returns whatever lines were successfully read (or an empty list)</li>
-            </ul>
-          
-            <h3>4. How to Use in Your GamePanel</h3>
-            <pre><code style="color:red">
-          // Save a new score:
-          ScoreManager.saveScore(playerName, currentScore);
-          
-          // Later, display leaderboard:
-          List<String> allLines = ScoreManager.loadScores();
-          // split each "player,score" line in your UI code...
-            </code></pre>
-          
-            <h3>5. Best Practices</h3>
-            <ul>
-              <li><strong>Single Responsibility:</strong> File I/O is isolated in ScoreManager; your UI code does not need to know the details</li>
-              <li><strong>Robustness:</strong> All exceptions are caught and reported; the game continues even if the disk is full or the file is missing</li>
-              <li><strong>Maintainability:</strong> Using constants and standard Java I/O patterns makes the code easy to understand and update</li>
-            </ul>
-          </section>
+        }
+    }
+}
+</code></pre>
 
-        </body>
-        </html>
+<details class="hint">
+  <summary>💡 They sometimes “stick” or jitter after colliding?</summary>
+  <p>That’s normal in discrete updates. Add a quick <b>separation</b> before swapping speeds, 
+     or a 1–2 frame <b>cooldown</b> per ball pair, or only resolve when moving toward each other. 
+     For this lab, the tiny nudge shown above is usually enough.</p>
+</details>
+
+<h2>🧪 Checkpoints</h2>
+<ul>
+  <li>Refactor compiles; timer still animates.</li>
+  <li>Sprite shows if <code>tennis.png</code> is present; circle fallback otherwise.</li>
+  <li>Balls bounce off all 4 walls using radius checks.</li>
+  <li>Balls bounce off each other using simple swap + nudge.</li>
+</ul>
+</div>
+
+</body>
+</html>
