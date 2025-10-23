@@ -482,7 +482,7 @@ public class GameApp {
 
   <hr>
 
-  <h3>Step 3 — GamePanel (draw & move with keys)</h3>
+  <h3>Step 3. GamePanel (draw & move with keys)</h3>
 <pre><code>public class GamePanel extends JPanel {
     private final GameComponent canvas = new GameComponent();
 
@@ -502,15 +502,13 @@ public class GameApp {
 		this.add(canvas,BorderLayout.CENTER);
     </code></pre>
 
-      <h3>Create &amp; Add Buttons as a method</h3>
-      
+      <h3>Add Buttons as a method</h3>
+      <p>buildControls(): adds a component (buttons). The method creates a new JPanel (controls), it adds buttons to that panel. Then the main panel (this) adds that button controls panel to its layout (SOUTH).</p>
       <pre><code>private JComponent buildControls() {
-        JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 6));
+        JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 6)); // we need a panel to place all buttons together
         JButton left   = new JButton("◀ Left");
         JButton right  = new JButton("Right ▶");
         JButton center = new JButton("Center");
-
-
 
         left.addActionListener(e -> { canvas.moveDelta(-10); requestFocusInWindow(); });
         right.addActionListener(e -> { canvas.moveDelta(+10); requestFocusInWindow(); });
@@ -522,7 +520,7 @@ public class GameApp {
         return controls;
     }</code></pre>
 
-<p>We'll add setX method to Game component (see Step 4):</p>
+<p>To place our line in the middle we want to add another helper method setX to Game component (you will add this method to Game Component class - see Step 4). This will allows us to easily reposition the line without directly manipulating the x1 and x2 variables.</p>
 
 <pre><code>public void setX(int i) {
 		x1 = i;
@@ -552,7 +550,7 @@ public class GameApp {
     swap out the main view completely, e.g. switching game screens.
   </p>
   <p>
-    🧠 Think of it like this: <br>
+    Think of it like this: <br>
     <code>add()</code> → "Put this inside the existing layout." <br>
     <code>setContentPane()</code> → "Replace everything inside with this new panel."
   </p>
@@ -623,7 +621,7 @@ requestFocusInWindow();      // ask for focus
 </details>
 
 <hr>
-<h3>4. Define <code style="color:darkred">Game Component</code> as a <code style="color:darkred">JComponent</code></h3>
+<h3>Step 4. <code style="color:darkred">Game Component</code> as a <code style="color:darkred">JComponent</code></h3>
         <pre><code>public class GameComponent extends JComponent {
           public static final int WIDTH  = 400;
           public static final int HEIGHT = 140;
@@ -665,13 +663,191 @@ requestFocusInWindow();      // ask for focus
       correct way to reflect updated positions on screen (no manual loops).
     </p>
   </details>
-</div>
+
 
  
 
- 
+ <h3>What Is an Anonymous Class?</h3>
 
+<p>
+  An <b>anonymous class</b> is a quick way to create an object that implements an interface
+  or extends a class <em>without giving it a name</em>.  
+  You use it when you need a one-time object that customizes behavior — for example,
+  when adding event listeners like <code>KeyAdapter</code> or <code>ActionListener</code>.
+</p>
+
+<hr>
+
+<h4>Example: Named Class vs. Anonymous Class</h4>
+
+<p><b>Option 1. Named Class:</b></p>
+<pre><code class="language-java">
+// Separate class file or nested class
+public class MyKeyListener extends KeyAdapter {
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("Key pressed!");
+    }
+}
+
+// In your panel constructor:
+this.addKeyListener(new MyKeyListener());
+</code></pre>
+
+<p><b>Option 2. Anonymous Class (inline):</b></p>
+<pre><code class="language-java">
+// Create and use it immediately — no class name needed
+this.addKeyListener(new KeyAdapter() {
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("Key pressed!");
+    }
+});
+</code></pre>
+
+<p>
+  The second form defines a small “mini-class” right inside the method call.
   
+</p>
+
+<hr>
+
+<h4>Why Use Anonymous Classes?</h4>
+<ul>
+  <li>✅ You only need the class <em>once</em> (e.g., one button or one key listener)</li>
+  <li>✅ Keeps code close to where it’s used — easier to read</li>
+  <li>Great for event-driven programming (Swing, JavaFX, etc.)</li>
+  <li>🚫 But: You can’t reuse it elsewhere since it has no name</li>
+</ul>
+
+<hr>
+
+<h4>💡 Relation to Lambdas</h4>
+<p>
+  Anonymous classes came first. Lambdas were added in Java 8 as a shorter
+  form of anonymous classes but they only work when the interface has
+  <b>exactly one abstract method</b> (a <em>functional interface</em>).
+</p>
+
+<pre><code class="language-java">
+// Lambda version works here because ActionListener has one method
+button.addActionListener(e -> System.out.println("Clicked!"));
+</code></pre>
+
+<p>
+  For <code>KeyListener</code> (which has three methods), you must still use
+  an anonymous class or an adapter.
+</p>
+<pre><code class="language-java">
+// Lambda version does not work here because KeyListener has three methods
+this.addKeyListener(new KeyAdapter() {
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("Key pressed!");
+    }
+});
+</code></pre>
+</div>
+  <h3>Step 5: Refactor Keys -> Adding Keyboard Controls (buildKeys)</h3>
+
+<p>
+  So far, you have a <code>buildControls()</code> method that creates a <b>component</b>,  
+  a panel of buttons that you attach to the main layout using:
+</p>
+
+<pre><code>this.add(buildControls(), BorderLayout.SOUTH);</code></pre>
+
+<p>
+  This method builds <em>visible UI components</em> (buttons), so it returns a panel.
+</p>
+
+<hr>
+
+<h4>💡 Components vs. Behavior</h4>
+<table class="table table-striped small">
+  <tr>
+    <th>Type</th><th>Purpose</th><th>Added To</th><th>Example</th>
+  </tr>
+  <tr>
+    <td><b>Component</b></td>
+    <td>Visible element on screen (like a button or panel)</td>
+    <td>Added to layout using <code>add()</code></td>
+    <td><code>this.add(buildControls(), BorderLayout.SOUTH)</code></td>
+  </tr>
+  <tr>
+    <td><b>Behavior</b></td>
+    <td>Invisible logic that responds to events (like key presses)</td>
+    <td>Attached using a listener method</td>
+    <td><code>this.addKeyListener(new KeyAdapter() { ... })</code></td>
+  </tr>
+</table>
+
+<hr>
+
+<h4>🧭 Refactoring Task</h4>
+<p>
+  Currently, your <code>GamePanel</code> adds a <code>KeyListener</code> directly in its constructor.
+  Let's <b>refactor</b> that into a separate method for better readability and organization.
+</p>
+
+<pre><code class="language-java">
+/**
+ * Adds keyboard behavior for moving, pausing, and adding balls.
+ */
+private void buildKeys() {
+    this.setFocusable(true);
+    this.requestFocusInWindow();
+
+    this.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_LEFT -> canvas.moveDelta(-10);
+                case KeyEvent.VK_RIGHT -> canvas.moveDelta(10);
+                case KeyEvent.VK_SPACE -> {
+                    if (canvas.timer.isRunning()) canvas.stop();
+                    else canvas.start();
+                }
+                case KeyEvent.VK_B -> {
+                    int x = (int)(Math.random() * canvas.getWidth());
+                    int y = (int)(Math.random() * canvas.getHeight());
+                    canvas.addBall(x, y);
+                }
+            }
+        }
+    });
+}
+</code></pre>
+
+<p>
+  Then call it once inside your constructor, just like you did for <code>buildControls()</code>:
+</p>
+
+<pre><code class="language-java">
+public GamePanel() {
+    this.setLayout(new BorderLayout(8, 8));
+    this.add(canvas, BorderLayout.CENTER);
+    this.add(buildControls(), BorderLayout.SOUTH);
+    buildKeys(); // 👈 attaches keyboard behavior
+}
+</code></pre>
+
+<hr>
+
+<h4>✅ Checkpoint</h4>
+<ul>
+  <li>🧩 Your <code>buildControls()</code> builds <b>components</b> (buttons)</li>
+  <li>⚙️ Your <code>buildKeys()</code> builds <b>behavior</b> (key responses)</li>
+  <li>🎯 Together, they make your panel both interactive and modular</li>
+</ul>
+
+<details class="hint">
+  <summary>💡 Hint: Key focus issues</summary>
+  <p>
+    If your key events don’t trigger, make sure your panel has focus.
+    Try calling <code>requestFocusInWindow()</code> <em>after</em> adding it to the frame.
+  </p>
+</details>
 
   <!-- <h3>Step 4 — (Optional) Timer “heartbeat”</h3>
   <p>

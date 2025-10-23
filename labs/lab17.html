@@ -302,6 +302,8 @@ pre code:hover {
 </p>
     <h2>Step 1. Add the Ball class</h2>
   <p>Create <code>Ball.java</code> in the same package as your component.</p>
+  <p>Note: The Ball object doesn’t know how big the screen or panel is.
+So we will pass in the current width and height of the drawing area (=GameComponent).</p>
   <pre><code>import java.awt.Color;
 import java.awt.Graphics2D;
 
@@ -375,7 +377,7 @@ public class GameComponent extends JComponent {
     <p><code>Timer</code> fires an event every N milliseconds on the UI thread. In the handler you: <strong>update state</strong> (here: <code>ball.move(...)</code>) then <strong>repaint</strong>. That’s the whole “game loop.” </p>
   </details>
   
-<h2>Step 3 — Add keys in <code>GamePanel</code> (keep Lab 15 style)</h2>
+<h2>Step 3. Add keys in <code>GamePanel</code> (keep Lab 15 style)</h2>
   <p>In <code>GamePanel.java</code> use this exact handler body (your class likely already has the listener shell from Lab 15). This preserves your line movement and toggles the timer with Space.</p>
 
   <pre><code>public void keyPressed(KeyEvent e) {
