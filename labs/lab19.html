@@ -337,7 +337,8 @@ private JButton endGameButton = new JButton("End Game");</code></pre>
                 "&lt;html&gt;&lt;h2&gt;Leaderboard&lt;/h2&gt;&lt;ol&gt;"
             );
             for (int i = 0; i &lt; lines.size() && i &lt; 5; i++) {
-                String[] parts = lines.get(i).split(",", 2);
+              String line = lines.get(i);
+                String[] parts = line.split(",", 2);
                 html.append("&lt;li&gt;")
                     .append(parts[0])    // player name
                     .append(": ")

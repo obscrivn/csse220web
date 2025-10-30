@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+
+body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    } */
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+       scroll-margin-top: 80px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
+.hint summary{cursor:pointer;font-weight:700}
+    /* .hint{border:1px dashed #d7dff0;border-radius:12px;padding:.6rem .9rem;background:#fafcff;margin:.8rem 0} */
+    .pill{display:inline-block;padding:.2rem .55rem;border-radius:999px;background:#eef1ff;color:#3b3f66;font-size:.85rem;margin-right:.4rem}
+    .todo li{margin:.45rem 0}
+    .topbtn{position:fixed;right:14px;bottom:14px;background:#222;color:#fff;border:0;border-radius:999px;padding:.6rem .9rem;cursor:pointer}
+    .footnotes{color:var(--muted);font-size:.95rem}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+<!-- <div id="content"> -->
+    <h1>Lab Assignment 20</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Refactor Timer</a></li>
+          <li><a href="#lab2">02. HUD / save files</a></li>
+
+      
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<!-- <div id="main-content"> -->
+ <!-- <section>
+  <p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Events</a></p>
+  <p>Resources 2: <a href="../resources.html#listener" target="_blank" class="resource-ref">Understanding Listener with getActionCommand()</a></p>
+  <p>Resources 3: <a href="../resources.html#focus" target="_blank" class="resource-ref">How to keep focus on Frame for events</a></p>
+
+</section>-->
+
+<div id="main-content">
+
+    <div class="lab-section" id="lab1">
+      <h3>🎯 Learning Objectives</h3>
+        <ul>
+          <li>Separate Model / View / Controller responsibilities.</li>
+          <li>Drive animation with a <code>Timer</code> in the Controller.</li>
+          <li>Build an HTML HUD with a <code>JLabel</code> overlay.</li>
+          <li>Save &amp; load score snapshots using plain text I/O.</li>
+        </ul>
+
+        <h3>🧰 Prereqs</h3>
+        <ul>
+          <li>Starter: <code>Main</code>, <code>GamePanel</code>, <code>GameComponent</code>, <code>BallModel</code>, <code>Ball</code>.</li>
+          <li>Keys: <b>SPACE</b> (pause/start), <b>B</b> (add ball), <b>←/→</b> (demo motion).</li>
+        </ul>
+    <h2 style="color:black">01. BallModel Refactoring</h2>
+    <h2>1) Controller Owns the Timer (GamePanel)</h2>
+      <p class="callout">Why? The Controller orchestrates time and input. The View only draws.</p>
+      <div class="todo">
+        <ol class="checklist">
+          <li><b>Remove</b> any <code>Timer</code> and seeding from <code>GameComponent</code>.</li>
+          <li><b>Create</b> the <code>Timer</code> in <code>GamePanel</code> and call <code>tick()</code> every ~30ms.</li>
+          <li><b>Use</b> <code>canvas.getWidth()/getHeight()</code> in <code>tick()</code> for accurate bounds.</li>
+        </ol>
+      </div>
+<pre><code class="language-java">
+// in GamePanel fields:
+// models
+private final BallModel ballModel = new BallModel();
+// views
+private final GameComponent canvas = new GameComponent();
+private final Timer timer;
+
+public GamePanel() {
+  
+// ..previous code
+  ballModel.addBall(100, 100);
+  ballModel.addBall(200, 60);
+
+// Timer now lives in GamePanel (Controller)
+  timer = new Timer(30, e -> tick());
+  buildKeys();
+}
+
+private void tick() {
+  ballModel.updateAll(canvas.getWidth(), canvas.getHeight());
+  canvas.repaint();
+}
+
+ public void startGame() { timer.start(); }
+ public void stopGame()  { timer.stop();  }
+
+ /// updates inside buildKeys()
+ case KeyEvent.VK_SPACE -> {
+	  if (timer.isRunning()) timer.stop();
+	     else timer.start();
+	}
+</code></pre>
+
+<p>Add to Ball Model:</p>
+<pre><code>// Add getters
+ 	public int getBallCount() {
+ 		return balls.size();
+ 	}
+ 	public List<Ball> getBalls() {
+ 		return balls;
+ 	}
+
+</code></pre>
+<p>Update GameComponent, remove timer and update the getter</p>
+<pre><code  class="language-java">
+  for (Ball b : model.getBalls()) b.draw(g2); // uses Step 2 getter
+</code></pre>
+
+
+</div>
+<div class="lab-section" id="lab2">
+<h2>02. Create HUD model and HUD viewer</h2>
+
+
+<pre><code class="language-java">public class HudModel {
+
+	
+	private int score = 0;
+    private int ballCount = 0;
+
+    public int getScore() { return score; }
+    public int getBallCount() { return ballCount; }
+    
+    public void addScore(int delta) { 
+    	this.score +=delta; 
+    	}
+    public void setBallCount(int count) { 
+    	this.ballCount = count; 
+    	}
+}
+</code></pre>
+<p>Note - we are using some HTML tags and combine them using String Builder</p>
+<pre><code>public class HudView extends javax.swing.JLabel {
+public HudView() {
+setOpaque(false);
+setForeground(new java.awt.Color(230,240,255));
+setFont(getFont().deriveFont(java.awt.Font.BOLD, 13f));
+}
+public void refresh(HudModel hud) {
+StringBuilder html = new StringBuilder("<html><h2 style='margin:0'>Score</h2><ol>");
+html.append("<li>Current: ").append(hud.getScore()).append("</li>");
+html.append("<li>Balls: ").append(hud.getBallCount()).append("</li>");
+html.append("</ol></html>");
+setText(html.toString());
+}
+}
+  </code></pre>
+<p>Add HUD to GamePanel using Overlay Layout</p>
+<p>Since HudView is a JLabel, you just layer it on top of the game canvas</p>
+<pre><code>private final HudModel hudModel = new HudModel();
+private final HudView hudView = new HudView();
+
+
+public GamePanel() {
+setLayout(new BorderLayout());
+
+
+JPanel layered = new JPanel();
+layered.setLayout(new OverlayLayout(layered));
+layered.setOpaque(false);
+
+
+canvas.setOpaque(true);
+layered.add(canvas); // back
+
+
+hudView.setOpaque(false);
+hudView.setAlignmentX(0f); // left
+hudView.setAlignmentY(0f); // top
+hudView.setBorder(javax.swing.BorderFactory.createEmptyBorder(8,8,0,0));
+layered.add(hudView); // top
+
+
+add(layered, BorderLayout.CENTER);
+add(buildControls(), BorderLayout.SOUTH);
+
+
+// initial sync
+hudModel.setBallCount(ballModel.getBallCount());
+hudView.refresh(hudModel);</code></pre>
+
+<p>Update tick()</p>
+<pre><code class="language-java">private void tick() {
+  ballModel.updateAll(canvas.getWidth(), canvas.getHeight());
+  hudModel.setBallCount(ballModel.getBallCount());
+  hudView.refresh(hudModel);
+  canvas.repaint();
+}</code></pre>  
+ <p>Update GameComponent. So GamePanel will create Models now but GameComponent only view them. So we will pass them as parameteres in constructor</p>
+<pre><code>	private final BallModel model;
+	private final HudModel hud;
+	public GameComponent(BallModel model, HudModel hud) {
+		this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
+		//  seed a couple so something is visible immediately
+	    this.model = model;
+	    this.hud = hud;
+	    setOpaque(true);   
+	}
+  </code></pre>
+  <p>Update Game Component constructor in GamePanel:</p>
+  <pre><code>private final GameComponent canvas = new GameComponent(ballModel,hudModel);</code></pre>
+  <p>Update the GAmePanel</p>
+  <pre><code>public GamePanel() {
+    	JPanel layered = new JPanel();
+        layered.setLayout(new OverlayLayout(layered));
+        layered.setOpaque(false);  // Make layered panel transparent
+        // view
+        canvas.setOpaque(false); // panels sets the background if you want it from canvas, set it to true
+        layered.add(hudView); 
+    	layered.add(canvas);
+    	layered.add(canvas);
+
+    	hudView.setOpaque(false);         // Transparent so no gray background
+    	hudView.setAlignmentX(0f);        // Left edge
+    	hudView.setAlignmentY(0f);        // Top edge
+    	layered.add(hudView);             // Add after canvas → goes on top
+       
+    	// PANEL LAYOUT
+    	this.setLayout(new BorderLayout());
+    	this.add(layered, BorderLayout.CENTER);
+    	this.setBackground(canvas.BG);
+    	this.add(buildControls(), BorderLayout.SOUTH);</code></pre>
+  
+  
+      
+<div class="lab-section" id="lab3">
+<h2>03. Score Manager</h2>
+<p>Create a score manager with 2 helper functions to save and load score. Create a folder in yoru Java Project named data (it should be not inside src but a the same level)</p>
+
+<pre><code>public class ScoreManager {
+
+	
+	private static final String FILE = "data/scores.txt";
+	
+	public static void save(int score, int balls) {
+        try (PrintWriter out = new PrintWriter(new FileWriter(FILE, true))) {
+            out.println(score + "," + balls + "," + System.currentTimeMillis());
+        } catch (IOException e) {
+            e.printStackTrace(); // or show a dialog if you prefer
+        }
+    }
+	
+	public static List<String> load() {
+        List<String> lines = new ArrayList<>();
+        File f = new File(FILE);
+        if (!f.exists()) return lines;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lines;
+    }
+	
+}</code></pre>
+<p>Add a key to save the text in GamePanel</p>
+<pre><code>case KeyEvent.VK_S -> {
+	                    ScoreManager.save(hudModel.getScore(), hudModel.getBallCount());
+	                    // quick feedback (optional)
+	                    System.out.println("Saved: score=" + hudModel.getScore() + ", balls=" + hudModel.getBallCount());
+	                }</code></pre>
+
+
+<h2>🧪 Checkpoints</h2>
+<ul>
+  <li>Refactor compiles; timer animates.</li>
+  <li>Score is saved in the fileSprite when pressing S key</li>
+  <li>Score is shown as overlay</li>
+  
+</ul>
+<p>The refactored code is available here: <a href="./BallHud.zip">Unzip or import to Eclipse</a></p>
+</div>
+
+</body>
+</html>
