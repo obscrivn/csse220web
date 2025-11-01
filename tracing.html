@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Polymorphic Tracing & Patterns</title>
+      <link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
+<link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    :root{
+      --ink:#1f2937;/* slate-800 */
+      --muted:#6b7280;/* gray-500 */
+      --accent:#2563eb;/* blue-600 */
+      --bg:#ffffff;
+      --card:#f8fafc;/* slate-50 */
+      --code:#0f172a;/* slate-900 */
+      --chip:#eef2ff;/* indigo-50 */
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      /* padding: 0; */
+      padding-top: 0;
+    }
+   /* html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"}
+    /* Header styling */
+#header {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 1000;
+
+padding: 0.8rem 1rem;
+}
+#header a {
+color: #fff;
+margin-right: 15px;
+text-decoration: none;
+font-weight: 600;
+}
+#header a:hover {
+text-decoration: underline;
+}
+#header div {
+clear: both;
+}
+.badge {
+background: #fef3c7;
+color: #78350f;
+border-radius: 999px;
+padding: 0.2rem 0.6rem;
+font-size: 0.8rem;
+font-weight: bold;
+}
+main {
+padding: 20px;
+margin-top: 120px;
+}
+   /* main{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem; padding: 20px;}*/
+    h1{font-size:2rem;margin:.2rem 0 1rem}
+    h2{margin:2rem 0 .5rem}
+    h3{margin:1.2rem 0 .4rem}
+    .lead{color:var(--muted)}
+    .grid{display:grid;gap:1rem}
+    @media (min-width:900px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr 1fr}}
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;padding:1rem}
+    .callout{border-left:4px solid var(--accent);background:#eff6ff;padding:0.75rem 1rem;border-radius:8px}
+    code,kbd,pre{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    pre{background:#0b1220;color:#d1d5db;border-radius:12px;padding:1rem;overflow:auto}
+    .table{width:100%;border-collapse:collapse}
+    .table th,.table td{border:1px solid #e5e7eb;padding:.6rem;text-align:left;vertical-align:top}
+    .chips{display:flex;flex-wrap:wrap;gap:.5rem}
+    .chip{background:#f1f5f9;border:1px solid #e2e8f0;padding:.25rem .5rem;border-radius:999px;font-size:.85rem}
+    details{background:#f9fafb;border:1px solid #eceff3;border-radius:12px;padding:.6rem 1rem}
+    details summary{cursor:pointer;font-weight:600}
+    .small{font-size:.9rem;color:var(--muted)}
+    .kbd{border:1px solid #e5e7eb;border-bottom-width:2px;border-radius:6px;padding:.1rem .35rem;background:#fff}
+  </style>
+</head>
+<body>
+
+    <div id="header">
+                <a id="index_link" href="./index.html">CSSE 220</a>
+                <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
+                <a id="schedule_link" href="./schedule.html">Schedule</a>
+                <a id="quiz_link" href="./demos.html">Demos</a>
+                <a id="quiz_link" href="./worksheets.html">Quizzes</a>
+                <a id="quiz_link" href="./labs.html">Labs</a>
+                <a id="quiz_link" href="./homework.html">Homework</a>
+                <a id="quiz_link" href="./exams.html">Exams</a>
+                <a id="quiz_link" href="./project.html">Final Project</a>
+                <a id="resources_link" href="./resources.html">Resources</a>
+                <div style="clear:both;"></div>
+   
+
+</div>
+
+  <main>
+    <h1>Polymorphic Tracing & Patterns</h1>
+    <p>A fast, practical guide to tracing polymorphism in Java for CSSE 220. Use this page to review for exam. Includes rules of thumb, casting summary, trace template, and compact example snippets (with compile-time vs. runtime error notes).</p>
+
+<h2>Quick-Start Cheatsheet (Rules of Thumb)</h2>
+<ul>
+  <li><strong>Reference type vs. object type</strong><br>
+    <em>Compile-time checks</em> use the <strong>reference type</strong> (left of <code>=</code>) to decide which members are visible.<br>
+    <em>Runtime dispatch</em> uses the <strong>object’s actual class</strong> (right of <code>new</code>) to pick which <em>overridden</em> method body runs.</li>
+  <li><strong>Overriding</strong> (same signature, subclass): chosen <em>at runtime</em>. <strong>Overloading</strong> (different params): chosen <em>at compile time</em>.</li>
+  <li><strong>Casting</strong>:
+    <ul>
+      <li><strong>Implicit upcast</strong> (safe): <code>Sub → Super</code> requires no cast.</li>
+      <li><strong>Explicit downcast</strong> (risky): <code>Super → Sub</code> needs <code>(Sub)</code> and may throw <code>ClassCastException</code> at runtime.</li>
+    </ul>
+  </li>
+  <li><strong>Fields are not polymorphic</strong>: field access resolves by <em>reference type</em>, not runtime type.</li>
+  <li><code>final</code>, <code>static</code>, <code>private</code> methods are <em>not</em> polymorphic (no dynamic dispatch).</li>
+  <li><strong>Abstract</strong> methods must be implemented by concrete subclasses before instantiation.</li>
+</ul>
+
+<hr>
+
+<h2>Tracing Template (4 Steps)</h2>
+<h3>🧭 Step 1: Identify the Declared / Casted Type</h3>
+<ul>
+  <li>The <strong>declared type</strong> is the variable’s type (can change if you cast later).</li>
+  <li>This type determines what the <strong>compiler</strong> can see (what methods are visible at compile time).</li>
+  <li>Example:<br><code>Animal a = new Dog();</code> → declared = <code>Animal</code>, actual = <code>Dog</code></li>
+</ul>
+
+<h3>🧭 Step 2: Identify the Instantiation / Actual Type</h3>
+<ul>
+  <li>The <strong>actual type</strong> never changes: it is what was created with <code>new</code>.</li>
+  <li>At runtime, Java knows the real object type (e.g., <code>Dog</code>), even if the variable is declared as <code>Animal</code>.</li>
+  <li>Dynamic dispatch uses this type to decide which overridden method body runs.</li>
+</ul>
+
+<h3>🧭 Step 3: Check for Compilation Errors</h3>
+<p>The compiler only looks at the <strong>declared or casted type</strong>, not the actual object!</p>
+<ul>
+  <li>Calling a method not defined in the declared/casted type → compile-time error.</li>
+  <li>Assigning incompatible types → compile-time error.</li>
+  <li>Performing an <strong>invalid cast</strong> (not in the same inheritance chain) → compile-time error.</li>
+  <li>Implicit downcast (without explicit cast) → compile-time error.</li>
+</ul>
+
+<h3>🧭 Step 4: Check for Runtime Errors (Dynamic Checking)</h3>
+<ul>
+  <li>At runtime, the JVM checks actual types.</li>
+  <li>Valid downcast → program runs normally.</li>
+  <li>Invalid downcast → <strong>ClassCastException</strong>.</li>
+  <li>Overridden method → dispatches to the actual type’s version.</li>
+</ul>
+
+<hr>
+
+<h2>Casting Summary</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Situation</th>
+      <th>Question to Ask Yourself</th>
+      <th>Compile Time</th>
+      <th>Runtime</th>
+      <th>Result / Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>✅ Upcast</strong><br><code>Animal a = new Dog();</code></td>
+      <td>Is the actual object a subclass of the declared type?<br>(Dog → Animal)</td>
+      <td>OK</td>
+      <td>OK</td>
+      <td>Always safe (compiler allows it automatically)</td>
+    </tr>
+    <tr>
+      <td><strong>⚠️ Safe Downcast</strong><br><code>Dog d = (Dog) a;</code><br>and <code>a</code> points to <code>new Dog()</code></td>
+      <td>Does the actual object really come from that subclass?</td>
+      <td>OK</td>
+      <td>OK</td>
+      <td>Safe only if runtime confirms object is a Dog.</td>
+    </tr>
+    <tr>
+      <td><strong>💣 Unsafe Downcast</strong><br><code>Dog d = (Dog) a;</code><br>and <code>a</code> points to <code>new Animal()</code></td>
+      <td>Was the object created as a superclass (not that subclass)?</td>
+      <td>OK (compiler trusts you)</td>
+      <td><strong>ClassCastException</strong></td>
+      <td>Danger because compiler can’t tell, but runtime fails.</td>
+    </tr>
+    <tr>
+      <td><strong>❌ Unrelated Types</strong><br><code>(String) new Integer(5);</code></td>
+      <td>Are the classes even in the same inheritance chain?</td>
+      <td><strong>Compile-time error</strong></td>
+      <td>—</td>
+      <td>Rejected immediately because they are unrelated families.</td>
+    </tr>
+    <tr>
+      <td><strong>❌ Sideways cast</strong></td>
+      <td><code>Dog d = (Dog) new Cat();</code></td>
+      <td>May compile if they share a common parent Animal</td>
+
+      <td><strong>ClassCastException</strong></td>
+      <td>Different subclasses of the same parent; can’t morph a <code>Cat</code> into a <code>Dog</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Tip for exams:</strong>  
+When you see a cast, check the <code>new</code> side first.  
+If the actual object <em>is</em> not below the cast → OK.  
+If not → runtime error.  
+If they’re unrelated → compile-time error.</p>
+
+
+<p><em>Remember:</em> casting doesn’t change the object — it only changes what the compiler <strong>believes</strong> it is.</p>
+<table>
+  <thead>
+    <tr><th>Case</th><th>Example</th><th>Compile-Time</th><th>Runtime</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Implicit <strong>upcast</strong></td><td><code>A a = new B();</code></td><td>OK</td><td>OK</td></tr>
+    <tr><td>Explicit <strong>downcast</strong> (valid)</td><td><code>B b = (B) a;</code> (when <code>a</code> really points to a <code>B</code>)</td><td>OK</td><td>OK</td></tr>
+    <tr><td>Explicit <strong>downcast</strong> (invalid)</td><td><code>C c = (C) a;</code> where <code>a</code> is actually a <code>B</code> and C is below B</td><td>OK</td><td><strong>ClassCastException</strong></td></tr>
+    <tr><td>Sideways (siblings)</td><td><code>Dog d = (Dog) someAnimal;</code> when it’s actually a <code>Cat</code></td><td>May compile via super type</td><td><strong>ClassCastException</strong></td></tr>
+    <tr><td>Unrelated types</td><td><code>(String) Integer.valueOf(5)</code></td><td><strong>Compile-time error</strong> (unrelated)</td><td>—</td></tr>
+  </tbody>
+</table>
+<p>Guard downcasts with <code>instanceof</code>: <code>if (x instanceof B) { B b = (B) x; }</code></p>
+
+<hr>
+
+<h2>Mini Hierarchy Used in Examples</h2>
+<pre><code>class A {
+    public void m() { System.out.println("A.m"); }
+    public void n() { System.out.println("A.n"); }
+}
+class B extends A {
+    @Override public void m() { System.out.println("B.m"); }
+    public void onlyInB() { System.out.println("B.onlyInB"); }
+}
+class C extends B {
+    @Override public void m() { System.out.println("C.m"); }
+    public void cOnly() { System.out.println("C.cOnly"); }
+}
+class D extends A {
+    @Override public void n() { System.out.println("D.n"); }
+}
+</code></pre>
+
+<hr>
+
+<h2>Classic Tracing Examples</h2>
+
+<h3>1) Upcasting and Dynamic Dispatch</h3>
+<pre><code>A x = new C();
+x.m();  // prints C.m
+
+A y = new B();
+y.n();  // prints A.n (B did not override n())</code></pre>
+
+<h3>2) Downcasting (safe &amp; unsafe)</h3>
+<pre><code>A a = new C();
+B b = (B) a;    // safe: C IS-A B
+b.onlyInB();    // prints "B.onlyInB"
+
+A a2 = new A();
+B b2 = (B) a2;  // compiles, but a2 is not a B
+b2.onlyInB();   // ClassCastException before this line</code></pre>
+
+
+
+<h3>3) Fields Are Not Polymorphic</h3>
+<p>Fields are not polymorphic. When a subclass defines a field with the same name as one in the superclass,
+the field in the declared (reference) type is the one that gets accessed, not the one from the actual (runtime) object.</p>
+<p> Why? Method calls are dynamically bound (resolved at runtime based on actual object).
+Field accesses are statically bound (resolved at compile time based on declared type).</p>
+<pre><code>class P { int v = 1; }
+class Q extends P { int v = 2; }
+P p = new Q();
+System.out.println(p.v); // prints 1 (resolved by reference type P)</code></pre>
+
+<h3>4) <code>super</code> Calls</h3>
+<pre><code>class X { void g() { System.out.println("X.g"); } }
+class Y extends X {
+    @Override void g() { System.out.println("Y.g"); 
+                        super.g(); }
+}
+X x2 = new Y();
+x2.g(); // prints "Y.g" then "X.g"</code></pre>
+
+<hr>
+
+<h3>5) <code>this</code> Calls</h3>
+<pre><code>class X {
+    void g() {
+        System.out.println("X.g");
+        this.h();   // dynamic call through 'this'
+    }
+    void h() { System.out.println("X.h"); }
+}
+class Y extends X {
+    @Override void h() { System.out.println("Y.h"); }
+}
+X x2 = new Y();
+x2.g();  // prints "X.g" then "Y.h"
+</code></pre>
+
+<h2>Compile-Time vs Runtime Errors (Spot the Difference)</h2>
+<ul>
+  <li><strong>Compile-time error</strong>
+    <pre><code>A a3 = new A();
+a3.onlyInB(); // ERROR: cannot find method onlyInB()</code></pre>
+    <pre><code>class Car { }
+class Dog { }
+
+Dog d = (Dog) new Car();  // ERROR: Car and Dog are unrelated types
+</code></pre>
+<pre><code>abstract class Shape {
+    abstract void draw();
+}
+
+interface Drawable {
+    void paint();
+}
+
+        Shape s = new Shape();      // ERROR: cannot instantiate abstract class
+        Drawable d = new Drawable(); // ERROR: cannot instantiate interface
+
+</code></pre>
+  </li>
+  <li><strong>Runtime error</strong>
+    <pre><code>A a4 = new A();
+C c = (C) a4; // compiles; throws ClassCastException at runtime</code></pre>
+  </li>
+</ul>
+
+<hr>
+
+<h2>Step-by-Step Tracing Walkthroughs</h2>
+
+<h3>Example Set A</h3>
+<table>
+  <thead>
+    <tr>
+      <th style="width:45%">Class Hierarchy (for reference)</th>
+      <th style="width:55%">Trace and Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<pre><code>class A {
+    void m() { System.out.println("A.m"); }
+    void n() { System.out.println("A.n"); }
+}
+
+class B extends A {
+    @Override void m() { System.out.println("B.m"); }
+}
+
+class C extends B {
+    @Override void m() { System.out.println("C.m"); }
+}
+
+class D extends A {
+    @Override void n() { System.out.println("D.n"); }
+}
+</code></pre>
+      </td>
+      <td>
+<pre><code>A v1 = new A();
+B v2 = new B();
+A v3 = new B();
+A v4 = new C();
+D v5 = new D();
+
+v1.m();  // A.m  (declared A → A version)
+v2.m();  // B.m  (declared B → overridden)
+v3.m();  // B.m  (declared A, actual B → runtime dispatch)
+v4.m();  // C.m  (declared A, actual C → runtime dispatch)
+v5.n();  // D.n  (declared D → overrides A.n)
+</code></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Example Set B (Casts)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:45%">Class Hierarchy (for reference)</th>
+      <th style="width:55%">Trace and Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<pre><code><pre><code>class A {
+    void m() { System.out.println("A.m"); }
+}
+class B extends A {
+    void onlyInB() { System.out.println("B.onlyInB"); }
+}
+class C extends B {
+    void cOnly() { System.out.println("C.cOnly"); }
+}
+class D extends A { }
+</code></pre>
+      </td>
+      <td>
+<pre><code>// Safe downcasts (actual object is a C → also a B)
+A t1 = new C();
+((B) t1).onlyInB();   // OK → prints "B.onlyInB"
+((C) t1).cOnly();     // OK → prints "C.cOnly"
+
+// Unsafe downcast (sibling)
+A t2 = new B();
+((C) t2).cOnly();     // Runtime: ClassCastException
+
+// Upcast (always safe)
+B t3 = new B();
+A a3 = t3;            // OK (implicit upcast)
+
+</code></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code>A t1 = new C();
+((B) t1).onlyInB();   // OK
+((C) t1).cOnly();     // OK
+
+A t2 = new B();
+((C) t2).cOnly();     // compiles, but throws ClassCastException</code></pre>
+
+<!-- <h3>Example Set C (Overloading Gotcha)</h3>
+<pre><code>class Printer {
+    void print(A a) { System.out.println("A"); }
+    void print(B b) { System.out.println("B"); }
+}
+Printer pr = new Printer();
+A ref = new C();
+pr.print(ref);        // A (compile-time choice)
+pr.print((B) ref);    // B (after cast)</code></pre> -->
+
+<hr>
+
+<h2>Practice Prompts (trace by hand)</h2>
+<p>Test your tracing skills and reinforce what you learned with these worksheet exercises:</p>
+
+<ul>
+  <li><a href="./worksheets_files/worksheet16.pdf" target="_blank">Worksheet 16 – Polymorphism & Casting</a></li>
+  <li><a href="./worksheets_files/worksheet17.pdf" target="_blank">Worksheet 17 – Method Dispatch & Inheritance</a></li>
+</ul>
+
+<p>Once you’ve completed the worksheets, check your understanding by reviewing the guided solutions:</p>
+
+<ul>
+  <li>✅ <a href="./walk1.html" target="_blank">Walkthrough 1 – Tracing with Declared vs. Actual Types</a></li>
+  <li>✅ <a href="./walk2.html" target="_blank">Walkthrough 2 – Downcasting & Runtime Errors</a></li>
+</ul>
+
+<hr>
+
+<h2>Quick Vocabulary</h2>
+<ul>
+  <li><strong>Upcast</strong>: cast to a superclass/interface (usually implicit).</li>
+  <li><strong>Downcast</strong>: cast to a subclass (explicit; may fail at runtime).</li>
+  <li><strong>Dynamic dispatch</strong>: runtime method body selection for overridden methods.</li>
+ 
+</ul>
+
+  </main>
+</body>
+</html>
