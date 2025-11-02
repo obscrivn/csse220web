@@ -140,6 +140,74 @@ margin-top: 120px;
 
 
     <section>
+<h2>Base-Case Cookbook</h2>
+
+<h3>Strings</h3>
+<ul>
+  <li><b>No lookahead</b> (only use s.charAt(0)):
+    <pre><code>if (s.isEmpty()) return "";</code></pre>
+    Neutral value: <code>""</code>
+  </li>
+  <li><b>Needs 1 lookahead</b> (you will read s.charAt(1)):
+    <pre><code>if (s.length() <= 1) return s;</code></pre>
+    Avoids OOB when no pair exists
+  </li>
+  <li><b>Needs 2 lookahead</b> (you will read s.charAt(2)):
+    <pre><code>if (s.length() <= 2) return s;</code></pre>
+  </li>
+</ul>
+
+<p><i>Tip:</i> In Java, never use <code>==</code> for strings. Prefer <code>s.isEmpty()</code> or <code>s.equals("")</code>.</p>
+
+<h3>Arrays (by index)</h3>
+<table>
+<tr><th>Access</th><th>Safe Base Case</th><th>Safe Index Range</th></tr>
+<tr><td>nums[i]</td><td><code>if (i >= nums.length) return …;</code></td><td>0..len-1</td></tr>
+<tr><td>nums[i], nums[i+1]</td><td><code>if (i >= nums.length - 1) return …;</code></td><td>0..len-2</td></tr>
+<tr><td>nums[i], nums[i+1], nums[i+2]</td><td><code>if (i >= nums.length - 2) return …;</code></td><td>0..len-3</td></tr>
+</table>
+
+<p><i>Why <code>&gt;=</code>?</i> It safely handles both the last valid index and empty arrays.</p>
+
+<h3>ArrayList&lt;&gt;</h3>
+<p><b>Base case:</b> use <code>isEmpty()</code> to stop when the list has no elements left.</p>
+
+<pre><code>if (list.isEmpty()) return 0;     // for numeric sum
+if (list.isEmpty()) return "";    // for string build
+if (list.isEmpty()) return false; // for boolean search
+</code></pre>
+<h4>Example 1. Summing Integers (mutating)</h4>
+<pre><code>int sumList(ArrayList&lt;Integer&gt; list) {
+    if (list.isEmpty()) return 0;
+    int first = list.remove(0);
+    return first + sumList(list);
+}
+</code></pre>
+
+<h4>Example 2. Building a String from Words (mutating)</h4>
+<pre><code>String joinWords(ArrayList&lt;String&gt; words) {
+    if (words.isEmpty()) return "";
+    String first = words.remove(0);
+    return first + " " + joinWords(words);
+}
+</code></pre>
+
+<h4>Example 3. Counting a Condition (non-mutating, using index)</h4>
+<pre><code>int countOdds(ArrayList&lt;Integer&gt; list, int i) {
+    if (i == list.size()) return 0;
+    int count = (list.get(i) % 2 != 0) ? 1 : 0;
+    return count + countOdds(list, i + 1);
+}
+</code></pre>
+<h2>Boolean Recursion Patterns (Quick Reminder)</h2>
+<ul>
+  <li><b>OR (search for any):</b> return <code>foundHere || recurse(...)</code></li>
+  <li><b>AND (all must pass):</b> return <code>okHere &amp;&amp; recurse(...)</code></li>
+</ul>
+</section>
+
+    <section>
+
       <h2>Base-Case Patterns</h2>
       <div class="grid grid-2">
         <div class="card">
@@ -198,7 +266,7 @@ margin-top: 120px;
       <div class="callout small">💡 Use <strong><code>&gt;=</code></strong> in array base cases to cover both the last valid index <em>and</em> empty arrays safely.</div>
     </section>
 
-    <section class="card">
+    <!-- <section class="card">
 <h2>Boolean Recursion (Intro Style)</h2>
 <h3>OR pattern (search for any)</h3>
 <pre><code>boolean contains11(int[] a, int i) {
@@ -233,7 +301,7 @@ return false; // found a violation
 return allLower(s.substring(1));
 }
 </code></pre>
-</section>
+</section> -->
 
     <section>
       <h2>Canonical Solutions (for practice)</h2>
