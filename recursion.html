@@ -199,13 +199,101 @@ if (list.isEmpty()) return false; // for boolean search
     return count + countOdds(list, i + 1);
 }
 </code></pre>
-<h2>Boolean Recursion Patterns (Quick Reminder)</h2>
+<h3>Boolean Recursion Patterns (Quick Reminder)</h3>
 <ul>
   <li><b>OR (search for any):</b> return <code>foundHere || recurse(...)</code></li>
   <li><b>AND (all must pass):</b> return <code>okHere &amp;&amp; recurse(...)</code></li>
 </ul>
 </section>
+<section>
+<hr>
+<h2>Recursion with Helper Methods</h2>
 
+<p><strong>Why use a helper?</strong>  
+Sometimes a recursive problem needs <em>extra information</em> (like an index or a running total) that you don’t want in the public method’s parameters.  
+A <code>helper</code> method lets you hide those details while keeping your recursion clean and organized.</p>
+
+<p>Typical reasons to use a helper:</p>
+<ul>
+  <li>Track progress with an index</li>
+  <li>Accumulate partial results</li>
+  <li>Hide technical parameters from the caller</li>
+</ul>
+
+<h4>General Pattern</h4>
+<pre><code class="language-java">
+public returnType methodName(parameters) {
+    // Setup or validate input
+    // Call helper with extra arguments
+    return helper(parameters, extraInfo);
+}
+
+private returnType helper(type param1, type extraInfo) {
+    if (base case) {
+        return something;
+    }
+    // Recursive step using extraInfo
+    return helper(updatedParam1, updatedExtraInfo);
+}
+</code></pre>
+
+<h4>Example 1 – Count Uppercase Letters</h4>
+<p>We only want the user to pass in a <code>String</code>, not an index. The helper keeps track of where we are.</p>
+<pre><code class="language-java">
+public int countUppercase(String s) {
+    return countUppercaseHelper(s, 0);
+}
+
+private int countUppercaseHelper(String s, int index) {
+    if (index == s.length()) {
+        return 0;
+    }
+    int count = Character.isUpperCase(s.charAt(index)) ? 1 : 0;
+    return count + countUppercaseHelper(s, index + 1);
+}
+</code></pre>
+
+<h4>Example 2 – Sum of Digits</h4>
+<pre><code class="language-java">
+public int sumDigits(int n) {
+    return sumDigitsHelper(Math.abs(n), 0);
+}
+
+private int sumDigitsHelper(int n, int sum) {
+    if (n == 0) {
+        return sum;
+    }
+    return sumDigitsHelper(n / 10, sum + n % 10);
+}
+</code></pre>
+
+<p><strong>Why a helper?</strong> The helper tracks the running total instead of returning through the call stack.</p>
+
+<h4>Example 3 – Reverse a String</h4>
+<pre><code class="language-java">
+public String reverse(String s) {
+    return reverseHelper(s, "");
+}
+
+private String reverseHelper(String s, String soFar) {
+    if (s.isEmpty()) {
+        return soFar;
+    }
+    return reverseHelper(s.substring(1), s.charAt(0) + soFar);
+}
+</code></pre>
+
+<p>The helper accumulates the reversed portion in <code>soFar</code>.</p>
+
+<h4>🧭 Design Tips</h4>
+<table>
+  <tr><th>When to use a helper</th><th>Why</th></tr>
+  <tr><td>You need an index or accumulator variable</td><td>To track progress or partial results</td></tr>
+  <tr><td>You want to simplify the user-facing method</td><td>Hide technical parameters</td></tr>
+  <tr><td>You need multiple recursive calls with extra state</td><td>Maintain state cleanly between calls</td></tr>
+</table>
+
+</section>
     <!-- <section>
 
       <h2>Base-Case Patterns</h2>
@@ -350,6 +438,40 @@ return true; // found a valid pair
 return array220(nums, index + 1);
 }
 </code></pre>
+        </div>
+
+
+        <div class="card">
+          <h3><code>Helper Method Builder</code></h3>
+<h5>Starter Code:</h5>
+<pre><code class="language-java">
+public boolean containsX(String s) {
+    // TODO: use a helper with an index
+}
+</code></pre>
+<h5>Transformed Version with a Helper:</h5>
+<pre><code class="language-java">
+public boolean containsX(String s) {
+    return containsXHelper(s, 0);
+}
+
+private boolean containsXHelper(String s, int i) {
+    if (i == s.length()) {
+        return false;
+    }
+    if (s.charAt(i) == 'x') {
+        return true;
+    }
+    return containsXHelper(s, i + 1);
+}
+</code></pre>
+
+<p><strong>Pattern to Notice:</strong></p>
+<ul>
+  <li>The public method hides the index — it just calls the helper.</li>
+  <li>The helper adds one parameter (<code>i</code>) to track progress through the string.</li>
+  <li>The helper defines its own <em>base case</em> and <em>recursive step</em>.</li>
+</ul>
         </div>
       </div>
     </section>
