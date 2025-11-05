@@ -285,7 +285,7 @@ private String reverseHelper(String s, String soFar) {
 
 <p>The helper accumulates the reversed portion in <code>soFar</code>.</p>
 
-<h4>🧭 Design Tips</h4>
+<h4>Design Tips</h4>
 <table>
   <tr><th>When to use a helper</th><th>Why</th></tr>
   <tr><td>You need an index or accumulator variable</td><td>To track progress or partial results</td></tr>
@@ -468,7 +468,7 @@ private boolean containsXHelper(String s, int i) {
 
 <p><strong>Pattern to Notice:</strong></p>
 <ul>
-  <li>The public method hides the index — it just calls the helper.</li>
+  <li>The public method hides the index, it just calls the helper.</li>
   <li>The helper adds one parameter (<code>i</code>) to track progress through the string.</li>
   <li>The helper defines its own <em>base case</em> and <em>recursive step</em>.</li>
 </ul>
