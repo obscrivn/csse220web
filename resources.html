@@ -2014,6 +2014,129 @@ startButton.addActionListener(e -&gt; {
   
 </section>
 
+<section id="levels-enum">
+  <h2>🎮 Adding Levels with Enum and Ball Positions</h2>
+
+  <p>This example shows how to extend your current game structure to include <code>Level</code> support using an <strong>enum</strong>. 
+  Each level defines ball starting positions (and can later define speed, color, or size). 
+  You’ll also see how to display the current level and ball positions on screen.</p>
+
+  <h3>11. Define a Level Enum</h3>
+  <p>Use an <code>enum</code> to hardcode level data. Each level holds a 2D array of starting (x, y) positions:</p>
+
+  <pre><code class="language-java">
+public enum Level {
+    L1(new int[][] { {120, 100} }),
+    L2(new int[][] { {60, 80}, {220, 140} }),
+    L3(new int[][] { {40, 40}, {120, 180}, {260, 90} });
+
+    private final int[][] starts;
+    Level(int[][] starts) { this.starts = starts; }
+    public int[][] starts() { return starts; }
+}
+  </code></pre>
+
+  <h3>2. Update the BallModel</h3>
+  <p>Add a method to clear and load the balls for a specific level:</p>
+
+  <pre><code class="language-java">
+public class BallModel {
+    private final java.util.List&lt;Ball&gt; balls = new java.util.ArrayList&lt;&gt;();
+
+    public void addBall(int x, int y) {
+        balls.add(new Ball(x, y));
+    }
+
+    public void clear() {
+        balls.clear();
+    }
+
+    public void load(Level level) {
+        clear();
+        for (int[] p : level.starts()) {
+            addBall(p[0], p[1]);
+        }
+    }
+
+    public java.util.List&lt;Ball&gt; getBalls() {
+        return java.util.Collections.unmodifiableList(balls);
+    }
+}
+  </code></pre>
+
+  <h3>3. Teach GameComponent About Levels</h3>
+  <p>Let the <code>GameComponent</code> load levels and draw a small overlay with live positions.</p>
+
+  <pre><code class="language-java">
+public class GameComponent extends JComponent {
+    private final BallModel model = new BallModel();
+    private Level currentLevel = Level.L1;
+    private Timer timer;
+
+    public GameComponent() {
+        this(Level.L1);
+    }
+
+    public GameComponent(Level level) {
+        setLevel(level);
+        // initialize and start your timer here if needed
+    }
+
+    public void setLevel(Level level) {
+        this.currentLevel = level;
+        model.load(level);
+        repaint();
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+
+        for (Ball b : model.getBalls()) {
+            b.draw(g2);
+        }
+
+        // Overlay with level name + positions
+        int y = 16;
+        g2.drawString("Level: " + currentLevel.name(), 8, y);
+        y += 14;
+        int i = 1;
+        for (Ball b : model.getBalls()) {
+            g2.drawString("Ball" + i++ + " = (" + b.getX() + ", " + b.getY() + ")", 8, y);
+            y += 14;
+        }
+    }
+}
+  </code></pre>
+
+  <h3>4. Simple Level Selector (in GamePanel)</h3>
+  <p>Add a dropdown menu to change levels:</p>
+
+  <pre><code class="language-java">
+public class GamePanel extends JPanel {
+    private GameComponent canvas;
+
+    public GamePanel() {
+        setLayout(new BorderLayout());
+        canvas = new GameComponent(Level.L1);
+        add(canvas, BorderLayout.CENTER);
+
+        JComboBox&lt;Level&gt; levels = new JComboBox&lt;&gt;(Level.values());
+        levels.addActionListener(e -&gt; canvas.setLevel((Level) levels.getSelectedItem()));
+        add(levels, BorderLayout.NORTH);
+    }
+}
+  </code></pre>
+
+
+
+  <blockquote>
+    💡 Tip: Later, you can extend <code>Level</code> to store <em>speed, color, number of obstacles, or background images</em>.
+  </blockquote>
+</section>
+
+
 <section id="levels">
   <h2 style="color:black">Implementing <code style="color:red">LevelIO.loadLevel</code> with <code style="color:red">BufferedReader</code></h2>
 
@@ -2137,7 +2260,7 @@ public enum Level {
 
 <hr>
 
-<h3>3) Hard-coded level load (no button chooser)</h3>
+<h3>3) Level load</h3>
 <p>Keep your app simple: choose a level in code and boot.</p>
 
 <pre><code class="language-java">
