@@ -2080,6 +2080,174 @@ SwingUtilities.invokeLater(() -&gt; {
     <li>Blank or whitespace-only lines are skipped via <code style="color:red">trim().isEmpty()</code></li>
 
   </ul>
+
+  <p class="subtitle">Goal: Store simple level files, load them in code, and keep the game logic clean.</p>
+
+<hr>
+
+<h3>Expanded version with ENUM  to organize levels</h3>
+<p>
+Enums aren’t just labels—they can carry data (like a display name and a file path).
+This makes level selection/type-safety cleaner than string matching.
+</p>
+
+<pre><code class="language-java">
+// Level.java
+public enum Level {
+    LEVEL1("Level 1", "/levels/level1.txt"),
+    LEVEL2("Level 2", "/levels/level2.txt");
+
+    private final String displayName;
+    private final String filePath;
+
+    Level(String displayName, String filePath) {
+        this.displayName = displayName;
+        this.filePath = filePath;
+    }
+    public String getDisplayName() { return displayName; }
+    public String getFilePath()    { return filePath; }
+    @Override public String toString() { return displayName; }
+}
+</code></pre>
+
+<ul class="tip">
+  <li>Adding a level = add a new enum constant (keep game code unchanged).</li>
+</ul>
+
+<hr>
+
+<h3>2) Where to keep the level text files (Eclipse)</h3>
+<ol>
+  <li>Create a folder named <code>resources</code> in your project.</li>
+  <li>Right-click project → <b>Properties</b> → <b>Java Build Path</b> → <b>Source</b> tab → <b>Add Folder…</b> → check <code>resources/</code>.</li>
+  <li>Inside <code>resources/</code>, create a folder <code>levels/</code> and add files like <code>level1.txt</code>, <code>level2.txt</code>.</li>
+</ol>
+
+<pre><code>
+// resources/
+   levels/
+     level1.txt
+     level2.txt
+</code></pre>
+
+<ul class="tip">
+  <li>Load with <code>getResourceAsStream("/levels/level1.txt")</code>.</li>
+  
+</ul>
+
+<hr>
+
+<h3>3) Hard-coded level load (no button chooser)</h3>
+<p>Keep your app simple: choose a level in code and boot.</p>
+
+<pre><code class="language-java">
+// GameApp.java
+import javax.swing.*;
+
+public class GameApp {
+    public void show() {
+        SwingUtilities.invokeLater(() -> {
+            // hard-code the level choice here
+            Level startLevel = Level.LEVEL1;
+
+            GamePanel panel = new GamePanel(startLevel); // pass enum in
+            JFrame f = new JFrame("Ball Game — " + startLevel.getDisplayName());
+            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            f.setContentPane(panel);
+            f.pack();
+            f.setLocationRelativeTo(null);
+            f.setVisible(true);
+        });
+    }
+    public static void main(String[] args) { new GameApp().show(); }
+}
+</code></pre>
+<p>Learn how you can update yoru contsructor to accept the level</p>
+<pre><code class="language-java">
+// GamePanel.java (constructor overload to accept Level)
+public class GamePanel extends JPanel {
+    public GamePanel(Level level) {
+        loadLevel(level);        // parse file into Ball objects
+        // create GameComponent, start Timer, etc.
+    }
+    private void loadLevel(Level level) {
+        try (var in = getClass().getResourceAsStream(level.getFilePath())) {
+            if (in == null) throw new java.io.FileNotFoundException(level.getFilePath());
+            parseLevel(in);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            javax.swing.JOptionPane.showMessageDialog(this, "Load failed: " + ex.getMessage());
+            System.exit(1);
+        }
+    }
+}
+</code></pre>
+
+<hr>
+
+<h3>4) How to parse a level file (just for an illustration - you need to adjust your parameters</h3>
+
+<p><b>Level file format</b> (flexible, human-editable):</p>
+<pre><code>
+# level1.txt
+NAME One Ball
+SIZE 800 500
+BALL 120 120 3 2 20
+</code></pre>
+
+<p>Parser example (turns text into <code>Ball</code> objects):</p>
+<pre><code class="language-java">
+// Inside GamePanel
+private final java.util.List&lt;Ball&gt; balls = new java.util.ArrayList&lt;&gt;();
+private int worldW = 800, worldH = 500;
+
+private void parseLevel(java.io.InputStream in) throws java.io.IOException {
+    balls.clear();
+    String name = "Untitled";
+    int W = worldW, H = worldH;
+
+    try (var br = new java.io.BufferedReader(
+            new java.io.InputStreamReader(in, java.nio.charset.StandardCharsets.UTF_8))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            line = line.strip();
+            if (line.isEmpty() || line.startsWith("#")) continue;
+            String[] t = line.split("\\s+");
+            switch (t[0]) {
+                case "NAME" -> name = line.substring(5).strip();
+                case "SIZE" -> { W = Integer.parseInt(t[1]); H = Integer.parseInt(t[2]); }
+                case "BALL" -> {
+                    int x = Integer.parseInt(t[1]);
+                    int y = Integer.parseInt(t[2]);
+                    int dx = Integer.parseInt(t[3]);
+                    int dy = Integer.parseInt(t[4]);
+                    int r  = Integer.parseInt(t[5]);
+                    balls.add(new Ball(x, y, dx, dy, r)); // your Ball class
+                }
+                default -> System.err.println("Unknown token: " + t[0]);
+            }
+        }
+    }
+    // commit size for GameComponent & Timer loop
+    worldW = W; worldH = H;
+}
+</code></pre>
+
+<p><b>Paint & move reminder</b> (your existing classes):</p>
+<ul>
+  <li><code>GameComponent</code> calls <code>b.draw(g2)</code> for each ball.</li>
+  <li>Timer in <code>GamePanel</code> calls <code>b.move(worldW, worldH)</code> then <code>repaint()</code>.</li>
+</ul>
+
+<hr>
+
+<h4>Quick checklist</h4>
+<ul>
+  <li>Create <code>Level</code> enum with file paths.</li>
+  <li>Mark <code>resources/</code> as a Source folder in Eclipse; put <code>levels/*.txt</code> inside.</li>
+  <li>Hard-code a starting level in <code>GameApp</code> (or later swap to a chooser).</li>
+  <li>Parse lines → create <code>Ball</code> objects → run the timer.</li>
+</ul>
 </section>
 
 <section id="sprites">
