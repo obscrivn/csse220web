@@ -299,9 +299,34 @@ average price <code>averagePrice</code>, and whether it is open <code>isOpen</co
   Average Price: 3.99
   Open: true
    </div>
-   <div class="solution-window">
+
+   <h4>Step 1: Using concatenation with <code>println</code></h4>
+
+<p>First, declare your variables:</p>
+<ul>
+  <li><code>String shopName</code></li>
+  <li><code>int coffeeTypes</code></li>
+  <li><code>double averagePrice</code></li>
+  <li><code>boolean isOpen</code></li>
+</ul>
+
+<p>
+  Then use <strong>string concatenation</strong> with <code>System.out.println</code> to print everything on one line.
+  Example expected style (your values can match this):
+</p>
+
+<pre><code>Shop: Java Beans Types: 5 Average Price: 3.99 Open: true
+</code></pre>
+
+    <h4>Step 2: Using <code>printf</code> for formatted output</h4>
+
+   <p>Learn about printf() and
+  add another output line using <code>System.out.printf</code> to format the output as shown below. Make sure you understand each format specifier used.
+   </p>
+      <div class="solution-window">
 System.out.printf("Shop: %s\nCoffee Types: %d\nAverage Price: $%.2f\nOpen: %b\n", shopName, coffeeTypes, averagePrice, isOpen);
    </div>
+</p>
    <details class="hint">
   <summary>💡 Hint: New Line in printf</summary>
   <p>You can add a new line in two ways when using <code>printf</code>:</p>
