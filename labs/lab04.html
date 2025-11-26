@@ -139,6 +139,49 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+
+/* Container for each hint section */
+  .collapsible-hint {
+    margin: 0.5em 0 1.2em 0;
+  }
+
+  .collapsible-hint details {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.6em 0.8em;
+    background-color: #f9f9f9;
+  }
+
+  .collapsible-hint summary {
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  /* Remove default triangle on some browsers */
+  .collapsible-hint summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Add custom marker */
+  .collapsible-hint summary::before {
+    content: "▶ ";
+    font-size: 0.9em;
+  }
+
+  .collapsible-hint details[open] summary::before {
+    content: "▼ ";
+  }
+
+  .collapsible-hint pre {
+    background-color: #f4f4f4;
+    padding: 0.5em;
+    overflow-x: auto;
+  }
+
+  .collapsible-hint code {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
   </style>
 </head>
 <body>

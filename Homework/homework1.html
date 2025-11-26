@@ -59,7 +59,7 @@
       padding-left: 20px;
     }
     code {
-      background-color: #e0e0e0;
+      /* background-color: #e0e0e0; */
       padding: 2px 4px;
       border-radius: 3px;
       font-family: "Courier New", Courier, monospace;
@@ -78,6 +78,48 @@
       border-radius: 4px;
       margin-top: 10px;
     }
+    /* Container for each hint section */
+  .collapsible-hint {
+    margin: 0.5em 0 1.2em 0;
+  }
+
+  .collapsible-hint details {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.6em 0.8em;
+    background-color: #f9f9f9;
+  }
+
+  .collapsible-hint summary {
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  /* Remove default triangle on some browsers */
+  .collapsible-hint summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Add custom marker */
+  .collapsible-hint summary::before {
+    content: "▶ ";
+    font-size: 0.9em;
+  }
+
+  .collapsible-hint details[open] summary::before {
+    content: "▼ ";
+  }
+
+  .collapsible-hint pre {
+    background-color: #f4f4f4;
+    padding: 0.5em;
+    overflow-x: auto;
+  }
+
+  .collapsible-hint code {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
   </style>
 </head>
 <body>
@@ -101,7 +143,7 @@
   <ol>
     <li>
       <strong>Download the ZIP File (containing a project)</strong> to your computer but do not place 
-      in the eclipse workspace folder: <a href="HW1.zip">Click here to donwload ZIP</a>
+      in the eclipse workspace folder: <a href="./HW1.zip">Click here to donwload ZIP</a>
     </li>
     <li>
       <strong>Open Eclipse:</strong> <em>You do not need to create a new project</em> because the ZIP file contains an existing project.
@@ -122,18 +164,193 @@
       <strong>Verify the Imported Project:</strong> The project should now appear in your Package Explorer. Double-click it to open and review its contents.
     </li>
   </ol>
-  
+
+<div style="padding: 1em 1.2em; background: #fafafa; border-left: 4px solid #2a2b2b; margin-bottom: 1.5em;box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
     <h2>Overview</h2>
+    <p>💡 Additional Resources: <a href="../resources.html#casting" target="_blank">Casting</a> <a href="../resources.html#conditionals" target="_blank">Conditionals</a></p>
     <p>
-      The primary objective of this assignment is to ensure that you become comfortable with 
-      checking out homework projects in Eclipse.
+  In this homework, you will implement three small, independent methods in 
+  <code>HW1.java</code> and run the provided <code>RunAllTests</code> file in Eclipse to check your work before submitting to Gradescope.</p>
+</div>
+
+
+<div style="display: flex; flex-wrap: wrap; gap: 1.2em; margin: 1.5em 0;">
+
+  <!-- Card 1 -->
+  <div style="
+      flex: 1 1 260px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1em 1.2em;
+      background: #fafafa;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  ">
+    <h3 style="margin-top: 0;">Problem #1 🧮</h3>
+    <p><code>sumsToTen(int a, int b)</code></p>
+    <p style="margin-bottom: 0.6em;">
+      Checks whether two integers team up to make <strong>10</strong>.
     </p>
-    <p>Additional Hints: To extract the last digit of a number, use the modulo operator (%) with 10.
+    <div class="collapsible-hint">
+  <details>
+    <summary><strong>💡  Hint (click to expand)</strong></summary>
+
+    <p>
+      This is a simple conditional check. You need to see if the sum of 
+      <code>a</code> and <code>b</code> equals 10.
+    </p>
+
+    <p>
+      So your method can simply return the result of this comparison.
+    </p>
+  </details>
+  </div>
+
+  </div>
+
+  <!-- Card 2 -->
+  <div style="
+      flex: 1 1 260px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1em 1.2em;
+      background: #fafafa;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  ">
+    <h3 style="margin-top: 0;">Problem #2 ➕</h3>
+    <p><code>addFraction(int num1, int den1, int num2, int den2)</code></p>
+    <p style="margin-bottom: 0.6em;">
+      Adds two fractions and gives you the decimal result as a <code>double</code>.
+    </p>
+    <div class="collapsible-hint">
+  <details>
+    <summary><strong>💡 Hint (click to expand)</strong></summary>
+
+    <p>
+      The key idea is to compute each fraction as a <code>double</code> and then add them.
+    </p>
+
+    <ul>
+      <li>
+        Convert the numerator to a <code>double</code> before dividing!
+        <br><code>(double) num1 / den1</code>
+      </li>
+      
+    </ul>
+
+    <p><strong>Note: Be careful about integer division!</strong></p>
+
+    <p>
+      If you write:
+    </p>
+
+<pre><code>(double)(num1 / den1)</code></pre>
+
+    <p>
+      Java will do integer division <em>first</em>, since both 
+      <code>num1</code> and <code>den1</code> are integers.
+    </p>
+
+    <p>For example:</p>
+
+<pre><code>(double)(1 / 2)  // 1 / 2 is 0 as an int → becomes 0.0</code></pre>
+
+    <p>
+      That loses the decimal part.
+    </p>
+
+    <p>
+      Instead, cast <em>before</em> dividing:
+    </p>
+
+<pre><code>(double) 1 / 2  // 1 becomes 1.0, so 1.0 / 2 = 0.5</code></pre>
+
+    <p>
+      This forces Java to use decimal (floating-point) division, which is what you want.
+    </p>
+
+  </details>
+</div>
+
+  </div>
+
+  <!-- Card 3 -->
+  <div style="
+      flex: 1 1 260px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1em 1.2em;
+      background: #fafafa;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  ">
+    <h3 style="margin-top: 0;">Problem #3 🔍</h3>
+    <p><code>largestSingleDigit(long input)</code></p>
+    <p style="margin-bottom: 0.6em;">
+      Scans a whole number and reports the biggest digit hiding inside it.
+    </p>
+    <div class="collapsible-hint">
+  <details>
+    <summary><strong>💡 Hint 1: Module + Division</strong></summary>
+<p>To extract the last digit of a number, use the modulo operator (%) with 10.
          For example, if the input is 15342, then <code>15342 % 10</code> gives 2 (the last digit).
          After processing the last digit, use integer division (<code>/</code>) by 10 to remove it.
          Repeat these steps until the number is reduced to 0.
-         Compare each digit to determine the largest one.</p>
-    <p>Learn about casting and conversion: <a href="../resources.html#casting" target="_blank">Casting</a> <a href="../resources.html#int-to-string" target="_blank">Converting Between Integers, Strings, and Characters</a></p>
+         Compare each digit to determine the largest one. Here is the workflow:</p>
+
+        <ul>
+          <li>Use the modulo operator <code>% 10</code> to get the last digit.</li>
+          <li>Compare it to your current "largest digit so far".</li>
+          <li>Use integer division <code>/ 10</code> to remove the last digit.</li>
+          <li>Repeat until the number becomes 0.</li>
+        </ul>
+
+
+
+  </details>
+</div>
+<div class="collapsible-hint">
+  <details>
+    <summary><strong>💡 Hint 2: Casting Pitfalls</strong></summary>
+
+    <p>
+      If you write something like:
+    </p>
+
+<pre><code>int digit = (int) input % 10;</code></pre>
+
+    <p>
+      Java will cast <code>input</code> to an <code>int</code> <em>before</em> the <code>% 10</code> happens.
+      For very large <code>long</code> values, this cast can overflow and produce strange numbers.
+    </p>
+
+    <p>
+      Instead, make sure you take the last digit <strong>first</strong>, then cast that small value:
+    </p>
+
+<pre><code>int digit = (int) (input % 10);</code></pre>
+
+    <p>
+      This way:
+      <ul>
+        <li><code>input % 10</code> gives a value between 0 and 9 (always safe)</li>
+        <li>Then you cast that tiny digit to <code>int</code></li>
+      </ul>
+      This prevents overflow and makes your method work correctly even for very large numbers.
+    </p>
+  </details>
+</div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+    
     <h2>Rubric</h2>
     <p>
       All JUnit tests for each operation must succeed in order to earn 100% on this assignment.
@@ -147,7 +364,7 @@
     <h2>To Do</h2>
     <ol>
       <li>
-        Implement the two operations in <code>HW1.java</code>.
+        Implement the three operations in <code>HW1.java</code>.
       </li>
       <li>
         Run the included JUnit tests by executing <code>RunAllTests.java</code> to ensure your solution passes all tests.

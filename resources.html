@@ -377,35 +377,89 @@ System.out.println(b <= 15);  // Output: false</code></pre>
 
  <!-- Formatting Section -->
       <section id="printf">
-        <h1 style="color:black">Printf &amp; Placeholder Formatting</h1>
-        <p>The <strong><code style="color:darkgreen">System.out.printf()</code></strong> method allows you to format output using placeholders instead of a concatenation operator "+". Below are some examples:</p>
-        
-        <h3 style="color:black">Basic Formatting</h3>
-        <pre><code>System.out.printf("Name: %s, Age: %d", "Alice", 30);</code></pre>
-        <div class="output">
-            Name: Alice, Age: 30
-          </div>
-        <p>This example uses <strong><code style="color:darkgreen">%s</code></strong> for a string and <strong><code style="color:darkgreen">%d</code></strong> for an integer.</p>
-       
-        <h3>Floating-Point Formatting</h3>
-        <pre><code>System.out.printf("Price: $%.2f", 19.99);</code></pre>
-        <div class="output">
-            Price: $19.99
-          </div>
-          <h3>Boolean Formatting</h3>
-        <p>The <strong><code style="color:darkgreen">%b</code></strong> placeholder formats a boolean (true or false).</p>
-      <pre><code>System.out.printf("The store is open: %b", true);</code></pre>
-<div class="output">
-  The store is open: true
-</div>
-<h3>Multiple Variables</h3>
-<pre><code>int x = 10;
-int y = 20;
-System.out.printf("Coordinates: (%d, %d)", x, y);</code></pre>
-        <div class="output">
-            Coordinates: (10, 20)
-          </div>
-        <p>This example demonstrates using multiple placeholders within one formatted string.</p>
+        <h1 style="color:black">Print Formatting</h1>
+        <h3><code style="color:black">print</code>, <code style="color:black">println</code>, and <code style="color:black">printf</code>: what’s the difference?</h3>
+
+<p>In Java, <code style="color:black">System.out</code> has a few different methods for printing:</p>
+
+<ul>
+  <li>
+    <pre><code>System.out.print(value);</code></pre>
+    Prints the value and <strong>stays on the same line</strong> (no automatic newline).
+  </li>
+  <li>
+    <pre><code>System.out.println(value);</code></pre>
+    Prints the value and then <strong>moves to the next line</strong>.
+  </li>
+  <li>
+    <pre><code>System.out.printf(formatString, values...);</code></pre>
+    Uses a <em>format string</em> with placeholders (like <code style="color:black">%d</code>, <code style="color:black">%s</code>, <code style="color:black">%f</code.2f</code>) and fills
+    them in with the values you pass. Great for nicely aligned or formatted output.
+  </li>
+</ul>
+
+<h3>Common <code style="color:black">System.out.printf()</code> placeholders</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Placeholder</th>
+      <th>Type / Meaning</th>
+      <th>Example usage</th>
+      <th>Example output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code style="color:black">%d</code></td>
+      <td>integer (<code style="color:black">int</code>, <code style="color:black">long</code>)</td>
+      <td><code style="color:black">System.out.printf("Count: %d", 5);</code></td>
+      <td><code style="color:black">Count: 5</code></td>
+    </tr>
+    <tr>
+      <td><code style="color:black">%f</code></td>
+      <td>floating-point (<code style="color:black">float</code>, <code style="color:black">double</code>)</td>
+      <td><code style="color:black">System.out.printf("Value: %f", 3.5);</code></td>
+      <td><code style="color:black">Value: 3.500000</code></td>
+    </tr>
+    <tr>
+      <td><code style="color:black">%.2f</code></td>
+      <td>floating-point with 2 decimals</td>
+      <td><code style="color:black">System.out.printf("Price: $%.2f", 3.5);</code></td>
+      <td><code style="color:black">Price: $3.50</code></td>
+    </tr>
+    <tr>
+      <td><code style="color:black">%s</code></td>
+      <td>string</td>
+      <td><code style="color:black">System.out.printf("Name: %s", "Alex");</code></td>
+      <td><code style="color:black">Name: Alex</code></td>
+    </tr>
+    <tr>
+      <td><code style="color:black">%b</code></td>
+      <td>boolean</td>
+      <td><code style="color:black">System.out.printf("Open: %b", true);</code></td>
+      <td><code style="color:black">Open: true</code></td>
+    </tr>
+    <tr>
+      <td><code style="color:black">%c</code></td>
+      <td>single character</td>
+      <td><code style="color:black">System.out.printf("Grade: %c", 'A');</code></td>
+      <td><code style="color:black">Grade: A</code></td>
+    </tr>
+    <tr>
+      <td><code style="color:black">%n</code></td>
+      <td>newline (platform-independent)</td>
+      <td><code style="color:black">System.out.printf("Line 1%nLine 2%n");</code></td>
+      <td><code style="color:black">Line 1</code><br> <code style="color:black">Line 2</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can also combine them:</p>
+
+<pre><code class="language-java">System.out.printf("(%d, %d) -&gt; %.2f%n", x, y, distance);
+</code></pre>
+     
       </section>
 
       <section id="conditionals">
