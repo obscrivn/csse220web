@@ -176,11 +176,11 @@ a.resource-ref:hover {
     <h1>Lab Assignment 01</h1>
     <nav id="lab-nav">
         <ul>
-          <li><a href="#lab1">01. Printing</a></li>
+          <li><a href="#lab1">01. Print</a></li>
           <li><a href="#lab2">02. Backwards</a></li>
           <li><a href="#lab3">03. Formatting</a></li>
-          <li><a href="#lab4">04. Conditionals</a></li>
-          <li><a href="#lab5">05. For Loops</a></li>
+          <li><a href="#lab4">04. Conditionals (Submission)</a></li>
+          <li><a href="#lab5">05. For Loops (Submission)</a></li>
           
          
           <!-- Add more lab links as needed -->
@@ -206,7 +206,7 @@ a.resource-ref:hover {
   </ol>
 </div>
     <div class="lab-section" id="lab1">
-        <h2>01. Printing</h2>
+        <h2>01. Print</h2>
         <p>Resources 1: <a href="../resources.html#java-types" class="resource-ref" target="_blank">Data Types</a></p>
         <p>Resources 2: <a href="../resources.html#syntax" class="resource-ref" target="_blank">Basic Syntax</a></p>
         <p>
@@ -346,7 +346,7 @@ System.out.printf("Shop: %s%nAverage Price: $%.2f%n", shopName, averagePrice);
 </div>
 
 <div class="lab-section" id="lab4">
-  <h2>04. Working with Methods and Conditionals (Submission)</h2>
+  <h2>04. Working with Conditionals (Submission)</h2>
   <p>Resources 1: <a href="../resources.html#return" class="resource-ref" target="_blank">Calling Methods</a></p>
   <p>Resources 2: <a href="../resources.html#conditionals" class="resource-ref" target="_blank">Conditionals</a></p>
  <h3>How to Import a ZIP File into Eclipse</h3>
@@ -461,17 +461,14 @@ System.out.printf("Shop: %s%nAverage Price: $%.2f%n", shopName, averagePrice);
   <h2>05. Working with For Loops</h2>
   <p>Resources 1: <a href="../resources.html#string-methods" class="resource-ref" target="_blank">String Methods</a></p>
   <p>Resources 2: <a href="../resources.html#loops" class="resource-ref" target="_blank">For Loops</a></p>
-  <p>In this section, you will use a provided java file, upload it to Eclipse, complete TODO, and execute the program</p>
-  <p><a href="../labs/ForLoops.java">Download Java File. Make sure you know where (which) it is downloaded</a> </p>
-  <p>Instructions: you can directly donwload under your current project src package in eclipse</p>
+  <p>In you current Java project, switch to ForLoops.java file (double-click to open in the editor)</p>
 <details class="hint">
-  <summary>💡 Hint 1: Start simple</summary>
-  <p>Try writing the first few numbers by hand: <code>1, 11, 111, 1111</code>. 
-     How do you get from one to the next mathematically? </p>
+  <summary>💡 Hint: bunchOfOnes()</summary>
+  Start with <code>result = 0</code>, then loop <code>length</code> times. In each loop, first do <code>result = result * 10;</code> to shift left, then <code>result = result + 1;</code> to add a new <code>1</code> digit at the end.
 </details>
 
 <details class="hint">
-  <summary>💡 Hint 2: Growing the number</summary>
+  <summary>💡 Hint 1: Growing the number</summary>
   <p>If you have <code>11</code> and want <code>111</code>, think: 
      <br><code>11 * 10 = 110</code>, then add <code>1</code> → <code>111</code>.</p>
     <p> Each time through the loop, the current value is multiplied by 10
@@ -481,32 +478,10 @@ System.out.printf("Shop: %s%nAverage Price: $%.2f%n", shopName, averagePrice);
 </details>
 
 <details class="hint">
-  <summary>💡 Hint 3: The update rule</summary>
+  <summary>💡 Hint 2: The update rule</summary>
   <p>The pattern each time is: 
      <br><code>current = current * 10 + 1;</code></p>
-</details>
-
-<details class="hint">
-  <summary>💡 Hint 4: Skeleton Code</summary>
-  <p>Note - we are using a class here just for an illustration</p>
-  <pre><code class="language-java">package lab01;
-
-public class OnesBuilder {
-    public static void main(String[] args) {
-        int count = 5;       // how many numbers to print
-        int current = 0;     // starting value
-
-        for (int i = 1; i <= count; i++) {
-            // update current here
-            // print current
-        }
-    }
-}
-</code></pre>
-
-
-
-    <div class="code-window">
+   <div class="code-window">
 <pre>
 Example Output (count = 5)
 
@@ -516,7 +491,21 @@ Example Output (count = 5)
 1111
 11111
 </pre>
+
 </details>
+
+<details class="hint">
+  <summary>💡 Hint: fact()</summary>
+  Initialize <code>long result = 1;</code>, then use a <code>for</code> loop that goes from <code>1</code> up to <code>num</code> (or from <code>num</code> down to <code>1</code>), and multiply <code>result</code> by the loop variable each time: <code>result *= i;</code>. This automatically gives 1 when <code>num</code> is 0 because the loop doesn’t run.
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 4: countXX()</summary>
+  Use a <code>for</code> loop with an index <code>i</code> from <code>0</code> up to <code>str.length() - 2</code>. At each step, check the two characters starting at <code>i</code>, for example with <code>str.substring(i, i + 2).equals("xx")</code> or <code>str.charAt(i) == 'x' &amp;&amp; str.charAt(i + 1) == 'x'</code>, and increment a <code>count</code> variable whenever you find a match.
+</details>
+
+
+ 
 <details class="hint">
   <summary>💡 Hint: How to write a test for <code>countXX</code></summary>
   <p>When you test a method, you want to:</p>
