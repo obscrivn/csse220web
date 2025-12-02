@@ -157,6 +157,61 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
   </style>
 </head>
 <body>
@@ -176,11 +231,11 @@ a.resource-ref:hover {
     <h1>Lab Assignment 01</h1>
     <nav id="lab-nav">
         <ul>
-          <li><a href="#lab1">01. Print</a></li>
-          <li><a href="#lab2">02. Backwards</a></li>
-          <li><a href="#lab3">03. Formatting</a></li>
-          <li><a href="#lab4">04. Conditionals (Submission)</a></li>
-          <li><a href="#lab5">05. For Loops (Submission)</a></li>
+          <li><a href="#lab-01">01. Print</a></li>
+          <li><a href="#lab-02">02. Backwards</a></li>
+          <li><a href="#lab-03">03. Formatting</a></li>
+          <li><a href="#lab-04">04. Conditionals</a></li>
+          <li><a href="#lab-05">05. For Loops</a></li>
           
          
           <!-- Add more lab links as needed -->
@@ -189,7 +244,7 @@ a.resource-ref:hover {
 <!-- Lab Navigation Menu -->
 
       <div id="main-content">
-         <div class="lab-section" id="lab0">
+         <div class="lab-section" id="lab">
           <h3>⚡ Submission Instructions</h3>
           <ol>
     <li> Practice 01,02,03 in your own Java project in Eclipse.</li>
@@ -212,8 +267,15 @@ a.resource-ref:hover {
     <li>Run it once (even if it’s empty): click the green <span class="run-btn">  </span> button to confirm your setup.</li>
   </ol>
 </div> -->
-    <div class="lab-section" id="lab1">
-        <h2>01. Print</h2>
+    <!-- <div class="lab-card" class="lab-section" id="lab-01" open> -->
+      <details class="lab-card" id="lab-01" open>
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Print</span>
+    <span class="lab-tag">Practice</span>
+  </summary>
+  <div class="lab-body">
+      <!-- <h2>01. Print</h2> -->
         <p>Resources 1: <a href="../resources.html#java-types" class="resource-ref" target="_blank">Data Types</a></p>
         <p>Resources 2: <a href="../resources.html#syntax" class="resource-ref" target="_blank">Basic Syntax</a></p>
         <p>
@@ -256,9 +318,19 @@ public class Printing {
       <li>If you see red squiggles, hover over to see error and how to fix it suggestions, and re-run.</li>
     </ul>
   </details>
-      </div>
-    <div class="lab-section" id="lab2">
-        <h2>02. Backwards</h2>
+  </details>
+      <!-- </div> -->
+
+ <details class="lab-card" id="lab-02" open>
+        <summary>
+    <span class="lab-label">02.</span>
+    <span class="lab-title">Backwards</span>
+    <span class="lab-tag">Practice</span>
+  </summary>
+<!-- 
+
+    <div class="lab-section" id="lab-02">
+        <h2>02. Backwards</h2> -->
         <p>Resources 1: <a href="../resources.html#loops" class="resource-ref" target="_blank">For Loops</a></p>
         <p>
           Write a program <code>BackwardsDigits</code> that prints numbers from 0 to 9, but in the backward order. Do not use arrays in your solution.
@@ -285,17 +357,24 @@ public class Printing {
   <p>Remember that you can use "+" operator to concatenate variables. To add a space between the numbers you can use <code>varible + " "</code>.</p>
  
 </details>
+</details>
         <!-- <p><strong>Advanced Challenge (Optional)</strong>: propose two different solutions and calculate the time execution</p>
       <div class="solution-window">
 #HINT:  Use System.nanoTime()
 It requires `long` type
 Calculate the difference between the end time and the start time
 </div> -->
-    </div>
-
-    <div class="lab-section" id="lab3">
-        <h2>03. Formatting a string</h2>
-        <p>Resources 1: <a href="../resources.html#printf" class="resource-ref" target="_blank">Formating String</a></p>
+    <!-- </div> -->
+     
+ <details class="lab-card" id="lab-03" open>
+        <summary>
+    <span class="lab-label">03.</span>
+    <span class="lab-title">Formatting String</span>
+    <span class="lab-tag">Practice</span>
+  </summary>
+    <!-- <div class="lab-section" id="lab3">
+        <h2>03. Formatting a string</h2> -->
+        <p>Resources: <a href="../resources.html#printf" class="resource-ref" target="_blank">Formating String</a></p>
         <p>Write a program  <code>CoffeeShopInventory</code>  for a coffee shop inventory.
 The program should display the shop's name <code>shopName</code>, number of coffee types <code>coffeeTypes</code>, 
 average price <code>averagePrice</code>, and whether it is open <code>isOpen</code> (Use the print statement below).
@@ -350,10 +429,16 @@ System.out.printf("Shop: %s%nAverage Price: $%.2f%n", shopName, averagePrice);
 </code></pre>
  
 </details> -->
-</div>
-
-<div class="lab-section" id="lab4">
-  <h2>04. Working with Conditionals (Submission)</h2>
+</details>
+<!-- </div> -->
+ <details class="lab-card" id="lab-04" open>
+        <summary>
+    <span class="lab-label">04.</span>
+    <span class="lab-title">Conditionals</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+<!-- <div class="lab-section" id="lab4"> -->
+  <!-- <h2>04. Working with Conditionals (Submission)</h2> -->
   <p>Resources 1: <a href="../resources.html#return" class="resource-ref" target="_blank">Calling Methods</a></p>
   <p>Resources 2: <a href="../resources.html#conditionals" class="resource-ref" target="_blank">Conditionals</a></p>
  <h3>How to Import a ZIP File into Eclipse</h3>
@@ -463,9 +548,15 @@ Open ConditionalsExamples.java file (double-click to open in the editor) from th
   </pre>
   <p><strong>TL;DR:</strong> <em><code>/ 3.0</code> is the safe option that always gives you the correct decimal average.</em></p>
 </details>
-    
-</div>
-<div class="lab-section" id="lab5">
+ </details>   
+<!-- </div> -->
+ <details class="lab-card" id="lab-05" open>
+        <summary>
+    <span class="lab-label">05.</span>
+    <span class="lab-title">For Loops</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+<!-- <div class="lab-section" id="lab5"> -->
   <h2>05. Working with For Loops (Submission)</h2>
   <p>Open ForLoops.java file (double-click to open in the editor) from the Lab01 project. You will be submitting this file to Gradescope.</p>
   <p>Resources 1: <a href="../resources.html#string-methods" class="resource-ref" target="_blank">String Methods</a></p>
@@ -534,6 +625,7 @@ public static void main(String[] args) {
 </code></pre>
 
   <p>Here you read the output in the console and check if it matches the expected results.</p>
+</details>
 </details>
 
           </div>
