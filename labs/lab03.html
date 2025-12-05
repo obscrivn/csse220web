@@ -37,11 +37,11 @@
     /* Content container */
     #content {
       padding: 20px;
-      margin-top: 100px; 
-      margin-bottom: 50px;
-    } 
+      margin-top: 90px; 
+      margin-bottom: 30px;
+    }
     
- .lab-section {
+    .lab-section {
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 15px;
@@ -157,6 +157,61 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
   </style>
 </head>
 <body>
@@ -174,131 +229,307 @@ a.resource-ref:hover {
 </div>
 <div id="content">
     <h1>Lab Assignment 03</h1>
-    <nav id="lab-nav">
+    <!-- <nav id="lab-nav">
         <ul>
-          <li><a href="#lab1">01. fizzArray3</a></li>
-          <li><a href="#lab2">02. filterEvenNumbers</a></li>
+          <li><a href="#lab-01">01. Print</a></li>
+          <li><a href="#lab-02">02. Backwards</a></li>
+          <li><a href="#lab-03">03. Formatting</a></li>
+          <li><a href="#lab-04">04. Conditionals</a></li>
+          <li><a href="#lab-05">05. For Loops</a></li>-->
           
          
           <!-- Add more lab links as needed -->
-        </ul>
-      </nav>
+        <!-- </ul>
+      </nav> --> 
 <!-- Lab Navigation Menu -->
-<div id="main-content">
-<p>For this Lab you will be creating 2 separate Classes with their own main methods. Submit 2 java files only</p>
 
+      <div id="main-content">
+         <div class="lab-section" id="lab">
+        <p>Today’s lab introduces two essential Java data structures: 2D arrays and HashMaps.  
+  These patterns are heavily used in next week’s homework (and future game projects),  
+  so this lab is your warm-up to build confidence before the challenge ramps up.</p>
+<h3>⚡ Submission Instructions</h3>
 
-  
+<ul>
+<li>Download starter zip file: <a href="../labs/Lab03.zip">Lab03.zip</a> and import it into Eclipse as Existing Project (see Lab02 for details).</li>
 
-        <div class="lab-section" id="lab1">
-          <h2>Exercise 1: Fizz Array3</h2>
-          <p>Resources 1: <a href="../resources.html#arrays" class="resource-ref">Arrays toString Method</a></p>
-          <p>Resources 2: <a href="../resources.html#javadoc" class="resource-ref">JavaDocs</a></p>
-          <p>
-            Write a program called <code>CodingBatPractice</code> (=create a new Java class called <code>CodingBatPractice</code> with a <code>main</code> method). 
-            This program will have a method called <code>fizzArray3</code>, 
-            which generates an array of consecutive integers starting from a given <code>start</code> value up to, but not including, 
-            a given <code>end</code> value. You need to check also if the range is not valid and return an empty array.
-          </p>
-          <h3>fizzArray3 Method</h3>
-          <p>
-            <code>fizzArray3(5, 10)</code> should return an array containing <code>[5, 6, 7, 8, 9]</code>.
-          </p> 
-          <div class="code-window">public static int[] fizzArray3(int start, int end) {
-  //TODO finish this method 
-  return null;
-}
-                </div>
-                <h3>Write Your Javadocs</h3>
-                <p>
-                  Include proper Javadoc comments for the fizzArray3 method (place it above the method declaration).
-                  Your Javadocs should:
-                </p>
-                <ul>
-                  <li>Provide a brief description of what the method does</li>
-                  <li>Use the <code>@param</code> tag to document each parameter (Note: you have 2 parameters)</li>
-                  <li>Use the <code>@return</code> tag to document what the method returns</li>
-                  
-                </ul>
-          <p><strong>Test Your Code:</strong> In the main method, 
-            use the provided example test and then,
-            create at least two additional test cases of your own.</p> 
-            <div class="code-window">System.out.println("fizzArray3(5, 10)");
-System.out.println( "  Expected:  [5, 6, 7, 8, 9]"     );
-System.out.println( "  Actual:" + Arrays.toString(  fizzArray3(5, 10)   )   );
-//TODO create calls to methods to test them here
-                  </div>
-          
-        </div>
-        
-        <div class="lab-section" id="lab2">
-          <h2>Exercise 2: filterEvenNumbers</h2>
-          <p>Resources 1: <a href="../resources.html#size" class="resource-ref">Length vs Size</a></p>
-          <p>
-          
-            Implement a method called <code>filterEvenNumbers</code> that takes an <code>ArrayList&lt;Integer&gt;</code>
-            and returns a new <code>ArrayList&lt;Integer&gt;</code> containing only the even numbers from the original list. You should check if the list is empty and return and empty array list.
-          </p>
-          <p>
-            For example, if you call <code>filterEvenNumbers</code> with a list containing <code>[3, 4, 7, 8, 10]</code>,
-            the method should return <code>[4, 8, 10]</code>.
-          </p>
-          <details class="hint">
-  <summary>💡 Hint: Checking if an ArrayList is Empty</summary>
-  <p>In Java there are two different ideas:</p>
-  <ul>
-    <li><strong><code>list == null</code></strong> → checks if the variable doesn’t point to any <code>ArrayList</code> object at all.  
-      (This usually means you forgot to initialize it.)</li>
-    <li><strong><code>list.isEmpty()</code></strong> → checks if the list exists but currently has <em>zero elements</em>.</li>
-  </ul>
+  <li>
+    <strong>Graded work:</strong>
+    Complete the required methods in <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code>.
+  </li>
 
-  <p>Example:</p>
-  <pre><code class="language-java">
-ArrayList<Integer> list = new ArrayList<>();
+  <li>
+    <strong>What to submit on Gradescope:</strong>
+    Upload your completed <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code> files to the Lab 03 assignment.
+    The Gradescope link is available on Moodle.
+  </li>
 
-if (list.isEmpty()) {
-    System.out.println("The list exists but has no elements.");
-}
+  <li>
+    <strong>Do NOT submit:</strong>
+    the entire ZIP project, Eclipse workspace files, or any <code>.class</code> files.
+  </li>
+</ul>
+<details class="lab-card">
+  <summary><strong>Part 1. 2D Array Practice</strong></summary>
 
-list = null;
-if (list == null) {
-    System.out.println("The list variable does not point to any object.");
-}
-</code></pre>
+  <h3>Exercise 1: sumAll</h3>
 
-  <p><em>Tip:</em> In most labs you should use <code>.isEmpty()</code>. Returning or checking <code>null</code> is not common practice unless you really mean “no object was created.”</p>
+  <p>
+    Implement <code>sumAll(int[][] grid)</code> to return the sum of every value in the 2D array.
+  </p>
+
+  <pre><code>public static int sumAll(int[][] grid) {
+    // TODO: nested loops to add everything
+    return 0;
+}</code></pre>
+
+  <details class="hint">
+    <summary>💡 Hint: sumAll</summary>
+    Use a nested <code>for</code> loop. The outer loop iterates rows, the inner loop iterates columns  
+    inside that row. Add each <code>grid[r][c]</code> to a running total.
+  </details>
+
+  <hr />
+
+  <h3>Exercise 2: sumRow</h3>
+
+  <p>
+    Implement <code>sumRow(int[][] grid, int rowIndex)</code> to compute the sum of a specific row.
+  </p>
+
+  <pre><code>public static int sumRow(int[][] grid, int rowIndex) {
+    // TODO: loop across columns in the row
+    return 0;
+}</code></pre>
+
+  <details class="hint">
+    <summary>💡 Hint: sumRow</summary>
+    Only one loop needed: loop through <code>grid[rowIndex]</code> and sum all elements.
+  </details>
+
+  <hr />
+
+  <h3>Exercise 3: countValue</h3>
+
+  <p>
+    Implement <code>countValue(int[][] grid, int target)</code>  
+    to count how many times <code>target</code> appears in the grid.
+  </p>
+
+  <pre><code>public static int countValue(int[][] grid, int target) {
+    // TODO: nested scan + counter
+    return 0;
+}</code></pre>
+
+  <details class="hint">
+    <summary>💡 Hint: countValue</summary>
+    Classic pattern: initialize <code>count = 0</code>, scan with nested loops, and increment  
+    when <code>grid[r][c] == target</code>. Return <code>count</code> at the end.
+  </details>
+
 </details>
 
-          <div class="code-window">public static ArrayList&lt;Integer&gt; filterEvenNumbers(ArrayList&lt;Integer&gt; list) {
-  //TODO finish this method 
-  return null;
-}
+<details class="lab-card">
+  <summary><strong>Part 2. HashMap Practice</strong></summary>
+
+  <h3>Exercise 4: countOccurrences</h3>
+
+  <p>
+    Implement <code>countOccurrences(String[] items)</code> to build a frequency map.
+  </p>
+
+  <pre><code>public static HashMap&lt;String,Integer&gt; countOccurrences(String[] items) {
+    // TODO: build map of item → count
+    return null;
+}</code></pre>
+
+  <details class="hint">
+    <summary>💡 Hint: countOccurrences</summary>
+    For each item:
+    <ul>
+      <li>If it's new → <code>put(item, 1)</code></li>
+      <li>If seen before → <code>put(item, map.get(item) + 1)</code></li>
+    </ul>
+    Avoid using one shared counter variable. Each key manages its own count via <code>map.get()</code>.
+  </details>
+
+  <hr />
+
+  <h3>Exercise 5: getScoreOrDefault</h3>
+
+  <p>
+    Implement <code>getScoreOrDefault(HashMap&lt;String,Integer&gt; scores, String name)</code>.
+  </p>
+
+  <pre><code>public static int getScoreOrDefault(HashMap&lt;String,Integer&gt; scores, String name) {
+    // TODO: safe lookup
+    return 0;
+}</code></pre>
+
+  <details class="hint">
+    <summary>💡 Hint: getScoreOrDefault</summary>
+    Use <code>containsKey(name)</code>:  
+    if true → return <code>scores.get(name)</code>;  
+    otherwise → return <code>0</code>.
+  </details>
+
+  <hr />
+
+  <h3>Exercise 6: totalScore</h3>
+
+  <p>
+    Implement <code>totalScore(HashMap&lt;String,Integer&gt; scores)</code>  
+    to sum all stored values.
+  </p>
+
+  <pre><code>public static int totalScore(HashMap&lt;String,Integer&gt; scores) {
+    // TODO: iterate scores.values()
+    return 0;
+}</code></pre>
+
+  <details class="hint">
+    <summary>💡 Hint: totalScore</summary>
+    Loop through <code>scores.values()</code>, add each to <code>sum</code>, and return it.
+  </details>
+
+</details>
+<details class="lab-card">
+  <summary><strong>📚 Quick Reference: 2D Arrays &amp; HashMaps</strong></summary>
+
+  <h3>2D Array Operations</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Operation</th>
+        <th>Syntax</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Number of rows</td>
+        <td><code>grid.length</code></td>
+        <td>Total number of rows in the 2D array.</td>
+      </tr>
+      <tr>
+        <td>Number of columns in a row</td>
+        <td><code>grid[r].length</code></td>
+        <td>Length of row <code>r</code>; rows may be different sizes.</td>
+      </tr>
+      <tr>
+        <td>Access an element</td>
+        <td><code>grid[r][c]</code></td>
+        <td>Value at row <code>r</code>, column <code>c</code>.</td>
+      </tr>
+      <tr>
+        <td>Loop over all rows</td>
+        <td><code>for (int r = 0; r &lt; grid.length; r++)</code></td>
+        <td>Outer loop moves through each row.</td>
+      </tr>
+      <tr>
+        <td>Loop over columns in a row</td>
+        <td><code>for (int c = 0; c &lt; grid[r].length; c++)</code></td>
+        <td>Inner loop moves through columns.</td>
+      </tr>
+      <tr>
+        <td>Nested loop pattern</td>
+        <td><code>grid[r][c]</code></td>
+        <td>Use inside <code>for</code> loops to read values.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br />
+
+  <h3>HashMap Operations</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Operation</th>
+        <th>Syntax</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Add or update a key/value pair</td>
+        <td><code>map.put(key, value)</code></td>
+        <td>Inserts or replaces the value for <code>key</code>.</td>
+      </tr>
+      <tr>
+        <td>Get value for a key</td>
+        <td><code>map.get(key)</code></td>
+        <td>Returns the value or <code>null</code> if key doesn't exist.</td>
+      </tr>
+      <tr>
+        <td>Check if key exists</td>
+        <td><code>map.containsKey(key)</code></td>
+        <td>Returns <code>true</code> if <code>key</code> is in the map.</td>
+      </tr>
+      <tr>
+        <td>Remove a key/value pair</td>
+        <td><code>map.remove(key)</code></td>
+        <td>Deletes entry for <code>key</code> if present.</td>
+      </tr>
+      <tr>
+        <td>Get all keys</td>
+        <td><code>map.keySet()</code></td>
+        <td>Returns a Set of all keys in the map.</td>
+      </tr>
+      <tr>
+        <td>Get all values</td>
+        <td><code>map.values()</code></td>
+        <td>Returns a Collection of all stored values.</td>
+      </tr>
+      <tr>
+        <td>Check size</td>
+        <td><code>map.size()</code></td>
+        <td>Returns number of key/value pairs in the map.</td>
+      </tr>
+      <tr>
+        <td>Increment a count safely</td>
+        <td><code>map.put(k, map.get(k) + 1)</code></td>
+        <td>Common pattern for building frequency maps.</td>
+      </tr>
+    </tbody>
+  </table>
+</details>
+<!-- ====================== CARD 4 ====================== -->
+<details class="lab-card">
+  <summary><strong>🧪Testing & Submitting</strong></summary>
+
+  <h3>Run JUnit Tests</h3>
+
+  <p>Use the provided test classes:</p>
+  <ul>
+    <li><code>TwoDArrayPracticeTest</code></li>
+    <li><code>HashMapPracticeTest</code></li>
+    <li><code>RunAllTests</code> (runs everything)</li>
+  </ul>
+
+  <p>
+    If something fails, read the assertion message, it usually tells you  
+    exactly which input/output mismatched.
+  </p>
+
+  <h3>Submit</h3>
+  <p>Upload the following files to Gradescope:</p>
+  <ul>
+    <li><code>TwoDArrayPractice.java</code></li>
+    <li><code>HashMapPractice.java</code></li>
+  </ul>
+
+  <p><strong>You're all set! Happy coding! ✨</strong></p>
+</details>
+          </div>
+
   </div>
-  <h3>Write Javadocs</h3>
-  <p>
-    Include proper Javadoc comments for the filterEvenNumbers method (place it above the method declaration).
-  </p>
-  <strong>Test Your Code:</strong> In your <code>main</code> method, use the example below to test the method and add two tests of your own. 
-  <div class="code-window">ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;&gt;();
-numbers.add(3);
-numbers.add(4);
-numbers.add(7);
-numbers.add(8);
-numbers.add(10);
-System.out.println("Even numbers: " + filterEvenNumbers(numbers));
-        </div>
 
-        <h3>Add JUnit Tes</h3>
-  <p>
-    Download this <a href="CodingBatPracticeTest.java" target="_blank">JUnit test file</a> . Make sure to import JUnit library and run the tests -> Run as JUnit.
-  </p>
+
 </div>
-        
-        
-      
-        </div>
-        </div>
-
+</div>
 
 
         </body>

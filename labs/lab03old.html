@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+ .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      scroll-margin-top: 80px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      margin-left: 20px;
+      color: #333;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+
+    .run-btn {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #4caf50;   /* green circle */
+  border-radius: 50%;
+  position: relative;
+  top: 4px;
+  margin: 0 4px;
+}
+.run-btn::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  border-style: solid;
+  border-width: 6px 0 6px 10px;
+  border-color: transparent transparent transparent white;
+}
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+    /* Optional helpers—safe to omit if you already have similar styles */
+.card { background: var(--card); border:1px solid var(--line); border-radius: var(--radius);  }
+.hint { margin-top: 12px; }
+.hint > summary { cursor: pointer; font-weight: 600; }
+.hint[open] { border-left: 3px solid var(--accent, #4caf50); padding-left: 12px; }
+.muted { color: var(--muted); margin: 6px 0 10px; }
+.tiny-tips { font-size: 0.95rem; margin: 8px 0 0 0; }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 03</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. fizzArray3</a></li>
+          <li><a href="#lab2">02. filterEvenNumbers</a></li>
+          
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+<p>For this Lab you will be creating 2 separate Classes with their own main methods. Submit 2 java files only</p>
+
+
+  
+
+        <div class="lab-section" id="lab1">
+          <h2>Exercise 1: Fizz Array3</h2>
+          <p>Resources 1: <a href="../resources.html#arrays" class="resource-ref">Arrays toString Method</a></p>
+          <p>Resources 2: <a href="../resources.html#javadoc" class="resource-ref">JavaDocs</a></p>
+          <p>
+            Write a program called <code>CodingBatPractice</code> (=create a new Java class called <code>CodingBatPractice</code> with a <code>main</code> method). 
+            This program will have a method called <code>fizzArray3</code>, 
+            which generates an array of consecutive integers starting from a given <code>start</code> value up to, but not including, 
+            a given <code>end</code> value. You need to check also if the range is not valid and return an empty array.
+          </p>
+          <h3>fizzArray3 Method</h3>
+          <p>
+            <code>fizzArray3(5, 10)</code> should return an array containing <code>[5, 6, 7, 8, 9]</code>.
+          </p> 
+          <div class="code-window">public static int[] fizzArray3(int start, int end) {
+  //TODO finish this method 
+  return null;
+}
+                </div>
+                <h3>Write Your Javadocs</h3>
+                <p>
+                  Include proper Javadoc comments for the fizzArray3 method (place it above the method declaration).
+                  Your Javadocs should:
+                </p>
+                <ul>
+                  <li>Provide a brief description of what the method does</li>
+                  <li>Use the <code>@param</code> tag to document each parameter (Note: you have 2 parameters)</li>
+                  <li>Use the <code>@return</code> tag to document what the method returns</li>
+                  
+                </ul>
+          <p><strong>Test Your Code:</strong> In the main method, 
+            use the provided example test and then,
+            create at least two additional test cases of your own.</p> 
+            <div class="code-window">System.out.println("fizzArray3(5, 10)");
+System.out.println( "  Expected:  [5, 6, 7, 8, 9]"     );
+System.out.println( "  Actual:" + Arrays.toString(  fizzArray3(5, 10)   )   );
+//TODO create calls to methods to test them here
+                  </div>
+          
+        </div>
+        
+        <div class="lab-section" id="lab2">
+          <h2>Exercise 2: filterEvenNumbers</h2>
+          <p>Resources 1: <a href="../resources.html#size" class="resource-ref">Length vs Size</a></p>
+          <p>
+          
+            Implement a method called <code>filterEvenNumbers</code> that takes an <code>ArrayList&lt;Integer&gt;</code>
+            and returns a new <code>ArrayList&lt;Integer&gt;</code> containing only the even numbers from the original list. You should check if the list is empty and return and empty array list.
+          </p>
+          <p>
+            For example, if you call <code>filterEvenNumbers</code> with a list containing <code>[3, 4, 7, 8, 10]</code>,
+            the method should return <code>[4, 8, 10]</code>.
+          </p>
+          <details class="hint">
+  <summary>💡 Hint: Checking if an ArrayList is Empty</summary>
+  <p>In Java there are two different ideas:</p>
+  <ul>
+    <li><strong><code>list == null</code></strong> → checks if the variable doesn’t point to any <code>ArrayList</code> object at all.  
+      (This usually means you forgot to initialize it.)</li>
+    <li><strong><code>list.isEmpty()</code></strong> → checks if the list exists but currently has <em>zero elements</em>.</li>
+  </ul>
+
+  <p>Example:</p>
+  <pre><code class="language-java">
+ArrayList<Integer> list = new ArrayList<>();
+
+if (list.isEmpty()) {
+    System.out.println("The list exists but has no elements.");
+}
+
+list = null;
+if (list == null) {
+    System.out.println("The list variable does not point to any object.");
+}
+</code></pre>
+
+  <p><em>Tip:</em> In most labs you should use <code>.isEmpty()</code>. Returning or checking <code>null</code> is not common practice unless you really mean “no object was created.”</p>
+</details>
+
+          <div class="code-window">public static ArrayList&lt;Integer&gt; filterEvenNumbers(ArrayList&lt;Integer&gt; list) {
+  //TODO finish this method 
+  return null;
+}
+  </div>
+  <h3>Write Javadocs</h3>
+  <p>
+    Include proper Javadoc comments for the filterEvenNumbers method (place it above the method declaration).
+  </p>
+  <strong>Test Your Code:</strong> In your <code>main</code> method, use the example below to test the method and add two tests of your own. 
+  <div class="code-window">ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;&gt;();
+numbers.add(3);
+numbers.add(4);
+numbers.add(7);
+numbers.add(8);
+numbers.add(10);
+System.out.println("Even numbers: " + filterEvenNumbers(numbers));
+        </div>
+
+        <h3>Add JUnit Tes</h3>
+  <p>
+    Download this <a href="CodingBatPracticeTest.java" target="_blank">JUnit test file</a> . Make sure to import JUnit library and run the tests -> Run as JUnit.
+  </p>
+</div>
+        
+        
+      
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>
