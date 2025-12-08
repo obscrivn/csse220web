@@ -140,48 +140,61 @@ a.resource-ref:hover {
   color: #ffffff;
 }
 
-/* Container for each hint section */
-  .collapsible-hint {
-    margin: 0.5em 0 1.2em 0;
-  }
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
 
-  .collapsible-hint details {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 0.6em 0.8em;
-    background-color: #f9f9f9;
-  }
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
 
-  .collapsible-hint summary {
-    font-weight: bold;
-    cursor: pointer;
-    list-style: none;
-  }
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
 
-  /* Remove default triangle on some browsers */
-  .collapsible-hint summary::-webkit-details-marker {
-    display: none;
-  }
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
 
-  /* Add custom marker */
-  .collapsible-hint summary::before {
-    content: "▶ ";
-    font-size: 0.9em;
-  }
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
 
-  .collapsible-hint details[open] summary::before {
-    content: "▼ ";
-  }
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
 
-  .collapsible-hint pre {
-    background-color: #f4f4f4;
-    padding: 0.5em;
-    overflow-x: auto;
-  }
+.lab-title {
+  font-weight: 700;
+}
 
-  .collapsible-hint code {
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  }
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
   </style>
 </head>
 <body>
@@ -198,259 +211,376 @@ a.resource-ref:hover {
     <div style="clear:both;"></div>
 </div>
 <div id="content">
-    <h1>Lab Assignment 04</h1>
-    <nav id="lab-nav">
-        <ul>
-          <li><a href="#lab1">01. Scanner</a></li>
-          <li><a href="#lab2">02. printDataType</a></li>
+    <h1>Lab 04 – Player Stats: Your First Class</h1>
 
-          
-         
-          <!-- Add more lab links as needed -->
-        </ul>
-      </nav>
-<!-- Lab Navigation Menu -->
-<div id="main-content">
-<p>For this Lab, you will be working with 2 separate 
-  Classes. Submit 2 java files</p>
+<p>
+In this lab, you will create your own class <code>PlayerStats</code> that models a Minecraft-style
+player’s stats: their name and scores from different areas (Overworld, Nether, End, etc.).
+You’ll then use a provided <code>PlayerStatsMain</code> class to test your code.
+</p>
+<p>Resources: <a href="../resources.html#fields" class="resource-ref">Understanding Fields and Classes</a></p>
+<p>
+This lab is <strong>guided practice</strong>. Follow the steps, use the hints, and ask for help
+if you get stuck. The main goal is to get comfortable with:
+</p>
 
-
-  
-
-        <div class="lab-section" id="lab1">
-          <h2>Exercise 1: Scanner Practice</h2>
-          <p>Resources 1: <a href="../resources.html#scanner" class="resource-ref">Scanner Method</a></p>
-          
-          <p>
-            Create a new Java class called <code>ScannerPractice</code> with a <code>main</code> method. 
-            Your goal is to get the user's input and then print it: name, age, salary. </p>
-            <strong>Prompt and Read User Input:</strong>
-            <ul>
-              <li>Prompt the user to enter their full name</li>
-              <li>Prompt the user for their age</li>
-              <li>Prompt the user for their salary</li>
-            </ul>
-            
-            Your example output could be as follows (you can be creative):
-<div class="code-window">The user name is Luke Skywaker
-The user age is 25 years old
-The user salary is 100 galaxy currency
-                  </div>
-          
-        </div>
-        
-        <div class="lab-section" id="lab2">
-          <h2>Exercise 2: Determine Data Types</h2>
-          <p>Resources 1: <a href="../resources.html#data-type" class="resource-ref">How to determine a data type</a></p>
-          <p>Resources 2: <a href="../resources.html#instanceof" class="resource-ref">Instance Of</a></p>
-          <p>
-            Create a class called <code>DataTypePractice</code> that includes a main method and a custom method to print the data type of a given value.
-            The method is called <code>printDataType</code> that takes an <code>Object</code> as an argument.
+<ul>
+  <li>Defining your own classes and fields</li>
+  <li>Writing constructors (default + parameterized)</li>
+  <li>Adding methods that update and compute values</li>
+  <li>Using <code>public</code> vs <code>private</code> fields and methods</li>
+ <li>Building and returning a formatted <code>String</code> report</li>
+</ul>
 
 
-<div class="code-window">public static void printDataType(Object value){
-  //TODO finish this method
-}
-</div>
-<p>This method should print a statement in the following format for primitives:</p>
+<hr />
 
-<h3>Expected Examples</h3>
-  <div class="code-window"><div class="example-output">
-The value 5 is primitive and the data type is Integer.
-The value hello is an object and the data type is String.
-  </div></div>
-    
-  <h3>Write Javadocs</h3>
+<details class="lab-card" open>
+  <summary>0️⃣ Setup – Import the Starter Project</summary>
   <p>
-    Include proper Javadoc comments for the printDataType method (place it above the method declaration).
-  </p>
-  <strong>Test Your Code:</strong> In the main method, call your <code>printDataType</code> method with various values:
-  <ul>
-    <li>An int literal</li>
-    <li>A double literal</li>
-    <li>A char literal</li>
-    <li>A String</li>
-  </ul>
-    <p><strong>Important Note:</strong> When you pass a primitive value (like <code>5</code>) to a method that expects an
-    <strong>Object</strong>, Java automatically converts (autoboxes) it to its wrapper type (e.g., <code>Integer</code>).
-    You do <em>not</em> need extra casts like <code>((Object) int)</code>.
-  </p>
-  <div class="code-window"><div class="example-output">
-printDataType(5) // Expected: The value 5 is primitive and the data type is Integer.
-</div>
-</div>
-<details class="hint">
-    <summary>💡 Hint 1: Getting the runtime type name</summary>
-    <p>Every object has <code>getClass()</code>. To get a short name like <code>Integer</code> or <code>String</code> use:
-      <code>value.getClass().getSimpleName()</code>.</p>
-  </details>
- <details class="hint">
-    <summary>💡 Hint 2: instanceof Wrapper</summary>
-    <p>You can either:
-      <br>Check wrappers with <code>instanceof Integer</code>, <code>instanceof Double</code>, etc., or
-      <br>Use the class name directly with <code>getClass().getSimpleName()</code>.
-    </p>
-  </details>
-<details class="hint">
-  <summary>💡 Hint3: Why use <code>instanceof</code>?</summary>
-  <p>In this lab, everything you pass into <code>printDataType</code> is technically an <code>Object</code> 
-     (because primitives are automatically converted to their wrapper types). 
-     That means calling <code>value.getClass().getSimpleName()</code> will always tell you something like 
-     <code>Integer</code>, <code>Double</code>, <code>Character</code>, or <code>String</code>.</p>
-  
-  <p>But the assignment asks you to print in <em>two different formats</em>:</p>
-  <ul>
-    <li><strong>Primitive wrappers</strong> (e.g. <code>Integer</code>, <code>Double</code>, <code>Character</code>): 
-        <br><code>The value 5 is a primitive and the data type is Integer.</code></li>
-    <li><strong>Other objects</strong> (like <code>String</code>): 
-        <br><code>The value is an object and the data type is String.</code></li>
-  </ul>
-
-  <p>To make this distinction, you need to check: <br>
-     “Is this Object (=value) one of the primitive wrapper classes?” Use instanceOf to check the class</p>
-
-  
-</details>
-<!-- <div class="lab-section" id="lab3">
-  <h2>Exercise 3: HashMaps</h2>
-  <p>Resources: <a href="../resources.html#hashmap" class="resource-ref">Using Hashmaps</a></p>
-  <p>Download the zip file. Import it as archive. It has already JUnit test that you will be using to run tests. 
-    Make sure to change the package.</p>
-  
-  
-    <p><a href="../labs/MapsArchive.zip">Download Java Archive File. </a> Import it as <strong>Archive</strong>. The error on the Test file will ask you to add / build missing JUnit library. Select and ok it.</p>
-  <h2>Additional Intstructions</h2>
-<h3>Working with Sub Arrays - <code>TimesOccur</code></h3>
-<p>This exercice introduces you how to break a statement if the condition is not met.</p>
-  <p>
-    In Java, the <code>break</code> statement immediately exits the current loop.
-    Sometimes, you want to exit early if a certain condition is not met. A common pattern is to use a
-    boolean variable (often called a “flag”) to indicate whether something remains true or if a mismatch
-    or error has occurred.
+    We’ll start from a prepared Eclipse project so that package names and files match
+    what we’ll use later for autograding.
   </p>
 
-  <h3>Example: Checking a Subarray Match</h3>
-  <pre><code>boolean match = true;
-for (int i = 0; i &lt; shorter.length; i++) {
-    if (shorter[i] != longer[start + i]) {
-        match = false;
-        break; // Exit the for loop immediately
-    }
-}
-if (match) {
-    // If match stayed true, we found a subarray match
-    count++;
-}</code></pre>
-  <p>
-    In this code:
-  </p>
-  <ul>
-    <li>
-      We assume we’re trying to match every element of <code>shorter</code> with a segment in <code>longer</code> starting at <code>start</code>.
-    </li>
-    <li>
-      The boolean <code>match</code> begins as <code>true</code>. If any element does not match, we set <code>match = false</code> and use <code>break</code> to stop checking further.
-    </li>
-    <li>
-      After the loop, we check if <code>match</code> is still <code>true</code>. If so, the entire subarray matched, and we increment <code>count</code>.
-    </li>
-  </ul>
-  
-  <h3>Why Use <code>break</code>?</h3>
-  <p>
-    Without <code>break</code>, you would continue checking elements even though you already know the match has failed.
-    Using <code>break</code> saves time and makes the code logic clearer.
-  </p>
-  
-  <p>
-    Remember that <code>break</code> only exits the <em>innermost</em> loop. If you have nested loops and want to exit multiple levels, 
-    you’ll need other techniques (like a labeled break or returning from a method).
-  </p>
-
-
-
-  <h3>Understanding the canTravelTo Method</h3>
-  <p>
-    The <code>canTravelTo</code> method is designed to determine whether there is a route from a starting city to a destination city, given a road map.
-    The road map is represented as a <code>HashMap&lt;String, ArrayList&lt;String&gt;&gt;</code>, where each key is a city name, and its value is a list of cities directly reachable from that city.
-  </p>
-  <p>Example:</p>
-  <pre><code>if roadMap = {"A"->["B","C"],"B"->"D","C"->[],"D"->[]}
-canTravelTo(roadMap, "A", "D") returns true
-canTravelTo(roadMap, "C", "A") returns false
-canTravelTo(roadMap,"B", "A") returns false </code></pre>
-  <p>
-    To solve this, we use a method similar to exploring a maze:
-  </p>
   <ol>
     <li>
-      <strong>Start at the Beginning:</strong> Add the starting city (<em>startCity</em>) to a list called <code>citiesToVisitNext</code>.
+      Download the Lab 04 starter project zip <a href="../labs/Lab04.zip">Lab04</a>.
     </li>
     <li>
-      <strong>Keep Track of Visited Cities:</strong> Create another list called <code>citiesAlreadyVisited</code> to record which cities you have explored so you don’t check them again.
+      In Eclipse, go to <em>File → Import… → Existing Projects into Workspace</em> and select the
+      unzipped Lab 04 folder.
     </li>
     <li>
-      <strong>Explore Neighboring Cities:</strong>
-      <ol>
-        <li>
-          While there are still cities to visit and you haven't found the destination, remove the first city from <code>citiesToVisitNext</code>—this is your current city.
-        </li>
-        <li>
-          If you haven't visited this city before, mark it as visited by adding it to <code>citiesAlreadyVisited</code>.
-        </li>
-        <li>
-          Then, add all the neighboring cities (from the road map) of this current city to <code>citiesToVisitNext</code>.
-        </li>
-      </ol>
-    </li>
-    <li>
-      <strong>Check for the Destination:</strong> 
-      The loop stops either because there are no more cities to visit or because the destination city is found in the list of cities to visit.
-      If the destination is found, return <code>true</code>; if not, return <code>false</code>.
+      You should see a project that already contains:
+      <ul>
+        <li>a package named <code>lab</code></li>
+        <li>a starter file: <code>PlayerStatsMain.java</code></li>
+        <li><code>PlayerStatsTest.java</code> in <code>labTest</code> package to test your implementation. You will need to uncomment code once you’ve created the new class with required methods</li>
+      </ul>
     </li>
   </ol>
+
+  <p><strong>Important:</strong></p>
+  <ul>
+    <li>Do <strong>not</strong> change the package name.</li>
+    <li>Do <strong>not</strong> rename <code>PlayerStatsMain</code>.</li>
+    <li>You will <strong>add</strong> a new class <code>PlayerStats</code> in the same package (lab).</li>
+  </ul>
+</details>
+
+<details class="lab-card">
+  <summary>1️⃣ What Are We Building?</summary>
   <p>
-    In simpler terms, imagine you are trying to find a path in a maze. You start at the entrance (startCity), then you explore all the connected rooms (neighboring cities). As you explore, you keep a list of rooms you have visited to avoid going in circles.
-    If you eventually find the exit (endCity), you know a route exists. Otherwise, if you run out of rooms to explore, no route exists.
-  </p>
-  <p>
-    This method uses a basic form of breadth-first search (BFS) even if you don't know that term yet. The key idea is to explore all options gradually while keeping track of what you've already seen.
+    You’re modeling a Minecraft-style <strong>player stats card</strong>.
   </p>
 
-  <p>if you are still not sure how it works (it is a bit challenging concept), here is a possible solution. Please review, learn from it, feel free to use it but make sure to state in the lab submission that you checked the solution:
-</p>
-<pre><code>
+  <p>Each <code>PlayerStats</code> object will represent one player and store:</p>
+  <ul>
+    <li>the player’s <strong>name</strong>, e.g. <code>"MineMiner"</code>, <code>"Alex"</code>, <code>"Nova"</code></li>
+    <li>a collection of <strong>level scores</strong>, like:
+      <ul>
+        <li><code>"Overworld" → 1200</code></li>
+        <li><code>"Nether" → 3000</code></li>
+        <li><code>"End" → 5000</code></li>
+      </ul>
+    </li>
+  </ul>
 
- public static boolean canTravelTo(HashMap&lt;String, ArrayList&lt;String&gt;&gt;roadMap, String startCity, String endCity) {
-     // List of cities you have already visited
-     ArrayList&lt;String&gt; citiesAlreadyVisited = new ArrayList&lt;String&gt;();
-     // List of cities to visit next, initially containing only the startCity.
-     ArrayList&lt;String&gt; citiesToVisitNext = new ArrayList&lt;String&gt;();
-     citiesToVisitNext.add(startCity);
-     
-     // Continue exploring until either the destination is found or there are no more cities to check.
-     while (!citiesToVisitNext.contains(endCity) && !citiesToVisitNext.isEmpty()) {
-         // Remove the first city from the list (this simulates a queue).
-         String currentCityToVisit = citiesToVisitNext.remove(0);
-         // If we haven't already visited this city, process it.
-         if (!citiesAlreadyVisited.contains(currentCityToVisit)) {
-             // Mark the current city as visited.
-             citiesAlreadyVisited.add(currentCityToVisit);
-             // Add all neighboring cities (if any) to the list of cities to visit next.
-             ArrayList<String> neighbors = roadMap.get(currentCityToVisit);
-             if (neighbors != null) {
-                 citiesToVisitNext.addAll(neighbors);
-             }
-         }
-     }
-     
-     // If endCity is in the citiesToVisitNext list, a route was found.
-     return citiesToVisitNext.contains(endCity);
- }
+  <p>Your class will be able to:</p>
+  <ul>
+    <li>store scores for different Minecraft areas</li>
+    <li>compute the total and average score</li>
+    <li>build a single-line report string that summarizes the player’s stats</li>
+  </ul>
+</details>
+
+<details class="lab-card">
+  <summary>2️⃣ Create the <code>PlayerStats</code> Class & Fields</summary>
+
+  <h3>Step 1: Create the class</h3>
+  <img src="../labs/playerstatUML.png" alt="PlayerStats UML Diagram" style="max-width: 100%; height: auto; border: 1px solid #ccc; padding: 5px; margin-top: 10px;">
+  <ol>
+    <li>
+      In the <code>PlayerStatsMain</code> uncomment the first line <code>PlayerStats mineMaster = new PlayerStats("MineMaster");</code>.
+    </li>
+    <li>
+      You will notice the error message asking you to create a new class named <code>PlayerStats</code>. Follow the prompt and create it.
+    </li>
+    <li>Add a javadoc and provide your name</li>
+  </ol>
+
+<pre><code>package lab;
+
+/**
+ * Represents the stats of a Minecraft player.
+  * Stores the player's name and their scores from different levels.
+  * @author Your Name Here
+ */
+public class PlayerStats {
+
+    // TODO: fields, constructors, and methods go here
+
+}
 </code></pre>
-</div> -->
-        
-      
+
+  <h3>Step 2: Add fields</h3>
+  <p>Inside <code>PlayerStats</code>, add two <strong>private instance fields</strong>:</p>
+
+<pre><code>private String name; 
+
+// Each level name maps to its score
+private java.util.HashMap&lt;String, Integer&gt; levelScores =
+        new java.util.HashMap&lt;&gt;();
+</code></pre>
+
+  <ul>
+    <li><code>name</code> = the player’s name.</li>
+    <li><code>levelScores</code> = a <code>HashMap</code> mapping area names (keys) to scores (values).</li>
+  </ul>
+
+  <p><strong>Hint:</strong> Initializing <code>levelScores</code> at the field means every new
+  <code>PlayerStats</code> object automatically starts with an empty, ready-to-use map.</p>
+</details>
+
+<details class="lab-card">
+  <summary>3️⃣ Constructors: Default and Parameterized (with Named Player)</summary>
+
+  <p>
+    You will write two constructors so we can create players with or without a given name.
+  </p>
+
+<pre><code>public PlayerStats() {
+    // default constructor
+}
+
+public PlayerStats(String name) {
+    // constructor that sets the player's name
+}
+</code></pre>
+
+  <h3>Default constructor</h3>
+  <p>
+    Pick a simple default name so that if no name is provided, the player still has some label.
+    For example:
+  </p>
+
+<pre><code>public PlayerStats() {
+    this.name = "Player1";
+}
+</code></pre>
+
+  <h3>Parameterized constructor</h3>
+
+<pre><code>public PlayerStats(String name) {
+    this.name = name;
+}
+</code></pre>
+
+  <p><strong>Hints:</strong></p>
+  <ul>
+    <li>Use <code>this.name = name;</code> to distinguish the field from the parameter.</li>
+    <li>Do not reassign <code>levelScores</code> in the constructors; it’s already initialized at the field.</li>
+  </ul>
+</details>
+
+<details class="lab-card">
+  <summary>4️⃣ Adding Level Scores</summary>
+
+  <p>
+    Next, write a method that records a score for a specific area (e.g. Overworld, Nether, End).
+  </p>
+
+<pre><code>public void addLevelScore(String levelName, int score) {
+    // TODO: store or update the score for this level
+}
+</code></pre>
+
+  <p><strong>Hint:</strong> Use the <code>put</code> method on the <code>HashMap</code>:</p>
+
+<pre><code>public void addLevelScore(String levelName, int score) {
+    levelScores.put(levelName, score);
+}
+</code></pre>
+
+  <ul>
+    <li>If you call <code>addLevelScore("Overworld", 1000);</code>
+        and then later <code>addLevelScore("Overworld", 2000);</code>, the second call will
+        replace the score for <code>"Overworld"</code>.
+    </li>
+  </ul>
+</details>
+
+<details class="lab-card">
+  <summary>5️⃣ Computing Total and Average Score</summary>
+
+  <p>Add methods to compute the total and average scores across all levels:</p>
+
+<pre><code>public int getTotalScore() {
+    // sum all scores in levelScores
+}
+
+public double getAverageScore() {
+    // average of all scores in levelScores
+}
+</code></pre>
+
+  <h3>Hints for <code>getTotalScore()</code></h3>
+
+<pre><code>public int getTotalScore() {
+    int sum = 0;
+    for (String level : levelScores.keySet()) {
+        sum += levelScores.get(level);
+    }
+    return sum;
+}
+</code></pre>
+
+  <h3>Hints for <code>getAverageScore()</code></h3>
+
+<pre><code>public double getAverageScore() {
+    if (levelScores.isEmpty()) {
+        return 0.0;
+    }
+    return getTotalScore() / (double) levelScores.size();
+}
+</code></pre>
+
+  <p>
+    Returning <code>0.0</code> for “no scores yet” is fine for this lab. Just be consistent.
+  </p>
+</details>
+
+<details class="lab-card">
+  <summary>6️⃣ Building a Stats Report String</summary>
+
+  <p>
+    Instead of printing in multiple places, we’ll have one method that builds and returns a single
+    <strong>stats report</strong> string.
+  </p>
+
+<pre><code>public String buildStatsReport() {
+    // Example format:
+    // "MineMiner: Overworld - 1200 Nether - 3000 End - 5000 - Total: 9200 - Average: 3066.6666666666665"
+}
+</code></pre>
+
+  <h3>Behavior</h3>
+  <ul>
+    <li>If there are <strong>no level scores yet</strong>, return something like:
+      <pre><code>Player1: (no scores yet)</code></pre>
+      (or <code>"Alex: (no scores yet)"</code> if the name is Alex)
+    </li>
+    <li>If there are scores, return a single-line report, for example:
+      <pre><code>Steve: Overworld - 1200 Nether - 3000 End - 5000 - Total: 9200 - Average: 3066.6666666666665</code></pre>
+    </li>
+  </ul>
+
+  <h3>Hint: build the String step by step</h3>
+
+<pre><code>public String buildStatsReport() {
+    String report = name + ":";
+
+    if (levelScores.isEmpty()) {
+        return report + " (no scores yet)";
+    }
+
+    for (String level : levelScores.keySet()) {
+        int score = levelScores.get(level);
+        report += " " + level + " - " + score;
+    }
+
+    report += " - Total: " + getTotalScore();
+    report += " - Average: " + getAverageScore();
+
+    return report;
+}
+</code></pre>
+
+  <p><strong>Note:</strong> The order of levels may vary because <code>HashMap</code> does not guarantee order.</p>
+</details>
+
+<details class="lab-card">
+  <summary>7️⃣ Printing the Stats Report</summary>
+
+  <p>
+    Finally, write a small helper method that prints the report to the console.
+  </p>
+
+<pre><code>public void printStatsReport() {
+    System.out.println(buildStatsReport());
+}
+</code></pre>
+
+  <p>
+    This method is <code>void</code>: it doesn’t return anything, it just prints the result of
+    <code>buildStatsReport()</code>.
+  </p>
+</details>
+
+<details class="lab-card">
+  <summary>8️⃣ Using <code>PlayerStats</code> from <code>PlayerStatsMain</code></summary>
+
+  <p>
+    Open <code>PlayerStatsMain.java</code> from the starter project. Uncomment and execute it. You should expect output like this:
+  </p>
+
+<pre><code>MineMaster: VillageRaid - 2200 Nether - 3000 Overworld - 1200 End - 5000 - Total: 11400 - Average: 2850.0
+Player1: Nether - 800 Overworld - 400 - Total: 1200 - Average: 600.0
+
+</code></pre>
+
+</details>
+
+<details class="lab-card">
+  <summary>9️⃣ Public / Private</summary>
+
+  <p>
+    As you write your class, make sure your design matches what we discussed in lecture and Worksheet 04:
+  </p>
+
+  <ul>
+    <li>Fields (instance variables) should be <strong>private</strong>:
+      <pre><code>private String name;
+private java.util.HashMap&lt;String, Integer&gt; levelScores;</code></pre>
+    </li>
+    <li>Methods that clients use should be <strong>public</strong>:
+      <ul>
+        <li>constructors</li>
+        <li><code>addLevelScore</code></li>
+        <li><code>getTotalScore</code></li>
+        <li><code>getAverageScore</code></li>
+        <li><code>buildStatsReport</code></li>
+        <li><code>printStatsReport</code></li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>
+    <strong>Recall:</strong> <code>private</code> means only the class itself can access that field/method.
+    <code>public</code> means other classes (like <code>PlayerStatsMain</code>) can call it.
+  </p>
+</details>
+
+<details class="lab-card">
+  <summary>🔟 Turn-In Checklist</summary>
+
+  <p>Before submitting:</p>
+
+  <ul>
+    <li>Execute <code>RunAllTests</code> </li>
+  </ul>
+
+  <p><strong>Submit to Gradescope:</strong> <code>PlayerStats.java</code>.</p>
+</details>
+
+  
+  
+ 
+        </div>
+        </div>
+
+
+
         </div>
         </div>
 

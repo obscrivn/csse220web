@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .lab-section::before {
+  content: "";
+  display: block;
+  height: 240px; /* equal to your header's height */
+  margin-top: -240px;
+}
+
+
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+ 
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+
+/* Container for each hint section */
+  .collapsible-hint {
+    margin: 0.5em 0 1.2em 0;
+  }
+
+  .collapsible-hint details {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.6em 0.8em;
+    background-color: #f9f9f9;
+  }
+
+  .collapsible-hint summary {
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  /* Remove default triangle on some browsers */
+  .collapsible-hint summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Add custom marker */
+  .collapsible-hint summary::before {
+    content: "▶ ";
+    font-size: 0.9em;
+  }
+
+  .collapsible-hint details[open] summary::before {
+    content: "▼ ";
+  }
+
+  .collapsible-hint pre {
+    background-color: #f4f4f4;
+    padding: 0.5em;
+    overflow-x: auto;
+  }
+
+  .collapsible-hint code {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 04</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Scanner</a></li>
+          <li><a href="#lab2">02. printDataType</a></li>
+
+          
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+<p>For this Lab, you will be working with 2 separate 
+  Classes. Submit 2 java files</p>
+
+
+  
+
+        <div class="lab-section" id="lab1">
+          <h2>Exercise 1: Scanner Practice</h2>
+          <p>Resources 1: <a href="../resources.html#scanner" class="resource-ref">Scanner Method</a></p>
+          
+          <p>
+            Create a new Java class called <code>ScannerPractice</code> with a <code>main</code> method. 
+            Your goal is to get the user's input and then print it: name, age, salary. </p>
+            <strong>Prompt and Read User Input:</strong>
+            <ul>
+              <li>Prompt the user to enter their full name</li>
+              <li>Prompt the user for their age</li>
+              <li>Prompt the user for their salary</li>
+            </ul>
+            
+            Your example output could be as follows (you can be creative):
+<div class="code-window">The user name is Luke Skywaker
+The user age is 25 years old
+The user salary is 100 galaxy currency
+                  </div>
+          
+        </div>
+        
+        <div class="lab-section" id="lab2">
+          <h2>Exercise 2: Determine Data Types</h2>
+          <p>Resources 1: <a href="../resources.html#data-type" class="resource-ref">How to determine a data type</a></p>
+          <p>Resources 2: <a href="../resources.html#instanceof" class="resource-ref">Instance Of</a></p>
+          <p>
+            Create a class called <code>DataTypePractice</code> that includes a main method and a custom method to print the data type of a given value.
+            The method is called <code>printDataType</code> that takes an <code>Object</code> as an argument.
+
+
+<div class="code-window">public static void printDataType(Object value){
+  //TODO finish this method
+}
+</div>
+<p>This method should print a statement in the following format for primitives:</p>
+
+<h3>Expected Examples</h3>
+  <div class="code-window"><div class="example-output">
+The value 5 is primitive and the data type is Integer.
+The value hello is an object and the data type is String.
+  </div></div>
+    
+  <h3>Write Javadocs</h3>
+  <p>
+    Include proper Javadoc comments for the printDataType method (place it above the method declaration).
+  </p>
+  <strong>Test Your Code:</strong> In the main method, call your <code>printDataType</code> method with various values:
+  <ul>
+    <li>An int literal</li>
+    <li>A double literal</li>
+    <li>A char literal</li>
+    <li>A String</li>
+  </ul>
+    <p><strong>Important Note:</strong> When you pass a primitive value (like <code>5</code>) to a method that expects an
+    <strong>Object</strong>, Java automatically converts (autoboxes) it to its wrapper type (e.g., <code>Integer</code>).
+    You do <em>not</em> need extra casts like <code>((Object) int)</code>.
+  </p>
+  <div class="code-window"><div class="example-output">
+printDataType(5) // Expected: The value 5 is primitive and the data type is Integer.
+</div>
+</div>
+<details class="hint">
+    <summary>💡 Hint 1: Getting the runtime type name</summary>
+    <p>Every object has <code>getClass()</code>. To get a short name like <code>Integer</code> or <code>String</code> use:
+      <code>value.getClass().getSimpleName()</code>.</p>
+  </details>
+ <details class="hint">
+    <summary>💡 Hint 2: instanceof Wrapper</summary>
+    <p>You can either:
+      <br>Check wrappers with <code>instanceof Integer</code>, <code>instanceof Double</code>, etc., or
+      <br>Use the class name directly with <code>getClass().getSimpleName()</code>.
+    </p>
+  </details>
+<details class="hint">
+  <summary>💡 Hint3: Why use <code>instanceof</code>?</summary>
+  <p>In this lab, everything you pass into <code>printDataType</code> is technically an <code>Object</code> 
+     (because primitives are automatically converted to their wrapper types). 
+     That means calling <code>value.getClass().getSimpleName()</code> will always tell you something like 
+     <code>Integer</code>, <code>Double</code>, <code>Character</code>, or <code>String</code>.</p>
+  
+  <p>But the assignment asks you to print in <em>two different formats</em>:</p>
+  <ul>
+    <li><strong>Primitive wrappers</strong> (e.g. <code>Integer</code>, <code>Double</code>, <code>Character</code>): 
+        <br><code>The value 5 is a primitive and the data type is Integer.</code></li>
+    <li><strong>Other objects</strong> (like <code>String</code>): 
+        <br><code>The value is an object and the data type is String.</code></li>
+  </ul>
+
+  <p>To make this distinction, you need to check: <br>
+     “Is this Object (=value) one of the primitive wrapper classes?” Use instanceOf to check the class</p>
+
+  
+</details>
+<!-- <div class="lab-section" id="lab3">
+  <h2>Exercise 3: HashMaps</h2>
+  <p>Resources: <a href="../resources.html#hashmap" class="resource-ref">Using Hashmaps</a></p>
+  <p>Download the zip file. Import it as archive. It has already JUnit test that you will be using to run tests. 
+    Make sure to change the package.</p>
+  
+  
+    <p><a href="../labs/MapsArchive.zip">Download Java Archive File. </a> Import it as <strong>Archive</strong>. The error on the Test file will ask you to add / build missing JUnit library. Select and ok it.</p>
+  <h2>Additional Intstructions</h2>
+<h3>Working with Sub Arrays - <code>TimesOccur</code></h3>
+<p>This exercice introduces you how to break a statement if the condition is not met.</p>
+  <p>
+    In Java, the <code>break</code> statement immediately exits the current loop.
+    Sometimes, you want to exit early if a certain condition is not met. A common pattern is to use a
+    boolean variable (often called a “flag”) to indicate whether something remains true or if a mismatch
+    or error has occurred.
+  </p>
+
+  <h3>Example: Checking a Subarray Match</h3>
+  <pre><code>boolean match = true;
+for (int i = 0; i &lt; shorter.length; i++) {
+    if (shorter[i] != longer[start + i]) {
+        match = false;
+        break; // Exit the for loop immediately
+    }
+}
+if (match) {
+    // If match stayed true, we found a subarray match
+    count++;
+}</code></pre>
+  <p>
+    In this code:
+  </p>
+  <ul>
+    <li>
+      We assume we’re trying to match every element of <code>shorter</code> with a segment in <code>longer</code> starting at <code>start</code>.
+    </li>
+    <li>
+      The boolean <code>match</code> begins as <code>true</code>. If any element does not match, we set <code>match = false</code> and use <code>break</code> to stop checking further.
+    </li>
+    <li>
+      After the loop, we check if <code>match</code> is still <code>true</code>. If so, the entire subarray matched, and we increment <code>count</code>.
+    </li>
+  </ul>
+  
+  <h3>Why Use <code>break</code>?</h3>
+  <p>
+    Without <code>break</code>, you would continue checking elements even though you already know the match has failed.
+    Using <code>break</code> saves time and makes the code logic clearer.
+  </p>
+  
+  <p>
+    Remember that <code>break</code> only exits the <em>innermost</em> loop. If you have nested loops and want to exit multiple levels, 
+    you’ll need other techniques (like a labeled break or returning from a method).
+  </p>
+
+
+
+  <h3>Understanding the canTravelTo Method</h3>
+  <p>
+    The <code>canTravelTo</code> method is designed to determine whether there is a route from a starting city to a destination city, given a road map.
+    The road map is represented as a <code>HashMap&lt;String, ArrayList&lt;String&gt;&gt;</code>, where each key is a city name, and its value is a list of cities directly reachable from that city.
+  </p>
+  <p>Example:</p>
+  <pre><code>if roadMap = {"A"->["B","C"],"B"->"D","C"->[],"D"->[]}
+canTravelTo(roadMap, "A", "D") returns true
+canTravelTo(roadMap, "C", "A") returns false
+canTravelTo(roadMap,"B", "A") returns false </code></pre>
+  <p>
+    To solve this, we use a method similar to exploring a maze:
+  </p>
+  <ol>
+    <li>
+      <strong>Start at the Beginning:</strong> Add the starting city (<em>startCity</em>) to a list called <code>citiesToVisitNext</code>.
+    </li>
+    <li>
+      <strong>Keep Track of Visited Cities:</strong> Create another list called <code>citiesAlreadyVisited</code> to record which cities you have explored so you don’t check them again.
+    </li>
+    <li>
+      <strong>Explore Neighboring Cities:</strong>
+      <ol>
+        <li>
+          While there are still cities to visit and you haven't found the destination, remove the first city from <code>citiesToVisitNext</code>—this is your current city.
+        </li>
+        <li>
+          If you haven't visited this city before, mark it as visited by adding it to <code>citiesAlreadyVisited</code>.
+        </li>
+        <li>
+          Then, add all the neighboring cities (from the road map) of this current city to <code>citiesToVisitNext</code>.
+        </li>
+      </ol>
+    </li>
+    <li>
+      <strong>Check for the Destination:</strong> 
+      The loop stops either because there are no more cities to visit or because the destination city is found in the list of cities to visit.
+      If the destination is found, return <code>true</code>; if not, return <code>false</code>.
+    </li>
+  </ol>
+  <p>
+    In simpler terms, imagine you are trying to find a path in a maze. You start at the entrance (startCity), then you explore all the connected rooms (neighboring cities). As you explore, you keep a list of rooms you have visited to avoid going in circles.
+    If you eventually find the exit (endCity), you know a route exists. Otherwise, if you run out of rooms to explore, no route exists.
+  </p>
+  <p>
+    This method uses a basic form of breadth-first search (BFS) even if you don't know that term yet. The key idea is to explore all options gradually while keeping track of what you've already seen.
+  </p>
+
+  <p>if you are still not sure how it works (it is a bit challenging concept), here is a possible solution. Please review, learn from it, feel free to use it but make sure to state in the lab submission that you checked the solution:
+</p>
+<pre><code>
+
+ public static boolean canTravelTo(HashMap&lt;String, ArrayList&lt;String&gt;&gt;roadMap, String startCity, String endCity) {
+     // List of cities you have already visited
+     ArrayList&lt;String&gt; citiesAlreadyVisited = new ArrayList&lt;String&gt;();
+     // List of cities to visit next, initially containing only the startCity.
+     ArrayList&lt;String&gt; citiesToVisitNext = new ArrayList&lt;String&gt;();
+     citiesToVisitNext.add(startCity);
+     
+     // Continue exploring until either the destination is found or there are no more cities to check.
+     while (!citiesToVisitNext.contains(endCity) && !citiesToVisitNext.isEmpty()) {
+         // Remove the first city from the list (this simulates a queue).
+         String currentCityToVisit = citiesToVisitNext.remove(0);
+         // If we haven't already visited this city, process it.
+         if (!citiesAlreadyVisited.contains(currentCityToVisit)) {
+             // Mark the current city as visited.
+             citiesAlreadyVisited.add(currentCityToVisit);
+             // Add all neighboring cities (if any) to the list of cities to visit next.
+             ArrayList<String> neighbors = roadMap.get(currentCityToVisit);
+             if (neighbors != null) {
+                 citiesToVisitNext.addAll(neighbors);
+             }
+         }
+     }
+     
+     // If endCity is in the citiesToVisitNext list, a route was found.
+     return citiesToVisitNext.contains(endCity);
+ }
+</code></pre>
+</div> -->
+        
+      
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>
