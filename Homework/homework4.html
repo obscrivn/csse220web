@@ -58,7 +58,7 @@
         <ol>
           <li>
             <strong>Download the ZIP File (containing a project)</strong> to your computer but do not place in the eclipse workspace folder: 
-            <a href="HWMaps.zip">Click here to donwload ZIP</a>
+            <a href="../Homework/HW4.zip">Click here to donwload ZIP</a>
           </li>
           <li>
             <strong>Open Eclipse:</strong> <em>You do not need to create a new project</em> because the ZIP file contains an existing project.
@@ -83,102 +83,16 @@
         <h2>To Do</h2>
         <ol>
           <li>
-            Implement the 3 operations in <code>HWMaps.java</code>.
+            Implement the 3 operations in <code>HW4.java</code>.
           </li>
           <li>
             Run the included JUnit tests by executing <code>RunAllTests.java</code> to ensure your solution passes all tests.
           </li>
           <li>
-            Upload your completed <code>HWMaps.java</code> file to the HWK04 Gradescope.
+            Upload your completed <code>HW4.java</code> file to the HWK04 Gradescope.
           </li>
         </ol>
-      <details class="hint">
-  <summary>💡 Hint: Storing Multiple Temperatures for Each City</summary>
-  <p>You don’t know in advance how many times each city will appear, so you can’t use a fixed-size array.  
-     Instead, use a <code>HashMap</code> where:</p>
-  <ul>
-    <li>The <strong>key</strong> is the city name (<code>String</code>).</li>
-    <li>The <strong>value</strong> is an <code>ArrayList&lt;Integer&gt;</code> that stores all recorded temperatures for that city.</li>
-  </ul>
-
-  <p>Each time you read a (city, temperature) pair:</p>
-  <ul>
-    <li>If the city isn’t already in the map, create a new empty <code>ArrayList</code> and put it in the map.</li>
-    
-  </ul>
-
-  <p>Example:</p>
-  <pre><code class="language-java">
-    // check if the key does not exist, then create a new entry + empty array list
-    map.put(city, new ArrayList&lt;&gt;());
-</code></pre>
-
-  <p>Once you’ve stored the temperatures for a city, you can compare the latest one with the previous one to see if a drop occurred.</p>
-</details>
-
-<details class="hint">
-  <summary>💡 Hint: Adding a Value into a HashMap of ArrayLists</summary>
-  <p>Remember: a <code>HashMap&lt;String, ArrayList&lt;Integer&gt;&gt;</code> means each city name is linked to a
-     <code>ArrayList</code> of temperatures.</p>
-
-
-  <p>You know how to add values to <code>ArrayList</code>. The only difference is you need to get to the values in HashMap first:</p>
-  <pre><code class="language-java">hashmap.get(city); // you get to the value
-</code></pre>
-
-  <p>Then you add your  temperature reading to that list:</p
-
-  <pre><code class="language-java">hashmap.get(city).add(temp);</code></pre>
-
-  <p>This works because <code>map.get(city)</code> returns the list of temperatures for that city,
-     and then <code>.add(temp)</code> appends the new reading onto that list.</p>
-</details>
-
-<details class="hint">
-  <summary>💡 Hint: Looping Through an ArrayList</summary>
-  <p>You can use both <strong>index-based</strong> and <strong>enhanced for-loops</strong> with an <code>ArrayList</code>.</p>
-  
-  <ul>
-    <li><strong>Enhanced for-loop</strong> (good when you only need the values):</li>
-  </ul>
-  <pre><code class="language-java">for (int temp : temps) {
-    System.out.println(temp);
-}</code></pre>
-
-  <ul>
-    <li><strong>Index-based for-loop</strong> (good when you need to compare neighbors or know the position):</li>
-  </ul>
-  <pre><code class="language-java">for (int j = 1; j &lt; temps.size(); j++) {
-    if (temps.get(j) &lt; temps.get(j - 1)) {
-        // found a temperature drop
-        return city;
-    }
-}</code></pre>
-
-  <p>👉 In this assignment, you need to compare each temperature to the one before it.  
-     That means you could use the <em>index-based for-loop</em> so you can access both <code>temps.get(j)</code> and <code>temps.get(j - 1)</code>.</p>
-</details>
-
-<details class="hint">
-  <summary>💡 Hint: Building a Reverse HashMap</summary>
-  <p>When you “flip” a <code>HashMap&lt;Integer, String&gt;</code> into a
-     <code>HashMap&lt;String, ArrayList&lt;Integer&gt;&gt;</code>, each value from
-     the original map may become a key in the new one. Multiple original keys can
-     point to the same value, so you must collect them into a list.</p>
-
-  <p>Steps to follow:</p>
-  <ul>
-    <li>Loop through the <em>keys</em> of the original map.</li>
-    <li>Get the <em>value</em> from the original map (this will be the new key).</li>
-    <li>If the new key is not yet in the reverse map:
-      <ul><li>Create a new empty <code>ArrayList&lt;Integer&gt;</code> and put it in the map.</li></ul>
-    </li>
-    <li>Add the original key to the list for that new key.</li>
-  </ul>
-
-  <p>This way, each new value gets its own list the first time you see it,
-     and later keys are added to the existing list.</p>
-</details>
+      
     </div>
   </body>
 </html>
