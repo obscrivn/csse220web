@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 06</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. BankAccount</a></li>
+          <li><a href="#lab2">02. Design with UML</a></li>
+          
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+<p>For this Lab you will be creating 4 Classes - read intsructions to determine which classes require main executable method. Submit 4 java files.</p>
+
+
+  
+
+        <div class="lab-section" id="lab1">
+          <h2>Bank account</h2>
+          <p>Resources 1: <a href="../resources.html#static" target="_blank" class="resource-ref">Static Methods and Static Fields</a></p>
+          <p>Resources 2: <a href="../resources.html#override" target="_blank" class="resource-ref">Override Method</a></p>
+          <p>In this lab, you will modify the existing <code>BankAccount</code> class by completing the following tasks. <a href = "./BankAccount.java" target="_blank" >BankAccount java</a></p>
+  
+          <ol>
+            <li>
+              <strong>Modify the <code>balance</code> Field:</strong>
+              <ul>
+                <li>Change the <code>balance</code> field to be <code>static</code> so that it is shared across all instances</li>
+                <li>Update the constructors accordingly to ensure that the static field is properly initialized</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Override the <code>toString()</code> Method:</strong>
+              <ul>
+                <li>Override the <code>toString()</code> method to return 
+                  a custom string representation (showing the account name and balance) instead of the default object identifier</li>
+                  <div class="code-window">System.out.println("account1");
+  // Output should be: Name: Luke with the balance: 100.0
+                                      </div>
+                </ul>
+            </li>
+            <li>
+              <strong>Create a Static Method to Calculate Interest:</strong>
+              <ul>
+                <li>Add a static method (e.g., <code>calculateInterest</code>) 
+                  that computes interest based on principal, rate, and time</li>
+               </ul> 
+            </li>
+            </ol>
+            <strong>Test Your Code:</strong>
+            <ul>
+               <li>Create 3 different accounts (account1, account2, account3). Deposite 3 different ammounts to each account and print account3. Make sure that static behavior is shown (all accounts should have the same balance)</li>
+                <li>Call static method and calculate the interest</li>
+                <div class="code-window">double interest = BankAccount.calculateInterest(1000, 0.05, 3);
+System.out.println(interest);
+                                    </div>        
+              </ul>
+
+          
+
+          
+        </div>
+        
+        <div class="lab-section" id="lab2">
+          <h2>Exercise 2: Design A/B/Main Classes</h2>
+
+  <h3>Step 1: Analyze the UML Diagram</h3>
+  <p>Below is a UML diagram (<code>classABC.png</code>) that outlines three classes: <strong>A</strong>, <strong>B</strong>, and <strong>Main</strong>. 
+    Your first task is to recreate this diagram using <a href="https://plantuml.com/" target="_blank">PlantUML</a>. Observe the relationships, fields, and methods shown, and then replicate them in your PlantUML code.</p>
+  
+  <!-- Insert your UML image here -->
+  <img src="classABC.png" alt="UML Diagram for Classes A, B, and Main">
+
+  <p>Once you have replicated the diagram in PlantUML, proceed to the next steps to implement these classes in Java.</p>
+  
+  <h3>Step 2: Create Class <code>B</code></h3>
+  <p>From your UML diagram, you can see that class <code>B</code> has an integer field called <code>count</code> and methods to manipulate it. Follow the instructions below to build this class in Java.</p>
+  
+  <ol>
+    <li><strong>Field:</strong> Declare a private integer field named <code>count</code>.</li>
+    <li><strong>Constructor:</strong> Create a no-argument constructor that initializes <code>count</code> to <code>0</code>.</li>
+    <li><strong>Setter Method:</strong> Add a method <code>setValue(int value)</code> to update the <code>count</code> field.</li>
+    <li><strong>Getter Method:</strong> Add a method <code>getCount()</code> that returns the current value of <code>count</code>.</li>
+  </ol>
+  <h4>Why is this setup important?</h4>
+  <ul>
+    <li><strong>Encapsulation:</strong> The <code>count</code> field is private, ensuring it can only be modified through the class methods (<code>setValue</code> and <code>getCount</code>). This prevents external classes from making unintended changes.</li>
+    <li><strong>Constructor:</strong> Initializing <code>count</code> to <code>0</code> provides a sensible default. You can change this if your design calls for a different initial value.</li>
+    <li><strong>Setter and Getter:</strong> These methods follow the standard Java naming convention for manipulating private fields. This pattern is part of the broader concept of encapsulation and helps maintain the integrity of your data.</li>
+  </ul>    
+  <h4>Step 2: Create Class <code>A</code></h4>
+  
+  <p>Class <code>A</code> has the following characteristics:</p>
+  
+  <ul>
+    <li>A private <code>String name</code> field to store the name</li>
+    <li>A private <code>B</code> object (<code>b</code>) to represent its association with class <code>B</code></li>
+    <li>A constructor that initializes the name and creates a new instance of <code>B</code></li>
+    <li>A method <code>setBValue(int value)</code> that uses the <code>B</code> object to set a value</li>
+    <li>Getter methods: <code>getName()</code> and <code>getBValue()</code> to retrieve the name and the current value from the <code>B</code> object</li>
+  </ul>
+  <h4>Step 3: Create Class <code>Main</code></h4>
+  
+  <p>The <code>Main</code> class ties together the classes <code>A</code> and <code>B</code>. The <code>Main</code> class is responsible for:</p>
+  
+  <ul>
+    <li>Maintaining a list of <code>A</code> objects</li>
+    <li>Initializing these objects in the constructor</li>
+    <li>Providing a method to update the <code>B</code> value for all <code>A</code> objects</li>
+    <li>Printing a report that shows each <code>A</code> object's name and the current value from its associated <code>B</code> object</li>
+  </ul>
+  
+  <p>Additional Instructions</p>
+  <ol>
+    <li>
+      <strong>Field Declaration:</strong><br>
+      Declare an <code>ArrayList&lt;A&gt;</code> called <code>list</code> to store multiple <code>A</code> objects
+    </li>
+    <li>
+      <strong>Constructor:</strong><br>
+      Initialize the <code>list</code> and create several <code>A</code> objects (for example, with names "a", "b", and "c"), then add them to the list
+    </li>
+    <li>
+      <strong>Method <code>setAllBValuesTo3()</code>:</strong><br>
+      Iterate over the list and call <code>setBValue(3)</code> on each <code>A</code> object. This method updates each associated <code>B</code>'s value to 3.
+    </li>
+    <li>
+      <strong>Method <code>printReport()</code>:</strong><br>
+      Iterate over the list and print each <code>A</code> object's name along with the current value of its associated <code>B</code> (retrieved via <code>getBValue()</code>).
+    </li>
+    <li>
+      <strong>Main Method:</strong><br>
+      In the <code>main</code> method, create an instance of <code>Main</code>, update the <code>B</code> values by calling <code>setAllBValuesTo3()</code>, and then print the report.
+    </li>
+  </ol>
+      
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>

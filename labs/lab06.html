@@ -129,6 +129,61 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
   </style>
 </head>
 <body>
@@ -145,142 +200,173 @@ a.resource-ref:hover {
     <div style="clear:both;"></div>
 </div>
 <div id="content">
-    <h1>Lab Assignment 06</h1>
-    <nav id="lab-nav">
-        <ul>
-          <li><a href="#lab1">01. BankAccount</a></li>
-          <li><a href="#lab2">02. Design with UML</a></li>
-          
-         
-          <!-- Add more lab links as needed -->
-        </ul>
-      </nav>
+    <h1>Lab Assignment 06 </h1>
+   
 <!-- Lab Navigation Menu -->
 <div id="main-content">
-<p>For this Lab you will be creating 4 Classes - read intsructions to determine which classes require main executable method. Submit 4 java files.</p>
+<section class="lab-header">
+  <h2>UML → Code (Design-to-Code Mini Lab)</h2>
 
+  <p>
+    Today you’re doing the classic: <b>read a UML diagram</b> and turn it into
+    <b>working Java classes</b>. The goal is to practice <b>has-a relationships</b>,
+    <b>delegation</b>, and <b>looping over objects</b>—without getting lost in random details.
+  </p>
 
-  
+  <div class="callout">
+    <b>What you submit:</b> your UML file.
+  </div>
+</section>
 
-        <div class="lab-section" id="lab1">
-          <h2>Bank account</h2>
-          <p>Resources 1: <a href="../resources.html#static" target="_blank" class="resource-ref">Static Methods and Static Fields</a></p>
-          <p>Resources 2: <a href="../resources.html#override" target="_blank" class="resource-ref">Override Method</a></p>
-          <p>In this lab, you will modify the existing <code>BankAccount</code> class by completing the following tasks. <a href = "./BankAccount.java" target="_blank" >BankAccount java</a></p>
-  
-          <ol>
-            <li>
-              <strong>Modify the <code>balance</code> Field:</strong>
-              <ul>
-                <li>Change the <code>balance</code> field to be <code>static</code> so that it is shared across all instances</li>
-                <li>Update the constructors accordingly to ensure that the static field is properly initialized</li>
-              </ul>
-            </li>
-            <li>
-              <strong>Override the <code>toString()</code> Method:</strong>
-              <ul>
-                <li>Override the <code>toString()</code> method to return 
-                  a custom string representation (showing the account name and balance) instead of the default object identifier</li>
-                  <div class="code-window">System.out.println("account1");
-  // Output should be: Name: Luke with the balance: 100.0
-                                      </div>
-                </ul>
-            </li>
-            <li>
-              <strong>Create a Static Method to Calculate Interest:</strong>
-              <ul>
-                <li>Add a static method (e.g., <code>calculateInterest</code>) 
-                  that computes interest based on principal, rate, and time</li>
-               </ul> 
-            </li>
-            </ol>
-            <strong>Test Your Code:</strong>
-            <ul>
-               <li>Create 3 different accounts (account1, account2, account3). Deposite 3 different ammounts to each account and print account3. Make sure that static behavior is shown (all accounts should have the same balance)</li>
-                <li>Call static method and calculate the interest</li>
-                <div class="code-window">double interest = BankAccount.calculateInterest(1000, 0.05, 3);
-System.out.println(interest);
-                                    </div>        
-              </ul>
+<hr />
 
-          
-
-          
-        </div>
-        
-        <div class="lab-section" id="lab2">
-          <h2>Exercise 2: Design A/B/Main Classes</h2>
-
-  <h3>Step 1: Analyze the UML Diagram</h3>
-  <p>Below is a UML diagram (<code>classABC.png</code>) that outlines three classes: <strong>A</strong>, <strong>B</strong>, and <strong>Main</strong>. 
-    Your first task is to recreate this diagram using <a href="https://plantuml.com/" target="_blank">PlantUML</a>. Observe the relationships, fields, and methods shown, and then replicate them in your PlantUML code.</p>
-  
-  <!-- Insert your UML image here -->
+<details class="lab-card" open>
+  <summary>🔍 The Big Goal</summary>
+  <div class="card-body">
+    <!-- Insert your UML image here -->
   <img src="classABC.png" alt="UML Diagram for Classes A, B, and Main">
+    <ul>
+      <li>You have three classes: <code>A</code>, <code>B</code>, <code>Main</code>.</li>
+      <li><code>A</code> <b>has a</b> <code>B</code>.</li>
+      <li><code>Main</code> has an <code>ArrayList&lt;A&gt;</code> with exactly <b>3</b> objects.</li>
+      <li><code>Main</code> calls a method that sets <b>all</b> B-values to <code>3</code>.</li>
+      <li>When you run <code>Main</code>, you print a “before” report and an “after” report.</li>
+    </ul>
 
-  <p>Once you have replicated the diagram in PlantUML, proceed to the next steps to implement these classes in Java.</p>
-  
-  <h3>Step 2: Create Class <code>B</code></h3>
-  <p>From your UML diagram, you can see that class <code>B</code> has an integer field called <code>count</code> and methods to manipulate it. Follow the instructions below to build this class in Java.</p>
-  
-  <ol>
-    <li><strong>Field:</strong> Declare a private integer field named <code>count</code>.</li>
-    <li><strong>Constructor:</strong> Create a no-argument constructor that initializes <code>count</code> to <code>0</code>.</li>
-    <li><strong>Setter Method:</strong> Add a method <code>setValue(int value)</code> to update the <code>count</code> field.</li>
-    <li><strong>Getter Method:</strong> Add a method <code>getCount()</code> that returns the current value of <code>count</code>.</li>
-  </ol>
-  <h4>Why is this setup important?</h4>
-  <ul>
-    <li><strong>Encapsulation:</strong> The <code>count</code> field is private, ensuring it can only be modified through the class methods (<code>setValue</code> and <code>getCount</code>). This prevents external classes from making unintended changes.</li>
-    <li><strong>Constructor:</strong> Initializing <code>count</code> to <code>0</code> provides a sensible default. You can change this if your design calls for a different initial value.</li>
-    <li><strong>Setter and Getter:</strong> These methods follow the standard Java naming convention for manipulating private fields. This pattern is part of the broader concept of encapsulation and helps maintain the integrity of your data.</li>
-  </ul>    
-  <h4>Step 2: Create Class <code>A</code></h4>
-  
-  <p>Class <code>A</code> has the following characteristics:</p>
-  
-  <ul>
-    <li>A private <code>String name</code> field to store the name</li>
-    <li>A private <code>B</code> object (<code>b</code>) to represent its association with class <code>B</code></li>
-    <li>A constructor that initializes the name and creates a new instance of <code>B</code></li>
-    <li>A method <code>setBValue(int value)</code> that uses the <code>B</code> object to set a value</li>
-    <li>Getter methods: <code>getName()</code> and <code>getBValue()</code> to retrieve the name and the current value from the <code>B</code> object</li>
-  </ul>
-  <h4>Step 3: Create Class <code>Main</code></h4>
-  
-  <p>The <code>Main</code> class ties together the classes <code>A</code> and <code>B</code>. The <code>Main</code> class is responsible for:</p>
-  
-  <ul>
-    <li>Maintaining a list of <code>A</code> objects</li>
-    <li>Initializing these objects in the constructor</li>
-    <li>Providing a method to update the <code>B</code> value for all <code>A</code> objects</li>
-    <li>Printing a report that shows each <code>A</code> object's name and the current value from its associated <code>B</code> object</li>
-  </ul>
-  
-  <p>Additional Instructions</p>
-  <ol>
-    <li>
-      <strong>Field Declaration:</strong><br>
-      Declare an <code>ArrayList&lt;A&gt;</code> called <code>list</code> to store multiple <code>A</code> objects
-    </li>
-    <li>
-      <strong>Constructor:</strong><br>
-      Initialize the <code>list</code> and create several <code>A</code> objects (for example, with names "a", "b", and "c"), then add them to the list
-    </li>
-    <li>
-      <strong>Method <code>setAllBValuesTo3()</code>:</strong><br>
-      Iterate over the list and call <code>setBValue(3)</code> on each <code>A</code> object. This method updates each associated <code>B</code>'s value to 3.
-    </li>
-    <li>
-      <strong>Method <code>printReport()</code>:</strong><br>
-      Iterate over the list and print each <code>A</code> object's name along with the current value of its associated <code>B</code> (retrieved via <code>getBValue()</code>).
-    </li>
-    <li>
-      <strong>Main Method:</strong><br>
-      In the <code>main</code> method, create an instance of <code>Main</code>, update the <code>B</code> values by calling <code>setAllBValuesTo3()</code>, and then print the report.
-    </li>
-  </ol>
-      
+
+  </div>
+</details>
+
+
+
+<details class="lab-card" open>
+  <summary>UML Rules of the Road</summary>
+  <div class="card-body">
+    <p>Use the UML diagram as your “contract.” Your code should reflect:</p>
+    <ul>
+      <li><b>Fields</b> (names + types + visibility)</li>
+      <li><b>Key methods</b> (names + parameters + return types)</li>
+      <li><b>Relationships</b> (A has-a B, Main has-a list of A)</li>
+    </ul>
+
+    <div class="callout">
+      If the UML says <code>A</code> has a <code>B</code>,
+      you should literally see a field like <code>private B b;</code> in <code>A</code>.
+    </div>
+  </div>
+</details>
+
+<details class="lab-card" open>
+  <summary>✅ Task 0. Reproduce UML Diagram</summary>
+  <div class="card-body">
+    <p>Use the online PlantUML and replicate the diagram</p>
+    </div>
+</details>
+
+<details class="lab-card" open>
+  <summary>✅ Task 1. Implement class <code>B</code></summary>
+  <div class="card-body">
+    <p><b>Your job:</b> Make <code>B</code> store one integer value.</p>
+
+    <ul class="checklist">
+      <li>☐ <code>B</code> has a <code>private int value;</code></li>
+      <li>☐ <code>B</code> starts at <code>0</code> (constructor or default field value)</li>
+      <li>☐ <code>getValue()</code> returns the value</li>
+      <li>☐ <code>setValue(int v)</code> updates the value</li>
+    </ul>
+
+    <details class="hint-card">
+      <summary>💡 Hint</summary>
+      <div class="card-body">
+        <p>
+          If your field is <code>private</code>, outside code can’t touch it directly.
+         Use getters/setters!
+        </p>
+      </div>
+    </details>
+  </div>
+</details>
+
+<details class="lab-card" open>
+  <summary>✅ Task 2. Implement class <code>A</code></summary>
+  <div class="card-body">
+    <p><b>Your job:</b> <code>A</code> owns a <code>B</code> and delegates calls to it.</p>
+
+    <ul class="checklist">
+      <li>☐ <code>A</code> has a field: <code>private B b;</code></li>
+      <li>☐ The <code>A</code> constructor creates the <code>B</code> object</li>
+      <li>☐ <code>setBValue(int v)</code> calls <code>b.setValue(v)</code></li>
+      <li>☐ <code>getBValue()</code> returns <code>b.getValue()</code></li>
+    </ul>
+
+    <details class="hint-card">
+      <summary>💡 Hint: Delegation (aka “A forwards the request”)</summary>
+      <div class="card-body">
+        <p>
+          Delegation means <code>A</code> doesn’t store the int directly but it asks its <code>B</code>.
+          Think: <i>“I don’t know the value, but my B does.”</i>
+        </p>
+      </div>
+    </details>
+  </div>
+</details>
+
+<details class="lab-card" open>
+  <summary>✅ Task 3. Implement class <code>Main</code></summary>
+  <div class="card-body">
+    <p><b>Your job:</b> Build 3 <code>A</code> objects, store them, update them, and report.</p>
+
+    <ul class="checklist">
+      <li>☐ Field: <code>private ArrayList&lt;A&gt; list;</code></li>
+      <li>☐ Constructor initializes the list and adds exactly 3 <code>A</code> objects</li>
+      <li>☐ <code>setAllBValuesTo3()</code> loops over the list and calls <code>setBValue(3)</code></li>
+      <li>☐ <code>toString()</code> prints the B values for each A (same order every time)</li>
+      <li>☐ <code>main</code> prints a “before” report, calls setter method, prints “after” report</li>
+    </ul>
+
+    <details class="hint-card">
+      <summary>💡 Hint: Loop pattern you want</summary>
+      <div class="card-body">
+        <pre><code>for (A a : list) {
+  a.setBValue(3);
+}</code></pre>
+      </div>
+    </details>
+  </div>
+</details>
+
+<details class="lab-card" open>
+  <summary>Expected Output (Self-check)</summary>
+  <div class="card-body">
+    <p>Your exact formatting can vary, but your output must show:</p>
+    <ul>
+      <li><b>Before</b>: all B values are <code>0</code></li>
+      <li><b>After</b>: all B values are <code>3</code></li>
+    </ul>
+
+    <div class="callout">
+      Example:
+      <pre><code>Before: 0 0 0
+After:  3 3 3</code></pre>
+    </div>
+
+    <div class="hint">
+      If your “before” already prints 3s, you probably set values in the constructor or never reset.
+    </div>
+  </div>
+</details>
+
+<details class="lab-card">
+  <summary>Submission</summary>
+  <div class="card-body">
+    <ul>
+      <li>Install Plugin Plantum UML</li>
+      <li>Submit your UML diagram as PNG/JPG</li>
+    </ul>
+
+  </div>
+</details>
+
         </div>
         </div>
 
