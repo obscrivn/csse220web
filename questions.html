@@ -54,6 +54,61 @@
       font-size: 0.9rem;
       color: #555;
     }
+    .lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
   </style>
 </head>
 <body>
@@ -70,7 +125,148 @@
   </a>
 </div>
   <main>
-    <div class="qa-card">
+<h1>❓ Student Q&A — Collected from Worksheets</h1>
+<p>
+These are real questions asked by students. If you’re wondering about it,
+someone else probably already asked 👀
+</p>
+
+<hr>
+
+<details class="lab-card">
+  <summary>🧠 Java Basics & Big Picture</summary>
+
+  <p><b>What exactly is Object-Oriented Programming?</b><br>
+  OOP is about modeling programs as <b>objects</b> that bundle:
+  data (fields) + behavior (methods).  
+  Think: game characters, bank accounts, Minecraft blocks.</p>
+
+  <p><b>Why do we need programs?</b><br>
+  To automate tasks, model systems, and solve problems at scale.
+  Computers don’t “think” → programs tell them exactly what to do.</p>
+
+  <p><b>Why do we need <code>public static void main</code>?</b><br>
+  It’s the JVM’s entry point. This is where execution starts.
+  No <code>main</code> → nothing runs.</p>
+
+  <p><b>Is <code>static</code> for pure functions?</b><br>
+  Not exactly. <code>static</code> means the method belongs to the class,
+  not an object. Some static methods can be a pure helper function (like Math).</p>
+</details>
+
+<details class="lab-card">
+  <summary>📦 Variables, Types, and Memory</summary>
+
+  <p><b>How many bits does each data type store?</b><br>
+  <code>int</code>: 32 bits<br>
+  <code>double</code>: 64 bits<br>
+  <code>char</code>: 16 bits (Unicode)<br>
+  <code>boolean</code>: JVM-dependent. Conceptually, it represents a single bit of information (true or false) but in practice, it occupies a byte which is the smallest addressable unit of memory.</p>
+
+  <p><b>How does <code>char</code> work?</b><br>
+  A <code>char</code> stores a Unicode number under the hood.
+  Example: <code>'A'</code> → 65.</p>
+
+  <p><b>When do we use single vs double quotes?</b><br>
+  <code>'a'</code> → char (single character)<br>
+  <code>"a"</code> → String (object)</p>
+
+  <p><b>How do you cast String ↔ int?</b><br>
+  <code>Integer.parseInt("42")</code><br>
+  <code>String.valueOf(42)</code><br>
+check our resources <a href="https://obscrivn.github.io/csse220web/resources.html#int-to-string">here</a> for more details.</p>
+
+</details>
+
+<details class="lab-card">
+  <summary>🔁 Loops & Control Flow</summary>
+
+  <p><b>Why does substring end at n+1?</b><br>
+  Java uses <b>half-open ranges</b>: start inclusive, end exclusive.
+  </p>
+
+  <p><b>Can we review the condition in a for loop?</b><br>
+    See our resources <a href="https://obscrivn.github.io/csse220web/resources.html#conditionals">here</a> for more details.
+  </p>
+
+  <p><b>Are these like Python nested loops?</b><br>
+  Same logic, different syntax.</p>
+</details>
+
+<details class="lab-card">
+  <summary>🧱 Arrays vs ArrayLists (Big One)</summary>
+
+  <p><b>Why use arrays if ArrayLists are more flexible?</b><br>
+  Arrays are:
+  <ul>
+    <li>Faster</li>
+    <li>Use less memory</li>
+    <li>Fixed-size (predictable)</li>
+  </ul></p>
+
+  <p><b>Which runs faster?</b><br>
+  Arrays. No resizing, no boxing/unboxing.</p>
+
+  <p><b>Can arrays store objects?</b><br>
+  Yes. Example: <code>Player[] players</code></p>
+
+  <p><b>Why can’t ArrayLists store primitives?</b><br>
+  Generics only work with objects.
+  Primitives use <b>wrapper classes</b> instead.</p>
+
+  <p><b>Do wrapper classes emulate primitives?</b><br>
+  They <b>wrap</b> them. Java auto-boxes and unboxes when needed.</p>
+
+  <p><b>Why can ArrayLists change size but arrays can’t?</b><br>
+  Arrays are fixed blocks of memory.
+  ArrayLists secretly create new arrays when they grow (!).</p>
+
+  <p><b>Why is <code>.length</code> a field but <code>.size()</code> a method?</b><br>
+  <code>length</code> is a field used for arrays, while 
+  <code>.size()</code> is a method used for Collection classes (like ArrayList, Set, Map, etc.)is built into arrays.</p>
+</details>
+
+<details class="lab-card">
+  <summary>🧩 Mixing Arrays & ArrayLists</summary>
+
+  <p><b>Can you have an array of arrays?</b><br>
+  Yes → 2D arrays.</p>
+
+  <p><b>Can an ArrayList store arrays?</b><br>
+  Yes → <code>ArrayList &lt;int[]&gt; list = new ArrayList&lt;&gt;();</code><br>
+  </br>Now each element of the ArrayList is an entire array.How do you add an array to an ArrayList?
+<code><pre>
+ArrayList&lt;int[]&gt; list = new ArrayList&lt;&gt;();
+
+int[] nums = {1, 2, 3};
+list.add(nums);
+</pre></code>
+Why doesn’t ArrayList<int[]> need a wrapper class for int[]?
+
+Short answer: Because int[] itself is already an object.
+</p>
+
+
+  <p><b>Can you convert between them?</b><br>
+  Yes, but usually requires a loop
+  (or helper methods like <code>Arrays.asList</code>).</p>
+
+  <p><b>Should we always use ArrayLists?</b><br>
+  Nope. Use:
+  <ul>
+    <li>Arrays → fixed size, performance</li>
+    <li>ArrayLists → flexible size, convenience</li>
+  </ul></p>
+</details>
+
+<hr>
+
+<p><i>
+We’ll keep adding to this page as new questions pop up.
+Keep Asking questions 💯!
+</i></p>
+
+    <!-- <div class="qa-card">
       <div class="question">1. What advantages does Java have over other modern programming languages?</div>
       <div class="answer">“Modern” isn’t quite accurate – most popular languages like Java, Python, and C++ are decades old. Java stands out because it’s portable (runs anywhere with a JVM), strongly typed, secure, and has true multithreading support (unlike Python’s limited threading).</div>
     </div>
@@ -192,7 +388,7 @@
       <div class="answer"><code>module-info.java</code> is useful for large enterprise apps where you need to define which packages are exposed to other modules. Our projects are single-module, single-package, so module-info.java isn’t needed.
         <code>package-info.java</code> is just documentation: It’s meant for writing Javadoc for an entire package. In CSSE 220, we’ll focus on class-level Javadoc — package docs are overkill.
       </div>
-    </div>
+    </div> -->
 
   </main>
 <footer>
