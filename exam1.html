@@ -6,7 +6,84 @@
         <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
     <link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
-    
+    <style>
+           li {
+            margin-bottom: 15px; /* Adds 15px of space below each list item */
+            margin-top: 10px;
+        }
+        header, footer { background: #2c3e50; color: #fff; padding: 1rem; }
+    header h1, footer p { margin: 0; }
+
+    main { padding: 2rem; max-width: 900px; margin: auto; }
+
+    h2 { color: #2c3e50; margin-top: 2rem; }
+
+    /* Two-column layout for general info */
+    .info { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+    .info li { background: #ecf0f1; padding: 0.5rem; border-radius: 4px; }
+
+    /* Topics grid */
+    .topics-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 1rem;
+      list-style: none;
+      padding: 0;
+    }
+    .topics-list li {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 1rem;
+    }
+    .topics-list a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    .topics-list a:hover {
+      text-decoration: underline;
+    }
+    .cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+}
+
+@media (min-width: 700px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+    /* Practice section */
+    .practice a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: #2980b9;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .practice a:hover { background: #1f5e7d; }
+    </style>
     </head>
     <body>
         <div id="header">
@@ -22,26 +99,27 @@
             <div style="clear:both;"></div>
         </div>
     
-    <div id="content">
-    <h1>CSSE220 Exam 1 Review Study Guide</h1>
-    <p>This study guide covers requirements and example questions to prepare for Exam 1</p>
-    <hr>
-    <h2 id="paper">Written Exam</h2>
-    <p> Practice Examples: <a href="./resources_files/Review practice Exam 1.pdf">Exam 1 Review questions</a></p>
-    <p> Practice Examples: <a href="./resources_files/Review practice Exam 1 Solutions.pdf">Exam 1 Review Solutions</a></p>
-    <ol>
-        <li>Allowed materials: 1 sheet (2-sides) written notes + OOD handout + UML handount + Box Drawing handout</li>
-        <li> 110 min
-            </li>
-            <li> 1 questions - box and pointer diagrams
-            </li>
-            <li> 2 reflection/scenario question  (similar to quizzes)
-            </li>
-            <li> 20 questions - true/false, multiple choice
-            </li>
-            </ol>
-    <p><strong>Topics Covered</strong>: </p>
-    <ol>
+<header>
+            <h1>CSSE 220 Exam 1 Review Study Guide</h1>
+            <!-- <p>One sheet (2-sided) of handwritten notes allowed. 110-minute in-class paper exam.</p> -->
+          </header>
+<main>
+            <section aria-labelledby="info-heading">
+              <h2 id="info-heading">General Information</h2>
+              <ul class="info">
+                <li><strong>Format:</strong> Paper exam, 110 min total.</li>
+                <li><strong>Allowed Material:</strong> One 8½×11″ sheet, double-sided with written notes + 3 provided handouts: OOP design, Box& Pointers & UML.</li>
+              <li><strong>Format:</strong> Coding exam, 110 min total.</li>
+                <li><strong>Allowed Material:</strong> Written notes allowed (One 8½×11″ sheet, double-sided). Previous work on Eclipse (hwk, labs). No access to browser (browser must be closed). All plugins (copilot, gemini) must be disabled.</li>
+              </ul>
+            </section>
+            <div class="cards-container">
+    
+                <!-- Card 1: Topics & Resources -->
+                <section class="card">
+                  <h2>Topics &amp; Resources</h2>
+                  <ul class="resources-list">
+
         <li>Primitive Data Types <a href="https://share.evernote.com/note/b9ca749c-8aca-dcad-b6be-9031a178ec25 target="_blank"" target="_blank" >slides</a></li>
         <li> Arrays (2D Arrays) vs ArrayLists vs Hashmap: understanding their purpose and diffrences
            <ul>
@@ -51,8 +129,8 @@
 <li>Hashmaps: <a href="https://share.evernote.com/note/a6c4b351-490e-d31e-d06e-680263e344f2" target="_blank" >slides</a></li>
 </ul>
 </li>
-            <li> Data Streaming (Scanner) - <a href="https://share.evernote.com/note/4dad5bb5-82d6-163f-281e-ee8963276a26" target="_blank" >slides</a>
-            </li>
+            <!-- <li> Data Streaming (Scanner) - <a href="https://share.evernote.com/note/4dad5bb5-82d6-163f-281e-ee8963276a26" target="_blank" >slides</a> -->
+            <!-- </li> -->
             <li> Objects 
                 <ul>
                 <li>Classes, Fields, Methods: <a href="https://share.evernote.com/note/077be9f6-80bc-41ec-1a28-7d7bb32cc533" target="_blank" >slides</a>
@@ -70,12 +148,41 @@
             <li> Coupling and Cohesion - <a href="https://share.evernote.com/note/4cab6af1-93f0-e797-bfd2-c9d06deefa1d" target="_blank" >slides</a>
             </li>
             
-            </ol>
-    <h2 id="code">Coding Exam Practice</h2>
-    <ol>
-     <li>Practice Examples: <a href="./resources_files/Exam1-202210.zip">Exam 1 code zip</a></li>
-     <li>Practice Solutions: <a href="./resources_files/Exam1-202210-Solution.zip">Exam 1 code solutions zip</a></p></li>
-</ol>
+
+                  </ul>
+                </section>
+            
+                <!-- Card 2: Practice -->
+                <section class="card practice">
+                  <h2>Written Practice</h2>
+                  <p>Work through these exercises to test your understanding:</p>
+                  <ul>
+                    <li> Practice Examples: <a href="./resources_files/Review practice Exam 1.pdf">Exam 1 Review questions</a></li>
+    <li> Practice Examples: <a href="./resources_files/Review practice Exam 1 Solutions.pdf">Exam 1 Review Solutions</a></li>
+                  <li>Boxes & Drawing : <a href="./labs/SimpleObjectsQuizSolutionsLab05.pdf">Box & Drawing Solutions Part 1</a></li>
+    
+                    <!-- add more practice links here -->
+                  </ul>
+                  <h2>Coding Practice</h2>
+                  <p>Work through exam coding to test your understanding:</p>
+                  <ul>
+
+                    <li>Download starter code from the previous exam <a href="" target="_blank">ZIP</a>and import to Eclipse</li>
+                  
+                  </ul>
+                </section>
+            
+              </div>
+
+            
+          </main>
+        
+          <footer>
+            <p>CSSE 220 · Good luck on Exam 1!</p>
+          </footer>
+
+    
+       
 
 <h2>Coding Exam Instructions</h2>
 <ol>
