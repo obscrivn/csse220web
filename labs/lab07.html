@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
+.pill {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: #f3f4f6;
+      font-size: 0.85rem;
+      margin-left: 0.35rem;
+    }
+    .callout {
+      border-left: 6px solid #111827;
+      background: #f9fafb;
+      padding: 0.8rem 0.9rem;
+      border-radius: 12px;
+      margin: 0.9rem 0;
+    }
+    .warn { border-left-color: #b45309; background:#fffbeb; }
+    .ok { border-left-color: #1d1e1e; }
+    code, pre { background:#f3f4f6; border-radius:10px; }
+    pre { padding: 0.9rem; overflow:auto; }
+    table { border-collapse: collapse; width:100%; margin: 0.75rem 0; }
+    th, td { border: 1px solid #e5e7eb; padding: 0.55rem; text-align:left; }
+    th { background:#f9fafb; }
+    .tiny { font-size:0.92rem; color:#374151; }
+    .checklist li { margin: 0.25rem 0; }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab 07 Quest Design (Encapsulation) </h1>
+   
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+<section class="lab-header">
+  <p class="tiny">
+      In this lab you’ll build a <strong>Quest</strong> object with strong encapsulation.
+      Next lab we’ll build the <strong>QuestBook</strong> that stores many quests.
+    </p>
+  </header>
+
+  <div class="callout ok">
+    <strong>Theme:</strong> Protect your quest data like it’s Netherite.<br/>
+    <strong>Big idea:</strong> A well-encapsulated object is harder to break and easier to reuse later.
+  </div>
+<details class="lab-card" open>
+  <summary>0️⃣ Setup. Import the Starter Project</summary>
+  <p>
+    We’ll start from a prepared Eclipse project so that package names and files match
+    what we’ll use later for autograding.
+  </p>
+
+  <ol>
+    <li>
+      Download the Lab07 starter project zip <a href="../labs/Lab07.zip">Lab07</a>.
+    </li>
+    <li>
+      In Eclipse, go to <em>File → Import… → Existing Projects into Workspace</em> and select the
+      unzipped Lab07 folder.
+    </li>
+    <li>
+      You should see a project that already contains:
+      <ul>
+        <li>a package named <code>lab</code></li>
+        <li>a starter file: <code>Quest.java</code></li>
+        <li><code>QuestTest.java</code> in <code>labTest</code> package to test your implementation. You will need to uncomment code once you’ve created the new class with required methods</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p><strong>Important:</strong></p>
+  <ul>
+    <li>Do <strong>not</strong> change the package name.</li>
+    <li>Do <strong>not</strong> rename <code>files</code>.</li>
+    <li>You will <strong>add</strong> a new class <code>PlayerStats</code> in the same package (lab).</li>
+  </ul>
+</details>
+
+<details class="lab-card">
+  <summary>1️⃣ What Are We Building?</summary>
+  <p>
+    We’re modeling a Minecraft-style <strong>quest</strong>.
+  </p>
+
+  <p>
+    Each <code>Quest</code> object will represent one task a player can complete.
+    A quest stores:
+  </p>
+
+  <ul>
+    <li>a unique <strong>id</strong>, e.g. <code>"wood_001"</code>, <code>"craft_table"</code></li>
+    <li>a human-readable <strong>title</strong>, e.g. <code>"Chop Wood"</code>, <code>"Craft a Table"</code></li>
+    <li>a fixed amount of <strong>quest XP</strong> earned when the quest is completed</li>
+    <li>a <strong>status</strong> that tracks progress (locked, active, completed)</li>
+    </li>
+  </ul>
+
+  <p>Your class will be able to:</p>
+  <ul>
+    <li>protect its data using encapsulation</li>
+    <li>enforce valid quest state transitions</li>
+    <li>prevent invalid or inconsistent quest objects</li>
+    <li>present itself using a clean <code>toString()</code> method</li>
+  </ul>
+</details>
+  
+<details class="lab-card">
+  <summary>2️⃣ Create Enum</summary>
+
+  <p>
+    A quest can only be in a small number of valid states.
+    Instead of using strings like <code>"active"</code> or <code>"done"</code>,
+    we will use an <strong>enum</strong>.
+  </p>
+
+  <p>
+    An enum defines a fixed set of allowed values and prevents invalid states.
+  </p>
+
+  <h3>Step 1: Create the enum</h3>
+  <p>
+    In the <code>lab</code> package, create a new file named
+    <code>QuestStatus.java</code>.
+  </p>
+
+  <pre><code>package lab;
+
+public enum QuestStatus {
+    LOCKED,
+    ACTIVE,
+    COMPLETED
+}</code></pre>
+<h3>Why is it in its own file?</h3>
+    <p>
+      Enums are top-level types in Java (like classes). They live in their own <code>.java</code> file and compile to their own <code>.class</code>.
+      Keeping it separate also makes reuse easier later (QuestBook, quizzes, etc.).
+    </p>
+  <h3>Initializing the status</h3>
+  <p>
+    In the constructor, initialize every quest to the
+    <code>LOCKED</code> state:
+  </p>
+
+  <pre><code>this.status = QuestStatus.LOCKED;</code></pre>
+
+  <h3>Checking the current status</h3>
+  <p>
+    To check a quest’s state, compare it directly to an enum value using
+    <code>==</code>:
+  </p>
+
+  <pre><code>if (this.status == QuestStatus.LOCKED) {
+    // quest is locked
+}</code></pre>
+
+  <p>
+    It is safe and recommended to use <code>==</code> when comparing enums.
+  </p>
+
+  <h3>Changing the status</h3>
+  <p>
+    To update the state, assign a new enum value:
+  </p>
+
+  <pre><code>this.status = QuestStatus.ACTIVE;</code></pre>
+</details>
+
+  <details class="lab-card">
+  <summary>3️⃣ Implement the <code>Quest</code> Class</summary>
+
+  <p>
+    Now that the starter code is in place, your job is to complete the
+    <code>Quest</code> class by replacing each <code>TODO</code>.
+  </p>
+
+  <p>
+    You should <strong>not</strong> add new fields or change any method signatures.
+    Focus on implementing the required behavior correctly.
+  </p>
+
+  <h3>What you need to implement</h3>
+  <ul>
+    <li>
+      <strong>Constructor</strong>
+      <ul>
+        <li>validate that <code>id</code> is not <code>null</code> or blank</li>
+        <li>validate that <code>title</code> is not <code>null</code> or blank</li>
+        <li>validate that <code>questXp &gt;= 0</code></li>
+        <li>initialize <code>status</code> to <code>QuestStatus.LOCKED</code></li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Getter methods</strong>
+      <ul>
+        <li><code>getId()</code> returns the quest id</li>
+        <li><code>getTitle()</code> returns the quest title</li>
+        <li><code>getQuestXp()</code> returns the XP reward</li>
+        <li><code>getStatus()</code> returns the current quest status</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>State transition methods</strong>
+      <ul>
+        <li>
+          <code>activate()</code>:
+          <ul>
+            <li>change status from <code>LOCKED</code> to <code>ACTIVE</code></li>
+            <li>do nothing if already <code>ACTIVE</code> or <code>COMPLETED</code></li>
+          </ul>
+        </li>
+        <li>
+          <code>complete()</code>:
+          <ul>
+            <li>change status from <code>ACTIVE</code> to <code>COMPLETED</code></li>
+            <li>do nothing if <code>LOCKED</code> or already <code>COMPLETED</code></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Status check</strong>
+      <ul>
+        <li>
+          <code>isCompleted()</code> returns <code>true</code> only if the quest
+          is in the <code>COMPLETED</code> state
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <strong><code>toString()</code></strong>
+      <ul>
+        <li>return a single-line summary of the quest</li>
+        <li>use the exact format specified in the starter code</li>
+      </ul>
+    </li>
+  </ul>
+<p>
+    <strong>Constructor validation</strong> means checking that the inputs to a
+    constructor make sense <em>before</em> creating the object.
+  </p>
+
+  <p>
+    If any input is invalid, the constructor should stop and throw an
+    <code>IllegalArgumentException</code>.
+  </p>
+
+  <h3>Why do this?</h3>
+  <ul>
+    <li>prevents broken objects from existing</li>
+    <li>simplifies the rest of the class</li>
+    <li>catches bugs early instead of later</li>
+  </ul>
+
+  <h3>Example pattern</h3>
+  <pre><code>if (value is invalid) {
+    throw new IllegalArgumentException("explain what went wrong");
+}</code></pre>
+
+  <h3>Examples for this lab</h3>
+  <pre><code>// invalid id
+if (id == null || id.isBlank()) {
+    throw new IllegalArgumentException("id cannot be null or blank");
+}
+if (title == null || title.isBlank()) {
+    throw new IllegalArgumentException("title cannot be null or blank");
+}
+if (questXp < 0) {
+    throw new IllegalArgumentException("questXp must be >= 0");
+}
+status = QuestStatus.LOCKED;</code></pre>
+
+  <div class="callout warn">
+    <strong>Do not:</strong>
+    <ul>
+      <li>add setters</li>
+      <li>change method signatures (a.k.a. methods' parameters)</li>
+      <li>add new fields</li>
+      <li>use <code>String</code> values instead of <code>QuestStatus</code></li>
+    </ul>
+  </div>
+
+
+</details>
+
+  
+
+<details class="lab-card">
+  <summary>4️⃣ Turn-In Checklist</summary>
+<p>
+    Before submitting your lab, you should test your <code>Quest</code> class
+    locally by executing main in questDemo and also <code>RunAllTests</code>.
+  </p>
+  <strong>Note: Constructor must reject:</strong>
+      <ul>
+        <li><code>new Quest(null, "Chop Wood", 10)</code></li>
+        <li><code>new Quest("  ", "Chop Wood", 10)</code></li>
+        <li><code>new Quest("wood_001", "", 10)</code></li>
+        <li><code>new Quest("wood_001", "Chop Wood", -5)</code></li>
+      </ul>
+  <ul>
+    
+  </ul>
+
+  <p><strong>Submit to Gradescope:</strong> <code>Quest.java</code> and <code></code>QuestStatus.java</code>.</p>
+
+  </details>
+
+
+  
+
+  <details class="lab-card">
+    <summary>💡 Hints (use if you need) </summary>
+
+    <h3>Constructor validation</h3>
+
+    <ul>
+      <li>Use <code>if (id == null || id.isBlank())</code> for null/blank checks.</li>
+      <li>Throw <code>IllegalArgumentException</code> with a clear message so debugging is easier.</li>
+      <li>Set <code>status = QuestStatus.LOCKED;</code> at the end.</li>
+    </ul>
+
+    <h3>State transitions</h3>
+    <ul>
+      <li><code>activate()</code> should only change status if it is currently <code>LOCKED</code>.</li>
+      <li><code>complete()</code> should only change status if it is currently <code>ACTIVE</code>.</li>
+      <li>Everything else should do nothing (no exceptions).</li>
+    </ul>
+
+    <h3>toString()</h3>
+    <ul>
+      <li>Follow the required format exactly (spacing + punctuation).</li>
+      <li>Build the string using concatenation or <code>String.format</code>.</li>
+    </ul>
+  </details>
+
+  
+
+  <footer class="tiny" style="margin-top:2rem;">
+    <hr/>
+    <p>
+      Next up: Lab 08 builds <strong>QuestBook</strong> and uses your encapsulated <strong>Quest</strong>
+      to practice cohesion & coupling (clean collection design + delegation).
+    </p>
+  </footer>
+  
+
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>
