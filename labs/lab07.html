@@ -382,8 +382,12 @@ public enum QuestStatus {
         <li>validate that <code>id</code> is not <code>null</code> or blank</li>
         <li>validate that <code>title</code> is not <code>null</code> or blank</li>
         <li>validate that <code>questXp &gt;= 0</code></li>
-        <li>initialize <code>status</code> to <code>QuestStatus.LOCKED</code></li>
-      </ul>
+       <li>
+      <strong>assign all three parameters (id, title, questXp) to the fields</strong>
+      (for example, <code>this.id = id</code>)
+    </li>
+    <li>initialize <code>status</code> to <code>QuestStatus.LOCKED</code></li>
+  </ul>
     </li>
 
     <li>
