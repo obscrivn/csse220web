@@ -105,7 +105,7 @@
   <ol>
     <li>
       <strong>Download the ZIP File (containing a project)</strong> to your computer but do not place 
-      in the eclipse workspace folder: <a href="HWQuizQuestions.zip">Click here to donwload ZIP</a>
+      in the eclipse workspace folder: <a href="../Homework/HW5.zip">Click here to donwload ZIP</a>
     </li>
     <li>
       <strong>Open Eclipse:</strong> <em>You do not need to create a new project</em> because the ZIP file contains an existing project.
@@ -142,19 +142,19 @@
   <h2>To do:</h2>
   <ol>
     <li>
-      In Eclipse, import this project (<code>HWQuizQuestions</code>) from your local copy of the CSSE220 repo
+      In Eclipse, import this project (<code>HW5</code>)
     </li>
     <li>
-      In the file <em>QuizMain.java</em> there are a number of TODOs. These will have you implement the classes <em>QuizMain.java</em>, <em>Question.java</em>, and <em>Quiz.java</em>
+      In the file <em>QuizMain.java</em> there are a number of TODOs. 
     </li>
     <li>
-      Implement <em>QuizMain.java</em>, <em>Question.java</em>, and <em>Quiz.java</em> based on your graded <em>Design Problems 1</em> UML or an alternative, e.g., the UML design presented in class
+      Implement <em>QuizMain.java</em>, <em>Question.java</em>, and <em>Quiz.java</em> based on the provided UML diagram
     </li>
     <li>
       Test your implementation by running the <code>main</code> found in <em>QuizMain.java</em>. Make your output to the console window look similar to that shown in section <strong>Sample Output</strong> (below)
     </li>
     <li>
-      Include Javadoc comments in <em>Question.java</em> and <em>Quiz.java</em>
+      Include Javadoc comments in <em>Question.java</em> and <em>Quiz.java</em> (see Javadoc examples provided)
     </li>
     <li>
       Create a computer generated UML diagram that represents your implementation
@@ -167,13 +167,25 @@
       <br>(1) <code>.java</code> files, (2) your UML diagram, (3) your answers in <em>reflectionQuestions.txt</em>, and (4) any additional <code>.java</code> files that you may have created to solve this problem
     </li>
   </ol>
+<details class="lab-card">
+  <summary>📌 UML note</summary>
+  <div class="card-body">
+    <p>
+      You may notice the eclipse-generated UML diagram does <strong>not</strong> show arrows from
+      <code>QuizMain</code> to <code>Quiz</code> or <code>Question</code>.
+      This is <strong>expected</strong>.
+    </p>
 
+    <p>
+      Many UML tools hide relationships that go through collections
+      (e.g., <code>HashMap&lt;Integer, Quiz&gt;</code>) because they are considered
+      implementation details.
+    </p>
+  </div>
+</details>
   <p><strong>Additional Instructions:</strong></p>
   <ul>
-    <li>Each question should have both an <em>id</em> and <em>questionQuery</em></li>
-    <li>The question's <em>questionQuery</em> should be stored as a Java String and contain the actual question to be asked. For example, "What is the capital of Egypt?"</li>
-    <li>Each quiz should have an <em>id</em> along with its <em>questions</em></li>
-    <li>When displaying a quiz, the quiz's <em>id</em> should be displayed in addition to each question's <em>id</em> and <em>questionQuery</em></li>
+    <li>Follow instructions in readme file, comments in java files, and provided UML.
   </ul>
 
   <h2>Rubric:</h2>
