@@ -428,6 +428,16 @@ A copy method asks an existing object to duplicate itself.
 
   <p><b>Why doesn’t Java execute chronologically?</b><br>
   <i>Only code that is called from <code>main</code> actually runs.</i> So Java runs by calling methods, not by reading the file top to bottom.</p>
+<p><b>What are common uses of overriding besides <code>toString()</code>?</b><br>
+Overriding is used when different objects should respond differently to the same method call.
+<ul>
+  <li><b><code>equals()</code></b> —> define when two objects are considered equal</li>
+  <li><b><code>hashCode()</code></b> —> required when using <code>HashMap</code> or <code>HashSet</code></li>
+  <li><b><code>draw()</code> / <code>update()</code></b> —> different behavior in games or GUIs</li>
+  <li><b><code>move()</code> / <code>attack()</code></b> —> game characters behave differently</li>
+  <li><b><code>compareTo()</code></b> —> custom sorting logic</li>
+</ul></p>
+
 </details>
 <hr>
 
