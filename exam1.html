@@ -21,7 +21,13 @@
     /* Two-column layout for general info */
     .info { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
     .info li { background: #ecf0f1; padding: 0.5rem; border-radius: 4px; }
-
+.slides {
+      background-color: #e5c4df; /* light pink */
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
     /* Topics grid */
     .topics-list {
       display: grid;
@@ -120,34 +126,34 @@
                   <h2>Topics &amp; Resources</h2>
                   <ul class="resources-list">
 
-        <li>Primitive Data Types <a href="https://share.evernote.com/note/b9ca749c-8aca-dcad-b6be-9031a178ec25 target="_blank"" target="_blank" >slides</a></li>
+        <li>Primitive Data Types <span class="slides"><a href="https://share.evernote.com/note/0f64283b-acce-19c6-fc72-2270c873ebb7" target="_blank">  Intro to Java</a> </span></li>
         <li> Arrays (2D Arrays) vs ArrayLists vs Hashmap: understanding their purpose and diffrences
            <ul>
-            <li>Arrays and ArrayLists: <a href="https://share.evernote.com/note/e4cd8309-f3b9-c60e-05e9-488cab6d35c8 target="_blank"" target="_blank" >slides</a> </li> 
-        <li>2D Arrays: <a href="https://share.evernote.com/note/8ad76d87-9b6d-17b3-85fe-23b475bc85f3" target="_blank">slides</a></li>
+            <li><span class="slides"><a href="https://share.evernote.com/note/8a76286f-cf4b-0c3d-175e-110d09c69255" target="_blank">Arrays & ArrayList Slides</a></span> </li> 
+        <li><span class="slides"><a href="https://share.evernote.com/note/f085ed4a-a4c4-81b9-aec9-86e9810f30e7" target="_blank">2D Arrays Slides</a></span></li>
         
-<li>Hashmaps: <a href="https://share.evernote.com/note/a6c4b351-490e-d31e-d06e-680263e344f2" target="_blank" >slides</a></li>
+<li><span class="slides"><a href="https://share.evernote.com/note/3d261ff7-97cb-1aed-71b0-464be3d12f3c" target="_blank">HashMaps</a></span></li>
 </ul>
 </li>
             <!-- <li> Data Streaming (Scanner) - <a href="https://share.evernote.com/note/4dad5bb5-82d6-163f-281e-ee8963276a26" target="_blank" >slides</a> -->
             <!-- </li> -->
             <li> Objects 
                 <ul>
-                <li>Classes, Fields, Methods: <a href="https://share.evernote.com/note/077be9f6-80bc-41ec-1a28-7d7bb32cc533" target="_blank" >slides</a>
-            <li>Constructors: <a href="https://share.evernote.com/note/0a00f7e6-0b41-ad9b-0704-4603ea8a3a40">slides</a></li>
-            <li> Static, Final - <a href="https://share.evernote.com/note/b68b5240-bf04-b07d-4a1e-41686fa135f9" target="_blank" >slides</a>
+                <li><br><span class="slides"><a href="https://share.evernote.com/note/859352ec-dd57-3517-92c6-f047bc158b17" target="_blank">Classes & Objects</a></span>
+            <li><span class="slides"><a href="https://share.evernote.com/note/1c1bc058-20cd-28dc-7339-a603e85ea77a" target="_blank">Constructors</a></span></li>
+            <li> <span class="slides"><a href="https://share.evernote.com/note/49cf8217-f9bf-c669-e0f0-b16c1dc95e96" target="_blank">Static, Final, Override Slides</a></span>
             </li>
         </ul>
         </li>
-        <li> Interface - <a href="https://share.evernote.com/note/f7eaf36f-0fce-2719-4cfd-fb36758839dd" target="_blank" >slides</a>
+        <li> <span class="slides"><a href="https://share.evernote.com/note/0fe26c5a-5b86-64d2-8718-143d6684a89d" target="_blank">Intro to Interfaces Slides</a> </span>
         </li>
-            <li> Boxes and Pointers - <a href="https://share.evernote.com/note/b9ca749c-8aca-dcad-b6be-9031a178ec25" target="_blank" >slides</a>
+            <li> <span class="slides"><a href="https://share.evernote.com/note/356ba3a5-ce74-e2cf-49ab-f19bb737ab58" target="_blank">Boxes and Pointers Slides</a></span>
             </li>
-            <li> Encapsulation - <a href="https://share.evernote.com/note/f1ee98a3-ace4-a04a-8502-59e01a373cba" target="_blank" >slides</a>
+            <li> <span class="slides"><a href="https://share.evernote.com/note/4bfc25bc-d931-ab88-00ff-906a12a4876b" target="_blank">Encapsulation Slides</a></span>
             </li>
-            <li> Coupling and Cohesion - <a href="https://share.evernote.com/note/4cab6af1-93f0-e797-bfd2-c9d06deefa1d" target="_blank" >slides</a>
+            <li> <span class="slides"><a href="https://share.evernote.com/note/b10535ed-2226-06e4-ccb9-22d26a03e922" target="_blank">Coupling/Cohesion Slides</a></span>
             </li>
-            <li>OOP design (Review Design homeworks)</li>
+            <li>OOP design. Review Design solutions:<a href = "https://obscrivn.github.io/csse220web/Homework/SolutionsToExampleDesignProblemsDP1andDP2.pdf" target="_blank">Principles 1 and Principal 2</a></li>
             
 
                   </ul>
@@ -161,7 +167,7 @@
                     <li> Practice Examples: <a href="./resources_files/Review practice Exam 1.pdf">Exam 1 Review questions</a></li>
     <li> Practice Examples: <a href="./resources_files/Review practice Exam 1 Solutions.pdf">Exam 1 Review Solutions</a></li>
                   <li>Boxes & Drawing : <a href="./labs/SimpleObjectsQuizSolutionsLab05.pdf">Box & Drawing Solutions Part 1</a></li>
-    
+    <li>Boxes & Drawing : <a href="./labs/SecondSimpleObjectsQuizSolutions.pdf">Box & Drawing Solutions Part 2</a></li>
                     <!-- add more practice links here -->
                   </ul>
                   <h2>Coding Practice</h2>
@@ -172,7 +178,104 @@
                   
                   </ul>
                 </section>
+                </div>
+                    <div class="cards-container">
+  <!-- Card: Null / Empty / Blank checks (Strings + Arrays + ArrayList + HashMap) -->
+<section class="card practice">
+
+    <h2>✅ Null / Empty / Blank Checks</h2>
+<p>
+  Before you do <em>anything</em> else in a method, check for
+  <strong>null</strong> and <strong>empty</strong> inputs.
+  JUnit tests often hit these edge cases first, and the rest of your logic
+  is only correct if the input actually exists.
+</p>
+<p>
+  First rule of methods: handle <strong>null</strong> and <strong>empty</strong>
+  inputs first.
+  
+</p>
+
+    <div class="table-wrap">
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Null?</th>
+            <th>Empty?</th>
+            <th>Blank?</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>String</strong></td>
+            <td><code>s == null</code></td>
+            <td><code>s.isEmpty()</code></td>
+            <td><code>s.isBlank()</code> </td>
+            <td>
+              <code>""</code> is empty; <code>"   "</code> is blank (but not empty).
+              Always null-check before calling methods.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Array</strong></td>
+            <td><code>arr == null</code></td>
+            <td><code>arr.length == 0</code></td>
+            <td>—</td>
+            <td>
+              Null-check before using <code>arr.length</code>.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>ArrayList</strong></td>
+            <td><code>list == null</code></td>
+            <td><code>list.isEmpty()</code></td>
+            <td>—</td>
+            <td>
+              Null-check before calling <code>isEmpty()</code>.
             
+            </td>
+          </tr>
+          <tr>
+            <td><strong>HashMap</strong></td>
+            <td><code>map == null</code></td>
+            <td><code>map.isEmpty()</code></td>
+            <td>—</td>
+            <td>
+              If you’re checking a key: <code>map.containsKey(key)</code>.
+              Null-check first.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>✨ Safe patterns (what JUnit expects you to do)</h3>
+    <pre><code>// String
+if (s == null || s.isEmpty()) {
+    // treat as missing / invalid text
+}
+
+// Array
+if (arr == null || arr.length == 0) {
+    // nothing to process
+}
+
+// ArrayList
+if (list == null || list.isEmpty()) {
+    // nothing to process
+}
+
+// HashMap
+if (map == null || map.isEmpty()) {
+    // nothing to process
+}</code></pre>
+
+    <p class="muted">
+      Important rule: <strong>check null first</strong>, then call methods (<code>isEmpty()</code>, <code>isBlank()</code>, etc.).
+    </p>
+</section>          
               </div>
 
             
