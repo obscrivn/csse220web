@@ -259,6 +259,176 @@ Short answer: Because int[] itself is already an object.
   </ul></p>
 </details>
 
+<details class="lab-card" id="hashmaps">
+  <summary>🗂️ HashMaps & Dictionaries</summary>
+
+  <p><b>Is a HashMap the same as a Python dict?</b><br>
+  Conceptually yes: key → value lookup.
+  Java HashMaps are typed and compiled; Python dicts are dynamic.</p>
+
+  <p><b>What does “hash” mean?</b><br>
+  A hash converts a key into a number (hash code) used to find where the value lives.</p>
+
+  <p><b>Why are HashMaps so fast?</b><br>
+  Lookups are ~O(1) on average, no searching through a list.</p>
+
+  <p><b>What are HashMaps most useful for?</b><br>
+  Counting, fast lookup, mapping IDs → objects, caching.</p>
+
+  <p><b>Can a HashMap store objects?</b><br>
+  Yes. Both keys and values can be objects.</p>
+
+  <p><b>Can arrays be keys?</b><br>
+  Technically yes, but usually a bad idea unless you override <code>equals</code> and <code>hashCode</code>. Note that arrays are special 
+  because Arrays do not override equals(), and both == and .equals() compare references (memory address), not contents.</p>
+
+  <p><b>Are there built-in min/max operations?</b><br>
+  No, HashMaps are unordered. You must loop.</p>
+
+  <p><b>What does <code>keySet()</code> return?</b><br>
+  A <code>Set&lt;K&gt;</code> of all keys.</p>
+
+  <p><b>Why can we write <code>new HashMap&lt;&gt;()</code>?</b><br>
+  Type inference —> Java figures it out from the left side.</p>
+
+  <p><b>Can keys repeat?</b><br>
+  No. Duplicate keys overwrite the old value.</p>
+</details>
+<details class="lab-card" id="encapsulation">
+  <summary>🔒 Encapsulation, Access & Constructors</summary>
+
+  <p><b>Why make fields private?</b><br>
+  To protect your object data being modified by accident or exposed (e.g. bank account, password).</p>
+
+  <p><b>Why getters/setters instead of public fields?</b><br>
+  So you stay in control of how data is read or changed.</p>
+
+  <p><b>Can setters update multiple fields?</b><br>
+  Yes, very common.</p>
+
+  <p><b>Why use <code>this.name</code>?</b><br>
+  To distinguish fields from parameters.</p>
+
+  <p><b>Why can’t a top-level class be private?</b><br>
+  Because Java must be able to see it to load it.</p>
+
+  <p><b>Do constructors return anything?</b><br>
+  No, they create objects.</p>
+
+  <p><b>When does the default constructor disappear?</b><br>
+  When you write any constructor.</p>
+
+  <p><b>How does constructor overloading work?</b><br>
+  Java matches parameters by number and type.</p>
+
+  <p><b>Are private methods useful?</b><br>
+  Yes, helpers, validation, internal logic.</p>
+
+  <p><b>Wrapper defaults vs primitive defaults?</b><br>
+  Wrappers (objects) → <code>null</code><br>
+  Primitives → 0 / false etc</p>
+</details>
+
+<details class="lab-card" id="objects">
+  <summary>🧠 Objects, References & Design</summary>
+
+  <p><b>Is <code>null</code> a pointer to address 0?</b><br>
+  No, null in Java means "points to nothing" (no memory location assigned yet).</p>
+
+  <p><b>Difference between reference and pointer?</b><br>
+  A reference lets you access an object. A pointer gives direct access to memory (hidden by JVM).
+In <code>String s = new String("hi");</code>
+<ol>
+  <li><code>s</code> is the reference,</li>
+  <li>the actual String object is in heap memory,</li>
+  <li>the reference is an internal JVM value and you cannot see, print, or inspect it</li>
+</ol>
+</p>
+
+  <p><b>How do you copy an object?</b><br>
+  To create a new object with the same data (not copying the reference), use a copy constructor or copy method logic. A copy constructor creates a new object from another object.  
+A copy method asks an existing object to duplicate itself.
+<b>Example: Copy constructor vs copy method</b>
+
+<pre><code>class Player {
+    private String name;
+    private int score;
+
+    public Player(String name, int score) {
+        this.name = name;
+        this.score = score;
+    }
+
+    // Direct copy
+    public Player(Player other) {
+        this.name = other.name;
+        this.score = other.score;
+    }
+
+    // Constructor chaining
+    public Player(Player other) {
+        this(other.name, other.score);
+    }
+
+    // Copy method
+    public Player copy() {
+        return new Player(this);
+    }
+
+    public static void main(String[] args) {
+        Player p1 = new Player("Alex", 10);
+
+        // Copy using copy constructor
+        Player p2 = new Player(p1);
+
+        // Copy using copy method
+        Player p3 = p1.copy();
+
+        // All are different objects
+        System.out.println(p1 == p2); // false
+        System.out.println(p1 == p3); // false
+    }
+}</code></pre>
+</p>
+
+  <p><b>Why are Strings objects?</b><br>
+  <i>Strings are immutable and come with methods like <code>length()</code>, <code>substring()</code>, and <code>equals()</code>.</i> Primitives can only store values.</p>
+
+  <p><b>Do all designs need UML?</b><br>
+  No, It’s more like a planning tool, not a requirement.</p>
+
+  <p><b>Why so many classes?</b><br>
+  Separation of responsibility → maintainable code.</p>
+
+  <p><b>Is there a limit on methods per class?</b><br>
+  No, but design-wise, cohesion matters.</p>
+</details>
+<details class="lab-card" id ="overriding">
+  <summary>🎭 Overriding, static & final</summary>
+
+  <p><b>Why does <code>toString()</code> work without writing it?</b><br>
+  It’s inherited from <code>Object</code>.</p>
+
+  <p><b>What is overriding used for?</b><br>
+  You use the same method call → but you change the behavior.</p>
+
+  <p><b>Can you override an override?</b><br>
+  Yes, unless it’s has the final modifier.</p>
+
+  <p><b>Can static methods be overridden?</b><br>
+  No. Because static methods belong to the class, not the object. So the object cannot override them.</p>
+
+  <p><b>What does final do?</b><br>
+  Variable → can't be changed<br>
+  Method → can’t be overridden<br>
+  Class → can’t be extended</p>
+
+  <p><b>Why are some classes not overridable?</b><br>
+  Security, immutability, correctness.</p>
+
+  <p><b>Why doesn’t Java execute chronologically?</b><br>
+  <i>Only code that is called from <code>main</code> actually runs.</i> So Java runs by calling methods, not by reading the file top to bottom.</p>
+</details>
 <hr>
 
 <p><i>
