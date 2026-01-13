@@ -433,10 +433,11 @@ private void drawShapesLines(Graphics2D g2d) {
     <h3>Steps</h3>
     <ol>
       <li>Store the current font from the <code>Graphics2D</code> context using <code>g2d.getFont()</code>. Remember Font is a class</li>
-      <li>Set a new font (e.g., "Times New Roman", plain, size 36) using <code>g2d.setFont()</code>
-      <pre>g2d.setFont(new Font("Times New Roman", Font.PLAIN, 36));</pre></li>
+      <li>Set a new font (e.g., "Serif", plain, size 36) using <code>g2d.setFont()</code>
+      <pre>g2d.setFont(new Font("Serif", Font.PLAIN, 36));</pre></li>
       <li>Draw the text at coordinates (80, 440) using <code>g2d.drawString()</code>.</li>
       <li>Reset the font back to the original font.</li>
+      <li>Update the height for the frame to display the text if it is not shown.</li>
     </ol>
     <h3>Hints</h3>
     <ul>
