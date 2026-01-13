@@ -148,8 +148,8 @@ a.resource-ref:hover {
     <h1>Lab Assignment 10</h1>
     <nav id="lab-nav">
         <ul>
-          <!-- <li><a href="#lab1">01. Initialization & Switch Cases</a></li> -->
-          <li><a href="#lab1">01. Basic Graphics with Swing</a></li>
+          <li><a href="#lab1">01. Initialization & Switch Cases</a></li>
+          <li><a href="#lab2">02. Basic Graphics with Swing</a></li>
           
          
           <!-- Add more lab links as needed -->
@@ -157,13 +157,12 @@ a.resource-ref:hover {
       </nav>
 <!-- Lab Navigation Menu -->
 <div id="main-content">
-<p>Note on Submission: MyPanel, MyViewer and the screenshot of your graphics in Frame.</p>
-<p>Add a string with your name on the panel: Use drawString</p>
+<p>Note on Submittion: Car, MyComponent, MyViewer and the screenshot of your graphics in Frame.</p>
 
 
   
 
-        <!-- <div class="lab-section" id="lab1">
+        <div class="lab-section" id="lab1">
           <h2>Car Application</h2>
           <p>Resources 1: <a href="../resources.html#initialization" target="_blank" class="resource-ref">How to initialize variable: fields vs contstructors</a></p>
           <p>Resources 2: <a href="../resources.html#switch" target="_blank" class="resource-ref">How to use switch cases</a></p>
@@ -200,7 +199,7 @@ private int year;</code></pre>
 }</code></pre></li>
 </ul>
 <p><strong>Now test!</strong> In your <code>main</code> method, create at least two cars: one with the parameterless constructor, and one with the parameterized constructor, then call <code>displayInfo()</code> on each.</p>
-     <p>Create a Java class called <code>Car</code> with the following requirements</p>
+    <!-- <p>Create a Java class called <code>Car</code> with the following requirements</p>
     <ul>
       <li><strong>Fields:</strong> Declare a <code>String make</code> and an <code>int year</code>.</li>
       <li><strong>Field Initialization:</strong> Initialize <code>make</code> to <code>"Unknown"</code> at declaration</li>
@@ -211,7 +210,7 @@ private int year;</code></pre>
     <p>Test your class by creating objects using both the default (field initialization) 
       and parameterized (constructor initialization) approaches.</p>
      -->
-    <!-- <h3>Step 2: Switch Cases</h3>
+    <h3>Step 2: Switch Cases</h3>
     <p>Resources 1: <a href="../resources.html#scanner" target="_blank" class="resource-ref">Scanner</a></p>
     <p>Now let’s make your <code>Car</code> a little interactive.</p>
 
@@ -225,13 +224,13 @@ Just print out the correct statement for each choice. We are practicing the stru
   <li><code>2</code> → call another method (like <code>updateCar()</code>) where you ask the user for a new make or year</li>
   <li><code>3</code> → print <code>"Exit"</code></li>
   <li><em>Any other number</em> → print <code>"Invalid choice. Exit."</code></li>
-</ul> -->
+</ul>
     <!-- 
     <p>Create a method <code>switchMenu()</code> in your <code>Car</code> class that 
       uses a switch statement to handle user input for a console menu. 
       For example, you will ask user to provide the following option: 1, 2, 3. Your method will display the following information: 
       <code>1: Display Car Info</code> or <code>2: Update Car</code> or <code>3: Exit</code> and also any other options will be a default exit <code>Exit</code>. -->
-      <!-- <details class="hint">
+      <details class="hint">
   <summary>💡 Hint 1: Field initialization</summary>
   <p>You can give a field a default value right where it’s declared:</p>
   <pre><code class="language-java">
@@ -309,19 +308,19 @@ switch (choice) {
 
   <p><em>Tip:</em> If the code inside a <code>case</code> is more than 2–3 lines, move it into a method 
   and just call that method here.</p>
-</details> -->
-        <!-- </div> --> 
+</details>
+        </div>
         
-        <div class="lab-section" id="lab1">
+        <div class="lab-section" id="lab2">
           <h2>Exercise 2: Graphics with Swing</h2>
           <p>You are given two starter files: <code>EmptyFrameViewer.java</code> and <code>MyComponent.java</code>.
-          <p>Import as archived zip <a href="./basicShapesCodingLab.zip">Download Link</a> - it is a package folder so you should be able to import into your src folder (inside your current project)</p>
+          <p>Import as archived zip <a href="./basicShapesCoding.zip">Download Link</a> - it is a package folder so you should be able to import into your src folder (inside your current project)</p>
   <section id="gettingStarted">
   <h2>Getting Started</h2>
   <p><strong>Step 1: Run the starter</strong></p>
   <ol>
     <li>Open <code>EmptyFrameViewer.java</code>.</li>
-    <li>Add a title for your <code>JFrame</code> (e.g., “Lab 10 Drawing”).</li>
+    <li>Set a title for your <code>JFrame</code> (e.g., “Lab 10 Drawing”).</li>
     <li>Create an instance of <code>MyComponent</code> and add it to the frame.</li>
     <li>Run the program -> you should see an empty window. ✅</li>
   </ol>
