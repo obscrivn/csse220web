@@ -45,7 +45,6 @@
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 15px;
-      scroll-margin-top: 80px;
       margin-bottom: 20px;
       border-radius: 5px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -86,35 +85,9 @@
     #lab-nav ul li a:hover {
       background-color: #ddd;
     }
- /*    code {
+    code {
         color: red;
-    } */
-
-  pre  code {
-  background-color: #f4f4f4;      /* light gray background */
-  color: #1a1a1a;                 /* dark neutral text */
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  font-size: 0.95em;
-}
-
-pre code {
-  display: block;
-  background-color: #e8ebf0;     /* darker cool gray-blue background */
-  color: #1a1a1a;                /* dark text for contrast */
-  padding: 0.85em 1em;
-  border-left: 5px solid #336699; /* subtle blue accent bar */
-  border-radius: 6px;
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  font-size: 0.95em;
-  line-height: 1.5em;
-  overflow-x: auto;              /* allows horizontal scroll for long lines */
-}
-pre code:hover {
-  background-color: #dce1e8;
-  border-left-color: #28527a;
-}
+    }
     .code-window {
       background-color: #272822;
       color: #f8f8f2;
@@ -156,17 +129,6 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
-
-pre code {
-  background-color: #f5f7fa;
-  color: #1a1a1a;
-  border-left: 4px solid #4a90e2;
-  padding: 0.75em;
-  display: block;
-  border-radius: 6px;
-  font-size: 0.9em;
-  line-height: 1.4em;
-}
   </style>
 </head>
 <body>
@@ -183,417 +145,285 @@ pre code {
     <div style="clear:both;"></div>
 </div>
 <div id="content">
-    <h1>Lab Assignment 13</h1>
+    <h1>Lab Assignment 12</h1>
     <nav id="lab-nav">
         <ul>
-          <li><a href="#lab1">01. More Recursion Practice</a></li>
-          <li><a href="#lab2">02. ActionListener Practice</a></li>
-          <li><a href="#lab3">03. Override Methods</a></li>
+          <!-- <li><a href="#lab1">01. Recursion Practice</a></li> -->
+          <li><a href="#lab1">01. My Counter</a></li>
+          <li><a href="#lab2">02. My Accumulator</a></li>
 
-      
-         
           <!-- Add more lab links as needed -->
         </ul>
       </nav>
 <!-- Lab Navigation Menu -->
- <p>Submission: 1) Recursion3.java, 2) MyCounter with Action listener, MyCounterActionListener, 3) GameEntity, PlayerEntity</p>
 <div id="main-content">
+  <!-- <h2>Getting Started</h2>
+<p>Access the practice platform <a href="https://codingbat.com/java">CodingBat</a>. Once completed, paste all codingbat solutions into one java file</p> -->
+
+
+
 
 <div class="lab-section" id="lab1">
-  <h2>01. Recursion Practice</h2>
-
-  <p>Access the practice platform <a href="https://codingbat.com/java">CodingBat</a>. Once completed, paste all codingbat solutions into one java file</p>
-  <ol>
-  <li>
-    In CodingBat complete 3 recursion problems (Recursion-1): <a href="https://codingbat.com/java">CodingBat</a> changePi, noX, array6
-  </li>
-    <li>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example Recursion3.java)</li>
-    
-  </ol>
-  <details class="hint">
-  <summary>💡 Hint: Check One Element at a Time</summary>
+  <!-- <h2>Lab 1: Recursion Practice</h2>
   <p>
-    Each recursive call should handle just <em>one</em> position in the array.
-    <br>Look at <code>nums[index]</code> — if it equals <code>6</code>, you’re done!
-    <br>Otherwise, move on to the next element.
+    In CodingBat <a href="https://codingbat.com/java/Recursion-1">Recursion-1</a>," complete the next 6 problems: count7, count8, powerN, countX, countHi, changeXY
   </p>
+
+    <p>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example MyRecursion.java)</p>
+</div> -->
+        
+        <!-- <div class="lab-section" id="lab2">
+          <h2 style="color:black">My Counter</h2>
+        <p>
+            In this lab, you will create a Swing component with a button that increments the count
+        </p>
+        
+        <h3>Task Description</h3>
+        <p>
+            <image src="lab12a.png" alt="lab12 a" width="400"/>
+        </p>
+        <ul>
+          <li>A <code>JLabel</code> to describe the counter</li>
+          <li>A non‑editable <code>JTextField</code> to display the current count</li>
+          <li>A <code>JButton</code> labeled “Count” that, when clicked, increments the counter</li>
+        </ul>
+
+        <h3>Adding ActionListener to the Button</h3>
+    <p>Whenever the “Count” button is clicked, we want to execute  <code>setValues()</code> method:</p>
+    <ol>
+      <li>Add the listener registration at the end of the constructor:
+        <pre><code>button.addActionListener(e -> setValues());</code></pre>
+      </li>
+      <li>Implement the <code>setValues()</code> method to:
+        <ol type="a">
+          <li>Increment the counter</li>
+          <li>Update the text field: <code>text.setText(count + "");</code></li>
+        </ol>
+
+      </li>
+    </ol>
+
+        
+        
+
+        </div> -->
+<div class="lab-section" id="lab1">
+  <h2 style="color:black">My Counter (Layout)</h2>
+  <p>
+    In this lab, you will practice creating a basic Swing layout with labels, text fields, and a button. 
+    You will <strong>not</strong> add any actions yet, next time, we will learn how to make the button functional.
+  </p>
+
+  <h3>Task Description</h3>
+  <p>
+    <img src="lab12a.png" alt="lab12 a" width="400"/>
+  </p>
+
+  <ul>
+    <li>A <code>JLabel</code> to describe the counter</li>
+    <li>A non-editable <code>JTextField</code> to display the current count</li>
+    <li>A <code>JButton</code> labeled “Count” (you will add functionality later)</li>
+  </ul>
+
+  <h3>Step 1: Build the Layout</h3>
+  <p>
+    Create a new class called <code>MyCounter</code> that extends <code>JPanel</code>. 
+    In its constructor, initialize the three components (label, text field, and button), 
+    and use a simple layout manager such as <code>FlowLayout</code> or <code>GridLayout</code> 
+    to arrange them horizontally.
+  </p>
+
+  <pre><code>setLayout(new FlowLayout());
+add(label);
+add(textField);
+add(button);</code></pre>
+
+  <p>
+    For now, your text field can display “0” as the starting count, and you do not need to handle clicks yet.
+  </p>
+
+  <h3>Step 2: Add to a JFrame</h3>
+  <p>
+    In your main viewer class (e.g., <code>MyCounterViewer</code>), 
+    create a <code>JFrame</code>, add your <code>MyCounter</code> panel to it, 
+    and call <code>frame.pack()</code> to size it properly.
+  </p>
+
+  <pre><code>JFrame frame = new JFrame();
+frame.add(new MyCounter());
+frame.pack();
+frame.setVisible(true);</code></pre>
+
+  <p><strong>Next lab:</strong> you will add an <code>ActionListener</code> to make the “Count” button increase the number.</p>
+
+<details class="hint">
+  <summary>💡 Hint: Building Components in the Constructor</summary>
+  <p>Initialize your <code>JLabel</code>, <code>JTextField</code>, and <code>JButton</code> directly inside the constructor of your panel.  
+  This ensures all components are ready before you add them to the layout.</p>
+  <pre><code>JLabel label = new JLabel("Count:");
+JTextField field = new JTextField("0", 5);
+field.setEditable(false);
+JButton button = new JButton("Count");</code></pre>
 </details>
 
 <details class="hint">
-  <summary>💡 Hint: Moving to the Next Index</summary>
-  <p>
-    Be careful with how you move forward in the array.
-    <br>
-    <strong>Do not</strong> use <code>index++</code> as that passes the current value, not the next one.
-    <br>
-    Instead, call the recursive method with <code>index + 1</code> or <code>++index</code> so it checks the next element.
-  </p>
+  <summary>💡 Hint: Choosing a Layout Manager</summary>
+  <p>Use <code>FlowLayout</code> for a simple row of components (label, text field, and button).  
+  You can experiment later with <code>GridLayout(1, 3)</code> to see how spacing changes.</p>
+  <pre><code>setLayout(new FlowLayout());
+add(label);
+add(field);
+add(button);</code></pre>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint: Adding the Panel to a Frame</summary>
+  <p>When you test your panel, remember to add it to a <code>JFrame</code> before calling <code>pack()</code> and <code>setVisible(true)</code>.  
+  The typical pattern looks like this:</p>
+  <pre><code>JFrame frame = new JFrame();
+frame.add(new MyCounter());
+frame.pack();
+frame.setVisible(true);</code></pre>
 </details>
 </div>
-        <div class="lab-section" id="lab2">
-          <h2>02. ActionListener Practice</h2>
-          <h3>Part 1. Adding ActionListener to the Button - Lambda</h3>
-    <p>
-    Now that you have your layout ready, let’s make the button <strong>do something</strong>!
-    Whenever the “Count” button is clicked, it should call the <code>increment()</code> method
-    that updates the number in the text field.
-  </p>
-
-  <ol>
-    <li>
-      Inside the constructor (after adding your components), register the listener for the button
-      using a <strong>lambda expression</strong>:
-      <pre><code>button.addActionListener(e -> increment());</code></pre>
-      <p>
-        The expression <code>e -> increment()</code> means:
-        “When the button is clicked, run the <code>increment()</code> method.”
-      </p>
-    </li>
-
-    <li>
-      Implement the <code>increment()</code> method in your class. It should:
-      <ol type="a">
-        <li>Increase the counter value by 1</li>
-        <li>Update the text field to display the new count</li>
-      </ol>
-
-      <pre><code>private void increment() {
-    count++;
-    text.setText(Integer.toString(count));
-}</code></pre>
-
-      <p>
-        💡 Make sure your <code>count</code> and <code>text</code> are declared
-        as instance variables (outside the constructor),
-        so they can be accessed inside <code>increment()</code>.
-        <pre><code>private int count = 0;
-private JTextField text; // declared at class level
-</code></pre>
-      </p>
-    </li>
-  </ol>
-
-  <details class="hint">
-    <summary>💡 Hint: Why Not Declare <code>count</code> Inside <code>increment()</code>?</summary>
-    <p>
-      If you declare <code>int count = 0;</code> inside the <code>increment()</code> method,
-      it will reset to zero each time you click the button. Using an instance variable
-      ensures the value is remembered between clicks.
-    </p>
-  </details>
-
-  <details class="hint">
-    <summary>💡 Hint: One-Line vs Multi-Line Lambdas</summary>
-    <p>
-      A one-line lambda (like <code>e -> increment()</code>) does not need braces or semicolons.
-      If you want to perform multiple actions, use braces and semicolons inside:
-    </p>
-    <pre><code>button.addActionListener(e -> {
-    count++;
-    text.setText(Integer.toString(count));
-});</code></pre>
-  </details>
-  <h3>Part 2: Using a Custom ActionListener Class</h3>
+<div class="lab-section" id="lab2">
+  <h2 style="color:black">My Accumulator (Layout)</h2>
+  <h3>Overview</h3>
   <p>
-    In this part, you will replace the lambda expression with a <strong>custom ActionListener class</strong>.
-    This will help you see how events can be handled by separate objects in larger programs.
+    In this lab, you will focus on creating a Swing <code>JPanel</code> layout for an “Accumulator” interface.
+    You will not yet handle user input — this lab focuses only on positioning components neatly using layout managers.
   </p>
-
-  <ol>
-    <li>
-      Comment out your lambda listener line:
-      <pre><code>// button.addActionListener(e -> increment());</code></pre>
-    </li>
-
-    <li>
-      Create a new class named <code>MyCounterActionListener</code> that implements
-      <code>ActionListener</code> from the <code>java.awt.event</code> package.
-      <br>
-      This class should:
-      <ul>
-        <li>Have a private field of type <code>MyCounter</code></li>
-        <li>Store a reference to the counter in its constructor</li>
-        <li>Call <code>increment()</code> on the counter when the button is clicked</li>
-      </ul>
-      <pre><code>import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class MyCounterActionListener implements ActionListener {
-
-    private MyCounter counter;
-
-    public MyCounterActionListener(MyCounter counter) {
-        this.counter = counter;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        counter.increment();
-    }
-}</code></pre>
-    </li>
-
-    <li>
-      In your <code>MyCounter</code> constructor, create an instance of this listener and register it with the button:
-      <pre><code>MyCounterActionListener listener = new MyCounterActionListener(this);
-button.addActionListener(listener);</code></pre>
-    </li>
-  </ol>
 
   <p>
-    When the button is clicked, Java will automatically create an <code>ActionEvent</code> and call your
-    <code>actionPerformed()</code> method inside <code>MyCounterActionListener</code>.
+    <img src="Lab12b.png" alt="lab12 b" width="400"/>
   </p>
 
-  <details class="hint">
-    <summary>💡 Hint: Why Pass <code>this</code>?</summary>
-    <p>
-      The <code>this</code> keyword refers to the <code>MyCounter</code> object itself.
-      The listener needs this reference so it can call <code>increment()</code> on the panel when the event occurs.
-      You are passing the whole counter object, not just the button.
-    </p>
-  </details>
+  <section id="setup">
+    <h3>1. Setup</h3>
+    <ol>
+      <li>Create a new class named <code>MyAccumulator</code> that extends <code>JPanel</code>.</li>
+      <li>Import the necessary Swing and AWT packages.</li>
+      <li>In your viewer class’s <code>main()</code> method, add the panel to a <code>JFrame</code> and make it visible.</li>
+    </ol>
+    
+  </section>
 
-  <details class="hint">
-    <summary>💡 Hint: OOP Design Principle</summary>
+  <section id="layout">
+    <h3>2. Layout</h3>
     <p>
-      This approach follows <strong>encapsulation</strong> — the button only triggers an event,
-      while the <code>MyCounter</code> decides what to do (update its count and text field).
-      Separating logic like this is good design and prepares you for the Model–View–Controller pattern.
+      Use a 2×2 grid to arrange labels and text fields. For example:
     </p>
-  </details>
+    <pre><code>setLayout(new GridLayout(2, 2, 5, 5));</code></pre>
+
+    <p>
+      – Row 1: A label “Enter an Integer:” and an editable text field for input<br>
+      – Row 2: A label “Accumulated Sum:” and a non‐editable text field for output
+    </p>
+    <p>
+      Because your grid is 2×2, the components will appear in order as you call <code>add()</code>:
+    </p>
+    <pre><code>add(new JLabel("Enter an Integer:"));
+add(inputField);
+add(new JLabel("Accumulated Sum:"));
+add(outputField);</code></pre>
+
+    <p>Set the output field to be non-editable: <code>outputField.setEditable(false);</code></p>
+  </section>
+
+  <section id="event-placeholder">
+    <h3>3. What’s Next</h3>
+    <p>
+      In the next lab, you will add <code>ActionListener</code> logic so that pressing Enter in the input field updates the accumulated sum.
+    </p>
+  </section>
+  <details class="hint">
+  <summary>💡 Hint: Component Order in GridLayout</summary>
+  <p>A <code>GridLayout(2, 2)</code> fills cells left-to-right, top-to-bottom in the order you call <code>add()</code>.  
+  To match the screenshot layout:</p>
+  <pre><code>add(new JLabel("Enter an Integer:"));
+add(inputField);
+add(new JLabel("Accumulated Sum:"));
+add(outputField);</code></pre>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint: Making Output Read-Only</summary>
+  <p>Set your sum display field as non-editable so users can’t type into it:</p>
+  <pre><code>outputField.setEditable(false);</code></pre>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint: Adjusting Panel Size</summary>
+  <p>If your frame looks too small, you can suggest a preferred size for the panel before calling <code>pack()</code>:</p>
+  <pre><code>setPreferredSize(new Dimension(250, 100));</code></pre>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint: Required Imports</summary>
+  <p>Make sure to import both Swing and AWT packages at the top of your file:</p>
+  <pre><code>import javax.swing.*;
+import java.awt.*;</code></pre>
+</details>
+        <!-- <div class="lab-section" id="lab3">
+          <h2 style="color:black">My Accumulator</h2>
+          <h3>Overview</h3>
+    <p>
+      In this lab you will create a Swing <code>JPanel</code> that reads integer values,
+      keeps a running total, and displays the accumulated sum. You already have a
+      viewer class with a <code>JFrame</code> set up, you will build just the panel class.
+    </p>
+          <h3>Task Description</h3>
+          <p>
+              <image src="Lab12b.png" alt="lab12 b" width="400"/>
+          </p>
+          <section id="setup">
+          <h3>1. Setup</h3>
+          <ol>
+            <li>Create a new class named <code>MyAccumulator</code> that <em>extends</em> <code>JPanel</code></li>
+            <li>Ensure your project has necessary Swing imports</li>
+            <li>Add your panel to the existing frame in the viewer’s <code>main()</code> method</li>
+          </ol>
+        </section>
+      
+        <section id="layout">
+          <h3>2. Layout</h3>
+          <p>
+            Use a 2×2 grid to arrange the labels and text fields. For example:
+          </p>
+          <pre><code>setLayout(new GridLayout(2, 2, 5, 5));</code></pre>
+          <p>
+            – Row 1: A label “Enter an Integer:” and an editable text field for input<br>
+            – Row 2: A label “Accumulated Sum:” and a non‐editable text field for output
+          </p>
+          <p>Note: because yoru grid is 2x2, the panel will display your components in the order (see the screenshot) when you use <code>add()</code></p>
+        </section>
+      
+        <section id="event-wiring">
+          <h3>3. Event</h3>
+          <p>
+            Create a method processInput() and Configure the input text field so that when the user presses Enter, an event handler:
+          </p>
+          <ul>
+     
+            <li>Reads the integer from the input field. Note to read input use <code>getText()</code>. It is a good practice to trim text from spaces <code>.getText().trim()</code>
+
+            </li>
+            <li>Adds it to a running total variable (you need Integer here)</li>
+            <li>Clears the input field</li>
+            <li>Updates the output field with the new sum (you need String here)
+              <pre><code>// to parse text to integer use Integer.parseInt()
+                to parse Integer to string use Integer.toString()
+                              </code></pre>
+            </li>
+          </ul>
+          <p>
+            Use a lambda expression to register the listener (no loops or error checks needed here).
+          </p>
+        </section> -->
+
+          </div>
         </div>
-
-<div class="lab-section" id="lab3">
-
-  <h2 style="color:black">03. Inheritance and Method Overriding: GameEntity and PlayerEntity</h2>
-
-  <p>
-    In this part of the lab, you will explore how <strong>inheritance</strong> and 
-    <strong>method overriding</strong> work in Java by building a simple 2D game entity system.
-  </p>
-
-  <p>
-    You will first create a general <code>GameEntity</code> class that represents any moving object,
-    and then extend it with a <code>PlayerEntity</code> subclass that adds new data and behavior.
-  </p>
-
-  <h3>Step 1: Define Fields in <code>GameEntity</code></h3>
-  <p>
-    Create a class <code>GameEntity</code> with the following <strong>protected</strong> fields 
-    (so they are visible to subclasses):
-  </p>
-
-  <ul>
-    <li><code>protected int x, y;</code> – the current position of the entity</li>
-    <li><code>protected double speed;</code> – how much the entity moves horizontally per frame</li>
-    <li><code>protected int health;</code> – the health or hit points</li>
-    <li><code>protected static final int SCREEN_WIDTH = 800;</code> – screen boundary constant</li>
-  </ul>
-
-  <h3>Step 2: Create the Constructor</h3>
-  <p>
-    Write a constructor that takes 4 parameters and assigns them to the fields:
-  </p>
-
-  <pre><code>public GameEntity(int startX, int startY, double startSpeed, int startHealth) {
-    this.x = startX;
-    this.y = startY;
-    this.speed = startSpeed;
-    this.health = startHealth;
-}</code></pre>
-
-  <p>
-    ✅ Recall: The <code>this</code> keyword distinguishes between the instance field (like <code>this.x</code>) 
-    and the parameter <code>startX</code>.
-  </p>
-
-  <h3>Step 3: Override <code>toString()</code></h3>
-  <p>
-    The <code>toString()</code> method defines how the object is displayed when printed.
-    Override it to show all the important data:
-  </p>
-
-  <pre><code>@Override
-public String toString() {
-    return String.format("Entity@(%d,%d) speed=%.2f health=%d", x, y, speed, health);
-}</code></pre>
-<h4>Example: Testing <code>toString()</code> Override</h4>
-<p>
-  The <code>toString()</code> method is automatically called when you print an object. 
-  After overriding it in <code>GameEntity</code>, printing the object shows useful details instead of a memory address.
-</p>
-
-<pre><code>GameEntity e = new GameEntity(100, 50, 10.0, 100);
-System.out.println(e);
-
-// Output:
-Entity@(100,50) speed=10.00 health=100
-</code></pre>
-
-<p>
-
-  <p><em>Tip:</em> Use <code>String.format</code> to control number formatting (%.2f = 2 decimal places).</p>
-
-  <h3>Step 4: Add the <code>update()</code> Method</h3>
-  <p>
-    The <code>update()</code> method simulates a single "frame" of movement.
-    Each call will move the entity horizontally and ensure it stays on screen.
-  </p>
-
-  <pre><code>public void update() {
-    // Move horizontally by speed
-    x += (int) speed;
-
-    // Clamp x between 0 and SCREEN_WIDTH
-    x = Math.max(0, Math.min(SCREEN_WIDTH, x));
-}</code></pre>
-
-  <p>
-    🧩 <strong>Clamping</strong> means restricting a value within a certain range.  
-    If x goes below 0 → set it to 0.  
-    If x goes beyond 800 → set it to 800.  
-    Otherwise, keep the same value.
-  </p>
-
-  <h3>Step 5: Test <code>GameEntity</code> in <code>main()</code></h3>
-  <pre><code>public static void main(String[] args) {
-    GameEntity e = new GameEntity(790, 100, 15.0, 100);
-    System.out.println(e);
-    e.update();       // moves to x = 805 but gets clamped to 800
-    System.out.println(e);
-}</code></pre>
-
-  <p>
-    ✅ <strong>Expected Output:</strong><br>
-    Entity@(790,100) speed=15.00 health=100<br>
-    Entity@(800,100) speed=15.00 health=100
-  </p>
-
-  <hr>
-
-  <h3>Step 6: Create a Subclass <code>PlayerEntity</code></h3>
-  <p>
-    Now let’s create a <strong>subclass</strong> that extends <code>GameEntity</code> to represent the player.
-  </p>
-
-  <pre><code>public class PlayerEntity extends GameEntity {</code></pre>
-
-  <p>
-    Add these <strong>extra fields</strong> specific to the player:
-  </p>
-
-  <ul>
-    <li><code>private String playerName;</code> – the player’s name</li>
-    <li><code>private int score;</code> – the player’s current score</li>
-    <li>Flags to simulate key input:<br>
-      <code>public boolean upPressed = true, downPressed = false;</code>
-    </li>
-  </ul>
-
-  <p>
-    The constructor should take 5 parameters and call the <code>GameEntity</code> constructor with <code>super(...)</code>:
-  </p>
-
-  <pre><code>public PlayerEntity(String name, int startX, int startY, double speed, int health) {
-    super(startX, startY, speed, health);  // calls GameEntity constructor
-    this.playerName = name;
-    this.score = 0;
-}</code></pre>
-
-  <p>
-    ✅ Note: The <code>super(...)</code> call must be the first line of the constructor.  
-    It sets up the inherited fields from the <code>GameEntity</code> class.
-  </p>
-
-  <h3>Step 7: Override <code>update()</code></h3>
-  <p>
-    The player moves horizontally (inherited behavior) but also vertically based on key flags.  
-    This is a perfect time to demonstrate <strong>method overriding</strong>:
-  </p>
-
-  <pre><code>@Override
-public void update() {
-    // Step 1: reuse the base movement
-    super.update();
-
-    // Step 2: add vertical movement
-    if (upPressed) {
-        y -= 5;
-    }
-    if (downPressed) {
-        y += 5;
-    }
-
-    // Step 3: increase score if passed a threshold
-    if (x > 400) {
-        score += 10;
-    }
-}</code></pre>
-
-  <p>
-     Notice how <code>super.update()</code> lets us reuse logic from <code>GameEntity</code>  
-    instead of rewriting the same code. This is one of the biggest benefits of inheritance.
-  </p>
-
-  <h3>Step 8: Override <code>toString()</code></h3>
-  <p>
-    Make the player’s version print player-specific information.
-  </p>
-
-  <pre><code>@Override
-public String toString() {
-    return String.format("%s@(%d,%d) score=%d", playerName, x, y, score);
-}</code></pre>
-
-  <h3>Step 9: Test <code>PlayerEntity</code> in <code>main()</code></h3>
-  <pre><code>public static void main(String[] args) {
-    GameEntity e = new PlayerEntity("Alice", 390, 50, 20.0, 100);
-    System.out.println(e);
-    e.update();  // runs PlayerEntity.update() because of overriding
-    System.out.println(e);
-}</code></pre>
-
-  <p>
-    ✅ <strong>Expected Output:</strong><br>
-    Alice@(390,50) score=0<br>
-    Alice@(410,45) score=10
-  </p>
-
-  <p>
-    🎯 This happens because:
-  </p>
-  <ul>
-    <li><code>x</code> increased from 390 → 410 (20 units)</li>
-    <li><code>y</code> decreased by 5 because <code>upPressed = true</code></li>
-    <li><code>score</code> increased by 10 since <code>x > 400</code></li>
-  </ul>
-
-  <hr>
-
-  <h3>🔍 Reflection: What You Learned</h3>
-  <ul>
-    <li>How a subclass inherits fields and methods from its superclass</li>
-    <li>How to call the superclass constructor using <code>super(...)</code></li>
-    <li>How to override a method and reuse superclass logic with <code>super.methodName()</code></li>
-    <li>How to extend functionality without rewriting base class code</li>
-  </ul>
-
-  <details class="hint">
-    <summary>💡 Hint: Overriding vs. Overloading</summary>
-    <p>
-      <strong>Overriding</strong> = same method name and parameters, new behavior in a subclass.<br>
-      <strong>Overloading</strong> = same method name, but different parameter list (in the same class).
-    </p>
-  </details>
-</div>
-        
-
- 
-
-        
         </div>
-
 
 
 
