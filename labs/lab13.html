@@ -164,6 +164,39 @@ a.resource-ref:hover {
 
 
 <div class="lab-section" id="lab1">
+  <h1>Project and Package Setup</h1>
+
+<p>
+For this lab, you will organize your code using a consistent project and package structure.
+This structure will be reused and extended in future Swing labs.
+</p>
+
+<ul>
+  <li><strong>Project name:</strong> <code>SwingDemos</code></li>
+  <li><strong>Package name:</strong> <code>lab</code></li>
+</ul>
+
+<hr>
+
+<h3>Setup Steps</h3>
+
+<ol>
+  <li>Create a new Java project named <code>SwingDemos</code>.</li>
+  <li>Create a package named <code>lab</code>.</li>
+  <li>
+    Place the following classes in the <code>lab</code> package:
+    <ul>
+      <li><code>MyCounter</code></li>
+      <li><code>MyAccumulator</code></li>
+      <li><code>MyApp</code></li>
+    </ul>
+  </li>
+</ol>
+
+<p>
+Keeping a consistent project and package structure will make it easier to build on this code
+in later labs and ensure that the autograder can find your classes.
+</p>
   <!-- <h2>Lab 1: Recursion Practice</h2>
   <p>
     In CodingBat <a href="https://codingbat.com/java/Recursion-1">Recursion-1</a>," complete the next 6 problems: count7, count8, powerN, countX, countHi, changeXY
@@ -475,6 +508,7 @@ frame.setVisible(true);</code></pre>
 </details> -->
 </div>
 <div class="lab-section" id="lab2">
+  
   <h2 style="color:black">My Accumulator (2x2 Layout)</h2>
   <h3>Overview</h3>
  <p>
@@ -550,9 +584,11 @@ In the constructor, initialize:
     </p>
     <pre><code>setLayout(new GridLayout(2, 2, 5, 5));</code></pre> -->
 <ul>
-  <li><code>labelTotal</code> with text <code>"Enter an Integer:"</code></li>
+  <li><code>labelAdd</code> with text <code>"Enter an Integer:"</code></li>
 
-  <li><code>labelAdd</code> with text <code>“Accumulated Sum:”</code></li>
+  <li><code>labelTotal</code> with text <code>“The Accumulated Sum is:”</code></li>
+  <li><code>fieldAdd</code> with the default value of 0</li>
+  <li><code>fieldTotal</code> with the default value of 0</li>
   <li>Set <code>fieldAdd</code> as an editable text field with the default value of 0</li>
 <li>Set <code>fieldTotal</code> to be non-editable with the default value of 0</li>
 </ul>
@@ -583,12 +619,34 @@ To view <code>MyAccumulator</code>, reuse the same <code>JFrame</code> but insta
 <ul>
   <li>Change <code>setContentPane(new MyCounter())</code> to <code>setContentPane(new MyAccumulator())</code></li>
   <li>Run your program again</li>
+
 </ul>
 
 <p>
 This is a preview of the idea of “screens”:
 the frame stays the same, but the panel inside it changes.
 </p>
+<hr>
+<h3>2.8 Frame Size Behavior</h3>
+
+
+<p>
+Run your program and observe how the frame behaves.
+Then make the following changes one at a time.
+</p>
+
+<ul>
+  <li>
+    Adjust the window size using <code>setSize(...)</code> so the labels and fields fit comfortably.
+    Run the program again and observe the result.
+  </li>
+  <li>
+    Add <code>frame.pack()</code> to the <code>run()</code> method.
+    Run the program again and observe how the frame size changes. <code>pack()</code> ignores <code>setSize()</code> because it resizes the frame based on the components inside it.
+  </li>
+  <li>But the order matters. Add <code>frame.setSize(600, 300);</code> after <code>frame.pack();</code>. Observe the change.</li>
+  <li>Finally, comment out all lines with <code>setSize()</code> and add <code>setPreferredSize(new Dimension(400,100));</code> to MyAccumulator constructor.</li>
+</ul>
 
     <!-- <p>
       Because your grid is 2×2, the components will appear in order as you call <code>add()</code>:

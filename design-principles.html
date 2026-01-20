@@ -1,0 +1,411 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CSSE 220</title>
+    
+    
+    <link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
+<link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+       /* Main content container */
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    }
+    /* h1, h2 {
+      font-family: "Courier New", Courier, monospace;
+      color: #61dafb;
+    } */
+    /* Lab container grid layout */
+    .lab-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    /* Lab card styling */
+    .lab-card {
+        background-color: #3a3a3a;
+      color: #dcdcdc;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      text-decoration: none;
+      transition: transform 0.2s;
+      display: block;
+    }
+    .lab-card:hover {
+      transform: scale(1.02);
+    }
+    .lab-card h3 {
+      margin: 0 0 8px;
+      font-family: "Courier New", Courier, monospace;
+      color: #ffffff;
+    }
+    .lab-card p {
+      /* font-family: Arial, sans-serif; */
+      font-size: 0.9em;
+      margin: 0;
+      color: #dcdcdc;
+    }
+    /* Responsive adjustments */
+    @media screen and (max-width: 600px) {
+      .lab-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    details.lab-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  background: #ffffff;
+}
+
+details.lab-card summary {
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.05rem;
+  list-style: none;
+}
+
+details.lab-card summary::-webkit-details-marker {
+  display: none;
+}
+
+details.lab-card summary::before {
+  content: "▸ ";
+  font-weight: bold;
+}
+
+details.lab-card[open] summary::before {
+  content: "▾ ";
+}
+
+details.lab-card > *:not(summary) {
+  margin-top: 0.75rem;
+}
+
+/* ---------- Nested Hint Blocks ---------- */
+
+details.hint {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-left: 4px solid #cbd5e1;
+  background: #f8fafc;
+}
+
+details.hint summary {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ---------- Callout Boxes ---------- */
+
+.callout {
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  background: #f1f5f9;
+  border-left: 6px solid #94a3b8;
+}
+
+.callout strong {
+  font-weight: 600;
+}
+
+/* Callout Variants */
+
+.callout.ok {
+  background: #ecfdf5;
+  border-left-color: #10b981; /* green */
+}
+
+.callout.warn {
+  background: #fff7ed;
+  border-left-color: #f97316; /* orange */
+}
+
+.callout.error {
+  background: #fef2f2;
+  border-left-color: #ef4444; /* red */
+}
+
+/* ---------- Code Inline ---------- */
+
+code {
+  background: #f1f5f9;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+/* ---------- Lists ---------- */
+
+ul, ol {
+  margin-left: 1.25rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+/* ---------- Page Section ---------- */
+details.lab-card,
+details.lab-card * {
+  color: #000000;
+}
+.page-section {
+  max-width: 900px;
+  margin: auto;
+  padding: 1rem;
+}
+  </style>
+</head>
+    <body>
+
+            <div id="header">
+                <a id="index_link" href="./index.html">CSSE 220</a>
+                <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
+                <a id="schedule_link" href="./schedule.html">Schedule</a>
+                <a id="quiz_link" href="./demos.html">Demos</a>
+                <a id="quiz_link" href="./worksheets.html">Quizzes</a>
+                <a id="quiz_link" href="./labs.html">Labs</a>
+                <a id="quiz_link" href="./homework.html">Homework</a>
+                <a id="quiz_link" href="./exams.html">Exams</a>
+                <a id="quiz_link" href="./project.html">Final Project</a>
+                <a id="resources_link" href="./resources.html">Resources</a>
+                <div style="clear:both;"></div>
+            </div>
+    
+
+    
+        <!-- Main Content -->
+  <div id="content">
+  <section class="page-section" id="oop-design-principles">
+  <h1>CSSE220 OOP Design Principles (the ones we actually test)</h1>
+<p>OOD Principles <a href="./resources_files/Basic_OO_Principles_for_CSSE220.pdf">Handout</a></p>
+ <h2>Example Problems</h2>
+      <p>
+        The <a href="./Homework/ExampleDesignProblemsDP1andDP2.pdf" target="_blank">Example Problems DP1 - DP2</a> with a set of design problems.
+         The <a href="./Homework/ExampleDesignProblemsDP3-5.pdf" target="_blank">Example Problems DP3-5</a>.
+
+      </p>
+      <p>
+        Solutions with commentary and good designs are provided <a href="./Homework/SolutionsToExampleDesignProblemsDP1andDP2.pdf" target="_blank">Solutions Example Problems DP1/DP2</a>. <a href="./Homework/SolutionsToExampleDesignProblemsDP3-5.pdf" target="_blank">Solutions Example Problems DP3-5</a>.
+      </p>
+<p>
+    Use this checklist in order and stop at the first big failure.
+  </p>
+
+  <div class="callout ok">
+    <strong>Rule of thumb:</strong> The first <strong>No</strong> is usually the <strong>primary</strong> violation.
+    Later problems are often consequences.
+  </div>
+
+  <details class="lab-card" open>
+    <summary><strong>Main Focus and Sequence</strong> (how to check principles in order)</summary>
+
+    <ol>
+      <li>
+        <strong>Principle #1:</strong> Functionality (can it work at all?)
+      </li>
+      <li>
+        <strong>Principle #2:</strong> Structure around data (nouns → classes, encapsulation)
+      </li>
+      <li>
+        <strong>Principle #3:</strong> Distribute responsibility efficiently (high cohesion)
+      </li>
+      <li>
+        <strong>Principle #4:</strong> Minimize dependencies (low coupling: tell-don’t-ask, avoid chains)
+      </li>
+      <li>
+        <strong>Principle #5:</strong> Avoid duplication (DRY - don't repeat yourself)
+      </li>
+    </ol>
+
+    <div class="callout warn">
+      <strong>If #1 is No:</strong> the design is broken. Don’t over-analyze #2–#5 — it can’t meet the requirements.
+    </div>
+  </details>
+
+  <!-- Principle 1 -->
+  <details class="lab-card" open>
+    <summary><strong>1️⃣ Functionality:</strong> Does the design support the required functionality?</summary>
+
+    <p><strong>What this principle is asking:</strong> “Could this system technically meet the requirements?”<br>
+      (Not “is it elegant?” Not “is it good OO?” Just: can it work?)
+    </p>
+
+    <p><strong>Guiding questions:</strong></p>
+    <ul>
+      <li>Is all required <strong>data</strong> represented somewhere in the design?</li>
+      <li>Are all required <strong>relationships</strong> possible (1–1, 1–many, many–many)?</li>
+      <li>Can all required <strong>operations</strong> be implemented without changing the requirements?</li>
+      <li>Even if messy, could it <strong>run</strong> and produce correct results?</li>
+    </ul>
+
+    <div class="callout ok">
+      <strong>Yes</strong> → move to #2.<br>
+      <strong>No</strong> ❌ → broken design (everything after is basically irrelevant).
+    </div>
+
+    <details class="hint">
+      <summary>Common “#1 = No” examples</summary>
+      <ul>
+        <li>No place to store required entities (e.g., “teams” exist in the story but no Team structure).</li>
+        <li>Missing required relationships (e.g., a Department cannot contain Teams).</li>
+        <li>Missing required operation that can’t be added without redesign.</li>
+      </ul>
+    </details>
+  </details>
+
+  <!-- Principle 2 -->
+  <details class="lab-card" open>
+    <summary><strong>2️⃣ Structure around the data (Encapsulation):</strong> Is the design built from the problem nouns?</summary>
+
+    <p><strong>What this principle is asking:</strong> “Did you model the real things in the problem, and do they own their behavior?”</p>
+
+    <p><strong>Guiding questions:</strong></p>
+    <ul>
+      <li><strong>2a (Nouns → classes):</strong>What are the key <strong>nouns</strong> in the prompt? Are they represented as classes?</li>
+      <li><strong>2b (Intelligent behavior):</strong>Does each class have <strong>intelligent behavior</strong> that operates on its own data?</li>
+      <li><strong>2b (Data class check):</strong>Are you avoiding <strong>data classes</strong> (only fields + getters/setters, no real behavior)?</li>
+      <li><strong>2b (Ownership of decisions):</strong>When you see a domain question (ex: “Is the team over budget?”), does the answer live in the class that owns the data?</li>
+    </ul>
+
+    <div class="callout warn">
+      <strong>Primary failure pattern:</strong> A “manager/controller” class does the real work while domain classes just store data.
+      That’s usually a <strong>2️⃣ violation first</strong>.
+    </div>
+
+    <details class="hint">
+      <summary>Quick self-check: “Where should this method live?”</summary>
+      <ul>
+        <li>If the method uses mostly <strong>Team</strong> data, it should probably be in <strong>Team</strong>.</li>
+        <li>If the method uses mostly <strong>Department</strong> data, it should probably be in <strong>Department</strong>.</li>
+        <li>If the method uses “a little from everyone,” that’s a red flag.</li>
+      </ul>
+    </details>
+  </details>
+
+  <!-- Principle 3 -->
+  <details class="lab-card" open>
+    <summary><strong>3️⃣ Distribute responsibility efficiently (High Cohesion):</strong> Is the workload split cleanly?</summary>
+
+    <p><strong>What this principle is asking:</strong> “Does each class have one main job, or is one class doing everything?”</p>
+
+    <p><strong>Guiding questions:</strong></p>
+    <ul>
+      <li><strong>3a:</strong> Is any class getting <strong>too large</strong> or doing too much?</li>
+      <li><strong>3b:</strong> Does each class have a <strong>single responsibility</strong> (high cohesion)?</li>
+      <li>Would one requirement change force edits in <strong>many unrelated methods</strong> in the same class?</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Common consequence of failing #2:</strong> One class becomes a “calculator + organizer + printer + decider.”
+      That’s a #3 problem (low cohesion).
+    </div>
+
+    <details class="hint">
+      <summary>Red flags</summary>
+      <ul>
+        <li>Method names in one class cover unrelated tasks: “compute…”, “handle input…”, “print…”, “filter…”, “load…”.</li>
+        <li>One class knows the details of every other class.</li>
+      </ul>
+    </details>
+  </details>
+
+  <!-- Principle 4 -->
+  <details class="lab-card" open>
+    <summary><strong>4️⃣ Minimize dependencies (Low Coupling):</strong> Are objects “telling” instead of “asking”?</summary>
+
+    <p><strong>What this principle is asking:</strong> “Are classes too entangled? Are you reaching through objects to get work done?”</p>
+
+    <p><strong>Guiding questions:</strong></p>
+    <ul>
+      <li><strong>4a (Tell, Don’t Ask):</strong> Are you pulling data out with getters and making decisions elsewhere?</li>
+      <li>Could you replace “ask for internals + compute” with a single message like <code>team.isOverBudget()</code>?</li>
+      <li><strong>4b (Message chains):</strong> Do you have chains like <code>a.getB().getC().doThing()</code> (train wreck)?</li>
+      <li>Does one class need deep knowledge of another class’s internal structure?</li>
+    </ul>
+
+    <div class="callout warn">
+      <strong>Fast test:</strong> If your solution needs lots of getters to work, you’re probably violating #4.
+    </div>
+
+    <details class="hint">
+      <summary>What “Tell, Don’t Ask” looks like (mini example)</summary>
+      <p><strong>Bad:</strong> Department asks Team for employees/equipment and computes the budget status itself.</p>
+      <p><strong>Better:</strong> Department asks <code>team.isOverBudget()</code> and Team handles the details internally.</p>
+    </details>
+  </details>
+
+  <!-- Principle 5 -->
+  <details class="lab-card" open>
+    <summary><strong>5️⃣ Avoid duplication:</strong> Is code duplicated?</summary>
+
+    <p><strong>What this principle is asking:</strong> “Will you copy-paste the same logic in multiple places?”</p>
+
+    <p><strong>Guiding questions:</strong></p>
+    <ul>
+      <li>Are the same logic patterns likely to be copy-pasted across multiple classes or methods?</li>
+      <li>If you fixed a bug in one place, would you need to fix it again elsewhere?</li>
+      <li>Are multiple classes implementing nearly identical behavior?</li>
+      <li>Could shared logic be pulled into:
+        <ul>
+          <li>a helper method?</li>
+          <li>a common interface?</li>
+          <li>a superclass?</li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="callout">
+      <strong>Note:</strong> Duplication is often <strong>implementation-level</strong>, not just UML-level.<br>
+      Acceptable phrasing: “Code duplication cannot be fully evaluated at the UML level, but the design structure suggests potential duplication.”
+    </div>
+  </details>
+
+  <!-- How to write an answer -->
+  <details class="lab-card" open>
+    <summary><strong>How to write a full-credit design critique answer</strong> (student template)</summary>
+
+    <ol>
+      <li><strong>State the first principle that fails</strong> (usually #2 for bad OO designs).</li>
+      <li><strong>Explain what is misplaced</strong> (which class owns the data vs. where the behavior was placed).</li>
+      <li><strong>Name 1–2 consequences</strong> (often #3 and #4) and explain why they happen.</li>
+      <li><strong>Give a fix direction</strong> (what methods move where; who should “own” the decision).</li>
+    </ol>
+
+    <div class="callout ok">
+      <strong>Example sentence frame:</strong><br>
+      “This design violates <strong>2b</strong> because behavior that belongs in <strong>X</strong> is placed in <strong>Y</strong>.
+      This causes a <strong>3b</strong> issue because <strong>Y</strong> becomes responsible for too many tasks, and a <strong>4a</strong> issue because <strong>Y</strong> must ask for internals instead of telling <strong>X</strong> to do the work.”
+    </div>
+  </details>
+</section>
+</body>
+</html>
