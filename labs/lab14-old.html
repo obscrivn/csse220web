@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      scroll-margin-top: 80px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+ /*    code {
+        color: red;
+    } */
+
+  pre  code {
+  background-color: #f4f4f4;      /* light gray background */
+  color: #1a1a1a;                 /* dark neutral text */
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.95em;
+}
+
+pre code {
+  display: block;
+  background-color: #e8ebf0;     /* darker cool gray-blue background */
+  color: #1a1a1a;                /* dark text for contrast */
+  padding: 0.85em 1em;
+  border-left: 5px solid #336699; /* subtle blue accent bar */
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.95em;
+  line-height: 1.5em;
+  overflow-x: auto;              /* allows horizontal scroll for long lines */
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 14</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. More Recursion Practice</a></li>
+          <li><a href="#lab2">02. Exception Handling for Accumulator App</a></li>
+
+
+      
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+ <p>Submission: 1) Recursion4.java, 2) MyAccumulator with Action listener and Exception handling</p>
+<div id="main-content">
+
+<div class="lab-section" id="lab1">
+  <h2>01. Recursion Practice</h2>
+
+  <p>Access the practice platform <a href="https://codingbat.com/java">CodingBat</a>. Once completed, paste all codingbat solutions into one java file</p>
+  <ol>
+  <li>
+    In CodingBat complete 6 recursion problems (Recursion-1): <a href="https://codingbat.com/java">CodingBat</a> array11, array220, allStar, pairStar, endX, countPairs
+  </li>
+    <li>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example Recursion4.java)</li>
+    
+  </ol>
+  <details class="hint">
+  <summary>💡 Hint: Check One Element at a Time</summary>
+  <p>
+    Each recursive call should handle just <em>one</em> position in the array.
+    <br>Look at <code>nums[index]</code> — if it equals <code>6</code>, you’re done!
+    <br>Otherwise, move on to the next element.
+  </p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint: Moving to the Next Index</summary>
+  <p>
+    Be careful with how you move forward in the array.
+    <br>
+    <strong>Do not</strong> use <code>index++</code> as that passes the current value, not the next one.
+    <br>
+    Instead, call the recursive method with <code>index + 1</code> or <code>++index</code> so it checks the next element.
+  </p>
+</details>
+</div>
+        <div class="lab-section" id="lab2">
+  <h2 style="color:black">02: Handling Exceptions in Event-Based GUIs (Accumulator)</h2>
+  <p>
+    Goal: connect <em>event-based programming</em> with <em>exception handling</em> by upgrading the Accumulator UI.
+    You will (A) see an unhandled crash, (B) handle it with <code>try/catch</code> and console output,
+    and (C) present a user-friendly error using <code>JOptionPane</code>.
+  </p>
+
+
+<h3>Step&nbsp;1: Define Instance Fields</h3>
+  <p>
+    Inside your <code>MyAccumulator</code> class, declare the following fields <strong>outside</strong> the constructor.
+    These will hold state between button presses or Enter key events.
+  </p>
+
+  <pre><code class="language-java">private int sum = 0;
+private JTextField inputField;
+private JTextField outputField;
+</code></pre>
+
+<h3>Step&nbsp;2: Update the Constructor</h3>
+  <p>
+    Set up labels and text fields, initialize the fields, and add them to the panel.
+    This code replaces your layout-only version.
+  </p>
+
+  <pre><code class="language-java">public MyAccumulator() {
+    JLabel label1 = new JLabel("Enter an integer:");
+    this.inputField = new JTextField("0");
+
+    JLabel label2 = new JLabel("The Accumulator Sum is:");
+    this.outputField = new JTextField("0");
+    this.outputField.setEditable(false);
+
+    this.setLayout(new GridLayout(2, 2, 5, 5));
+    this.add(label1);  this.add(inputField);
+    this.add(label2);  this.add(outputField);
+}
+</code></pre>
+
+<h3>Step&nbsp;3: Add an ActionListener</h3>
+  <p>
+    Add a listener to the <code>inputField</code> so that when the user presses <kbd>Enter</kbd>,
+    it calls a helper method <code>processInput()</code>.
+  </p>
+
+  <pre><code class="language-java">// inside the constructor, after adding components
+inputField.addActionListener(e -> processInput());
+</code></pre>
+
+  <details class="hint">
+    <summary>💡 Hint: When does this fire?</summary>
+    <p>
+      Pressing <kbd>Enter</kbd> while the cursor is inside the text field triggers
+      the ActionListener’s <code>actionPerformed</code> method (here, the lambda).
+    </p>
+  </details>
+<h3>Step&nbsp;4: Create <code>processInput()</code> (no catch yet)</h3>
+  <p>
+    Define a new private method below the constructor that reads the text,
+    converts it to an integer, updates the running total, and shows the result.
+  </p>
+
+  <pre><code class="language-java">private void processInput() {
+    String txt = inputField.getText().trim();
+    int value = Integer.parseInt(txt);  // risky line (may throw NumberFormatException)
+    sum += value;
+    outputField.setText(Integer.toString(sum));
+    inputField.setText("");
+}
+</code></pre>
+
+  <p>
+    Run your program and try typing a word like <code>abc</code>.  
+    You’ll see a <strong>NumberFormatException</strong> in the console.
+    This shows how unchecked exceptions behave when unhandled.
+  </p>
+
+  <details class="hint">
+    <summary>💡 Hint: What should you notice?</summary>
+    <ul>
+      <li>The program crashes on invalid input.</li>
+      <li>The console shows <code>java.lang.NumberFormatException: For input string: "abc"</code>.</li>
+      <li>Next step: we’ll add <code>try/catch</code> to handle this gracefully.</li>
+    </ul>
+  </details>
+<h3>Step&nbsp;4: Handle with <code>try/catch</code> (console message)</h3>
+  <p>Wrap only the "risky" line(s). On error, print a clear console message and keep the app running.</p>
+  <pre><code class="language-java">
+public void processInput() {
+		String text = this.inputField.getText();
+		try {
+		int value = Integer.parseInt(text);
+		sum+=value;
+		outputField.setText(Integer.toString(sum));
+		inputField.setText("");
+		}
+		catch (NumberFormatException e) {
+			System.out.println("Error " + e.getMessage());
+		}
+	}</code></pre>
+  <h3>Step&nbsp;5: Handle with <code>try/catch</code> JOptionPane</h3>
+  
+ 
+
+  <p>Instead of only printing to console, notify the user with a dialog (no crash, clear guidance).</p>
+  <pre><code class="language-java">// Replace catch block from Step 4:
+} catch (NumberFormatException ex) {
+    JOptionPane.showMessageDialog(
+        this,
+        "Please enter a valid integer.\nYou typed: \"" + txt + "\"",
+        "Invalid Input",
+        JOptionPane.WARNING_MESSAGE
+    );
+}</code></pre>
+
+  <details class="hint">
+    <summary>💡 Hint: Why dialogs for GUIs?</summary>
+    <p>Console messages are invisible to most end-users. <code>JOptionPane</code> surfaces the problem
+       right where the user is interacting, and your program remains responsive.</p>
+  </details>
+
+  <h3>Quick Checks</h3>
+  <ol>
+    <li>What exception does <code>Integer.parseInt()</code> throw on bad input?</li>
+    <li>Where should the risky code live — inside or outside <code>try { ... }</code>?</li>
+    <li>In a GUI, why is a dialog preferable to only printing to the console?</li>
+  </ol>
+
+  <h3>Optional Extensions</h3>
+  <ul>
+    <li>Add a <strong>Reset</strong> button that sets <code>sum = 0</code> and clears fields.</li>
+    <li>Reject overly large inputs (e.g., &gt; 1,000,000) by showing a warning dialog.</li>
+  </ul>
+</div>
+        
+
+
+
+
+
+        </body>
+        </html>

@@ -186,9 +186,8 @@ pre code {
     <h1>Lab Assignment 14</h1>
     <nav id="lab-nav">
         <ul>
-          <li><a href="#lab1">01. More Recursion Practice</a></li>
-          <li><a href="#lab2">02. Exception Handling for Accumulator App</a></li>
-
+          <li><a href="#lab1"> ActionListener Practice</a></li>
+          <!-- <li><a href="#lab3">02. Override Methods</a></li> -->
 
       
          
@@ -196,177 +195,373 @@ pre code {
         </ul>
       </nav>
 <!-- Lab Navigation Menu -->
- <p>Submission: 1) Recursion4.java, 2) MyAccumulator with Action listener and Exception handling</p>
+ <p>Submission: Counter and Accumulator java files + Demo the code functionality (verification in class or office hours)</p>
 <div id="main-content">
 
-<div class="lab-section" id="lab1">
-  <h2>01. Recursion Practice</h2>
 
-  <p>Access the practice platform <a href="https://codingbat.com/java">CodingBat</a>. Once completed, paste all codingbat solutions into one java file</p>
-  <ol>
-  <li>
-    In CodingBat complete 6 recursion problems (Recursion-1): <a href="https://codingbat.com/java">CodingBat</a> array11, array220, allStar, pairStar, endX, countPairs
-  </li>
-    <li>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example Recursion4.java)</li>
-    
-  </ol>
-  <details class="hint">
-  <summary>💡 Hint: Check One Element at a Time</summary>
-  <p>
-    Each recursive call should handle just <em>one</em> position in the array.
-    <br>Look at <code>nums[index]</code> — if it equals <code>6</code>, you’re done!
-    <br>Otherwise, move on to the next element.
-  </p>
-</details>
-
-<details class="hint">
-  <summary>💡 Hint: Moving to the Next Index</summary>
-  <p>
-    Be careful with how you move forward in the array.
-    <br>
-    <strong>Do not</strong> use <code>index++</code> as that passes the current value, not the next one.
-    <br>
-    Instead, call the recursive method with <code>index + 1</code> or <code>++index</code> so it checks the next element.
-  </p>
-</details>
-</div>
-        <div class="lab-section" id="lab2">
-  <h2 style="color:black">02: Handling Exceptions in Event-Based GUIs (Accumulator)</h2>
-  <p>
-    Goal: connect <em>event-based programming</em> with <em>exception handling</em> by upgrading the Accumulator UI.
-    You will (A) see an unhandled crash, (B) handle it with <code>try/catch</code> and console output,
-    and (C) present a user-friendly error using <code>JOptionPane</code>.
-  </p>
-
-
-<h3>Step&nbsp;1: Define Instance Fields</h3>
-  <p>
-    Inside your <code>MyAccumulator</code> class, declare the following fields <strong>outside</strong> the constructor.
-    These will hold state between button presses or Enter key events.
-  </p>
-
-  <pre><code class="language-java">private int sum = 0;
-private JTextField inputField;
-private JTextField outputField;
-</code></pre>
-
-<h3>Step&nbsp;2: Update the Constructor</h3>
-  <p>
-    Set up labels and text fields, initialize the fields, and add them to the panel.
-    This code replaces your layout-only version.
-  </p>
-
-  <pre><code class="language-java">public MyAccumulator() {
-    JLabel label1 = new JLabel("Enter an integer:");
-    this.inputField = new JTextField("0");
-
-    JLabel label2 = new JLabel("The Accumulator Sum is:");
-    this.outputField = new JTextField("0");
-    this.outputField.setEditable(false);
-
-    this.setLayout(new GridLayout(2, 2, 5, 5));
-    this.add(label1);  this.add(inputField);
-    this.add(label2);  this.add(outputField);
-}
-</code></pre>
-
-<h3>Step&nbsp;3: Add an ActionListener</h3>
-  <p>
-    Add a listener to the <code>inputField</code> so that when the user presses <kbd>Enter</kbd>,
-    it calls a helper method <code>processInput()</code>.
-  </p>
-
-  <pre><code class="language-java">// inside the constructor, after adding components
-inputField.addActionListener(e -> processInput());
-</code></pre>
-
-  <details class="hint">
-    <summary>💡 Hint: When does this fire?</summary>
+        <div class="lab-section" id="lab1">
+          <h2>ActionListener Practice</h2>
+          <h3>Adding ActionListener to the Button - Lambda</h3>
     <p>
-      Pressing <kbd>Enter</kbd> while the cursor is inside the text field triggers
-      the ActionListener’s <code>actionPerformed</code> method (here, the lambda).
-    </p>
-  </details>
-<h3>Step&nbsp;4: Create <code>processInput()</code> (no catch yet)</h3>
-  <p>
-    Define a new private method below the constructor that reads the text,
-    converts it to an integer, updates the running total, and shows the result.
+    Now that you have your layout ready, let’s make the button <strong>do something</strong>!
+    Whenever the “Count” button is clicked, it should call the <code>increment()</code> method
+    that updates the number in the text field.
   </p>
 
-  <pre><code class="language-java">private void processInput() {
-    String txt = inputField.getText().trim();
-    int value = Integer.parseInt(txt);  // risky line (may throw NumberFormatException)
-    sum += value;
-    outputField.setText(Integer.toString(sum));
-    inputField.setText("");
-}
-</code></pre>
+  <ol>
+    <li>
+      Inside the constructor (after adding your components), register the listener for the button
+      using a <strong>lambda expression</strong>:
+      <pre><code>button.addActionListener(e -> increment());</code></pre>
+      <p>
+        The expression <code>e -> increment()</code> means:
+        “When the button is clicked, run the <code>increment()</code> method.”
+      </p>
+    </li>
 
-  <p>
-    Run your program and try typing a word like <code>abc</code>.  
-    You’ll see a <strong>NumberFormatException</strong> in the console.
-    This shows how unchecked exceptions behave when unhandled.
-  </p>
+    <li>
+      Implement the <code>increment()</code> method in your class. It should:
+      <ol type="a">
+        <li>Increase the counter value by 1</li>
+        <li>Update the text field to display the new count</li>
+      </ol>
 
-  <details class="hint">
-    <summary>💡 Hint: What should you notice?</summary>
-    <ul>
-      <li>The program crashes on invalid input.</li>
-      <li>The console shows <code>java.lang.NumberFormatException: For input string: "abc"</code>.</li>
-      <li>Next step: we’ll add <code>try/catch</code> to handle this gracefully.</li>
-    </ul>
-  </details>
-<h3>Step&nbsp;4: Handle with <code>try/catch</code> (console message)</h3>
-  <p>Wrap only the "risky" line(s). On error, print a clear console message and keep the app running.</p>
-  <pre><code class="language-java">
-public void processInput() {
-		String text = this.inputField.getText();
-		try {
-		int value = Integer.parseInt(text);
-		sum+=value;
-		outputField.setText(Integer.toString(sum));
-		inputField.setText("");
-		}
-		catch (NumberFormatException e) {
-			System.out.println("Error " + e.getMessage());
-		}
-	}</code></pre>
-  <h3>Step&nbsp;5: Handle with <code>try/catch</code> JOptionPane</h3>
-  
- 
-
-  <p>Instead of only printing to console, notify the user with a dialog (no crash, clear guidance).</p>
-  <pre><code class="language-java">// Replace catch block from Step 4:
-} catch (NumberFormatException ex) {
-    JOptionPane.showMessageDialog(
-        this,
-        "Please enter a valid integer.\nYou typed: \"" + txt + "\"",
-        "Invalid Input",
-        JOptionPane.WARNING_MESSAGE
-    );
+      <pre><code>private void increment() {
+    count++;
+    field.setText(Integer.toString(count));
 }</code></pre>
 
-  <details class="hint">
-    <summary>💡 Hint: Why dialogs for GUIs?</summary>
-    <p>Console messages are invisible to most end-users. <code>JOptionPane</code> surfaces the problem
-       right where the user is interacting, and your program remains responsive.</p>
-  </details>
-
-  <h3>Quick Checks</h3>
-  <ol>
-    <li>What exception does <code>Integer.parseInt()</code> throw on bad input?</li>
-    <li>Where should the risky code live — inside or outside <code>try { ... }</code>?</li>
-    <li>In a GUI, why is a dialog preferable to only printing to the console?</li>
+      <p>
+        💡 Make sure your <code>count</code> and <code>text</code> are declared
+        as instance variables (outside the constructor),
+        so they can be accessed inside <code>increment()</code>.
+        <pre><code>private int count = 0;
+private JTextField text; // declared at class level
+</code></pre>
+      </p>
+    </li>
   </ol>
 
-  <h3>Optional Extensions</h3>
+  <details class="hint">
+    <summary>💡 Hint: Why Not Declare <code>count</code> Inside <code>increment()</code>?</summary>
+    <p>
+      If you declare <code>int count = 0;</code> inside the <code>increment()</code> method,
+      it will reset to zero each time you click the button. Using an instance variable
+      ensures the value is remembered between clicks.
+    </p>
+  </details>
+
+  <details class="hint">
+    <summary>💡 Hint: One-Line vs Multi-Line Lambdas</summary>
+    <p>
+      A one-line lambda (like <code>e -> increment()</code>) does not need braces or semicolons.
+      If you want to perform multiple actions, use braces and semicolons inside:
+    </p>
+    <pre><code>button.addActionListener(e -> {
+    count++;
+    field.setText(Integer.toString(count));
+});</code></pre>
+  </details>
+  <!-- <h3>Part 2: Using a Custom ActionListener Class</h3>
+  <p>
+    In this part, you will replace the lambda expression with a <strong>custom ActionListener class</strong>.
+    This will help you see how events can be handled by separate objects in larger programs.
+  </p>
+
+  <ol>
+    <li>
+      Comment out your lambda listener line:
+      <pre><code>// button.addActionListener(e -> increment());</code></pre>
+    </li>
+
+    <li>
+      Create a new class named <code>MyCounterActionListener</code> that implements
+      <code>ActionListener</code> from the <code>java.awt.event</code> package.
+      <br>
+      This class should:
+      <ul>
+        <li>Have a private field of type <code>MyCounter</code></li>
+        <li>Store a reference to the counter in its constructor</li>
+        <li>Call <code>increment()</code> on the counter when the button is clicked</li>
+      </ul>
+      <pre><code>import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MyCounterActionListener implements ActionListener {
+
+    private MyCounter counter;
+
+    public MyCounterActionListener(MyCounter counter) {
+        this.counter = counter;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        counter.increment();
+    }
+}</code></pre>
+    </li>
+
+    <li>
+      In your <code>MyCounter</code> constructor, create an instance of this listener and register it with the button:
+      <pre><code>MyCounterActionListener listener = new MyCounterActionListener(this);
+button.addActionListener(listener);</code></pre>
+    </li>
+  </ol>
+
+  <p>
+    When the button is clicked, Java will automatically create an <code>ActionEvent</code> and call your
+    <code>actionPerformed()</code> method inside <code>MyCounterActionListener</code>.
+  </p>
+
+  <details class="hint">
+    <summary>💡 Hint: Why Pass <code>this</code>?</summary>
+    <p>
+      The <code>this</code> keyword refers to the <code>MyCounter</code> object itself.
+      The listener needs this reference so it can call <code>increment()</code> on the panel when the event occurs.
+      You are passing the whole counter object, not just the button.
+    </p>
+  </details>
+
+  <details class="hint">
+    <summary>💡 Hint: OOP Design Principle</summary>
+    <p>
+      This approach follows <strong>encapsulation</strong> — the button only triggers an event,
+      while the <code>MyCounter</code> decides what to do (update its count and text field).
+      Separating logic like this is good design and prepares you for the Model–View–Controller pattern.
+    </p>
+  </details> -->
+        </div>
+
+<!-- <div class="lab-section" id="lab3">
+
+  <h2 style="color:black">03. Inheritance and Method Overriding: GameEntity and PlayerEntity</h2>
+
+  <p>
+    In this part of the lab, you will explore how <strong>inheritance</strong> and 
+    <strong>method overriding</strong> work in Java by building a simple 2D game entity system.
+  </p>
+
+  <p>
+    You will first create a general <code>GameEntity</code> class that represents any moving object,
+    and then extend it with a <code>PlayerEntity</code> subclass that adds new data and behavior.
+  </p>
+
+  <h3>Step 1: Define Fields in <code>GameEntity</code></h3>
+  <p>
+    Create a class <code>GameEntity</code> with the following <strong>protected</strong> fields 
+    (so they are visible to subclasses):
+  </p>
+
   <ul>
-    <li>Add a <strong>Reset</strong> button that sets <code>sum = 0</code> and clears fields.</li>
-    <li>Reject overly large inputs (e.g., &gt; 1,000,000) by showing a warning dialog.</li>
+    <li><code>protected int x, y;</code> – the current position of the entity</li>
+    <li><code>protected double speed;</code> – how much the entity moves horizontally per frame</li>
+    <li><code>protected int health;</code> – the health or hit points</li>
+    <li><code>protected static final int SCREEN_WIDTH = 800;</code> – screen boundary constant</li>
   </ul>
-</div>
+
+  <h3>Step 2: Create the Constructor</h3>
+  <p>
+    Write a constructor that takes 4 parameters and assigns them to the fields:
+  </p>
+
+  <pre><code>public GameEntity(int startX, int startY, double startSpeed, int startHealth) {
+    this.x = startX;
+    this.y = startY;
+    this.speed = startSpeed;
+    this.health = startHealth;
+}</code></pre>
+
+  <p>
+    ✅ Recall: The <code>this</code> keyword distinguishes between the instance field (like <code>this.x</code>) 
+    and the parameter <code>startX</code>.
+  </p>
+
+  <h3>Step 3: Override <code>toString()</code></h3>
+  <p>
+    The <code>toString()</code> method defines how the object is displayed when printed.
+    Override it to show all the important data:
+  </p>
+
+  <pre><code>@Override
+public String toString() {
+    return String.format("Entity@(%d,%d) speed=%.2f health=%d", x, y, speed, health);
+}</code></pre>
+<h4>Example: Testing <code>toString()</code> Override</h4>
+<p>
+  The <code>toString()</code> method is automatically called when you print an object. 
+  After overriding it in <code>GameEntity</code>, printing the object shows useful details instead of a memory address.
+</p>
+
+<pre><code>GameEntity e = new GameEntity(100, 50, 10.0, 100);
+System.out.println(e);
+
+// Output:
+Entity@(100,50) speed=10.00 health=100
+</code></pre>
+
+<p>
+
+  <p><em>Tip:</em> Use <code>String.format</code> to control number formatting (%.2f = 2 decimal places).</p>
+
+  <h3>Step 4: Add the <code>update()</code> Method</h3>
+  <p>
+    The <code>update()</code> method simulates a single "frame" of movement.
+    Each call will move the entity horizontally and ensure it stays on screen.
+  </p>
+
+  <pre><code>public void update() {
+    // Move horizontally by speed
+    x += (int) speed;
+
+    // Clamp x between 0 and SCREEN_WIDTH
+    x = Math.max(0, Math.min(SCREEN_WIDTH, x));
+}</code></pre>
+
+  <p>
+    🧩 <strong>Clamping</strong> means restricting a value within a certain range.  
+    If x goes below 0 → set it to 0.  
+    If x goes beyond 800 → set it to 800.  
+    Otherwise, keep the same value.
+  </p>
+
+  <h3>Step 5: Test <code>GameEntity</code> in <code>main()</code></h3>
+  <pre><code>public static void main(String[] args) {
+    GameEntity e = new GameEntity(790, 100, 15.0, 100);
+    System.out.println(e);
+    e.update();       // moves to x = 805 but gets clamped to 800
+    System.out.println(e);
+}</code></pre>
+
+  <p>
+    ✅ <strong>Expected Output:</strong><br>
+    Entity@(790,100) speed=15.00 health=100<br>
+    Entity@(800,100) speed=15.00 health=100
+  </p>
+
+  <hr>
+
+  <h3>Step 6: Create a Subclass <code>PlayerEntity</code></h3>
+  <p>
+    Now let’s create a <strong>subclass</strong> that extends <code>GameEntity</code> to represent the player.
+  </p>
+
+  <pre><code>public class PlayerEntity extends GameEntity {</code></pre>
+
+  <p>
+    Add these <strong>extra fields</strong> specific to the player:
+  </p>
+
+  <ul>
+    <li><code>private String playerName;</code> – the player’s name</li>
+    <li><code>private int score;</code> – the player’s current score</li>
+    <li>Flags to simulate key input:<br>
+      <code>public boolean upPressed = true, downPressed = false;</code>
+    </li>
+  </ul>
+
+  <p>
+    The constructor should take 5 parameters and call the <code>GameEntity</code> constructor with <code>super(...)</code>:
+  </p>
+
+  <pre><code>public PlayerEntity(String name, int startX, int startY, double speed, int health) {
+    super(startX, startY, speed, health);  // calls GameEntity constructor
+    this.playerName = name;
+    this.score = 0;
+}</code></pre>
+
+  <p>
+    ✅ Note: The <code>super(...)</code> call must be the first line of the constructor.  
+    It sets up the inherited fields from the <code>GameEntity</code> class.
+  </p>
+
+  <h3>Step 7: Override <code>update()</code></h3>
+  <p>
+    The player moves horizontally (inherited behavior) but also vertically based on key flags.  
+    This is a perfect time to demonstrate <strong>method overriding</strong>:
+  </p>
+
+  <pre><code>@Override
+public void update() {
+    // Step 1: reuse the base movement
+    super.update();
+
+    // Step 2: add vertical movement
+    if (upPressed) {
+        y -= 5;
+    }
+    if (downPressed) {
+        y += 5;
+    }
+
+    // Step 3: increase score if passed a threshold
+    if (x > 400) {
+        score += 10;
+    }
+}</code></pre>
+
+  <p>
+     Notice how <code>super.update()</code> lets us reuse logic from <code>GameEntity</code>  
+    instead of rewriting the same code. This is one of the biggest benefits of inheritance.
+  </p>
+
+  <h3>Step 8: Override <code>toString()</code></h3>
+  <p>
+    Make the player’s version print player-specific information.
+  </p>
+
+  <pre><code>@Override
+public String toString() {
+    return String.format("%s@(%d,%d) score=%d", playerName, x, y, score);
+}</code></pre>
+
+  <h3>Step 9: Test <code>PlayerEntity</code> in <code>main()</code></h3>
+  <pre><code>public static void main(String[] args) {
+    GameEntity e = new PlayerEntity("Alice", 390, 50, 20.0, 100);
+    System.out.println(e);
+    e.update();  // runs PlayerEntity.update() because of overriding
+    System.out.println(e);
+}</code></pre>
+
+  <p>
+    ✅ <strong>Expected Output:</strong><br>
+    Alice@(390,50) score=0<br>
+    Alice@(410,45) score=10
+  </p>
+
+  <p>
+    🎯 This happens because:
+  </p>
+  <ul>
+    <li><code>x</code> increased from 390 → 410 (20 units)</li>
+    <li><code>y</code> decreased by 5 because <code>upPressed = true</code></li>
+    <li><code>score</code> increased by 10 since <code>x > 400</code></li>
+  </ul>
+
+  <hr>
+
+  <h3>🔍 Reflection: What You Learned</h3>
+  <ul>
+    <li>How a subclass inherits fields and methods from its superclass</li>
+    <li>How to call the superclass constructor using <code>super(...)</code></li>
+    <li>How to override a method and reuse superclass logic with <code>super.methodName()</code></li>
+    <li>How to extend functionality without rewriting base class code</li>
+  </ul>
+
+  <details class="hint">
+    <summary>💡 Hint: Overriding vs. Overloading</summary>
+    <p>
+      <strong>Overriding</strong> = same method name and parameters, new behavior in a subclass.<br>
+      <strong>Overloading</strong> = same method name, but different parameter list (in the same class).
+    </p>
+  </details>
+</div> -->
         
 
+ 
+
+        
+        </div>
 
 
 
