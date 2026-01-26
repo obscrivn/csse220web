@@ -241,22 +241,20 @@ Do not install additional Git plugins.
 
 <!-- Card 2 -->
  <section class="simple-card">
-<h3>Card 2: Create a Classic PAT</h3>
-
-
+<h3>Card 2: Create a Git TokenT</h3>
 <ol>
-<li>Go to <strong>GitHub → Settings</strong></li>
-<li>Open <strong>Developer settings</strong></li>
-<li>Select <strong>Personal access tokens → Tokens (classic)</strong></li>
-<li>Select <strong>Generate new token</strong> -> Generate new token (classic)
+<li>Go to <strong>GitHub → Settings (Fig.1)</strong></li>
+<li>Open <strong>Developer settings (Fig.2)</strong></li>
+<li>Select <strong>Personal access tokens → Tokens (classic)(Fig.3)</strong></li>
+<li>Select <strong>Generate new token</strong> -> Generate new token (classic) (Fig.4)
 <ul>
-<li>Name it something like <code>CSSE220-Final</code></li>
+<li>Name it something like <code>CSSE220-Final (Fig.5)</code></li>
 <li>Select scope: <strong><code>repo</code> only</strong></li>
 <li>Set an expiration (90 days is fine)</li>
 <li>Click <strong>Generate token</strong> </li>
 </ul>
 </li>
-<li><strong>Copy the token</strong> and save it somewhere safe</li>
+<li><strong>Copy the token</strong> and save it somewhere safe (Fig.6)</li>
 </ol>
 
 
@@ -269,66 +267,118 @@ Treat it like a password.
 <!-- Screenshots -->
 <figure>
 <img src="git1-settings.png" alt="GitHub settings page" style="max-width:100%; margin-top:1rem;">
-<figcaption>GitHub Settings</figcaption>
+<figcaption><em>Fig.1 GitHub Settings</em></figcaption>
 </figure>
-
+<hr>
 
 <figure>
 <img src="git2-developer.png" alt="Developer settings" style="max-width:100%; margin-top:1rem;">
-<figcaption>Developer settings</figcaption>
+<figcaption><em>Fig.2 Developer settings</em></figcaption>
 </figure>
-
+<hr>
 
 <figure>
 <img src="git3-PAT.png" alt="Personal access tokens page" style="max-width:100%; margin-top:1rem;">
-<figcaption>Personal access tokens → Tokens (classic)</figcaption>
+<figcaption><em>Fig.3 Personal access tokens → Tokens (classic)</em></figcaption>
 </figure>
 
-
+<hr>
 <figure>
 <img src="git4-token.png" alt="Create classic token screen" style="max-width:100%; margin-top:1rem;">
-<figcaption>Create a Classic token</figcaption>
+<figcaption><em>Fig.4 Generate a Classic token</em></figcaption>
 </figure>
 
-
+<hr>
 <figure>
 <img src="git5-token.png" alt="Select repo scope" style="max-width:100%; margin-top:1rem;">
-<figcaption>Select <code>repo</code> scope only</figcaption>
+<figcaption><em>Fig.5 Name, expiration, and repo scope</em></figcaption>
 </figure>
 
-
+<hr>
 <figure>
 <img src="git6-token.png" alt="Copy personal access token" style="max-width:100%; margin-top:1rem;">
-<figcaption>Copy the token (you will not see it again)</figcaption>
+<figcaption><em>Fig.6 Copy personal access token</em></figcaption>
 </figure>
 </section>
+
 <!-- Card 3 -->
-<ol>
-<li>Copy the repo <strong>HTTPS</strong> URL from GitHub.</li>
-<li>In Eclipse: open <strong>Git Repositories</strong> view.</li>
-<li>Click <strong>Clone a Git Repository</strong> and paste the URL.</li>
-<li>When asked for a password: paste your <strong>PAT</strong>.</li>
-<li>Import project: right-click repo → <strong>Import Projects…</strong></li>
-</ol>
+ <section class="simple-card">
+<h3>Card 3: Cloning Game Template Repo (Captain only)</h3>
+
+<p>
+Only the <strong>team captain</strong> does this step first. This creates your team’s GitHub repository
+using our official starter template.
+</p>
 
 
-<h3>Option B (if you use SSH): copy SSH + clone</h3>
+
+
+
+<div class="note">
+<strong>Starter template:</strong>
+<a href="https://github.com/obscrivn/CSSE220-Final-Project-Starter" target="_blank" rel="noopener">
+CSSE220-Final-Project-Starter
+</a><br>
+Do <strong>not</strong> click the green <strong>Code</strong> button.
+You want <strong>Use this template</strong>.
+</div>
+<figure>
+<img src="git-template.png" alt="template" style="max-width:100%; margin-top:1rem;">
+<figcaption><em>Create a New Repository</em></figcaption>
+</figure>
+
+
+
 <ol>
-<li>In GitHub settings, add your SSH public key.</li>
-<li>Copy the repo <strong>SSH</strong> URL.</li>
-<li>Clone via Eclipse Git tools.</li>
+<li>
+Open the starter template link above.
+Click <strong>Use this template</strong> → <strong>Create a new repository</strong>.
+<!-- Screenshot: Use this template button -->
+</li>
+
+
+<li>
+Repository name: use your team name (example: <code>csse220-final-team-07</code>).<br>
+Set visibility based on course policy (public/private as instructed).
+<!-- Screenshot: Create new repo form -->
+</li>
+
+
+<li>
+Click <strong>Create repository</strong>.
+You now have the <strong>team repo</strong> (your own copy).
+<!-- Screenshot: new repo created -->
+</li>
+
+
+<li>
+Add teammates as collaborators:
+<code>Settings → Collaborators and teams → Add people</code>.
+<!-- Screenshot: collaborators -->
+</li>
+
+<li>
+Tell your teammates the URL of the new team repo.
+Everyone else will follow <strong>Card 4</strong> to clone into Eclipse.
+</li>
 </ol>
 
 
 <div class="note">
-If you don’t already have SSH set up, use HTTPS + PAT. It’s faster for this class.
+<strong>Common mistake:</strong> If teammates clone before you create the team repo, they may end up in the wrong repository.
+Make sure the team repo exists first.
 </div>
 </section>
 
+<!-- Card 5 -->
+<section class="simple-card">
+<h2>Card 4: Team</h2>
+
+</section>
 
 <!-- Card 5 -->
 <section class="simple-card">
-<h2>Card 5 — Branches + using Git inside Eclipse</h2>
+<h2>Card 5: Branches + using Git inside Eclipse</h2>
 <p>To avoid merge chaos: one feature per branch, merge via PR.</p>
 
 
@@ -356,7 +406,7 @@ bugfix/null-checks</code></pre>
 
 <!-- Card 6 -->
 <section class="simple-card">
-<h2>Card 6 — Common issues (quick fixes)</h2>
+<h2>Card 6: Common issues (quick fixes)</h2>
 
 
 <h3>“Authentication failed”</h3>
