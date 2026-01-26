@@ -136,10 +136,15 @@ body {
     /* Content container */
     #content {
       padding: 20px;
-      margin-top: 100px; 
+      /* margin-top: 100px;  */
       margin-bottom: 50px;
-    } 
-    
+      padding-top: 100px;
+    }
+    #section {
+margin-top: 1rem; 
+margin-bottom: 1rem;
+padding: 20px;
+} 
     .lab-section {
       background-color: #fff;
       border: 1px solid #ccc;
@@ -243,6 +248,74 @@ pre code:hover {
   background-color: #dce1e8;
   border-left-color: #28527a;
 }
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+details.hint {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  border-left: 3px solid #aaa;
+}
+
+details.hint > summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
   </style>
 </head>
 <body>
@@ -263,212 +336,492 @@ pre code:hover {
     <h1>Lab Assignment 16</h1>
     <nav id="lab-nav">
         <ul>
-          <li><a href="#lab1">01. Abstract and Interface</a></li>
-          <li><a href="#lab2">02. Polymorphism</a></li>
-
-      
-         
+          <li><a href="#lab1">01. Moving Line with Buttons</a></li>
+          <li><a href="#lab2">02. Moving Ball with Keys</a></li>
           <!-- Add more lab links as needed -->
         </ul>
       </nav>
+
 <!-- Lab Navigation Menu -->
 <!-- <div id="main-content"> -->
- <section>
-  <p>
-    In this lab you’ll explore how <strong>interfaces</strong> and
-    <strong>abstract classes</strong> work together to support
-    <strong>polymorphism</strong> (the ability for the same code to
-    behave differently depending on an object’s actual type).
-  </p>
-  <p>Resources 1: <a href="../resources.html#abstract" target="_blank" class="resource-ref">Abstract Class</a></p>
-  <p>Resources 2: <a href="../resources.html#upcast" target="_blank" class="resource-ref">Upcasting and Downcasting</a></p>
-  <p>Resources 3: <a href="../resources.html#errors" target="_blank" class="resource-ref">Compile / Run-time Errors</a></p>
-</section>
-<!-- <div class="lab-section" id="lab1"> -->
-  <div class="lab-section" id="lab1">
-  <h2>01. Abstract and Interface</h2>
-<p>
-    In this section you’ll combine an interface and an abstract class
-    to see how they divide responsibilities between
-    <em>capability</em> (interface) and <em>structure</em> (abstract class).
-  </p>
-  <h4>Step 1. Create an Interface</h4>
-  <pre><code class="language-java">public interface Renderable {
-    void render();
-}</code></pre>
-<h4>Step 2. Create an Abstract Class Entity that Implements the Interface</h4>
-  <pre><code class="language-java">public abstract class Entity implements Renderable {
-    private String id;
 
-    public Entity(String id) { this.id = id; }
-
-    public String getId() { return id; }
-
-    @Override
-    public void render() {
-        System.out.println("Rendering " + id);
-    }
-
-    public abstract void update();
-}</code></pre>
-<details class="hint">
-    <summary>💡 Why abstract and interface together?</summary>
-    <p>
-      <code>Renderable</code> defines a <em>capability</em> (something that can be rendered).  
-      <code>Entity</code> provides shared <em>state</em> (<code>id</code>) and partial
-      implementation (<code>render()</code>).  
-      Subclasses only supply the details by overriding <code>update()</code>.
-    </p>
-  </details>
-
-<h4>Step 3. Create a Subclass Player</h4>
-  <pre><code class="language-java">public class Player extends Entity {
-    public Player(String id) { super(id); }
-
-    @Override
-    public void update() {
-        System.out.println("Updating " + getId());
-    }
-}</code></pre>
-
-<h4>Step 4. Test in <code>main()</code></h4>
-  <pre><code class="language-java">public class Demo {
-    public static void main(String[] args) {
-        Entity p = new Player("Alice");
-        p.render();
-        p.update();
-    }
-}</code></pre>
-<details class="hint">
-    <summary>💡 Expected Output</summary>
-    <pre><code>Rendering Alice
-Updating Alice</code></pre>
-  </details>
-
-  <details class="hint">
-    <summary>💡 Reflection Question</summary>
-    <p>
-      Why can the variable be declared as <code>Entity</code> instead of <code>Player</code>?  
-      What OOP concept does that demonstrate?
-    </p>
-  </details>
-  
-</div>
-<!-- </div> -->
-      <div class="lab-section" id="lab2">
-        <!-- <div class="lab-section" id="lab2"> -->
-          <h2 style="color:black">02. Polymorphism</h2>
-          <p>
-    Now we’ll see how Java decides which version of a method to run
-    when a superclass reference points to different subclass objects.   <p>
-    In this lab, you will work with a simple class hierarchy to see how Java chooses which <code>print()</code> method to call at runtime (polymorphism), how upcasts let you treat a subclass as its superclass, 
-    and how downcasts let you recover subclass‐specific behavior, 
-    sometimes safely and sometimes resulting in errors if misused. Note that @Override annotation is optional but strongly recommended whenever 
-    you intend to override a superclass or interface method.
-  </p>
-  </p>
-<h3>🧩 Step 1. Set Up a Simple Hierarchy (PolymorphismDemo.java)</h3>
-<p> we are using inner classes A,B,C,D inside PolymorphismDemo class</p>
-  <pre><code class="language-java">public class PolymorphismDemo {
-    public static void main(String[] args) {
-        A x = new D();
-        x.print();               // (1)
-        D x2 = (D)x;
-        x2.print();              // (2)
-        x2.printC();             // (3)
-        B x3 = (B)x;
-        // x3.printC();         // (4) 
-    }
-}
-
-class A {
-    public void print() { System.out.println("A"); }
-}
-
-class B extends A {
-    @Override public void print() { System.out.println("B"); }
-}
-
-class C extends B {
-    @Override public void print() { System.out.println("C"); }
-    public void printC() { print(); }
-}
-
-class D extends C {
-    @Override public void print() { System.out.println("D"); }
-}</code></pre>
-
-
-    <h3>Step 2. Tasks</h3>
-    <ol>
-      <li>
-        <strong>Predict the output:</strong> Without running the program, write down what lines (1), (2), (3)and (4) print.  
-      </li>
-      <li>
-        <strong>Verify your prediction:</strong> Run <code>PolymorphismDemo</code> and confirm the actual output  
-      </li>
-      <li>
-        <strong>Dynamic Dispatch in Action:</strong><br>
-        Comment out the <code>@Override public void print()</code> method in class <code>D</code>, recompile, and rerun. Observe which <code>print()</code> implementation is invoked (hint: it should fall back to <code>C.print()</code>). Why do you think this happened? Hint:
-        Does the JVM pick the most specific overridden method or the most general at runtime?
-      </li>
-      <li>
-        <strong>Compile-Time Error &amp; Safe Casting:</strong><br>
-      Uncomment <code>x3.printC();</code> and try to compile. Explain why the compiler rejects it (“cannot find symbol: method printC()”)   
-      Then guard the call with an <code>instanceof</code> check:
-      <pre><code>if (x3 instanceof C) {
-    ((C)x3).printC();
-}</code></pre>
-      Recompile and rerun; confirm it compiles
-    </li>
-    <li>
-      <strong>Illegal Downcast &amp; Exception:</strong><br>
-      Change the first line to <code>A x = new B();</code> but leave <code>D x2 = (D)x;</code>. Run the program, observe the <code>ClassCastException</code>, and explain why a <code>B</code> object cannot be treated as a <code>D</code> at runtime
-    </li>
-    </ol>
-
-    <h3>Step 3. Reflection Questions</h3>
-    <ul>
-      <li>
-        <strong>Upcasting:</strong><br>
-        What does it mean to <em>upcast</em> an object reference?  
-        Why is this cast implicit (no `(Type)` syntax needed) when you write:
-        <pre><code>A x = new D();</code></pre>
-        <em>Hint:</em> Consider the “is-a” relationship and how the compiler and JVM knows subtype→supertype assignments
-      </li>
-      <li>
-        <strong>Downcasting:</strong><br>
-        What does it mean to <em>downcast</em> an object reference?  
-        Why must you write an explicit cast when you go from:
-        <pre><code>A x = new D();
-  D d = (D)x;</code></pre>
-        What check does the JVM perform at runtime, and what exception is thrown if the check fails? 
-      </li>
-      <li>
-        <strong>Dynamic Dispatch:</strong><br>
-        When you call <code>x.print()</code> on an <code>A</code> reference pointing to a <code>D</code> instance, how does the JVM decide which class’s <code>print()</code> method to execute?  
-        Explain why removing <code>D.print()</code> causes <code>C.print()</code> to be called instead. 
-      </li>
-      
-    </ul>
-    <h3>Key Takeaways</h3>
-  <ul>
-    <li>Interfaces define <em>what</em> classes can do → capabilities.</li>
-    <li>Abstract classes define <em>how</em> things partly work → shared code + state.</li>
-    <li>Polymorphism lets one reference call different implementations at run-time.</li>
-    <li>Upcasting is automatic; downcasting requires an explicit cast and careful checks.</li>
-  </ul>
-  </div>
-
-   
-        <!-- </div> -->
+  <p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Event Handling</a></p>
+  <p>Resources 2: <a href="../resources.html#swing-timer" target="_blank" class="resource-ref">Game Loop</a></p>
+  <p>Resources 3: <a href="../resources.html#focus" target="_blank" class="resource-ref">Focus Window</a></p>
 
  
+  <h2>Lab: Mini Game Mechanics</h2>
+  <div class="callout ok">
+    <strong>Goal:</strong> Build the core mechanics we’ll reuse for the game project:
+    buttons → movement, timer → animation, key listener → focus.
+  </div>
+<!-- <p>
+    <img src="./lab16ball.png" alt="Line + buttons preview" width="350"/>
+  </p> -->
+</section>
+<section id="content">
+  <div class="lab-section" id="lab1">
+  <h2>01. Moving Wall (Line) + Buttons</h2>
+  <p>
+    In this lab, you’ll create a simple GUI application where a vertical line (representing a wall)
+    can be moved left and right using buttons. You will implement the Model-View-Controller (MVC)
+    pattern to separate the drawing logic, user interface, and control logic.</p>
+  </div>
 
-        
-        <!-- </div>
-        </div> -->
-    </section>
+<details class="lab-card" open>
+  <summary>0️⃣ Setup — Run the starter</summary>
+  <ol>
+    <li>Import the starter project into Eclipse.</li>
+    <li>Run <code>MyApp</code>.</li>
+  </ol>
+<p>
+    <img src="./game-starter.png" alt="starter" width="350"/>
+  </p>
+
+</details>
+
+<details class="lab-card">
+  <summary>1️⃣ Draw the wall (vertical line)</summary>
+  <span class="tag">Graphics</span>
+  <ol>
+    <li>Open <code>DrawingComponent</code>.</li>
+    <li>Add fields for <code>x</code>, <code>y</code>, <code>step</code> (and <code>start_x</code>).</li>
+    <li>In <code>paintComponent</code>, draw a vertical line from <code>(x,y)</code> down 150 pixels.</li>
+  </ol>
+
+  <pre><code class="language-java">// DrawingComponent fields (example)
+private int start_x = 250;
+private int x = start_x;
+private int y = 20;
+private int step = 10;
+
+@Override
+protected void paintComponent(Graphics g) {
+  super.paintComponent(g);
+  Graphics2D g2 = (Graphics2D) g;
+  g2.setStroke(new BasicStroke(4));
+  g2.drawLine(x, y, x, y + 150);
+}</code></pre>
+
+  <details class="hint">
+  <summary>💡 Why do we keep both <code>start_x</code> and <code>x</code>?</summary>
+  <p>
+    <code>x</code> changes as the wall moves left and right.
+    <code>start_x</code> remembers the original position so we can
+    easily reset the wall back to where it started.
+  </p>
+
+</details>
+</details>
+
+<details class="lab-card">
+  <summary>2️⃣ Add wall (line) movement methods (Drawing Component)</summary>
+  <span class="tag">Repaint</span>
+  <p>Add these methods to <code>DrawingComponent</code>. Each one must call <code>repaint()</code>.</p>
+<ol>
+    <li>Move the vertical line to the right by incrementing x (x+=step) </li>
+    <li>Move the vertical line to the left by decrementing x (x-=step)</li>
+    <li>Reset the vertical line to its original position (x=start_x)</li>
+    <li>Add repaint() at the end of each movement method</li>
+  </ol>
+  <pre><code class="language-java">public void moveLeft() {
+  x -= step;
+  repaint();
+}
+
+public void moveRight() {
+  x += step;
+  repaint();
+}
+
+public void reset() {
+  x = start_x;
+  repaint();
+}</code></pre>
+
+  <details class="hint">
+    <summary>💡 Hint: What does <code>repaint()</code> actually do?</summary>
+    It schedules a redraw. Swing will call <code>paintComponent</code> again soon.
+    (You do not call <code>paintComponent</code> directly.)
+  </details>
+</details>
+
+<details class="lab-card">
+  <summary>3️⃣ Check three buttons (MyMenu)</summary>
+  <ol>
+    <li>In <code>MyMenu</code>, you have 3 buttons as instance variables: leftButton, resetButton, rightButton.</li>
+    <li>Add getters for those buttons (so that Controller can later attach listeners). Use source -> Generate getters</li>
+    </ol>
+    <pre><code class="language-java">
+      public JButton getLeftButton() { 
+        return leftButton; 
+      }
+public JButton getRightButton() { 
+  return rightButton; 
+}
+public JButton getResetButton() { 
+  return resetButton; 
+}
+
+</code></pre>
+</details>
+
+<details class="lab-card">
+  <summary>4️⃣ Button Listener (Controller)</summary>
+  <span class="tag">ActionListener</span>
+  <p>Create one inner listener class</p>
+
+<pre><code>private class ButtonListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+		}
+	}</code></pre>
+<ol>
+    <li>Use e.getActionCommand to apply the logic.</li>
+    <li>If the button pressed is "Left", call drawing.moveLeft().</li>
+    <li>If the button pressed is "Right", call drawing.moveRight().</li>
+    <li>If the button pressed is "Reset", call drawing.reset().</li>
+</ol>
+<pre><code class="language-java">
+private class ButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String buttonLabel = e.getActionCommand();
+      if (buttonLabel.equals("Left")) {
+        drawing.moveLeft();
+      } else if (buttonLabel.equals("Right")) {
+        drawing.moveRight();
+      } else {
+        drawing.reset();
+      }
+		}
+	}
+</code></pre>
+</details>
+  <details class="lab-card">
+    <summary>5️⃣ Register buttons (Controller)</summary>
+<p>Create an instance of Listener and register it with the buttons.</p>
+<pre><code class="language-java">
+  ButtonListener bl = new ButtonListener();
+  menu.getLeftButton().addActionListener(bl);
+  menu.getRightButton().addActionListener(bl);
+  menu.getResetButton().addActionListener(bl);
+</code></pre>
+<p><strong>Checkpoint:</strong> Clicking buttons moves the wall and resets it.</p>
+  </details>
+</section>
+<section id="content">
+<div class="lab-section" id="lab2">
+  <h2>02. Ball Animation</h2>
+  <p>
+Now you’ll add the first “real game object”: a moving ball.
+You’ll build a <code style="color:darkred">Ball</code> class, animate with
+<code style="color:darkred">Timer</code>, flip direction, and finally add a key to flip.
+We’ll also discover why keys “stop working” after clicking buttons (focus).
+</p>
+</div>
+
+<details class="lab-card" open>
+  <summary><strong>6️⃣ The Ball class (red circle)</strong>
+  <span class="tag">OOP</span></summary>
+  <ol>
+    <li>Add fields for position (<code>x</code>, <code>y</code>) and size (<code>r</code>).</li>
+    <li>Add a <code>draw(Graphics2D)</code> method that draws a red circle.</li>
+  </ol>
+
+
+<pre><code class="language-java">public class Ball {
+private int x, y, radius;
+private int dx = 4; // direction + speed, 4 pixels per move
+private int dy = 0; // direction + speed
+
+
+public Ball(int x, int y, int radius) {
+this.x = x;
+this.y = y;
+this.radius = radius;
+}
+
+
+public void draw(Graphics2D g2) {
+g2.setColor(Color.RED);
+g2.fillOval(x, y, 2*radius, 2*radius);
+}
+}</code></pre>
+</details>
+
+  <details class="lab-card">
+    <summary>
+      <strong>7️⃣ Add the ball to DrawingComponent</strong>
+      <span class="tag">Composition</span>
+    </summary>
+
+    <ol>
+      <li>Add a <code>Ball</code> field to <code>DrawingComponent</code>.</li>
+      <li>In <code>paintComponent</code>, call <code>ball.draw(g2)</code>.</li>
+    </ol>
+
+    <pre><code class="language-java">// in DrawingComponent
+private Ball ball = new Ball(60, 80, 12);
+
+// in paintComponent (after drawing the wall)
+ball.draw(g2);</code></pre>
+  </details>
+
+  <details class="lab-card">
+    <summary>
+      <strong>8️⃣ Make the ball move using a Timer</strong>
+ <span class="tag">Animation</span></summary>
+    <p>Now we add a game loop: timer tick → update → repaint.</p>
+
+    <ol>
+      <li>Add a <code>move()</code> method to <code>Ball</code>.</li>
+      <li>Create a <code>Timer</code> in <code>DrawingComponent</code> that calls <code>ball.move()</code> and <code>repaint()</code>.</li>
+    </ol>
+
+    <pre><code class="language-java">// in Ball class
+
+public void move() {
+  x += dx;
+}</code></pre>
+
+    <pre><code class="language-java">// in DrawingComponent constructor
+timer = new Timer(50, e -&gt; {
+  ball.move();
+  repaint();
+});
+timer.start();</code></pre>
+
+    <details class="hint">
+      <summary>💡 Hint: Why does the ball keep moving without extra clicks?</summary>
+      Because the Timer triggers repeatedly (every 50ms here). That’s the “game heartbeat.”
+    </details>
+    <details class="hint">
+<summary>💡 About <code>Timer</code> (important)</summary>
+
+
+<p>
+This is a <strong>Swing Timer</strong>:
+<code style="color:darkred">javax.swing.Timer</code>
+(not <code>java.util.Timer</code>).
+</p>
+
+
+<ul>
+<li>
+A Swing Timer runs on the <strong>Event Dispatch Thread</strong>,
+which makes it safe to update Swing components and call
+<code>repaint()</code>.
+<br/>
+<strong>This is the same thread you used earlier with
+<code>SwingUtilities.invokeLater(...)</code> in <code>MyApp</code>.</strong>
+</li>
+<li>
+If you accidentally import <code>java.util.Timer</code>,
+your code will compile but behave incorrectly or crash.
+</li>
+</ul>
+
+
+<details class="hint">
+<summary>What does <code>timer.start()</code> do?</summary>
+<p>
+<code>start()</code> begins the timer’s loop.
+Every 50 milliseconds, the lambda runs:
+</p>
+<pre><code class="language-java">ball.move();
+repaint();</code></pre>
+<p>
+Without <code>start()</code>, the timer exists but never fires.
+</p>
+</details>
+
+
+<details class="hint">
+<summary>Why don’t we call <code>timer.stop()</code>?</summary>
+<p>
+In this lab, we want the ball to move continuously for the entire time
+the program is running.
+</p>
+<p>
+We will use <code>timer.stop()</code> later when we add:
+</p>
+<ul>
+<li>Pause / Resume</li>
+<li>Game Over or Win screens</li>
+<li>Level switching</li>
+</ul>
+</details>
+
+
+<details class="hint">
+<summary>Why is the Timer created in the constructor?</summary>
+<p>
+The constructor sets up how the object behaves.
+Creating and starting the Timer here means:
+</p>
+<ul>
+<li>The animation starts automatically when the panel exists</li>
+<li>No extra method calls are needed from outside the class</li>
+<li>The panel is self-contained (good design)</li>
+</ul>
+<p>
+The Controller does not need to know how animation works,
+it just uses the drawing panel.
+</p>
+</details>
+  </details>
+
+  <details class="lab-card">
+    <summary>
+      <strong>9️⃣ Flip direction (ball.flip)</strong>
+      <span class="tag">State</span>
+    </summary>
+
+    <p>Add a method to reverse the ball direction.</p>
+
+    <pre><code class="language-java">// in Ball
+public void flip() {
+  dx = -dx;
+}</code></pre>
+
+    <p>Note: You will need to trigger <code>flip()</code> from a new button or a key (our next step).</p>
+  </details>
+</details>
+
+  <details class="lab-card">
+    <summary>
+      <strong>🔟 Add a KeyListener (Drawing Component)</strong>
+      <span class="tag">Input</span>
+    </summary>
+
+    <p>Add a key that flips the ball. Use a letter key like <code>T</code>.</p>
+
+    <pre><code class="language-java">// in DrawingComponent constructor
+setFocusable(true);
+
+addKeyListener(new KeyAdapter() {
+  @Override
+  public void keyPressed(KeyEvent e) {
+    if (e.getKeyCode() == KeyEvent.VK_T) {
+      ball.flip();
+    }
+  }
+});</code></pre>
+
+<details class="hint">
+<summary>Why <code>KeyAdapter</code>? What is <code>KeyListener</code>? What is a key code?</summary>
+
+
+<p>
+<code>KeyListener</code> is an interface with <strong>three methods</strong>:
+</p>
+
+
+<pre><code class="language-java">keyPressed(...)
+keyReleased(...)
+keyTyped(...)</code></pre>
+
+
+<p>
+If you implement <code>KeyListener</code> directly, Java forces you to write
+<em>all three</em> methods, even if you only care about one.
+</p>
+
+
+<p>
+<code><strong>KeyAdapter</strong></code> is a convenience class that already
+implements <code>KeyListener</code> for you with empty methods.
+You override only what you need.
+</p>
+
+
+<pre><code class="language-java">addKeyListener(new KeyAdapter() {
+@Override
+public void keyPressed(KeyEvent e) {
+// only the method we care about
+}
+});</code></pre>
+</details>
+
+<details class="hint">
+<summary>What is <code>e.getKeyCode()</code>?</summary>
+<p>
+A <strong>key code</strong> is a constant that represents a physical key on
+the keyboard.
+</p>
+<p>
+Examples:
+</p>
+<ul>
+<li><code>KeyEvent.VK_T</code> — the <kbd>T</kbd> key</li>
+<li><code>KeyEvent.VK_LEFT</code> — left arrow</li>
+<li><code>KeyEvent.VK_ENTER</code> — Enter (often conflicts with buttons)</li>
+</ul>
+<p>
+Using key codes is more reliable than checking characters,
+especially for non-letter keys.
+</p>
+</details>
+
+
+<details class="hint">
+<summary>Why not use <code>keyTyped()</code>?</summary>
+<p>
+<code>keyTyped()</code> is for character input (text fields).
+Games and controls usually respond to physical keys,
+so we use <code>keyPressed()</code> instead.
+</p>
+</details>
+  
+
+    <details class="hint">
+      <summary>Hint: What does “focus” mean?</summary>
+      Keyboard events only go to the component that currently has focus.
+      Clicking a button gives focus to that button ("button steals the focus").
+    </details>
+  
+  </details>
+
+  <details class="lab-card">
+    <summary>
+      <strong>Fix focus (requestFocusInWindow)</strong>
+      <span class="tag">Swing</span>
+    </summary>
+
+    <p>We want the drawing area to regain focus after UI interactions.</p>
+
+    <ol>
+      <li>In <code>Controller</code>, after each button action, call <code>drawing.requestFocusInWindow()</code>.</li>
+      <li>Also request focus once when the UI first appears (inside Controller).</li>
+    </ol>
+
+    <pre><code class="language-java">// After handling a button in Controller:
+drawing.requestFocusInWindow();</code></pre>
+
+    <pre><code class="language-java">// In Controller constructor (focus once after window is realized):
+SwingUtilities.invokeLater(() -&gt; drawing.requestFocusInWindow());</code></pre>
+
+    <details class="hint">
+      <summary>Hint: Why use <code>invokeLater</code> here?</summary>
+      Focus requests can fail before the window is visible/realized. This schedules the focus request at the right time.
+    </details>
+  </details>
+
+  <h3>✅ Checkoff Demo</h3>
+  <p>
+    <img src="./game-demo2.png" alt="starter" width="350"/>
+  </p>
+  <ul>
+    <li>Buttons move the wall left/right and reset it.</li>
+    <li>A red ball is visible on the drawing panel.</li>
+    <li>The ball moves continuously using a Timer.</li>
+    <li>Pressing <code>T</code> flips the ball direction.</li>
+    <li>After clicking buttons, keys still work (focus fix applied).</li>
+  </ul>
+  </div>
+  </section>
 
 
         </body>

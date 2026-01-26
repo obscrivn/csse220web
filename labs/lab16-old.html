@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+
+body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    } */
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<section id="content">
+<!-- <div id="content"> -->
+    <h1>Lab Assignment 16</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Abstract and Interface</a></li>
+          <li><a href="#lab2">02. Polymorphism</a></li>
+
+      
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<!-- <div id="main-content"> -->
+ <section>
+  <p>
+    In this lab you’ll explore how <strong>interfaces</strong> and
+    <strong>abstract classes</strong> work together to support
+    <strong>polymorphism</strong> (the ability for the same code to
+    behave differently depending on an object’s actual type).
+  </p>
+  <p>Resources 1: <a href="../resources.html#abstract" target="_blank" class="resource-ref">Abstract Class</a></p>
+  <p>Resources 2: <a href="../resources.html#upcast" target="_blank" class="resource-ref">Upcasting and Downcasting</a></p>
+  <p>Resources 3: <a href="../resources.html#errors" target="_blank" class="resource-ref">Compile / Run-time Errors</a></p>
+</section>
+<!-- <div class="lab-section" id="lab1"> -->
+  <div class="lab-section" id="lab1">
+  <h2>01. Abstract and Interface</h2>
+<p>
+    In this section you’ll combine an interface and an abstract class
+    to see how they divide responsibilities between
+    <em>capability</em> (interface) and <em>structure</em> (abstract class).
+  </p>
+  <h4>Step 1. Create an Interface</h4>
+  <pre><code class="language-java">public interface Renderable {
+    void render();
+}</code></pre>
+<h4>Step 2. Create an Abstract Class Entity that Implements the Interface</h4>
+  <pre><code class="language-java">public abstract class Entity implements Renderable {
+    private String id;
+
+    public Entity(String id) { this.id = id; }
+
+    public String getId() { return id; }
+
+    @Override
+    public void render() {
+        System.out.println("Rendering " + id);
+    }
+
+    public abstract void update();
+}</code></pre>
+<details class="hint">
+    <summary>💡 Why abstract and interface together?</summary>
+    <p>
+      <code>Renderable</code> defines a <em>capability</em> (something that can be rendered).  
+      <code>Entity</code> provides shared <em>state</em> (<code>id</code>) and partial
+      implementation (<code>render()</code>).  
+      Subclasses only supply the details by overriding <code>update()</code>.
+    </p>
+  </details>
+
+<h4>Step 3. Create a Subclass Player</h4>
+  <pre><code class="language-java">public class Player extends Entity {
+    public Player(String id) { super(id); }
+
+    @Override
+    public void update() {
+        System.out.println("Updating " + getId());
+    }
+}</code></pre>
+
+<h4>Step 4. Test in <code>main()</code></h4>
+  <pre><code class="language-java">public class Demo {
+    public static void main(String[] args) {
+        Entity p = new Player("Alice");
+        p.render();
+        p.update();
+    }
+}</code></pre>
+<details class="hint">
+    <summary>💡 Expected Output</summary>
+    <pre><code>Rendering Alice
+Updating Alice</code></pre>
+  </details>
+
+  <details class="hint">
+    <summary>💡 Reflection Question</summary>
+    <p>
+      Why can the variable be declared as <code>Entity</code> instead of <code>Player</code>?  
+      What OOP concept does that demonstrate?
+    </p>
+  </details>
+  
+</div>
+<!-- </div> -->
+      <div class="lab-section" id="lab2">
+        <!-- <div class="lab-section" id="lab2"> -->
+          <h2 style="color:black">02. Polymorphism</h2>
+          <p>
+    Now we’ll see how Java decides which version of a method to run
+    when a superclass reference points to different subclass objects.   <p>
+    In this lab, you will work with a simple class hierarchy to see how Java chooses which <code>print()</code> method to call at runtime (polymorphism), how upcasts let you treat a subclass as its superclass, 
+    and how downcasts let you recover subclass‐specific behavior, 
+    sometimes safely and sometimes resulting in errors if misused. Note that @Override annotation is optional but strongly recommended whenever 
+    you intend to override a superclass or interface method.
+  </p>
+  </p>
+<h3>🧩 Step 1. Set Up a Simple Hierarchy (PolymorphismDemo.java)</h3>
+<p> we are using inner classes A,B,C,D inside PolymorphismDemo class</p>
+  <pre><code class="language-java">public class PolymorphismDemo {
+    public static void main(String[] args) {
+        A x = new D();
+        x.print();               // (1)
+        D x2 = (D)x;
+        x2.print();              // (2)
+        x2.printC();             // (3)
+        B x3 = (B)x;
+        // x3.printC();         // (4) 
+    }
+}
+
+class A {
+    public void print() { System.out.println("A"); }
+}
+
+class B extends A {
+    @Override public void print() { System.out.println("B"); }
+}
+
+class C extends B {
+    @Override public void print() { System.out.println("C"); }
+    public void printC() { print(); }
+}
+
+class D extends C {
+    @Override public void print() { System.out.println("D"); }
+}</code></pre>
+
+
+    <h3>Step 2. Tasks</h3>
+    <ol>
+      <li>
+        <strong>Predict the output:</strong> Without running the program, write down what lines (1), (2), (3)and (4) print.  
+      </li>
+      <li>
+        <strong>Verify your prediction:</strong> Run <code>PolymorphismDemo</code> and confirm the actual output  
+      </li>
+      <li>
+        <strong>Dynamic Dispatch in Action:</strong><br>
+        Comment out the <code>@Override public void print()</code> method in class <code>D</code>, recompile, and rerun. Observe which <code>print()</code> implementation is invoked (hint: it should fall back to <code>C.print()</code>). Why do you think this happened? Hint:
+        Does the JVM pick the most specific overridden method or the most general at runtime?
+      </li>
+      <li>
+        <strong>Compile-Time Error &amp; Safe Casting:</strong><br>
+      Uncomment <code>x3.printC();</code> and try to compile. Explain why the compiler rejects it (“cannot find symbol: method printC()”)   
+      Then guard the call with an <code>instanceof</code> check:
+      <pre><code>if (x3 instanceof C) {
+    ((C)x3).printC();
+}</code></pre>
+      Recompile and rerun; confirm it compiles
+    </li>
+    <li>
+      <strong>Illegal Downcast &amp; Exception:</strong><br>
+      Change the first line to <code>A x = new B();</code> but leave <code>D x2 = (D)x;</code>. Run the program, observe the <code>ClassCastException</code>, and explain why a <code>B</code> object cannot be treated as a <code>D</code> at runtime
+    </li>
+    </ol>
+
+    <h3>Step 3. Reflection Questions</h3>
+    <ul>
+      <li>
+        <strong>Upcasting:</strong><br>
+        What does it mean to <em>upcast</em> an object reference?  
+        Why is this cast implicit (no `(Type)` syntax needed) when you write:
+        <pre><code>A x = new D();</code></pre>
+        <em>Hint:</em> Consider the “is-a” relationship and how the compiler and JVM knows subtype→supertype assignments
+      </li>
+      <li>
+        <strong>Downcasting:</strong><br>
+        What does it mean to <em>downcast</em> an object reference?  
+        Why must you write an explicit cast when you go from:
+        <pre><code>A x = new D();
+  D d = (D)x;</code></pre>
+        What check does the JVM perform at runtime, and what exception is thrown if the check fails? 
+      </li>
+      <li>
+        <strong>Dynamic Dispatch:</strong><br>
+        When you call <code>x.print()</code> on an <code>A</code> reference pointing to a <code>D</code> instance, how does the JVM decide which class’s <code>print()</code> method to execute?  
+        Explain why removing <code>D.print()</code> causes <code>C.print()</code> to be called instead. 
+      </li>
+      
+    </ul>
+    <h3>Key Takeaways</h3>
+  <ul>
+    <li>Interfaces define <em>what</em> classes can do → capabilities.</li>
+    <li>Abstract classes define <em>how</em> things partly work → shared code + state.</li>
+    <li>Polymorphism lets one reference call different implementations at run-time.</li>
+    <li>Upcasting is automatic; downcasting requires an explicit cast and careful checks.</li>
+  </ul>
+  </div>
+
+   
+        <!-- </div> -->
+
+ 
+
+        
+        <!-- </div>
+        </div> -->
+    </section>
+
+
+        </body>
+        </html>
