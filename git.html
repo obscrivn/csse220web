@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+    <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>CSSE 386</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
+    <link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
+    <style>
+/* Center content like exam pages */
+.content-wide {
+max-width: 1000px;
+margin: 0 auto;
+padding: 2rem 1rem;
+}
+
+
+.simple-card {
+background: #ffffff;
+border-radius: 10px;
+padding: 1.25rem 1.75rem;
+margin: 1.75rem 1.25rem;
+/* exam-style shadow */
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+.simple-card summary {
+font-size: 1.1rem;
+font-weight: 600;
+cursor: pointer;
+margin-bottom: 0.75rem;
+}
+
+
+.simple-card h2,
+.simple-card h3 {
+margin-top: 0;
+}
+
+
+.simple-card ol {
+margin-left: 1.25rem;
+}
+
+
+.simple-card code {
+background: #f3f3f3;
+padding: 0.1rem 0.35rem;
+border-radius: 4px;
+}
+
+
+
+.page-header {
+padding: 0 1rem; /* adds space on left + right */
+margin-bottom: 1.5rem;
+}
+
+.simple-card h2 {
+font-size: 1.25rem;
+margin: 1.35rem 0 0.5rem;
+font-weight: 750;
+}
+
+
+.simple-card p {
+font-size: 1.1rem;
+line-height: 1.5;
+margin: 0.5rem 0 0.9rem;
+}
+
+
+.simple-card ol, .simple-card ul {
+margin: 0.75rem 0 0.75rem 1.4rem;
+font-size: 1.1rem;
+line-height: 1.6;
+}
+
+
+.simple-card li { margin: 0.35rem 0; }
+
+
+.simple-card code {
+background: #f2f2f2;
+border-radius: 8px;
+padding: 0.12rem 0.45rem;
+}
+
+
+.simple-card pre {
+background: #f6f6f6;
+border-radius: 12px;
+padding: 1rem 1.1rem;
+overflow-x: auto;
+margin: 0.75rem 0 1rem;
+}
+
+
+/* Small callout inside a card */
+.note {
+background: #f7f7f7;
+border-left: 6px solid #d0d0d0;
+padding: 0.9rem 1.1rem;
+border-radius: 12px;
+margin-top: 1rem;
+}
+
+
+/* Optional: makes the card titles align nicely on small screens */
+@media (max-width: 700px) {
+.simple-card {
+padding: 1.6rem 1.4rem;
+margin: 1.4rem 0.5rem;
+}
+.simple-card h2 { font-size: 1.7rem; }
+}
+</style>
+    </head>
+    <body>
+        <div id="header">
+            <a id="index_link" href="./index.html">CSSE 220</a>
+            <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
+            <a id="schedule_link" href="./schedule.html">Schedule</a>
+            <a id="quiz_link" href="./design-principles.html">Design</a>
+            <a id="quiz_link" href="./labs.html">Labs</a>
+            <a id="quiz_link" href="./homework.html">Homework</a>
+            <a id="quiz_link" href="./exams.html">Exams</a>
+            <a id="quiz_link" href="./project.html">Final Project</a>
+            <a id="resources_link" href="./resources.html">Resources</a>
+            <div style="clear:both;"></div>
+        </div>
+    
+<!-- <header>
+<h1>GitHub Guide</h1>
+</header> -->
+<main class="content-wide">
+  <header class="page-header">
+<h1>GitHub Guide</h1>
+</header>
+<section class="simple-card">
+<section class="simple-card">
+<h2>Team flow (read this first)</h2>
+
+
+<ol>
+<li>
+<strong>Everyone:</strong> Install Git on your computer
+<br>
+<em>Follow <strong>Card 1</strong></em>
+</li>
+
+
+<li>
+<strong>Everyone:</strong> Sign in to GitHub and create a Classic Personal Access Token (PAT)
+<br>
+<em>Follow <strong>Card 2</strong></em>
+</li>
+
+
+<li>
+<strong>Team Captain only:</strong> Create the team repository from the starter and add team members
+<br>
+<em>Follow <strong>Card 3</strong></em>
+</li>
+
+
+<li>
+<strong>All other team members:</strong> Clone the team repository into Eclipse
+<br>
+<em>Follow <strong>Card 4</strong></em>
+</li>
+
+
+<li>
+<strong>Everyone:</strong> Learn how to use Git inside Eclipse (branches, commits, push, PRs)
+<br>
+<em>Follow <strong>Card 5</strong></em>
+</li>
+</ol>
+
+
+<div class="note">
+Do not skip ahead. Each step assumes the previous one is completed.
+</div>
+</section>
+
+<!-- Card 1 -->
+<section class="simple-card">
+<h2>Card 1: Install Git (Windows)</h2>
+<section class="simple-card">
+<h2>Card 1: Install Git (Windows)</h2>
+
+
+<p>
+You do <strong>not</strong> need to use Bash or the command line for this course.
+Git just needs to be available so Eclipse can use it.
+</p>
+
+
+<h3>Step 1: Check if Git already works in Eclipse</h3>
+<ol>
+<li>
+In Eclipse, open:<br>
+<code>Window → Show View → Other → Git → Git Repositories</code>
+</li>
+<li>
+If the Git Repositories view opens, you are done.<br>
+<strong>Do not install anything.</strong>
+</li>
+</ol>
+
+<h3>Step 2: Install Git (only if the check failed)</h3>
+<ol>
+<li>
+Install <strong>Git for Windows</strong>:<br>
+<a href="https://git-scm.com/download/win" target="_blank">
+https://git-scm.com/download/win
+</a>
+<br>
+On that page, click
+<em>“Click here to download the latest x64 version of Git for Windows.”</em><br>
+Accept the default settings during installation.
+</li>
+
+
+<li>Restart Eclipse after installing Git.</li>
+
+
+<li>
+In Eclipse, open:<br>
+<code>Window → Show View → Other → Git → Git Repositories</code>
+</li>
+</ol>
+<div class="note">
+If the Git Repositories view opens, you are done.
+Do not install additional Git plugins.
+</div>
+
+</section>
+
+<!-- Card 2 -->
+ <section class="simple-card">
+<h3>Card 2: Create a Classic PAT</h3>
+
+
+<ol>
+<li>Go to <strong>GitHub → Settings</strong></li>
+<li>Open <strong>Developer settings</strong></li>
+<li>Select <strong>Personal access tokens → Tokens (classic)</strong></li>
+<li>Select <strong>Generate new token</strong> -> Generate new token (classic)
+<ul>
+<li>Name it something like <code>CSSE220-Final</code></li>
+<li>Select scope: <strong><code>repo</code> only</strong></li>
+<li>Set an expiration (90 days is fine)</li>
+<li>Click <strong>Generate token</strong> </li>
+</ul>
+</li>
+<li><strong>Copy the token</strong> and save it somewhere safe</li>
+</ol>
+
+
+<div class="note">
+You will not be able to see this token again after leaving the page.
+Treat it like a password.
+</div>
+
+
+<!-- Screenshots -->
+<figure>
+<img src="git1-settings.png" alt="GitHub settings page" style="max-width:100%; margin-top:1rem;">
+<figcaption>GitHub Settings</figcaption>
+</figure>
+
+
+<figure>
+<img src="git2-developer.png" alt="Developer settings" style="max-width:100%; margin-top:1rem;">
+<figcaption>Developer settings</figcaption>
+</figure>
+
+
+<figure>
+<img src="git3-PAT.png" alt="Personal access tokens page" style="max-width:100%; margin-top:1rem;">
+<figcaption>Personal access tokens → Tokens (classic)</figcaption>
+</figure>
+
+
+<figure>
+<img src="git4-token.png" alt="Create classic token screen" style="max-width:100%; margin-top:1rem;">
+<figcaption>Create a Classic token</figcaption>
+</figure>
+
+
+<figure>
+<img src="git5-token.png" alt="Select repo scope" style="max-width:100%; margin-top:1rem;">
+<figcaption>Select <code>repo</code> scope only</figcaption>
+</figure>
+
+
+<figure>
+<img src="git6-token.png" alt="Copy personal access token" style="max-width:100%; margin-top:1rem;">
+<figcaption>Copy the token (you will not see it again)</figcaption>
+</figure>
+</section>
+<!-- Card 3 -->
+<ol>
+<li>Copy the repo <strong>HTTPS</strong> URL from GitHub.</li>
+<li>In Eclipse: open <strong>Git Repositories</strong> view.</li>
+<li>Click <strong>Clone a Git Repository</strong> and paste the URL.</li>
+<li>When asked for a password: paste your <strong>PAT</strong>.</li>
+<li>Import project: right-click repo → <strong>Import Projects…</strong></li>
+</ol>
+
+
+<h3>Option B (if you use SSH): copy SSH + clone</h3>
+<ol>
+<li>In GitHub settings, add your SSH public key.</li>
+<li>Copy the repo <strong>SSH</strong> URL.</li>
+<li>Clone via Eclipse Git tools.</li>
+</ol>
+
+
+<div class="note">
+If you don’t already have SSH set up, use HTTPS + PAT. It’s faster for this class.
+</div>
+</section>
+
+
+<!-- Card 5 -->
+<section class="simple-card">
+<h2>Card 5 — Branches + using Git inside Eclipse</h2>
+<p>To avoid merge chaos: one feature per branch, merge via PR.</p>
+
+
+<h3>Branch naming</h3>
+<pre><code>feature/player-movement
+feature/map-loading
+bugfix/null-checks</code></pre>
+
+
+<h3>Daily workflow</h3>
+<ol>
+<li>Switch to <code>main</code> → Pull.</li>
+<li>Create/switch to your branch.</li>
+<li>Make a small change → Commit.</li>
+<li>Push your branch to GitHub.</li>
+<li>Open a Pull Request → teammate reviews → merge.</li>
+</ol>
+
+
+<div class="note">
+<strong>Pro tip:</strong> If two people edit the same file all day, you’ll get conflicts. Split responsibilities.
+</div>
+</section>
+
+
+<!-- Card 6 -->
+<section class="simple-card">
+<h2>Card 6 — Common issues (quick fixes)</h2>
+
+
+<h3>“Authentication failed”</h3>
+<ul>
+<li>You used your GitHub password instead of a PAT.</li>
+<li>Your PAT expired or doesn’t have repo permissions.</li>
+<li>Eclipse cached old credentials (restart Eclipse; re-enter PAT when prompted).</li>
+</ul>
+
+
+<h3>Red X / project won’t build after cloning</h3>
+<ul>
+<li>Project → Clean</li>
+<li>Right-click project → Properties → Java Build Path → ensure <code>src</code> is a source folder</li>
+</ul>
+
+
+<h3>Merge conflicts</h3>
+<ul>
+<li>Don’t spam-click “accept all”. Compare changes line-by-line.</li>
+<li>After resolving: run the project → commit the resolution.</li>
+<li>Merge smaller PRs more often to avoid giant conflicts.</li>
+</ul>
+
+
+<div class="note">
+If you get stuck: screenshot the error + show your Git view in Eclipse. That’s usually enough for a TA to diagnose fast.
+</div>
+</section>
+
+
+</main>
+ 
+    
+       
+
+
+</body>
+</html>
