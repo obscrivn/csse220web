@@ -702,7 +702,7 @@ public void flip() {
     <p>Add a key that flips the ball. Use a letter key like <code>T</code>.</p>
 
     <pre><code class="language-java">// in DrawingComponent constructor
-setFocusable(true);
+  setFocusable(true);
 
 addKeyListener(new KeyAdapter() {
   @Override
@@ -796,11 +796,12 @@ so we use <code>keyPressed()</code> instead.
     <p>We want the drawing area to regain focus after UI interactions.</p>
 
     <ol>
-      <li>In <code>Controller</code>, at the end of Button Listener (after each button action), call <code>drawing.requestFocusInWindow()</code>.</li>
-      <li>Also request focus once when the UI first appears (inside Controller).</li>
+      <li>1. In <code>Controller</code>, at the end of Button Listener class after buttons if/else logic, call <code>drawing.requestFocusInWindow()</code>.</li>
+      <li>2. Also request focus once when the UI first appears (inside Controller).</li>
+    <li>3. Make sure your drawing component constructor has <code>setFocusable(true)</code> before a key listener.</li>
     </ol>
 
-    <pre><code class="language-java">// After handling a button logic in Controller:
+    <pre><code class="language-java">// After handling a button logic in Controller (button Listener class):
 drawing.requestFocusInWindow();</code></pre>
 
     <pre><code class="language-java">// In Controller constructor (before initializing Button Listeners):
