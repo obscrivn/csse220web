@@ -323,7 +323,7 @@ details.hint > summary {
     <a id="index_link" href="../index.html">CSSE 220</a>
     <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
     <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="./design-principles.html">Design</a>
     <a id="quiz_link" href="../labs.html">Labs</a>
     <a id="quiz_link" href="../homework.html">Homework</a>
     <a id="quiz_link" href="../exams.html">Exams</a>
@@ -563,7 +563,7 @@ g2.fillOval(x, y, 2*radius, 2*radius);
     </ol>
 
     <pre><code class="language-java">// in DrawingComponent
-private Ball ball = new Ball(60, 80, 12);
+private Ball ball = new Ball(80,100,14);
 
 // in paintComponent (after drawing the wall)
 ball.draw(g2);</code></pre>
@@ -596,7 +596,8 @@ timer.start();</code></pre>
     <details class="hint">
       <summary>💡 Hint: Why does the ball keep moving without extra clicks?</summary>
       Because the Timer triggers repeatedly (every 50ms here). That’s the “game heartbeat.”
-    </details>
+</details>
+
     <details class="hint">
 <summary>💡 About <code>Timer</code> (important)</summary>
 
@@ -632,11 +633,9 @@ Every 50 milliseconds, the lambda runs:
 </p>
 <pre><code class="language-java">ball.move();
 repaint();</code></pre>
-<p>
-Without <code>start()</code>, the timer exists but never fires.
+<p>Without <code>start()</code>, the timer exists but never fires.
 </p>
 </details>
-
 
 <details class="hint">
 <summary>Why don’t we call <code>timer.stop()</code>?</summary>
@@ -671,7 +670,8 @@ The Controller does not need to know how animation works,
 it just uses the drawing panel.
 </p>
 </details>
-  </details>
+</details>
+</details>
 
   <details class="lab-card">
     <summary>
@@ -793,19 +793,19 @@ so we use <code>keyPressed()</code> instead.
     <p>We want the drawing area to regain focus after UI interactions.</p>
 
     <ol>
-      <li>In <code>Controller</code>, after each button action, call <code>drawing.requestFocusInWindow()</code>.</li>
+      <li>In <code>Controller</code>, at the end of Button Listener (after each button action), call <code>drawing.requestFocusInWindow()</code>.</li>
       <li>Also request focus once when the UI first appears (inside Controller).</li>
     </ol>
 
-    <pre><code class="language-java">// After handling a button in Controller:
+    <pre><code class="language-java">// After handling a button logic in Controller:
 drawing.requestFocusInWindow();</code></pre>
 
-    <pre><code class="language-java">// In Controller constructor (focus once after window is realized):
+    <pre><code class="language-java">// In Controller constructor (before initializing Button Listeners):
 SwingUtilities.invokeLater(() -&gt; drawing.requestFocusInWindow());</code></pre>
 
     <details class="hint">
       <summary>Hint: Why use <code>invokeLater</code> here?</summary>
-      Focus requests can fail before the window is visible/realized. This schedules the focus request at the right time.
+      This schedules the focus request at the right time.
     </details>
   </details>
 
