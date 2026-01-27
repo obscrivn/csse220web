@@ -587,7 +587,10 @@ public void move() {
 }</code></pre>
 
     <pre><code class="language-java">// in DrawingComponent constructor
-timer = new Timer(50, e -&gt; {
+// in the field:
+private Timer timer;
+//in constructor:
+      timer = new Timer(50, e -&gt; {
   ball.move();
   repaint();
 });
