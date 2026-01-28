@@ -544,20 +544,67 @@ Someone pushed first → do <code>Team → Pull</code>, then try again.
 </li>
 <li>
 <strong>Conflicts:</strong><br>
-Stop and follow <strong>Card 6</strong>.
+Stop and follow <strong>Card 7</strong>.
 </li>
 </ul>
 
-
-<div class="note">
-<strong>Tip:</strong> Small commits = fewer merge conflicts.
-</div>
 </details>
 
+<details class="simple-card" id="card-branching">
+<summary>
+<h2>Card 7: Branching (One Branch per Person / Feature)</h2>
+</summary>
 
-<!-- Card 6 -->
+
+<p>
+To avoid conflicts, each team member can work on their <strong>own branch</strong>.
+Do <strong>not</strong> push directly to <code>main</code>.
+</p>
+
+
+<h3>1️⃣ Create a branch (Eclipse)</h3>
+
+
+<ol>
+<li><code>Team → Pull</code></li>
+<li>
+Right-click project → <code>Team → Switch To → New Branch</code>
+</li>
+<li>Name it (e.g., <code>feature-player</code>)</li>
+<li>Click <strong>Finish</strong></li>
+</ol>
+
+
+<h3>2️⃣ Work + Commit</h3>
+
+
+<ol>
+<li>Code + test</li>
+<li>Right-click project → <code>Team → Commit</code></li>
+<li>Click <strong>Commit and Push</strong></li>
+</ol>
+
+
+<h3>3️⃣ Merge to <code>main</code> (GitHub)</h3>
+<ol>
+<li>Open the team repo on GitHub</li>
+<li>Go to <strong>Pull requests → New pull request</strong></li>
+<li>Base: <code>main</code>, Compare: your branch</li>
+<li>Create pull request → teammate reviews → merge</li>
+</ol>
+
+
+<h3>4️⃣ Sync back</h3>
+<ol>
+<li><code>Team → Switch To → main</code></li>
+<li><code>Team → Pull</code></li>
+</ol>
+
+</details>
+
+<!-- Card 7 -->
 <details class="simple-card">
-<summary>Card 6: Common issues (quick fixes)</summary>
+<summary>Card 7: Common issues (quick fixes)</summary>
 
 
 <h3>“Authentication failed”</h3>
