@@ -186,10 +186,9 @@ Do not skip ahead. Each step assumes the previous one is completed.
 </section>
 
 <!-- Card 1 -->
-<section class="simple-card">
-<h2>Card 1: Install Git (Windows)</h2>
-<section class="simple-card">
-<h2>Card 1: Install Git (Windows)</h2>
+<details class="simple-card">
+
+<summary>Card 1: Install Git (Windows)</summary>
 
 
 <p>
@@ -237,11 +236,11 @@ If the Git Repositories view opens, you are done.
 Do not install additional Git plugins.
 </div>
 
-</section>
+</details>
 
 <!-- Card 2 -->
- <section class="simple-card">
-<h3>Card 2: Create a Git TokenT</h3>
+ <details class="simple-card" open>
+<summary>Card 2: Create a Git Token (PAT)</summary>
 <ol>
 <li>Go to <strong>GitHub → Settings (Fig.1)</strong></li>
 <li>Open <strong>Developer settings (Fig.2)</strong></li>
@@ -299,11 +298,11 @@ Treat it like a password.
 <img src="git6-token.png" alt="Copy personal access token" style="max-width:100%; margin-top:1rem;">
 <figcaption><em>Fig.6 Copy personal access token</em></figcaption>
 </figure>
-</section>
+</details>
 
 <!-- Card 3 -->
- <section class="simple-card">
-<h3>Card 3: Cloning Game Template Repo (Captain only)</h3>
+ <details class="simple-card">
+<summary>Card 3: Cloning Game Template Repo (Captain only)</summary>
 
 <p>
 Only the <strong>team captain</strong> does this step first. This creates your team’s GitHub repository
@@ -368,17 +367,17 @@ Everyone else will follow <strong>Card 4</strong> to clone into Eclipse.
 <strong>Common mistake:</strong> If teammates clone before you create the team repo, they may end up in the wrong repository.
 Make sure the team repo exists first.
 </div>
-</section>
+</details>
 
 <!-- Card 5 -->
-<section class="simple-card">
-<h2>Card 4: Team</h2>
+<details class="simple-card">
+<summary>Card 4: Team</summary>
 
-</section>
+</details>
 
 <!-- Card 5 -->
-<section class="simple-card">
-<h2>Card 5: Branches + using Git inside Eclipse</h2>
+<details class="simple-card">
+<summary>Card 5: Branches + using Git inside Eclipse</summary>
 <p>To avoid merge chaos: one feature per branch, merge via PR.</p>
 
 
@@ -401,12 +400,12 @@ bugfix/null-checks</code></pre>
 <div class="note">
 <strong>Pro tip:</strong> If two people edit the same file all day, you’ll get conflicts. Split responsibilities.
 </div>
-</section>
+</details>
 
 
 <!-- Card 6 -->
-<section class="simple-card">
-<h2>Card 6: Common issues (quick fixes)</h2>
+<details class="simple-card">
+<summary>Card 6: Common issues (quick fixes)</summary>
 
 
 <h3>“Authentication failed”</h3>
@@ -435,7 +434,7 @@ bugfix/null-checks</code></pre>
 <div class="note">
 If you get stuck: screenshot the error + show your Git view in Eclipse. That’s usually enough for a TA to diagnose fast.
 </div>
-</section>
+</details>
 
 
 </main>
