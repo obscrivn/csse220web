@@ -371,8 +371,114 @@ Make sure the team repo exists first.
 
 <!-- Card 5 -->
 <details class="simple-card">
-<summary>Card 4: Team</summary>
+<summary>Card 4 (All Team Members): Clone the Team Repo into Eclipse</summary>
+<p>
+Do this after your captain finishes <strong>Card 3</strong> and shares the team repo link.
+You are cloning the <strong>team repository</strong> (not the starter template).
+</p>
 
+<div class="note">
+<strong>You will need your PAT:</strong> When Eclipse asks for a password, use your
+<strong>Personal Access Token (PAT)</strong> (not your GitHub password).
+</div>
+<h3>Steps to import</h3>
+<ol>
+<li>
+Open your <strong>team repo</strong> on GitHub.
+Click the green <strong>Code</strong> button and copy the HTTPS URL.
+<br>
+<figure>
+<img src="git-import1.png" alt="import" style="max-width:100%; margin-top:1rem;">
+<figcaption><em>Copy HTTPS</em></figcaption>
+</figure>
+</li>
+
+
+<li>
+In Eclipse: <code>File → Import… → Git → Projects from Git</code>
+<br>
+<figure>
+<img src="git-import2.png" alt="import menu" style="max-width:100%; margin-top:1rem;">
+<figcaption><em>Import Menu</em></figcaption>
+</figure>
+</li>
+
+
+<li>
+Choose <strong>Clone URI</strong> and click <strong>Next</strong>.
+<br>
+<figure>
+<img src="git-import3.png" alt="clone URI" style="max-width:100%; margin-top:1rem;">
+<figcaption><em>Clone URI</em></figcaption>
+</figure>
+</li>
+
+
+<li>
+Paste the URL into the <strong>URI</strong> field.
+(Host + repository path should autofill). Click next
+<br>
+<figure>
+<img src="git-import4.png" alt="paste URI" style="max-width:100%; margin-top:1rem;">
+<figcaption><em>Paste URI</em></figcaption>
+</figure>
+</li>
+
+<li>
+Authentication:
+<ul>
+<li><strong>User:</strong> your GitHub username</li>
+<li><strong>Password:</strong> paste your <strong>PAT</strong></li>
+<li>(Optional) check <strong>Store in Secure Store</strong>. It will remember your PAT</li>
+</ul>
+Click <strong>Next</strong>.
+<br>
+<figure>
+<img src="git-import5.png" alt="authentication" style="max-width:100%; margin-top:1rem;">
+<figcaption><em>Authentication</em></figcaption>
+</figure>
+</li>
+
+
+<li>
+Branch selection: should be <strong>main</strong>.
+Click <strong>Next</strong>.
+<br>
+<!-- Screenshot: Branch selection -->
+</li>
+
+
+<li>
+Local destination: keep the default folder (recommended).
+Click <strong>Next</strong>.
+<br>
+<!-- Screenshot: Local destination -->
+</li>
+
+
+<li>
+Choose: <strong>Import existing Eclipse projects</strong>.
+Click <strong>Next</strong>.
+<br>
+<!-- Screenshot: Import projects option -->
+</li>
+
+
+<li>
+Select the project and click <strong>Finish</strong>.
+You should now see the team project in your Package Explorer.
+<br>
+<!-- Screenshot: Project appears in Eclipse -->
+</li>
+
+
+<li>
+Run it once:
+Right-click <code>src/app/MainApp.java</code> → <strong>Run As → Java Application</strong>.
+<br>
+<!-- Screenshot: Run As Java Application -->
+</li>
+</ol>
 </details>
 
 <!-- Card 5 -->
