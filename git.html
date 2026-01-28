@@ -166,14 +166,14 @@ margin: 1.4rem 0.5rem;
 
 
 <li>
-<strong>All other team members:</strong> Clone the team repository into Eclipse
+<strong>All team members:</strong> Clone the team repository into Eclipse
 <br>
 <em>Follow <strong>Card 4</strong></em>
 </li>
 
 
 <li>
-<strong>Everyone:</strong> Learn how to use Git inside Eclipse (branches, commits, push, PRs)
+<strong>Everyone:</strong> Learn how to use Git inside Eclipse (branches, commits, pushes, pulls, merges)
 <br>
 <em>Follow <strong>Card 5</strong></em>
 </li>
@@ -484,27 +484,73 @@ Right-click <code>src/app/MainApp.java</code> → <strong>Run As → Java Applic
 <!-- Card 5 -->
 <details class="simple-card">
 <summary>Card 5: Using Git inside Eclipse (Daily Workflow)</summary>
-<p>To avoid merge chaos: one feature per branch, merge via PR.</p>
+<div class="note">
+<strong>Golden rule:</strong> Always <strong>Pull before you code</strong>,
+and <strong>Commit (and Push) when you finish</strong>.
+</div>
+<h3>1️⃣ Pull (Do this first — every time)</h3>
 
 
-<h3>Branch naming</h3>
-<pre><code>feature/player-movement
-feature/map-loading
-bugfix/null-checks</code></pre>
-
-
-<h3>Daily workflow</h3>
 <ol>
-<li>Switch to <code>main</code> → Pull.</li>
-<li>Create/switch to your branch.</li>
-<li>Make a small change → Commit.</li>
-<li>Push your branch to GitHub.</li>
-<li>Open a Pull Request → teammate reviews → merge.</li>
+<li>Right-click the <strong>project folder</strong></li>
+<li>Select <code>Team → Pull</code></li>
+<li>If prompted, enter your GitHub username + PAT</li>
 </ol>
 
 
 <div class="note">
-<strong>Pro tip:</strong> If two people edit the same file all day, you’ll get conflicts. Split responsibilities.
+If Eclipse says <em>Already up to date</em>, that’s good 👍
+</div>
+
+
+<h3>2️⃣ Make Your Code Changes</h3>
+
+
+<ul>
+<li>Edit files</li>
+<li>Run and test</li>
+<li>Make sure the project still works</li>
+</ul>
+
+
+<h3>3️⃣ Commit (and Push)</h3>
+
+
+<ol>
+<li>Right-click the <strong>project folder</strong></li>
+<li>Select <code>Team → Commit</code></li>
+<li>
+In the Git Commit dialog:
+<ul>
+<li>Make sure changed files appear under <strong>Staged Changes</strong></li>
+<li>If needed, move files to staging (or click <strong>+</strong>)</li>
+<li>Write a short message (example: <code>Add enemy movement</code>)</li>
+</ul>
+</li>
+<li>
+Click <strong>Commit and Push</strong><br>
+(This commits locally <em>and</em> sends changes to GitHub.)
+</li>
+</ol>
+
+
+<h3>4️⃣ Common Issues</h3>
+
+
+<ul>
+<li>
+<strong>Rejected / non-fast-forward:</strong><br>
+Someone pushed first → do <code>Team → Pull</code>, then try again.
+</li>
+<li>
+<strong>Conflicts:</strong><br>
+Stop and follow <strong>Card 6</strong>.
+</li>
+</ul>
+
+
+<div class="note">
+<strong>Tip:</strong> Small commits = fewer merge conflicts.
 </div>
 </details>
 
@@ -522,24 +568,31 @@ bugfix/null-checks</code></pre>
 </ul>
 
 
-<h3>Red X / project won’t build after cloning</h3>
+<h3>❌Red X / project won’t build after cloning</h3>
+<ol>
+<li><code>Project → Clean</code></li>
+<li>
+Right-click project → <code>Properties → Java Build Path</code><br>
+Make sure <code>src</code> is listed as a <strong>Source Folder</strong>
+</li>
+<li>
+Verify you are running <code>app.MainApp</code>
+(<code>Run → Run Configurations</code>)
+</li>
+</ol>
+
+
+<h3>⚠️ Merge Conflicts</h3>
+
+
 <ul>
-<li>Project → Clean</li>
-<li>Right-click project → Properties → Java Build Path → ensure <code>src</code> is a source folder</li>
+<li><strong>Do not</strong> spam-click “accept all”</li>
+<li>Compare changes <strong>line by line</strong></li>
+<li>Decide what the <strong>combined correct version</strong> should be</li>
+<li>Remove conflict markers (<code>&lt;&lt;&lt;&lt;&lt;</code>, <code>=====</code>, <code>&gt;&gt;&gt;&gt;&gt;</code>)</li>
 </ul>
 
 
-<h3>Merge conflicts</h3>
-<ul>
-<li>Don’t spam-click “accept all”. Compare changes line-by-line.</li>
-<li>After resolving: run the project → commit the resolution.</li>
-<li>Merge smaller PRs more often to avoid giant conflicts.</li>
-</ul>
-
-
-<div class="note">
-If you get stuck: screenshot the error + show your Git view in Eclipse. That’s usually enough for a TA to diagnose fast.
-</div>
 </details>
 
 
