@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+
+body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    } */
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+       scroll-margin-top: 80px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
+.hint summary{cursor:pointer;font-weight:700}
+    /* .hint{border:1px dashed #d7dff0;border-radius:12px;padding:.6rem .9rem;background:#fafcff;margin:.8rem 0} */
+    .pill{display:inline-block;padding:.2rem .55rem;border-radius:999px;background:#eef1ff;color:#3b3f66;font-size:.85rem;margin-right:.4rem}
+    .todo li{margin:.45rem 0}
+    .topbtn{position:fixed;right:14px;bottom:14px;background:#222;color:#fff;border:0;border-radius:999px;padding:.6rem .9rem;cursor:pointer}
+    .footnotes{color:var(--muted);font-size:.95rem}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+<!-- <div id="content"> -->
+    <h1>Lab Assignment 17</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Moving One Ball</a></li>
+          <li><a href="#lab2">02. Multiple Balls</a></li>
+
+      
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<!-- <div id="main-content"> -->
+ <!-- <section>
+  <p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Events</a></p>
+  <p>Resources 2: <a href="../resources.html#listener" target="_blank" class="resource-ref">Understanding Listener with getActionCommand()</a></p>
+  <p>Resources 3: <a href="../resources.html#focus" target="_blank" class="resource-ref">How to keep focus on Frame for events</a></p>
+
+</section>-->
+<p>Submission: 1) Ball, GameComponent, GamePanel, GameApp, Main</p>
+<div id="main-content">
+
+    <div class="lab-section" id="lab1">
+    <h2 style="color:black">01. Moving Ball with Timer</h2>
+    <p class="footnotes">Assumes you have Lab 15 structure: <strong>Main → GameApp (frame) → GamePanel (keys) → GameComponent (draws line)</strong>.</p>
+</header>
+
+
+  <p>
+    In this lab,  we will add a tiny <code>Ball</code> that moves automatically using a Swing <code>Timer</code>. Press <kbd>Space</kbd> to <strong>start/stop</strong>. Use <kbd>←</kbd>/<kbd>→</kbd> to move your existing line (from Lab 15). No collisions yet—just simple, constant-velocity motion.</p>
+  <p>
+    <image src="lab16ball.png" alt="lab16 a" width="400"/>
+</p>
+    <h2>Step 1. Add the Ball class</h2>
+  <p>Create <code>Ball.java</code> in the same package as your component.</p>
+  <p>Note: The Ball object doesn’t know how big the screen or panel is.
+So we will pass in the current width and height of the drawing area (=GameComponent).</p>
+  <pre><code>import java.awt.Color;
+import java.awt.Graphics2D;
+
+public class Ball {
+    int x, y;
+    int dx = 3, dy = 2;
+    int radius = 15;
+    Color color = Color.RED;
+
+    public Ball(int x, int y) {
+        this.x = x; this.y = y;
+    }
+
+    // advance and wrap around edges (no collisions yet)
+    public void move(int width, int height) {
+        x += dx; y += dy;
+        if (x &lt; 0) x = width;
+        if (x &gt; width) x = 0;
+        if (y &lt; 0) y = height;
+        if (y &gt; height) y = 0;
+    }
+
+    public void draw(Graphics2D g2) {
+        g2.setColor(color);
+        g2.fillOval(x - radius, y - radius, radius * 2, radius * 2);
+    }
+}
+</code></pre>
+<details class="hint">
+    <summary>💡 What are <code>dx</code>/<code>dy</code>?</summary>
+    <p>This is a straight-line trajectory at constant speed (no acceleration). Changing <code>dx</code>/<code>dy</code> changes direction instantly.</p>
+  </details>
+
+  <h2>Step 2. Introduce a <code>Timer</code> in <code>GameComponent</code></h2>
+  <p>Open your <code>GameComponent.java</code>. Add a field for the ball, a field for the timer, and start/stop helpers. Keep your existing line code intact.</p>
+<pre><code>import javax.swing.Timer;
+
+public class GameComponent extends JComponent {
+    // your existing code ...
+
+    Ball ball = new Ball(100, 100);   // NEW
+    Timer timer;                       // NEW
+
+    // constructor
+    public GameComponent() {
+        // your current code
+
+        // NEW: ~33 fps; on each tick, move the ball and repaint
+        timer = new Timer(30, e -&gt; {
+            ball.move(getWidth(), getHeight());
+            repaint();
+        });
+    }
+
+
+    public void start() { timer.start(); }     // NEW
+    public void stop()  { timer.stop(); }      // NEW
+
+
+    @Override
+    protected void paintComponent(Graphics g) {
+
+        // existing code.... 
+
+        // the ball (add this line)
+        ball.draw(g2);
+    }
+    </code></pre>
+<details class="hint">
+    <summary>How Swing <code>Timer</code> works (simple mental model)</summary>
+    <p><code>Timer</code> fires an event every N milliseconds on the UI thread. In the handler you: <strong>update state</strong> (here: <code>ball.move(...)</code>) then <strong>repaint</strong>. That’s the whole “game loop.” </p>
+  </details>
+  
+<h2>Step 3. Add keys in <code>GamePanel</code> (keep Lab 15 style)</h2>
+  <p>In <code>GamePanel.java</code> use this exact handler body (your class likely already has the listener shell from Lab 15). This preserves your line movement and toggles the timer with Space.</p>
+
+  <pre><code>public void keyPressed(KeyEvent e) {
+    switch (e.getKeyCode()) {
+        case KeyEvent.VK_LEFT  -&gt; canvas.moveDelta(-10);
+        case KeyEvent.VK_RIGHT -&gt; canvas.moveDelta(10);
+        case KeyEvent.VK_SPACE -&gt; {
+            if (canvas.timer.isRunning()) canvas.stop();
+            else canvas.start();
+        }
+    }
+}
+</code></pre>
+
+
+
+  <h2>Step 4. Run it</h2>
+  <ol class="todo">
+    <li>Launch your existing <code>GameApp</code> (<code>JFrame</code> that adds <code>GamePanel</code>).</li>
+    <li>Press <kbd>Space</kbd> to start/stop the ball motion.</li>
+    <li>Use <kbd>←</kbd>/<kbd>→</kbd> to move your line like before.</li>
+  </ol>
+
+<h2>Tweaks</h2>
+
+  <details class="hint">
+    <summary> Make it faster / slower</summary>
+    <p><strong>Two easy knobs:</strong></p>
+    <ul>
+      <li><strong>Change frame rate:</strong> alter the timer delay (e.g., <code>new Timer(16, ...)</code> ≈ 60 fps; <code>new Timer(50, ...)</code> ≈ 20 fps).</li>
+      <li><strong>Change velocity:</strong> edit <code>dx</code>/<code>dy</code> in <code>Ball</code> (e.g., <code>dx = 5; dy = 0;</code> goes faster and purely horizontal).</li>
+    </ul>
+  </details>
+
+  <details class="hint">
+    <summary>What defines the trajectory?</summary>
+    <p>The pair (<code>dx</code>, <code>dy</code>) is a constant velocity vector. The ball moves in a straight line with slope <code>dy/dx</code>. We use simple <em>wrap-around</em> at edges so it reappears on the opposite side (no collision/bounce yet).</p>
+  </details>
+
+  
+</div>
+
+    <div class="lab-section" id="lab2">
+    <h2 style="color:black">02. Multiple Balls with One Timer</h2>
+   
+  
+  
+  <p>
+    Goal: Refactor your Part 1 solution (one <code>Ball</code>) into a version that updates and draws
+    <strong>several balls</strong> using the same shared <code>Timer</code> in <code>GameComponent</code>.
+    Keep the same key handler in <code>GamePanel</code>:
+    <kbd>←</kbd>/<kbd>→</kbd> move your line, and <kbd>Space</kbd> starts/stops the loop.
+  </p>
+
+  <div class="hint">
+    <summary>💡 Design idea</summary>
+    <p>
+      In games, we usually keep <em>one</em> update loop (a single <code>Timer</code>) and iterate over a list of entities each tick.
+      That way, <kbd>Space</kbd> pauses/resumes the <em>whole world</em> at once.
+    </p>
+  </div>
+
+  <h3>Step 1. Change <code>GameComponent</code> to hold a list of balls</h3>
+  <p>Replace your single <code>Ball ball</code> field with a list and create a few balls in the constructor.</p>
+  <pre><code>// GameComponent.java (only the parts you change are shown)
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class GameComponent extends JComponent {
+    // existing: your line fields and moveDelta(...) methods here
+
+    public final Timer timer;                 // keep this the same name
+    private final List&lt;Ball&gt; balls = new ArrayList&lt;&gt;(); // NEW
+
+    public GameComponent() {
+
+// existing code....
+        // Create several balls (same simple Ball class from Part 1)
+        balls.add(new Ball( 80,  80));
+        balls.add(new Ball(180, 140));
+        balls.add(new Ball(300, 220));
+
+        // One shared loop updates ALL balls each tick
+        timer = new Timer(30, e -&gt; {
+            for (Ball b : balls) {
+                b.move(getWidth(), getHeight());
+            }
+            repaint();
+        });
+    }
+
+    public void start() { timer.start(); }
+    public void stop()  { timer.stop(); }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        var g2 = (Graphics2D) g;
+
+        // existing: draw your moving LINE here
+
+        // draw ALL balls
+        for (Ball b : balls) {
+            b.draw(g2);
+        }
+    }
+
+    // Optional helper to add more balls at runtime (used below)
+    public void addBall(int x, int y) {
+        balls.add(new Ball(x, y));
+    }
+}
+</code></pre>
+
+  <h3>Step 2. Keep the SAME key handler in <code>GamePanel</code></h3>
+  <p>No change needed for SPACE. The single timer now powers all balls.</p>
+  <pre><code>public void keyPressed(KeyEvent e) {
+    switch (e.getKeyCode()) {
+        case KeyEvent.VK_LEFT  -&gt; canvas.moveDelta(-10);
+        case KeyEvent.VK_RIGHT -&gt; canvas.moveDelta(10);
+        case KeyEvent.VK_SPACE -&gt; {
+            if (canvas.timer.isRunning()) canvas.stop();
+            else canvas.start();
+        }
+    }
+}
+</code></pre>
+
+  <details class="hint">
+    <summary>Why a single <code>Timer</code>?</summary>
+    <p>
+      One shared loop keeps timing consistent and makes pause/resume trivial. Multiple timers (one per object) are fine for tiny demos but get messy as objects grow.
+    </p>
+  </details>
+
+  <h3>Mini-Challenges</h3>
+  <ol>
+    <li><strong>Different speeds:</strong> In <code>Ball</code>, set different <code>dx/dy</code> in the constructor after you add each ball.
+      <pre><code>// Example after balls.add(...)
+balls.get(0).dx = 3; balls.get(0).dy = 2;
+balls.get(1).dx = 1; balls.get(1).dy = 3;
+balls.get(2).dx = 4; balls.get(2).dy = -1;</code></pre>
+    </li>
+    <li><strong>Add ball on key press:</strong> (Optional) Handle <kbd>B</kbd> to spawn a ball at a random spot.
+      <pre><code>// In GamePanel.keyPressed (add a new case)
+case KeyEvent.VK_B -&gt; {
+    int x = (int)(Math.random() * canvas.getWidth());
+    int y = (int)(Math.random() * canvas.getHeight());
+    canvas.addBall(x, y);
+}</code></pre>
+    </li>
+    
+  </ol>
+</div>
+
+</body>
+</html>
