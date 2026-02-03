@@ -389,6 +389,7 @@ Treat the Ball as the player and focus only on loading and validating a level fr
 
 
   <h3>Step 2: Read the level file - DrawingComponent</h3>
+  <p>Read the file inside yoru constructor</p>
   <p>Scan and Read the file in the constructor</p>
 
   <pre><code>
@@ -412,7 +413,8 @@ Treat the Ball as the player and focus only on loading and validating a level fr
 <h3>Step 3: Read the characters</h3>
 
 <p>
-  Place the ball after yoru file reading code to confirm the file is read
+  
+  Place the ball after your file reading code to confirm the file is read
 After you confirm the file can be read, update your code to examine
 <b>each character</b> in the level file.
 </p>
@@ -471,10 +473,13 @@ if (c == 'P') {
 </code></pre>
 
   <h3>Step 5: Update Field in Drawing component</h3>
-  <p>Add x and y variables</p>
+  <p>Add startX and startY variables</p>
 <pre><code>int startX = 80;
 int startY = 100;</code></pre>
 <h3>Update the ball object</h3>
+<p>Create the Ball after reading the file. Keep ball as a field, not a local variable
+
+Do NOT create the Ball before reading the file</p>
 <p>Place the ball after your scanned the level file to incorporate the change</p>
 <pre><code>ball = new Ball(startX,startY,14);</code></pre>
 </details></div><!-- </section> -->
