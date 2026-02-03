@@ -396,6 +396,8 @@ Treat the Ball as the player and focus only on loading and validating a level fr
     Scanner scanner = new Scanner(file);
   </code></pre>
   <p> Add try/catch</p>
+  <pre><code>
+
     try {
   Scanner scanner = new Scanner(file);
   while (scanner.hasNextLine()) {
@@ -424,8 +426,7 @@ Use a nested loop:
 </ul>
 
 <pre><code>int row = 0;
-
-Scanner scanner = new Scanner(new File("level1.txt"));
+  
 while (scanner.hasNextLine()) {
   String line = scanner.nextLine();
 
