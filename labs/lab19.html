@@ -389,7 +389,7 @@ Treat the Ball as the player and focus only on loading and validating a level fr
 
 
   <h3>Step 2: Read the level file - DrawingComponent</h3>
-  <p>Scan and Read the file before you create Ball() instance in the constructor</p>
+  <p>Scan and Read the file in the constructor</p>
 
   <pre><code>
     File file = new File("level1.txt");
@@ -397,7 +397,6 @@ Treat the Ball as the player and focus only on loading and validating a level fr
   </code></pre>
   <p> Add try/catch</p>
   <pre><code>
-
     try {
   Scanner scanner = new Scanner(file);
   while (scanner.hasNextLine()) {
@@ -413,6 +412,7 @@ Treat the Ball as the player and focus only on loading and validating a level fr
 <h3>Step 3: Read the characters</h3>
 
 <p>
+  Place the ball after yoru file reading code to confirm the file is read
 After you confirm the file can be read, update your code to examine
 <b>each character</b> in the level file.
 </p>
@@ -426,7 +426,7 @@ Use a nested loop:
 </ul>
 
 <pre><code>int row = 0;
-  
+
 while (scanner.hasNextLine()) {
   String line = scanner.nextLine();
 
@@ -463,8 +463,8 @@ final int TILE_SIZE = 200;
 
 // Inside the nested row/column loop
 if (c == 'P') {
-  int x = col * TILE_SIZE;
-  int y = row * TILE_SIZE;
+  startX = col * TILE_SIZE;
+  startY = row * TILE_SIZE;
 
 
 }
