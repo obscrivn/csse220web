@@ -1,0 +1,525 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CSSE 220</title>
+    
+    
+    <link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
+<link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+       /* Main content container */
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    }
+    /* h1, h2 {
+      font-family: "Courier New", Courier, monospace;
+      color: #61dafb;
+    } */
+    /* Lab container grid layout */
+    .lab-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    /* Lab card styling */
+    .lab-card {
+        background-color: #3a3a3a;
+      color: #dcdcdc;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      text-decoration: none;
+      transition: transform 0.2s;
+      display: block;
+    }
+    .lab-card:hover {
+      transform: scale(1.02);
+    }
+    .lab-card h3 {
+      margin: 0 0 8px;
+      font-family: "Courier New", Courier, monospace;
+      color: #ffffff;
+    }
+    .lab-card p {
+      /* font-family: Arial, sans-serif; */
+      font-size: 0.9em;
+      margin: 0;
+      color: #dcdcdc;
+    }
+    /* Responsive adjustments */
+    @media screen and (max-width: 600px) {
+      .lab-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    details.lab-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  background: #ffffff;
+}
+
+details.lab-card summary {
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.05rem;
+  list-style: none;
+}
+
+details.lab-card summary::-webkit-details-marker {
+  display: none;
+}
+
+details.lab-card summary::before {
+  content: "▸ ";
+  font-weight: bold;
+}
+
+details.lab-card[open] summary::before {
+  content: "▾ ";
+}
+
+details.lab-card > *:not(summary) {
+  margin-top: 0.75rem;
+}
+
+/* ---------- Nested Hint Blocks ---------- */
+
+details.hint {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-left: 4px solid #cbd5e1;
+  background: #f8fafc;
+}
+
+details.hint summary {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ---------- Callout Boxes ---------- */
+
+.callout {
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  background: #f1f5f9;
+  border-left: 6px solid #94a3b8;
+}
+
+.callout strong {
+  font-weight: 600;
+}
+
+/* Callout Variants */
+
+.callout.ok {
+  background: #ecfdf5;
+  border-left-color: #10b981; /* green */
+}
+
+.callout.warn {
+  background: #fff7ed;
+  border-left-color: #f97316; /* orange */
+}
+
+.callout.error {
+  background: #fef2f2;
+  border-left-color: #ef4444; /* red */
+}
+
+/* ---------- Code Inline ---------- */
+
+code {
+  background: #f1f5f9;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+/* ---------- Lists ---------- */
+
+ul, ol {
+  margin-left: 1.25rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+/* ---------- Page Section ---------- */
+details.lab-card,
+details.lab-card * {
+  color: #000000;
+}
+.page-section {
+  max-width: 900px;
+  margin: auto;
+  padding: 1rem;
+}
+  </style>
+</head>
+    <body>
+
+            <div id="header">
+                <a id="index_link" href="./index.html">CSSE 220</a>
+                <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
+                <a id="schedule_link" href="./schedule.html">Schedule</a>
+                <!-- <a id="quiz_link" href="./demos.html">Demos</a> -->
+                <a id="quiz_link" href="./design-principles.html">Design</a>
+                <a id="quiz_link" href="./labs.html">Labs</a>
+                <a id="quiz_link" href="./homework.html">Homework</a>
+                <a id="quiz_link" href="./exams.html">Exams</a>
+                <a id="quiz_link" href="./project.html">Final Project</a>
+                <a id="resources_link" href="./resources.html">Resources</a>
+                <div style="clear:both;"></div>
+            </div>
+    
+
+    
+        <!-- Main Content -->
+  <div id="content">
+  <section class="page-section" id="oop-design-principles">
+  <h1>Working with Files</h1>
+
+
+  <details class="lab-card">
+  <summary>Part 1: Adding Images (Sprites) in Java: Option A vs Option B (and why getResource() is better)</summary>
+
+  <p>
+    If your sprite image is <code>null</code>, it’s usually a <b>path/classpath</b> issue.
+    We will show two correct ways to organize images and load them with <code>getResource</code>.
+  </p>
+
+  <hr>
+
+  <h3>✅ What <code>getResource</code> actually does</h3>
+  <ul>
+    <li><b>It does NOT read from your hard drive path.</b> It reads from the <b>classpath</b> (the stuff Eclipse copies into your build output).</li>
+    <li>Think: “Find this file inside my project build,” not “Find this file in Finder/Explorer.”</li>
+  </ul>
+
+  <div class="hint">
+    <p><b>Two modes:</b></p>
+    <ul>
+      <li><code>SomeClass.class.getResource("file.png")</code> → looks <b>relative to the package</b> of <code>SomeClass</code></li>
+      <li><code>SomeClass.class.getResource("/images/file.png")</code> → looks from the <b>classpath root</b> (absolute path)</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <h3>Option A (Beginner-friendly): Put the image in the SAME folder as the class</h3>
+  <p>
+    Use this when you want the image to “live next to” the class. This is what we did in the Ball example.
+  </p>
+
+  <pre><code>// Folder layout (Eclipse plain project)
+src/
+  model/
+    Ball.java
+    tennis.png   &larr; SAME folder as Ball.java
+  ui/
+    GamePanel.java
+</code></pre>
+
+  <p><b>Code:</b> (package-relative path: no leading slash)</p>
+  <pre><code>private static BufferedImage sprite;
+private static boolean triedLoad = false;
+
+private static void loadSpriteOnce() {
+  if (triedLoad) return;
+  triedLoad = true;
+
+  try {
+    // tennis.png must be in the SAME package/folder as Ball.java
+    sprite = ImageIO.read(Ball.class.getResource("tennis.png"));
+  } catch (IOException | IllegalArgumentException ex) {
+    sprite = null; // (for debugging labs, printing the error is better)
+  }
+}
+</code></pre>
+
+  <div class="hint">
+    <p><b>When Option A breaks:</b> If you move <code>Ball</code> to a different package (folder) but forget to move <code>tennis.png</code> with it, the resource becomes <code>null</code>.</p>
+  </div>
+
+  <hr>
+
+  <h3>Option B (Best for multi-package projects): Put all images in one shared folder</h3>
+  <p>
+    Use this when you have packages like <code>ui</code>, <code>model</code>, <code>util</code> and you don’t want “where is my png??” chaos.
+  </p>
+
+  <pre><code>// Folder layout (recommended for team projects)
+src/
+  images/
+    tennis.png
+    wall.png
+    zombie.png
+  model/
+    Ball.java
+  ui/
+    GamePanel.java
+</code></pre>
+
+  <p><b>Code:</b> (absolute path: leading slash)</p>
+  <pre><code>private static void loadSpriteOnce() {
+  if (triedLoad) return;
+  triedLoad = true;
+
+  try {
+    sprite = ImageIO.read(Ball.class.getResource("/images/tennis.png"));
+  } catch (IOException | IllegalArgumentException ex) {
+    sprite = null;
+  }
+}
+</code></pre>
+
+  <div class="hint">
+    <p><b>Why the leading <code>/</code> matters:</b> It tells Java “start at the classpath root,” so this works no matter which package calls it.</p>
+  </div>
+
+  <hr>
+
+  <h3>How to create an images folder in Eclipse (and make Java actually see it)</h3>
+
+  <ol>
+    <li><b>Create the folder:</b> Right-click your project → <b>New → Folder</b> → name it <code>images</code> (or put it under <code>src</code> as <code>src/images</code>).</li>
+    <li><b>Add your PNG files:</b> drag into the folder, or Right-click folder → <b>Import…</b></li>
+    <li><b>IMPORTANT:</b> Make sure the folder is on the <b>Build Path</b> so resources get copied into the build output:
+      <ul>
+        <li>Right-click the <code>images</code> folder → <b>Build Path → Use as Source Folder</b></li>
+      </ul>
+    </li>
+  </ol>
+
+  <div class="hint">
+    <p><b>Reality check:</b> A file can exist in your project tree and still be invisible to <code>getResource</code> if it’s not on the classpath.</p>
+  </div>
+
+  <hr>
+
+  <h3>Debug checklist (aka “Why is my image null?”)</h3>
+
+  <p>Paste this once and run:</p>
+  <pre><code>URL url = Ball.class.getResource("/images/tennis.png"); // or "tennis.png" for Option A
+System.out.println("Sprite URL = " + url);
+</code></pre>
+
+  <ul>
+    <li>If it prints <code>null</code> → your path is wrong OR the folder isn’t on the classpath.</li>
+    <li>If it prints something like <code>file:/.../bin/images/tennis.png</code> → resource is found ✅</li>
+  </ul>
+
+  <hr>
+
+  <h3>Extra pro tips (save future you)</h3>
+  <ul>
+    <li><b>Don’t load images inside <code>paintComponent</code></b> — load once, then draw many times.</li>
+    <li><b>Tiles/walls should share images</b> (load wall.png once, reuse it for 200 walls).</li>
+    <li><b>Sprites can own their image</b> (Ball/Player/Zombie can load their sprite once).</li>
+  </ul>
+
+</details>
+
+  <details class="lab-card">
+  <summary>Part 2: Drawing “Non-Entities” (Walls, Floors, Backgrounds) — No Wall Class Needed</summary>
+
+  <p>
+    Some things in your game are not “entities.” They don’t move, don’t think, and don’t have unique behavior.
+    Examples: <b>walls</b>, <b>floor tiles</b>, <b>background</b>, <b>decorations</b>.
+    For these, creating a class per tile is usually unnecessary and makes your code harder (and slower) for no reason.
+  </p>
+
+  <hr>
+
+  <h3>What counts as a “non-entity”?</h3>
+  <ul>
+    <li><b>Static environment</b>: walls, floors, grass, water, path tiles</li>
+    <li><b>Background-only visuals</b>: trees, torches, signs that do nothing</li>
+    <li><b>Map layout</b>: where things exist (grid-based), not objects that act</li>
+  </ul>
+
+  <div class="hint">
+    <p><b>Rule of thumb:</b> If it has no behavior (no meaningful methods), it’s probably not a class yet.</p>
+  </div>
+
+  <hr>
+
+  <h3>Recommended approach: store non-entities as <b>data</b>, draw them with a <b>loop</b></h3>
+
+  <p>
+    You typically represent the environment in one of these two ways:
+  </p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Approach</th>
+        <th>What you store (Model)</th>
+        <th>What you do (UI)</th>
+        <th>Best for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Grid / Tile Map</b></td>
+        <td><code>char[][]</code> or <code>int[][]</code></td>
+        <td>Double loop (row/col) and draw tiles</td>
+        <td>Mazes, maps from <code>level1.txt</code></td>
+      </tr>
+      <tr>
+        <td><b>Rectangles List</b></td>
+        <td><code>List&lt;Rectangle&gt;</code></td>
+        <td>Loop through rectangles and draw</td>
+        <td>Collision-first design</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h3>Option 1: Grid / Tile Map (most common for maze levels)</h3>
+
+  <p><b>Level file example</b> (each character is one tile):</p>
+  <pre><code>WWWWWWWWWW
+W....W...W
+W.WW.W.W.W
+W....W...W
+WWWWWWWWWW
+</code></pre>
+
+  <p><b>Model idea:</b> store the grid</p>
+  <pre><code>// In your Level class
+private char[][] grid;
+
+public char tileAt(int row, int col) { return grid[row][col]; }
+public int rows() { return grid.length; }
+public int cols() { return grid[0].length; }
+</code></pre>
+
+  <p><b>UI idea:</b> load images once, then draw with nested loops</p>
+  <pre><code>// In GamePanel (or your UI class)
+private BufferedImage wallImg;
+private BufferedImage floorImg;
+private static final int TILE_SIZE = 32;
+
+public GamePanel() {
+  // Load ONCE (Option B style: from /images folder)
+  try {
+    wallImg = ImageIO.read(getClass().getResource("/images/wall.png"));
+    floorImg = ImageIO.read(getClass().getResource("/images/floor.png"));
+  } catch (IOException | IllegalArgumentException ex) {
+    wallImg = null;
+    floorImg = null;
+  }
+}
+
+@Override
+protected void paintComponent(Graphics g) {
+  super.paintComponent(g);
+  Graphics2D g2 = (Graphics2D) g;
+
+  for (int r = 0; r &lt; level.rows(); r++) {
+    for (int c = 0; c &lt; level.cols(); c++) {
+      int x = c * TILE_SIZE;
+      int y = r * TILE_SIZE;
+
+      char tile = level.tileAt(r, c);
+
+      if (tile == 'W') {
+        if (wallImg != null) g2.drawImage(wallImg, x, y, TILE_SIZE, TILE_SIZE, null);
+      } else {
+        if (floorImg != null) g2.drawImage(floorImg, x, y, TILE_SIZE, TILE_SIZE, null);
+      }
+    }
+  }
+}
+</code></pre>
+
+  <div class="hint">
+    <p><b>Performance tip:</b> Load images once in the constructor (or a loader method), not inside <code>paintComponent</code>.</p>
+  </div>
+
+  <hr>
+
+  <h3>Option 2: List of Rectangles (great when collision is the main goal)</h3>
+
+  <p><b>Model idea:</b> build wall rectangles once after reading the grid</p>
+  <pre><code>// In Level class
+private final List&lt;Rectangle&gt; walls = new ArrayList&lt;&gt;();
+
+public List&lt;Rectangle&gt; getWalls() { return walls; }
+
+public void rebuildWallsFromGrid(int tileSize) {
+  walls.clear();
+  for (int r = 0; r &lt; rows(); r++) {
+    for (int c = 0; c &lt; cols(); c++) {
+      if (tileAt(r, c) == 'W') {
+        walls.add(new Rectangle(c * tileSize, r * tileSize, tileSize, tileSize));
+      }
+    }
+  }
+}
+</code></pre>
+
+  <p><b>UI idea:</b> draw walls by looping the rectangles</p>
+  <pre><code>for (Rectangle w : level.getWalls()) {
+  if (wallImg != null) g2.drawImage(wallImg, w.x, w.y, w.width, w.height, null);
+}
+</code></pre>
+
+  <hr>
+
+  <h3>Why we usually do NOT make a <code>Wall</code> class (yet)</h3>
+  <ul>
+    <li>You might have 200+ wall tiles — that’s 200+ objects for no real benefit.</li>
+    <li>Walls usually have no behavior besides “block movement.” That’s not enough to justify a class.</li>
+    <li>It’s easier to debug a grid/list than a pile of tiny objects.</li>
+  </ul>
+
+  <div class="hint">
+    <p><b>When a Wall class DOES make sense:</b> breakable walls, doors, moving walls, damaging walls, or special interactions.</p>
+  </div>
+
+  <hr>
+
+  <h3>Debug checklist (if your tiles don’t draw)</h3>
+  <ul>
+    <li><b>Is your image path correct?</b> Try printing the URL:
+      <pre><code>System.out.println(getClass().getResource("/images/wall.png"));</code></pre>
+      If it prints <code>null</code>, Java can’t find the file on the classpath.</li>
+    <li><b>Is your images folder on the Build Path?</b> Right-click folder → <b>Build Path → Use as Source Folder</b></li>
+    <li><b>Are your tile coordinates correct?</b> <code>x = col * TILE_SIZE</code>, <code>y = row * TILE_SIZE</code></li>
+  </ul>
+
+</details>
+</section>
+</body>
+</html>
