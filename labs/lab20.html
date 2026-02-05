@@ -457,12 +457,14 @@ private ArrayList&lt;Ball&gt; enemies = new ArrayList&lt;&gt;();</code></pre>
     <li><code>'E'</code> → enemy spawn (many)</li>
   </ul>
 
-  <pre><code>if (c == 'P') {
-    startX = x;
-    startY = y;
-} else if (c == 'E') {
-    enemies.add(new Ball(x, y, 14));
-}</code></pre>
+  <pre><code>    if (c == 'P') {
+	                	//System.out.println(c);
+	                	startX = col * TILE_SIZE;
+	                	startY = row * TILE_SIZE;
+	                 
+	                } else if (c == 'E') {
+	                    enemies.add(new Ball(col * TILE_SIZE, row * TILE_SIZE, 14));
+	                }</code></pre>
 
   <p>
     Each <code>'E'</code> in the file should create a new enemy object.
