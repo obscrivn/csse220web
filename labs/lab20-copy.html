@@ -136,19 +136,15 @@ body {
     /* Content container */
     #content {
       padding: 20px;
-      /* margin-top: 100px;  */
+      margin-top: 100px; 
       margin-bottom: 50px;
-      padding-top: 100px;
-    }
-    #section {
-margin-top: 1rem; 
-margin-bottom: 1rem;
-padding: 20px;
-} 
+    } 
+    
     .lab-section {
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 15px;
+       scroll-margin-top: 80px;
       margin-bottom: 20px;
       border-radius: 5px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -162,6 +158,7 @@ padding: 20px;
       line-height: 1.5;
       color: #555;
     }
+
 /* Lab Navigation Menu Styling */
 #lab-nav {
       background-color: #faf9fc;
@@ -233,7 +230,6 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
-
 pre code {
   background-color: #f5f7fa;
   color: #1a1a1a;
@@ -248,74 +244,12 @@ pre code:hover {
   background-color: #dce1e8;
   border-left-color: #28527a;
 }
-.lab-card {
-  margin: 0 0 1rem 0;
-  border-radius: 0.75rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  padding: 0.25rem 0.75rem 0.75rem;
-}
-
-.lab-card > summary {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  list-style: none;
-  cursor: pointer;
-  padding: 0.5rem 0;
-  font-weight: 600;
-}
-
-.lab-card > summary::-webkit-details-marker {
-  display: none; /* hide default arrow in some browsers */
-}
-
-.lab-card > summary::after {
-  content: "›";
-  margin-left: auto;
-  font-size: 1rem;
-  transition: transform 0.15s ease-out;
-}
-
-.lab-card[open] > summary::after {
-  transform: rotate(90deg);
-}
-
-.lab-label {
-  font-family: monospace;
-  opacity: 0.7;
-}
-
-.lab-title {
-  font-weight: 700;
-}
-
-.lab-tag {
-  font-size: 0.8rem;
-  padding: 0.1rem 0.4rem;
-  border-radius: 999px;
-  border: 1px solid #ccc;
-  background: #fff;
-}
-
-.lab-body {
-  border-top: 1px solid #e0e0e0;
-  margin-top: 0.25rem;
-  padding-top: 0.5rem;
-}
-
-details.hint {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background: #f9f9f9;
-  border-left: 3px solid #aaa;
-}
-
-details.hint > summary {
-  cursor: pointer;
-  font-weight: 500;
-  color: #555;
-}
+.hint summary{cursor:pointer;font-weight:700}
+    /* .hint{border:1px dashed #d7dff0;border-radius:12px;padding:.6rem .9rem;background:#fafcff;margin:.8rem 0} */
+    .pill{display:inline-block;padding:.2rem .55rem;border-radius:999px;background:#eef1ff;color:#3b3f66;font-size:.85rem;margin-right:.4rem}
+    .todo li{margin:.45rem 0}
+    .topbtn{position:fixed;right:14px;bottom:14px;background:#222;color:#fff;border:0;border-radius:999px;padding:.6rem .9rem;cursor:pointer}
+    .footnotes{color:var(--muted);font-size:.95rem}
   </style>
 </head>
 <body>
@@ -334,16 +268,16 @@ details.hint > summary {
 <div id="content">
 <!-- <div id="content"> -->
     <h1>Lab Assignment 20</h1>
-    <!-- <nav id="lab-nav">
+    <nav id="lab-nav">
         <ul>
           <li><a href="#lab1">01. Refactor Timer</a></li>
           <li><a href="#lab2">02. HUD / save files</a></li>
 
       
          
-
+          <!-- Add more lab links as needed -->
         </ul>
-      </nav> -->
+      </nav>
 <!-- Lab Navigation Menu -->
 <!-- <div id="main-content"> -->
  <!-- <section>
@@ -354,319 +288,83 @@ details.hint > summary {
 </section>-->
 
 <div id="main-content">
-<div class="lab-section" id="lab1">
-<h2>Lab 20: Multiple Objects + Object Collisions</h2>
 
-<div class="lab-summary">
-  <p>
-    In this lab, you’ll level-up your game engine by managing <b>multiple objects</b>
-    and handling <b>collisions between objects</b> (not just walls).
-  </p>
+    <div class="lab-section" id="lab1">
+      <h3>🎯 Learning Objectives</h3>
+        <ul>
+          <li>Separate Model / View / Controller responsibilities.</li>
+          <li>Drive animation with a <code>Timer</code> in the Controller.</li>
+          <li>Build an HTML HUD with a <code>JLabel</code> overlay.</li>
+          <li>Save &amp; load score snapshots using plain text I/O.</li>
+        </ul>
 
+        <h3>🧰 Prereqs</h3>
+        <ul>
+          <li>Starter: <code>Main</code>, <code>GamePanel</code>, <code>GameComponent</code>, <code>BallModel</code>, <code>Ball</code>.</li>
+          <li>Keys: <b>SPACE</b> (pause/start), <b>B</b> (add ball), <b>←/→</b> (demo motion).</li>
+        </ul>
+    <h2 style="color:black">01. BallModel Refactoring</h2>
+    <h2>1) Controller Owns the Timer (GamePanel)</h2>
+      <p class="callout">Why? The Controller orchestrates time and input. The View only draws.</p>
+      <div class="todo">
+        <ol class="checklist">
+          <li><b>Remove</b> any <code>Timer</code> and seeding from <code>GameComponent</code>.</li>
+          <li><b>Create</b> the <code>Timer</code> in <code>GamePanel</code> and call <code>tick()</code> every ~30ms.</li>
+          <li><b>Use</b> <code>canvas.getWidth()/getHeight()</code> in <code>tick()</code> for accurate bounds.</li>
+        </ol>
+      </div>
+<pre><code class="language-java">
+// in GamePanel fields:
+// models
+private final BallModel ballModel = new BallModel();
+// views
+private final GameComponent canvas = new GameComponent();
+private final Timer timer;
+
+public GamePanel() {
   
-</div>
+// ..previous code
+  ballModel.addBall(100, 100);
+  ballModel.addBall(200, 60);
 
-<details class="lab-card" open>
-  <summary>Design Rule: Who is responsible for what?</summary>
-
-  <p>
-    As we add more objects and collisions, it’s important to be clear about
-    <b>which class owns which responsibility</b>.
-    This prevents duplicated logic and keeps Milestone 2 manageable.
-  </p>
-
-  <table class="summary-table">
-    <tr>
-      <th>Responsibility</th>
-      <th>Class that owns it</th>
-    </tr>
-
-    <tr>
-      <td>Move the ball each frame</td>
-      <td><code>Ball</code></td>
-    </tr>
-
-    <tr>
-      <td>Handle wall collisions (bounce off edges)</td>
-      <td><code>Ball</code> (<code>update(worldWidth, worldHeight)</code>)</td>
-    </tr>
-
-    <tr>
-      <td>Know the world size</td>
-      <td><code>DrawingComponent</code></td>
-    </tr>
-
-    <tr>
-      <td>Ball vs Ball collisions</td>
-      <td><code>DrawingComponent</code></td>
-    </tr>
-
-    <tr>
-      <td>Ball vs Collectible collisions</td>
-      <td><code>DrawingComponent</code></td>
-    </tr>
-
-    <tr>
-      <td>Making a collectible disappear</td>
-      <td><code>DrawingComponent</code></td>
-    </tr>
-
-  
-  </table>
-
-  
-</details>
-
-<details class="lab-card">
-  <summary><strong>Step 1:</strong> Refactor Level Loading</summary>
-
-  <p>Move your current <code>Scanner</code> logic that reads <code>level1.txt</code> into a method:</p>
-
-      <pre><code>private void loadLevel() {
-    File file = new File("level1.txt");
-  // your code block with try / catch ....
-
-</code></pre>
-<h4>2️⃣ Call <code>loadLevel()</code> in your constructor</h4>
-  <p>
-    Call this method <strong>before</strong> creating the ball:
-  </p>
-<pre><code>
-  loadLevel();
-		ball = new Ball(startX,startY,14);
-  </code></pre>
-
-
-  <h4>3️⃣ Add new Required fields</h4>
-  <p>
-    Your class should already have these fields + add enemies :
-  </p>
-
-  <pre><code>private int startX = 80;
-private int startY = 100;
-private ArrayList&lt;Ball&gt; enemies = new ArrayList&lt;&gt;();</code></pre>
-
-<h4>4️⃣ Extend <code>loadLevel()</code> to support enemies</h4>
-  <p>
-    Update your <code>loadLevel()</code> method by adding an additional
-    <code>if</code> statement:
-  </p>
-
-  <ul>
-    <li><code>'P'</code> → player spawn (one)</li>
-    <li><code>'E'</code> → enemy spawn (many)</li>
-  </ul>
-
-  <pre><code>if (c == 'P') {
-    startX = x;
-    startY = y;
-} else if (c == 'E') {
-    enemies.add(new Ball(x, y, 14));
-}</code></pre>
-
-  <p>
-    Each <code>'E'</code> in the file should create a new enemy object.
-  </p>
-
-  <h4>Update <code>level1.txt</code></h4>
-  <p>
-    Add several <code>'E'</code> characters to represent enemies:
-  </p>
-
-  <pre><code>##########
-#P....E..#
-#..E.....#
-#.....E..#
-##########</code></pre>
-    
-
-    <li>
-      Create the player <strong>after</strong> calling <code>loadLevel()</code>, so it uses the coordinates found in the file.
-    </li>
-
-    <li>
-      Store enemies in a collection (ex: <code>ArrayList&lt;Ball&gt;</code>) so your game can support multiple enemies.
-    </li>
-  </ol>
-
-  <details class="hint">
-    <summary>Hint</summary>
-    <p>
-      One player needs one <code>(x, y)</code>.  
-      Many enemies need a list of objects.
-    </p>
-  </details>
-
-</details>
-
-
-<details class="lab-card">
-  <summary><strong>Step 2:</strong> Add Enemies to the Game - DrawingComponent</summary>
-  <p>
-    Now that your level loader supports enemies, update
-    <code>DrawingComponent</code> to manage and draw them.
-  <h4>Draw all enemies</h4>
-  <p>
-    In <code>paintComponent</code>, draw the player first, then loop through
-    the enemies and draw each one.
-  </p>
-
-  <pre><code>// draw player
-ball.draw(g2);
-
-// draw enemies
-for (Ball enemy : enemies) {
-    enemy.draw(g2);
-}</code></pre>
-
-  <h4>Move enemies</h4>
-  <p>
-    Update enemies movements in the same timer
-  </p>
-
-  <pre><code>for (Ball enemy : enemies) {
-    enemy.update(); // movement + wall collision
-}</code></pre>
-
-
-
-</details>
-
-
-
-</details>
-
-<details class="lab-card">
-  <summary><strong>Step 3:</strong> Add a Collision Box and Intersect</summary>
-
-  <h4>Goal</h4>
-  <p>
-    Every moving object (player and enemies) needs a collision box
-    so we can detect when objects touch.
-  </p>
-  <p>
-  For this lab, both the player and enemies are <code>Ball</code> objects,
-  so the <code>getBounds()</code> method only needed once in <code>Ball.java</code>.
-</p>
-
-  <h4>1️⃣ Open <code>Ball.java</code></h4>
-  <p>
-    Add the following method to your <code>Ball</code> class:
-  </p>
-
-  <pre><code>public Rectangle getBounds() {
-    Rectangle r = new Rectangle(
-			    x - radius,
-			    y - radius,
-			    radius * 2,
-			    radius * 2
-    );
-    return r;
-}</code></pre>
-
-
-<h4>2️⃣  <code>intersects()</code></h4>
-  <p>
-    <code>intersects()</code> is a method provided by Java’s <code>Rectangle</code> class.
-    It checks whether two rectangles overlap.
-  </p>
-
-  <h4>How we use it</h4>
-  <p>
-    Since each object now has a collision box (<code>getBounds()</code>),
-    we can detect collisions like this:
-  </p>
-
-  <pre><code>Rectangle r1 = enemy1.getBounds();
-Rectangle r2 = enemy2.getBounds();
-
-if (r1.intersects(r2)) {
-    // collision happened
-}</code></pre>
-  
-
-  <details class="hint">
-    <summary>Why are we using rectangles?</summary>
-    <p>
-      Rectangles are simple, fast, and built into Java.
-      If two rectangles overlap, we treat it as a collision.
-    </p>
-  </details>
-
-</details>
-
-<details class="lab-card">
-  <summary><strong>Step 4:</strong> Enemy–Enemy Collision (Bounce / Reverse Direction)</summary>
-
-  <h4>1️⃣ Add or update <code>flip()</code> to <code>Ball</code></h4>
-  <pre><code>public void flip() {
-    dx = -dx;
-    dy = -dy;
-}</code></pre>
-
-  <h4>2️⃣ Add enemy–enemy collision checks inside the Timer</h4>
-  <p>
-    After updating all enemies, check each pair of enemies
-    to see if they collide.
-    If they do, call <code>flip()</code> on both enemies.
-
-  <pre><code>// update enemies
-for (Ball enemy : enemies) {
-    enemy.update(WIDTH, HEIGHT);
+// Timer now lives in GamePanel (Controller)
+  timer = new Timer(30, e -> tick());
+  buildKeys();
 }
 
-// enemy-enemy collisions (nested loop)
-for (int i = 0; i &lt; enemies.size(); i++) {
-    for (int j = i + 1; j &lt; enemies.size(); j++) {
-        Ball e1 = enemies.get(i);
-        Ball e2 = enemies.get(j);
+private void tick() {
+  ballModel.updateAll(canvas.getWidth(), canvas.getHeight());
+  canvas.repaint();
+}
 
-        if (e1.getBounds().intersects(e2.getBounds())) {
-            e1.flip();
-            e2.flip();
-        }
-    }
-}</code></pre>
+ public void startGame() { timer.start(); }
+ public void stopGame()  { timer.stop();  }
 
-  <details class="hint">
-    <summary>Why does <code>j</code> start at <code>i + 1</code>?</summary>
-    <p>
-      So you don’t compare an enemy with itself, and you don’t check the same pair twice.
-    </p>
-  </details>
-</details>
-<details class="lab-card">
-  <summary><strong>Step 5:</strong> Player–Enemy Collision (Enemy Disappears)</summary>
+ /// updates inside buildKeys()
+ case KeyEvent.VK_SPACE -> {
+	  if (timer.isRunning()) timer.stop();
+	     else timer.start();
+	}
+</code></pre>
 
-  <p>
-    When the player collides with an enemy, remove the enemy from the game.
-  </p>
+<p>Add to Ball Model:</p>
+<pre><code>// Add getters
+ 	public int getBallCount() {
+ 		return balls.size();
+ 	}
+ 	public List<Ball> getBalls() {
+ 		return balls;
+ 	}
 
-  <h4>Inside the Timer</h4>
-  <pre><code>for (int i = 0; i &lt; enemies.size(); i++) {
-    if (ball.getBounds().intersects(enemies.get(i).getBounds())) {
-        enemies.remove(i);
-        break; // remove only one enemy per frame
-    }
-}</code></pre>
+</code></pre>
+<p>Update GameComponent, remove timer and update the getter</p>
+<pre><code  class="language-java">
+  for (Ball b : model.getBalls()) b.draw(g2); // uses Step 2 getter
+</code></pre>
 
-<details class="hint">
-  <summary>ConcurrentModificationException Danger</summary>
-  <p>
-    Removing elements from an <code>ArrayList</code> inside a for-each loop
-    causes a <code>ConcurrentModificationException</code>.
-  </p>
-  <p>
-    An index-based loop is safe because you control the index yourself.
-    After removing one enemy, the <code>break</code> statement stops the loop.
-  </p>
-</details>
 
-</details>
-</details>
-
-    </div>
-<!-- <div class="lab-section" id="lab2">
+</div>
+<div class="lab-section" id="lab2">
 <h2>02. Create HUD model and HUD viewer</h2>
 
 
@@ -831,7 +529,7 @@ hudView.refresh(hudModel);</code></pre>
   
 </ul>
 <p>The refactored code is available here: <a href="./BallHud.zip">Unzip or import to Eclipse</a></p>
-</div>-->
+</div>
 
 </body>
 </html>
