@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+
+body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    } */
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      /* margin-top: 100px;  */
+      margin-bottom: 50px;
+      padding-top: 100px;
+    }
+    #section {
+margin-top: 1rem; 
+margin-bottom: 1rem;
+padding: 20px;
+} 
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+details.hint {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  border-left: 3px solid #aaa;
+}
+
+details.hint > summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+<!-- <div id="content"> -->
+    <h1>Lab Assignment 22</h1>
+    
+
+<div id="main-content">
+
+<div class="lab-section" id="lab-start-game">
+  <h2>Lab: Starting the Game (2 Screens)</h2>
+
+  <p>
+    In this lab, you’ll build a <b>Start Screen</b> and a <b>Game Screen</b>, then switch between them.
+    
+  </p>
+
+  <details class="lab-card" open>
+    <summary>Overview + Goal</summary>
+
+    <table class="summary-table">
+      <tr>
+        <th>You will build</th>
+        <th>Key idea</th>
+        <th>You’ll practice</th>
+      </tr>
+      <tr>
+        <td>Start screen + Game screen</td>
+        <td>Swap panels using <code>CardLayout</code></td>
+        <td>UI structure, events, state</td>
+      </tr>
+      
+    </table>
+
+    <p><b>Done looks like:</b></p>
+    <ul>
+      <li>App launches to a Start screen with a <b>Start</b> button.</li>
+      <li>Clicking Start switches to the Game screen and loads <code>level1.txt</code>.</li>
+      
+    </ul>
+  </details>
+
+  <details class="lab-card">
+    <summary>Card 1: Create a StartPanel screen</summary>
+
+    <p>Create a separate panel:</p>
+    <ul>
+      <li><code>StartPanel class </code>: title + Start button</li>
+      
+    </ul>
+
+    <p>
+    You will create <b>one new class</b>: <code>StartPanel</code>.
+  </p>
+
+
+    <p>
+      <code>StartPanel</code> is just a <code>JPanel</code> with:
+    </p>
+    <ul>
+      <li>A title (a <code>JLabel</code>) - "Game Start"</li>
+      <li>A <code>JButton</code> labeled <b>"Start"</b></li>
+      <li>Set layout as <code>setLayout(new BorderLayout());</code></li>
+    <li>Add the title and button to the panel:
+        add(title, BorderLayout.CENTER);
+        add(startButton, BorderLayout.SOUTH);
+    </li>
+    </ul>
+
+    <p>
+      This panel’s only job is to let the player start the game.
+    </p>
+  </details>
+
+<details class="lab-card">
+  <summary>Card 2: Update MyApp to use CardLayout</summary>
+
+  <p>
+    Right now, <code>MyApp</code> sets the game screen directly:
+  </p>
+
+  <pre><code class="language-java">frame.setContentPane(new Controller());</code></pre>
+
+  <p>
+    We want the game to start on a <b>Start screen</b>, then switch to the game.
+    To do this, replace the code above with a <code>JPanel</code> that uses
+    <code>CardLayout</code>.
+  </p>
+
+  <p><b>Step 2A: Create the CardLayout panel</b></p>
+  <pre><code class="language-java">JPanel cards = new JPanel(new CardLayout());</code></pre>
+
+  <p><b>Step 2B: Create the two screens</b></p>
+  <pre><code class="language-java">StartPanel startPanel = new StartPanel();
+Controller controller = new Controller();</code></pre>
+
+  <p><b>Step 2C: Add both screens to the CardLayout</b></p>
+  <pre><code class="language-java">cards.add(startPanel, "START");
+cards.add(controller, "GAME");</code></pre>
+
+  <p><b>Step 2D: Set the CardLayout panel as the content pane</b></p>
+  <pre><code class="language-java">frame.setContentPane(cards);</code></pre>
+
+  <p><b>Step 2E: Show the Start screen first</b></p>
+  <pre><code class="language-java">CardLayout cl = (CardLayout) cards.getLayout();
+cl.show(cards, "START");</code></pre>
+p><b>What does this code do?</b></p>
+
+<pre><code class="language-java">CardLayout cl = (CardLayout) cards.getLayout();
+cl.show(cards, "START");</code></pre>
+
+<p>
+The <code>CardLayout</code> is a layout manager that holds multiple panels,
+but shows only <b>one panel at a time</b>.
+</p>
+
+<p>
+Each panel is added with a name (for example, <code>"START"</code> or <code>"GAME"</code>).
+Calling <code>show(cards, "START")</code> tells Java:
+</p>
+<p>
+<b>“Display the panel named <code>START</code>.”</b>
+</p>
+
+<p>
+This is why the game opens on the Start screen instead of the game screen.
+</p>
+</details>
+
+<details class="lab-card">
+  <summary>Card 3: Pause the game until Start is clicked</summary>
+
+  <p>
+    Right now, <code>DrawingComponent</code> starts the timer in its constructor:
+    the game begins immediately.
+    Since we have a Start screen, we want the game to begin only after the user clicks <b>Start</b>.
+  </p>
+
+  <p><b>Change 1: Remove the timer.start() from the constructor</b></p>
+
+  <pre><code class="language-java">// at the end of the constructor:
+timer = new Timer(20, e -> {
+    // (keep your update/collision/repaint code)
+});
+
+// timer.start();  // REMOVE this line</code></pre>
+
+  <p><b>Change 2: Add a method to start the timer</b></p>
+
+  <pre><code class="language-java">public void startTimer() {
+    timer.start();
+}</code></pre>
+
+  <p>
+    Now the timer will only start when we call <code>startTimer()</code>.
+    We will call this method when the user clicks the Start button.
+  </p>
+</details>
+details class="lab-card">
+  <summary>Card 4: Let Controller start the game</summary>
+
+  <p>
+    The game timer lives inside <code>DrawingComponent</code>,
+    but <code>MyApp</code> should not access it directly.
+  </p>
+
+  <p>
+    Add a method to <code>Controller</code> that forwards the call.
+  </p>
+
+  <p><b>In Controller:</b></p>
+
+  <pre><code class="language-java">public void startGame() {
+    drawing.startTimer();
+}</code></pre>
+
+  <details class="hint">
+    <summary>Why do this?</summary>
+    <p>
+      <code>MyApp</code> controls screen switching.
+      <code>Controller</code> controls the game screen.
+      <code>DrawingComponent</code> controls the timer.
+    </p>
+  </details>
+</details>
+
+
+<details class="lab-card">
+  <summary>Card 4: Switch to the Game screen when Start is clicked</summary>
+
+  <p>
+    Now connect the <b>Start</b> button to the game.
+    When the button is clicked, the game should:
+  </p>
+
+  <ul>
+    <li>Start the game loop</li>
+    <li>Switch from the Start screen to the Game screen</li>
+  </ul>
+
+  <p><b>Add this in MyApp</b></p>
+
+  <pre><code class="language-java">startPanel.button.addActionListener(e -> {
+    controller.startGame();
+    cl.show(cards, "GAME");
+});</code></pre>
+
+  <details class="hint">
+    <summary>What happens here?</summary>
+    <p>
+      Clicking <b>Start</b> starts the timer in <code>DrawingComponent</code>
+      and tells <code>CardLayout</code> to show the game screen.
+    </p>
+  </details>
+</details>
+
+  <details class="lab-card">
+    <summary>Card 4: Level files (text maps) + Scanner parsing</summary>
+
+    <p>
+      Your level file is a grid of characters. Each character spawns something.
+      Example legend:
+    </p>
+
+    <table class="summary-table">
+      <tr><th>Char</th><th>Meaning</th></tr>
+      <tr><td><code>P</code></td><td>Player start (ball spawn)</td></tr>
+      <tr><td><code>E</code></td><td>Enemy spawn</td></tr>
+      <tr><td><code>#</code></td><td>Wall/solid tile (optional)</td></tr>
+      <tr><td><code>.</code></td><td>Empty space</td></tr>
+    </table>
+
+    <p>Parsing pattern (core idea): read line by line, scan each char:</p>
+
+    <pre><code class="language-java">int row = 0;
+while (scanner.hasNextLine()) {
+  String line = scanner.nextLine();
+  for (int col = 0; col &lt; line.length(); col++) {
+    char c = line.charAt(col);
+
+    int x = col * TILE_SIZE;
+    int y = row * TILE_SIZE;
+
+    if (c == 'P') { /* set player spawn */ }
+    else if (c == 'E') { /* add new Enemy(x, y) */ }
+  }
+  row++;
+}</code></pre>
+
+    <details class="hint">
+      <summary>Hint: Don’t spawn the Ball too early</summary>
+      <p>
+        Common bug from the demo: you create the ball before reading the file, then overwrite spawn coords.
+        Instead: read the file first → compute spawn → create the ball (or move it).
+      </p>
+    </details>
+  </details>
+
+  <details class="lab-card">
+    <summary>Card 5: “Level complete” rule → load next level</summary>
+
+    <p>
+      You need a condition like:
+      <b>when the enemies list is empty, the level is complete</b>.
+    </p>
+
+    <p>In your timer tick (or after collision handling):</p>
+
+    <pre><code class="language-java">if (enemies.isEmpty()) {
+  controller.loadNextLevel();
+}</code></pre>
+
+    <p>
+      Your <code>loadNextLevel()</code> should:
+    </p>
+    <ol>
+      <li>Increment level number</li>
+      <li>Clear old entities (enemies, walls, pickups)</li>
+      <li>Read the next level file</li>
+      <li>Reset/move player to new spawn</li>
+    </ol>
+
+    <details class="hint">
+      <summary>Hint: Avoid ghost enemies</summary>
+      <p>
+        If you forget to clear lists before loading, you’ll stack enemies from old levels. Clear first, then load.
+      </p>
+    </details>
+  </details>
+
+  <details class="lab-card">
+    <summary>Card 6: Switching back to Start (Game Over or Win)</summary>
+
+    <p>
+      Pick one:
+    </p>
+    <ul>
+      <li><b>Win condition:</b> no more level files exist → show “You win!” screen (or return to Start).</li>
+      <li><b>Game over:</b> if player collides with a “killer” enemy → return to Start.</li>
+    </ul>
+
+    <pre><code class="language-java">public void loadNextLevel() {
+  level++;
+  if (!levelFileExists(level)) {
+    stopTimer();
+    showStartScreen(); // or showWinScreen()
+    return;
+  }
+  loadLevel(level);
+}</code></pre>
+
+    <details class="hint">
+      <summary>Hint: How to check “file exists” quickly?</summary>
+      <p>
+        If you use <code>new File("level2.txt")</code>, you can check <code>exists()</code>.
+        If you use resources (<code>getResourceAsStream</code>), check for null.
+      </p>
+    </details>
+  </details>
+
+  <details class="lab-card">
+    <summary>Card 7: Clean architecture checkpoint (what goes where)</summary>
+
+    <p><b>Keep it simple, but not chaotic:</b></p>
+
+    <table class="summary-table">
+      <tr><th>Class</th><th>Responsibility</th></tr>
+      <tr><td><code>GameApp</code> (or <code>Main</code>)</td><td>JFrame, CardLayout, create panels</td></tr>
+      <tr><td><code>GameController</code></td><td>start game, load levels, switch screens</td></tr>
+      <tr><td><code>GamePanel</code></td><td>Timer loop, calling update/repaint</td></tr>
+      <tr><td><code>DrawingComponent</code></td><td>paint entities (ball/enemies/walls)</td></tr>
+      <tr><td><code>LevelLoader</code> (optional)</td><td>Scanner parsing logic</td></tr>
+    </table>
+
+    <details class="hint">
+      <summary>Hint: Minimum version</summary>
+      <p>
+        You can combine controller + loader for now. The big win is: <b>CardLayout in one place</b>,
+        <b>level loading in one place</b>.
+      </p>
+    </details>
+  </details>
+
+  <details class="lab-card">
+    <summary>Deliverables</summary>
+    <ul>
+      <li>Screenshot (or short clip) of Start screen → click Start → Game screen</li>
+      <li>Two level files (level1.txt, level2.txt) that clearly behave differently</li>
+      <li>Code: working CardLayout switching + level progression</li>
+    </ul>
+  </details>
+</div>
+
+
+</body>
+</html>
