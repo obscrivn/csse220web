@@ -6,11 +6,109 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-    body {
+body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
       font-family: Arial, sans-serif;
       margin: 20px;
       background-color: #f5f5f5;
-    }
+    } */
     #main-content {
       padding: 20px;
     }
@@ -37,15 +135,19 @@
     /* Content container */
     #content {
       padding: 20px;
-      margin-top: 90px; 
-      margin-bottom: 30px;
+      /* margin-top: 100px;  */
+      margin-bottom: 50px;
+      padding-top: 100px;
     }
-    
+    #section {
+margin-top: 1rem; 
+margin-bottom: 1rem;
+padding: 20px;
+} 
     .lab-section {
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 15px;
-      scroll-margin-top: 80px;
       margin-bottom: 20px;
       border-radius: 5px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -71,15 +173,15 @@
     }
     #lab-nav ul {
       list-style: none;
-      margin: 0;
       padding: 0;
+      margin: 0;
       display: flex;
       gap: 15px;
     }
     #lab-nav ul li a {
       text-decoration: none;
-      margin-left: 20px;
       color: #333;
+      margin-left: 20px;
       padding: 5px 10px;
       border-radius: 3px;
     }
@@ -111,38 +213,11 @@
       white-space: pre;
       margin-top: 10px;
     }
-
-    .run-btn {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background: #4caf50;   /* green circle */
-  border-radius: 50%;
-  position: relative;
-  top: 4px;
-  margin: 0 4px;
-}
-.run-btn::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 7px;
-  border-style: solid;
-  border-width: 6px 0 6px 10px;
-  border-color: transparent transparent transparent white;
-}
     .solution-header {
       font-weight: bold;
       margin-bottom: 5px;
       color: #2e7d32;
     }
-    /* Optional helpers—safe to omit if you already have similar styles */
-.card { background: var(--card); border:1px solid var(--line); border-radius: var(--radius);  }
-.hint { margin-top: 12px; }
-.hint > summary { cursor: pointer; font-weight: 600; }
-.hint[open] { border-left: 3px solid var(--accent, #4caf50); padding-left: 12px; }
-.muted { color: var(--muted); margin: 6px 0 10px; }
-.tiny-tips { font-size: 0.95rem; margin: 8px 0 0 0; }
 
     a.resource-ref {
   background-color: #444; /* dark background for contrast */
@@ -157,11 +232,26 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
 .lab-card {
   margin: 0 0 1rem 0;
   border-radius: 0.75rem;
   border: 1px solid #ddd;
-  background: #fafafa;
+  background: #fff;
   padding: 0.25rem 0.75rem 0.75rem;
 }
 
@@ -212,6 +302,19 @@ a.resource-ref:hover {
   margin-top: 0.25rem;
   padding-top: 0.5rem;
 }
+
+details.hint {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  border-left: 3px solid #aaa;
+}
+
+details.hint > summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
   </style>
 </head>
 <body>
@@ -229,23 +332,11 @@ a.resource-ref:hover {
 </div>
 <div id="content">
     <h1>Lab Assignment 01</h1>
-    <nav id="lab-nav">
-        <ul>
-          <li><a href="#lab-01">01. Coding Bat</a></li>
-          <li><a href="#lab-02">02. Backwards</a></li>
-          <li><a href="#lab-03">03. Formatting</a></li>
-          <li><a href="#lab-04">04. Conditionals</a></li>
-          <li><a href="#lab-05">05. For Loops</a></li>
-          
-         
-          <!-- Add more lab links as needed -->
-        </ul>
-      </nav>
-<!-- Lab Navigation Menu -->
+    
 
       <div id="main-content">
          <div class="lab-section" id="lab">
-          <h3>⚡ Submission Instructions</h3>
+           <h2>⚡ Instructions</h2>
 <ul>
   <li>
     <strong>Practice:</strong>
@@ -254,35 +345,45 @@ a.resource-ref:hover {
 
   <li>
     <strong>Graded work:</strong>
-    Use the provided Lab starter <strong>ZIP</strong> to complete Tasks 04 and 05.
+    Use the provided Lab starter <strong>ZIP</strong> to complete Tasks 03 and 04.
   </li>
-
-  <li>
-    <strong>What to submit on Gradescope:</strong>
-    From the Lab starter project, upload <code>ConditionalExamples.java</code> (Task 04)
-    and <code>ForLoops.java</code> (Task 05) to Gradescope (Lab 01).
-    You can find the Gradescope link on the Moodle page.
-  </li>
-
- 
-</ul>
-  <!-- <h3>⚡ 30-Second Setup Check</h3>
+  </ul>
+  <details class="lab-card" id="lab-00" open>
+<summary><h3>How to Import a ZIP File into Eclipse</h3></summary>
+  <p>Follow these steps to import a ZIP file containing an Eclipse project:</p>
   <ol>
-    <li>Open <strong>Eclipse</strong> → <em>File → New → Java Project</em> → name it <code>Week1Practice</code>.</li>
-    <li>In the <code>Week1Practice</code> project, right-click <code>src</code> → <em>New → Package</em> → name it <code>practice</code>.</li>
-    <li>Create your first class:
+    <li>
+      <strong>Download the ZIP File (containing a project)</strong> to your computer but do not place 
+      in the eclipse workspace folder: <a href="./Lab01.zip">Click here to donwload ZIP</a>
+    </li>
+    <li>
+      <strong>Open Eclipse:</strong> <em>You do not need to create a new project</em> because the ZIP file contains an existing project.
+    </li>
+    <li>
+      <strong>Import the Project:</strong>
       <ol>
-        <li>Right-click the <code>practice</code> package → <em>New → Class</em></li>
-        <li>Set <strong>Name</strong> to <code>Printing</code></li>
-        <li>Check the box <strong>public static void main(String[] args)</strong> to auto-add <code>main</code>.</li>
-        <li>Click <em>Finish</em></li>
+        <li>Click on <code>File</code> in the menu bar and select <code>Import...</code>.</li>
+        <li>In the Import Wizard, expand the <strong>General</strong> category and select <strong>Existing Projects into Workspace</strong>. Click <strong>Next</strong>.</li>
+        <li>Select the <strong>Select archive file</strong> option and click the <strong>Browse...</strong> button</li>
+        <li>Navigate to the location where you saved the ZIP file, select it, and click <strong>Open</strong></li>
+        <li>The wizard will display the project(s) contained in the ZIP file. Make sure the desired project is checked</li>
+        <li>Check if the box <strong>Copy projects into workspace</strong> is selected</li>
+        <li>Click <strong>Finish</strong> to complete the import process</li>
       </ol>
     </li>
-    <li>Run it once (even if it’s empty): click the green <span class="run-btn">  </span> button to confirm your setup.</li>
-  </ol>
-</div> -->
-    <!-- <div class="lab-card" class="lab-section" id="lab-01" open> -->
-      <details class="lab-card" id="lab-01" open>
+    <li>
+      <strong>Verify the Imported Project:</strong> The project should now appear in your Package Explorer. Double-click it to open and review its contents.
+    </li>
+  </ol> 
+  <h3>What to submit on Gradescope:</h3>
+  <p>
+    
+    From the Lab starter project, upload <code>ConditionalExamples.java</code> (Task 03)
+    and <code>ForLoops.java</code> (Task 04) to Gradescope (Lab 01).
+    You can find the Gradescope link on the Moodle page.
+  </p>
+</details>
+      <details class="lab-card" id="lab-01">
         <summary>
     <span class="lab-label">01.</span>
     <span class="lab-title">Coding Bat</span>
@@ -308,45 +409,11 @@ a.resource-ref:hover {
           First, print each one separately per line. 
           Then, print all variables together in one statement by concatenating them and separating by a space. Do not forget to add "Combined:". -->
         </p>
-        <p><strong>Expected Output:</strong></p>
-        <div class="code-window">
-    42
-    Hello, World!
-    A
-    Combined: 42 Hello, World! A
-        </div>
-        <!-- Collapsible hint panel -->
-  <details class="hint">
-    <summary>Need a hint? See what <code>Printing.java</code> should look like</summary>
-    
-    <pre><code class="language-java">package practice;
-
-public class Printing {
-    public static void main(String[] args) {
-        // example int
-        // example String
-        // example char
-
-        // Each on its own line:
-        System.out.println(...);
-        System.out.println(...);
-        System.out.println(...);
-
-        // One combined line starting with "Combined:"
-        System.out.println(...);
-    }
-}
-</code></pre>
-    <ul class="tiny-tips">
-      <li><strong>File name</strong> must match the class name: <code>Printing.java</code></li>
-      <li><strong>Package</strong> line should be exactly <code>package practice;</code></li>
-      <li>If you see red squiggles, hover over to see error and how to fix it suggestions, and re-run.</li>
-    </ul>
-  </details>
+        
   </details>
       <!-- </div> -->
 
- <details class="lab-card" id="lab-02" open>
+ <details class="lab-card" id="lab-02" >
         <summary>
     <span class="lab-label">02.</span>
     <span class="lab-title">Backwards</span>
@@ -383,82 +450,10 @@ public class Printing {
  
 </details>
 </details>
-        <!-- <p><strong>Advanced Challenge (Optional)</strong>: propose two different solutions and calculate the time execution</p>
-      <div class="solution-window">
-#HINT:  Use System.nanoTime()
-It requires `long` type
-Calculate the difference between the end time and the start time
-</div> -->
-    <!-- </div> -->
-     
- <details class="lab-card" id="lab-03" open>
+      
+ <details class="lab-card" id="lab-04" >
         <summary>
     <span class="lab-label">03.</span>
-    <span class="lab-title">Formatting String</span>
-    <span class="lab-tag">Practice</span>
-  </summary>
-    <!-- <div class="lab-section" id="lab3">
-        <h2>03. Formatting a string</h2> -->
-        <p>Resources: <a href="../resources.html#printf" class="resource-ref" target="_blank">Formating String</a></p>
-        <p>Write a program  <code>CoffeeShopInventory</code>  for a coffee shop inventory.
-The program should display the shop's name <code>shopName</code>, number of coffee types <code>coffeeTypes</code>, 
-average price <code>averagePrice</code>, and whether it is open <code>isOpen</code> (Use the print statement below).
-   
-<div class="code-window">
-  Shop: Java Beans
-  Types: 5
-  Average Price: 3.99
-  Open: true
-   </div>
-
-   <h4>Step 1: Using concatenation with <code>println</code></h4>
-
-<p>First, declare your variables and use the values from the example above:</p>
-<ul>
-  <li><code>String shopName</code></li>
-  <li><code>int coffeeTypes</code></li>
-  <li><code>double averagePrice</code></li>
-  <li><code>boolean isOpen</code></li>
-</ul>
-
-<p>
-  Then use <strong>string concatenation</strong> with <code>System.out.println</code> to print everything on one line.
-  Example expected style (your values can match this):
-</p>
-
-<pre><code>Shop: Java Beans Types: 5 Average Price: 3.99 Open: true
-</code></pre>
-
-    <h4>Step 2: Using <code>printf</code> for formatted output</h4>
-
-   <p>Learn about printf() and
-  add another output line using <code>System.out.printf</code> to format the output as shown below. Make sure you understand each format specifier used.
-   </p>
-      <div class="solution-window">
-System.out.printf("Shop: %s Types: %d Average Price: %.2f Open: %b", shopName, coffeeTypes, averagePrice, isOpen);
-   </div>
-</p>
-   <!-- <details class="hint">
-  <summary>💡 Hint: New Line in printf</summary>
-  <p>You can add a new line in two ways when using <code>printf</code>:</p>
-  <ul>
-    <li><code>\n</code> → works on most systems, commonly seen in examples</li>
-    <li><code>%n</code> → recommended, because it automatically uses the correct line ending 
-        for the operating system (Windows, Mac, Linux)</li>
-  </ul>
-
-  <p>Both of these will print two lines:</p>
-  <pre><code class="language-java">
-System.out.printf("Shop: %s\nAverage Price: $%.2f\n", shopName, averagePrice);
-System.out.printf("Shop: %s%nAverage Price: $%.2f%n", shopName, averagePrice);
-</code></pre>
- 
-</details> -->
-</details>
-<!-- </div> -->
- <details class="lab-card" id="lab-04" open>
-        <summary>
-    <span class="lab-label">04.</span>
     <span class="lab-title">Conditionals</span>
     <span class="lab-tag">Submission</span>
   </summary>
@@ -466,32 +461,7 @@ System.out.printf("Shop: %s%nAverage Price: $%.2f%n", shopName, averagePrice);
   <!-- <h2>04. Working with Conditionals (Submission)</h2> -->
   <p>Resources 1: <a href="../resources.html#return" class="resource-ref" target="_blank">Calling Methods</a></p>
   <p>Resources 2: <a href="../resources.html#conditionals" class="resource-ref" target="_blank">Conditionals</a></p>
- <h3>How to Import a ZIP File into Eclipse</h3>
-  <p>Follow these steps to import a ZIP file containing an Eclipse project:</p>
-  <ol>
-    <li>
-      <strong>Download the ZIP File (containing a project)</strong> to your computer but do not place 
-      in the eclipse workspace folder: <a href="./Lab01.zip">Click here to donwload ZIP</a>
-    </li>
-    <li>
-      <strong>Open Eclipse:</strong> <em>You do not need to create a new project</em> because the ZIP file contains an existing project.
-    </li>
-    <li>
-      <strong>Import the Project:</strong>
-      <ol>
-        <li>Click on <code>File</code> in the menu bar and select <code>Import...</code>.</li>
-        <li>In the Import Wizard, expand the <strong>General</strong> category and select <strong>Existing Projects into Workspace</strong>. Click <strong>Next</strong>.</li>
-        <li>Select the <strong>Select archive file</strong> option and click the <strong>Browse...</strong> button</li>
-        <li>Navigate to the location where you saved the ZIP file, select it, and click <strong>Open</strong></li>
-        <li>The wizard will display the project(s) contained in the ZIP file. Make sure the desired project is checked</li>
-        <li>Check if the box <strong>Copy projects into workspace</strong> is selected</li>
-        <li>Click <strong>Finish</strong> to complete the import process</li>
-      </ol>
-    </li>
-    <li>
-      <strong>Verify the Imported Project:</strong> The project should now appear in your Package Explorer. Double-click it to open and review its contents.
-    </li>
-  </ol> 
+ 
   
   
 <h3>🛠 Instructions:</h3>
@@ -504,80 +474,24 @@ Open ConditionalsExamples.java file (double-click to open in the editor) from th
 
 <p><strong>✅ Quick Checklist:</strong></p>
 <ul>
-  <li>There are no red ❌ errors in the editor (except possibly TODO placeholders).</li>
-  <li>You can run the file with the <span class="run-btn"></span> <em>green Run button</em> and see some output in the Console.</li>
+  <li>There are no red ❌ errors in the editor.</li>
+  <li>Run the file with the <span class="run-btn"></span> <em>green Run button</em> and see some output in the Console.</li>
 </ul>
 
 
-<details class="hint">
-  <summary>💡 Hint 1: getCubedMessage</summary>
-  <p>To “cube” a number, multiply it by itself three times: <code>n * n * n</code>.  
-     This method should <em>return a String</em> (like: <code>"2.0 cubed is 8.0"</code>), not print it.</p>
-  <p>If you want the number to look like an integer (e.g., <code>2</code> instead of <code>2.0</code>), you can cast:  
-     <code>(int)n</code>.</p>
-</details>
 
 <details class="hint">
-  <summary>💡 Hint 2: isDivisibleBy3</summary>
+  <summary>💡 Hint: isDivisibleBy3</summary>
   <p>Use the modulo operator <code>%</code> to check divisibility.  
      If <code>i % 3 == 0</code>, then <code>i</code> is divisible by 3.</p>
-  <p>This method returns a <code>boolean</code>, so just return the condition directly.</p>
+  <p>This method returns a <code>boolean</code>, so you can just return the condition directly.</p>
 </details>
 
-<details class="hint">
-  <summary>💡 Hint 3: checkGuess</summary>
-  <p>You’re comparing the player’s guess to the target number.  
-     Think through the possible outcomes:</p>
-  <ul>
-    <li>If guess is too low → return a message like <code>"Higher!"</code></li>
-    <li>If guess is too high → return <code>"Lower!"</code></li>
-    <li>If guess matches → return <code>"Perfect!"</code></li>
-  </ul>
-  <p>Use <code>if / else if / else</code> to cover all cases.</p>
-</details>
-
-<details class="hint">
-  <summary>💡 Hint 3: isWayBigger</summary>
-  <p>Decide what “way bigger” means.  
-     One simple rule: <code>a</code> is way bigger if it’s more than 100 × <code>b</code>.  
-     That’s literally a one-line boolean return.</p>
-</details>
-
-
-<details class="hint">
-  <summary>💡 Hint 5: guessCubeRoot</summary>
-  <p>You’re doing the reverse of cubing: find a number <code>g</code> so that  
-     <code>g * g * g</code> is close to <code>x</code>.  
-     Start with a simple guess and adjust from there.</p>
-</details>
-
-<details class="hint">
-  <summary>💡 Hint 6: printDivisibleBy3</summary>
-  <p>Use the modulo operator <code>%</code> to check divisibility:  
-     <code>if (i % 3 == 0)</code>.  
-     Then print the result inside each branch.</p>
-</details>
-
-<details class="hint">
-  <summary>💡 Hint 7: Why use <code>/ 3.0</code> instead of <code>/ 3</code>?</summary>
-  <p>If your parameters are already <code>double</code>, then <code>/ 3</code> and <code>/ 3.0</code> give the same result: Java will automatically treat the <code>3</code> as <code>3.0</code> during the calculation.</p>
-  <p><strong>But</strong> if your parameters are <code>int</code>, then <code>/ 3</code> triggers <em>integer division</em>, which chops off decimals. Example:</p>
-  <pre>
-(2 + 3 + 8) = 13
-13 / 3     = 4     ← integer division 😬
-  </pre>
-  <p>Using <code>/ 3.0</code> forces Java to do <em>floating-point division</em>, which keeps the decimal part:</p>
-  <pre>
-(2 + 3 + 8) = 13
-13 / 3.0   = 4.3333...  ← floating-point division 😌
-  </pre>
-  <p><strong>TL;DR:</strong> <em><code>/ 3.0</code> is the safe option that always gives you the correct decimal average.</em></p>
-</details>
  </details>   
 <!-- </div> -->
- <details class="lab-card" id="lab-05" open>
+ <details class="lab-card" id="lab-05" >
         <summary>
-    <span class="lab-label">05.</span>
+    <span class="lab-label">04.</span>
     <span class="lab-title">For Loops</span>
     <span class="lab-tag">Submission</span>
   </summary>
