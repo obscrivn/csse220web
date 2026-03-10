@@ -358,7 +358,7 @@ details.hint > summary {
     Use the provided Lab starter <strong>ZIP</strong> to complete required tasks.
   </li>
   </ul>
-<details class="lab-card" id="lab-00" open>
+<details class="lab-card" id="lab-00">
 <summary><h3>How to Import a ZIP File into Eclipse</h3></summary>
 <ol>
     <li>
@@ -421,9 +421,139 @@ details.hint > summary {
         </p>
         
   </details>
-<details class="lab-card" id="lab-01">
-        <summary>
+
+  <details class="lab-card" id="lab-02">
+  <summary>
     <span class="lab-label">02.</span>
+    <span class="lab-title">ArrayList</span>
+    <span class="lab-tag">Practice</span>
+  </summary>
+
+  <div class="lab-content">
+
+  <p>
+  In this short activity we experiment with <strong>ArrayList</strong>, a flexible version of an array that can grow as items are added.
+  This exercise also demonstrates how to <strong>create packages, classes, and import Java libraries</strong>.
+  </p>
+
+  <h4>1. Create a Package</h4>
+
+  <p>In Eclipse:</p>
+  <ol>
+    <li>Right-click your <strong>src</strong> folder</li>
+    <li>Select <strong>New → Package</strong></li>
+    <li>Name the package:</li>
+  </ol>
+
+<pre><code>arrayspractice</code></pre>
+
+  <h4>2. Create a Class</h4>
+
+  <p>Inside the package, create a new class:</p>
+
+  <ol>
+    <li>Right-click the <strong>arrayspractice</strong> package</li>
+    <li>Select <strong>New → Class</strong></li>
+    <li>Name the class:</li>
+  </ol>
+
+<pre><code>ArrayListPractice</code></pre>
+
+  <p>Make sure to check <strong>public static void main</strong>.</p>
+
+  <h4>3. Import the ArrayList Library</h4>
+
+  <p>Add this line at the top of your file (below the package statement):</p>
+
+<pre><code>import java.util.ArrayList;</code></pre>
+
+  <h4>4. Create an ArrayList</h4>
+<p>Inside the <code>main</code> method, create an ArrayList to store integer values:
+</p>
+<pre><code>ArrayList&lt;Integer&gt; scores = new ArrayList&lt;Integer&gt;();</code></pre>
+
+  <p>This creates an empty ArrayList that stores scores values.</p>
+
+  <h4>5. Add Values</h4>
+
+<pre><code>scores.add(10);
+scores.add(20);
+scores.add(30);
+scores.add(40);</code></pre>
+
+  <h4>6. Access a Value</h4>
+
+<pre><code>System.out.println(scores.get(0));</code></pre>
+
+  <p>This prints the first element.</p>
+
+  <h4>7. Check the Size</h4>
+
+<pre><code>System.out.println(scores.size());</code></pre>
+
+  <h4>8. Remove an Element</h4>
+
+<pre><code>scores.remove(1);</code></pre>
+
+  <p>Print the size again to see how the list changed.</p>
+
+  <h4>9. Loop Through the ArrayList</h4>
+
+<pre><code>for (int i = 0; i &lt; scores.size(); i++) {
+  System.out.println(scores.get(i));
+}</code></pre>
+
+  <h4>Quick Challenge</h4>
+
+  <p>Modify the program so that:</p>
+
+  <ul>
+    <li>Create an <code>ArrayList&lt;String&gt;</code></li>
+    <li>Add three course names</li>
+    <li>Print them using a loop</li>
+  </ul>
+
+  <h4>Array vs ArrayList</h4>
+
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>Array</th>
+      <th>ArrayList</th>
+    </tr>
+    <tr>
+      <td>Size</td>
+      <td>Fixed</td>
+      <td>Dynamic</td>
+    </tr>
+    <tr>
+      <td>Access</td>
+      <td><code>arr[i]</code></td>
+      <td><code>list.get(i)</code></td>
+    </tr>
+    <tr>
+  <td>Modification (set value)</td>
+  <td><code>arr[i] = value</code></td>
+  <td><code>list.set(i, value)</code></td>
+</tr>
+    <tr>
+      <td>Add item</td>
+      <td>Not supported</td>
+      <td><code>add()</code></td>
+    </tr>
+    <tr>
+      <td>Remove item</td>
+      <td>Not supported</td>
+      <td><code>remove()</code></td>
+    </tr>
+  </table>
+
+  </div>
+</details>
+
+<details class="lab-card" id="lab-03">
+        <summary>
+    <span class="lab-label">03.</span>
     <span class="lab-title">Arrays</span>
     <span class="lab-tag">Submission</span>
   </summary>
