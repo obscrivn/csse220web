@@ -212,6 +212,19 @@ a.resource-ref:hover {
   margin-top: 0.25rem;
   padding-top: 0.5rem;
 }
+
+details.hint {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  border-left: 3px solid #aaa;
+}
+
+details.hint > summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
   </style>
 </head>
 <body>
@@ -219,7 +232,7 @@ a.resource-ref:hover {
     <a id="index_link" href="../index.html">CSSE 220</a>
     <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
     <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="./design-principles.html">Design</a>
     <a id="quiz_link" href="../labs.html">Labs</a>
     <a id="quiz_link" href="../homework.html">Homework</a>
     <a id="quiz_link" href="../exams.html">Exams</a>
@@ -248,27 +261,66 @@ a.resource-ref:hover {
         <p>Today’s lab introduces two essential Java data structures: 2D arrays and HashMaps.  
   These patterns are heavily used in next week’s homework (and future game projects),  
   so this lab is your warm-up to build confidence before the challenge ramps up.</p>
-<h3>⚡ Submission Instructions</h3>
-
+<h3>⚡ Instructions</h3>
 <ul>
-<li>Download starter zip file: <a href="../labs/Lab03.zip">Lab03.zip</a> and import it into Eclipse as Existing Project (see Lab02 for details).</li>
+  <li>
+    <strong>Practice:</strong>
+    In <a href="https://codingbat.com/java" target="_blank">Coding Bat</a>, work through Practice exercices to get comfortable with the concepts.
+  </li>
 
   <li>
     <strong>Graded work:</strong>
-    Complete the required methods in <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code>.
+    Use the provided Lab starter <strong>ZIP</strong> to complete required tasks.
   </li>
+  </ul>
+
+  <details class="lab-card" id="lab-00">
+<summary><h3>Lab ZIP File</h3></summary>
+<ul>
+<li>Download starter zip file: <a href="../labs/Lab03.zip">Lab03.zip</a> and import it into Eclipse as Existing Project (see Lab02 for details).</li>
+<!-- 
+  <li>
+    <strong>Graded work:</strong>
+    Complete the required methods in <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code>.
+  </li> -->
 
   <li>
     <strong>What to submit on Gradescope:</strong>
     Upload your completed <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code> files to the Lab 03 assignment.
     The Gradescope link is available on Moodle.
   </li>
-
-  <li>
-    <strong>Do NOT submit:</strong>
-    the entire ZIP project, Eclipse workspace files, or any <code>.class</code> files.
-  </li>
 </ul>
+</details>
+<details class="lab-card" id="lab-01">
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Coding Bat</span>
+    <span class="lab-tag">Practice</span>
+  </summary>
+  <div class="lab-body">
+      <!-- <h2>01. Print</h2> -->
+       <p>Resources 1: <a href="../resources.html#arrays" class="resource-ref" target="_blank">Arrays & ArrayList</a></p>
+       <p>Resources 2: <a href="../resources.html#hashmap" class="resource-ref" target="_blank">HashMap</a></p>
+        <p>
+          Complete the following practice:
+          <ol>
+
+            <li><a href="https://codingbat.com/prob/p162010" target="_blank">countEven</a></li>
+            
+          <li><a href="https://codingbat.com/prob/p121853" target="_blank">has22</a></li>
+          <li><a href="https://codingbat.com/prob/p194525" target="_blank">lucky13</a></li>
+          <li><a href="https://codingbat.com/prob/p197888" target="_blank">mapBully</a></li>
+          <li><a href="https://codingbat.com/prob/p107259" target="_blank">mapAB</a></li>
+          <li><a href="https://codingbat.com/prob/p182712" target="_blank">topping1</a></li>
+        
+        
+        </ol>
+         
+        </p>
+        
+  </details>
+
+
 <details class="lab-card">
   <summary><strong>Part 1. 2D Array Practice</strong></summary>
 
