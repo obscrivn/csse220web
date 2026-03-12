@@ -6,11 +6,109 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-    body {
+body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
       font-family: Arial, sans-serif;
       margin: 20px;
       background-color: #f5f5f5;
-    }
+    } */
     #main-content {
       padding: 20px;
     }
@@ -37,15 +135,19 @@
     /* Content container */
     #content {
       padding: 20px;
-      margin-top: 90px; 
-      margin-bottom: 30px;
+      /* margin-top: 100px;  */
+      margin-bottom: 50px;
+      padding-top: 100px;
     }
-    
+    #section {
+margin-top: 1rem; 
+margin-bottom: 1rem;
+padding: 20px;
+} 
     .lab-section {
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 15px;
-      scroll-margin-top: 80px;
       margin-bottom: 20px;
       border-radius: 5px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -71,15 +173,15 @@
     }
     #lab-nav ul {
       list-style: none;
-      margin: 0;
       padding: 0;
+      margin: 0;
       display: flex;
       gap: 15px;
     }
     #lab-nav ul li a {
       text-decoration: none;
-      margin-left: 20px;
       color: #333;
+      margin-left: 20px;
       padding: 5px 10px;
       border-radius: 3px;
     }
@@ -111,38 +213,11 @@
       white-space: pre;
       margin-top: 10px;
     }
-
-    .run-btn {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background: #4caf50;   /* green circle */
-  border-radius: 50%;
-  position: relative;
-  top: 4px;
-  margin: 0 4px;
-}
-.run-btn::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 7px;
-  border-style: solid;
-  border-width: 6px 0 6px 10px;
-  border-color: transparent transparent transparent white;
-}
     .solution-header {
       font-weight: bold;
       margin-bottom: 5px;
       color: #2e7d32;
     }
-    /* Optional helpers—safe to omit if you already have similar styles */
-.card { background: var(--card); border:1px solid var(--line); border-radius: var(--radius);  }
-.hint { margin-top: 12px; }
-.hint > summary { cursor: pointer; font-weight: 600; }
-.hint[open] { border-left: 3px solid var(--accent, #4caf50); padding-left: 12px; }
-.muted { color: var(--muted); margin: 6px 0 10px; }
-.tiny-tips { font-size: 0.95rem; margin: 8px 0 0 0; }
 
     a.resource-ref {
   background-color: #444; /* dark background for contrast */
@@ -157,11 +232,26 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
 .lab-card {
   margin: 0 0 1rem 0;
   border-radius: 0.75rem;
   border: 1px solid #ddd;
-  background: #fafafa;
+  background: #fff;
   padding: 0.25rem 0.75rem 0.75rem;
 }
 
@@ -242,19 +332,7 @@ details.hint > summary {
 </div>
 <div id="content">
     <h1>Lab Assignment 03</h1>
-    <!-- <nav id="lab-nav">
-        <ul>
-          <li><a href="#lab-01">01. Print</a></li>
-          <li><a href="#lab-02">02. Backwards</a></li>
-          <li><a href="#lab-03">03. Formatting</a></li>
-          <li><a href="#lab-04">04. Conditionals</a></li>
-          <li><a href="#lab-05">05. For Loops</a></li>-->
-          
-         
-          <!-- Add more lab links as needed -->
-        <!-- </ul>
-      </nav> --> 
-<!-- Lab Navigation Menu -->
+  
 
       <div id="main-content">
          <div class="lab-section" id="lab">
@@ -320,131 +398,130 @@ details.hint > summary {
         
   </details>
 
+<details class="lab-card" id="lab-02-array">
+  <summary>
+    <span class="lab-label">02.</span>
+    <span class="lab-title">2D Arrays</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
 
-<details class="lab-card">
-  <summary><strong>Part 1. 2D Array Practice</strong></summary>
+  <h3>🛠 Instructions:</h3>
+  Open the <code>Lab03</code> project in Eclipse and find the file for the 2D Array practice. You will be submitting this file to Gradescope.
+  <strong>Complete the TODOs:</strong><br>
+  In the opened file, look for comments that say
+  <code>// TODO Implement this method</code> (or <code>// TODO</code>).
+  Type your solution <em>inside</em> without changing the method headers.
 
-  <h3>Exercise 1: sumAll</h3>
+  <p><strong>✅ Quick Checklist:</strong></p>
+  <ul>
+    <li>There are no red ❌ errors in the editor.</li>
+    <li>Run the file with the <span class="run-btn"></span> <em>green Run button</em> and check the Console output.</li>
+    <li>Make sure each method returns the correct value before submitting.</li>
+  </ul>
 
-  <p>
-    Implement <code>sumAll(int[][] grid)</code> to return the sum of every value in the 2D array.
-  </p>
-
-  <pre><code>public static int sumAll(int[][] grid) {
-    // TODO: nested loops to add everything
-    return 0;
-}</code></pre>
+ 
 
   <details class="hint">
     <summary>💡 Hint: sumAll</summary>
-    Use a nested <code>for</code> loop. The outer loop iterates rows, the inner loop iterates columns  
-    inside that row. Add each <code>grid[r][c]</code> to a running total.
+    <p>This is a good place for <strong>nested loops</strong>:</p>
+    <ol>
+      <li>Make a variable like <code>sum</code> and start it at <code>0</code>.</li>
+      <li>Use the outer loop to go through each row.</li>
+      <li>Use the inner loop to go through each value in that row.</li>
+      <li>Add each value to <code>sum</code>.</li>
+      <li>Return <code>sum</code> at the end.</li>
+    </ol>
   </details>
 
-  <hr />
-
-  <h3>Exercise 2: sumRow</h3>
-
-  <p>
-    Implement <code>sumRow(int[][] grid, int rowIndex)</code> to compute the sum of a specific row.
-  </p>
-
-  <pre><code>public static int sumRow(int[][] grid, int rowIndex) {
-    // TODO: loop across columns in the row
-    return 0;
-}</code></pre>
+  
 
   <details class="hint">
     <summary>💡 Hint: sumRow</summary>
-    Only one loop needed: loop through <code>grid[rowIndex]</code> and sum all elements.
+    <p>You only need <strong>one loop</strong> here:</p>
+    <ol>
+      <li>Pick the row using <code>grid[rowIndex]</code>.</li>
+      <li>Loop through every value in that row.</li>
+      <li>Add each value to a running total.</li>
+      <li>Return the total.</li>
+    </ol>
   </details>
 
-  <hr />
-
-  <h3>Exercise 3: countValue</h3>
-
-  <p>
-    Implement <code>countValue(int[][] grid, int target)</code>  
-    to count how many times <code>target</code> appears in the grid.
-  </p>
-
-  <pre><code>public static int countValue(int[][] grid, int target) {
-    // TODO: nested scan + counter
-    return 0;
-}</code></pre>
+  
 
   <details class="hint">
     <summary>💡 Hint: countValue</summary>
-    Classic pattern: initialize <code>count = 0</code>, scan with nested loops, and increment  
-    when <code>grid[r][c] == target</code>. Return <code>count</code> at the end.
+    <p>This is another nested loop pattern:</p>
+    <ol>
+      <li>Start with <code>count = 0</code>.</li>
+      <li>Go through every row and every column.</li>
+      <li>Check whether <code>grid[r][c] == target</code>.</li>
+      <li>If yes, increase <code>count</code> by 1.</li>
+      <li>Return <code>count</code>.</li>
+    </ol>
   </details>
-
 </details>
 
-<details class="lab-card">
-  <summary><strong>Part 2. HashMap Practice</strong></summary>
+<details class="lab-card" id="lab-03-map">
+  <summary>
+    <span class="lab-label">03.</span>
+    <span class="lab-title">HashMap</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
 
-  <h3>Exercise 4: countOccurrences</h3>
+  <h3>🛠 Instructions:</h3>
+  In the same <code>Lab03</code> project, open the file for the HashMap practice. You will also submit this file to Gradescope.
+  <strong>Complete the TODOs:</strong><br>
+  Look for comments that say
+  <code>// TODO Implement this method</code> (or <code>// TODO</code>).
+  Write your code <em>inside</em> the methods without changing the method headers.
 
-  <p>
-    Implement <code>countOccurrences(String[] items)</code> to build a frequency map.
-  </p>
+  <p><strong>✅ Quick Checklist:</strong></p>
+  <ul>
+    <li>Make sure <code>import java.util.HashMap;</code> is included if needed.</li>
+    <li>There are no red ❌ errors in the editor.</li>
+    <li>Run the file and check the Console output before submitting.</li>
+  </ul>
 
-  <pre><code>public static HashMap&lt;String,Integer&gt; countOccurrences(String[] items) {
-    // TODO: build map of item → count
-    return null;
-}</code></pre>
+  
 
   <details class="hint">
     <summary>💡 Hint: countOccurrences</summary>
-    For each item:
-    <ul>
-      <li>If it's new → <code>put(item, 1)</code></li>
-      <li>If seen before → <code>put(item, map.get(item) + 1)</code></li>
-    </ul>
-    Avoid using one shared counter variable. Each key manages its own count via <code>map.get()</code>.
+    <p>Think of the map as storing each word and how many times it appears:</p>
+    <ol>
+      <li>Create a new <code>HashMap&lt;String, Integer&gt;</code>.</li>
+      <li>Loop through each item in the array.</li>
+      <li>If the item is not in the map yet, put it in with value <code>1</code>.</li>
+      <li>If it is already there, update its count using <code>map.get(item) + 1</code>.</li>
+      <li>Return the map at the end.</li>
+    </ol>
   </details>
 
-  <hr />
-
-  <h3>Exercise 5: getScoreOrDefault</h3>
-
-  <p>
-    Implement <code>getScoreOrDefault(HashMap&lt;String,Integer&gt; scores, String name)</code>.
-  </p>
-
-  <pre><code>public static int getScoreOrDefault(HashMap&lt;String,Integer&gt; scores, String name) {
-    // TODO: safe lookup
-    return 0;
-}</code></pre>
+  
 
   <details class="hint">
     <summary>💡 Hint: getScoreOrDefault</summary>
-    Use <code>containsKey(name)</code>:  
-    if true → return <code>scores.get(name)</code>;  
-    otherwise → return <code>0</code>.
+    <p>This is a safe lookup pattern:</p>
+    <ol>
+      <li>Check whether the map contains the key using <code>containsKey(name)</code>.</li>
+      <li>If it does, return <code>scores.get(name)</code>.</li>
+      <li>If not, return <code>0</code>.</li>
+    </ol>
   </details>
 
-  <hr />
-
-  <h3>Exercise 6: totalScore</h3>
-
-  <p>
-    Implement <code>totalScore(HashMap&lt;String,Integer&gt; scores)</code>  
-    to sum all stored values.
-  </p>
-
-  <pre><code>public static int totalScore(HashMap&lt;String,Integer&gt; scores) {
-    // TODO: iterate scores.values()
-    return 0;
-}</code></pre>
+  
 
   <details class="hint">
     <summary>💡 Hint: totalScore</summary>
-    Loop through <code>scores.values()</code>, add each to <code>sum</code>, and return it.
+    <p>You do not need the keys here, only the values:</p>
+    <ol>
+      <li>Start with <code>sum = 0</code>.</li>
+      <li>Loop through <code>scores.values()</code>.</li>
+      <li>Add each value to <code>sum</code>.</li>
+      <li>Return <code>sum</code>.</li>
+    </ol>
   </details>
-
 </details>
+
 <details class="lab-card">
   <summary><strong>📚 Quick Reference: 2D Arrays &amp; HashMaps</strong></summary>
 
