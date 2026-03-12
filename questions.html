@@ -196,6 +196,38 @@ check our resources <a href="https://obscrivn.github.io/csse220web/resources.htm
 <details class="lab-card">
   <summary>🧱 Arrays vs ArrayLists (Big One)</summary>
 
+<p><b>Is there an easy way to remember the syntax difference between arrays and ArrayList?</b><br>
+Arrays use square brackets like <code>arr[index]</code>. ArrayLists use methods like <code>list.get(index)</code> and <code>list.add(value)</code>.</p>
+
+<p><b>How do we add values to arrays?</b><br>
+Arrays have fixed size, so you cannot use <code>add()</code>. You assign values to positions like <code>arr[0] = 10</code>.</p>
+
+<p><b>Why would we use arrays if ArrayList exists?</b><br>
+Arrays are simpler, faster, and use less memory. ArrayList is more flexible because it can grow.</p>
+
+<p><b>Is ArrayList similar to Python lists?</b><br>
+Yes. Both store dynamic collections and allow adding items with methods like <code>add()</code> in Java or <code>append()</code> in Python.</p>
+
+<p><b>Should we use ArrayList if the length is fixed?</b><br>
+Usually no. If you know the size ahead of time, arrays are simpler and slightly more efficient.</p>
+
+<p><b>Can an ArrayList store arrays?</b><br>
+Yes. Arrays are objects in Java, so something like <code>ArrayList&lt;int[]&gt;</code> is valid.</p>
+
+<p><b>Why does ArrayList&lt;int[]&gt; work without using Integer?</b><br>
+Because the ArrayList stores the array object itself. The array <code>int[]</code> is already an object even though <code>int</code> is a primitive.</p>
+
+<p><b>What are the most useful ArrayList methods?</b><br>
+Common ones include <code>add()</code>, <code>get()</code>, <code>set()</code>, <code>remove()</code>, <code>size()</code>, and <code>contains()</code>.</p>
+
+<p><b>Why does ArrayList store objects instead of primitives?</b><br>
+ArrayList is part of Java’s <em>Collections Framework</em>, which works with objects. Generics in Java (the <code>&lt;T&gt;</code> syntax) only support reference types, not primitives. Because of this, you cannot store <code>int</code>, <code>double</code>, or <code>boolean</code> directly. Instead, Java provides wrapper classes like <code>Integer</code>, <code>Double</code>, and <code>Boolean</code> that represent those primitive values as objects.</p>
+
+<p><b>What is autoboxing?</b><br>
+Java automatically converts primitives into their wrapper objects when needed. For example, if you write <code>list.add(5)</code> in an <code>ArrayList&lt;Integer&gt;</code>, Java automatically converts <code>5</code> into an <code>Integer</code> object behind the scenes. This automatic conversion is called <em>autoboxing</em>.</p>
+
+<p><b>Does this mean ArrayList is slower than arrays?</b><br>
+Slightly. Arrays store raw primitive values directly in memory, while ArrayLists store objects, which adds a small amount of memory and overhead. In practice the difference is usually small, but arrays are still preferred in performance-critical algorithms.</p>
   <p><b>Why use arrays if ArrayLists are more flexible?</b><br>
   Arrays are:
   <ul>
