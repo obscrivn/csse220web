@@ -183,8 +183,11 @@
         <dd><a href="#string-methods">String, Length, Substring</a></dd>
         <dd><a href="#int-to-string">Converting Between Integers, Strings, and Characters</a></dd>
         <dd><a href="#casting">Casting</a></dd>
+        <dd><a href="#null-empty-checks">Check for Null or Empty in Java</a></dd>
         <dd><a href="#arrays">Arrays</a></dd>
-        <dd><a href="#arrays">Array Lists</a></dd>
+
+        <dd><a href="#arrayslist">Array Lists</a></dd>
+        <dd><a href="#two-d-arrays">2D Arrays</a></dd>
         <dd><a href="#hashmap">HasMaps</a></dd>
         <dd><a href="#size">Length vs Size</a></dd>
         <dd><a href="#heterogeneous">Heterogeneous Array List</a></dd>
@@ -718,8 +721,99 @@ char c = (char) ('0' + digit);  // 48 + 7 = 55 → '7'
         </p>
       </section>
 
+<section id="null-empty-checks">
+    <h1 style="color:black">Checking for Null or Empty in Java</h1>
+
+    <p>Before working with data structures, it is often necessary to check whether they are 
+    <b>null</b> or <b>empty</b>. Failing to do this may cause runtime errors such as 
+    <code style="color:red">NullPointerException</code> or <code style="color:red">ArrayIndexOutOfBoundsException</code>.</p>
+
+    <h3>Strings</h3>
+    <p>A String can be null or empty.</p>
+
+<pre><code>String text = "hello";
+
+if (text == null || text.isEmpty()) {
+    System.out.println("String is null or empty");
+}</code></pre>
+
+    <p><b>Note:</b> Always check <code style="color:red">null</code> before calling methods like <code style="color:red">isEmpty()</code>.</p>
+
+
+    <h3>Arrays</h3>
+    <p>Arrays use the <code style="color:red">length</code> property (not a method).</p>
+
+<pre><code>int[] nums = {1, 2, 3};
+
+if (nums == null || nums.length == 0) {
+    System.out.println("Array is null or empty");
+}</code></pre>
+<p>
+Arrays do <b>not</b> support <code style="color:red">isEmpty()</code>.
+</p>
+
+    <h3>2D Arrays</h3>
+    <p>For 2D arrays you should check both rows and columns.</p>
+
+<pre><code>int[][] grid = {
+    {1, 2},
+    {3, 4}
+};
+
+if (grid == null || grid.length == 0 || grid[0].length == 0) {
+    System.out.println("2D array is null or empty");
+}</code></pre>
+
+    <p><b>Why check <code style="color:red">grid[0].length</code>?</b><br>
+    Because a 2D array may have rows but no columns.</p>
+
+
+    <h3>ArrayList</h3>
+    <p>ArrayList uses the <code style="color:red">size()</code> method.</p>
+<p>
+ArrayList also supports <code style="color:red">isEmpty()</code>.
+</p>
+<pre><code>ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+
+if (list == null || list.size() == 0) {
+    System.out.println("ArrayList is null or empty");
+}</code></pre>
+
+
+    <h3>HashMap</h3>
+    <p>HashMap also uses <code style="color:red">size()</code>.</p>
+
+<pre><code>HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+
+if (map == null || map.size() == 0) {
+    System.out.println("HashMap is null or empty");
+}</code></pre>
+<p>
+HashMap also supports <code style="color:red">isEmpty()</code>.
+</p>
+
+    <h3>Quick Summary</h3>
+
+<pre><code>// String
+str == null || str.isEmpty()
+
+// Array
+arr == null || arr.length == 0
+
+// 2D Array
+grid == null || grid.length == 0 || grid[0].length == 0
+
+// ArrayList
+list == null || list.size() == 0 || list.isEmpty()
+
+// HashMap
+map == null || map.size() == 0 || map.isEmpty()
+</code></pre>
+
+</section>
+
       <section id="arrays">
-        <h1 style="color:black">Arrays and ArrayLists: Basics</h1>
+        <h1 style="color:black">Arrays: Basics</h1>
         <p>
           In Java, <strong>arrays</strong> are used to store fixed-size collections of elements of the same type.
           Once an array is created, its size cannot be changed. 
@@ -760,7 +854,7 @@ char c = (char) ('0' + digit);  // 48 + 7 = 55 → '7'
 
 
       <section id="arrayslist">
-        <h2 style="color:black">ArrayLists</h2>
+        <h1 style="color:black">Array Lists</h1>
       <p>   <strong>ArrayLists</strong> (from the <code style="color:red">java.util</code> package)
           are resizable and provide more flexibility when you need to add or remove elements dynamically.
       <p>
@@ -836,6 +930,74 @@ System.out.println(fruits.get(1));   // banana
     </code></pre>
 
   </section>
+<section id="two-d-arrays">
+    <h1 style="color:black">2D Arrays: Row Traversal and Column Traversal</h1>
+    <p>A 2D array is like a table made of rows and columns. To solve problems with 2D arrays, you need to know the order in which your loops visit each element.</p>
+
+    <h3>Row Traversal</h3>
+    <p>Row traversal means going <b>left to right across one row</b>, then moving down to the next row. This is the most common way students first loop through a 2D array.</p>
+    
+    <pre><code>int[][] grid = {
+    {1, 2, 3},
+    {4, 5, 6}
+};</code></pre>
+
+    <p>Loop through rows first, then columns:</p>
+    <pre><code>for (int row = 0; row < grid.length; row++) {
+    for (int col = 0; col < grid[0].length; col++) {
+        System.out.println(grid[row][col]);
+    }
+}</code></pre>
+
+    <p>This visits the elements in this order:</p>
+    <pre><code>1 2 3 4 5 6</code></pre>
+
+    <p>Think of it like reading lines in a book: finish one row, then go to the next row.</p>
+
+    <h3>Column Traversal</h3>
+    <p>Column traversal means going <b>top to bottom down one column</b>, then moving to the next column on the right. This feels unusual at first because the loop order is reversed.</p>
+
+    <pre><code>char[][] data = {
+    {'h', 'l', 'o'},
+    {'e', 'l', '!'}
+};</code></pre>
+
+    <p>To traverse by columns, loop through columns first, then rows:</p>
+    <pre><code>for (int col = 0; col < data[0].length; col++) {
+    for (int row = 0; row < data.length; row++) {
+        System.out.print(data[row][col]);
+    }
+}</code></pre>
+
+    <p>This visits the characters in this order:</p>
+    <pre><code>h e l l o !</code></pre>
+
+    <p>So the resulting String would be:</p>
+    <pre><code>"hello!"</code></pre>
+
+    <p>Think of it like reading a spreadsheet one column at a time: go down the column first, then move right.</p>
+
+    <h3>Quick Comparison</h3>
+    <p>The only difference is which loop goes on the outside:</p>
+
+    <pre><code>// Row traversal
+for (int row = 0; row < data.length; row++) {
+    for (int col = 0; col < data[0].length; col++) {
+        // use data[row][col]
+    }
+}
+
+// Column traversal
+for (int col = 0; col < data[0].length; col++) {
+    for (int row = 0; row < data.length; row++) {
+        // use data[row][col]
+    }
+}</code></pre>
+
+    <p><b>Tip:</b> If you want to read across, put <code>row</code> on the outside. If you want to read down, put <code>col</code> on the outside.</p>
+</section>
+
+
       <section id="javadoc">
         <h2 style="color:black">Writing Javadocs</h2>
         <p>
