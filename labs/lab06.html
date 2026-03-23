@@ -6,11 +6,109 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-    body {
+body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
       font-family: Arial, sans-serif;
       margin: 20px;
       background-color: #f5f5f5;
-    }
+    } */
     #main-content {
       padding: 20px;
     }
@@ -37,10 +135,15 @@
     /* Content container */
     #content {
       padding: 20px;
-      margin-top: 100px; 
+      /* margin-top: 100px;  */
       margin-bottom: 50px;
-    } 
-    
+      padding-top: 100px;
+    }
+    #section {
+margin-top: 1rem; 
+margin-bottom: 1rem;
+padding: 20px;
+} 
     .lab-section {
       background-color: #fff;
       border: 1px solid #ccc;
@@ -129,11 +232,26 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
 .lab-card {
   margin: 0 0 1rem 0;
   border-radius: 0.75rem;
   border: 1px solid #ddd;
-  background: #fafafa;
+  background: #fff;
   padding: 0.25rem 0.75rem 0.75rem;
 }
 
@@ -184,6 +302,19 @@ a.resource-ref:hover {
   margin-top: 0.25rem;
   padding-top: 0.5rem;
 }
+
+details.hint {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  border-left: 3px solid #aaa;
+}
+
+details.hint > summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
   </style>
 </head>
 <body>
@@ -191,7 +322,7 @@ a.resource-ref:hover {
     <a id="index_link" href="../index.html">CSSE 220</a>
     <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
     <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="./design-principles.html">Design</a>
     <a id="quiz_link" href="../labs.html">Labs</a>
     <a id="quiz_link" href="../homework.html">Homework</a>
     <a id="quiz_link" href="../exams.html">Exams</a>
@@ -200,175 +331,309 @@ a.resource-ref:hover {
     <div style="clear:both;"></div>
 </div>
 <div id="content">
-    <h1>Lab Assignment 06 </h1>
-   
-<!-- Lab Navigation Menu -->
-<div id="main-content">
-<section class="lab-header">
-  <h2>UML → Code (Design-to-Code Mini Lab)</h2>
+  <h1>Lab Assignment 06</h1>
+  
 
+      <div id="main-content">
+         <div class="lab-section" id="lab">
+      <p>
+    In today’s lab, you will learn how to refactor your design. You are not creating a completely new design. You are <strong>refactoring</strong>
+  the existing code to match the refactored UML structure.
+  </p>
+<h3>⚡ Instructions</h3>
+<ul>
+  <!-- <li>
+    <strong>Practice:</strong>
+    Start with the in-class guided practice below to build your first object step by step.
+  </li> -->
+
+  <li>
+    <strong>Graded work:</strong>
+    Use the provided Lab starter <strong>ZIP</strong> to complete the required tasks and
+      submit your work: 1) TreasureChest.java, 2) Item.java, 3) Bad design UML, 4) Good design UML
+  </li>
+  </ul>
+
+  <details class="lab-card" id="lab-00">
+<summary><h3>Lab ZIP File</h3></summary>
+<ul>
+<li>Download starter zip file: <a href="../labs/Lab06.zip">Lab06.zip</a> and import it into Eclipse as Existing Project (see Lab02 for details).</li>
+<!-- 
+  <li>
+    <strong>Graded work:</strong>
+    Complete the required methods in <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code>.
+  </li> -->
+
+  <li>
+    <strong>What to submit on Gradescope:</strong>
+    Upload your completed <code>TreasureChest.java</code> and <code>Item.java</code> files to the Lab 06 assignment.
+    Also upload your UML diagrams (Bad design and Good design)The Gradescope link is available on Moodle.
+  </li>
+</ul>
+</details>
+
+<details class="lab-card" id="lab-01">
+  <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Encapsulation and Refactoring</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+  <div class="lab-body">
+<h3>🎮 Scenario</h3>
   <p>
-    Today you’re doing the classic: <b>read a UML diagram</b> and turn it into
-    <b>working Java classes</b>.
+    <p> In your Minecraft world, players explore caves and dungeons to collect loot. 
+      When a player finds a <strong>Treasure Chest</strong>, they can store items inside it. </p> 
+      <p>Each item can be something like:</p> 
+      <ul> 
+        <li>a sword</li> 
+        <li>a diamond</li> </ul> 
+        <p>Every item has:</p> 
+        <ul> <li>a name</li> 
+          <li>a gold value, such as 100 or 10</li> 
+        </ul> 
+        <p>The <code>TreasureChest</code> should be able to:</p> 
+        <ul> 
+          <li>store items</li> 
+          <li>add items</li> 
+          <li>remove items</li> 
+          <li>count how many items it has</li> 
+          <li>calculate the total value of all items</li> 
+          <li>enforce a maximum capacity</li> </ul> 
+          <p>Each item should also be able to determine whether it is rare:</p> 
+          <ul> 
+      <li>if its value is greater than 50, it is considered rare</li> </ul>
+   <p>Right now, the code works, but the design is not great.
   </p>
 
-  <div class="callout">
-    <b>What you submit:</b> your UML file.
-  </div>
-</section>
+<h3>🧱 Bad Design UML</h3>
+<p>
+  Below is the starter <strong>bad design</strong>. This version works, but the
+  <code>TreasureChest</code> class is doing too much.
+</p>
 
-<hr />
+<p>
+  Copy the PlantUML code below into a PlantUML viewer to generate the diagram.
+  Save or download the image for reference while you work on the lab.
+</p>
 
-<details class="lab-card" open>
-  <summary>🔍 The Big Goal</summary>
-  <div class="card-body">
-    <!-- Insert your UML image here -->
-  <img src="classABC.png" alt="UML Diagram for Classes A, B, and Main">
-    <ul>
-      <li>You have three classes: <code>A</code>, <code>B</code>, <code>Main</code>.</li>
-      <li><code>A</code> <b>has a</b> <code>B</code>.</li>
-      <li><code>Main</code> has an <code>ArrayList&lt;A&gt;</code> with exactly <b>3</b> objects.</li>
-      <li><code>Main</code> calls a method that sets <b>all</b> B-values to <code>3</code>.</li>
-      <li>When you run <code>Main</code>, you print a “before” report and an “after” report.</li>
-    </ul>
+<pre><code>@startuml
+title Bad Design: TreasureChest Does Too Much
 
+class TreasureChest {
+  - ownerName : String
+  - maxCapacity : int
+  - itemNames : ArrayList&lt;String&gt;
+  - itemValues : ArrayList&lt;Integer&gt;
 
-  </div>
-</details>
+  + addItem(name : String, value : int)
+  + removeItem(name : String)
+  + getItemCount() : int
+  + getTotalValue() : int
+  + isRare(name : String) : boolean
+}
+@enduml</code></pre>
 
+<p><strong>What to do:</strong></p>
+<ul>
+  <li>Generate the UML diagram from this code</li>
+  <li>Download or save the image</li>
+  <li>Use it as a reference while refactoring to the improved design</li>
+</ul>
 
+  <p>
+    This design is awkward because one item is split into separate pieces of data.
+    Also, the chest is deciding whether an item is rare, even though rarity really belongs to the item itself.
+  </p>
 
-<details class="lab-card" open>
-  <summary>UML Rules of the Road</summary>
-  <div class="card-body">
-    <p>Use the UML diagram as your “contract.” Your code should reflect:</p>
-    <ul>
-      <li><b>Fields</b> (names + types + visibility)</li>
-      <li><b>Key methods</b> (names + parameters + return types)</li>
-      <li><b>Relationships</b> (A has-a B, Main has-a list of A)</li>
-    </ul>
+  <p>
+    Your job in this lab is to <strong>refactor</strong> the design by creating an
+    <code>Item</code> class and updating <code>TreasureChest</code> to store
+    <code>ArrayList&lt;Item&gt;</code>.
+  </p>
 
-    <div class="callout">
-      If the UML says <code>A</code> has a <code>B</code>,
-      you should literally see a field like <code>private B b;</code> in <code>A</code>.
-    </div>
-  </div>
-</details>
+  <h3>🧩 Starter Code</h3>
+  <p>
+    Download and open <strong>lab07zip</strong>. It contains:
+  </p>
+  <ul>
+    <li><code>TreasureChest.java</code> with the <strong>bad design</strong></li>
+    <li><code>GameApp.java</code> to run and observe the bad design</li>
+  </ul>
 
-<details class="lab-card" open>
-  <summary>✅ Task 0. Reproduce UML Diagram</summary>
-  <div class="card-body">
-    <p>Use the online PlantUML and replicate the diagram</p>
-    </div>
-</details>
+  <p>
+    Before changing anything, <strong>run GameApp</strong> and observe how the bad design works.
+  </p>
 
-<details class="lab-card" open>
-  <summary>✅ Task 1. Implement class <code>B</code></summary>
-  <div class="card-body">
-    <p><b>Your job:</b> Make <code>B</code> store one integer value.</p>
+  <h3>⚠️ Bad Design</h3>
+  <p>The current design has problems:</p>
+  <ul>
+    <li>One item is stored as separate pieces of data instead of as one object</li>
+    <li><code>TreasureChest</code> is doing item-specific work</li>
+    <li>The design will become messier if items later need more data</li>
+  </ul>
 
-    <ul class="checklist">
-      <li>☐ <code>B</code> has a <code>private int value;</code></li>
-      <li>☐ <code>B</code> starts at <code>0</code> (constructor or default field value)</li>
-      <li>☐ <code>getValue()</code> returns the value</li>
-      <li>☐ <code>setValue(int v)</code> updates the value</li>
-    </ul>
+  <p>
+    Example of the current awkward design:
+  </p>
+  <pre><code>chest.addItem("Diamond", 100);
+chest.isRare("Diamond");</code></pre>
 
-    <details class="hint-card">
-      <summary>💡 Hint</summary>
-      <div class="card-body">
-        <p>
-          If your field is <code>private</code>, outside code can’t touch it directly.
-         Use getters/setters!
-        </p>
-      </div>
-    </details>
-  </div>
-</details>
+  <p>
+    A better design would treat one item as one object:
+  </p>
+  <pre><code>Item diamond = new Item("Diamond", 100);
+chest.addItem(diamond);
+diamond.isRare();</code></pre>
 
-<details class="lab-card" open>
-  <summary>✅ Task 2. Implement class <code>A</code></summary>
-  <div class="card-body">
-    <p><b>Your job:</b> <code>A</code> owns a <code>B</code> and delegates calls to it.</p>
+  <h3>✅ Your Goal: Refactor to the Good Design</h3>
+<p>
+  Use the UML diagram below as your target design. Paste to Plantum UML and download the image for reference while you work on the lab. 
+</p>
+<p><strong>Key idea:</strong></p>
+<ul>
+  <li><code>TreasureChest</code> manages items</li>
+  <li><code>Item</code> represents one item and knows its own data</li>
+</ul>
+<pre><code>@startuml
+title Good Design
 
-    <ul class="checklist">
-      <li>☐ <code>A</code> has a field: <code>private B b;</code></li>
-      <li>☐ The <code>A</code> constructor creates the <code>B</code> object</li>
-      <li>☐ <code>setBValue(int v)</code> calls <code>b.setValue(v)</code></li>
-      <li>☐ <code>getBValue()</code> returns <code>b.getValue()</code></li>
-    </ul>
+class TreasureChest {
+  - ownerName : String
+  - maxCapacity : int
+  - items : ArrayList&lt;Item&gt;
 
-    <details class="hint-card">
-      <summary>💡 Hint: Delegation (aka “A forwards the request”)</summary>
-      <div class="card-body">
-        <p>
-          Delegation means <code>A</code> doesn’t store the int directly but it asks its <code>B</code>.
-          Think: <i>“I don’t know the value, but my B does.”</i>
-        </p>
-      </div>
-    </details>
-  </div>
-</details>
+  + addItem(item : Item)
+  + removeItem(item : Item)
+  + getItemCount() : int
+  + getTotalValue() : int
+}
 
-<details class="lab-card" open>
-  <summary>✅ Task 3. Implement class <code>Main</code></summary>
-  <div class="card-body">
-    <p><b>Your job:</b> Build 3 <code>A</code> objects, store them, update them, and report.</p>
+class Item {
+  - name : String
+  - value : int
 
-    <ul class="checklist">
-      <li>☐ Field: <code>private ArrayList&lt;A&gt; list;</code></li>
-      <li>☐ Constructor initializes the list and adds exactly 3 <code>A</code> objects</li>
-      <li>☐ <code>setAllBValuesTo3()</code> loops over the list and calls <code>setBValue(3)</code></li>
-      <li>☐ <code>toString()</code> prints the B values for each A (same order every time)</li>
-      <li>Or you can design a customized printReport() method to return B values</li>
-  
-      <li>☐ <code>main</code> initializeprints a “before” report, calls setter method, prints “after” report</li>
-    </ul>
+  + getName() : String
+  + getValue() : int
+  + isRare() : boolean
+}
 
-    <details class="hint-card">
-      <summary>💡 Hint: Loop pattern you want</summary>
-      <div class="card-body">
-        <pre><code>for (A a : list) {
-  a.setBValue(3);
+TreasureChest --> Item
+@enduml</code></pre>
+
+  <h3>🛠 What You Need to Do</h3>
+  <ol>
+    <li>Use <code>Item</code> class.</li>
+    <li>Add private fields:
+      <ul>
+        <li><code>name</code></li>
+        <li><code>value</code></li>
+      </ul>
+    </li>
+    <li>Write a constructor:
+      <pre><code>public Item(String name, int value)</code></pre>
+    </li>
+    <li>Add these methods to <code>Item</code>:
+      <pre><code>public String getName()
+public int getValue()
+public boolean isRare()</code></pre>
+    </li>
+    <li>Update <code>TreasureChest</code> so it stores:
+      <pre><code>private ArrayList&lt;Item&gt; items;</code></pre>
+      instead of separate lists for names and values.
+    </li>
+    <li>Change:
+      <pre><code>addItem(String name, int value)</code></pre>
+      to:
+      <pre><code>addItem(Item item)</code></pre>
+    </li>
+    <li>Change:
+      <pre><code>removeItem(String name)</code></pre>
+      to:
+      <pre><code>removeItem(Item item)</code></pre>
+    </li>
+    <li>Update <code>getTotalValue()</code> so it loops through <code>Item</code> objects and adds up their values.</li>
+    <li>Update <code>GameApp</code> so it creates <code>Item</code> objects before adding them to the chest.</li>
+  </ol>
+
+  <h3>💡 Important Design Notes</h3>
+  <p><strong>Why move <code>isRare()</code> into Item?</strong></p>
+  <p>
+    Rarity is something about <em>one item</em>, not about the chest.
+    The chest should manage items. The item should know item-specific information about itself.
+  </p>
+
+  <p><strong>How should <code>isRare()</code> work?</strong></p>
+  <p>
+    Do <strong>not</strong> add a separate <code>rare</code> field.
+    Instead, compute rarity from the value.
+  </p>
+
+  <pre><code>public boolean isRare() {
+    return this.value &gt; 50;
 }</code></pre>
-      </div>
-    </details>
-  </div>
+
+  <p>
+    This is better because we do not want to store extra data if we can compute it from existing data.
+  </p>
+
+  <h3>🧠 Do not get stuck</h3>
+  <p><strong>1. Updating <code>addItem</code></strong></p>
+  <p>Old version:</p>
+  <pre><code>public void addItem(String name, int value)</code></pre>
+  <p>New version:</p>
+  <pre><code>public void addItem(Item item)</code></pre>
+
+  <p>
+    You are no longer adding separate pieces of data. You are adding one object.
+  </p>
+
+  <p><strong>2. Updating <code>getTotalValue()</code></strong></p>
+  <p>Old idea:</p>
+  <pre><code>for (int value : itemValues) {
+    total += value;
+}</code></pre>
+
+  <p>New idea:</p>
+  <pre><code>for (Item item : items) {
+    total += item.getValue();
+}</code></pre>
+
+  <p><strong>3. Updating <code>removeItem</code></strong></p>
+  <p>
+    In the bad design, removal used a name.
+    In the refactored design, remove the actual object:
+  </p>
+  <pre><code>items.remove(item);</code></pre>
+
+  <p><strong>4. Updating <code>GameApp</code></strong></p>
+  <p>Old version:</p>
+  <pre><code>chest.addItem("Diamond", 100);</code></pre>
+
+  <p>New version:</p>
+  <pre><code>Item diamond = new Item("Diamond", 100);
+chest.addItem(diamond);</code></pre>
+
+  <h3>🧪 Example of Refactored Usage</h3>
+  <p> In GameApp: Uncomment Part 2 to match your new design and comment Part 1 (old design). Run as App</p>
+  <p> Run as JUnit Test TreasureChestRefactoredTest - do you pass all tests?</p>
+  
+
+  <h3>✅ Quick Checklist</h3>
+  <ul>
+    <li>You created <code>Item.java</code></li>
+    <li><code>Item</code> fields are <code>private</code></li>
+    <li><code>TreasureChest</code> now stores <code>ArrayList&lt;Item&gt;</code></li>
+    <li><code>isRare()</code> is in <code>Item</code>, not <code>TreasureChest</code></li>
+    <li><code>GameApp</code> creates <code>Item</code> objects</li>
+    <li>Your code runs with no red errors</li>
+  </ul>
+
+  <h3>🚀 Submission</h3>
+  <p>
+    Submit the required Java files to Gradescope + UML diagrams.
+  </p>
 </details>
 
-<details class="lab-card" open>
-  <summary>Expected Output (Self-check)</summary>
-  <div class="card-body">
-    <p>Your exact formatting can vary, but your output must show:</p>
-    <ul>
-      <li><b>Before</b>: all B values are <code>0</code></li>
-      <li><b>After</b>: all B values are <code>3</code></li>
-    </ul>
-
-    <div class="callout">
-      Example:
-      <pre><code>Before: 0 0 0
-After:  3 3 3</code></pre>
-    </div>
-
-    <div class="hint">
-      If your “before” already prints 3s, you probably set values in the constructor or never reset.
-    </div>
-  </div>
-</details>
-
-<details class="lab-card">
-  <summary>Submission</summary>
-  <div class="card-body">
-    <ul>
-      <li>Install Plugin Plantum UML</li>
-      <li>Submit your UML diagram as PNG/JPG</li>
-    </ul>
-
-  </div>
-</details>
-
-        </div>
         </div>
 
 
