@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
+.pill {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: #f3f4f6;
+      font-size: 0.85rem;
+      margin-left: 0.35rem;
+    }
+    .callout {
+      border-left: 6px solid #111827;
+      background: #f9fafb;
+      padding: 0.8rem 0.9rem;
+      border-radius: 12px;
+      margin: 0.9rem 0;
+    }
+    .warn { border-left-color: #b45309; background:#fffbeb; }
+    .ok { border-left-color: #1d1e1e; }
+    code, pre { background:#f3f4f6; border-radius:10px; }
+    pre { padding: 0.9rem; overflow:auto; }
+    table { border-collapse: collapse; width:100%; margin: 0.75rem 0; }
+    th, td { border: 1px solid #e5e7eb; padding: 0.55rem; text-align:left; }
+    th { background:#f9fafb; }
+    .tiny { font-size:0.92rem; color:#374151; }
+    .checklist li { margin: 0.25rem 0; }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 09: Interfaces</h1>
+    <nav id="lab-nav">
+        <ul>
+          <li><a href="#lab1">01. Vehicle Interfaces</a></li>
+          <li><a href="#lab2">02. Pets Refactoring</a></li>
+          
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+<p>For this Lab you will be submitting all java files from Vehicle and Pets exercices.</p>
+
+
+  
+
+        <div class="lab-section" id="lab1">
+          <h2>Interfaces: Vehicles</h2>
+          <p>Resources 1: <a href="../resources.html#interface" target="_blank" class="resource-ref">Interfaces</a></p>
+         
+
+  <details class="lab-card" open>
+    <summary>🎯 What you’re practicing</summary>
+    <div class="card-body">
+      <ul>
+        <li>Defining interfaces with <code>void</code> methods</li>
+        <li>Making one interface <code>extends</code> another interface</li>
+        <li>Having one class <code>implements</code> multiple interfaces</li>
+        <li>Reading relationships in UML (extends vs implements)</li>
+      </ul>
+
+      <p><strong>Submission for this part is UML only.</strong> You will not submit Java files for the Vehicles portion.</p>
+    </div>
+  </details>
+<details class="lab-card">
+  <summary>💻 Coding guide</summary>
+  <div class="card-body">
+
+
+    <ol>
+      <li>
+        Create an interface named <code>Vehicle</code>.
+        <ul>
+          <li>Add method signatures:
+            <code>startEngine()</code> and <code>stopEngine()</code></li>
+          <li>Do not include method bodies</li>
+        </ul>
+      </li>
+
+      <li>
+        Create an interface named <code>ElectricVehicle</code>.
+        <ul>
+          <li>Make it <code>extends Vehicle</code></li>
+          <li>Add method signature <code>chargeBattery()</code></li>
+        </ul>
+      </li>
+
+      <li>
+        Create an interface named <code>Insurable</code>.
+        <ul>
+          <li>Add method signature <code>insureVehicle()</code></li>
+        </ul>
+      </li>
+
+      <li>
+        Create a class named <code>NissanLeaf</code>.
+        <ul>
+          <li>Make it <code>implements ElectricVehicle, Insurable</code></li>
+          <li>Add a field <code>model: String</code></li>
+          <li>Add a constructor that takes <code>String model</code></li>
+          <li>Override all required interface methods</li>
+              <ul>
+      <li><code>startEngine()</code> → engine started silently</li>
+      <li><code>chargeBattery()</code> → is charging its battery</li>
+      <li><code>stopEngine()</code> → engine stopped</li>
+      <li><code>insureVehicle()</code> → has been insured</li>
+    </ul>
+        </ul>
+      </li>
+    </ol>
+
+    <p>
+      In your <code>main</code> method:
+    </p>
+
+    <ol>
+      <li>Create a <code>NissanLeaf</code> object using a model name.</li>
+      <li>Call the methods in the following order:
+        <ul>
+          <li><code>startEngine()</code></li>
+          <li><code>chargeBattery()</code></li>
+          <li><code>stopEngine()</code></li>
+          <li><code>insureVehicle()</code></li>
+        </ul>
+      </li>
+    </ol>
+<p>
+      When your <code>NissanLeaf</code> object calls its methods, the output should
+      <strong>match the following format</strong>:
+    </p>
+
+<pre>
+Nissan Leaf engine started silently.
+Nissan Leaf is charging its battery.
+Nissan Leaf engine stopped.
+Nissan Leaf has been insured.
+</pre>
+
+
+
+
+
+
+    <p class="hint">
+      <strong>Tip:</strong> Use <code>@Override</code> on all implemented methods.
+      
+    </p>
+  </div>
+</details>
+  <details class="lab-card">
+    <summary>Requirements (what your UML must show)</summary>
+    <div class="card-body">
+      <p>Generate a UML diagram that includes <strong>exactly these types</strong> and relationships:</p>
+
+      <ul>
+        <li><code>Vehicle</code> (interface)
+
+
+        <li><code>ElectricVehicle</code> (interface)
+
+        </li>
+
+        <li><code>Insurable</code> (interface)
+
+        </li>
+
+        <li><code>NissanLeaf</code> (class)
+        </li>
+      </ul>
+
+      <p class="hint">
+        <strong>Reminder:</strong> <code>extends</code> is used between interfaces. <code>implements</code> is used by classes.
+      </p>
+    </div>
+  </details>
+<!-- <h2>Objectives</h2>
+<ul>
+  <li>Create an interface <code>Vehicle</code> with two void methods: <code>startEngine()</code> and <code>stopEngine()</code></li>
+  <li>Create an interface <code>ElectricVehicle</code> that <strong>extends</strong> <code>Vehicle</code> and adds a void method <code>chargeBattery()</code></li>
+  <li>Create an interface <code>Insurable</code> with a void method <code>insureVehicle()</code></li>
+  <li>Implement these interfaces in a class representing an electric vehicle (e.g., <code>NissanLeaf</code>)</li>
+  <li>Create a test class with a <code>main</code> method to run and test your code</li>
+</ul>
+
+<h2>Instructions</h2>
+
+<h3>Step 1: Create Interfaces in Eclipse</h3>
+<p>To create an interface in Eclipse: 
+  New ->  Vehicle</p>
+
+  <h3>Step 2: Implement the Interfaces</h3>
+  <p>Create a class named <code>NissanLeaf</code> that implements both 
+    <code>ElectricVehicle</code> and <code>Insurable</code>:</p>
+<p> NissanLeaf class will have a field <code>model</code>, 
+  a constructor with a model as its parameter <code>NissanLeaf(String model)</code>. Do not forget to override methods </p>
+  <h4>Expected Output</h2>
+  <pre>
+  Nissan Leaf engine started silently.
+  Nissan Leaf is charging its battery.
+  Nissan Leaf engine stopped.
+  Nissan Leaf has been insured.
+  </pre> -->
+
+
+        </div> 
+        
+        <div class="lab-section" id="lab2">
+          <h2>Exercise 2: Pets</h2>
+          
+          <p>
+            In this lab you will learn about Java interfaces and how they can help reduce duplicate code by defining a common contract. 
+            You will create an interface <code>Pet</code> with three common public methods and modify the provided classes (<code>Cat</code>, <code>Dog</code>, and <code>Fish</code>) 
+            so that they implement this interface. 
+            Then, you will refactor the rest of the code (including <code>Zookeeper</code> and <code>PetMain</code>).
+          </p>
+          <p>Download the zip file: <a href="pets.zip" target="_blank">pets.zip</a>
+            This is not a Java project zip. Create your own Java Project for Lab09, make a package. Then you can drag and drop the files from unzipped folder.</p>
+        <p>Note - if you notice an external file MACOX shown also, please delete it. </p>
+            <p>Run PetMain to see the current output. Use your UML plugin to see the classes schema and their relationships.</p>
+        <h3>Task 1: Create the Pet Interface</h3>
+            <p>
+              Create an interface called <code>Pet</code> that declares the following three methods:
+            </p>
+            <ul>
+              <li><code>public void eatFood();</code></li>
+              <li><code>public boolean isEating();</code></li>
+              <li><code>public String getName();</code></li>
+            </ul>
+            <p>
+              <strong>Note:</strong> Even though your original method names in the classes are <code>eatFood()</code>, <code>isEating()</code>, and <code>getName()</code>, 
+              ensure that the interface's method signatures exactly match these methods.
+            </p>
+
+            <h3>Task 2: Modify the Pet Classes</h3>
+            <p>
+              Update the classes <code>Cat</code>, <code>Dog</code>, and <code>Fish</code> to implement the <code>Pet</code> interface. For each class:
+            </p>
+            <ul>
+              <li>Add <code>implements Pet</code> to the class declaration</li>
+              <li>Ensure that the methods <code>eatFood()</code>, <code>isEating()</code>, and <code>getName()</code> have the same signatures as declared in the interface</li>
+            </ul>
+
+            <h3>Task 3: Refactor Zookeeper</h3>
+            <p>
+              To remove duplicate code, modify the <code>Zookeeper</code> class so that it no longer has separate <code>feedCat</code>, <code>feedDog</code>, and <code>feedFish</code> methods. 
+              Instead, create a single method that accepts a <code>Pet</code> object. Recall - (Dog pet) vs (Pet pet).
+            </p>
+
+
+            <h3>Task 4: Update PetMain</h3>
+            <p>
+              Refactor the <code>PetMain</code> class to use a single <code>ArrayList</code> of type <code>Pet</code> instead of separate lists 
+              for each pet type. 
+              This will allow you to iterate through all pets in a unified way.
+            </p>
+
+            <p><p><strong>Note:</strong> In this PetMainclass, you'll notice that pet collections are declared as <code>List&lt;Pet&gt;</code> rather than a specific implementation. This practice, known as "programming to an interface," promotes flexibility and maintainability. For example, by initializing the list as <code>new ArrayList&lt;&gt;()</code>, you can later switch to a different list implementation (like <code>LinkedList</code>) 
+              without having to change the rest of your code. Use the same format whe you refactor: <code>private List&lt;Pet&gt; pets</code></p>
+            <p>
+              Note: The original <code>PetMain</code> had separate lists for cats, dogs, and fishes. Refactoring to a single list of type <code>Pet</code> reduces duplicate code and makes it easier to work with all pets uniformly.
+            </p>
+          </div>
+        
+          <h2>Submission Requirements</h2>
+          <ul>
+            <li>Ensure that your program compiles and runs, producing the expected output.</li>
+            <li>Create UML diagram for your refactored code with Interface and submit the UML. Note the UML diagram may show Pet as C (class) and not I (Interface) - this is because you used Collection list. </li>
+            <!-- <li>Submit the modified versions of <code>Cat</code>, <code>Dog</code>, and <code>Fish</code> implementing the <code>Pet</code> interface.</li>
+            <li>Submit the refactored <code>Zookeeper</code> and <code>PetMain</code> classes.</li> -->
+            
+          </ul>
+        
+          <h2>Hints</h2>
+          <ul>
+            <li>Remember to use the <code>@Override</code> annotation when implementing interface methods.</li>
+            <li>Test your program by ensuring that feeding pets sets their <code>isEating</code> status to true and that the count of eating pets is correct.</li>
+            
+          </ul>
+  
+      
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>

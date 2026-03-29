@@ -6,11 +6,109 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-    body {
+  body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
       font-family: Arial, sans-serif;
       margin: 20px;
       background-color: #f5f5f5;
-    }
+    } */
     #main-content {
       padding: 20px;
     }
@@ -37,10 +135,15 @@
     /* Content container */
     #content {
       padding: 20px;
-      margin-top: 100px; 
+      /* margin-top: 100px;  */
       margin-bottom: 50px;
-    } 
-    
+      padding-top: 100px;
+    }
+    #section {
+margin-top: 1rem; 
+margin-bottom: 1rem;
+padding: 20px;
+} 
     .lab-section {
       background-color: #fff;
       border: 1px solid #ccc;
@@ -86,7 +189,9 @@
       background-color: #ddd;
     }
     code {
-        color: red;
+        /* color: red; */
+        font-weight: 600;
+        font-family: Consolas, "Courier New", monospace;
     }
     .code-window {
       background-color: #272822;
@@ -129,11 +234,26 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
 .lab-card {
   margin: 0 0 1rem 0;
   border-radius: 0.75rem;
   border: 1px solid #ddd;
-  background: #fafafa;
+  background: #fff;
   padding: 0.25rem 0.75rem 0.75rem;
 }
 
@@ -184,30 +304,19 @@ a.resource-ref:hover {
   margin-top: 0.25rem;
   padding-top: 0.5rem;
 }
-.pill {
-      display: inline-block;
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      background: #f3f4f6;
-      font-size: 0.85rem;
-      margin-left: 0.35rem;
-    }
-    .callout {
-      border-left: 6px solid #111827;
-      background: #f9fafb;
-      padding: 0.8rem 0.9rem;
-      border-radius: 12px;
-      margin: 0.9rem 0;
-    }
-    .warn { border-left-color: #b45309; background:#fffbeb; }
-    .ok { border-left-color: #1d1e1e; }
-    code, pre { background:#f3f4f6; border-radius:10px; }
-    pre { padding: 0.9rem; overflow:auto; }
-    table { border-collapse: collapse; width:100%; margin: 0.75rem 0; }
-    th, td { border: 1px solid #e5e7eb; padding: 0.55rem; text-align:left; }
-    th { background:#f9fafb; }
-    .tiny { font-size:0.92rem; color:#374151; }
-    .checklist li { margin: 0.25rem 0; }
+
+details.hint {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  border-left: 3px solid #aaa;
+}
+
+details.hint > summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
   </style>
 </head>
 <body>
@@ -215,7 +324,7 @@ a.resource-ref:hover {
     <a id="index_link" href="../index.html">CSSE 220</a>
     <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
     <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+      <a id="quiz_link" href="./design-principles.html">Design</a>
     <a id="quiz_link" href="../labs.html">Labs</a>
     <a id="quiz_link" href="../homework.html">Homework</a>
     <a id="quiz_link" href="../exams.html">Exams</a>
@@ -224,261 +333,329 @@ a.resource-ref:hover {
     <div style="clear:both;"></div>
 </div>
 <div id="content">
-    <h1>Lab Assignment 09: Interfaces</h1>
-    <nav id="lab-nav">
-        <ul>
-          <li><a href="#lab1">01. Vehicle Interfaces</a></li>
-          <li><a href="#lab2">02. Pets Refactoring</a></li>
-          
-         
-          <!-- Add more lab links as needed -->
-        </ul>
-      </nav>
-<!-- Lab Navigation Menu -->
+    <h1>Lab Assignment 09</h1>
+    
 <div id="main-content">
-<p>For this Lab you will be submitting all java files from Vehicle and Pets exercices.</p>
+         <div class="lab-section" id="lab">
+<p>
+In this lab, you will practice choosing the correct <strong>access modifiers</strong>,
+understanding <strong>scope</strong>, and deciding when fields should be
+<strong>static</strong> or <strong>final</strong>.
+You will repair a broken design using both a scenario description and starter code.
+</p>
 
-
-  
-
-        <div class="lab-section" id="lab1">
-          <h2>Interfaces: Vehicles</h2>
-          <p>Resources 1: <a href="../resources.html#interface" target="_blank" class="resource-ref">Interfaces</a></p>
-         
-
-  <details class="lab-card" open>
-    <summary>🎯 What you’re practicing</summary>
-    <div class="card-body">
-      <ul>
-        <li>Defining interfaces with <code>void</code> methods</li>
-        <li>Making one interface <code>extends</code> another interface</li>
-        <li>Having one class <code>implements</code> multiple interfaces</li>
-        <li>Reading relationships in UML (extends vs implements)</li>
+ 
+<h3>⚡ Instructions</h3>
+<ul>
+  <!-- <li>
+    <strong>Practice:</strong>
+    Start with the in-class guided practice below to learn about interfaces.
+  </li> -->
+  <li>
+    <strong>Graded work:</strong>
+Complete the required tasks in the provided starter zip project and submit your work to Gradescope.
+all completed <code>.java</code> files and
+your fixed UML diagram</li>
       </ul>
 
-      <p><strong>Submission for this part is UML only.</strong> You will not submit Java files for the Vehicles portion.</p>
-    </div>
-  </details>
-<details class="lab-card">
-  <summary>💻 Coding guide</summary>
-  <div class="card-body">
+  <details class="lab-card" id="lab-00">
+<summary><h3>Starter ZIP File</h3></summary>
+<ul>
+<li> <strong>Download starter zip file:</strong> <a href="../labs/Lab09.zip">Lab09.zip</a> and import it into Eclipse as Existing Project (see Lab02 for details).</li>
 
 
-    <ol>
-      <li>
-        Create an interface named <code>Vehicle</code>.
-        <ul>
-          <li>Add method signatures:
-            <code>startEngine()</code> and <code>stopEngine()</code></li>
-          <li>Do not include method bodies</li>
-        </ul>
-      </li>
+  <li>
+    <strong>What to submit on Gradescope:</strong>
+    Upload all completed <code>java</code> files and your UML diagrams to the Lab 09 assignment.
+    The Gradescope link is available on Moodle.
+  </li>
+</ul>
+</details>
 
-      <li>
-        Create an interface named <code>ElectricVehicle</code>.
-        <ul>
-          <li>Make it <code>extends Vehicle</code></li>
-          <li>Add method signature <code>chargeBattery()</code></li>
-        </ul>
-      </li>
-
-      <li>
-        Create an interface named <code>Insurable</code>.
-        <ul>
-          <li>Add method signature <code>insureVehicle()</code></li>
-        </ul>
-      </li>
-
-      <li>
-        Create a class named <code>NissanLeaf</code>.
-        <ul>
-          <li>Make it <code>implements ElectricVehicle, Insurable</code></li>
-          <li>Add a field <code>model: String</code></li>
-          <li>Add a constructor that takes <code>String model</code></li>
-          <li>Override all required interface methods</li>
-              <ul>
-      <li><code>startEngine()</code> → engine started silently</li>
-      <li><code>chargeBattery()</code> → is charging its battery</li>
-      <li><code>stopEngine()</code> → engine stopped</li>
-      <li><code>insureVehicle()</code> → has been insured</li>
+<details class="lab-card" id="lab-01">
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Broken UML</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+<div class="lab-body">
+       <p>Resources 1: <a href="../resources.html#access-scope" target="_blank" class="resource-ref">Access & Scope</a></p>
+ <h3>💻 Coding guide: Fix the Broken Code</h3>
+<p>
+      A broken export removed important Java design information from a game project.
+      Your job is to restore the correct design by choosing the proper:
+    </p>
+    <ul>
+      <li>access modifiers: <code>private</code>, default, <code>protected</code>, <code>public</code></li>
+      <li><code>static</code> fields</li>
+      <li><code>final</code> constants</li>
+      <li>correct use of scope</li>
+      <li>fix the bug in <code>setHealth</code> so that it correctly updates the player's health</li>
     </ul>
-        </ul>
-      </li>
-    </ol>
+
+<details class="lab-card">
+<summary><h3>Step 1: Scenario + UML</h3></summary>
+
+<p>
+      In your game, each <code>Player</code> stores information about its own health, level, and score.
+      Some of this data should be carefully protected, while some should be shared across all players.
+    </p>
 
     <p>
-      In your <code>main</code> method:
+      Your team received a broken UML/code export where the access modifiers and some keywords were lost.
+      Your job is to restore the correct design based on the intended behavior below.
     </p>
+    <image src="../labs/lab09broken.png" alt="UML diagram with missing access modifiers and keywords" style="width: 300px; border-radius:8px;">
+<pre><code>
+@startuml
+title Broken UML Export - Player Design
 
-    <ol>
-      <li>Create a <code>NissanLeaf</code> object using a model name.</li>
-      <li>Call the methods in the following order:
-        <ul>
-          <li><code>startEngine()</code></li>
-          <li><code>chargeBattery()</code></li>
-          <li><code>stopEngine()</code></li>
-          <li><code>insureVehicle()</code></li>
-        </ul>
+interface Healable {
+    heal(amount : int) : void
+}
+class Player {
+    health : int
+    level : int
+    score : int
+    totalPlayers : int
+    MAX_HEALTH : int
+
+    setHealth(health : int) : void
+    getHealth() : int
+    addScore(points : int) : void
+    heal(amount : int) : void
+}
+Player ..|> Healable
+@enduml  
+</code></pre>
+      <h3>Design Requirements</h3>
+    <ul>
+      <li>
+        Each player has its own <strong>health</strong>.
+        Health belongs to one specific player and should not be changed directly by other classes.
+        Other code should use methods to update or read it safely.
       </li>
-    </ol>
-<p>
-      When your <code>NissanLeaf</code> object calls its methods, the output should
-      <strong>match the following format</strong>:
-    </p>
-
-<pre>
-Nissan Leaf engine started silently.
-Nissan Leaf is charging its battery.
-Nissan Leaf engine stopped.
-Nissan Leaf has been insured.
-</pre>
-
-
-
-
-
-
-    <p class="hint">
-      <strong>Tip:</strong> Use <code>@Override</code> on all implemented methods.
-      
-    </p>
-  </div>
+      <li>
+        Each player has its own <strong>level</strong>.
+        Level belongs to one specific player and should be stored as part of that player's internal state.
+      </li>
+      <li>
+        Each player has a <strong>score</strong>.
+        Score belongs to one specific player and should be visible to subclasses, because special kinds of players may need to update or use score directly later.
+      </li>
+      <li>
+        The game tracks the <strong>total number of players</strong>.
+        This value is shared across all players, so there should be only one copy for the whole class.
+      </li>
+      <li>
+        The game has a <strong>maximum health value</strong>.
+        This value is the same for every player, should be shared by all players, and should not be changed after it is defined.
+      </li>
+      <li>
+        A player can be <strong>healed</strong>.
+        Healing is a behavior required by the <code>Healable</code> interface.
+      </li>
+      <li>
+        When setting health, the code should correctly update the player’s field.
+        Avoid scope mistakes such as assigning a parameter to itself.
+      </li>
+    </ul>
 </details>
-  <details class="lab-card">
-    <summary>Requirements (what your UML must show)</summary>
-    <div class="card-body">
-      <p>Generate a UML diagram that includes <strong>exactly these types</strong> and relationships:</p>
 
-      <ul>
-        <li><code>Vehicle</code> (interface)
+<details class="lab-card">
+<summary><h3>Step 2: Your Tasks</h3></summary>
+<p>
+      Restore the correct Java design by choosing:
+    </p>
+    <ul>
+      <li>the correct access modifier for each field and method</li>
+      <li>which fields should be <code>static</code></li>
+      <li>which fields should be <code>final</code></li>
+    </ul>
 
+    <p>
+      Then fix the code so it behaves correctly and passes the tests.
+    </p>
 
-        <li><code>ElectricVehicle</code> (interface)
+</details>
 
-        </li>
+<details class="lab-card">
+<summary><h3>Step 3: Submission</h3></summary>
+<p>Demo your solution UML before the submission to verify its correctness.</p>
+<p>Submit the following files to Gradescope:</p>
+    <ul>
+      <li><code>Player.java</code></li>
+      <li><code>Healable.java</code></li>
+      <li><code>UML</code></li>
+    </ul>
 
-        <li><code>Insurable</code> (interface)
+    <h3>Before You Submit</h3>
+    <ul>
+      <li>Make sure your code compiles with no errors</li>
+      <li>Make sure to demo your UML solution</li>
+      <li>Run the provided tests and check that they pass</li>
+      <li>Verify that your design matches the scenario requirements</li>
+      <li>Double-check access modifiers, <code>static</code>, and <code>final</code> usage</li>
+      <li>Make sure your <code>setHealth</code> method correctly updates the field</li>
+    </ul>
 
-        </li>
-
-        <li><code>NissanLeaf</code> (class)
-        </li>
-      </ul>
-
-      <p class="hint">
-        <strong>Reminder:</strong> <code>extends</code> is used between interfaces. <code>implements</code> is used by classes.
-      </p>
-    </div>
-  </details>
-<!-- <h2>Objectives</h2>
-<ul>
-  <li>Create an interface <code>Vehicle</code> with two void methods: <code>startEngine()</code> and <code>stopEngine()</code></li>
-  <li>Create an interface <code>ElectricVehicle</code> that <strong>extends</strong> <code>Vehicle</code> and adds a void method <code>chargeBattery()</code></li>
-  <li>Create an interface <code>Insurable</code> with a void method <code>insureVehicle()</code></li>
-  <li>Implement these interfaces in a class representing an electric vehicle (e.g., <code>NissanLeaf</code>)</li>
-  <li>Create a test class with a <code>main</code> method to run and test your code</li>
-</ul>
-
-<h2>Instructions</h2>
-
-<h3>Step 1: Create Interfaces in Eclipse</h3>
-<p>To create an interface in Eclipse: 
-  New ->  Vehicle</p>
-
-  <h3>Step 2: Implement the Interfaces</h3>
-  <p>Create a class named <code>NissanLeaf</code> that implements both 
-    <code>ElectricVehicle</code> and <code>Insurable</code>:</p>
-<p> NissanLeaf class will have a field <code>model</code>, 
-  a constructor with a model as its parameter <code>NissanLeaf(String model)</code>. Do not forget to override methods </p>
-  <h4>Expected Output</h2>
-  <pre>
-  Nissan Leaf engine started silently.
-  Nissan Leaf is charging its battery.
-  Nissan Leaf engine stopped.
-  Nissan Leaf has been insured.
-  </pre> -->
+    <h3>Reminder</h3>
+    <p>
+      This lab is not only about making the code work.
+      It is also about restoring a clean object-oriented design.
+    </p>
+</details>
+</div>
+</details>
 
 
-        </div> 
-        
-        <div class="lab-section" id="lab2">
-          <h2>Exercise 2: Pets</h2>
+<details class="lab-card" id="lab-02">
+  <summary>
+    <span class="lab-label">02.</span>
+    <span class="lab-title">Zoo Refactoring</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+  <div class="lab-body">
+       <p>Resources 1: <a href="../resources.html#interface" target="_blank" class="resource-ref">Interfaces</a></p>
+          <h2>Pets</h2>
           
-          <p>
-            In this lab you will learn about Java interfaces and how they can help reduce duplicate code by defining a common contract. 
-            You will create an interface <code>Pet</code> with three common public methods and modify the provided classes (<code>Cat</code>, <code>Dog</code>, and <code>Fish</code>) 
-            so that they implement this interface. 
-            Then, you will refactor the rest of the code (including <code>Zookeeper</code> and <code>PetMain</code>).
-          </p>
-          <p>Download the zip file: <a href="pets.zip" target="_blank">pets.zip</a>
+<p>
+    In this lab, you will use an interface to reduce duplicate code.
+    You will create a common <code>Pet</code> interface, update the provided pet classes,
+    and refactor the rest of the program to work with <code>Pet</code> objects.
+  </p>
+          <!-- <p>Download the zip file: <a href="pets.zip" target="_blank">pets.zip</a>
             This is not a Java project zip. Create your own Java Project for Lab09, make a package. Then you can drag and drop the files from unzipped folder.</p>
         <p>Note - if you notice an external file MACOX shown also, please delete it. </p>
-            <p>Run PetMain to see the current output. Use your UML plugin to see the classes schema and their relationships.</p>
-        <h3>Task 1: Create the Pet Interface</h3>
+            <p>Run PetMain to see the current output. Use your UML plugin to see the classes schema and their relationships.</p> -->
+ <details class="lab-card">
+  <summary><h3>Before You Code: Study the Design</h3></summary>
+
+  <p>
+    The UML diagram below shows the current design of the pet system.
+    Before making any changes, take a close look and think about what feels repetitive.
+  </p>
+
+  <div class="img-center">
+    <img src="../Homework/images/petZoo.png" alt="UML diagram of PetMain, Cat, Dog, Fish, and Zookeeper" style="max-width:100%; border-radius:8px;">
+  </div>
+
+  <h4>Think First</h4>
+  <ul>
+    <li>What methods are repeated in <code>Cat</code>, <code>Dog</code>, and <code>Fish</code>?</li>
+    <li>Why does <code>Zookeeper</code> need three separate feeding methods?</li>
+    <li>What problem might happen if we add a new class like <code>Bird</code> later?</li>
+    <li>How could an interface help simplify this design?</li>
+  </ul>
+
+  <p class="hint">
+    You do not need to submit written answers unless your instructor asks for them.
+    This is here to help you spot the design problem before refactoring.
+  </p>
+</details>
+ 
+ 
+            <details class="lab-card">
+<summary><h3>Task 1: Create the <code>Pet</code> Interface</h3></summary>
             <p>
-              Create an interface called <code>Pet</code> that declares the following three methods:
+              Create an interface named <code>Pet</code> with these method signatures:
             </p>
             <ul>
-              <li><code>public void eatFood();</code></li>
-              <li><code>public boolean isEating();</code></li>
-              <li><code>public String getName();</code></li>
+              <li><code>void eatFood();</code></li>
+              <li><code>boolean isEating();</code></li>
+              <li><code>String getName();</code></li>
             </ul>
-            <p>
-              <strong>Note:</strong> Even though your original method names in the classes are <code>eatFood()</code>, <code>isEating()</code>, and <code>getName()</code>, 
-              ensure that the interface's method signatures exactly match these methods.
-            </p>
+            <p class="hint">
+      Make sure the method names and return types match the methods already used in the pet classes.
+    </p>
+</details>
+<details class="lab-card">
+<summary>
+            <h3>Task 2: Update the Pet Classes</h3></summary>
+<p>
+      Modify <code>Cat</code>, <code>Dog</code>, and <code>Fish</code> so that each class
+      <code>implements Pet</code>.
+    </p>
+<ul>
+      <li>Add <code>implements Pet</code> to each class declaration</li>
+      <li>Keep the existing method behavior the same</li>
+      <li>Add <code>@Override</code> above each method you implement from the <code>Pet</code> interface
+</li>
+    </ul>
+           <p class="hint">
+      You are not rewriting the class logic. You are connecting each class to the shared interface.
+    </p>
+</details>
+<details class="lab-card">
+<summary>
+            <h3>Task 3: Refactor <code>Zookeeper</code></h3></summary>
+<p>
+      The current <code>Zookeeper</code> class has separate methods for feeding different pets.
+      Refactor it to use one method that accepts a <code>Pet</code> parameter.
+    </p>
+    <ul>
+      <li>Remove the separate methods for <code>Cat</code>, <code>Dog</code>, and <code>Fish</code></li>
+      <li>
+  Create a method named <code>feedPet</code> that takes a <code>Pet</code> parameter.
+</li>
+    </ul>
+    <p class="hint">
+      Think about the parameter type carefully:
+      use <code>Pet</code>, not <code>Dog</code> or <code>Cat</code>.
+    </p>
 
-            <h3>Task 2: Modify the Pet Classes</h3>
-            <p>
-              Update the classes <code>Cat</code>, <code>Dog</code>, and <code>Fish</code> to implement the <code>Pet</code> interface. For each class:
-            </p>
-            <ul>
-              <li>Add <code>implements Pet</code> to the class declaration</li>
-              <li>Ensure that the methods <code>eatFood()</code>, <code>isEating()</code>, and <code>getName()</code> have the same signatures as declared in the interface</li>
-            </ul>
+</details>
 
-            <h3>Task 3: Refactor Zookeeper</h3>
-            <p>
-              To remove duplicate code, modify the <code>Zookeeper</code> class so that it no longer has separate <code>feedCat</code>, <code>feedDog</code>, and <code>feedFish</code> methods. 
-              Instead, create a single method that accepts a <code>Pet</code> object. Recall - (Dog pet) vs (Pet pet).
-            </p>
+           <details class="lab-card">
+<summary> <h3>Task 4: Refactor <code>PetMain</code></h3></summary>
+<p>
+      The original program uses separate collections for different pet types.
+      Refactor it to use one collection of type <code>List&lt;Pet&gt;</code>.
+    </p>
+    <ul>
+      <li>Store all pets in a single <code>List&lt;Pet&gt;</code></li>
+      <li>Iterate through that list to process pets in one unified way</li>
+      <li>Keep using an <code>ArrayList</code> when creating the object</li>
+    </ul>
+    <p class="hint">
+      Use this format when declaring the variable:
+      <code>List&lt;Pet&gt;</code>, not <code>ArrayList&lt;Pet&gt;</code>.
+    </p>
 
-
-            <h3>Task 4: Update PetMain</h3>
-            <p>
-              Refactor the <code>PetMain</code> class to use a single <code>ArrayList</code> of type <code>Pet</code> instead of separate lists 
-              for each pet type. 
-              This will allow you to iterate through all pets in a unified way.
-            </p>
-
-            <p><p><strong>Note:</strong> In this PetMainclass, you'll notice that pet collections are declared as <code>List&lt;Pet&gt;</code> rather than a specific implementation. This practice, known as "programming to an interface," promotes flexibility and maintainability. For example, by initializing the list as <code>new ArrayList&lt;&gt;()</code>, you can later switch to a different list implementation (like <code>LinkedList</code>) 
-              without having to change the rest of your code. Use the same format whe you refactor: <code>private List&lt;Pet&gt; pets</code></p>
-            <p>
+     <p class="hint">
+      This is called programming to an interface:
+      the variable uses the interface type, while the object can still be created with
+      <code>new ArrayList&lt;&gt;()</code>.
+    </p>
+        <p>
               Note: The original <code>PetMain</code> had separate lists for cats, dogs, and fishes. Refactoring to a single list of type <code>Pet</code> reduces duplicate code and makes it easier to work with all pets uniformly.
             </p>
-          </div>
-        
-          <h2>Submission Requirements</h2>
-          <ul>
-            <li>Ensure that your program compiles and runs, producing the expected output.</li>
-            <li>Create UML diagram for your refactored code with Interface and submit the UML. Note the UML diagram may show Pet as C (class) and not I (Interface) - this is because you used Collection list. </li>
-            <!-- <li>Submit the modified versions of <code>Cat</code>, <code>Dog</code>, and <code>Fish</code> implementing the <code>Pet</code> interface.</li>
-            <li>Submit the refactored <code>Zookeeper</code> and <code>PetMain</code> classes.</li> -->
             
-          </ul>
+
+        </details>
+        <details class="lab-card">
+          <summary>
+            <h3>Submission Requirements</h3>
+          </summary>
+         <ul>
+      <li>Make sure your program compiles and runs</li>
+      <li>Submit your completed Java files</li>
+      <li>Generate and submit a UML diagram for the refactored design</li>
+    </ul>
+    <h3>What your UML should show</h3>
+    <ul>
+      <li><code>Pet</code> as an interface</li>
+      <li><code>Cat</code>, <code>Dog</code>, and <code>Fish</code> implementing <code>Pet</code></li>
+      <li>Refactored relationships in <code>Zookeeper</code> and <code>PetMain</code></li>
+    </ul>
         
-          <h2>Hints</h2>
-          <ul>
-            <li>Remember to use the <code>@Override</code> annotation when implementing interface methods.</li>
-            <li>Test your program by ensuring that feeding pets sets their <code>isEating</code> status to true and that the count of eating pets is correct.</li>
-            
-          </ul>
-  
+         
+  </details>
       
         </div>
-        </div>
-
-
+      </details>
+    </div>
+  </div>
 
         </body>
         </html>

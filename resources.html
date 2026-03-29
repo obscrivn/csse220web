@@ -200,6 +200,7 @@
         <dd><a href="#return">Void, Return, Calling Methods</a></dd>
         <dd><a href="#fields">Understanding Fields in Classes</a></dd>
         <dd><a href="#static">Understanding Static Modifier</a></dd>
+        <dd><a href="#access-scope">Understanding Access & Scope</a></dd>
         <dd><a href="#this-keyword">Understanding This Keyword</a></dd>
         <dd><a href="#initialization">Understanding Initialization</a></dd>
         <dd><a href="#uml-rules">Understanding UML Models</a></dd>
@@ -1451,6 +1452,123 @@ System.out.println("Map after removing Charlie: " + ages);</code></pre>
           
         </p>
       </section>
+
+<section id="access-scope">
+    <h2 style="color:black">Access Modifiers and Scope in Java</h2>
+
+    <h3>Access Modifiers (Who can see it?)</h3>
+
+    <p>Access modifiers control <strong>who can access a variable or method</strong>.</p>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Modifier</th>
+            <th>Same Class</th>
+            <th>Same Package</th>
+            <th>Subclass (Different Package)</th>
+            <th>Everywhere</th>
+        </tr>
+        <tr>
+            <td><code>private</code></td>
+            <td>✅</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <td><code>default</code></td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>❌</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <td><code>protected</code></td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <td><code>public</code></td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+    </table>
+
+    <p><strong>Tip:</strong> Start with <code>private</code> and only make things more visible when needed.</p>
+
+    <h2 style="color:black">Scope (Where can you use it?)</h2>
+
+    <p>Scope determines <strong>where a variable exists and can be used</strong>.</p>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Variable Type</th>
+            <th>Where Declared</th>
+            <th>Scope</th>
+            <th>Lifetime</th>
+        </tr>
+        <tr>
+            <td>Instance Field</td>
+            <td>In a class</td>
+            <td>All methods of the object</td>
+            <td>As long as the object exists</td>
+        </tr>
+        <tr>
+            <td>Static Field</td>
+            <td>In a class (<code>static</code>)</td>
+            <td>All methods of the class</td>
+            <td>As long as the program runs</td>
+        </tr>
+        <tr>
+            <td>Parameter</td>
+            <td>Method header</td>
+            <td>Inside that method</td>
+            <td>During method execution</td>
+        </tr>
+        <tr>
+            <td>Local Variable</td>
+            <td>Inside method/block</td>
+            <td>Inside that block</td>
+            <td>During block execution</td>
+        </tr>
+    </table>
+
+    <h2 style="color:black">Common Scope Bug</h2>
+
+    <pre><code>
+class Player {
+    int health = 100;
+
+    void setHealth(int health) {
+        health = health; // BUG
+    }
+}
+    </code></pre>
+
+    <p>
+        The parameter <code>health</code> shadows the field.
+        Both sides refer to the parameter, so the field is never updated.
+    </p>
+
+    <p><strong>Fix:</strong></p>
+
+    <pre><code>
+this.health = health;
+    </code></pre>
+
+    <h2 style="color:black">Key Takeaways</h2>
+    <ul>
+        <li><strong>Access modifiers</strong> control <em>who</em> can access data</li>
+        <li><strong>Scope</strong> controls <em>where</em> a variable can be used</li>
+        <li>You must satisfy <strong>both</strong> to use a variable correctly</li>
+        <li><code>this</code> is used to refer to the instance field when names conflict</li>
+    </ul>
+</section>
+
 
       <section id="this-keyword">
         <h2 style="color:black">Understanding the <code style="color:red">this</code> Keyword</h2>
