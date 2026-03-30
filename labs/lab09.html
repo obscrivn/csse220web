@@ -512,147 +512,213 @@ Player ..|> Healable
 <details class="lab-card" id="lab-02">
   <summary>
     <span class="lab-label">02.</span>
-    <span class="lab-title">Zoo Refactoring</span>
+    <span class="lab-title">Books Refactoring (Part 1)</span>
     <span class="lab-tag">Submission</span>
   </summary>
   <div class="lab-body">
-       <p>Resources 1: <a href="../resources.html#interface" target="_blank" class="resource-ref">Interfaces</a></p>
-          <h2>Pets</h2>
-          
+       <h2>Lab-Design 1: Fix the Broken System</h2>
+
 <p>
-    In this lab, you will use an interface to reduce duplicate code.
-    You will create a common <code>Pet</code> interface, update the provided pet classes,
-    and refactor the rest of the program to work with <code>Pet</code> objects.
-  </p>
-          <!-- <p>Download the zip file: <a href="pets.zip" target="_blank">pets.zip</a>
-            This is not a Java project zip. Create your own Java Project for Lab09, make a package. Then you can drag and drop the files from unzipped folder.</p>
-        <p>Note - if you notice an external file MACOX shown also, please delete it. </p>
-            <p>Run PetMain to see the current output. Use your UML plugin to see the classes schema and their relationships.</p> -->
- <details class="lab-card">
-  <summary><h3>Before You Code: Study the Design</h3></summary>
+In this lab, you will analyze a poorly designed Java system and redesign it using better
+object-oriented design ideas. This is not just about making code work. It is about learning
+how to recognize design problems and improve them.
+</p>
+
+<details class="lab-card">
+  <summary>
+    <strong>Overview</strong>
+    <span class="lab-tag">Design Refactoring</span>
+  </summary>
 
   <p>
-    The UML diagram below shows the current design of the pet system.
-    Before making any changes, take a close look and think about what feels repetitive.
+    You are given:
   </p>
-
-  <div class="img-center">
-    <img src="../Homework/images/petZoo.png" alt="UML diagram of PetMain, Cat, Dog, Fish, and Zookeeper" style="max-width:100%; border-radius:8px;">
-  </div>
-
-  <h4>Think First</h4>
   <ul>
-    <li>What methods are repeated in <code>Cat</code>, <code>Dog</code>, and <code>Fish</code>?</li>
-    <li>Why does <code>Zookeeper</code> need three separate feeding methods?</li>
-    <li>What problem might happen if we add a new class like <code>Bird</code> later?</li>
-    <li>How could an interface help simplify this design?</li>
+    <li>a scenario</li>
+    <li>a bad UML design</li>
+    <li>a bad Java implementation in the <code>bad</code> package</li>
   </ul>
 
-  <p class="hint">
-    You do not need to submit written answers unless your instructor asks for them.
-    This is here to help you spot the design problem before refactoring.
+  <p>
+    Your team will study the bad design, identify what is wrong, and create a better version
+    in a new package called <code>good</code>.
+  </p>
+
+  <p>
+    This activity will take place over <strong>two class days</strong>.
   </p>
 </details>
- 
- 
-            <details class="lab-card">
-<summary><h3>Task 1: Create the <code>Pet</code> Interface</h3></summary>
-            <p>
-              Create an interface named <code>Pet</code> with these method signatures:
-            </p>
-            <ul>
-              <li><code>void eatFood();</code></li>
-              <li><code>boolean isEating();</code></li>
-              <li><code>String getName();</code></li>
-            </ul>
-            <p class="hint">
-      Make sure the method names and return types match the methods already used in the pet classes.
-    </p>
+<details class="lab-card" open>
+  <summary>
+    <strong>Scenario</strong>
+    <span class="lab-tag">Context</span>
+  </summary>
+
+  <p>
+    A website tracks books and the kids who read them.
+  </p>
+
+  <ul>
+    <li>Each <strong>Book</strong> has a name and author</li>
+    <li>Each <strong>Kid</strong> has a name and grade level</li>
+    <li>The teacher records when a kid reads a book</li>
+  </ul>
+
+  <p>
+    The system must support:
+  </p>
+
+  <ul>
+    <li>Printing all kids who read a given book</li>
+    <li>Printing all books read by a given kid</li>
+  </ul>
+
+  <p>
+    The current system works, but its design has serious issues.
+    Your job is to analyze and redesign it.
+  </p>
+  <image src="../labs/BooksA.png" alt="UML diagram with design problems" style="width: 400px; border-radius:8px;">
 </details>
+
 <details class="lab-card">
-<summary>
-            <h3>Task 2: Update the Pet Classes</h3></summary>
-<p>
-      Modify <code>Cat</code>, <code>Dog</code>, and <code>Fish</code> so that each class
-      <code>implements Pet</code>.
-    </p>
-<ul>
-      <li>Add <code>implements Pet</code> to each class declaration</li>
-      <li>Keep the existing method behavior the same</li>
-      <li>Add <code>@Override</code> above each method you implement from the <code>Pet</code> interface
-</li>
-    </ul>
-           <p class="hint">
-      You are not rewriting the class logic. You are connecting each class to the shared interface.
-    </p>
+  <summary>
+    <strong>Team Roles</strong>
+    <span class="lab-tag">Groups of 3</span>
+  </summary>
+
+  <p>
+    Work in a team of <strong>3 students</strong>. Each person should have one role.
+  </p>
+
+  <ul>
+    <li><strong>Navigator</strong> - leads discussion and keeps the team focused on design decisions</li>
+    <li><strong>Driver</strong> - explores code and implements changes when coding begins</li>
+    <li><strong>Recorder</strong> - writes down design problems, team decisions, and reflections</li>
+  </ul>
+
+  <p>
+    You will rotate roles on Day 2.
+  </p>
 </details>
+
 <details class="lab-card">
-<summary>
-            <h3>Task 3: Refactor <code>Zookeeper</code></h3></summary>
-<p>
-      The current <code>Zookeeper</code> class has separate methods for feeding different pets.
-      Refactor it to use one method that accepts a <code>Pet</code> parameter.
-    </p>
-    <ul>
-      <li>Remove the separate methods for <code>Cat</code>, <code>Dog</code>, and <code>Fish</code></li>
-      <li>
-  Create a method named <code>feedPet</code> that takes a <code>Pet</code> parameter.
-</li>
-    </ul>
-    <p class="hint">
-      Think about the parameter type carefully:
-      use <code>Pet</code>, not <code>Dog</code> or <code>Cat</code>.
-    </p>
+  <summary>
+    <strong>Project Setup</strong>
+    <span class="lab-tag">Starter Code</span>
+  </summary>
+<p>ZIP Code <a href="../labs/Books.zip" download>Books.zip</a></p>
+<p>Project Reflection template: <a href="https://docs.google.com/document/d/1sgjND1iZClJBIX8u-QwPkvJ95H_rn0sOXiPLeyqk0Yg/edit?usp=sharing" download>project_reflection_template</a></p>
+  <p>
+    The project already contains the bad design in the <code>bad</code> package.
+  </p>
 
+  <pre><code>bad/
+  Book.java
+  Kid.java
+  BookMain.java</code></pre>
+
+  <h3>Rules</h3>
+  <ul>
+    <li>Do <strong>not</strong> modify anything in the <code>bad</code> package</li>
+    <li>Create a new package called <code>good</code></li>
+    <li>Your redesigned system must go inside the <code>good</code> package</li>
+  </ul>
+
+  <pre><code>good/
+  // your redesigned classes go here</code></pre>
 </details>
 
-           <details class="lab-card">
-<summary> <h3>Task 4: Refactor <code>PetMain</code></h3></summary>
-<p>
-      The original program uses separate collections for different pet types.
-      Refactor it to use one collection of type <code>List&lt;Pet&gt;</code>.
-    </p>
-    <ul>
-      <li>Store all pets in a single <code>List&lt;Pet&gt;</code></li>
-      <li>Iterate through that list to process pets in one unified way</li>
-      <li>Keep using an <code>ArrayList</code> when creating the object</li>
-    </ul>
-    <p class="hint">
-      Use this format when declaring the variable:
-      <code>List&lt;Pet&gt;</code>, not <code>ArrayList&lt;Pet&gt;</code>.
-    </p>
+<details class="lab-card">
+  <summary>
+    <strong>Day 1: Understand and Redesign</strong>
+    <span class="lab-tag">Analysis</span>
+  </summary>
 
-     <p class="hint">
-      This is called programming to an interface:
-      the variable uses the interface type, while the object can still be created with
-      <code>new ArrayList&lt;&gt;()</code>.
-    </p>
-        <p>
-              Note: The original <code>PetMain</code> had separate lists for cats, dogs, and fishes. Refactoring to a single list of type <code>Pet</code> reduces duplicate code and makes it easier to work with all pets uniformly.
-            </p>
-            
+  <h3>Step 1: Understand the Current System</h3>
+  <p>
+    Run the program and study the UML and code in the <code>bad</code> package.
+  </p>
 
-        </details>
-        <details class="lab-card">
-          <summary>
-            <h3>Submission Requirements</h3>
-          </summary>
-         <ul>
-      <li>Make sure your program compiles and runs</li>
-      <li>Submit your completed Java files</li>
-      <li>Generate and submit a UML diagram for the refactored design</li>
-    </ul>
-    <h3>What your UML should show</h3>
-    <ul>
-      <li><code>Pet</code> as an interface</li>
-      <li><code>Cat</code>, <code>Dog</code>, and <code>Fish</code> implementing <code>Pet</code></li>
-      <li>Refactored relationships in <code>Zookeeper</code> and <code>PetMain</code></li>
-    </ul>
-        
-         
-  </details>
-      
-        </div>
+  <p>As a team, discuss these questions:</p>
+  <ul>
+    <li>Where are books stored?</li>
+    <li>Where are kids stored?</li>
+    <li>How does the system find a book?</li>
+    <li>What happens when multiple kids read the same book?</li>
+  </ul>
+
+  <h3>Step 2: Identify Design Problems</h3>
+  <p>
+    Find at least <strong>3 important design problems</strong> in the current system.
+  </p>
+
+  <p>Use these prompts to guide your thinking:</p>
+  <ul>
+    <li>Is any data duplicated?</li>
+    <li>Is anything hard or inefficient to find?</li>
+    <li>Is any class doing too much work?</li>
+    <li>Is ownership of data clear?</li>
+  </ul>
+
+  <p>
+    The <strong>Recorder</strong> should use the provided google doc to create one for team and write down your team’s answers.
+  </p>
+
+  <h3>Step 3: Redesign the System</h3>
+  <p>
+    Create a better design that solves the main problems.
+  </p>
+
+  <p>Your redesign should:</p>
+  <ul>
+    <li>avoid duplicate books</li>
+    <li>make lookup easier and cleaner</li>
+    <li>clearly define ownership of data</li>
+    <li>reduce unnecessary searching and coupling</li>
+  </ul>
+
+  <h3>Day 1 Deliverable</h3>
+  <p>
+    Create <strong>one</strong> of the following:
+  </p>
+  <ul>
+    <li>a UML diagram of your improved design, or</li>
+    <li>a structured class plan listing classes, fields, and responsibilities</li>
+  </ul>
+
+  <pre><code>Example:
+
+Class: Library
+- stores all books
+- stores all kids
+- records reading events
+
+Class: Book
+- name
+- author
+
+Class: Kid
+- name
+- gradeLevel</code></pre>
+</details>
+
+<details class="lab-card">
+  <summary>
+    <strong>Day 1 Reflection</strong>
+    <span class="lab-tag">Required</span>
+  </summary>
+
+  <p>
+    At the end of Day 1, the <strong>Recorder</strong> must submit one reflection for the group - URL to Google doc (make sure select Share > public).
+  </p>
+
+  <ol>
+    <li>What are the top 3 problems in the original design?</li>
+    <li>What is the most important design change your team made?</li>
+    <li>What was the hardest design decision for your team?</li>
+  </ol>
+</details> 
+
       </details>
     </div>
   </div>
