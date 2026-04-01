@@ -578,8 +578,8 @@ method overriding, and <code>super.method()</code>.
 <details class="lab-card" id="lab-02">
   <summary>
     <span class="lab-label">02.</span>
-    <span class="lab-title">Books Refactoring (Part 1)</span>
-    <span class="lab-tag">Submission</span>
+    <span class="lab-title">Books Refactoring (Part 2)</span>
+    <span class="lab-tag">Work In Progress</span>
   </summary>
   <div class="lab-body">
        <h2>Lab-Design 1: Fix the Broken System</h2>
@@ -591,30 +591,6 @@ how to recognize design problems and improve them.
 </p>
 
 <details class="lab-card">
-  <summary>
-    <strong>Overview</strong>
-    <span class="lab-tag">Design Refactoring</span>
-  </summary>
-
-  <p>
-    You are given:
-  </p>
-  <ul>
-    <li>a scenario</li>
-    <li>a bad UML design</li>
-    <li>a bad Java implementation in the <code>bad</code> package</li>
-  </ul>
-
-  <p>
-    Your team will study the bad design, identify what is wrong, and create a better version
-    in a new package called <code>good</code>.
-  </p>
-
-  <p>
-    This activity will take place over <strong>two class days</strong>.
-  </p>
-</details>
-<details class="lab-card" open>
   <summary>
     <strong>Scenario</strong>
     <span class="lab-tag">Context</span>
@@ -646,26 +622,7 @@ how to recognize design problems and improve them.
   <image src="../labs/BooksA.png" alt="UML diagram with design problems" style="width: 400px; border-radius:8px;">
 </details>
 
-<details class="lab-card">
-  <summary>
-    <strong>Team Roles</strong>
-    <span class="lab-tag">Groups of 3</span>
-  </summary>
 
-  <p>
-    Work in a team of <strong>3 students</strong>. Each person should have one role.
-  </p>
-
-  <ul>
-    <li><strong>Navigator</strong> - leads discussion and keeps the team focused on design decisions</li>
-    <li><strong>Driver</strong> - explores code and implements changes when coding begins</li>
-    <li><strong>Recorder</strong> - writes down design problems, team decisions, and reflections</li>
-  </ul>
-
-  <p>
-    You will rotate roles on Day 2.
-  </p>
-</details>
 
 <details class="lab-card">
   <summary>
@@ -696,93 +653,84 @@ how to recognize design problems and improve them.
 
 <details class="lab-card">
   <summary>
-    <strong>Day 1: Understand and Redesign</strong>
+    <strong>Day 2</strong>
     <span class="lab-tag">Analysis</span>
   </summary>
 
-  <h3>Step 1: Understand the Current System</h3>
-  <p>
-    Run the program and study the UML and code in the <code>bad</code> package.
-  </p>
+  <h3>Step 1: Understand the Current Design</h3>
+<p>
+Before changing anything, review the provided <code>Books and Kids</code> code.
+</p>
 
-  <p>As a team, discuss these questions:</p>
-  <ul>
-    <li>Where are books stored?</li>
-    <li>Where are kids stored?</li>
-    <li>How does the system find a book?</li>
-    <li>What happens when multiple kids read the same book?</li>
-  </ul>
+<ul>
+<li>What classes exist?</li>
+<li>Who owns the data?</li>
+<li>Where do responsibilities feel unclear?</li>
+</ul>
 
-  <h3>Step 2: Identify Design Problems</h3>
-  <p>
-    Find at least <strong>3 important design problems</strong> in the current system.
-  </p>
+<p><strong>Team Task:</strong> Spend 5–7 minutes discussing before coding.</p>
 
-  <p>Use these prompts to guide your thinking:</p>
-  <ul>
-    <li>Is any data duplicated?</li>
-    <li>Is anything hard or inefficient to find?</li>
-    <li>Is any class doing too much work?</li>
-    <li>Is ownership of data clear?</li>
-  </ul>
+<h3>Step 2: Decide What to Fix First</h3>
 
-  <p>
-    The <strong>Recorder</strong> should use the provided google doc to create one for team and write down your team’s answers.
-  </p>
+<p>
+You should NOT start coding immediately.
+As a team, decide your first refactoring step.
+</p>
 
-  <h3>Step 3: Redesign the System</h3>
-  <p>
-    Create a better design that solves the main problems.
-  </p>
+<ul>
+<li>What is the most important problem to fix?</li>
+<li>Why does it matter?</li>
+<li>What will you change first?</li>
+</ul>
 
-  <p>Your redesign should:</p>
-  <ul>
-    <li>avoid duplicate books</li>
-    <li>make lookup easier and cleaner</li>
-    <li>clearly define ownership of data</li>
-    <li>reduce unnecessary searching and coupling</li>
-  </ul>
+<p><strong>Write down your decision before coding.</strong></p>
 
-  <h3>Day 1 Deliverable</h3>
-  <p>
-    Create <strong>one</strong> of the following:
-  </p>
-  <ul>
-    <li>a UML diagram of your improved design, or</li>
-    <li>a structured class plan listing classes, fields, and responsibilities</li>
-  </ul>
+<h3>Step 3: Refactor the Design</h3>
 
-  <pre><code>Example:
+<ul>
+<li>Make small, incremental changes</li>
+<li>Test frequently</li>
+<li>Do NOT rewrite everything at once</li>
+</ul>
 
-Class: Library
-- stores all books
-- stores all kids
-- records reading events
+<p><strong>Focus on:</strong></p>
+<ul>
+<li>Clear class responsibilities</li>
+<li>Reducing duplication</li>
+<li>Improving data ownership</li>
+</ul>
 
-Class: Book
-- name
-- author
+<h3>Step 4: Team Roles</h3>
 
-Class: Kid
-- name
-- gradeLevel</code></pre>
-</details>
+<ul>
+<li><strong>Driver:</strong> writes code</li>
+<li><strong>Navigator:</strong> checks design decisions</li>
+<li><strong>Reviewer:</strong> asks “why are we doing this?”</li>
+</ul>
+
+
+
+
+  </details>
 
 <details class="lab-card">
   <summary>
-    <strong>Day 1 Reflection</strong>
+    <strong>Day 2 Submission</strong>
     <span class="lab-tag">Required</span>
   </summary>
+<h3>Step 5: Reflection</h3>
 
-  <p>
-    At the end of Day 1, the <strong>Recorder</strong> must submit one reflection for the group - URL to Google doc (make sure select Share > public).
-  </p>
-
-  <ol>
-    <li>What are the top 3 problems in the original design? (in general, e.g., is it hard to reuse, extend, or understand?)</li>
-    <li>What is the most important design change your team made?</li>
-    <li>What was the hardest design decision for your team?</li>
-  </ol>
+<p>Project Reflection template: <a href="https://docs.google.com/document/d/1sgjND1iZClJBIX8u-QwPkvJ95H_rn0sOXiPLeyqk0Yg/edit?usp=sharing" download>project_reflection_template</a></p>
+<p>Use the same google doc but add the second part (see the link)</p>
+<p> submit URL</p>
+<ul>
+<li>What problem did your team fix first? Why?</li>
+<li>What was your second change? Why?</li>
+<li>What was the hardest design decision?</li>
+<li>Did your approach change while working? Explain.</li>
+<li>If you had more time, what would you improve next?</li>
+</ul>
+  
 </details> 
 
       </details>
