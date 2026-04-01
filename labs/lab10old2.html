@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    } 
+    
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        color: red;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 10</h1>
+    <nav id="lab-nav">
+        <ul>
+          <!-- <li><a href="#lab1">01. Initialization & Switch Cases</a></li> -->
+          <li><a href="#lab1">01. Basic Graphics with Swing</a></li>
+          
+         
+          <!-- Add more lab links as needed -->
+        </ul>
+      </nav>
+<!-- Lab Navigation Menu -->
+<div id="main-content">
+<p>Note on Submission: MyPanel, MyViewer and the screenshot of your graphics in Frame.</p>
+<p>Add a string with your name on the panel: Use drawString</p>
+
+
+  
+
+        <!-- <div class="lab-section" id="lab1">
+          <h2>Car Application</h2>
+          <p>Resources 1: <a href="../resources.html#initialization" target="_blank" class="resource-ref">How to initialize variable: fields vs contstructors</a></p>
+          <p>Resources 2: <a href="../resources.html#switch" target="_blank" class="resource-ref">How to use switch cases</a></p>
+          <p>Resources 3: <a href="../resources.html#this-keyword" target="_blank" class="resource-ref">How to use this() constructor</a></p>
+ 
+
+<h2>Instructions</h2>
+
+<h3>Step 1: Practice Field and Constructor Initialization</h3>
+<p>Let’s start small and then add features. Make a new Java class called <code>Car</code> and do the following:</p>
+<ul>
+  <li><strong>Add fields:</strong> 
+    <pre><code class="language-java">private String make;
+private int year;</code></pre>
+  </li>
+
+  <li><strong>Give <code>make</code> a default value:</strong>  
+      Right when you declare it, set it to <code>"Unknown"</code>.  
+      This way, if nobody tells us the make, it’s still safe.</li>
+
+  <li><strong>Create a constructor with parameters:</strong>  
+      <pre><code class="language-java">public Car(String make, int year) {
+    this.make = make;
+    this.year = year;
+}</code></pre></li>
+
+  <li><strong>Create a constructor with no parameters:</strong>  
+      Inside this constructor, call the other one with <code>this(...)</code> to reuse your code and provide defaults.  
+      Example: <code>this("Honda", 2000);</code></li>
+
+  <li><strong>Add a display method:</strong>  
+      <pre><code class="language-java">public void displayInfo() {
+    System.out.println("Make: " + make + ", Year: " + year);
+}</code></pre></li>
+</ul>
+<p><strong>Now test!</strong> In your <code>main</code> method, create at least two cars: one with the parameterless constructor, and one with the parameterized constructor, then call <code>displayInfo()</code> on each.</p>
+     <p>Create a Java class called <code>Car</code> with the following requirements</p>
+    <ul>
+      <li><strong>Fields:</strong> Declare a <code>String make</code> and an <code>int year</code>.</li>
+      <li><strong>Field Initialization:</strong> Initialize <code>make</code> to <code>"Unknown"</code> at declaration</li>
+      <li><strong>Constructor Initialization:</strong> Provide a constructor that accepts both <code>make</code> and <code>year</code> as parameters</li>
+      <li><strong>Constructor Invoking:</strong> Provide a parameterless constructor that invoke the constructor with parameters and provide some default values using <code>this</code></li>
+      <li><strong>Display Method:</strong> Create a method <code>displayInfo()</code> that prints the car's details</li>
+    </ul>
+    <p>Test your class by creating objects using both the default (field initialization) 
+      and parameterized (constructor initialization) approaches.</p>
+     -->
+    <!-- <h3>Step 2: Switch Cases</h3>
+    <p>Resources 1: <a href="../resources.html#scanner" target="_blank" class="resource-ref">Scanner</a></p>
+    <p>Now let’s make your <code>Car</code> a little interactive.</p>
+
+<p>Create a method <code>switchMenu()</code> inside <code>Car</code> that asks the user to type a number (1, 2, or 3). 
+  Use <a href="../resources.html#scanner" target="_blank" class="resource-ref">Scanner</a> to read input.</p>
+<p><strong>Important:</strong> For this lab, you do <em>not</em> need to actually update the car’s fields or write a full <code>updateCar()</code> method.  
+Just print out the correct statement for each choice. We are practicing the structure of <code>switch</code>, not full data management.</p>
+<p>Your menu should do this:</p>
+<ul>
+  <li><code>1</code> → call <code>displayInfo()</code> to show the car’s details</li>
+  <li><code>2</code> → call another method (like <code>updateCar()</code>) where you ask the user for a new make or year</li>
+  <li><code>3</code> → print <code>"Exit"</code></li>
+  <li><em>Any other number</em> → print <code>"Invalid choice. Exit."</code></li>
+</ul> -->
+    <!-- 
+    <p>Create a method <code>switchMenu()</code> in your <code>Car</code> class that 
+      uses a switch statement to handle user input for a console menu. 
+      For example, you will ask user to provide the following option: 1, 2, 3. Your method will display the following information: 
+      <code>1: Display Car Info</code> or <code>2: Update Car</code> or <code>3: Exit</code> and also any other options will be a default exit <code>Exit</code>. -->
+      <!-- <details class="hint">
+  <summary>💡 Hint 1: Field initialization</summary>
+  <p>You can give a field a default value right where it’s declared:</p>
+  <pre><code class="language-java">
+private String make = "Unknown";
+</code></pre>
+  <p>This way, if no constructor sets <code>make</code>, it starts with "Unknown".</p>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 2: Constructor chaining with <code>this()</code></summary>
+  <p>If one constructor should call another, use <code>this(parameters)</code>. 
+     This must be the <strong>first line</strong> in the constructor.</p>
+  <pre><code class="language-java">
+public Car() {
+    this("Unknown", 2000); // calls the other constructor
+}
+</code></pre>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 3: Scanner and switch menu</summary>
+  <p>To read user input:</p>
+  <pre><code class="language-java">
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter choice: ");
+int choice = sc.nextInt();
+</code></pre>
+  <p>Then use a switch:</p>
+  <pre><code class="language-java">
+switch (choice) {
+    case 1:
+        // TODO: show car info
+        break;
+    case 2:
+        // TODO: update car info
+        break;
+    case 3:
+        System.out.println("Exit");
+        break;
+    default:
+        System.out.println("Invalid choice. Exit.");
+}
+</code></pre>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint 4: Display method</summary>
+  <p>A good practice is to write a method to show the car details:</p>
+  <pre><code class="language-java">
+public void displayInfo() {
+    System.out.println("Make: " + make + ", Year: " + year);
+}
+</code></pre>
+</details>
+<details class="hint">
+  <summary>💡 Hint 5: Calling methods inside a switch</summary>
+  <p>You don’t need to write all the logic directly in each <code>case</code>.  
+     Instead, call a method you’ve already written. This keeps your code short and reusable.</p>
+
+  <pre><code class="language-java">
+switch (choice) {
+    case 1:
+        displayInfo();   // calls the method to print car info
+        break;
+    case 2:
+        updateCar();     // call a method you write to handle input & updates
+        break;
+    case 3:
+        System.out.println("Exit");
+        break;
+    default:
+        System.out.println("Invalid choice. Exit.");
+}
+</code></pre>
+
+  <p><em>Tip:</em> If the code inside a <code>case</code> is more than 2–3 lines, move it into a method 
+  and just call that method here.</p>
+</details> -->
+        <!-- </div> --> 
+        
+        <div class="lab-section" id="lab1">
+          <h2>Exercise 2: Graphics with Swing</h2>
+          <p>You are given two starter files: <code>EmptyFrameViewer.java</code> and <code>MyComponent.java</code>.
+          <p>Import as archived zip <a href="./basicShapesCodingLab.zip">Download Link</a> - it is a package folder so you should be able to import into your src folder (inside your current project)</p>
+  <section id="gettingStarted">
+  <h2>Getting Started</h2>
+  <p><strong>Step 1: Run the starter</strong></p>
+  <ol>
+    <li>Open <code>EmptyFrameViewer.java</code>.</li>
+    <li>Add a title for your <code>JFrame</code> (e.g., “Lab 10 Drawing”).</li>
+    <li>Create an instance of <code>MyComponent</code> and add it to the frame.</li>
+    <li>Run the program -> you should see an empty window. ✅</li>
+  </ol>
+
+  <p><strong>Step 2: Add drawing tasks</strong></p>
+  <p>All drawing happens inside <code>paintComponent</code> of <code>MyComponent</code>.  
+  For each task, you will complete the provided methods (e.g., <code>drawSimpleSquare</code>). The methods have been alreday called from <code>paintComponent</code>.</p>
+
+  
+  </section>
+
+  <section id="drawSimpleSquare">
+    <h2>1. Method: <code>drawSimpleSquare(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a simple square. The square should be positioned at (10, 10) with a width and height of 10 pixels.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Create a <code>Rectangle</code> object using the given coordinates and dimensions.</li>
+      <li>Use the <code>g2d.draw()</code> method to draw the square.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>The <code>Rectangle</code> class (from <code>java.awt</code>) can be used to represent the square.</li>
+      <li>Remember that a square is just a rectangle with equal width and height.</li>
+    </ul>
+    <pre>
+// TODO: Implement drawSimpleSquare
+private void drawSimpleSquare(Graphics2D g2d) {
+    // Use constants: sqLocX = 10, sqLocY = 10, sqWidth = 10, sqHeight = 10
+    // Create a Rectangle and use g2d.draw(rectangle);
+}
+    </pre>
+  </section>
+  
+  <section id="drawManyRectangles">
+    <h2>2. Method: <code>drawManyRectangles(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a series of nested rectangles (squares) that increase in size. They should start at (25, 25) with an initial size of 10, and increase by 10 pixels each time.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Obtain the component's width (<code>this.getWidth()</code>). Then subtract the width of rectangle to obtain the limit. This will be the "length" you will use in your for loop </li>
+      <li>Use a <code>for</code> loop starting at 10 and increment the size by 10 until a limit is reached</li>
+      <li>In each iteration, create and draw a new <code>Rectangle</code> at (25, 25) with the current size</li>
+      <li>Draw each rectangle inside the for loop</li>
+      <li>Test the application - squares should fill up the frame regardless even if you stretch it</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>Keep the top-left corner constant at (25, 25)</li>
+      <li>The loop's variable represents both the width and height for each square</li>
+    </ul>
+    <pre>
+// TODO: Implement drawManyRectangles
+private void drawManyRectangles(Graphics2D g2d) {
+  
+    // Use a loop to create a new rectangle and to increment its size
+    // Note square is a rectangle with the same height and width
+}
+    </pre>
+  </section>
+  
+  <section id="drawShapesLines">
+    <h2>3. Method: <code>drawShapesLines(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a circle and two lines starting from the circle's center. One line should be diagonal (from northwest to southeast) and the other horizontal.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Use <code>Ellipse2D.Double</code> to create a circle.</li>
+      <ul>
+  <li><code>Ellipse2D.Double</code> takes four parameters: 
+    <code>x</code> (left), <code>y</code> (top), <code>width</code>, <code>height</code>.</li>
+  <li>Example: <code>(10, 400, 30, 30)</code> → a circle at position (10,400) with 30 pixels width and height.</li>
+ 
+</ul>
+      <li>Draw circle - if you do not see it it is because you need to stretch your frame window (or adjust the height of the frame): final int frameHeight = 600;</li>
+      <li>Calculate the center of the circle</li>
+      <li>Create a diagonal line that starts at the center and extends 40 pixels down and to the right.</li>
+      <li>Create a horizontal line from the center extending 40 pixels to the right</li>
+      <li>Draw both lines using <code>g2d.draw()</code></li>
+    </ol>
+   <h3>🎨 Example Output</h3>
+<p>Your final application should look similar to this screenshot (exact positions/colors may vary slightly):</p>
+
+<div class="example-image">
+  <img src="./sample.png" alt="Expected drawing window with shapes" style="max-width:600px; border:1px solid #ccc; padding:4px; background:#fff;">
+</div>
+    <h3>Hints</h3>
+    <ul>
+      <li>Use the <code>Line2D.Double</code> class to define lines.</li>
+      <li>Calculate the center coordinates by adding half the width/height to the starting coordinates</li>
+      <pre>
+      CenterX = X + (Width / 2);
+      CenterY = Y + (Height / 2);
+    </pre>
+    </ul>
+    <pre>
+// TODO: Implement drawShapesLines
+private void drawShapesLines(Graphics2D g2d) {
+    // Create an Ellipse2D.Double for the circle and calculate its center
+    // Define two lines: one diagonal and one horizontal, then draw them
+}
+    </pre>
+  </section>
+  
+  <section id="drawSomeText">
+    <h2>4. Method: <code>drawSomeText(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Display the text "Some text" at a specified location, using a custom font, and then reset the font to the original.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Store the current font from the <code>Graphics2D</code> context using <code>g2d.getFont()</code>. Remember Font is a class</li>
+      <li>Set a new font (e.g., "Serif", plain, size 36) using <code>g2d.setFont()</code>
+      <pre>g2d.setFont(new Font("Serif", Font.PLAIN, 36));</pre></li>
+      <li>Draw the text at coordinates (80, 440) using <code>g2d.drawString()</code>.</li>
+      <li>Reset the font back to the original font.</li>
+      <li>Update the height for the frame to display the text if it is not shown.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>Use the <code>Font</code> class to create a new font.</li>
+      <li>Restoring the original font is important for subsequent drawings.</li>
+    </ul>
+    <pre>
+// TODO: Implement drawSomeText
+private void drawSomeText(Graphics2D g2d) {
+    // Save the current font, set a new font, draw the text, then reset the font
+}
+    </pre>
+  </section>
+  
+  <section id="drawUsingColors">
+    <h2>5. Method: <code>drawUsingColors(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Fill the entire component with a semi-transparent background color.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Retrieve the component's width and height using <code>this.getWidth()</code> and <code>this.getHeight()</code>.</li>
+      <li>Save the current drawing color using <code>g2d.getColor()</code></li>
+      <li>Set a new background color (for example, a semi-transparent purple) <br>
+      Note: In the constructor call <code>new Color(128, 0, 128, 128)</code>, the fourth parameter represents the alpha value, which controls the transparency of the color. The alpha value ranges from 0 (completely transparent) to 255 (completely opaque). Here, an alpha of 128 means the color is approximately 50% transparent, 
+      resulting in a semi-transparent purple </li>
+      <pre>Color backgroundColor = new Color(128, 0, 128, 128);
+ g2d.setColor(backgroundColor);</pre>
+      <li>Create a <code>Rectangle</code> covering the entire component and fill it using <code>g2d.fill()</code></li>
+      <li>Restore the original color.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>Use the <code>Color</code> constructor that accepts RGBA values.</li>
+      <li>Ensure you fill the entire area by using the component dimensions.</li>
+    </ul>
+    <pre>
+// TODO: Implement drawUsingColors
+private void drawUsingColors(Graphics2D g2d) {
+    // Fill the component background with a semi-transparent color and restore the original color
+}
+    </pre>
+  </section>
+  
+  
+  
+  <section id="drawRoundedRect">
+    <h2>6. Method: <code>drawRoundedRect(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a filled rounded rectangle with a yellow color</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Define the position (10, 500), dimensions (80 x 40), and corner arc dimensions (15 x 15)</li>
+      <li>Save the current drawing color</li>
+      <li>Create a <code>RoundRectangle2D.Double</code> with the specified parameters</li>
+
+      <li>Set the color to yellow (Color.YELLOW) and fill the rectangle using <code>g2d.fill()</code></li>
+      <li>Restore the original color</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>The <code>RoundRectangle2D.Double</code> class is used for drawing rectangles with rounded corners</li>
+    </ul>
+    <pre>
+// TODO: Implement drawRoundedRect
+private void drawRoundedRect(Graphics2D g2d) {
+    // Create a rounded rectangle and fill it with yellow color, then restore the original color
+}
+    </pre>
+  </section>
+  
+  <section id="paintComponent">
+    <h2>7. Method: <code>paintComponent(Graphics g)</code></h2>
+    <h3>Objective</h3>
+    <p>Override the <code>paintComponent</code> method to combine all your drawing methods and render your custom component.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Call <code>super.paintComponent(g)</code> to ensure proper rendering.</li>
+      <li>Cast the <code>Graphics</code> object to <code>Graphics2D</code>.</li>
+      <li>Invoke each of your drawing methods in the desired order.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>This method is automatically called by the Swing framework when the component needs to be repainted.</li>
+      <li>Make sure all helper methods are correctly implemented before integrating them here.</li>
+    </ul>
+    <pre>
+// TODO: Implement paintComponent
+@Override
+protected void paintComponent(Graphics g) {
+    // Always call super.paintComponent(g) first
+    // Cast g to Graphics2D and call your drawing methods
+}
+    </pre>
+  </section>
+  
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>By completing this lab, you'll gain hands-on experience with Java Swing graphics. Follow each instruction carefully and experiment with different values to see how they affect your drawing. Once you have implemented all methods, run your application using the <code>emptyFrameViewer</code> template to view your custom graphics!</p>
+    <p class="note">Note: Do not compare your solution with any provided answers until you have attempted the implementation on your own.</p>
+  </section>
+  
+      
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>
