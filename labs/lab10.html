@@ -734,6 +734,76 @@ As a team, decide your first refactoring step.
 </details> 
 
       </details>
+
+      <details class="lab-card" id="lab-03">
+        <summary>
+          <span class="lab-label">03.</span>
+          <span class="lab-title">Book refactoring (Part 3)</span>
+          <span class="lab-tag">Code Submission</span>
+        </summary>
+        <div class="lab-body">
+          <h2>Part 3 Instructions</h2>
+
+
+  <p>
+    In this part, your team will begin refactoring the provided Books and Kids code.
+    Your goal is <strong>not</strong> to add new features. Your goal is to
+    <strong>improve the design while keeping the required behavior working</strong>.
+  </p>
+
+  <h3>What your refactoring should focus on</h3>
+  <ul>
+    <li>Improve <strong>encapsulation</strong> by making fields private and using methods instead of direct field access</li>
+    <li>Add <strong>constructors</strong> so objects are created in a valid state</li>
+    <li>Reduce <strong>duplication</strong> in logic and data storage</li>
+    <li>Give each class a <strong>clear responsibility</strong></li>
+    <li>Avoid designs where books can only be found by searching through every kid</li>
+    <li>Create a <strong>central way to access both kids and books</strong></li>
+    <li>Use better collection design, such as <code>ArrayList</code> or <code>HashMap</code>, when appropriate</li>
+    <li>Keep the connection between books and kids consistent when a new reading is recorded</li>
+  </ul>
+
+  <h3>Required behavior to preserve</h3>
+  <ul>
+    <li>The system should still record when a kid reads a book</li>
+    <li>The system should still print a report for a kid</li>
+    <li>The system should still print a report for a book</li>
+    <li>The system should avoid duplicate entries when possible</li>
+    <li>The system should handle missing kids or books reasonably</li>
+  </ul>
+
+  <h3>What you may change</h3>
+  <ul>
+    <li>You may add constructors, getters, and helper methods</li>
+    <li>You may add a new central class or improve the current main system class</li>
+    <li>You may use <code>ArrayList</code>, <code>HashMap</code>, or another reasonable collection</li>
+    <li>You may move methods to more appropriate classes</li>
+  </ul>
+
+  <h3>What to avoid</h3>
+  <ul>
+    <li>Do not leave all logic in one large class</li>
+    <li>Do not rely on direct field access like <code>book.name</code> or <code>kid.gradeLevel</code> from other classes</li>
+    <li>Do not keep the design where books only exist inside kids</li>
+    <li>Do not rewrite the scenario into something unrelated</li>
+  </ul>
+
+  <h3>Testing</h3>
+  <p>
+    A sample JUnit test file will be provided to help you check whether your refactored design
+    still preserves the required behavior. Your code should compile and run with those tests.
+  <a href="../labs/BookMainTest.java" download>BooksMainTest.java</a>. Add this file (you can drag it) inside <code>good</code> package
+  </p>
+
+  <h3>Submission</h3>
+  <ul>
+    <li>Submit all completed <code>.java</code> files for your refactored solution</li>
+    <li>Submit any new classes you created</li>
+    <li>Submit your updated UML</li>
+    <li>Submit your team reflection/check-in if required by your instructor</li>
+  </ul>
+</details>
+
     </div>
   </div>
 
