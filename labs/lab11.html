@@ -6,11 +6,109 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-    body {
+  body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
       font-family: Arial, sans-serif;
       margin: 20px;
       background-color: #f5f5f5;
-    }
+    } */
     #main-content {
       padding: 20px;
     }
@@ -37,10 +135,15 @@
     /* Content container */
     #content {
       padding: 20px;
-      margin-top: 100px; 
+      /* margin-top: 100px;  */
       margin-bottom: 50px;
-    } 
-    
+      padding-top: 100px;
+    }
+    #section {
+margin-top: 1rem; 
+margin-bottom: 1rem;
+padding: 20px;
+} 
     .lab-section {
       background-color: #fff;
       border: 1px solid #ccc;
@@ -86,7 +189,9 @@
       background-color: #ddd;
     }
     code {
-        color: red;
+        /* color: red; */
+        font-weight: 600;
+        font-family: Consolas, "Courier New", monospace;
     }
     .code-window {
       background-color: #272822;
@@ -129,6 +234,89 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+details.hint {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  border-left: 3px solid #aaa;
+}
+
+details.hint > summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
   </style>
 </head>
 <body>
@@ -136,7 +324,7 @@ a.resource-ref:hover {
     <a id="index_link" href="../index.html">CSSE 220</a>
     <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
     <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+      <a id="quiz_link" href="../design-principles.html">Design</a>
     <a id="quiz_link" href="../labs.html">Labs</a>
     <a id="quiz_link" href="../homework.html">Homework</a>
     <a id="quiz_link" href="../exams.html">Exams</a>
@@ -146,238 +334,296 @@ a.resource-ref:hover {
 </div>
 <div id="content">
     <h1>Lab Assignment 11</h1>
-    <nav id="lab-nav">
-        <ul>
-          <li><a href="#lab1">01. Recursion</a></li>
-          <!-- <li><a href="#lab2">02. Rotating Graphics</a></li>
-          <li><a href="#lab3">03. Recursion</a></li> -->
-         
-          <!-- Add more lab links as needed -->
-        </ul>
-      </nav>
-<!-- Lab Navigation Menu -->
+    
 <div id="main-content">
-  <h2>Getting Started</h2>
-<!-- <p>Use the provided zip and import as existing project: <a href="./Lab11.zip">Donwload Zip</a></p>
-
-
-  
-
-        <div class="lab-section" id="lab1">
-          <h2>Translating and Refactoring a Face Drawing</h2>
-          <p>Resources 1: <a href="../resources.html#transform" target="_blank" class="resource-ref">How to Transform Graphics</a></p>
-          <p>Resources 2: <a href="../resources.html#swing" target="_blank" class="resource-ref">Basics Swing Graphics</a></p>
-          
- 
-          <p>For this lab, use the translaterotate package from the project you have imported. You will work with a Java Swing component that draws a face. Your task is twofold:</p>
-          <h2>Instructions</h2>
-          <h3>Step 1: Centering the Face with Translation</h3>
-          <p>
-              You are provided with a <code>TranslateComponent.java</code> file that draws a face (a rectangle for the face, two eyes, and a nose). However, the face is currently drawn with its upper-left corner at (0, 0). 
-          </p>
-          <p>
-              <strong>Your Task:</strong> Modify the <code>paintComponent(Graphics g)</code> method to use a <code>translate</code> command so that the face always appears centered in the window. Use <code>this.getWidth()</code> and <code>this.getHeight()</code> to compute the correct offsets.
-          </p>
-
-          
-          <h3>Step 2: Refactoring Your Code</h3>
-          <p>
-              After you have successfully centered your face drawing, refactor your code to improve its structure and readability by breaking it into methods. This makes your code modular and easier to maintain.
-          </p>
-          <p>
-              <strong>Create the following methods:</strong>
-          </p>
-          <ol>
-              <li>
-                  <code>drawFace(Graphics2D g2d)</code> – Draws the rectangle representing the face
-              </li>
-              <li>
-                  <code>drawLeftEye(Graphics2D g2d)</code> – Draws the left eye
-              </li>
-              <li>
-                  <code>drawRightEye(Graphics2D g2d)</code> – Draws the right eye
-              </li>
-              <li>
-                  <code>drawNose(Graphics2D g2d)</code> – Draws the nose
-              </li>
-          </ol>
-          <h4>Encapsulation</h4>
+         <div class="lab-section" id="lab">
 <p>
-        These methods are declared as <code>private</code> and <code>void</code>:
-      </p>
-      <ul>
-          <li>
-              <strong>Encapsulation:</strong> They are internal to the class and not intended to be accessed from outside. This keeps the public interface of your class clean.
-          </li>
-          <li>
-              <strong>Implementation Hiding:</strong> Declaring these methods as private prevents other classes from relying on these internal details. This means you can change the implementation later without affecting other parts of your program.
-          </li>
+In this lab, you will practice basic shapes using Java graphics.
+</p>
+<h3>⚡ Instructions</h3>
+<ul>
+    <li>
+    <strong>Ungraded work:</strong>
+    Complete the demo practice
+  </li>
+  <li>
+    <strong>Graded work:</strong>
+    Complete the required tasks in the provided starter zip project and submit your completed <code>.java</code> + UML files to Gradescope.
+  </li>
+</ul>
+  <details class="lab-card" id="lab-00">
+<summary><h3>Starter ZIP File</h3></summary>
+<ul>
+<li> <strong>Download starter zip file:</strong> <a href="./basicShapesCoding.zip">Download Link</a>.</li>
+<li>
+    This is <strong>not a full project</strong>. It contains two files:
+    <code>EmptyFrameViewer.java</code> and <code>MyComponent.java</code>.
+  </li>
 
-      </ul>
-      
-      <h4>Passing the Graphics Object and Local Variable Initialization</h4>
-      <p>
-        You only pass the <code>Graphics2D</code> object to each method. This object is initialized in the <code>paintComponent</code> method and contains the current state (like transformations) needed for drawing.
-      </p>
-      <p>
-          Inside each method, you declare and initialize the local variables specific to that drawing task. 
-          For example, in the method to draw the right eye, the coordinates and dimensions are defined locally:
-      </p>
-      <pre>
-    // Draw right eye	 Original Implementation	
-    int rightEyeLocX = 130;
-    int rightEyeLocY = 20;
-    int eyeWidth = 50;
-    int eyeHeight = 50;
-    g2d.drawRect(rightEyeLocX, rightEyeLocY, eyeWidth, eyeHeight);
+  <li>
+    The files are inside a package folder. Drag or import this folder into your project’s <code>src</code> directory.
+  </li>
 
-   // Refactored Implementation
-  private void drawRightEye(Graphics2D g2d) {
-      int rightEyeLocX = 130;
-      int rightEyeLocY = 20;
-      int eyeWidth = 50;
-      int eyeHeight = 50;
-      g2d.drawRect(rightEyeLocX, rightEyeLocY, eyeWidth, eyeHeight);
-  }
-      </pre>
-      <p>
-          This design ensures that each method is self-contained, handling its own drawing logic using the shared <code>Graphics2D</code> context.
-      </p>
-      <h3>Paint Component</h3>
-          <p>
-              In your <code>paintComponent</code> method, call these methods in the appropriate order to draw the face. The translation commands should be applied before these method calls and undone afterward.
-          </p>
-          
-          
-          <p>Your <code>paintComponent</code> method should be structured similarly to the following example:</p>
-          <pre>
-      @Override
-      protected void paintComponent(Graphics g) {
-          super.paintComponent(g);
-          Graphics2D g2d = (Graphics2D) g;
-          
-          // Calculate offsets to center the face
-          // tarnslate
-          
-          // Draw the face and its features
-          drawFace(g2d);
-          drawLeftEye(g2d);
-          drawRightEye(g2d);
-          drawNose(g2d);
-          
-          // Undo the translation
-      }
-          </pre>
-          
-         
+  <li>
+    After importing, verify the package name appears correctly at the top of both files.
+  </li>
 
-</div>
-        
-        <div class="lab-section" id="lab2">
-          <h2 style="color:black">Rotating a Face</h2>
-        <p>
-            In this lab, you will work with a Swing component that draws a face and applies rotation. 
-            You are provided with a starting file 
-            (<code>RotateComponent.java</code>)
-        </p>
-        
-        <h3>Task 1: Experiment with Rotation</h3>
-        <p>
-            In the provided code, there is a variable <code>degreesToRotate</code> that controls the angle of rotation. Modify this value 
-            (for example, try 0, 30, 60, or 90 degrees) to observe how the rotation affects the drawn face.
-        </p>
+  <li>
+    Run <code>EmptyFrameViewer</code> to launch the window.
+  </li>
+  <li>
+    <strong>What to submit on Gradescope:</strong>
+    Upload all completed <code>java</code> files and the screenshot output of your drawing.
+    The Gradescope link is available on Moodle.
+    This assignment requires a demo verification for grade.
+  </li>
+</ul>
+</details>
+<details class="lab-card" id="lab-01">
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Basic Java Graphics</span>
+    <span class="lab-tag">Practice</span>
+  </summary>
+<div class="lab-body">
 
-        
-        <h3>Task 2: Rotate Around the Face's Center</h3>
-        <p>
-            Currently, the face rotates around its upper-left corner. Modify the code so that the rotation occurs around the center of the face.
-        </p>
-        <ul>
-            <li>
-                <strong>Hint:</strong> To rotate around the center, adjust the drawing coordinates. 
-            
-        </ul>
-        
-        
-        <h3>Undoing Transformations</h3>
-        <p>
-            After applying translations and rotations, it is important to undo these transformations to avoid affecting subsequent drawing operations.
-        </p>
-        <!-- <h3>Step 3: Refactoring Your Code</h3>
-          <p>
-              After you have successfully applied rotation your face drawing, refactor your code to improve its structure and readability by breaking it into methods similar to the above section of the lab.
-          </p>
-          <ol>
-            <li>
-                <code>void drawCenteredFace(Graphics2D g2d, int faceLocX, int faceLocY, int faceWidth, int faceHeight)</code> – Draws the rectangle representing the face
-            </li>
-            <li>
-                <code>drawLeftEye(Graphics2D g2d, int faceLocX, int faceLocY)</code> – Draws the left eye on g2d w.r.t. faceLocX and faceLocY
-            </li>
-            <li>
-                <code>drawRightEye(Graphics2D g2d, int faceLocX, int faceLocY)</code> – Draws the right eye on g2d w.r.t. faceLocX and faceLocY
-            </li>
-            <li>
-                <code>drawNose(Graphics2D g2d, int faceLocX, int faceLocY)</code> – Draws the nose w.r.t. faceLocX and faceLocY
-            </li>
-        </ol> 
-        
-        </div> -->
-        <div class="lab-section" id="lab1">
-<h2>Instructions</h2>
 
+  </div>
+  </details>
+
+        <details class="lab-card" id="lab-02">
+        <summary>
+    <span class="lab-label">02.</span>
+    <span class="lab-title">Shapes</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+<div class="lab-body">
+          <h2>Graphics with Swing</h2>
+          <p>Use two starter files: <code>EmptyFrameViewer.java</code> and <code>MyComponent.java</code>.
+          <!-- <p>Import as archived zip <a href="./basicShapesCoding.zip">Download Link</a> - it is a package folder so you should be able to import into your src folder (inside your current project)</p> -->
+  <details class="lab-card">
+  <summary>Getting Started</summary>
+  <p><strong>Step 1: Run the starter</strong></p>
   <ol>
-    <li>
-      <strong>In Eclipse, create a new package named <code>lab</code>.</strong>
-    </li>
-
-    <li>
-      <strong>Inside the <code>lab</code> package, create a new class named <code>Recursion</code>.</strong>
-      <br>
-      This class will contain <em>all</em> of your methods for this lab.
-    </li>
-
-    <li>
-      <strong>Open CodingBat (Recursion-1):</strong>
-      <br>
-      Go to 
-      <a href="http://codingbat.com/java/Recursion-1" target="_blank">
-        https://codingbat.com/java/Recursion-1
-      </a>
-    </li>
-
-    <li>
-      <strong>Complete the following CodingBat problems:</strong>
-      <ul>
-        <li><code>factorial</code></li>
-        <li><code>bunnyEars</code></li>
-        <li><code>bunnyEars2</code></li>
-        <li><code>fibonacci</code></li>
-        <li><code>triangle</code></li>
-        <li><code>sumDigits</code></li>
-      </ul>
-    </li>
-
-    <li>
-      <strong>For each problem:</strong>
-      <ul>
-        <li>Write the method in CodingBat first</li>
-        <li>Once it passes all tests, copy the method into <code>Recursion.java</code></li>
-        <li>Make sure each method signature matches exactly</li>
-      </ul>
-    </li>
-
-    <li>
-      <strong>Save Recursion class with all 5 recursion problems.</strong>
-      
-    </li>
-
-    <li>
-      <strong>Submit <code>Recursion.java</code> to Gradescope as the Lab 11 assignment.</strong>
-    </li>
+    <li>Open <code>EmptyFrameViewer.java</code>.</li>
+    <li>Set a title for your <code>JFrame</code> (e.g., “Lab 10 Drawing”).</li>
+    <li>Create an instance of <code>MyComponent</code> and add it to the frame.</li>
+    <li>Run the program -> you should see an empty window. ✅</li>
   </ol>
+</details>
+<details class="lab-card">
+  <summary>Step 2: Add drawing tasks</summary>
 
-        </div>
+  <p>All drawing happens inside <code>paintComponent</code> of <code>MyComponent</code>.  
+  For each task, you will complete the provided methods (e.g., <code>drawSimpleSquare</code>). The methods have been alreday called from <code>paintComponent</code>.</p>
+
+
+
+  <section id="drawSimpleSquare">
+    <h2>1. Method: <code>drawSimpleSquare(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a simple square. The square should be positioned at (10, 10) with a width and height of 10 pixels.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Create a <code>Rectangle</code> object using the given coordinates and dimensions.</li>
+      <li>Use the <code>g2d.draw()</code> method to draw the square.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>The <code>Rectangle</code> class (from <code>java.awt</code>) can be used to represent the square.</li>
+      <li>Remember that a square is just a rectangle with equal width and height.</li>
+    </ul>
+    <pre>
+// TODO: Implement drawSimpleSquare
+private void drawSimpleSquare(Graphics2D g2d) {
+    // Use constants: sqLocX = 10, sqLocY = 10, sqWidth = 10, sqHeight = 10
+    // Create a Rectangle and use g2d.draw(rectangle);
+}
+    </pre>
+  </section>
+  
+  <section id="drawManyRectangles">
+    <h2>2. Method: <code>drawManyRectangles(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a series of nested rectangles (squares) that increase in size. They should start at (25, 25) with an initial size of 10, and increase by 10 pixels each time.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Obtain the component's width (<code>this.getWidth()</code>). Then subtract the width of rectangle to obtain the limit. This will be the "length" you will use in your for loop </li>
+      <li>Use a <code>for</code> loop starting at 10 and increment the size by 10 until a limit is reached</li>
+      <li>In each iteration, create and draw a new <code>Rectangle</code> at (25, 25) with the current size</li>
+      <li>Draw each rectangle inside the for loop</li>
+      <li>Test the application - squares should fill up the frame regardless even if you stretch it</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>Keep the top-left corner constant at (25, 25)</li>
+      <li>The loop's variable represents both the width and height for each square</li>
+    </ul>
+    <pre>
+// TODO: Implement drawManyRectangles
+private void drawManyRectangles(Graphics2D g2d) {
+  
+    // Use a loop to create a new rectangle and to increment its size
+    // Note square is a rectangle with the same height and width
+}
+    </pre>
+  </section>
+  
+  <section id="drawShapesLines">
+    <h2>3. Method: <code>drawShapesLines(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a circle and two lines starting from the circle's center. One line should be diagonal (from northwest to southeast) and the other horizontal.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Use <code>Ellipse2D.Double</code> to create a circle.</li>
+      <ul>
+  <li><code>Ellipse2D.Double</code> takes four parameters: 
+    <code>x</code> (left), <code>y</code> (top), <code>width</code>, <code>height</code>.</li>
+  <li>Example: <code>(10, 400, 30, 30)</code> → a circle at position (10,400) with 30 pixels width and height.</li>
+ 
+</ul>
+      <li>Draw circle - if you do not see it it is because you need to stretch your frame window (or adjust the height of the frame): final int frameHeight = 600;</li>
+      <li>Calculate the center of the circle</li>
+      <li>Create a diagonal line that starts at the center and extends 40 pixels down and to the right.</li>
+      <li>Create a horizontal line from the center extending 40 pixels to the right</li>
+      <li>Draw both lines using <code>g2d.draw()</code></li>
+    </ol>
+   <h3>🎨 Example Output</h3>
+<p>Your final application should look similar to this screenshot (exact positions/colors may vary slightly):</p>
+
+<div class="example-image">
+  <img src="./sample.png" alt="Expected drawing window with shapes" style="max-width:600px; border:1px solid #ccc; padding:4px; background:#fff;">
+</div>
+    <h3>Hints</h3>
+    <ul>
+      <li>Use the <code>Line2D.Double</code> class to define lines.</li>
+      <li>Calculate the center coordinates by adding half the width/height to the starting coordinates</li>
+      <pre>
+      CenterX = X + (Width / 2);
+      CenterY = Y + (Height / 2);
+    </pre>
+    </ul>
+    <pre>
+// TODO: Implement drawShapesLines
+private void drawShapesLines(Graphics2D g2d) {
+    // Create an Ellipse2D.Double for the circle and calculate its center
+    // Define two lines: one diagonal and one horizontal, then draw them
+}
+    </pre>
+  </section>
+  
+  <section id="drawSomeText">
+    <h2>4. Method: <code>drawSomeText(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Display the text "Some text" at a specified location, using a custom font, and then reset the font to the original.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Store the current font from the <code>Graphics2D</code> context using <code>g2d.getFont()</code>. Remember Font is a class</li>
+      <li>Set a new font (e.g., "Times New Roman", plain, size 36) using <code>g2d.setFont()</code>
+      <pre>g2d.setFont(new Font("Times New Roman", Font.PLAIN, 36));</pre></li>
+      <li>Draw the text at coordinates (80, 440) using <code>g2d.drawString()</code>.</li>
+      <li>Reset the font back to the original font.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>Use the <code>Font</code> class to create a new font.</li>
+      <li>Restoring the original font is important for subsequent drawings.</li>
+    </ul>
+    <pre>
+// TODO: Implement drawSomeText
+private void drawSomeText(Graphics2D g2d) {
+    // Save the current font, set a new font, draw the text, then reset the font
+}
+    </pre>
+  </section>
+  
+  <section id="drawUsingColors">
+    <h2>5. Method: <code>drawUsingColors(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Fill the entire component with a semi-transparent background color.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Retrieve the component's width and height using <code>this.getWidth()</code> and <code>this.getHeight()</code>.</li>
+      <li>Save the current drawing color using <code>g2d.getColor()</code></li>
+      <li>Set a new background color (for example, a semi-transparent purple) <br>
+      Note: In the constructor call <code>new Color(128, 0, 128, 128)</code>, the fourth parameter represents the alpha value, which controls the transparency of the color. The alpha value ranges from 0 (completely transparent) to 255 (completely opaque). Here, an alpha of 128 means the color is approximately 50% transparent, 
+      resulting in a semi-transparent purple </li>
+      <pre>Color backgroundColor = new Color(128, 0, 128, 128);
+ g2d.setColor(backgroundColor);</pre>
+      <li>Create a <code>Rectangle</code> covering the entire component and fill it using <code>g2d.fill()</code></li>
+      <li>Restore the original color.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>Use the <code>Color</code> constructor that accepts RGBA values.</li>
+      <li>Ensure you fill the entire area by using the component dimensions.</li>
+    </ul>
+    <pre>
+// TODO: Implement drawUsingColors
+private void drawUsingColors(Graphics2D g2d) {
+    // Fill the component background with a semi-transparent color and restore the original color
+}
+    </pre>
+  </section>
+  
+  
+  
+  <section id="drawRoundedRect">
+    <h2>6. Method: <code>drawRoundedRect(Graphics2D g2d)</code></h2>
+    <h3>Objective</h3>
+    <p>Draw a filled rounded rectangle with a yellow color</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Define the position (10, 500), dimensions (80 x 40), and corner arc dimensions (15 x 15)</li>
+      <li>Save the current drawing color</li>
+      <li>Create a <code>RoundRectangle2D.Double</code> with the specified parameters</li>
+
+      <li>Set the color to yellow (Color.YELLOW) and fill the rectangle using <code>g2d.fill()</code></li>
+      <li>Restore the original color</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>The <code>RoundRectangle2D.Double</code> class is used for drawing rectangles with rounded corners</li>
+    </ul>
+    <pre>
+// TODO: Implement drawRoundedRect
+private void drawRoundedRect(Graphics2D g2d) {
+    // Create a rounded rectangle and fill it with yellow color, then restore the original color
+}
+    </pre>
+  </section>
+  
+  <section id="paintComponent">
+    <h2>7. Method: <code>paintComponent(Graphics g)</code></h2>
+    <h3>Objective</h3>
+    <p>Override the <code>paintComponent</code> method to combine all your drawing methods and render your custom component.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li>Call <code>super.paintComponent(g)</code> to ensure proper rendering.</li>
+      <li>Cast the <code>Graphics</code> object to <code>Graphics2D</code>.</li>
+      <li>Invoke each of your drawing methods in the desired order.</li>
+    </ol>
+    <h3>Hints</h3>
+    <ul>
+      <li>This method is automatically called by the Swing framework when the component needs to be repainted.</li>
+      <li>Make sure all helper methods are correctly implemented before integrating them here.</li>
+    </ul>
+    <pre>
+// TODO: Implement paintComponent
+@Override
+protected void paintComponent(Graphics g) {
+    // Always call super.paintComponent(g) first
+    // Cast g to Graphics2D and call your drawing methods
+}
+    </pre>
+  </section>
+  
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>By completing this lab, you'll gain hands-on experience with Java Swing graphics. Follow each instruction carefully and experiment with different values to see how they affect your drawing. Once you have implemented all methods, run your application using the <code>emptyFrameViewer</code> template to view your custom graphics!</p>
+    <p class="note">Note: Do not compare your solution with any provided answers until you have attempted the implementation on your own.</p>
+  </section>
+  </details>
       
         </div>
         </div>

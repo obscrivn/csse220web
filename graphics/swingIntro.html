@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swing Intro Lecture</title>
+      <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <style>
+    :root {
+      --page-bg: #f4f4f4;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #222222;
+      --muted: #5f6b7a;
+      --border: #d9dde3;
+      --accent: #00080f;
+      --accent-soft: #eef5ff;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+      --content-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--page-bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 96px;
+    }
+
+    #header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: #111111;
+      /* padding: 20px 28px; */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      display: flex;
+      flex-wrap: wrap;
+      /* gap: 16px 28px; */
+      align-items: center;
+      justify-content: center;
+    }
+
+    #header a {
+      color: #ffffff;
+      text-decoration: underline;
+      font-size: 1.05rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    #header a:hover {
+      opacity: 0.9;
+    }
+
+    .page {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+      margin-top: 60px;
+    }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 2.5rem;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 880px;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px; 
+      /* margin-top: 70px; */
+    }
+
+    .quick-links a {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 12px;
+      /* margin-top: 70px; */
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .summary-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .summary-box h2 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .summary-item {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .summary-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    details.section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+scroll-behavior: smooth;
+  scroll-margin-top: 110px;
+
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    details.section[open] {
+      border-color: #cfd8e3;
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: #ffffff;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .summary-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .section-number {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .section-heading {
+      min-width: 0;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .section-heading p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+.toggle-icon {
+  color: var(--muted);
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+details[open] > summary .toggle-icon {
+  transform: rotate(45deg);
+}
+
+    .section-body {
+      padding: 0 24px 24px;
+      border-top: 1px solid var(--border);
+      background: #fcfcfd;
+    }
+
+    .section-body p:first-child {
+      margin-top: 18px;
+    }
+
+    .focus-box,
+    .tip-box,
+    .code-box {
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .focus-box {
+      background: #f8fbff;
+    }
+
+    .tip-box {
+      background: #f9fafb;
+    }
+
+    .code-box {
+      background: #f7f7f7;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .mini-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        padding-top: 128px;
+      }
+
+      #header {
+        padding: 18px 16px;
+        gap: 12px 18px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .hero {
+        padding: 24px;
+      }
+
+      summary,
+      .section-body {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      /* Collapsable subsections */
+      details.subsection {
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+details.subsection summary {
+  cursor: pointer;
+  padding: 16px 18px;
+  font-weight: 700;
+  background: #f5f7fa;;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+details.subsection summary:hover {
+  background: #eef3ff;
+}
+
+details.subsection .subsection-body {
+  padding: 18px;
+  border-top: 1px solid var(--border);
+}
+/* change + to − when open */
+details.subsection .toggle::after {
+  content: "+";
+}
+
+details.subsection[open] .toggle::after {
+  content: "−";
+}
+details.subsection summary::-webkit-details-marker {
+  display: none;
+}
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="design_link" href="../design-principles.html">Design</a>
+    <a id="labs_link" href="../labs.html">Labs</a>
+    <a id="homework_link" href="../homework.html">Homework</a>
+    <a id="exams_link" href="../exams.html">Exams</a>
+    <a id="project_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+  </div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Lecture • Swing + Java2D</div>
+      <h1>Why Drawing with Java2D</h1>
+<p>
+  This is where objects become visible. Instead of just writing classes and methods, we can now build objects that control what appears on the screen. This helps connect object-oriented design to something you can actually see.
+</p>
+      <div class="quick-links">
+        <a href="#sec-1">1. Big Picture</a>
+        <a href="#sec-2">2. Setup</a>
+        <a href="#sec-3">3. Points</a>
+        <a href="#sec-4">4. Lines</a>
+        <a href="#sec-5">5. Shapes</a>
+        <a href="#sec-6">6. Translation</a>
+        <a href="#sec-7">7. Rotation</a>
+      </div>
+    </section>
+
+    <section class="summary-box">
+      <h2>Main Terminology</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+  <strong>AWT</strong>
+  Foundation library that provides graphics, events, and basic windowing.
+</div>
+<div class="summary-item">
+  <strong>Swing</strong>
+  Modern GUI toolkit built on top of AWT for creating user interfaces.
+</div>
+        <div class="summary-item">
+          <strong>JFrame</strong>
+          Holds the window
+        </div>
+        <div class="summary-item">
+          <strong>JPanel</strong>
+           Arranges components using layouts and can be used as a drawing surface
+        </div>
+                 <div class="mini-card">
+  <strong>JComponent</strong>
+  The base class for all visual components. It provides the ability to draw using <code>paintComponent</code>.
+</div>
+        <div class="summary-item">
+          <strong>paintComponent</strong>
+          This is where drawing code belongs
+        </div>
+        <div class="summary-item">
+          <strong>Graphics2D</strong>
+          Drawing tools for shapes and transformations
+        </div>
+      </div>
+    </section>
+
+    <details class="section" id="sec-1">
+      <summary>
+        <div class="summary-left">
+          <div class="section-number">1</div>
+          <div class="section-heading">
+            <h2>Big Picture</h2>
+            <p>Before we draw anything, we need to understand how the screen works.</p>
+          </div>
+        </div>
+        <div class="toggle-icon">+</div>
+      </summary>
+      <div class="section-body">
+        <p>Swing does not expect us to draw directly in the window. Instead, we place a panel inside a frame, and Swing asks that panel to paint itself when needed.</p>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <strong>JFrame</strong>
+            The outer window that appears on the screen.
+          </div>
+          <div class="mini-card">
+            <strong>JPanel</strong>
+            A container that holds and arranges components using layouts. It can also be used as a drawing surface.
+          </div>
+ 
+          <div class="mini-card">
+            <strong>paintComponent(Graphics g)</strong>
+            The method Swing calls when the panel needs to be redrawn.
+          </div>
+        </div>
+        <!-- <div class="focus-box">
+          <strong>Teaching focus</strong><br />
+          Students should see that drawing is not random code we can place anywhere. It belongs in a specific method on a specific object.
+        </div> -->
+      </div>
+    </details>
+
+    <details class="section" id="sec-2">
+      <summary>
+        <div class="summary-left">
+          <div class="section-number">2</div>
+          <div class="section-heading">
+            <h2>The setup</h2>
+            <p>Start the app, build the window, and create the panel where drawing will happen.</p> 
+
+          </div>
+        </div>
+        <div class="toggle-icon">+</div>
+      </summary>
+      <div class="section-body">
+        <p>We want a setup that is clean now and still makes sense later when this grows into animation and simple game structure. Instead of putting everything in <code>main</code>, we split responsibilities across three classes.</p>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <strong>MainApp</strong>
+            Starts the program and launches the GUI safely.
+          </div>
+          <div class="mini-card">
+            <strong>GameWindow</strong>
+            Owns the <code>JFrame</code> and sets up the window.
+          </div>
+          <div class="mini-card">
+            <strong>GamePanel</strong>
+            Extends <code>JPanel</code> and will hold our drawing code.
+
+  Right now we are using <code>JPanel</code> for drawing. Later, we will use it to organize components like buttons and custom elements using layouts.
+
+          </div>
+        </div>
+        <p>This gives us a better OOP model:</p>
+        <ul>
+          <li><code>MainApp</code> uses <code>GameWindow</code> to start the GUI</li>
+          <li><code>GameWindow</code> has a <code>JFrame</code> field</li>
+          <li><code>GameWindow</code> adds a <code>GamePanel</code> to the frame</li>
+          <li><code>GamePanel</code> is where drawing belongs</li>
+        </ul>
+<div class="tip-box">
+          <strong>Why this structure?</strong><br />
+          We are not turning our class into a window. Our class owns a window. This keeps the design closer to the OOP ideas we have been practicing.
+        </div>
+
+<details class="subsection">
+      <summary><strong>Create class 1: MainApp</strong>
+        <span class="toggle">+</span>
+      </summary>
+      <div class="subsection-body">
+
+
+
+
+
+        <!-- <h3>Create class 1: MainApp</h3> -->
+        <p><code>MainApp</code> should stay small. Its job is just to launch the GUI.</p>
+        <div class="code-box">import javax.swing.SwingUtilities;
+
+public class MainApp {
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            GameWindow app = new GameWindow();
+            app.runGUI();
+        });
+    }
+}</div>
+
+        <p>For now, treat <code>SwingUtilities.invokeLater(...)</code> as the standard safe way to start a Swing app. We will not go deep into that yet.</p>
+      </div>
+    </details>
+
+    <details class="subsection">
+      <summary><strong>Create class 2: GameWindow</strong>
+        <span class="toggle">+</span>
+      </summary>
+      <div class="subsection-body">
+        <p><code>GameWindow</code> owns the <code>JFrame</code>. The constructor builds the window. The <code>runGUI()</code> method shows it.</p>
+        <p> 1️⃣ <strong>Create the window</strong>
+        </p>
+        <div class="code-box">import javax.swing.JFrame;
+public class GameWindow {
+    private JFrame frame;
+    public GameWindow() {
+    }
+    public void runGUI() {
+    }
+}</div>
+
+<p> 2️⃣ <strong>Create JFrame object</strong></p>
+<p>
+  First, we create a <code>JFrame</code> object and store it in the
+  <code>frame</code> field. This gives our <code>GameWindow</code> object
+  an actual window to manage.
+</p>
+<div class="code-box">public GameWindow() {
+    this.frame = new JFrame("Game Intro");
+}</div>
+
+<p> 3️⃣ <strong>Set the size</strong></p>
+<div class="code-box">this.frame.setSize(600, 400);</div>
+<p>
+  This sets the size of the window to 600 pixels wide and 400 pixels tall.
+</p>
+
+<p>4️⃣ <strong>Handle closing</strong></p>
+<p>
+  This tells Java what to do when the user clicks the X button. Here, it closes
+  the program completely.
+</p>
+<div class="code-box">this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div>
+<p>
+  If we forget this, the window will close but the program will keep running in
+  the background.
+
+  <p> 5️⃣ <strong>Add the panel</strong></p>
+<div class="code-box">this.frame.add(new GamePanel());</div>
+<p>
+  This adds a <code>GamePanel</code> object into the frame. The panel is the
+  surface where our drawing will happen.
+</p>
+<p> 6️⃣ <strong>Center the window</strong></p>
+<div class="code-box">this.frame.setLocationRelativeTo(null);</div>
+<p>
+  This places the window in the center of the screen instead of some random spot.
+</p>
+
+<p>6️⃣ <strong>Create the runGUI method</strong></p>
+<div class="code-box">public void runGUI() {
+    this.frame.setVisible(true);
+}</div>
+<p>
+  This makes the window appear on the screen.
+</p>
+<div class="focus-box">
+  <strong>Quick check</strong>
+  What happens if we never call <code>setVisible(true)</code>?
+</div>
+<div class="focus-box">
+  <strong>Quick check</strong>
+  What happens if we do not set <code>setDefaultCloseOperation()</code>?
+</div>
+      </div>
+    </details>
+
+    <details class="subsection">
+      <summary><strong>Create class 3: GamePanel</strong>
+        <span class="toggle">+</span>
+      </summary>
+      <div class="subsection-body">
+        <p><code>GamePanel</code> is the drawing surface. We are not drawing anything yet. We are just putting the correct method in the correct class.</p>
+
+        <p>1️⃣ <strong>Extend JPanel</strong></p>
+<div class="code-box">public class GamePanel extends JPanel { }</div>
+<p>
+  We extend <code>JPanel</code> to make it a drawable area inside a window.
+</p>
+<p>2️⃣ <strong>Override paintComponent</strong></p>
+<div class="code-box">@Override
+protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+}</div>
+<p>
+  This is the method Swing calls whenever the panel needs to be drawn.
+</p>
+
+<div class="focus-box">
+  <strong>Quick check</strong>
+  Why do we call <code>super.paintComponent(g)</code> first?
+</div>
+
+<p>3️⃣ <strong>Use Graphics2D</strong></p>
+<div class="code-box">Graphics2D g2d = (Graphics2D) g;</div>
+<p>
+  This gives us more powerful drawing tools than the basic <code>Graphics</code> object.
+</p>
+
+       </div>
+    </details>
+
+        <p>That is enough for the starting structure. Next, we will add real drawing code inside <code>paintComponent</code>.</p>
+
+
+
+      <details style="margin-top:16px;">
+          <summary style="padding:14px 0; background:transparent; justify-content:flex-start; gap:10px;">
+            <strong>Full code so far</strong>
+          </summary>
+          <div class="code-box">// MainApp.java
+import javax.swing.SwingUtilities;
+
+public class MainApp {
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            GameWindow app = new GameWindow();
+            app.runGUI();
+        });
+    }
+}
+
+// GameWindow.java
+import javax.swing.JFrame;
+
+public class GameWindow {
+
+    private JFrame frame;
+
+    public GameWindow() {
+        this.frame = new JFrame("Game Intro");
+        this.frame.setSize(600, 400);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.add(new GamePanel());
+        this.frame.setLocationRelativeTo(null);
+    }
+
+    public void runGUI() {
+        this.frame.setVisible(true);
+    }
+}
+
+// GamePanel.java
+import java.awt.Graphics;
+import javax.swing.JPanel;
+
+public class GamePanel extends JPanel {
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+    }
+}</div>
+        </details>
+      </div>
+    </details>
+
+    <details class="section" id="sec-3">
+      <summary>
+        <div class="summary-left">
+          <div class="section-number">3</div>
+          <div class="section-heading">
+            <h2>Points and coordinates</h2>
+        </div>
+        </div>
+        <div class="toggle-icon">+</div>
+      </summary>
+      <div class="section-body">
+        <p>
+  Before we draw shapes, we need to understand how the screen keeps track of position. In Swing, the coordinate system starts at the top-left corner of the panel.
+</p>
+
+<div class="focus-box">
+  <strong>Quick check</strong>
+  In Swing, where is <code>(0,0)</code> located?
+</div>
+<details class="subsection">
+  <summary><strong>Coordinate System</strong>
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+    <p>
+      In Swing, the point <code>(0,0)</code> is at the top-left corner of the panel.
+      The <code>x</code> value increases as we move to the right, and the <code>y</code>
+      value increases as we move downward.
+    </p>
+
+    <img src="coordinates.png" alt="Swing coordinate system" style="max-width:50%; border-radius:12px; border:1px solid var(--border);">
+   
+    </div>
+    </details>  
+    <details class="subsection">
+  <summary><strong>Points</strong>
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+<p>1️⃣ <strong>Create 4 coordinate pairs</strong></p>
+
+  <p>Add these variables inside <code>paintComponent</code>:</p>
+  <div class="code-box">int x1 = 0;
+int y1 = 0;
+
+int x2 = 100;
+int y2 = 0;
+
+int x3 = 100;
+int y3 = 100;
+
+int x4 = 0;
+int y4 = 100;</div>
+
+  <p>
+    These variables store 4 locations on the panel.
+  </p>
+
+  <p>2️⃣ <strong>Draw each location</strong></p>
+
+<p>
+  A real screen pixel is tiny, so we will use a very small square (6x6 pixels) to make each point easier to see.
+</p>
+
+<div class="code-box">g2.fillRect(x1, y1, 6, 6);
+g2.fillRect(x2, y2, 6, 6);
+g2.fillRect(x3, y3, 6, 6);
+g2.fillRect(x4, y4, 6, 6);</div>
+
+
+<p>3️⃣  <strong>Add GamePanel to the GameWindow</strong></p>
+
+  <p>Create and add the panel:</p>
+  <div class="code-box">this.frame.add(new GamePanel());</div>
+
+  <p>
+    This places the drawing panel inside the window.
+  </p>
+
+  <div class="focus-box">
+    <strong>Quick check</strong><br />
+    Which class is responsible for drawing: <code>GameWindow</code> or <code>GamePanel</code>?
+  </div>
+
+  <p>4️⃣ <strong>Set color</strong></p>
+
+  <p>Add this before drawing your points:</p>
+  <div class="code-box">g2.setColor(Color.RED);</div>
+
+  <p>
+    All points drawn after this will use this color.
+  </p>
+
+  <div class="focus-box">
+    <strong>Quick check</strong><br />
+    How would you change individual points?
+  </div>
+    <!-- Example placeholder -->
+    <!-- <img src=\"images/swing-coordinates.png\" alt=\"Swing coordinate system\" style=\"max-width:100%; border-radius:12px; border:1px solid var(--border);\"> -->
+
+   
+  </div>
+</details>
+
+
+
+
+</div>
+</details>
+      
+
+
+    <details class="section" id="sec-4">
+      <summary>
+        <div class="summary-left">
+          <div class="section-number">4</div>
+          <div class="section-heading">
+            <h2>Lines</h2>
+            <p>Connect two coordinate positions with one drawing command.</p>
+          </div>
+        </div>
+        <div class="toggle-icon">+</div>
+      </summary>
+      <div class="section-body">
+        <p><strong>Structure: drawLine(x1, y1, x2, y2)</strong></p>
+
+  <p>
+    This draws a line from one point to another.
+  </p>
+
+  <p>
+    <code>(x1, y1)</code> → start point<br>
+    <code>(x2, y2)</code> → end point
+  </p>
+
+  <div class="focus-box">
+    <strong>Quick check</strong><br />
+    What happens if the start and end points are the same?
+  </div>
+ 
+    <details class="subsection">
+  <summary><strong>Draw Lines</strong>
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+<p>1️⃣ <strong>Draw lines between your points</strong></p>
+<div class="code-box">g2.drawLine(x1, y1, x2, y2);
+g2.drawLine(x2, y2, x3, y3);
+g2.drawLine(x3, y3, x4, y4);
+g2.drawLine(x4, y4, x1, y1);</div>
+<p>2️⃣ <strong>Add thickness</strong></p>
+
+  <div class="code-box">g2.setStroke(new BasicStroke(3));</div>
+
+  <p>
+    This makes the lines thicker.
+  </p>
+
+  <p>3️⃣ <strong>Add color</strong></p>
+
+  <div class="code-box">g2.setColor(Color.BLUE);</div>
+
+  <p>
+    Set color before drawing to change how the lines appear.
+  </p>
+<p>4️⃣ <strong>Labels drawString(text, x, y)</strong></p>
+<p>
+    This draws text on the screen at a specific position.
+  </p>
+
+  <div class="code-box">g2.drawString("(0,0)", 8, 20);</div>
+
+  <p>
+    <code>"(0,0)"</code> → the text to display<br>
+    <code>8</code> → x position (move right)<br>
+    <code>20</code> → y position (move down)
+  </p>
+
+  <p>
+    The text is drawn, just like shapes and lines.
+  </p>
+  <p>5️⃣ <strong>Helper method</strong></p>
+
+  <p>
+    Put all of this into a method:
+  </p>
+
+  <p>
+    The drawing object (<code>Graphics2D</code>) is created inside <code>paintComponent</code>.
+    Other methods cannot see it unless we pass it in.
+  </p>
+  <div class="code-box">public void drawCoordinates(Graphics2D g2) {
+  
+}</div>
+<p>6️⃣ <strong>Call method inside paintComponent</strong></p>
+ <div class="code-box">drawCoordinates(g2);
+</div>
+<p>
+    <code>paintComponent</code> controls when drawing happens.<br>
+    Your method controls what gets drawn.
+  </p>
+  <div class="focus-box">
+    <strong>Quick check</strong><br />
+    What problem do you get if all drawing stays inside <code>paintComponent</code>?
+  </div>
+
+  </div>
+</details>
+
+<details class="subsection">
+  <summary><strong>Drawing Multiple Line</strong>
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+<p>
+    We will create a method that draws many lines using for loop instead of writing each one manually.
+  </p>
+<p>1️⃣ <strong>Create a method to draw Grid</strong></p>
+
+<div class="code-box">public void drawGrid(Graphics2D g2) {
+}    
+</div>
+<p>2️⃣ <strong>Create for-loop</strong></p>
+<p>
+    Each time the loop runs, <code>x</code> and <code>y</code> increase by 50 pixels.
+  </p>
+  <div class="code-box">for (int x = 200; x < 350; x += 50) {
+    g2.drawLine(x, 200, x, 250);
+  }
+for (int y = 200; y < 350; y+= 50) {
+	g2.drawLine(200, y, 300, y);
+}
+</div>
+
+<p>3️⃣ <strong>Call method from paintComponent()</strong></p>
+
+  <div class="code-box">drawGrid(g2);</div>
+
+    </div>
+    </details>
+
+</div>
+</details>
+
+    <details class="section" id="sec-5">
+      <summary>
+        <div class="summary-left">
+          <div class="section-number">5</div>
+          <div class="section-heading">
+            <h2>Basic shapes</h2>
+            
+            <p>Moving to higher-level shape methods</p>
+          </div>
+        </div>
+        <div class="toggle-icon">+</div>
+      </summary>
+      <div class="section-body">
+        <img src="shapes.png" alt="Swing coordinate system" style="max-width:50%; border-radius:12px; border:1px solid var(--border);">
+        <p>We will draw six basic shapes on the panel: a square, a rectangle, a rounded rectangle, an ellipse, an arc, and a circle.</p>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <strong>drawRect/fillRect</strong>
+            Rectangle outline/filled
+          </div>
+          <div class="mini-card">
+            <strong>drawOval/fillOval</strong>
+            Oval / ellipse
+          </div>
+         <div class="mini-card">
+  <strong>drawPolygon/fillPolygon</strong>
+  Shape from multiple points
+</div>
+          <div class="mini-card">
+    <strong>drawArc/fillArc</strong>
+    Arc shape
+  </div>
+            <div class="mini-card">
+    <strong>drawEllipse/fillEllipse</strong>
+    Ellipse shape
+  </div>
+            <div class="mini-card">
+    <strong>draw(Shape)/fill(Shape)</strong>
+    Generic method for any shape object
+  </div>
+ 
+        </div>
+        <p> Create a method <code>drawShapes(Graphics2D g2)</code> and call it from paintComponent to keep things organized.</p>
+<p>Add a new color. Use RGB color picker <code>g2.setColor(new Color(149, 68, 86));</code></p>
+        <details class="subsection">
+  <summary>Draw a rectangle
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+
+    <p><strong>Add a rectangle</strong></p>
+
+    <p>Draw a filled rectangle near the top-left:</p>
+    <div class="code-box">g2.fillRect(40, 30, 80, 60);</div>
+
+    <p>
+      <code>x = 40</code>, <code>y = 30</code> set the top-left corner.<br>
+      <code>80</code> is the width and <code>80</code> is the height.
+    </p>
+
+  </div>
+</details>
+
+<details class="subsection">
+  <summary>Draw a square
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+
+    <p><strong>Add a square</strong></p>
+
+    <p>Draw a square by making width and height the same:</p>
+    <div class="code-box">g2.fillRect(180, 30, 120, 120);</div>
+
+    <p>
+      A square is just a rectangle with equal width and height.
+    </p>
+
+  </div>
+</details>
+
+<details class="subsection">
+  <summary>Draw a rounded rectangle
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+
+    <p><strong>Add a rounded rectangle</strong></p>
+
+    <p>Use this to round the corners:</p>
+    <div class="code-box">g2.fillRoundRect(380, 30, 120, 120, 30, 30);</div>
+
+    <p>
+      The last two numbers control how rounded the corners are.
+    </p>
+
+  </div>
+</details>
+
+<details class="subsection">
+  <summary>Draw an oval
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+
+    <p><strong>Add an oval</strong></p>
+
+    <p>Draw a tall oval:</p>
+    <div class="code-box">g2.fillOval(20, 180, 120, 180);</div>
+
+    <p>
+      The oval fits inside the rectangle made by these coordinates and dimensions.
+    </p>
+
+  </div>
+</details>
+
+<details class="subsection">
+  <summary>Draw an arc
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+
+    <p><strong>Add an arc</strong></p>
+
+    <p>Draw a filled arc:</p>
+    <div class="code-box">g2.fillArc(180, 220, 180, 100, 0, 180);</div>
+
+    <p>
+      The last two numbers control the start angle and how far the arc sweeps.
+    </p>
+    <p>
+    An arc is part of an oval. You control it with two values:
+  </p>
+  <p>
+    <code>startAngle</code> → where the arc begins<br>
+    <code>arcAngle</code> → how far it goes
+  </p>
+<p> startAngle measured in degrees, starting from the right side (3 o’clock)
+    0° → right<br>
+    90° → down<br>
+    180° → left<br>
+    270° → up
+  </p>
+
+  <p>arcAngle 
+    starts at the right, using the same angle measurements as startAngle. It can be positive (counterclockwise) or negative (clockwise).</p>
+  </p>
+  </div>
+</details>
+
+<details class="subsection">
+  <summary>Draw a circle
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+
+    <p><strong>Add a circle</strong></p>
+
+    <p>Draw a circle by making width and height the same:</p>
+    <div class="code-box">g2.fillOval(430, 220, 80, 80);</div>
+
+    <p>
+      A circle is just a special oval with equal width and height.
+    </p>
+
+  </div>
+</details>
+<details class="subsection">
+  <summary>Draw an ellipse (Ellipse2D) object with g2.draw(Shape)
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+<p>Java has two versions: Ellipse2D.Float and Ellipse2D.Double. You could use integers, but graphics libraries are designed for precision → so they use doubles.</p>
+    <p>1️⃣ <strong>Create an ellipse object</strong></p>
+
+    <div class="code-box">Ellipse2D.Double ellipse =
+    new Ellipse2D.Double(50, 50, 150, 80);</div>
+
+    <p>
+      <code>(x, y)</code> → top-left of bounding box<br>
+      <code>width</code>, <code>height</code> → size of the ellipse
+    </p>
+
+    <p>2️⃣ <strong>Draw the shape object using draw() method</strong></p>
+<p>This works with all shapes and useful when you need to modify and transform the object</p>
+    <div class="code-box">g2.draw(ellipse);</div>
+
+    <p>3️⃣ <strong>Fill the ellipse object</strong></p>
+
+    <div class="code-box">g2.fill(ellipse);</div>
+
+
+    <div class="focus-box">
+      <strong>Quick check</strong><br />
+      From the OOP design perspective, which is better: using shape objects or calling specific methods like <code>drawOval</code>?
+    </div>
+
+  </div>
+</details>
+<details class="subsection">
+  <summary>Graphics/Graphics2D Objects
+    <span class="toggle">+</span>
+  </summary>
+  <div class="subsection-body">
+  <div class="focus-box">
+      <strong>How to Use</strong><br />
+      <p>
+    We can create various shape objects and then draw or fill them.
+  </p>
+
+  <p>
+    <code>Ellipse2D.Double</code> <br>
+     <code>Rectangle2D.Double</code> <br>
+     <code>RoundRectangle2D.Double</code> <br>
+     <code>Line2D.Double</code> <br>
+     <code>Arc2D.Double</code> <br>
+       <code>Rectangle</code> <br>
+  <code>Polygon</code> <br>
+  </p>
+
+  <p>
+    Pattern:
+  </p>
+
+  <div class="code-box">Shape shape = new SomeShape(...);
+g2d.draw(shape);</div>
+    </div>
+</details>
+      </div>
+    </details>
+
+    <details class="section" id="sec-6">
+      <summary>
+        <div class="summary-left">
+          <div class="section-number">6</div>
+          <div class="section-heading">
+            <h2>Translation</h2>
+            <p>Translation shifts the coordinate system before we draw.</p>
+          </div>
+        </div>
+        <div class="toggle-icon">+</div>
+      </summary>
+      <div class="section-body">
+        <img src="camera.png" alt="translate" style="max-width:30%; border-radius:12px; border:1px solid var(--border);">
+        <img src="translation.png" alt="translate" style="max-width:50%; border-radius:12px; border:1px solid var(--border);">
+        <!-- <p>Translation shifts the coordinate system before we draw.</p> -->
+        <div class="subsection-body">
+        <p>1️⃣ <strong>Create a new JPanel (TransformPanel)</strong></p>
+         <p>Override paintComponent() and a method transform(Graphics2D g2d)</p>
+<div class="code-box">public class TransformPanel extends JPanel {
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+    }   
+    public void transform(Graphics2D g2d){}</div>
+  <p>2️⃣ <strong>Add a rectangle object to transform method</strong></p>
+ <p>
+    We will create a rectangle object at the origin so it is easy to see how it moves.
+  </p>
+  <div class="code-box">public void transform(Graphics2D g2) {
+g2.setStroke(new BasicStroke(5));
+Rectangle rectangle = new Rectangle(0,0,50,50);
+g2.draw(rectangle);
+}
+</div>
+<p>3️⃣ <strong>Copy drawCoordinates() method from GamePanel</strong></p>
+<div class="code-box">public void drawCoordinates(Graphics2D g2) {
+		g2.setStroke(new BasicStroke(3));
+		g2.drawLine(-150, 0, 150, 0);
+		g2.drawLine(0, -150, 0, 150);
+		g2.drawString("(0,0)", 8, 20);
+	}
+}</div>
+<p> Call the method inside the transform() method before the rectangle</p>
+    <div class="code-box">drawCoordinates(g2);</div>
+
+<p>4️⃣ <strong>Add <code>TransformPanel</code> to <code>GameWindow</code></strong></p>
+<div class="code-box">this.frame.add(new TransformPanel());</div>
+</div>
+  <div class="subsection-body">
+
+  <p>5️⃣ <strong>Call the transform method and then translate method inside <code>paintComponent</code></strong></p>
+<div class="code-box">transform(g2);
+g2.translate(100, 50);</div>
+ <div class="focus-box">
+    <strong>How Translate works</strong><br />
+<p><code>translate(x, y)</code> moves the coordinate system.
+  </p>
+  <p>
+    <code>x</code> → shift right<br>
+    <code>y</code> → shift down
+  </p>
+
+  <p>
+    After calling <code>translate</code>, all drawing uses the new origin.
+  </p>
+
+  <div class="code-box">g2.translate(100, 50);</div>
+
+  <p>
+    Now <code>(0,0)</code> is no longer the top-left. It has moved.
+  </p>
+
+</div>
+ 
+
+  <p> 6️⃣ <strong>Apply transform again</strong></p>
+  <p>Feel free to adjust colors so you know which rectangle is shown</p>
+<div class="code-box">transform(g2);
+		g2.translate(100, 50);
+		g2.setColor(Color.BLUE);
+		transform(g2);
+		g2.setColor(Color.RED);
+		transform(g2);</div>
+  </div>
+<div class="subsection-body">
+<div class="focus-box">
+  <p><strong>Why undo translate?</strong></p>
+
+  <p>
+    <code>translate</code> changes the coordinate system for everything that comes after.
+  </p>
+
+  <p>
+    If you do not undo it, all future drawings will stay shifted.
+  </p>
+
+  <p>Example:</p>
+
+  <div class="code-box">g2d.translate(100, 0);
+g2d.drawRect(0, 0, 50, 50);   // shifted
+
+g2d.drawRect(0, 100, 50, 50); // also shifted</div>
+
+  <p>
+    Both shapes are affected because the coordinate system changed.
+  </p>
+
+  <p>To reset:</p>
+
+  <div class="code-box">g2d.translate(-100, 0);</div>
+
+  <p>
+    This brings the coordinate system back.
+  </p>
+  </div>
+</div>
+
+      </div>
+    </details>
+
+    <details class="section" id="sec-7">
+      <summary>
+        <div class="summary-left">
+          <div class="section-number">7</div>
+          <div class="section-heading">
+            <h2>Rotation</h2>
+            <p>Rotation does not rotate the shape. It rotates the axes.</p>
+          </div>
+        </div>
+        <div class="toggle-icon">+</div>
+      </summary>
+      <div class="section-body">
+        <img src="angle.png" alt="translate" style="max-width:30%; border-radius:12px; border:1px solid var(--border);">
+        <img src="rotation.png" alt="translate" style="max-width:50%; border-radius:12px; border:1px solid var(--border);">
+        <p>Rotation starts from the right and goes clockwise in Java2D</p>
+        <div class="focus-box">
+          <strong>How Angles Work in Java</strong><br />
+  <p>
+    Java2D rotates using <strong>radians</strong>, not degrees.
+  </p>
+  <p>
+    One full circle is <code>2π</code> radians.
+  </p>
+  <p>
+    Common angles:
+  </p>
+  <p>
+    <code>π / 4</code> =  45<br>
+    <code>π / 2</code> = 90<br>
+    <code>π</code> = 180<br>
+    <code>2π</code> = 360
+  </p>
+
+  <p>
+    Option 1: write the angle using <code>Math.PI</code>
+  </p>
+
+  <div class="code-box">g2.rotate(Math.PI / 4);</div>
+
+  <p>
+    This rotates by 45 degrees.
+  </p>
+
+  <p>
+    Option 2: convert from degrees using <code>Math.toRadians()</code>
+  </p>
+  <div class="code-box">g2.rotate(Math.toRadians(45));</div>
+  <p>
+    This does the same thing, but easier to read.
+  </p>
+  </div>
+<div class="subsection-body">
+        <p>1️⃣ <strong>Add rotate(theta)</strong></p>
+
+<p>
+    Rotate the coordinate system around the origin:
+  </p>
+
+  <div class="code-box">g2.rotate(Math.toRadians(45));</div>
+
+  <p>
+    Your shape will rotate around <code>(0,0)</code>.
+  </p>
+<div class="code-box">g2.setColor(Color.GREEN);
+g2.rotate(Math.toRadians(45));
+transform(g2);
+g2.rotate(Math.toRadians(45));
+transform(g2);</div>
+  <p><strong>Notice the problem:</strong> The object does not spin in place. It moves in a circle.
+  </p>
+
+  <p> 2️⃣ <strong>Rotate around a specific point</strong></p>
+
+  <p>
+    Use the overloaded version:
+  </p>
+
+  <div class="code-box">g2d.rotate(Math.toRadians(45), 50, 50);</div>
+
+  <p>
+    Now rotation happens around <code>(50,50)</code>.
+  </p>
+  <div class="code-box">g2.setColor(Color.GREEN);
+g2.rotate(Math.toRadians(45), 50, 50);
+transform(g2);
+g2.rotate(Math.toRadians(45), 50, 50);
+transform(g2);</div>
+
+  <p>3️⃣ <strong>Use center of your shape</strong></p>
+
+  <p>
+    To make an object spin in place, rotate around its center.
+  </p>
+<div class="focus-box">
+  <strong>How to find the center?</strong><br />
+
+    If your rectangle is at (200,200) with size 50×50, what is its center?
+  </div>
+  For a rectangle, the center is at <code>(x + width/2, y + height/2)</code>. So to rotate around center:
+<div class="code-box">g2.rotate(Math.toRadians(45), 200 + 25, 200 + 25);</div>
+</div>
+</div>
+<div class="subsection-body">
+<div class="focus-box">
+  <p><strong>Why Undo Rotate?</strong></p>
+  <p>
+    <code>rotate()</code> changes the coordinate system for everything that follows.
+  </p>
+
+  <p>
+    If you do not undo it, all future drawings will stay rotated.
+  </p>
+
+  <p>Example:</p>
+
+  <div class="code-box">g2.rotate(Math.toRadians(45));
+g2.draw(rectangle);
+
+g2.draw(rectangle); // still rotated</div>
+
+  <p>
+    Both shapes are affected because rotation is still active.
+  </p>
+
+  <p>To reset:</p>
+
+  <div class="code-box">g2.rotate(Math.toRadians(-45));</div>
+
+  <p>
+    This brings the coordinate system back.
+  </p>
+</div>
+</div>
+</details>
+</details>
+
+
+
+         </details>
+  </main>
+</body>
+</html>
