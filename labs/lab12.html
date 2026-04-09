@@ -148,81 +148,54 @@ a.resource-ref:hover {
     <h1>Lab Assignment 12</h1>
     <nav id="lab-nav">
         <ul>
-          <li><a href="#lab1">01. Recursion Practice</a></li>
-          <li><a href="#lab2">02. My Counter</a></li>
-          <li><a href="#lab3">03. My Accumulator</a></li>
-         
+          <!-- <li><a href="#lab1">01. Recursion Practice</a></li> -->
+          <li><a href="#lab1">01. My Counter</a></li>
+          <li><a href="#lab2">02. My Accumulator</a></li>
+
           <!-- Add more lab links as needed -->
         </ul>
       </nav>
 <!-- Lab Navigation Menu -->
 <div id="main-content">
-  <h2>Getting Started</h2>
-<p>Access the practice platform <a href="https://codingbat.com/java">CodingBat</a>. Once completed, paste all codingbat solutions into one java file</p>
+  <!-- <h2>Getting Started</h2>
+<p>Access the practice platform <a href="https://codingbat.com/java">CodingBat</a>. Once completed, paste all codingbat solutions into one java file</p> -->
+
+
 
 
 <div class="lab-section" id="lab1">
-<h2>Instructions</h2>
+  <h1>Project and Package Setup</h1>
 
-  <ol>
-    <li>
-      <strong>In Eclipse, create a new package named <code>lab</code>.</strong>
-    </li>
+<p>
+For this lab, you will create and organize your code using instructions.
+</p>
 
-    <li>
-      <strong>Inside the <code>lab</code> package, create a new class named <code>Recursion2</code>.</strong>
-      <br>
-      This class will contain <em>all</em> of your methods for this lab.
-    </li>
+<ul>
+  <li><strong>Provide a Project name:</strong> example - <code>SwingDemos</code></li>
+    <li><strong>Provide a Package name:</strong> example - <code>lab12</code></li>
+  </ul>
 
-    <li>
-      <strong>Open CodingBat (Recursion-1):</strong>
-      <br>
-      Go to 
-      <a href="http://codingbat.com/java/Recursion-1" target="_blank">
-        https://codingbat.com/java/Recursion-1
-      </a>
-    </li>
+<hr>
 
-    <li>
-      <strong>Complete the following CodingBat problems:</strong>
-      <ul>
-        <li><code>count7</code></li>
-        <li><code>count8</code></li>
-        <li><code>powerN</code></li>
-        <li><code>countX</code></li>
-        <li><code>countHi</code></li>
-        <li><code>changeXY</code></li>
-   
-      </ul>
-    </li>
+<h3>Setup Steps</h3>
 
-    <li>
-      <strong>For each problem:</strong>
-      <ul>
-        <li>Write the method in CodingBat first</li>
-        <li>Once it passes all tests, copy the method into <code>Recursion2.java</code></li>
-        <li>Make sure each method signature matches exactly</li>
-      </ul>
-    </li>
+<ol>
+  <li>Create a new Java project named <code>SwingApps</code>.</li>
+  <li>Create a package named <code>lab12</code>.</li>
+  <li>
+    Create the following classes in the <code>lab12</code> package:
+    <ul>
+      <li><code>MyCounter</code></li>
+      <li><code>MyAccumulator</code></li>
+      <li><code>MyApp</code></li>
+    </ul>
+  </li>
+</ol>
 
-    <li>
-      <strong>Save Recursion2 class with all 6 recursion problems.</strong>
-      
-    </li>
-
-    <li>
-      <strong>Submit <code>Recursion2.java</code> to Gradescope as the Lab 12 assignment.</strong>
-    </li>
-  </ol>
-
-        </div>
-      
-        </div>
-        </div>
-
-<!-- <div class="lab-section" id="lab1">
-  <h2>Lab 1: Recursion Practice</h2>
+<p>
+Submission: submit your java files but remember you need to demo your apps after the submission.
+</p>
+  <!-- <h2>Lab 1: Recursion Practice</h2>
   <p>
     In CodingBat <a href="https://codingbat.com/java/Recursion-1">Recursion-1</a>," complete the next 6 problems: count7, count8, powerN, countX, countHi, changeXY
   </p>
@@ -265,7 +238,459 @@ a.resource-ref:hover {
         
 
         </div> -->
+<div class="lab-section" id="lab1">
+  <h2 style="color:black">My Counter (Layout)</h2>
+  <p>
+    In this lab, you will practice creating a basic Swing layout with labels, text fields, and a button. 
+    You will <strong>not</strong> add any actions yet, next time, we will learn how to make the button functional.
+  </p>
 
+  <h3>Task Description</h3>
+  <p>
+    <img src="lab12a.png" alt="lab12 a" width="400"/>
+  </p>
+
+  <ul>
+    <li>A <code>JLabel</code> to describe the counter</li>
+    <li>A non-editable <code>JTextField</code> to display the current count</li>
+    <li>A <code>JButton</code> labeled “Count” (you will add functionality later)</li>
+  </ul>
+<hr><hr>
+  <h3>Step 1: Build the Counter Panel</h3>
+  <p>
+In this step, you will create a panel that contains a label, a text field, and a button.
+This panel represents a <strong>single UI component</strong> and will be added to the application later.
+</p>
+
+
+
+<h3>1.1 Create the panel class</h3>
+
+<p>
+Create a new class called <code>MyCounter</code> that <strong>extends <code>JPanel</code></strong>.
+</p>
+<hr>
+<h3>1.2 Add component fields</h3>
+
+<p>
+Add private fields for the UI components used in this panel:
+</p>
+<ul>
+  <li>
+    A <code>JLabel</code> field named <code>label</code>
+  </li>
+  <li>
+    A <code>JTextField</code> field named <code>field</code>
+  </li>
+  <li>
+    A <code>JButton</code> field named <code>button</code>
+  </li>
+</ul>
+<p>
+These components are stored as fields so they can be accessed/modified later.
+</p>
+<hr>
+<h3>1.3 Initialize components in the constructor</h3>
+
+<p>
+In the constructor of your panel class, initialize each component:
+</p>
+
+<ul>
+  <li>Initialize <code>label</code> with the text <code>"Counter"</code></li>
+  <li>Initialize <code>field</code> with the value "0" and a width of 5: <code>new JTextField("0", 5)</code></li>
+  <li>Initialize <code>button</code> with the label <code>"Count"</code></li>
+</ul>
+<p>After creating the text field, configure it so the user cannot edit it: <code>field.setEditable(false);</code></p>
+<hr>
+<h3>1.5 Choose a layout for the panel</h3>
+
+<p>
+Before adding any components, set a layout manager for this panel.
+</p>
+
+<p>
+To match the expected layout in the screenshot, use a layout that arranges
+components in a single row, example <code>setLayout(new FlowLayout());</code>:
+</p>
+
+<ul>
+  <li><code>new FlowLayout()</code> (recommended)</li>
+  <li>or <code>new GridLayout(1, 3)</code></li>
+</ul>
+<hr>
+<h3>1.6 Add components to the panel</h3>
+
+<p>
+Add the components to the panel in the following order:
+</p>
+
+<ol>
+  <li>The label</li>
+  <li>The text field</li>
+  <li>The button</li>
+</ol>
+<hr>
+  <h3>Step 2: Run the App (MyApp)</h3>
+  <!-- <p>
+We treat <code>JFrame</code> as the <em>window shell</em>.
+Your UI lives inside a panel, so we place only <strong>one main panel</strong> into the frame using
+<code>setContentPane(...)</code>.
+</p>
+  <p>
+    In your main viewer class (e.g., <code>MainApp</code>), 
+    create a <code>JFrame</code>, add your <code>MyCounter</code> panel to it, 
+    and call <code>frame.pack()</code> to size it properly.
+  </p>
+
+  <pre><code>JFrame frame = new JFrame();
+frame.add(new MyCounter());
+frame.pack();
+frame.setVisible(true);</code></pre> -->
+<p>
+In this step, you will create an <strong>application class</strong> whose job is to:
+</p>
+
+<ul>
+  <li>create the window</li>
+  <li>install the main panel</li>
+  <li>make the app visible</li>
+</ul>
+
+<p>
+This class does <em>not</em> build the UI itself — layout and components belong inside panel classes.
+</p>
+
+<hr>
+
+<h3>2.1 Create the application class</h3>
+
+<p>
+Create a new class called <code>MyApp</code>.
+</p>
+
+<p>
+This class represents the <strong>application</strong>, not a UI component.
+</p>
+
+<hr>
+
+<h3>2.2 Add a JFrame field</h3>
+
+<p>
+Add a private field to store a <code>JFrame</code>.
+</p>
+
+<p>
+Design idea:
+</p>
+
+<ul>
+  <li>The application <strong>has a</strong> frame</li>
+  <li>The frame represents the OS window (title bar, close button)</li>
+</ul>
+
+
+<hr>
+
+<h3>2.3 Write the constructor (build the app)</h3>
+<p>
+Initialize the frame and configure the window.
+</p>
+<p>
+In the constructor, you should:
+</p>
+
+<ul>
+  <li>Create the <code>JFrame</code> object</li>
+  <li>Set the window title "AWT Counter"</li>
+  <li>Position the window on the center of screen (hint: use <code>setLocationRelativeTo(null)</code>)</li>
+  <li>Set the default close operation</li>
+  <li>Install <strong>one main panel</strong> using <code>setContentPane(new MyCounter())</code></li>
+  <li>Set a fixed window size so that your output approximately matches the screenshot.
+Your size does not need to be exact, but the components should appear clearly
+and in a similar layout.</li>
+
+</ul>
+
+
+<hr>
+
+<h3>2.4 Add a <code>run()</code> method</h3>
+
+<p>
+Create a <code>run()</code> method whose responsibility is to:
+</p>
+
+<ul>
+  <li>make the application visible</li>
+</ul>
+
+<p>
+Separating construction from execution makes the program easier to reason about and extend.
+</p>
+
+<hr>
+
+<h3>2.5 Write the <code>main</code> method</h3>
+
+<p>
+In the <code>main</code> method:
+</p>
+
+<ul>
+  <li>Create an instance of your application class</li>
+  <li>Call its <code>run()</code> method</li>
+  <li>Execute the app and verify that the text field is not editable.</li>
+</ul>
+
+<p>
+This makes the object lifecycle explicit:
+</p>
+
+<ul>
+  <li>constructor → build the app</li>
+  <li><code>run()</code> → start the app</li>
+</ul>
+
+<p>Copy the <code>SwingUtilities.invokeLater(...)</code>.<strong>Why?</strong>> Swing is <strong>not thread-safe</strong>. 
+  All UI creation and updates must happen on a special thread called the <em>Event Dispatch Thread (EDT)</em>. </p> 
+  <p> <code>SwingUtilities.invokeLater(...)</code> tells Java: </p> 
+  <ul> 
+    <li>“Wait until Swing is ready”</li> 
+    <li>“Then run this code on the correct UI thread”</li> 
+  </ul> 
+  <p> For now, you do <strong>not</strong> need to fully understand threads. Just treat this as a <strong>best practice</strong> that keeps Swing applications stable. </p> 
+  <p> We will explain the Event Dispatch Thread in more detail in a future lecture. </p>
+
+</p>
+<pre><code>
+public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            MyApp app = new MyApp();
+            app.run();
+        });
+    }
+</code></pre>
+
+  <p><strong>Next lab:</strong> you will add an <code>ActionListener</code> to make the “Count” button increase the number.</p>
+
+<!-- <details class="hint">
+  <summary>💡 Hint: Building Components in the Constructor</summary>
+  <p>Initialize your <code>JLabel</code>, <code>JTextField</code>, and <code>JButton</code> directly inside the constructor of your panel.  
+  This ensures all components are ready before you add them to the layout.</p>
+  <pre><code>JLabel label = new JLabel("Count:");
+JTextField field = new JTextField("0", 5);
+field.setEditable(false);
+JButton button = new JButton("Count");</code></pre>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint: Choosing a Layout Manager</summary>
+  <p>Use <code>FlowLayout</code> for a simple row of components (label, text field, and button).  
+  You can experiment later with <code>GridLayout(1, 3)</code> to see how spacing changes.</p>
+  <pre><code>setLayout(new FlowLayout());
+add(label);
+add(field);
+add(button);</code></pre>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint: Adding the Panel to a Frame</summary>
+  <p>When you test your panel, remember to add it to a <code>JFrame</code> before calling <code>pack()</code> and <code>setVisible(true)</code>.  
+  The typical pattern looks like this:</p>
+  <pre><code>JFrame frame = new JFrame();
+frame.add(new MyCounter());
+frame.pack();
+frame.setVisible(true);</code></pre>
+</details> -->
+</div>
+<div class="lab-section" id="lab2">
+  
+  <h2 style="color:black">My Accumulator (2x2 Layout)</h2>
+  <h3>Overview</h3>
+ <p>
+In this part, you will build a second panel class named <code>MyAccumulator</code>.
+This panel is a small form arranged in a <strong>2×2 grid</strong>.
+</p>
+
+  <p>
+    <img src="Lab12b.png" alt="lab12 b" width="400"/>
+  </p>
+
+  <section id="setup">
+    <h3>2.1 Create the panel class</h3>
+
+<p>
+Create a new class called <code>MyAccumulator</code> that <strong>extends <code>JPanel</code></strong>.
+</p>
+
+<p>
+This class represents one UI panel (just like <code>MyCounter</code>).
+</p>
+
+<hr>
+
+<h3>2.2 Add component fields (declare only)</h3>
+
+<p>
+Declare the following private fields in <code>MyAccumulator</code>.
+Do not initialize them yet.
+Use these names exactly:
+</p>
+
+<ul>
+  <li><code>private JLabel labelTotal;</code></li>
+  <li><code>private JTextField fieldTotal;</code></li>
+  <li><code>private JLabel labelAdd;</code></li>
+  <li><code>private JTextField fieldAdd;</code></li>
+</ul>
+
+<hr>
+
+<h3>2.3 Set the layout (2×2 grid)</h3>
+
+<p>
+In the constructor, set the layout manager to a 2×2 grid.
+</p>
+
+<p>
+You may use:
+</p>
+
+<pre><code>new GridLayout(2, 2)</code></pre>
+<hr>
+
+<h3>2.4 Initialize the fields</h3>
+
+<p>
+In the constructor, initialize:
+</p>
+    <!-- <h3>1. Setup</h3>
+    <ol>
+      <li>Create a new class named <code>MyAccumulator</code> that extends <code>JPanel</code>.</li>
+      <li>Import the necessary Swing and AWT packages.</li>
+      <li>In your viewer class’s <code>main()</code> method, add the panel to a <code>JFrame</code> and make it visible.</li>
+    </ol>
+    
+  </section>
+
+  <section id="layout">
+    <h3>2. Layout</h3>
+    <p>
+      Use a 2×2 grid to arrange labels and text fields. For example:
+    </p>
+    <pre><code>setLayout(new GridLayout(2, 2, 5, 5));</code></pre> -->
+<ul>
+  <li><code>labelAdd</code> with text <code>"Enter an Integer:"</code></li>
+
+  <li><code>labelTotal</code> with text <code>“The Accumulated Sum is:”</code></li>
+  <li><code>fieldAdd</code> with the default value of 0</li>
+  <li><code>fieldTotal</code> with the default value of 0</li>
+  <li>Set <code>fieldAdd</code> as an editable text field with the default value of 0</li>
+<li>Set <code>fieldTotal</code> to be non-editable with the default value of 0</li>
+</ul>
+
+<h3>2.6 Add components in the correct order</h3>
+
+<p>
+Add the four components to the panel in the order so the grid matches the screenshot.
+</p>
+
+<!-- <ol>
+
+  <li><code>labelAdd</code></li>
+  <li><code>fieldAdd</code></li>
+    <li><code>labelTotal</code></li>
+  <li><code>fieldTotal</code></li>
+</ol> -->
+
+<hr>
+
+<h3>2.7 Show <code>MyAccumulator</code> by updating the content pane</h3>
+
+<p>
+Reuse your application class from Part 1.
+To view <code>MyAccumulator</code>, reuse the same <code>JFrame</code> but install a different panel:
+</p>
+
+<ul>
+  <li>Change <code>setContentPane(new MyCounter())</code> to <code>setContentPane(new MyAccumulator())</code></li>
+  <li>Run your program again</li>
+
+</ul>
+
+<p>
+This is a preview of the idea of “screens”:
+the frame stays the same, but the panel inside it changes.
+</p>
+<hr>
+<h3>2.8 Frame Size Behavior</h3>
+
+
+<p>
+Run your program and observe how the frame behaves.
+Then make the following changes one at a time.
+</p>
+
+<ul>
+  <li>
+    Adjust the window size using <code>setSize(...)</code> so the labels and fields fit comfortably.
+    Run the program again and observe the result.
+  </li>
+  <li>
+    Add <code>frame.pack()</code> to the <code>run()</code> method.
+    Run the program again and observe how the frame size changes. <code>pack()</code> ignores <code>setSize()</code> because it resizes the frame based on the components inside it.
+  </li>
+  <li>But the order matters. Add <code>frame.setSize(600, 300);</code> after <code>frame.pack();</code>. Observe the change.</li>
+  <li>Finally, comment out all lines with <code>setSize()</code> and add <code>setPreferredSize(new Dimension(400,100));</code> to MyAccumulator constructor.</li>
+</ul>
+
+    <!-- <p>
+      Because your grid is 2×2, the components will appear in order as you call <code>add()</code>:
+    </p> -->
+    <!-- <pre><code>add(new JLabel("Enter an Integer:"));
+add(inputField);
+add(new JLabel("Accumulated Sum:"));
+add(outputField);</code></pre> -->
+
+    <!-- <p>Set the output field to be non-editable: <code>outputField.setEditable(false);</code></p> -->
+  </section>
+
+  <section id="event-placeholder">
+    <h3>3. What’s Next</h3>
+    <p>
+      In the next lab, you will add <code>ActionListener</code> logic so that pressing Enter in the input field updates the accumulated sum.
+    </p>
+  </section>
+  <!-- <details class="hint">
+  <summary>💡 Hint: Component Order in GridLayout</summary>
+  <p>A <code>GridLayout(2, 2)</code> fills cells left-to-right, top-to-bottom in the order you call <code>add()</code>.  
+  To match the screenshot layout:</p>
+  <pre><code>add(new JLabel("Enter an Integer:"));
+add(inputField);
+add(new JLabel("Accumulated Sum:"));
+add(outputField);</code></pre>
+</details> -->
+
+<!-- <details class="hint">
+  <summary>💡 Hint: Making Output Read-Only</summary>
+  <p>Set your sum display field as non-editable so users can’t type into it:</p>
+  <pre><code>outputField.setEditable(false);</code></pre>
+</details> -->
+
+<details class="hint">
+  <summary>💡 Hint: Adjusting Panel Size</summary>
+  <p>If your frame looks too small, you can suggest a preferred size for the panel before calling <code>pack()</code>:</p>
+  <pre><code>setPreferredSize(new Dimension(250, 100));</code></pre>
+</details>
+
+<details class="hint">
+  <summary>💡 Hint: Required Imports</summary>
+  <p>Make sure to import both Swing and AWT packages at the top of your file:</p>
+  <pre><code>import javax.swing.*;
+import java.awt.*;</code></pre>
+</details>
         <!-- <div class="lab-section" id="lab3">
           <h2 style="color:black">My Accumulator</h2>
           <h3>Overview</h3>
