@@ -342,6 +342,10 @@ private static final Color LITTLE_SUN_COLOR = Color.RED;
   </ul>
 
   <h2>Part 2: Stage 3b – Creating the Sun Class</h2>
+  <p>
+    The values <code>rayLength</code>, <code>rayWidth</code>, and <code>rayDistanceFromSun</code> are
+    <strong>not independent inputs</strong>. They are calculated from <code>circleDiameter</code>.
+  </p>
   <ul>
     <li>The Sun’s x and y values represent the upper-left corner of the bounding box for its center circle.</li>
     <li>
@@ -380,9 +384,14 @@ private static final Color LITTLE_SUN_COLOR = Color.RED;
   <li>rayDistanceFromSun - the distance from the center of the sun to the beginning of a ray</li>
   <li>color - the fill color for the Sun</li>
 </ul>
-<p>Create a default constructor for the Sun class.</p>
-<p>Use as many of the constants defined above as possible when setting values into the specified instance fields.</p>
-<p>Create a constructor with the following parameters:</p>
+<p>Create a default constructor for the Sun class. The <strong>default constructor</strong> should use the provided <code>DEFAULT_*</code> constants. The default constructor will use the default values. Recall that the default constructor is:</p>
+<pre><code>public Sun() {
+  // add code here to set instance fields using the DEFAULT_* constants
+}</code></pre>
+
+    <p>
+      The <strong>overloaded constructor</strong> should use the values passed as parameters.
+    Use the following parameters:</p>
 <ul>
   <li>x - The upper left x value for the Sun's main circle</li>
   <li>y - The upper left y value for the Sun's main circle</li>
