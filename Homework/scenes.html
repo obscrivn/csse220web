@@ -410,6 +410,21 @@ private static final Color LITTLE_SUN_COLOR = Color.RED;
     <li><strong>Without Rays:</strong> A filled circle with a border.</li>
     <li><strong>With Rays:</strong> The center circle plus rays drawn using a helper method (e.g., <code>drawRay(Graphics2D g2d, double angle)</code>).</li>
   </ul>
+
+  <p>Default Sun with rays:</p>
+<ul>
+  <li>In the SunComponent's paintComponent method, create a Sun using the default (parameterless) constructor, then draw it to the frame by calling the drawOn method. (Hint below if you get stuck.)</li>
+  <li>In the Sun's drawOn method, draw the center circle for the Sun based on its x and y values and the circleDiameter.</li>
+  <li>Make sure to fill it with the Sun's color</li>
+  <li>Make sure to draw the border with the BORDER_COLOR</li>
+  <li>Be sure to test it shows up correctly before you go on to drawing the rays!</li>
+  <li>Draw the rays in for the circle.</li>
+  <li>Create a drawRay method that takes a Graphics2D object and an angle can make things easier.</li>
+  <li>The drawRay method would be called in in a loop from the drawOn method in Sun</li>
+  <li>The Graphics2D rotate and translate methods will be very helpful when drawing rays (you may want to call translate in drawOn before you call drawRays)</li>
+  <li>Be sure to test that it shows up correctly before you go on to drawing a bunch more suns</li>
+</ul>
+
   <p>
     Sample images:
   </p>
