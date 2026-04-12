@@ -408,7 +408,7 @@ private static final Color LITTLE_SUN_COLOR = Color.RED;
   </p>
   <ul>
     <li><strong>Without Rays:</strong> A filled circle with a border.</li>
-    <li><strong>With Rays:</strong> The center circle plus rays drawn using a helper method (e.g., <code>drawRay(Graphics2D g2d, double angle)</code>).</li>
+    <li><strong>With Rays:</strong> The center circle plus rays drawn using a helper method (e.g., <code>drawRay(Graphics2D g2d, double angle)</code>).Note - you already have a specified number of rays: NUMBER_OF_RAYS = 8</li>
   </ul>
 
   <p>Default Sun with rays:</p>
@@ -419,12 +419,82 @@ private static final Color LITTLE_SUN_COLOR = Color.RED;
   <li>Make sure to draw the border with the BORDER_COLOR</li>
   <li>Be sure to test it shows up correctly before you go on to drawing the rays!</li>
   <li>Draw the rays in for the circle.</li>
-  <li>Create a drawRay method that takes a Graphics2D object and an angle can make things easier.</li>
+  <li>Create a drawRay method (for drawing a ray) that takes a Graphics2D object and an angle (double). Inside <code>drawRay(...)</code>, use <code>rotate(angle)</code> so the same rectangle can be drawn in different directions.</li>
+  </li>
   <li>The drawRay method would be called in in a loop from the drawOn method in Sun</li>
   <li>The Graphics2D rotate and translate methods will be very helpful when drawing rays (you may want to call translate in drawOn before you call drawRays)</li>
   <li>Be sure to test that it shows up correctly before you go on to drawing a bunch more suns</li>
 </ul>
+<details class="lab-card">
+  <summary>Hint: Where do the rays start?</summary>
 
+  <p>
+    The <code>x</code> and <code>y</code> values of the Sun represent the 
+    <strong>top-left corner</strong> of the circle, not the center.
+  </p>
+
+  <p>
+    However, rays should extend <strong>outward from the center of the Sun</strong>.
+  </p>
+
+  <p>
+    So before drawing rays, you need to compute the center of the circle.
+  </p>
+<p>
+    Note: The method <code>drawRect(...)</code> uses <code>int</code> values, but your Sun
+    uses <code>double</code> values for positioning and size.
+  </p>
+
+  <p>
+    Consider using <code>Rectangle2D.Double</code>, which allows you to
+    work directly with <code>double</code> values.
+  </p>
+
+  <pre><code>Rectangle2D.Double ray =
+    new Rectangle2D.Double(x, y, width, height);
+
+g2.draw(ray);
+g2.fill(ray);</code></pre>
+  <p>
+    A helpful approach is:
+  </p>
+
+  <ul>
+    <li>Move the graphics coordinate system to the center using <code>translate(...)</code></li>
+    <li>Draw one ray as a vertical rectangle above the center</li>
+    <li>Rotate the graphics context and draw the same ray again</li>
+  </ul>
+
+  <p>
+    This way, you don’t need to calculate a different (x, y) position for every ray.
+  </p>
+
+  <p>
+    Think of it as drawing one ray and spinning it around the Sun.
+  </p>
+</details>
+
+<details class="lab-card">
+  <summary>Hint: Rotating around the center of the Sun</summary>
+
+  <p>
+    By default, <code>rotate(...)</code> rotates around the point (0, 0).
+  </p>
+
+  <p>
+    One solution could  be to rotate a ray around the center of the Sun, for example:
+  </p>
+
+  <pre><code>g2.rotate(angle, centerX, centerY);</code></pre>
+  <p>
+    After drawing the ray, you should undo the rotation so it does not affect future drawings:
+  </p>
+
+  <pre><code>g2.rotate(-angle, centerX, centerY);</code></pre>
+
+
+
+</details>
   <p>
     Sample images:
   </p>
