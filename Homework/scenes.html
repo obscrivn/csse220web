@@ -370,6 +370,28 @@ private static final Color LITTLE_SUN_COLOR = Color.RED;
     private static final double DEFAULT_SUN_Y = 100.0;
     private static final Color DEFAULT_SUN_COLOR = Color.YELLOW;  
 </code></pre>
+<p>Add the following instance fields to the Sun class:</p>
+<ul>
+  <li>x - a double representing the x position of the upper left corner of the bounding box of the Sun's center circle</li>
+  <li>y - a double representing the y position of the upper left corner of the bounding box of the Sun's center circle</li>
+  <li>circleDiameter - diameter of the center circle of a Sun</li>
+  <li>rayLength - the length of each ray of a Sun</li>
+  <li>rayWidth - the width of each ray of a Sun</li>
+  <li>rayDistanceFromSun - the distance from the center of the sun to the beginning of a ray</li>
+  <li>color - the fill color for the Sun</li>
+</ul>
+<p>Create a default constructor for the Sun class.</p>
+<p>Use as many of the constants defined above as possible when setting values into the specified instance fields.</p>
+<p>Create a constructor with the following parameters:</p>
+<ul>
+  <li>x - The upper left x value for the Sun's main circle</li>
+  <li>y - The upper left y value for the Sun's main circle</li>
+  <li>circleDiameter - The diameter of the Sun's main circle</li>
+  <li>color - The color to use to fill the Sun</li>
+</ul>
+<p>Set the instance fields based on the values provided to the constructor.</p>
+
+
   <h2>Part 2: Stage 3c – Draw a Sun</h2>
   <p>
     Your Sun should appear in two forms:
