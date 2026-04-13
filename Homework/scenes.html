@@ -509,23 +509,15 @@ g2.fill(ray);</code></pre>
   </p>
 
   <pre><code>for (int i = 0; i < NUMBER_OF_RAYS; i++) {
-    // draw one ray
+    // calculate the angle for this ray
+    // draw one ray using drawRays(...)
 }</code></pre>
 
   <p>
     Each ray should be drawn at a different angle. A full circle is
-    <code>2 * Math.PI</code>, so you can divide it evenly:
+    <code>2 * Math.PI</code>, so you can divide it evenly (or you can use Math.toRadians() to get the angle for each ray
   </p>
 
-  <pre><code>double angle = i * (2 * Math.PI / NUMBER_OF_RAYS);</code></pre>
-
-  <p>
-    Use this angle when calling <code>drawRays(...)</code>.
-  </p>
-
-  <p>
-    Think of it as slicing a circle into equal pieces and placing one ray in each slice.
-  </p>
 </details>
 
   <p>
