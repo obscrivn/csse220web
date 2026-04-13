@@ -1173,7 +1173,7 @@ Random rand = new Random();</code></pre>
   <p><strong>Random double (0.0 to 1.0):</strong></p>
   <pre><code>double value = rand.nextDouble();</code></pre>
 <details class="lab-card">
-  <summary>Hint: Keeping random values within a range</summary>
+  <summary>Hint: Keeping random values within a fixed location</summary>
 
   <p>
     Instead of choosing completely random positions, you can vary values
@@ -1185,6 +1185,22 @@ int x = baseX + rand.nextInt(41) - 20;</code></pre>
 
   <p>
     This keeps the value close to <code>baseX</code>, instead of placing it anywhere on the screen.
+  </p>
+</details>
+<details class="lab-card">
+  <summary>Hint: Random values within a range</summary>
+
+  <p>
+    To generate a random value between a minimum and maximum, use:
+  </p>
+
+  <pre><code>int min = 100;
+int max = getWidth() - 50;
+
+int x = rand.nextInt(max - min + 1) + min;</code></pre>
+
+  <p>
+    This ensures the value stays within the desired bounds.
   </p>
 </details>
   </section>
