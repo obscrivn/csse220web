@@ -6,9 +6,15 @@
 <link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
 <link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 /* Main content container */
 /* Header styling */
+body{
+  font-family: 'Roboto', Arial, sans-serif;
+    font-size: 16px;
+    color:black;
+}
 #header {
         position: fixed;
         top: 0;
@@ -62,6 +68,7 @@
     /* Section styling */
     section {
       margin-bottom: 40px;
+      font-family: 'Roboto', Arial, Helvetica,sans-serif;
     }
     section p, section ul, dl {
       
@@ -1150,17 +1157,16 @@ fruits.addAll(moreFruits);
     (for example: position, size, or color).
   </p>
 
-  <h2>Creating a Random Object</h2>
+  <h2 style="color:black">Creating a Random Object</h2>
   <p>
-    To generate random values in Java, first create a <code>Random</code> object:
+    To generate random values in Java, first create a <code style="color:black">Random</code> object:
   </p>
 
   <pre><code>import java.util.Random;
 
 Random rand = new Random();</code></pre>
 
-  <h2>Common Random Methods</h2>
-
+  <h2 style="color:black">Common Random Methods</h2>
   <p><strong>Random integer (0 to bound-1):</strong></p>
   <pre><code>int value = rand.nextInt(100); // 0 to 99</code></pre>
 
