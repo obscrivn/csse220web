@@ -192,6 +192,7 @@
         <dd><a href="#size">Length vs Size</a></dd>
         <dd><a href="#heterogeneous">Heterogeneous Array List</a></dd>
         <dd><a href="#math">Math Library</a></dd>
+        <dd><a href="#random">How to use Random Class</a></dd>
         <dd><a href="#javadoc">Understanding Javadocs</a></dd>
         <dd><a href="#scanner">How to Use Scanner</a></dd>
         <dd><a href="#recursion">Recursion</a></dd>
@@ -1140,6 +1141,33 @@ fruits.addAll(moreFruits);
         
         
       </section>
+<section id="random">
+  <h1 style="color:black">Using Random in Java</h1>
+
+  <p>
+    Random values allow you to create variation in your program so that objects
+  do not all look the same each time they are drawn 
+    (for example: position, size, or color).
+  </p>
+
+  <h2>Creating a Random Object</h2>
+  <p>
+    To generate random values in Java, first create a <code>Random</code> object:
+  </p>
+
+  <pre><code>import java.util.Random;
+
+Random rand = new Random();</code></pre>
+
+  <h2>Common Random Methods</h2>
+
+  <p><strong>Random integer (0 to bound-1):</strong></p>
+  <pre><code>int value = rand.nextInt(100); // 0 to 99</code></pre>
+
+  <p><strong>Random double (0.0 to 1.0):</strong></p>
+  <pre><code>double value = rand.nextDouble();</code></pre>
+
+  </section>
 
       <section id="scanner">
         <h2 style="color:black">Using the Scanner Class in Java</h2>
