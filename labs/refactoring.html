@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+  body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    } */
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      /* margin-top: 100px;  */
+      margin-bottom: 50px;
+      padding-top: 100px;
+    }
+    #section {
+margin-top: 1rem; 
+margin-bottom: 1rem;
+padding: 20px;
+} 
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        /* color: red; */
+        font-weight: 600;
+        font-family: Consolas, "Courier New", monospace;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+details.hint {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  border-left: 3px solid #aaa;
+}
+
+details.hint > summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+      <a id="quiz_link" href="./design-principles.html">Design</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Refactoring Design Assignments</h1>
+    
+<div id="main-content">
+<div class="lab-section" id="lab">
+<p>
+In this lab, you will analyze a poorly designed system and improve it using object-oriented design principles.
+You will practice choosing appropriate access modifiers, understanding scope, and deciding when fields should be <code>static</code> or <code>final</code>.
+You will also refactor the design to improve data ownership, reduce duplication, and simplify interactions between classes.
+</p>
+
+ 
+<h3>⚡ Instructions</h3>
+<ul>
+  <li>
+Complete the required tasks in the provided starter zip project and submit your work to Gradescope.
+all completed <code>.java</code> files and
+your fixed UML diagram</li>
+      </ul>
+
+<details class="lab-card" id="lab-00">
+<summary><h3>Starter ZIP File</h3></summary>
+<ul>
+<li> <strong>Download starter zip file:</strong> <a href="../labs/Lab09.zip">Lab09.zip</a> and import it into Eclipse as Existing Project (see Lab02 for details).</li>
+
+
+  <li>
+    <strong>What to submit on Gradescope:</strong>
+    Upload all completed <code>java</code> files and your UML diagrams to the Lab 09 assignment.
+    The Gradescope link is available on Moodle.
+  </li>
+</ul>
+</details>
+
+<details class="lab-card" id="lab-01">
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Broken UML</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+<div class="lab-body">
+       <p>Resources 1: <a href="../resources.html#access-scope" target="_blank" class="resource-ref">Access & Scope</a></p>
+ <h3>💻 Coding guide: Fix the Broken Code</h3>
+<p>
+      A broken export removed important Java design information from a game project.
+      Your job is to restore the correct design by choosing the proper:
+    </p>
+    <ul>
+      <li>access modifiers: <code>private</code>, default, <code>protected</code>, <code>public</code></li>
+      <li><code>static</code> fields</li>
+      <li><code>final</code> constants</li>
+      <li>correct use of scope</li>
+      <li>fix the bug in <code>setHealth</code> so that it correctly updates the player's health</li>
+    </ul>
+
+<details class="lab-card">
+<summary><h3>Step 1: Scenario + UML</h3></summary>
+
+<p>
+      In your game, each <code>Player</code> stores information about its own health, level, and score.
+      Some of this data should be carefully protected, while some should be shared across all players.
+    </p>
+
+    <p>
+      Your team received a broken UML/code export where the access modifiers and some keywords were lost.
+      Your job is to restore the correct design based on the intended behavior below.
+    </p>
+    <image src="../labs/lab09broken.png" alt="UML diagram with missing access modifiers and keywords" style="width: 300px; border-radius:8px;">
+<pre><code>
+@startuml
+title Broken UML Export - Player Design
+
+interface Healable {
+    heal(amount : int) : void
+}
+class Player {
+    health : int
+    level : int
+    score : int
+    totalPlayers : int
+    MAX_HEALTH : int
+
+    setHealth(health : int) : void
+    getHealth() : int
+    addScore(points : int) : void
+    heal(amount : int) : void
+}
+Player ..|> Healable
+@enduml  
+</code></pre>
+      <h3>Design Requirements</h3>
+    <ul>
+      <li>
+        Each player has its own <strong>health</strong>.
+        Health belongs to one specific player and should not be changed directly by other classes.
+        Other code should use methods to update or read it safely.
+      </li>
+      <li>
+        Each player has its own <strong>level</strong>.
+        Level belongs to one specific player and should be stored as part of that player's internal state.
+      </li>
+      <li>
+        Each player has a <strong>score</strong>.
+        Score belongs to one specific player and should be visible to subclasses, because special kinds of players may need to update or use score directly later.
+      </li>
+      <li>
+        The game tracks the <strong>total number of players</strong>.
+        This value is shared across all players, so there should be only one copy for the whole class.
+      </li>
+      <li>
+        The game has a <strong>maximum health value</strong>.
+        This value is the same for every player, should be shared by all players, and should not be changed after it is defined.
+      </li>
+      <li>
+        A player can be <strong>healed</strong>.
+        Healing is a behavior required by the <code>Healable</code> interface.
+      </li>
+      <li>
+        When setting health, the code should correctly update the player’s field.
+        Avoid scope mistakes such as assigning a parameter to itself.
+      </li>
+    </ul>
+</details>
+
+<details class="lab-card">
+<summary><h3>Step 2: Your Tasks</h3></summary>
+<p>
+      Restore the correct Java design by choosing:
+    </p>
+    <ul>
+      <li>the correct access modifier for each field and method</li>
+      <li>which fields should be <code>static</code></li>
+      <li>which fields should be <code>final</code></li>
+    </ul>
+
+    <p>
+      Then fix the code so it behaves correctly and passes the tests.
+    </p>
+
+</details>
+
+<details class="lab-card">
+<summary><h3>Step 3: Submission</h3></summary>
+<p>Demo your solution UML before the submission to verify its correctness.</p>
+<p>Submit the following files to Gradescope:</p>
+<!-- <UML (eclipse plugin)> -->
+    <ul>
+      <li><code>Player.java</code></li>
+      <li><code>Healable.java</code></li>
+      <li><code>MainApp.java</code></li>
+      <li><code>UML (eclipse plugin)</code></li>
+    </ul>
+
+    <h3>Before You Submit</h3>
+    <ul>
+      <li>Make sure your code compiles with no errors</li>
+      <li>Make sure to demo your UML solution</li>
+      <li>Run the provided tests and check that they pass</li>
+      <li>Verify that your design matches the scenario requirements</li>
+      <li>Double-check access modifiers, <code>static</code>, and <code>final</code> usage</li>
+      <li>Make sure your <code>setHealth</code> method correctly updates the field</li>
+    </ul>
+
+    <h3>Reminder</h3>
+    <p>
+      This lab is not only about making the code work.
+      It is also about restoring a clean object-oriented design.
+    </p>
+</details>
+</div>
+</details>
+
+
+<details class="lab-card" id="lab-02">
+  <summary>
+    <span class="lab-label">02.</span>
+    <span class="lab-title">Books Refactoring (Part 1)</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+  <div class="lab-body">
+       <h2>Lab-Design 1: Fix the Broken System</h2>
+
+<p>
+In this lab, you will analyze a poorly designed Java system and redesign it using better
+object-oriented design ideas. This is not just about making code work. It is about learning
+how to recognize design problems and improve them.
+</p>
+
+<details class="lab-card">
+  <summary>
+    <strong>Overview</strong>
+    <span class="lab-tag">Design Refactoring</span>
+  </summary>
+
+  <p>
+    You are given:
+  </p>
+  <ul>
+    <li>a scenario</li>
+    <li>a bad UML design</li>
+    <li>a bad Java implementation in the <code>bad</code> package</li>
+  </ul>
+
+  <p>
+    Your team will study the bad design, identify what is wrong, and create a better version
+    in a new package called <code>good</code>.
+  </p>
+
+  <p>
+    This activity will take place over <strong>two class days</strong>.
+  </p>
+</details>
+<details class="lab-card" open>
+  <summary>
+    <strong>Scenario</strong>
+    <span class="lab-tag">Context</span>
+  </summary>
+
+  <p>
+    A website tracks books and the kids who read them.
+  </p>
+
+  <ul>
+    <li>Each <strong>Book</strong> has a name and author</li>
+    <li>Each <strong>Kid</strong> has a name and grade level</li>
+    <li>The teacher records when a kid reads a book</li>
+  </ul>
+
+  <p>
+    The system must support:
+  </p>
+
+  <ul>
+    <li>Printing all kids who read a given book</li>
+    <li>Printing all books read by a given kid</li>
+  </ul>
+
+  <p>
+    The current system works, but its design has serious issues.
+    Your job is to analyze and redesign it.
+  </p>
+  <image src="../labs/BooksA.png" alt="UML diagram with design problems" style="width: 400px; border-radius:8px;">
+</details>
+
+<details class="lab-card">
+  <summary>
+    <strong>Team Roles</strong>
+    <span class="lab-tag">Groups of 3</span>
+  </summary>
+
+  <p>
+    Work in a team of <strong>3 students</strong>. Each person should have one role.
+  </p>
+
+  <ul>
+    <li><strong>Navigator</strong> - leads discussion and keeps the team focused on design decisions</li>
+    <li><strong>Driver</strong> - explores code and implements changes when coding begins</li>
+    <li><strong>Recorder</strong> - writes down design problems, team decisions, and reflections</li>
+  </ul>
+
+  <p>
+    You will rotate roles on Day 2.
+  </p>
+</details>
+
+<details class="lab-card">
+  <summary>
+    <strong>Project Setup</strong>
+    <span class="lab-tag">Starter Code</span>
+  </summary>
+<p>ZIP Code <a href="../labs/Books.zip" download>Books.zip</a></p>
+<p>Project Reflection template: <a href="https://docs.google.com/document/d/1sgjND1iZClJBIX8u-QwPkvJ95H_rn0sOXiPLeyqk0Yg/edit?usp=sharing" download>project_reflection_template</a></p>
+  <p>
+    The project already contains the bad design in the <code>bad</code> package.
+  </p>
+
+  <pre><code>bad/
+  Book.java
+  Kid.java
+  BookMain.java</code></pre>
+
+  <h3>Rules</h3>
+  <ul>
+    <li>Do <strong>not</strong> modify anything in the <code>bad</code> package</li>
+    <li>Create a new package called <code>good</code></li>
+    <li>Your redesigned system must go inside the <code>good</code> package</li>
+  </ul>
+
+  <pre><code>good/
+  // your redesigned classes go here</code></pre>
+</details>
+
+<details class="lab-card">
+  <summary>
+    <strong>Day 1: Understand and Redesign</strong>
+    <span class="lab-tag">Analysis</span>
+  </summary>
+
+  <h3>Step 1: Understand the Current System</h3>
+  <p>
+    Run the program and study the UML and code in the <code>bad</code> package.
+  </p>
+
+  <p>As a team, discuss these questions:</p>
+  <ul>
+    <li>Where are books stored?</li>
+    <li>Where are kids stored?</li>
+    <li>How does the system find a book?</li>
+    <li>What happens when multiple kids read the same book?</li>
+  </ul>
+
+  <h3>Step 2: Identify Design Problems</h3>
+  <p>
+    Find at least <strong>3 important design problems</strong> in the current system.
+  </p>
+
+  <p>Use these prompts to guide your thinking:</p>
+  <ul>
+    <li>Is any data duplicated?</li>
+    <li>Is anything hard or inefficient to find?</li>
+    <li>Is any class doing too much work?</li>
+    <li>Is ownership of data clear?</li>
+  </ul>
+
+  <p>
+    The <strong>Recorder</strong> should use the provided google doc to create one for team and write down your team’s answers.
+  </p>
+
+  <h3>Step 3: Redesign the System</h3>
+  <p>
+    Create a better design that solves the main problems.
+  </p>
+
+  <p>Your redesign should:</p>
+  <ul>
+    <li>avoid duplicate books</li>
+    <li>make lookup easier and cleaner</li>
+    <li>clearly define ownership of data</li>
+    <li>reduce unnecessary searching and coupling</li>
+  </ul>
+
+  <h3>Day 1 Deliverable</h3>
+  <p>
+    Create <strong>one</strong> of the following:
+  </p>
+  <ul>
+    <li>a UML diagram of your improved design, or</li>
+    <li>a structured class plan listing classes, fields, and responsibilities</li>
+  </ul>
+
+  <pre><code>Example:
+
+Class: Library
+- stores all books
+- stores all kids
+- records reading events
+
+Class: Book
+- name
+- author
+
+Class: Kid
+- name
+- gradeLevel</code></pre>
+</details>
+
+<details class="lab-card">
+  <summary>
+    <strong>Day 1 Reflection</strong>
+    <span class="lab-tag">Required</span>
+  </summary>
+
+  <p>
+    At the end of Day 1, the <strong>Recorder</strong> must submit one reflection for the group - URL to Google doc (make sure select Share > public).
+  </p>
+
+  <ol>
+    <li>What are the top 3 problems in the original design? (in general, e.g., is it hard to reuse, extend, or understand?)</li>
+    <li>What is the most important design change your team made?</li>
+    <li>What was the hardest design decision for your team?</li>
+  </ol>
+</details>
+</div>
+</details>
+<details class="lab-card" id="lab-03">
+  <summary>
+    <span class="lab-label">03.</span>
+    <span class="lab-title">Books Refactoring (Part 2)</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+<div class="lab-body">
+<details class="lab-card">
+  <summary>
+    <strong>Day 2</strong>
+    <span class="lab-tag">Analysis</span>
+  </summary>
+
+  <h3>Step 1: Understand the Current Design</h3>
+<p>
+Before changing anything, review the provided <code>Books and Kids</code> code.
+</p>
+
+<ul>
+<li>What classes exist?</li>
+<li>Who owns the data?</li>
+<li>Where do responsibilities feel unclear?</li>
+</ul>
+
+<p><strong>Team Task:</strong> Spend 5–7 minutes discussing before coding.</p>
+
+<h3>Step 2: Decide What to Fix First</h3>
+
+<p>
+You should NOT start coding immediately.
+As a team, decide your first refactoring step.
+</p>
+
+<ul>
+<li>What is the most important problem to fix?</li>
+<li>Why does it matter?</li>
+<li>What will you change first?</li>
+</ul>
+
+<p><strong>Write down your decision before coding.</strong></p>
+
+<h3>Step 3: Refactor the Design</h3>
+
+<ul>
+<li>Make small, incremental changes</li>
+<li>Test frequently</li>
+<li>Do NOT rewrite everything at once</li>
+</ul>
+
+<p><strong>Focus on:</strong></p>
+<ul>
+<li>Clear class responsibilities</li>
+<li>Reducing duplication</li>
+<li>Improving data ownership</li>
+</ul>
+
+<h3>Step 4: Team Roles</h3>
+
+<ul>
+<li><strong>Driver:</strong> writes code</li>
+<li><strong>Navigator:</strong> checks design decisions</li>
+<li><strong>Reviewer:</strong> asks “why are we doing this?”</li>
+</ul>
+
+
+
+
+  </details>
+
+<details class="lab-card">
+  <summary>
+    <strong>Day 2 Submission</strong>
+    <span class="lab-tag">Required</span>
+  </summary>
+<h3>Step 5: Reflection</h3>
+
+<p>Project Reflection template: <a href="https://docs.google.com/document/d/1sgjND1iZClJBIX8u-QwPkvJ95H_rn0sOXiPLeyqk0Yg/edit?usp=sharing" download>project_reflection_template</a></p>
+<p>Use the same google doc but add the second part (see the link)</p>
+<p> submit URL</p>
+<ul>
+<li>What problem did your team fix first? Why?</li>
+<li>What was your second change? Why?</li>
+<li>What was the hardest design decision?</li>
+<li>Did your approach change while working? Explain.</li>
+<li>If you had more time, what would you improve next?</li>
+</ul>
+</details> 
+</div>
+      </details>
+
+<details class="lab-card" id="lab-04">
+        <summary>
+          <span class="lab-label">04.</span>
+          <span class="lab-title">Book refactoring (Part 3)</span>
+          <span class="lab-tag">Code Submission</span>
+        </summary>
+<div class="lab-body">
+          <h2>Part 3 Instructions</h2>
+
+
+  <p>
+    In this part, your team will begin refactoring the provided Books and Kids code.
+    Your goal is <strong>not</strong> to add new features. Your goal is to
+    <strong>improve the design while keeping the required behavior working</strong>.
+  </p>
+
+  <h3>What your refactoring should focus on</h3>
+  <ul>
+    <li>Improve <strong>encapsulation</strong> by making fields private and using methods instead of direct field access</li>
+    <li>Add <strong>constructors</strong> so objects are created in a valid state</li>
+    <li>Reduce <strong>duplication</strong> in logic and data storage</li>
+    <li>Give each class a <strong>clear responsibility</strong></li>
+    <li>Avoid designs where books can only be found by searching through every kid</li>
+    <li>Create a <strong>central way to access both kids and books</strong></li>
+    <li>Use better collection design, such as <code>ArrayList</code> or <code>HashMap</code>, when appropriate</li>
+    <li>Keep the connection between books and kids consistent when a new reading is recorded</li>
+  </ul>
+
+  <h3>Required behavior to preserve</h3>
+  <ul>
+    <li>The system should still record when a kid reads a book</li>
+    <li>The system should still print a report for a kid</li>
+    <li>The system should still print a report for a book</li>
+    <li>The system should avoid duplicate entries when possible</li>
+    <li>The system should handle missing kids or books reasonably</li>
+  </ul>
+
+  <h3>What you may change</h3>
+  <ul>
+    <li>You may add constructors, getters, and helper methods</li>
+    <li>You may add a new central class or improve the current main system class</li>
+    <li>You may use <code>ArrayList</code>, <code>HashMap</code>, or another reasonable collection</li>
+    <li>You may move methods to more appropriate classes</li>
+  </ul>
+
+  <h3>What to avoid</h3>
+  <ul>
+    <li>Do not leave all logic in one large class</li>
+    <li>Do not rely on direct field access like <code>book.name</code> or <code>kid.gradeLevel</code> from other classes</li>
+    <li>Do not keep the design where books only exist inside kids</li>
+    <li>Do not rewrite the scenario into something unrelated</li>
+  </ul>
+
+  <h3>Testing (optional)</h3>
+  <p>
+    Note - this testing may not work for every solution. sample JUnit test file will be provided to help you check whether your refactored design
+    still preserves the required behavior. You can also set up your own testing in the main class.  Your code should compile and run with those tests.
+  <a href="../labs/BookMainTest.java" download>BooksMainTest.java</a>. To add the provided Junit file, add this file inside <code>good</code> package in your workspace. You will also need to install JUnit Library (ask if you want to try it out)
+  </p>
+
+  <h3>Submission</h3>
+  <ul>
+    <li>Submit all completed <code>.java</code> files for your refactored solution</li>
+    <li>Submit any new classes you created</li>
+    <li>Submit your updated UML</li>
+    <li>Submit your team reflection</li>
+  </ul>
+
+
+    <h3>Team Reflection</h3>
+
+
+  <p>
+    As a team, reflect on your refactoring process. Focus on your decisions, not just the final result.
+  </p>
+
+  <h3>Reflection Questions</h3>
+  <ul>
+    <li>What were the most important changes your team made to the design?</li>
+    <li>What problem in the original code did you choose to fix first, and why?</li>
+    <li>What design improvement are you most proud of?</li>
+    <li>What was the most challenging part of the refactoring process?</li>
+    <li>What did your team learn about good object-oriented design from this activity?</li>
+    <li>If you had more time, what would you improve next?</li>
+  </ul>
+
+  <h3>Guidelines</h3>
+  <ul>
+    <li>Be specific — refer to actual design changes you made</li>
+    <li>Focus on reasoning, not just what you changed</li>
+    <li>Keep responses concise (2–4 sentences per question)</li>
+  </ul>
+   </div>
+</details>
+
+
+   
+  </div>
+  </div>
+  </div>
+
+        </body>
+        </html>
