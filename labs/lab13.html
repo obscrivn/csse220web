@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+  body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    } */
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      /* margin-top: 100px;  */
+      margin-bottom: 50px;
+      padding-top: 100px;
+    }
+    #section {
+margin-top: 1rem; 
+margin-bottom: 1rem;
+padding: 20px;
+} 
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        /* color: red; */
+        font-weight: 600;
+        font-family: Consolas, "Courier New", monospace;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+details.hint {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  border-left: 3px solid #aaa;
+}
+
+details.hint > summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+      <a id="quiz_link" href="../design-principles.html">Design</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 13</h1>
+    <div id="main-content">
+         <div class="lab-section" id="lab">
+<p>
+ <p>
+In this lab, you will practice adding events to buttons.
+</p>
+<p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Events</a></p>
+<p>Resources 2: <a href="../resources.html#listener" target="_blank" class="resource-ref">Understanding Listener</a></p>
+<p>Resources 3: <a href="../resources.html#int-to-string" target="_blank" class="resource-ref">Conversion (String to Int, Int to String)</a></p>
+
+<details class="lab-card" open>
+  <summary>Event Handling Patterns</summary>
+  <p>
+    In this lab, you will practice four different ways to handle events in Java Swing.
+    Each version works, but the code organization is a little different.
+  </p>
+  <ul>
+    <li>
+      <strong>MyCounter:</strong> use an ActionListener that calls a helper method.
+    <br>
+      The listener responds to the button click, then calls a separate method such as <code>increment()</code> to handle the action.
+    </li>
+    <li>
+      <strong>MyAccumulator:</strong> use an <code>ActionListener</code> with <strong>no helper method</strong>.
+    <br>
+      Write the logic directly inside the listener.
+    </li>
+    <li>
+      <strong>Refactoring MyCounter:</strong> use an <code>ActionListener</code> with a <strong>separate outer listener class</strong>.
+    <br>
+      The event-handling code will live in its own class.
+    </li>
+
+    <li>
+      <strong>Refactoring MyEnhancedCounter:</strong> use an <code>ActionListener</code> with an <strong>inner listener class</strong>.
+      <br>
+      One inner class handles multiple buttons.
+    </li>
+  </ul>
+<p>
+   Each approach works, but they differ in readability, flexibility, and reuse.
+  </p>
+  <p>
+    Be ready to compare: Which one is easiest to understand? Which one would scale better?
+  </p>
+</details>
+
+<h3>⚡ Instructions</h3>
+<ul>
+  <li>
+    <strong>Graded work:</strong>
+    Complete TODO tasks, answer reflection questions, and submit your <code>.java</code> + txt files to Gradescope.
+  </li>
+</ul>
+  <details class="lab-card" id="lab-00">
+<summary><h3>Starter ZIP File</h3></summary>
+<ul>
+<li> <strong>Download starter zip file:</strong> <a href="">Download Link</a>. Import as a Project</li>
+  <li>
+    <strong>What to submit on Gradescope:</strong>
+    Upload all completed <code>java</code> files + reflection txt file.
+    The Gradescope link is available on Moodle.
+    This assignment does not require a demo verification.
+  </li>
+</ul>
+</details>   
+<details class="lab-card" id="lab-01">
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">ActionListener My Counter</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+<div class="lab-body">
+          <h3>Adding ActionListener to the Button</h3>
+  <p>
+    Let’s make the button <strong>do something</strong>!
+    Whenever the “Count” button is clicked, it should call the <code>increment()</code> method
+    that updates the number in the text field.
+  </p>
+
+  <ol>
+    <li>
+      Inside the constructor (after adding your components), register the listener for the button
+      using a <strong>lambda expression</strong>:
+      <pre><code>button.addActionListener(e -> increment());</code></pre>
+      <p>
+        The expression <code>e -> increment()</code> means:
+        “When the button is clicked, run the <code>increment()</code> method.”
+      </p>
+    </li>
+
+    <li>
+      Implement the <code>increment()</code> method in your class. It should:
+      <ol type="a">
+        <li>Increase the counter value by 1</li>
+        <li>Update the text field to display the new count</li>
+      </ol>
+
+      <pre><code>private void increment() {
+    count++;
+    field.setText(Integer.toString(count));
+}</code></pre>
+
+      <p>
+        💡 Make sure your <code>count</code> is declared
+        as instance variable (outside the constructor),
+        so it can be accessed inside <code>increment()</code>.
+        <pre><code>private int count = 0;
+</code></pre>
+      </p>
+    </li>
+  </ol>
+
+  <details class="hint">
+    <summary>💡 Hint: Why Not Declare <code>count</code> Inside <code>increment()</code>?</summary>
+    <p>
+      If you declare <code>int count = 0;</code> inside the <code>increment()</code> method,
+      it will reset to zero each time you click the button. Using an instance variable
+      ensures the value is remembered between clicks.
+    </p>
+  </details>
+
+  <details class="hint">
+    <summary>💡 Hint: One-Line vs Multi-Line Lambdas</summary>
+    <p>
+      A one-line lambda (like <code>e -> increment()</code>) does not need braces or semicolons.
+      If you want to perform multiple actions, use braces and semicolons inside:
+    </p>
+    <pre><code>button.addActionListener(e -> {
+    count++;
+    field.setText(Integer.toString(count));
+});</code></pre>
+  </details>
+</div>
+</details>
+
+<details class="lab-card" id="lab-02">
+        <summary>
+    <span class="lab-label">02.</span>
+    <span class="lab-title">ActionListener My Accumulator</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+<div class="lab-body">
+<h3>Adding ActionListener to the Text Field</h3>
+
+<h4>Step 1: Track the Total</h4> 
+<p> Your app needs to remember the running total across multiple inputs. 
+  Add a private instance field to your class and initialize it to zero. </p> 
+<pre><code>// // TODO: create an instance field named total and start it at 0 </code></pre>
+  <!-- <p>
+    Add a private instance field to store the accumulated total:
+  </p>
+  <pre><code>private int total = 0;</code></pre> -->
+<h4>Step 2: Detect When User Presses Enter</h4> 
+<p> We want something to happen when the user presses Enter inside the input field. </p> 
+<p>Add a lambda ActionListener to <code>fieldAdd</code> that will read the input, update the total, and display it.</p>
+<pre><code>// TODO: attach an ActionListener to fieldAdd
+ // fieldAdd.addActionListener(e -&gt; {
+    // 1) Read what the user typed (getText())
+    // 2) Convert it to an integer (Integer.parseInt())
+    // 3) Update the running total
+    // 4) Display the new total (setText())
+    // 5) Clear the input field for the next number (setText())
+// });
+</code></pre>
+  <!-- <h3>Add a lambda ActionListener to <code>fieldAdd</code></h3>
+  <p>
+    In your constructor (after you create the text fields), add the following listener.
+    Read through the comments so you understand each step.
+  </p> -->
+<details class="hint">
+    <summary>💡 Hint: Read comments if you need more help</summary>
+  <p>Read what the user input as a string</p>
+    <pre><code>String text = fieldAdd.getText();</code></pre>
+
+    <p>Convert string to an integer</p>
+    <pre><code>int value = Integer.parseInt(text);</code></pre> 
+
+   <p>Update the running total</p>
+    <pre><code>total += value;</code></pre>
+
+    <p>Display the new total using concatenation (or you could use Integer.toString())</p>
+    <pre><code>fieldTotal.setText("" + total);</code></pre>
+
+    <p>Clear the input field for the next number (you do not want to leave the previous input in the field)</p>
+    <pre><code>fieldAdd.setText("");</code></pre>
+
+  <div class="callout warn">
+    <p>
+      <strong>For this lab:</strong> you may assume the user enters a valid integer.
+      (We will add input validation in a future lab.)
+    </p>
+  </div>
+
+  <h3>Quick test</h3>
+  <ul>
+    <li>Type <code>5</code> into the input field and press Enter → total becomes <code>5</code></li>
+    <li>Type <code>3</code> and press Enter → total becomes <code>8</code></li>
+    <li>The total field remains non-editable</li>
+  </ul>
+
+
+</div>
+</details>
+
+<details class="lab-card" id="lab-03">
+        <summary>
+    <span class="lab-label">03.</span>
+    <span class="lab-title">Custom ActionListener Class</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+<div class="lab-body">
+ <h3>Using a Custom ActionListener Class</h3>
+  <p>
+    In this part, you will use MyCounter class and replace the lambda expression with a <strong>custom ActionListener class</strong>.
+    This will help you see how events can be handled by separate objects in larger programs.
+  </p>
+
+  <ol>
+    <li>
+      Comment out your lambda listener line:
+      <pre><code>// button.addActionListener(e -> increment());</code></pre>
+    </li>
+
+    <li>
+      Create a new class named <code>MyCounterActionListener</code> that implements
+      <code>ActionListener</code> from the <code>java.awt.event</code> package.
+      <br>
+      This class should:
+      <ul>
+        <li>Have a private field of type <code>MyCounter</code></li>
+        <li>Store a reference to the counter in its constructor</li>
+        <li>Call <code>increment()</code> on the counter when the button is clicked</li>
+      </ul>
+      <pre><code>import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MyCounterActionListener implements ActionListener {
+
+    private MyCounter counter;
+
+    public MyCounterActionListener(MyCounter counter) {
+        this.counter = counter;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        counter.increment();
+    }
+}</code></pre>
+    </li>
+
+    <li>
+      In your <code>MyCounter</code> constructor, create an instance of this listener and register it with the button:
+      <pre><code>MyCounterActionListener listener = new MyCounterActionListener(this);
+button.addActionListener(listener);</code></pre>
+    </li>
+  </ol>
+
+  <p>
+    When the button is clicked, Java will automatically create an <code>ActionEvent</code> and call your
+    <code>actionPerformed()</code> method inside <code>MyCounterActionListener</code>.
+  </p>
+
+  <details class="hint">
+    <summary>💡 Hint: Why Pass <code>this</code>?</summary>
+    <p>
+      The <code>this</code> keyword refers to the <code>MyCounter</code> object itself.
+      The listener needs this reference so it can call <code>increment()</code> on the panel when the event occurs.
+      You are passing the whole counter object, not just the button.
+    </p>
+  </details>
+
+  <details class="hint">
+    <summary>💡 Hint: OOP Design Principle</summary>
+    <p>
+      This approach follows <strong>encapsulation</strong>: the button only triggers an event,
+      while the <code>MyCounter</code> decides what to do (update its count and text field).
+      Separating logic like this is good design and prepares you for the Model–View–Controller pattern.
+    </p>
+  </details> 
+  </div>
+  </details>
+      
+  <details class="lab-card" id="lab-04">
+        <summary>
+    <span class="lab-label">04.</span>
+    <span class="lab-title">Multiple Buttons</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+<div class="lab-body">
+    <h3 style="color:black">01. Multiple Buttons</h3>
+  <p>
+    You’ll enhance your Counter app by adding 3 buttons: <code>Count Up</code>, <code>Count Down</code>, <code>Reset</code> and 
+    implementing <code style="color:darkred">addActionListener</code> as Inner Class.
+  </p>
+
+<p>
+    <image src="lab15a.png" alt="lab15 a" width="400"/>
+</p>
+  </div>
+  <details class="lab-card" open>
+    <summary>1️⃣ Setup</summary>
+    <ol>
+      <li>For this part, use a provided  MyEnhancedCounter class</li>
+    </ol>
+  </details>
+
+  <details class="lab-card">
+    <summary>2️⃣ Replace the single button with three buttons</summary>
+    <ul>
+      <li>Delete the old <code>button</code> field.</li>
+      <li>Add these fields instead:</li>
+    </ul>
+    <pre><code class="language-java">private JButton up, down, reset;</code></pre>
+    <ul>
+      <li>In the constructor, create the buttons with these labels exactly:</li>
+    </ul>
+    <pre><code class="language-java">up    = new JButton("Count Up");
+down  = new JButton("Count Down");
+reset = new JButton("Reset");</code></pre>
+  </details>
+
+  </section>
+ 
+<details class="lab-card">
+    <summary>3️⃣ Add an inner listener class</summary>
+    <p>Step 1. We already provided a private inner class that implements
+       <code>ActionListener</code>. Take a look.</p>
+
+    <pre><code class="language-java">
+private class ButtonListener implements ActionListener {
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    // TODO: determine which button was clicked
+    // TODO: update count
+    // TODO: refresh the text field
+  }
+}
+    </code></pre>
+
+<p>Step 2. Figure out which button fired the event</summary>
+    <p>Get the button's label:</p>
+    <pre><code class="language-java">
+String buttonLabel = e.getActionCommand();
+    </code></pre>
+<p>Update the counter based on the button clicked:</p>
+    <ul>
+      <li><code>"Count Up"</code> → increment</li>
+      <li><code>"Count Down"</code> → decrement</li>
+      <li><code>"Reset"</code> → set count to 0</li>
+    </ul>
+    <pre><code class="language-java">
+    if (buttonLabel.equals("Count Up")) {
+      count++;
+    } else if (buttonLabel.equals("Count Down")) {
+      count--;
+    } else {  // "Reset"
+      count = 0;
+    }
+ </code></pre>
+    <p>Update the counter based on the button clicked:</p>
+  <pre><code class="language-java">
+    text.setText(count + "");
+</code></pre>
+   
+  </details>
+
+<details class="lab-card">
+    <summary>4️⃣ Attach listener to all buttons</summary>
+    <p>Create one listener object and reuse it:</p>
+    <pre><code class="language-java">
+ButtonListener bl = new ButtonListener();
+up.addActionListener(bl);
+down.addActionListener(bl);
+reset.addActionListener(bl);
+    </code></pre>
+  </details>
+
+<!-- <div class="lab-section" id="lab3">
+
+  <h2 style="color:black">03. Inheritance and Method Overriding: GameEntity and PlayerEntity</h2>
+
+  <p>
+    In this part of the lab, you will explore how <strong>inheritance</strong> and 
+    <strong>method overriding</strong> work in Java by building a simple 2D game entity system.
+  </p>
+
+  <p>
+    You will first create a general <code>GameEntity</code> class that represents any moving object,
+    and then extend it with a <code>PlayerEntity</code> subclass that adds new data and behavior.
+  </p>
+
+  <h3>Step 1: Define Fields in <code>GameEntity</code></h3>
+  <p>
+    Create a class <code>GameEntity</code> with the following <strong>protected</strong> fields 
+    (so they are visible to subclasses):
+  </p>
+
+  <ul>
+    <li><code>protected int x, y;</code> – the current position of the entity</li>
+    <li><code>protected double speed;</code> – how much the entity moves horizontally per frame</li>
+    <li><code>protected int health;</code> – the health or hit points</li>
+    <li><code>protected static final int SCREEN_WIDTH = 800;</code> – screen boundary constant</li>
+  </ul>
+
+  <h3>Step 2: Create the Constructor</h3>
+  <p>
+    Write a constructor that takes 4 parameters and assigns them to the fields:
+  </p>
+
+  <pre><code>public GameEntity(int startX, int startY, double startSpeed, int startHealth) {
+    this.x = startX;
+    this.y = startY;
+    this.speed = startSpeed;
+    this.health = startHealth;
+}</code></pre>
+
+  <p>
+    ✅ Recall: The <code>this</code> keyword distinguishes between the instance field (like <code>this.x</code>) 
+    and the parameter <code>startX</code>.
+  </p>
+
+  <h3>Step 3: Override <code>toString()</code></h3>
+  <p>
+    The <code>toString()</code> method defines how the object is displayed when printed.
+    Override it to show all the important data:
+  </p>
+
+  <pre><code>@Override
+public String toString() {
+    return String.format("Entity@(%d,%d) speed=%.2f health=%d", x, y, speed, health);
+}</code></pre>
+<h4>Example: Testing <code>toString()</code> Override</h4>
+<p>
+  The <code>toString()</code> method is automatically called when you print an object. 
+  After overriding it in <code>GameEntity</code>, printing the object shows useful details instead of a memory address.
+</p>
+
+<pre><code>GameEntity e = new GameEntity(100, 50, 10.0, 100);
+System.out.println(e);
+
+// Output:
+Entity@(100,50) speed=10.00 health=100
+</code></pre>
+
+<p>
+
+  <p><em>Tip:</em> Use <code>String.format</code> to control number formatting (%.2f = 2 decimal places).</p>
+
+  <h3>Step 4: Add the <code>update()</code> Method</h3>
+  <p>
+    The <code>update()</code> method simulates a single "frame" of movement.
+    Each call will move the entity horizontally and ensure it stays on screen.
+  </p>
+
+  <pre><code>public void update() {
+    // Move horizontally by speed
+    x += (int) speed;
+
+    // Clamp x between 0 and SCREEN_WIDTH
+    x = Math.max(0, Math.min(SCREEN_WIDTH, x));
+}</code></pre>
+
+  <p>
+    🧩 <strong>Clamping</strong> means restricting a value within a certain range.  
+    If x goes below 0 → set it to 0.  
+    If x goes beyond 800 → set it to 800.  
+    Otherwise, keep the same value.
+  </p>
+
+  <h3>Step 5: Test <code>GameEntity</code> in <code>main()</code></h3>
+  <pre><code>public static void main(String[] args) {
+    GameEntity e = new GameEntity(790, 100, 15.0, 100);
+    System.out.println(e);
+    e.update();       // moves to x = 805 but gets clamped to 800
+    System.out.println(e);
+}</code></pre>
+
+  <p>
+    ✅ <strong>Expected Output:</strong><br>
+    Entity@(790,100) speed=15.00 health=100<br>
+    Entity@(800,100) speed=15.00 health=100
+  </p>
+
+  <hr>
+
+  <h3>Step 6: Create a Subclass <code>PlayerEntity</code></h3>
+  <p>
+    Now let’s create a <strong>subclass</strong> that extends <code>GameEntity</code> to represent the player.
+  </p>
+
+  <pre><code>public class PlayerEntity extends GameEntity {</code></pre>
+
+  <p>
+    Add these <strong>extra fields</strong> specific to the player:
+  </p>
+
+  <ul>
+    <li><code>private String playerName;</code> – the player’s name</li>
+    <li><code>private int score;</code> – the player’s current score</li>
+    <li>Flags to simulate key input:<br>
+      <code>public boolean upPressed = true, downPressed = false;</code>
+    </li>
+  </ul>
+
+  <p>
+    The constructor should take 5 parameters and call the <code>GameEntity</code> constructor with <code>super(...)</code>:
+  </p>
+
+  <pre><code>public PlayerEntity(String name, int startX, int startY, double speed, int health) {
+    super(startX, startY, speed, health);  // calls GameEntity constructor
+    this.playerName = name;
+    this.score = 0;
+}</code></pre>
+
+  <p>
+    ✅ Note: The <code>super(...)</code> call must be the first line of the constructor.  
+    It sets up the inherited fields from the <code>GameEntity</code> class.
+  </p>
+
+  <h3>Step 7: Override <code>update()</code></h3>
+  <p>
+    The player moves horizontally (inherited behavior) but also vertically based on key flags.  
+    This is a perfect time to demonstrate <strong>method overriding</strong>:
+  </p>
+
+  <pre><code>@Override
+public void update() {
+    // Step 1: reuse the base movement
+    super.update();
+
+    // Step 2: add vertical movement
+    if (upPressed) {
+        y -= 5;
+    }
+    if (downPressed) {
+        y += 5;
+    }
+
+    // Step 3: increase score if passed a threshold
+    if (x > 400) {
+        score += 10;
+    }
+}</code></pre>
+
+  <p>
+     Notice how <code>super.update()</code> lets us reuse logic from <code>GameEntity</code>  
+    instead of rewriting the same code. This is one of the biggest benefits of inheritance.
+  </p>
+
+  <h3>Step 8: Override <code>toString()</code></h3>
+  <p>
+    Make the player’s version print player-specific information.
+  </p>
+
+  <pre><code>@Override
+public String toString() {
+    return String.format("%s@(%d,%d) score=%d", playerName, x, y, score);
+}</code></pre>
+
+  <h3>Step 9: Test <code>PlayerEntity</code> in <code>main()</code></h3>
+  <pre><code>public static void main(String[] args) {
+    GameEntity e = new PlayerEntity("Alice", 390, 50, 20.0, 100);
+    System.out.println(e);
+    e.update();  // runs PlayerEntity.update() because of overriding
+    System.out.println(e);
+}</code></pre>
+
+  <p>
+    ✅ <strong>Expected Output:</strong><br>
+    Alice@(390,50) score=0<br>
+    Alice@(410,45) score=10
+  </p>
+
+  <p>
+    🎯 This happens because:
+  </p>
+  <ul>
+    <li><code>x</code> increased from 390 → 410 (20 units)</li>
+    <li><code>y</code> decreased by 5 because <code>upPressed = true</code></li>
+    <li><code>score</code> increased by 10 since <code>x > 400</code></li>
+  </ul>
+
+  <hr>
+
+  <h3>🔍 Reflection: What You Learned</h3>
+  <ul>
+    <li>How a subclass inherits fields and methods from its superclass</li>
+    <li>How to call the superclass constructor using <code>super(...)</code></li>
+    <li>How to override a method and reuse superclass logic with <code>super.methodName()</code></li>
+    <li>How to extend functionality without rewriting base class code</li>
+  </ul>
+
+  <details class="hint">
+    <summary>💡 Hint: Overriding vs. Overloading</summary>
+    <p>
+      <strong>Overriding</strong> = same method name and parameters, new behavior in a subclass.<br>
+      <strong>Overloading</strong> = same method name, but different parameter list (in the same class).
+    </p>
+  </details>
+</div> -->
+        
+
+ 
+
+        
+        </div>
+
+
+
+
+        </body>
+        </html>
