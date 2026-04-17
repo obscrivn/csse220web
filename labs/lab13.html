@@ -368,7 +368,7 @@ In this lab, you will practice adding events to buttons.
     </li>
 
     <li>
-      <strong>Refactoring MyEnhancedCounter:</strong> use an <code>ActionListener</code> with an <strong>inner listener class</strong>.
+      <strong>ThreeButtonCounter:</strong> use an <code>ActionListener</code> with an <strong>inner listener class</strong>.
       <br>
       One inner class handles multiple buttons.
     </li>
@@ -432,18 +432,12 @@ In this lab, you will practice adding events to buttons.
         <li>Update the text field to display the new count</li>
       </ol>
 
-      <pre><code>private void increment() {
-    count++;
-    field.setText(Integer.toString(count));
+      <pre><code>public void increment() {
+    // update count
+    // update text field
+
 }</code></pre>
 
-      <p>
-        💡 Make sure your <code>count</code> is declared
-        as instance variable (outside the constructor),
-        so it can be accessed inside <code>increment()</code>.
-        <pre><code>private int count = 0;
-</code></pre>
-      </p>
     </li>
   </ol>
 
@@ -546,50 +540,71 @@ In this lab, you will practice adding events to buttons.
     <span class="lab-tag">Submission</span>
   </summary>
 <div class="lab-body">
- <h3>Using a Custom ActionListener Class</h3>
+ <h3>Using a Custom Outer ActionListener Class</h3>
   <p>
-    In this part, you will use MyCounter class and replace the lambda expression with a <strong>custom ActionListener class</strong>.
+    In this part, you will use MyCounterOuter class and replace the lambda expression with a <strong>custom ActionListener class</strong>.
     This will help you see how events can be handled by separate objects in larger programs.
   </p>
 
-  <ol>
-    <li>
+ <p>
       Comment out your lambda listener line:
       <pre><code>// button.addActionListener(e -> increment());</code></pre>
-    </li>
-
-    <li>
+ </p>
+<h4>Step 1: Create a new class</h4>
+    <p>
       Create a new class named <code>MyCounterActionListener</code> that implements
-      <code>ActionListener</code> from the <code>java.awt.event</code> package.
-      <br>
-      This class should:
-      <ul>
-        <li>Have a private field of type <code>MyCounter</code></li>
-        <li>Store a reference to the counter in its constructor</li>
-        <li>Call <code>increment()</code> on the counter when the button is clicked</li>
-      </ul>
-      <pre><code>import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+      <code>ActionListener</code> from the <code>java.awt.event</code> package.</p>
+      <p>
+    Add unimplemented method <code>actionPerformed</code>.
+  </p>
 
-public class MyCounterActionListener implements ActionListener {
 
-    private MyCounter counter;
 
-    public MyCounterActionListener(MyCounter counter) {
-        this.counter = counter;
-    }
+  <h4>Step 2: Add a private field</h4>
+  <p>
+    This listener needs access to the <code>MyCounterOuter</code> object so it can call one of its methods.
+  </p>
+  <pre><code>// TODO: add a private field of type MyCounterOuter and name it counter
+</code></pre>
+  <h4>Step 3: Add a constructor</h4>
+  <p>
+    The constructor should take <code>(MyCounterOuter counter)</code> as a parameter.
+  </p>
+  <pre><code>// TODO: write a constructor that takes one parameter
+// assign the parameter to your instance field
+</code></pre>
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        counter.increment();
-    }
-}</code></pre>
-    </li>
-
-    <li>
-      In your <code>MyCounter</code> constructor, create an instance of this listener and register it with the button:
-      <pre><code>MyCounterActionListener listener = new MyCounterActionListener(this);
-button.addActionListener(listener);</code></pre>
+<h4>Step 4: Respond to the button click</h4>
+  <p>
+    Inside <code>actionPerformed</code> override method, call the helper method in <code>MyCounter</code>
+    that updates the counter.
+  </p>
+  <pre><code>// TODO: call increment() on the MyCounterOuter object
+</code></pre>
+<details class="lab-card">
+    <summary>💡 Hint: Why does this class need a MyCounterOuter field?</summary>
+    <p>
+      The listener is a separate object. It needs a reference to the panel so it can call
+      methods on it when the event happens (like increment()).
+    </p>
+  </details>
+  <details class="lab-card">
+  <summary>💡 Hint: Calling a Method on MyCounterOuter counter</summary>
+  <p>
+    The listener has a reference to a <code>MyCounterOuter</code> object as <code>counter</code>.
+    Use that reference to call a method on it.
+  </p>
+  <p>
+    Think: if your field is named <code>counter</code>, how do you call one of its methods?
+  </p>
+</details>
+<h4>Step 5: Add listener to Button</h4>
+    <p>
+      In <code>MyCounterOuter</code> constructor, create an instance of the listener
+      <pre><code>MyCounterActionListener listener = new MyCounterActionListener(this);</code></pre>
+<p> Add the listener to the button</p>
+<pre><code>
+        button.addActionListener(listener);</code></pre>
     </li>
   </ol>
 
@@ -627,22 +642,35 @@ button.addActionListener(listener);</code></pre>
 <div class="lab-body">
     <h3 style="color:black">01. Multiple Buttons</h3>
   <p>
-    You’ll enhance your Counter app by adding 3 buttons: <code>Count Up</code>, <code>Count Down</code>, <code>Reset</code> and 
+    You’ll enhance your Counter app with 3 buttons: <code>Count Up</code>, <code>Count Down</code>, <code>Reset</code> and
     implementing <code style="color:darkred">addActionListener</code> as Inner Class.
   </p>
 
 <p>
     <image src="lab15a.png" alt="lab15 a" width="400"/>
 </p>
-  </div>
+<h4>Step 1: Setup</h4>
+<p>Use a provided  ThreeButtonCounter class</p>
+  <!-- </div>
   <details class="lab-card" open>
     <summary>1️⃣ Setup</summary>
     <ol>
       <li>For this part, use a provided  MyEnhancedCounter class</li>
     </ol>
-  </details>
-
-  <details class="lab-card">
+  </details> -->
+<h4>Step 2: Three Buttons</h4>
+<p>Replace the single button with three buttons:</p>
+<ul><li>Comment out the old <code>button</code> field</li>
+  <li>Add these fields instead: <pre><code>private JButton up, down, reset;</code></pre></li>
+  <li>In the constructor, create the buttons with these labels exactly:</li>
+<pre><code>up    = new JButton("Count Up");
+down  = new JButton("Count Down");
+reset = new JButton("Reset");</code></pre>
+</ul>
+<h4>Step 3: An Inner Listener Class</h4>
+<p>We already added a private inner class that implements
+       <code>ActionListener</code>. Take a look.</p>
+  <!-- <details class="lab-card">
     <summary>2️⃣ Replace the single button with three buttons</summary>
     <ul>
       <li>Delete the old <code>button</code> field.</li>
@@ -657,14 +685,14 @@ down  = new JButton("Count Down");
 reset = new JButton("Reset");</code></pre>
   </details>
 
-  </section>
+  </section> -->
  
-<details class="lab-card">
+<!-- <details class="lab-card">
     <summary>3️⃣ Add an inner listener class</summary>
     <p>Step 1. We already provided a private inner class that implements
-       <code>ActionListener</code>. Take a look.</p>
+       <code>ActionListener</code>. Take a look.</p> -->
 
-    <pre><code class="language-java">
+    <pre><code>
 private class ButtonListener implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
@@ -675,9 +703,9 @@ private class ButtonListener implements ActionListener {
 }
     </code></pre>
 
-<p>Step 2. Figure out which button fired the event</summary>
-    <p>Get the button's label:</p>
-    <pre><code class="language-java">
+<p>Step 4. Button Labels</summary>
+    <p>You need to figure out which button is clicked. Get the button's label:</p>
+    <pre><code>
 String buttonLabel = e.getActionCommand();
     </code></pre>
 <p>Update the counter based on the button clicked:</p>
