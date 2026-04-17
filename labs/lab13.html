@@ -564,7 +564,7 @@ In this lab, you will practice adding events to buttons.
   <p>
     This listener needs access to the <code>MyCounterOuter</code> object so it can call one of its methods.
   </p>
-  <pre><code>// TODO: add a private field of type MyCounterOuter and name it counter
+  <pre><code>// TODO: add a private field of type MyCounterOuter and name it <code>counter</code>
 </code></pre>
   <h4>Step 3: Add a constructor</h4>
   <p>
@@ -640,7 +640,7 @@ In this lab, you will practice adding events to buttons.
     <span class="lab-tag">Submission</span>
   </summary>
 <div class="lab-body">
-    <h3 style="color:black">01. Multiple Buttons</h3>
+    <h3 style="color:black">ThreeButtonCounter</h3>
   <p>
     You’ll enhance your Counter app with 3 buttons: <code>Count Up</code>, <code>Count Down</code>, <code>Reset</code> and
     implementing <code style="color:darkred">addActionListener</code> as Inner Class.
@@ -703,43 +703,84 @@ private class ButtonListener implements ActionListener {
 }
     </code></pre>
 
-<p>Step 4. Button Labels</summary>
+<h4>Step 4. Button Labels</h4>
     <p>You need to figure out which button is clicked. Get the button's label:</p>
     <pre><code>
-String buttonLabel = e.getActionCommand();
+// TODO: determine which button was clicked
+// Hint: use e.getActionCommand()
     </code></pre>
 <p>Update the counter based on the button clicked:</p>
-    <ul>
-      <li><code>"Count Up"</code> → increment</li>
-      <li><code>"Count Down"</code> → decrement</li>
-      <li><code>"Reset"</code> → set count to 0</li>
-    </ul>
-    <pre><code class="language-java">
-    if (buttonLabel.equals("Count Up")) {
-      count++;
-    } else if (buttonLabel.equals("Count Down")) {
-      count--;
-    } else {  // "Reset"
-      count = 0;
-    }
- </code></pre>
-    <p>Update the counter based on the button clicked:</p>
-  <pre><code class="language-java">
-    text.setText(count + "");
+<ul>
+  <li><code>"Count Up"</code> → increase the value</li>
+  <li><code>"Count Down"</code> → decrease the value</li>
+  <li><code>"Reset"</code> → set the value to 0</li>
+  <li>use if/else statements to compare the button label. Remember labels are strings!</li>
+</ul>
+
+    <p>Update the counter using Helper method updateField():</p>
+<pre><code>
+// TODO: call updateField() to refresh the display
 </code></pre>
-   
-  </details>
+<details class="lab-card">
+  <summary>💡 Hint: Calling Methods from an Inner Class</summary>
+  <p>
+    The inner class is inside <code>ThreeButtonCounter</code>, so it can use
+    methods from the outer class. Recall how the scope work.
+  </p>
+  <p>
+    You can call the helper method directly:
+    <code>updateField();</code>
+  </p>
+  <p>
+    If you use <code>this</code>, it would refer to the inner class.
+  </p>
+</details>
+
+    <h4>Step 5. Attach Listener to all three buttons</h4>
+   <p>
+  You will use <strong>one listener object</strong> for all three buttons.
+</p>
+    <p>Create one listener object and reuse it:</p>
+
+    <pre><code>
+// TODO: create one ButtonListener object
+
+// TODO: attach the same listener to each button
+// (up, down, and reset)
+</code></pre>
 
 <details class="lab-card">
-    <summary>4️⃣ Attach listener to all buttons</summary>
-    <p>Create one listener object and reuse it:</p>
-    <pre><code class="language-java">
+  <summary>💡 Hint: Reusing One Listener</summary>
+  <p>
+    You only need to create the listener <strong>once</strong>.
+  </p>
+  <p>
+    Then pass that same object into <code>addActionListener(...)</code>
+    for each button.
+  </p>
+  </details>
+  <details class="lab-card">
+  <summary>💡 Hint: Listener Pattern</summary>
+  <p>
+    First create the listener:
+  </p>
+  <p>
+    <code>ListenerType name = new ListenerType();</code>
+  </p>
+  <p>
+    Then attach it:
+  </p>
+  <p>
+    <code>button.addActionListener(name);</code>
+  </p>
+</details>
+    <!-- <pre><code class="language-java">
 ButtonListener bl = new ButtonListener();
 up.addActionListener(bl);
 down.addActionListener(bl);
 reset.addActionListener(bl);
     </code></pre>
-  </details>
+  </details> -->
 
 <!-- <div class="lab-section" id="lab3">
 
