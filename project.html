@@ -126,18 +126,8 @@ header {
     
             <div class="container">
               <h1>Final Project Descriptions</h1>
-              <p>For all Milestones - one submission per team</p>
-              <!-- <div class="card-container">
-                <a href="" class="card">
-                  <h2>Milestone 1</h2>
-              <p>Classes and UML</p>
-                </a>
-
-                <a href="" class="card">
-                  <h2>Milestone 2</h2>
-                  <p>Instructions (via Gradescope)</p>
-                </a>
-              </div> -->
+              <p>For all milestones, submit one team submission.</p>
+      
               <div id="content">
                 <div class="milestone-card">
                   <h3>Resources</h3>
@@ -148,55 +138,214 @@ header {
                   
                 </ul>
                 </div>
-                <p>Note - read the Expectation and Requirements Document for more detailed instructions</p>
+                <p>Read the Expectation and Requirements Document for more detailed instructions</p>
               <div class="milestone-card" id="1">
                 <h3>Milestone 0: Planning & Requirements (20 pts)</h3>
-                <p>Submit to Gradescope in "Milestone 0"</p>
+                <p>Submit to Gradescope in <strong>Milestone 0</strong></p>
                 <ol>
-                  <li>Make a list of Classes</li>
-                  <li>Assign Class responsibilities</li>
+                  <li>Make a list of classes</li>
+                  <li>Assign class responsibilities</li>
                   <li>Draw and submit a UML class diagram</li>
                   <!-- <li>Create Team's Github Repo</li> -->
       
                 </ol>
-              </div>
-            <p>Note - read the Expectation and Requirements Document for more detailed instructions</p>
+
+<details class="lab-card">
+        <summary>🎥 In-Class Demo: Action Listeners + Key Listeners</summary>
+        <p><strong>Learning objectives</strong></p>
+        <ul>
+          <li>Connect buttons to actions using <code>ActionListener</code></li>
+          <li>Use <code>KeyListener</code> / <code>KeyAdapter</code> for keyboard input</li>
+          <li>Understand focus and why buttons can steal keyboard control</li>
+          <li>Connect menu controls to a drawing canvas</li>
+        </ul>
+
+        <p><strong>Starter ZIP:</strong> <a href="./labs/Tier1.zip">Download starter</a></p>
+        <p><strong>Solution ZIP:</strong> <a href="">Download solution</a></p>
+  </details>
+        <details class="lab-card">
+        <summary>🛠 Required Scaffold Prep: Moving a Ball Object</summary>
+        <p><strong>Learning objectives</strong></p>
+        <ul>
+          <li>Create a Ball class</li>
+          <li>Move the object across the screen</li>
+          <li>Control the object with buttons and keys</li>
+        </ul>
+
+        <p><strong>Starter ZIP:</strong> <a href="./labs/Tier2.zip">Download starter</a></p>
+        <p><strong>Solution ZIP:</strong> <a href="">Download solution</a></p>
+      </details>
+
+        <p><strong>Milestone check (In-Class)</strong></p>
+<ul>
+  <li>Your team must be able to run the Ball demo (Tier 2 scaffold).</li>
+  <li>You must demonstrate movement using keys (A/D) and reset behavior.</li>
+  <li>Each team member should be able to explain how <code>Ball</code>, <code>GameComponent</code>, and <code>GamePanel</code> interact.</li>
+  <li>You should be able to explain how input (keys/buttons) connects to object movement.</li>
+</ul>
+
+<p><strong>Team workflow (Required)</strong></p>
+<ul>
+  <li>Work in pairs using <strong>pair programming</strong>:
+    <ul>
+      <li><strong>Driver</strong>: types and writes the code</li>
+      <li><strong>Navigator</strong>: reviews, guides, and thinks ahead</li>
+    </ul>
+  </li>
+  <li>Switch roles regularly during the session.</li>
+  <li>Both partners must understand the code being demonstrated.</li>
+</ul>
+
+<p><strong>Project setup (Required)</strong></p>
+<ul>
+  <li>Install <strong>GitHub Desktop</strong> and log in.</li>
+  <li>Create a team repository for the project.</li>
+  <li>Add all team members as collaborators.</li>
+  <li>Assign one team member as the <strong>submission captain</strong>.</li>
+  <li>Push your current scaffold code to the repository.</li>
+  <li>Verify that all team members can access the repository.</li>
+</ul>
+
+<p><strong>Team coordination</strong></p>
+<ul>
+  <li>Schedule regular team meetings outside of class.</li>
+  <li>Create and share a Google Doc for Milestone 0 planning and submission.</li>
+  <li>Use the document to track ideas, responsibilities, and progress.</li>
+</ul>
+    
+    </div>
+            
               <div class="milestone-card" id="2">
                 
                 <h3>Milestone 1: Design & Player Implementation (80 pts)</h3>
-                <p>Submit Milestone Report to Gradescope in "Milestone 1"</p>
-                <ul>
+                <p>Submit milestone Report to Gradescope in <strong>Milestone 1</strong></p>
+                <!-- <ul>
                 <li>Review: Healing Drops Game Coding Example: <a href="./resources_files/PracticeInheritanceDesignAdvancedSolution.zip">Import as zip project</a></li>
                 
-                </ul>
-                  <ol>
-                 <li>Build the Swing frame/panels</li>
-                 <li>Sprite-loading classes</li>
-                 <li>Player movements</li>
-                 <li>Animation loops for the player and enemies</li>
-                  </li>
-                </ul>
-              </div>
-            
+                </ul> -->
+<ol>
+        <li>Build the Swing frame/panels</li>
+        <li>Create sprite-loading classes</li>
+        <li>Implement player movement</li>
+        <li>Create animation loops for the player and enemies</li>
+      </ol>
+
+      <details class="lab-card">
+        <summary>🎥 In-Class Demo: Adding a Sprite</summary>
+        <p><strong>Learning objectives</strong></p>
+        <ul>
+          <li>Load and draw an image in a game component</li>
+          <li>Move a sprite on the screen</li>
+          <li>Connect drawing code to a player object</li>
+        </ul>
+
+        <p><strong>Starter ZIP:</strong> <a href="./resources_files/sprite_starter.zip">Download starter</a></p>
+        <p><strong>Solution ZIP:</strong> <a href="./resources_files/sprite_solution.zip">Download solution</a></p>
+        p><strong>Milestone check</strong></p>
+        <ul>
+          <li>You should be able to load and display a sprite in your project.</li>
+          <li>You should understand where image-loading code belongs.</li>
+        </ul>
+      </details>
+       <details class="lab-card">
+        <summary>🛠 Required Scaffold Prep: Timer, Movement, and Wall Collision</summary>
+        <p><strong>Learning objectives</strong></p>
+        <ul>
+          <li>Use a timer to update and repaint the game</li>
+          <li>Move one object across the screen</li>
+          <li>Detect and respond to wall collision</li>
+        </ul>
+
+        <p><strong>Starter ZIP:</strong> <a href="./resources_files/timer_collision_starter.zip">Download starter</a></p>
+        <p><strong>Solution ZIP:</strong> <a href="./resources_files/timer_collision_solution.zip">Download solution</a></p>
+      </details>
+
+      <details class="lab-card">
+        <summary>🛠 Required Scaffold Prep: Adding and Removing Objects</summary>
+        <p><strong>Learning objectives</strong></p>
+        <ul>
+          <li>Add new objects to the game</li>
+          <li>Remove objects when they leave the screen or collide</li>
+          <li>Practice safe list updates while iterating</li>
+        </ul>
+
+        <p><strong>Starter ZIP:</strong> <a href="./resources_files/add_remove_objects_starter.zip">Download starter</a></p>
+        <p><strong>Solution ZIP:</strong> <a href="./resources_files/add_remove_objects_solution.zip">Download solution</a></p>
+      </details>
+
+      <details class="lab-card">
+        <summary>🛠 Required Scaffold Prep: Ball Class + BallModel</summary>
+        <p><strong>Learning objectives</strong></p>
+        <ul>
+          <li>Create a class for one game object</li>
+          <li>Use a model class to manage multiple objects</li>
+          <li>Practice better OOP design for game state</li>
+        </ul>
+
+        <p><strong>Starter ZIP:</strong> <a href="./resources_files/ball_model_starter.zip">Download starter</a></p>
+        <p><strong>Solution ZIP:</strong> <a href="./resources_files/ball_model_solution.zip">Download solution</a></p>
+      </details>
+    </div>     
               
-            <p>Note - read the Expectation and Requirements Document for more detailed instructions</p>
+           
               <div class="milestone-card" id="3">
-                <h3>Milestone 2 – Collision, Gameplay Mechanics (100 pts)</h3>
-                <p>Update and submit Milestone Report to Gradescope in "Milestone 2"</p> 
-                <!-- <ol>
-                    <li>Place objects in the start positions</li>
-                    <li>Add levels</li>
-                    <li>Control movements with keys/buttons</li>
-                    <li>Detect collisions
-                    </li>
-                  </ol> -->
-                <!-- </ul> -->
-              </div>
-            <p>Note - read the Expectation and Requirements Document for more detailed instructions</p>
+                <h3>Milestone 2: Collision, Gameplay Mechanics (100 pts)</h3>
+                <p>Update and submit Milestone Report to Gradescope in <strong>Milestone 2</strong></p> 
+                 <details class="lab-card">
+        <summary>🎥 In-Class Demo: File I/O + Exceptions</summary>
+        <p><strong>Learning objectives</strong></p>
+        <ul>
+          <li>Read from a text file</li>
+          <li>Handle file-related exceptions with <code>try</code> / <code>catch</code></li>
+          <li>Use file input for game data such as scores or levels</li>
+        </ul>
+
+        <p><strong>Starter ZIP:</strong> <a href="./resources_files/file_io_starter.zip">Download starter</a></p>
+        <p><strong>Solution ZIP:</strong> <a href="./resources_files/file_io_solution.zip">Download solution</a></p>
+
+        <p><strong>Milestone check</strong></p>
+        <ul>
+          <li>You should be able to read a file without crashing your game.</li>
+          <li>You should understand what exception is being handled and why.</li>
+        </ul>
+      </details>
+
+      <details class="lab-card">
+        <summary>🛠 Required Scaffold Prep: Levels from Text File into a 2D Grid</summary>
+        <p><strong>Learning objectives</strong></p>
+        <ul>
+          <li>Read a level from a text file</li>
+          <li>Store the level in a 2D array or grid</li>
+          <li>Draw level objects based on file data</li>
+        </ul>
+
+        <p><strong>Starter ZIP:</strong> <a href="./resources_files/level_grid_starter.zip">Download starter</a></p>
+        <p><strong>Solution ZIP:</strong> <a href="./resources_files/level_grid_solution.zip">Download solution</a></p>
+      </details>
+
+      <details class="lab-card">
+        <summary>🛠 Required Scaffold Prep: Scoreboard and Save/Load</summary>
+        <p><strong>Learning objectives</strong></p>
+        <ul>
+          <li>Track scores in the game</li>
+          <li>Save scores to a file</li>
+          <li>Load and display saved scores</li>
+        </ul>
+
+        <p><strong>Starter ZIP:</strong> <a href="./resources_files/scoreboard_starter.zip">Download starter</a></p>
+        <p><strong>Solution ZIP:</strong> <a href="./resources_files/scoreboard_solution.zip">Download solution</a></p>
+      </details>
+    </div>
               <div class="milestone-card" id="4">
-                <h3>Milestone 3 – Testing, Polish &amp; Final Report</h3>
-                <p>You will be making a submission: "Milestone 3 Final Report"  </p> 
-                
+                <h3>Milestone 3: Testing, Polish &amp; Final Report</h3>
+                 <p>Submit to Gradescope in <strong>Milestone 3 Final Report</strong>.</p>
+      <ul>
+        <li>Complete and polish all project features</li>
+        <li>Test the full game carefully</li>
+        <li>Finish the final report and demo preparation</li>
+      </ul>
+      <p>By this stage, your team should be able to run, explain, and adapt all required scaffold demos used in earlier milestones.</p>
+    </div>
                 <!-- <p>Meet for your final Check-IN. Be prepare to walk through the game logic and discuss the final issues/implementations <a href ="https://docs.google.com/document/d/1qNayGndsxBsV_23DOisl7I0f04cskV2nJVFGfo9o_QY/edit?usp=sharing">Milestone Sign Up</a></p> -->
                 <!-- <ol>
                   <li>Implement and test scoring (lives, health etc) 
@@ -207,12 +356,12 @@ header {
                   </li>
                   <li>Final Documentation: Update UML diagrams and add comprehensive Javadoc/comments to the code
                   </li> -->
-</div>
+
                   <!-- <section id="milestone-core-game">
                     <h2>Milestone: Core Game Implementation</h2>
                   
                     <p>Please refer to the specification <a href="https://docs.google.com/document/d/1q5FTqlw0rpgZEvzl1leIqs5eEBZR0tnct6TSTL_-6rA/edit?usp=sharing" >Specification Document</a></p>
-                    <!-- <p>Here are some of the potential suggestions and approximate point values:</p>
+                     <p>Here are some of the potential suggestions and approximate point values:</p>
                     <ul>
                       <li>Implement different kinds of weapons (~15 points)</li>
                       <li>Images for the player, enemies, environment, resource items (~8 points)</li>
@@ -282,8 +431,8 @@ header {
                         <li><label><input type="checkbox" checked> After winning or losing, restarting from beginning works properly (10 points)</label></li>
                         <li><label><input type="checkbox" checked> Other basic game functionalities (10 points)</label></li>
                       </ul>
-                    </section>
-                    <h2>Milestone: Game Demo</h2> -->
+                    </section>-->
+                    <!-- <h2>Milestone: Game Demo</h2>  -->
             <!-- <ol>
                   
                   <li> Record 5 min video demoying your game (youtube preferred):
@@ -311,7 +460,10 @@ header {
               </div>
             
             </div>
-            </div>
-          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
