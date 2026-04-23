@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Design</title>
+    <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+    <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+  <style>
+    /* Header styling */
+    #header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      margin-top: 100px; 
+      margin-bottom: 50px;
+    }
+    h1, h2, h3 {
+      color: #00539C;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      margin-top: 100px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    a {
+      color: #0077B6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    .image-container {
+      text-align: center;
+      margin: 15px 0;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+    .note {
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    section::before {
+  content: "";
+  display: block;
+  height: 90px; /* equal to your header's height */
+  margin-top: -90px;
+}
+  </style>
+  </head>
+  <body>
+    <div id="header">
+      <a id="index_link" href="../index.html">CSSE 220</a>
+      <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+      <a id="schedule_link" href="../schedule.html">Schedule</a>
+<a id="quiz_link" href="../design-principles.html">Design</a>
+      <a id="quiz_link" href="../labs.html">Labs</a>
+      <a id="quiz_link" href="../homework.html">Homework</a>
+      <a id="quiz_link" href="../exams.html">Exams</a>
+      <a id="quiz_link" href="../project.html">Final Project</a>
+      <a id="resources_link" href="../resources.html">Resources</a>
+      <div style="clear:both;"></div>
+  </div>
+
+  <div class="container">
+    <!-- General Description -->
+    <section id="general-description">
+      <h2>Exam 1 Coding: Refactoring Zoo</h2>
+      <p>
+       OOD Principles <a href="../resources_files/Basic_OO_Principles_for_CSSE220.pdf">Handout</a></p>
+    <p>Review the abstract class example if needed:
+    <a href="../resources.html#abstract">Abstract Class Resource</a>
+</p>
+<p>
+  <strong>Download Starter and import as a Java project:</strong>
+  <a href="exam1Starter.zip">Download Starter</a>
+</p>
+    </section>
+    
+    <!-- Example Problems -->
+    <section id="example-problems">
+      <h3>Description</h3>
+<p>
+  You are designing a system to manage animals in a zoo. The zoo stores shared information about every animal,
+  such as ID, name, and food eaten per day, along with species-specific traits that affect each animal’s daily cost.
+</p>
+<p><strong>All animals have:</strong></p>
+<ul>
+  <li>a unique ID</li>
+  <li>a name</li>
+  <li>an amount of food eaten per day (<code>foodKg</code>)</li>
+</ul>
+
+<p><strong>Each animal must support:</strong></p>
+<ul>
+  <li><code>calculateDailyCost()</code> which varies by animal type</li>
+  <li><code>makeSound()</code> which varies by animal type</li>
+  <li><code>getType()</code> which identifies the animal type</li>
+  <li><code>generateReport()</code> which returns a summary string</li>
+</ul>
+
+<p><strong>System Behavior: ZooMain</strong></p>
+<ul>
+  <li>creates and stores zoo animals</li>
+  <li>prints a daily report for all animals</li>
+</ul>
+
+<p>
+  The current design works, but it has several design problems. 
+</p>
+
+<p>
+  Before you begin coding, study the starter UML and starter code carefully. Think about:
+</p>
+<ul>
+  <li>which fields are shared across all animals</li>
+  <li>which methods are shared across all animals</li>
+  <li>which methods should vary by animal type</li>
+  <li>which OOP design principles are violated in the starter design</li>
+</ul>
+
+<p>
+  <strong>Starter UML:</strong>
+</p>
+<p>
+  <img src="UML.png" alt="Starter UML for Zoo Refactoring Exam" style="max-width: 80%; border: 1px solid #ccc;">
+</p>
+
+<h3>Task</h3>
+<p>
+  Refactor the program by introducing an appropriate abstract class named <code>Animal</code> and using inheritance
+  to remove duplicated state and duplicated behavior while keeping the required program output the same.
+</p>
+
+<p>
+  The provided JUnit tests are meant to guide your refactor. Read the test names and failure messages carefully.
+</p>
+
+<p><strong>Expected output format:</strong></p>
+<pre>
+---- Zoo Daily Report ----
+Wolf (ID 1): eats 12.5kg/day, cost 34.5, sound: Howl
+Wolf (ID 2): eats 10.0kg/day, cost 27.2, sound: Howl
+Giraffe (ID 3): eats 25.0kg/day, cost 33.76, sound: Hum
+Giraffe (ID 4): eats 22.0kg/day, cost 29.26, sound: Hum
+Otter (ID 5): eats 8.0kg/day, cost 15.6, sound: Squeak
+Otter (ID 6): eats 7.5kg/day, cost 12.75, sound: Squeak
+</pre>
+
+<p>
+  To see the above output, run the Java application <code>ZooMain.java</code>.
+</p>
+
+<h3>Submission</h3>
+<p>
+  Submit all of the following to GradeScope:
+</p>
+<ul>
+  <li>your refactored Java files</li>
+  <li>your updated UML diagram</li>
+  <li><code>reflection.txt</code></li>
+</ul>
+
+<p><strong>In <code>reflection.txt</code> (provided in the project zip file), answer the following in 2–3 sentences each:</strong></p>
+<ol>
+  <li>Identify two OOP design principles violated in the original starter code. For each one, name the principle and explain why it was violated.</li>
+  <li>What duplicated fields or duplicated logic existed in the original starter code? Be specific and refer to classes, fields, or methods.</li>
+  <li>What did you move into the <code>Animal</code> class during your refactor, and why?</li>
+  <li>How did your refactor improve <code>ZooMain</code>? Explain how its responsibilities changed in the final design.</li>
+</ol>
+
+<h3>Additional Notes</h3>
+<ul>
+  <li>Your goal is not just to “make the tests pass.” Your design should clearly improve the original starter design.</li>
+  <li>The output checked by <code>TestZooMainOutput</code> should remain consistent with the required format above.</li>
+  <li>Use the JUnit tests as feedback while you refactor.</li>
+  <li>Your updated UML should match your final code.</li>
+</ul>
+    
+    </section>
+    
+  </div>
+  </body>
+</html>
