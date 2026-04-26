@@ -187,7 +187,7 @@ header {
 
 
 <details class="lab-card">
-  <summary><strong>GitHub Setup for Your Team</strong></summary>
+  <summary><strong>GitHub Setup for Your Team (Part 1)</strong></summary>
 
   <p><strong>Step 1: Create the repository</strong></p>
   <ol>
@@ -245,6 +245,99 @@ header {
   <p><strong>Team reminder:</strong> Always pull before you start working, and push after you finish a good chunk of work.</p>
 </details>
 
+<details class="lab-card" open>
+  <summary><strong>Using Eclipse + GitHub Desktop (Team Workflow)</strong></summary>
+
+  <p>
+    You already have a shared team GitHub repository and a local copy using GitHub Desktop.
+    Now you will set up your Eclipse project inside that repository.
+  </p>
+
+  <h4>Step 1: Download Starter Code</h4>
+  <ul>
+    <li>Download the starter project as a ZIP file:</li>
+    <li>
+      <a href="https://github.com/obscrivn/CSSE220-Final-Project-Starter" target="_blank">
+        Starter Code Repository
+      </a>
+    </li>
+    <li>Click <strong>Code → Download ZIP</strong></li>
+    <li>Unzip the folder on your computer</li>
+  </ul>
+
+  <h4>Step 2: Import into Eclipse (Important)</h4>
+  <ol>
+    <li>Move the unzipped starter files into your <strong>team repository folder</strong></li>
+    <li>(Do NOT create a second Git repository)</li>
+    <li>
+      You may either:
+      <ul>
+        <li>Place files directly in the repo folder, or</li>
+        <li>Create a single project folder inside the repo (recommended for organization)</li>
+      </ul>
+    </li>
+    <li>Open Eclipse</li>
+    <li>Go to <strong>File → Import → Existing Projects into Workspace</strong></li>
+    <li>Select the project folder inside your repository</li>
+    <li>Finish and make sure the project runs</li>
+  </ol>
+
+  <p>
+    ✅ Your Eclipse project must live <strong>inside your GitHub repository folder</strong>
+  </p>
+
+  <h4>Step 3: Sync with GitHub (Practice the Routine)</h4>
+  <ol>
+    <li>Open GitHub Desktop</li>
+    <li>Click <strong>Fetch origin</strong></li>
+    <li>If needed, click <strong>Pull origin</strong></li>
+  </ol>
+
+  <h4>Step 4: Commit and Push</h4>
+  <ol>
+    <li>In GitHub Desktop, you should see your project files</li>
+    <li>Add a commit message such as:</li>
+  </ol>
+
+<pre><code>Initial project setup</code></pre>
+
+  <ol start="3">
+    <li>Click <strong>Commit to main</strong></li>
+    <li>Click <strong>Push origin</strong></li>
+  </ol>
+
+  <h4>Step 5: Verify on GitHub</h4>
+  <ul>
+    <li>Go to your repository on github.com</li>
+    <li>Confirm your files are uploaded</li>
+  </ul>
+
+  <h4>Step 6: Teammate Sync</h4>
+  <ul>
+    <li>Teammate opens GitHub Desktop</li>
+    <li>Clicks <strong>Fetch origin → Pull origin</strong></li>
+  </ul>
+
+  <h4>Step 7: Open Project in Eclipse (Teammate)</h4>
+  <ol>
+    <li>Open Eclipse</li>
+    <li>Go to <strong>File → Import → Existing Projects into Workspace</strong></li>
+    <li>Select the same local repository folder</li>
+    <li>Finish</li>
+    <li>Run the project to confirm it works</li>
+  </ol>
+
+  <h4>Daily Workflow (Very Important)</h4>
+<pre><code>Before coding: Fetch → Pull  
+After coding: Test → Commit → Push</code></pre>
+
+  <p>
+    ⚠️ Do not work on the same file at the same time unless you are pair programming.
+  </p>
+
+</details>
+
+
 <p><strong>Team workflow</strong></p>
 <ul>
   <li>Work in pairs using <strong>pair programming</strong>:
@@ -261,6 +354,9 @@ header {
   <li>Use the document to track ideas, responsibilities, and progress.</li>
 </ul>
     
+
+
+
     </div>
             
               <div class="milestone-card" id="2">
