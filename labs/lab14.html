@@ -447,20 +447,46 @@ GameComponent
     <li><code>row</code>: vertical position</li>
     <li><code>col</code>: horizontal position</li>
   </ul>
+<p>
+  We will also use a <strong>tile size</strong> to convert grid position into screen pixels.
+</p>
 
-  <p>
-    Add:
-  </p>
+<pre><code>private static final int TILE_SIZE = 40;</code></pre>
+
+<p>
+  Add:
+</p>
+
+<ul>
+  <li>private fields for <code>row</code> and <code>col</code></li>
+  <li>a constructor that receives the starting row and column</li>
+  <li>getter methods for row and column</li>
+  <li>a constant <code>TILE_SIZE</code></li>
+</ul>
+
+
+ 
 
   <ul>
     <li>private fields for <code>row</code> and <code>col</code></li>
     <li>a constructor that receives the starting row and column</li>
     <li>getter methods for row and column</li>
   </ul>
+<p>
+  Now add a method to draw the player:
+</p>
 
-  <p>
-    Do not put drawing code in <code>Player</code>. The player stores game data.
-  </p>
+<pre><code>public void drawOn(Graphics2D g2) {
+  int x = this.col * TILE_SIZE;
+  int y = this.row * TILE_SIZE;
+
+  g2.fillRect(x, y, TILE_SIZE, TILE_SIZE);
+}</code></pre>
+
+<p>
+  This converts grid position (<code>row</code>, <code>col</code>) into screen position (<code>x</code>, <code>y</code>).
+</p>
+
 
   <h3>Step 2: Add Movement to Player</h3>
 
@@ -501,11 +527,6 @@ GameComponent
     Add a getter so other classes can ask the model where the player is.
   </p>
 
-  <p>
-    Design rule:
-    <strong>GameComponent should not store the player position directly.</strong>
-    It should ask <code>GameModel</code> for the player.
-  </p>
 
   <h3>Step 4: Add Movement Methods to GameModel</h3>
 
@@ -526,11 +547,23 @@ GameComponent
 
   <p>
     Why do this?
-    Later, these methods can check walls, boundaries, gems, zombies, and levels
+    Later, you can refactor and use these methods for walls, boundaries, gems, zombies, and levels
     before allowing movement.
   </p>
 
-  <h3>Step 5: Connect to the UI Later</h3>
+  <h3>Step 5: Draw Player in GameComponent</h3>
+
+<p>
+  In <code>GameComponent</code>, call:
+</p>
+
+<pre><code>model.getPlayer().drawOn(g2);</code></pre>
+
+<p>
+  You should now see a rectangle player on the screen.
+</p>
+
+  <h3>Step 6: Connect to the UI Later</h3>
 
   <p>
     Later, <code>GameComponent</code> will listen for keyboard input.
