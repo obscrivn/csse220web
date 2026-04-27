@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSSE 220</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+<style>
+  body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 1rem;
+          background: #f5f7fa;
+          color: #333;
+        }
+        
+        /* Section containers */
+        section {
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          margin: 1.5rem 0;
+          padding: 1.2rem;
+        }
+        
+        /* Headings */
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #e0e0e0;
+          padding-bottom: 0.3rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+          margin-top: 1rem;
+        }
+        
+        /* Image styling */
+        section img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin: 0.8rem auto;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        /* Code blocks */
+        /* pre {
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 0.8rem;
+          border-radius: 1px;
+          overflow-x: auto;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.9rem;
+        } */
+        /* pre code {
+          display: block;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        } */
+        
+        /* Inline code */
+        /* code {
+          background: #eaeaea;
+          color: #c7254e;
+          padding: 0.2rem 0.4rem;
+          border-radius: 1px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.95em;
+        } */
+        
+        /* Highlight compile / runtime state */
+        strong + span {
+          font-weight: bold;
+          color: #d14;
+        }
+        
+        /* Lists */
+        ul, ol {
+          margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        li {
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Method call subsections */
+        section#method-calls h4 {
+          margin: 1rem 0 0.3rem;
+          font-size: 1.1rem;
+          color: #444;
+          border-left: 3px solid #007acc;
+          padding-left: 0.5rem;
+        }
+        
+        /* Emphasis for compile/run status */
+        span[style*="darkred"] {
+          font-weight: bold;
+          color: #c00;
+        }
+
+
+
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    } */
+    #main-content {
+      padding: 20px;
+    }
+/* Header styling */
+#header {
+        position: fixed;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    #header a {
+      color: #fff;
+      margin-right: 15px;
+      text-decoration: none;
+
+    }
+    #header a:hover {
+      text-decoration: underline;
+    }
+    #header div {
+      clear: both;
+    }
+    /* Content container */
+    #content {
+      padding: 20px;
+      /* margin-top: 100px;  */
+      margin-bottom: 50px;
+      padding-top: 100px;
+    }
+    #section {
+margin-top: 1rem; 
+margin-bottom: 1rem;
+padding: 20px;
+} 
+    .lab-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .lab-section h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .lab-section p {
+      line-height: 1.5;
+      color: #555;
+    }
+/* Lab Navigation Menu Styling */
+#lab-nav {
+      background-color: #faf9fc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-x: auto;  /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+    }
+    #lab-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+    #lab-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    #lab-nav ul li a:hover {
+      background-color: #ddd;
+    }
+    code {
+        /* color: red; */
+        font-weight: 600;
+        font-family: Consolas, "Courier New", monospace;
+    }
+    .code-window {
+      background-color: #272822;
+      color: #f8f8f2;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow-x: auto;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .solution-window {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+      padding: 10px;
+      font-family: Consolas, "Courier New", monospace;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 10px;
+    }
+    .solution-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2e7d32;
+    }
+
+    a.resource-ref {
+  background-color: #444; /* dark background for contrast */
+  color: #61dafb;         /* bright text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+a.resource-ref:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+
+pre code {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+  border-left: 4px solid #4a90e2;
+  padding: 0.75em;
+  display: block;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+pre code:hover {
+  background-color: #dce1e8;
+  border-left-color: #28527a;
+}
+.lab-card {
+  margin: 0 0 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none; /* hide default arrow in some browsers */
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.15s ease-out;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-label {
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.lab-title {
+  font-weight: 700;
+}
+
+.lab-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.lab-body {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+details.hint {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  border-left: 3px solid #aaa;
+}
+
+details.hint > summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a id="index_link" href="../index.html">CSSE 220</a>
+    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
+    <a id="schedule_link" href="../schedule.html">Schedule</a>
+    <a id="quiz_link" href="../design-principles.html">Design</a>
+    <a id="quiz_link" href="../labs.html">Labs</a>
+    <a id="quiz_link" href="../homework.html">Homework</a>
+    <a id="quiz_link" href="../exams.html">Exams</a>
+    <a id="quiz_link" href="../project.html">Final Project</a>
+    <a id="resources_link" href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+    <h1>Lab Assignment 14</h1>
+    <div id="main-content">
+         <div class="lab-section" id="lab">
+
+ <p>
+In this lab, you will practice recursion and continue working with event-based programming.
+</p>
+        
+<details class="lab-card" id="lab-01">
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Recursion</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+
+<h2>Instructions</h2>
+
+  <ol>
+    <li>
+      <strong>In Eclipse, create a new package named <code>lab14</code>.</strong>
+    </li>
+
+    <li>
+      <strong>Inside the <code>lab14</code> package, create a new class named <code>Recursion</code>.</strong>
+      <br>
+      This class will contain <em>all</em> of your methods for this lab.
+    </li>
+
+    <li>
+      <strong>Open CodingBat (Recursion-1):</strong>
+      <br>
+      Go to 
+      <a href="http://codingbat.com/java/Recursion-1" target="_blank">
+        https://codingbat.com/java/Recursion-1
+      </a>
+    </li>
+
+    <li>
+      <strong>Complete the following CodingBat problems:</strong>
+      <ul>
+        <li><code>factorial</code></li>
+        <li><code>bunnyEars</code></li>
+        <li><code>bunnyEars2</code></li>
+        <li><code>fibonacci</code></li>
+        <li><code>triangle</code></li>
+        <li><code>sumDigits</code></li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>For each problem:</strong>
+      <ul>
+        <li>Write the method in CodingBat first</li>
+        <li>Once it passes all tests, copy the method into <code>Recursion.java</code></li>
+        <li>Make sure each method signature matches exactly</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Save Recursion class with all 5 recursion problems.</strong>
+      
+    </li>
+
+    <li>
+      <strong>Submit <code>Recursion.java</code> to Gradescope as the Lab 14 assignment.</strong>
+    
+    </li>
+    <li>Make sure your file is on the package lab14</li>
+  </ol>
+</details>
+<details class="lab-card" open>
+  <summary>
+  <span class="lab-label">02.</span>
+    <span class="lab-title">Prep: Build the First Game Object</span>
+    <span class="lab-tag">Final Project</span>
+  
+  </summary>
+
+  <p>
+    In this prep, you will create the first real part of your game model:
+    a <code>Player</code>. The goal is to understand where game data belongs.
+  </p>
+
+  <p>
+    Big idea:
+    <strong>GameModel owns the game state. Player owns its own position.</strong>
+  </p>
+
+  <pre><code>MainApp
+  creates GameModel and GameWindow once at startup
+
+GameModel
+  owns game objects and game rules
+
+Player
+  stores player position
+
+GameComponent
+  draws the game and handles input</code></pre>
+
+  <h3>Step 1: Create the Player Class</h3>
+
+  <p>
+    In the <code>model</code> package, create a new class named <code>Player</code>.
+  </p>
+
+  <p>
+    The player should store its position using two fields:
+  </p>
+
+  <ul>
+    <li><code>row</code>: vertical position</li>
+    <li><code>col</code>: horizontal position</li>
+  </ul>
+
+  <p>
+    Add:
+  </p>
+
+  <ul>
+    <li>private fields for <code>row</code> and <code>col</code></li>
+    <li>a constructor that receives the starting row and column</li>
+    <li>getter methods for row and column</li>
+  </ul>
+
+  <p>
+    Do not put drawing code in <code>Player</code>. The player stores game data.
+  </p>
+
+  <h3>Step 2: Add Movement to Player</h3>
+
+  <p>
+    Add a method to <code>Player</code> that changes the position by a row amount
+    and a column amount.
+  </p>
+
+  <pre><code>moveBy(int dRow, int dCol)</code></pre>
+
+  <p>
+    Examples:
+  </p>
+
+  <ul>
+    <li>Move up: row changes by <code>-1</code></li>
+    <li>Move down: row changes by <code>+1</code></li>
+    <li>Move left: column changes by <code>-1</code></li>
+    <li>Move right: column changes by <code>+1</code></li>
+  </ul>
+
+  <p>
+    This is the first piece of game logic: changing the player’s position.
+  </p>
+
+  <h3>Step 3: Put Player inside GameModel</h3>
+
+  <p>
+    Open <code>GameModel</code>. Add a private <code>Player</code> field.
+  </p>
+
+  <p>
+    In the <code>GameModel</code> constructor, create one player at a starting location.
+    For example, row 5 and column 5.
+  </p>
+
+  <p>
+    Add a getter so other classes can ask the model where the player is.
+  </p>
+
+  <p>
+    Design rule:
+    <strong>GameComponent should not store the player position directly.</strong>
+    It should ask <code>GameModel</code> for the player.
+  </p>
+
+  <h3>Step 4: Add Movement Methods to GameModel</h3>
+
+  <p>
+    Add methods to <code>GameModel</code> for moving the player:
+  </p>
+
+  <ul>
+    <li><code>movePlayerUp()</code></li>
+    <li><code>movePlayerDown()</code></li>
+    <li><code>movePlayerLeft()</code></li>
+    <li><code>movePlayerRight()</code></li>
+  </ul>
+
+  <p>
+    Each method should call <code>player.moveBy(...)</code>.
+  </p>
+
+  <p>
+    Why do this?
+    Later, these methods can check walls, boundaries, gems, zombies, and levels
+    before allowing movement.
+  </p>
+
+  <h3>Step 5: Connect to the UI Later</h3>
+
+  <p>
+    Later, <code>GameComponent</code> will listen for keyboard input.
+    When the user presses a key, the component should call a method on
+    <code>GameModel</code>.
+  </p>
+
+  <pre><code>Key press → GameComponent → GameModel → Player</code></pre>
+
+  <p>
+    Example idea:
+  </p>
+
+  <pre><code>W key → model.movePlayerUp()
+A key → model.movePlayerLeft()
+S key → model.movePlayerDown()
+D key → model.movePlayerRight()</code></pre>
+
+  <p>
+    After moving the player, the UI will repaint the screen.
+  </p>
+
+  <h3>Future Game Logic Roadmap</h3>
+
+  <p>
+    After the player works, you will gradually add more model classes.
+  </p>
+
+  <ul>
+    <li><strong>Walls:</strong> prevent the player from moving into blocked tiles</li>
+    <li><strong>Grid or Level:</strong> store the map layout</li>
+    <li><strong>Gems:</strong> track collectibles</li>
+    <li><strong>Zombies:</strong> move enemies slowly/randomly</li>
+    <li><strong>Lives and Score:</strong> track game progress</li>
+    <li><strong>Exit:</strong> allow level completion after collecting required items</li>
+  </ul>
+
+  <p>
+    Keep the same design idea:
+    <strong>the model owns rules, the UI shows what happened.</strong>
+  </p>
+
+</details>
+        </div>
+      
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>
