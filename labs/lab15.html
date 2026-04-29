@@ -6,8 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-
-body {
+  body {
           font-family: Arial, sans-serif;
           line-height: 1.5;
           margin: 0;
@@ -136,15 +135,19 @@ body {
     /* Content container */
     #content {
       padding: 20px;
-      margin-top: 100px; 
+      /* margin-top: 100px;  */
       margin-bottom: 50px;
-    } 
-    
+      padding-top: 100px;
+    }
+    #section {
+margin-top: 1rem; 
+margin-bottom: 1rem;
+padding: 20px;
+} 
     .lab-section {
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 15px;
-       scroll-margin-top: 80px;
       margin-bottom: 20px;
       border-radius: 5px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -158,7 +161,6 @@ body {
       line-height: 1.5;
       color: #555;
     }
-
 /* Lab Navigation Menu Styling */
 #lab-nav {
       background-color: #faf9fc;
@@ -187,7 +189,9 @@ body {
       background-color: #ddd;
     }
     code {
-        color: red;
+        /* color: red; */
+        font-weight: 600;
+        font-family: Consolas, "Courier New", monospace;
     }
     .code-window {
       background-color: #272822;
@@ -230,6 +234,7 @@ a.resource-ref:hover {
   background-color: #555;
   color: #ffffff;
 }
+
 pre code {
   background-color: #f5f7fa;
   color: #1a1a1a;
@@ -244,112 +249,6 @@ pre code:hover {
   background-color: #dce1e8;
   border-left-color: #28527a;
 }
-/* Content container */
-    #content {
-      padding: 20px;
-      margin-top: 100px; 
-      margin-bottom: 50px;
-    } 
-    
-    .lab-section {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .lab-section::before {
-  content: "";
-  display: block;
-  height: 240px; /* equal to your header's height */
-  margin-top: -240px;
-}
-
-
-    .lab-section h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      color: #333;
-    }
-    .lab-section p {
-      line-height: 1.5;
-      color: #555;
-    }
-/* Lab Navigation Menu Styling */
-#lab-nav {
-      background-color: #faf9fc;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      overflow-x: auto;  /* Enables horizontal scroll */
-      white-space: nowrap; /* Prevents wrapping */
-    }
-    #lab-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 15px;
-    }
-    #lab-nav ul li a {
-      text-decoration: none;
-      color: #333;
-      margin-left: 20px;
-      padding: 5px 10px;
-      border-radius: 3px;
-    }
-    #lab-nav ul li a:hover {
-      background-color: #ddd;
-    }
-    code {
-        color: red;
-    }
-    .code-window {
-      background-color: #272822;
-      color: #f8f8f2;
-      border: 1px solid #333;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      white-space: pre;
-      overflow-x: auto;
-      border-radius: 3px;
-      margin-top: 10px;
-    }
-    .solution-window {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #4caf50;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      border-radius: 3px;
-      overflow-x: auto;
-      white-space: pre;
-      margin-top: 10px;
-    }
-    .solution-header {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #2e7d32;
-    }
-
- 
-    a.resource-ref {
-  background-color: #444; /* dark background for contrast */
-  color: #61dafb;         /* bright text color */
-  padding: 4px 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-}
-
-a.resource-ref:hover {
-  background-color: #555;
-  color: #ffffff;
-}
-
 .lab-card {
   margin: 0 0 1rem 0;
   border-radius: 0.75rem;
@@ -420,13 +319,12 @@ details.hint > summary {
 }
   </style>
 </head>
-
 <body>
-  <div id="header">
+   <div id="header">
     <a id="index_link" href="../index.html">CSSE 220</a>
     <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
     <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../design-principles.html">Design</a>
     <a id="quiz_link" href="../labs.html">Labs</a>
     <a id="quiz_link" href="../homework.html">Homework</a>
     <a id="quiz_link" href="../exams.html">Exams</a>
@@ -435,173 +333,340 @@ details.hint > summary {
     <div style="clear:both;"></div>
 </div>
 <div id="content">
-<!-- <div id="content"> -->
-    <h1>Lab Assignment 15</h1>
-    <nav id="lab-nav">
-        <ul>
-          <li><a href="#lab1">01. Multiple Buttons</a></li>
-          <!-- Add more lab links as needed -->
-        </ul>
-      </nav>
-<!-- Lab Navigation Menu -->
-<!-- <div id="main-content"> -->
- <section>
-  <p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Events</a></p>
-  <p>Resources 2: <a href="../resources.html#listener" target="_blank" class="resource-ref">Understanding Listener with getActionCommand()</a></p>
-  <!-- <p>Resources 3: <a href="../resources.html#focus" target="_blank" class="resource-ref">How to keep focus on Frame for events</a></p> -->
-</section>
-<!-- <p>Submission: 1) Multiple buttons java files, 2) Moving Object java files</p> -->
- <!-- <div id="main-content">  -->
+    <h1>Lab Assignment 14</h1>
+    <div id="main-content">
+         <div class="lab-section" id="lab">
 
-<!-- <section class="lab-section" id="lab15-buttons"> -->
-  <!-- <div id="content"> -->
-        <div class="lab-section" id="lab1">
-    <h2 style="color:black">01. Multiple Buttons</h2>
-  <p>
-    You’ll enhance your Counter app by adding 3 buttons: <code>Count Up</code>, <code>Count Down</code>, <code>Reset</code> and 
-    implementing <code style="color:darkred">addActionListener</code> as Inner Class.
-  </p>
-  <p>Submission: Enhanced Button file + Demo</p>
-<p>
-    <image src="lab15a.png" alt="lab15 a" width="400"/>
+ <p>
+In this lab, you will practice recursion2 and continue working with event-based programming.
 </p>
-  </div>
-  <details class="lab-card" open>
-    <summary>1️⃣ Setup - Make a copy (new class)</summary>
-    <ol>
-      <li>In the same package as <code>MyCounter</code>, create: <code>MyEnhancedCounter</code>.</li>
-      <li>Copy/paste your <code>MyCounter</code> code into it.</li>
-      <li>Rename the constructor to <code>public MyEnhancedCounter()</code>.</li>
-    </ol>
-  </details>
+        
+<details class="lab-card" id="lab-01">
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Recursion2</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
 
-  <details class="lab-card">
-    <summary>2️⃣ Replace the single button with three buttons</summary>
-    <ul>
-      <li>Delete the old <code>button</code> field.</li>
-      <li>Add these fields instead:</li>
-    </ul>
-    <pre><code class="language-java">private JButton up, down, reset;</code></pre>
-    <ul>
-      <li>In the constructor, create the buttons with these labels exactly:</li>
-    </ul>
-    <pre><code class="language-java">up    = new JButton("Count Up");
-down  = new JButton("Count Down");
-reset = new JButton("Reset");</code></pre>
-  </details>
+<h2>Instructions</h2>
 
-  </section>
- 
-<details class="lab-card">
-    <summary>3️⃣ Add an inner listener class</summary>
-    <p>Step 1. Inside <code>MyEnhancedCounter</code>, create a private inner class that implements
-       <code>ActionListener</code>.</p>
-
-    <pre><code class="language-java">
-private class ButtonListener implements ActionListener {
-  @Override
-  public void actionPerformed(ActionEvent e) {
-    // TODO: determine which button was clicked
-    // TODO: update count
-    // TODO: refresh the text field
-  }
-}
-    </code></pre>
-
-<p>Step 2. Figure out which button fired the event</summary>
-    <p>Get the button's label:</p>
-    <pre><code class="language-java">
-String buttonLabel = e.getActionCommand();
-    </code></pre>
-<p>Update the counter based on the button clicked:</p>
-    <ul>
-      <li><code>"Count Up"</code> → increment</li>
-      <li><code>"Count Down"</code> → decrement</li>
-      <li><code>"Reset"</code> → set count to 0</li>
-    </ul>
-    <pre><code class="language-java">
-    if (buttonLabel.equals("Count Up")) {
-      count++;
-    } else if (buttonLabel.equals("Count Down")) {
-      count--;
-    } else {  // "Reset"
-      count = 0;
-    }
- </code></pre>
-    <p>Update the counter based on the button clicked:</p>
-  <pre><code class="language-java">
-    text.setText(count + "");
-</code></pre>
-   
-  </details>
-
-<details class="lab-card">
-    <summary>4️⃣ Attach listener to all buttons</summary>
-    <p>Create one listener object and reuse it:</p>
-    <pre><code class="language-java">
-ButtonListener bl = new ButtonListener();
-up.addActionListener(bl);
-down.addActionListener(bl);
-reset.addActionListener(bl);
-    </code></pre>
-  </details>
-
-
-
-  <!-- <h3>Step 4 — (Optional) Timer “heartbeat”</h3>
-  <p>
-    You can also move or animate things on a fixed tick using a Swing <code>Timer</code>.
-    This is handy for enemies or gravity, while player still uses keys.
-  </p>
-  <pre><code class="language-java">// inside GamePanel constructor, after key listener
-new Timer(30, e -> {
-    // e.g., auto-move a background element or enemy update();
-    repaint();
-}).start();</code></pre> -->
-
- <!--  <details class="hint">
-    <summary>💡 Event-driven loop</summary>
-    <p>
-      The <code>Timer</code> fires an <code>ActionEvent</code> every N ms. Each tick is just another event
-      that updates state and calls <code>repaint()</code>. No while(true) loops needed.
-    </p>
-  </details> -->
-
-  <!-- <hr>
-
-  <h3>Step 5 — Prepare for Abstract Classes (next section)</h3>
-  <p>
-    Now that the app is organized, we can introduce an abstract <code>GameEntity</code>:
-  </p>
-  <pre><code class="language-java">public abstract class GameEntity {
-    protected int x, y, speed;
-    public GameEntity(int x, int y, int speed) { this.x = x; this.y = y; this.speed = speed; }
-    public abstract void update();
-    public abstract void draw(Graphics g);
-}</code></pre>
-  <p>
-    Then implement <code>Player</code> (reacts to keys) and <code>Enemy</code> (moves on timer).
-    Your <code>GamePanel</code> maintains a list of entities and calls <code>update()</code> / <code>draw()</code> for each.
-  </p>
-
-  <details class="hint">
-    <summary>💡 Interface vs Abstract recap</summary>
-    <p>
-      <em>Interface</em> = capabilities (e.g., <code>KeyListener</code>).<br>
-      <em>Abstract class</em> = shared state + partial behavior (e.g., <code>GameEntity</code> with x/y/speed).
-    </p>
-  </details>
-
-  <hr>
-
-  <h3>Quick Checks</h3>
   <ol>
-    <li>Why won’t <code>KeyListener</code> fire if the panel doesn’t have focus?</li>
-    <li>What method actually draws the circle on screen?</li>
-    <li>Why call <code>repaint()</code> after changing <code>x</code> or <code>y</code>?</li>
-    <li>Where would you add a second moving object (enemy): App or Panel?</li>
-  </ol>
-</div> -->
+    <li>
+      <strong>Inside the <code>lab14</code> package (from the last lab), create a new class named <code>Recursion2</code>.</strong>
+      <br>
+      This class will contain <em>all</em> of your methods for this lab.
+    </li>
 
-</body>
-</html>
+    <li>
+      <strong>Open CodingBat (Recursion-1):</strong>
+      <br>
+      Go to 
+      <a href="http://codingbat.com/java/Recursion-1" target="_blank">
+        https://codingbat.com/java/Recursion-1
+      </a>
+    </li>
+
+    <li>
+      <strong>Complete the following CodingBat problems:</strong>
+      <ul>
+        <li><code>count7</code></li>
+        <li><code>count8</code></li>
+        <li><code>powerN</code></li>
+        <li><code>countX</code></li>
+        <li><code>countHi</code></li>
+        <li><code>changeXY</code></li>
+   
+      </ul>
+    </li>
+
+    <li>
+      <strong>For each problem:</strong>
+      <ul>
+        <li>Consult the recursion resources: <a href="./recursion.html" target="_blank">Recursion Guide</a></li>
+        <li>Write the method in CodingBat first</li>
+        <li>Once it passes all tests, copy the method into <code>Recursion2.java</code></li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Save Recursion2 class with all 6 recursion problems.</strong>
+      
+    </li>
+
+    <li>
+      <strong>Submit <code>Recursion2.java</code> to Gradescope.</strong>
+    </li>
+    <li>Make sure your file is on the package lab14</li>
+  </ol>
+</details>
+
+<details class="lab-card">
+  <summary>
+  <span class="lab-label">02.</span>
+    <span class="lab-title">Prep (Tier3): Loading Sprites</span>
+    <span class="lab-tag">Final Project</span>
+  
+  </summary>
+<h3>Importing a Tier Package (ZIP File)</h3>
+<p><strong>Starter ZIP:</strong> <a href="Tier3.zip">Download starter</a></p>
+<p><strong>Solution ZIP:</strong> <a href="Tier3Solution.zip">Download solution</a></p>
+
+<p>
+  The ZIP file is a <strong>package</strong>, not a full Java project.
+  You will import it into your existing project (the one you used for previous tiers).
+</p>
+
+<h4>Recommended Method (Drag and Drop)</h4>
+
+<ol>
+  <li>Unzip the downloaded file on your computer</li>
+  <li>Open Eclipse and locate your project</li>
+  <li>Expand your project and find the <code>src</code> folder</li>
+  <li>Drag the unzipped folder (<code>tier3</code>) into <code>src</code></li>
+  <li>When prompted, choose <strong>Copy files</strong></li>
+</ol>
+
+<p>
+  After importing, your project should look like:
+</p>
+
+<pre><code>src/
+  tier1/
+  tier2/
+  tier3/
+</code></pre>
+
+<h3>Step 1: Load a Sprite Image to the Ball Class</h3>
+
+<p>
+  So far, the ball is drawn as a circle. Now we will upgrade it into a sprite.
+  A <strong>sprite</strong> is an image used to represent a game object.
+</p>
+
+<p>
+  Add a field to store the sprite:
+</p>
+
+<pre><code>private BufferedImage sprite;</code></pre>
+ <p>
+  A <code>BufferedImage</code> is an image stored in memory. Think of it as pixel data
+  that Java can draw on the screen.
+</p>
+<p>
+  <code>ImageIO</code> is a Java utility class that reads image files such as PNG or JPG.
+  It converts the image file into a <code>BufferedImage</code>.
+</p>
+<pre><code>sprite = ImageIO.read(
+      Ball.class.getResource("tennis.png"));
+</code></pre>
+<p>
+  This can fail if the image is missing, the file name is wrong, the path is wrong,
+  or the image file cannot be read. Java will force us to catch it.
+</p>
+<pre><code>try {
+  sprite = ImageIO.read(
+    Ball.class.getResource("tennis.png"));
+} catch (IOException | IllegalArgumentException e) {
+  sprite = null;
+}</code></pre>
+<p>
+  In this example, if the image does not load, we set <code>sprite</code> to
+  <code>null</code>. Then we can draw a simple shape instead of crashing the program. We also use <code>Ball.class</code> to use the Ball class as the reference point.
+</p>
+<p>
+  The single <code>|</code> in the catch statement means either exception type can be caught.
+
+
+  This is called multi-catch. It is different from boolean OR <code>||</code>.
+</p>
+
+<h3>Step 2: Draw Sprite Image to the Ball</h3>
+<p>
+  Inside Ball's <code>draw()</code> method call <code>drawImage()</code> to load the sprite.
+  If the image does not load, draw a circle as a backup.
+</p>
+<pre><code>if (sprite != null) {
+	g2.drawImage(sprite, x, y, 2*radius, 2*radius, null);
+} else {
+// set color and draw a circle if the image fails to load
+ }</code></pre>
+
+ <h3>Step 3: Load a Background Image</h3>  
+ 
+ <p>
+  The background belongs to the drawing surface, not the player. Add it to
+  <code>GameComponent</code>, because <code>GameComponent</code> controls what appears on the screen.
+</p>
+
+<p>
+  Add a field:
+</p>
+
+<pre><code>private BufferedImage background;</code></pre>
+<p>Follow the same steps to load image as we did for Ball but this time we will use getClass() which points to the current object’s class</p>
+<pre><code>try {
+  background = ImageIO.read(
+    getClass().getResource("background.png"));
+} catch (IOException | IllegalArgumentException e) {
+  background = null;
+}</code></pre>
+
+ <h3>Step 4: Draw a Background Image</h3>
+ <p>Follow similar steps to draw the background image as we did for the Ball sprite but draw inside paintComponent()</p>
+
+<pre><code> if (background!= null) {
+g2.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
+} else {
+	g2.setColor(FG);
+}
+</code></pre>
+  <h3>Step 5: Add a wall boundary</h3>
+  <p>
+  Now we will stop the ball from moving outside the screen.
+  This is not full wall collision yet. This is just screen-edge collision.
+</p>
+<p>
+  Check the left edge of the screen. If the ball tries to move past it, set the x position to 0.
+  Check the right edge using the constant for WIDTH
+</p>
+<pre><code>if (x &lt; 0) {
+    x = 0;
+  }
+  if (x + 2*radius &gt; GameComponent.WIDTH) {
+    x = GameComponent.WIDTH - 2*radius;
+  }
+</code></pre>
+<p>
+  We do not use <code>x == 0</code> for collision checks. Movement can skip over exact values.
+  Use <code>&lt;=</code>, <code>&gt;=</code>, <code>&lt;</code>, or <code>&gt;</code> instead.
+</p>
+<p>Do you see why we need to add diameter to x and subtract diameter from WIDTH?</p>
+<h3>Step 6: Checkpoint</h3>
+
+<ul>
+  <li>The ball is drawn using a sprite image</li>
+  <li>The background image appears behind the ball</li>
+  <li>The program still works if an image fails to load.</li>
+  <li>The ball cannot move off the left or right side of the screen</li>
+</ul>
+
+<p>
+  In the next tier, we will add a timer so the game updates automatically.
+  Then wall collision and direction changes will make more sense.
+</p>
+</details>
+        </div>
+      
+        </div>
+        </div>
+
+<!-- <div class="lab-section" id="lab1">
+  <h2>Lab 1: Recursion Practice</h2>
+  <p>
+    In CodingBat <a href="https://codingbat.com/java/Recursion-1">Recursion-1</a>," complete the next 6 problems: count7, count8, powerN, countX, countHi, changeXY
+  </p>
+
+    <p>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example MyRecursion.java)</p>
+</div> -->
+        
+        <!-- <div class="lab-section" id="lab2">
+          <h2 style="color:black">My Counter</h2>
+        <p>
+            In this lab, you will create a Swing component with a button that increments the count
+        </p>
+        
+        <h3>Task Description</h3>
+        <p>
+            <image src="lab12a.png" alt="lab12 a" width="400"/>
+        </p>
+        <ul>
+          <li>A <code>JLabel</code> to describe the counter</li>
+          <li>A non‑editable <code>JTextField</code> to display the current count</li>
+          <li>A <code>JButton</code> labeled “Count” that, when clicked, increments the counter</li>
+        </ul>
+
+        <h3>Adding ActionListener to the Button</h3>
+    <p>Whenever the “Count” button is clicked, we want to execute  <code>setValues()</code> method:</p>
+    <ol>
+      <li>Add the listener registration at the end of the constructor:
+        <pre><code>button.addActionListener(e -> setValues());</code></pre>
+      </li>
+      <li>Implement the <code>setValues()</code> method to:
+        <ol type="a">
+          <li>Increment the counter</li>
+          <li>Update the text field: <code>text.setText(count + "");</code></li>
+        </ol>
+
+      </li>
+    </ol>
+
+        
+        
+
+        </div> -->
+
+        <!-- <div class="lab-section" id="lab3">
+          <h2 style="color:black">My Accumulator</h2>
+          <h3>Overview</h3>
+    <p>
+      In this lab you will create a Swing <code>JPanel</code> that reads integer values,
+      keeps a running total, and displays the accumulated sum. You already have a
+      viewer class with a <code>JFrame</code> set up, you will build just the panel class.
+    </p>
+          <h3>Task Description</h3>
+          <p>
+              <image src="Lab12b.png" alt="lab12 b" width="400"/>
+          </p>
+          <section id="setup">
+          <h3>1. Setup</h3>
+          <ol>
+            <li>Create a new class named <code>MyAccumulator</code> that <em>extends</em> <code>JPanel</code></li>
+            <li>Ensure your project has necessary Swing imports</li>
+            <li>Add your panel to the existing frame in the viewer’s <code>main()</code> method</li>
+          </ol>
+        </section>
+      
+        <section id="layout">
+          <h3>2. Layout</h3>
+          <p>
+            Use a 2×2 grid to arrange the labels and text fields. For example:
+          </p>
+          <pre><code>setLayout(new GridLayout(2, 2, 5, 5));</code></pre>
+          <p>
+            – Row 1: A label “Enter an Integer:” and an editable text field for input<br>
+            – Row 2: A label “Accumulated Sum:” and a non‐editable text field for output
+          </p>
+          <p>Note: because yoru grid is 2x2, the panel will display your components in the order (see the screenshot) when you use <code>add()</code></p>
+        </section>
+      
+        <section id="event-wiring">
+          <h3>3. Event</h3>
+          <p>
+            Create a method processInput() and Configure the input text field so that when the user presses Enter, an event handler:
+          </p>
+          <ul>
+     
+            <li>Reads the integer from the input field. Note to read input use <code>getText()</code>. It is a good practice to trim text from spaces <code>.getText().trim()</code>
+
+            </li>
+            <li>Adds it to a running total variable (you need Integer here)</li>
+            <li>Clears the input field</li>
+            <li>Updates the output field with the new sum (you need String here)
+              <pre><code>// to parse text to integer use Integer.parseInt()
+                to parse Integer to string use Integer.toString()
+                              </code></pre>
+            </li>
+          </ul>
+          <p>
+            Use a lambda expression to register the listener (no loops or error checks needed here).
+          </p>
+        </section> -->
+
+          </div>
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>

@@ -103,19 +103,62 @@ margin-top: 120px;
 
     <section class="card">
       <h2>Quick-Start Cheatsheet</h2>
-      <div class="grid grid-3">
-        <div>
-          <h3>How to start</h3>
+<h3>How to start</h3>
           <ul>
             <li><strong>Define the goal:</strong> What must this function return?</li>
-            <li><strong>Find the simplest case:</strong> empty / last / zero → return a neutral value.</li>
-            <li><strong>Shrink the problem:</strong> move to <code>substring(1)</code>, <code>index+1</code>, or <code>n-1</code>.</li>
+            <li><strong>Find the simplest case:</strong> empty / last / zero → return a neutral value</li>
+            <li><strong>Shrink the problem:</strong> move to <code>substring(1)</code>, <code>index + 1</code>, <code>n - 1</code>,
+  or for digits: <code>n / 10</code></li>
           </ul>
-        </div>
+      <div class="grid grid-2">
+
+        <div>
+  <h3>What should the base case return?</h3>
+
+  <p>
+    When recursion reaches the end (no more work to do), return a value that
+    does NOT change your result.
+  </p>
+
+  <table>
+    <tr>
+      <th>Method</th>
+      <th>Base case</th>
+      <th>why</th>
+    </tr>
+    <tr>
+      <td>Build a String</td>
+      <td><code>""</code></td>
+      <td>Adding empty text changes nothing</td>
+    </tr>
+    <tr>
+      <td>Count things</td>
+      <td><code>0</code></td>
+      <td>Adding 0 keeps the count correct</td>
+    </tr>
+    <tr>
+      <td>Multiply numbers</td>
+      <td><code>1</code></td>
+      <td>Multiplying by 1 keeps the value</td>
+    </tr>
+    <tr>
+      <td>Check All (AND condition)</td>
+      <td><code>true</code></td>
+      <td>true does not break the condition</td>
+    </tr>
+    <tr>
+      <td>Check Any (OR condition)</td>
+      <td><code>false</code></td>
+      <td>false does not falsely trigger a match</td>
+    </tr>
+  </table>
+
+  <p><strong>Think:</strong> “What value is safe to return at the end?”</p>
+</div>
         <div>
           <h3>Neutral values</h3>
           <div class="chips">
-            <span class="chip">String build → <code>""</code></span>
+            <span class="chip">String → <code>""</code></span>
             <span class="chip">Counting → <code>0</code></span>
             <span class="chip">Product/AND → <code>1</code>/<code>true</code></span>
             <span class="chip">OR/search → <code>false</code></span>
@@ -141,23 +184,63 @@ margin-top: 120px;
 
     <section>
 <h2>Base-Case Cookbook</h2>
+<h3>Digits</h3>
+<ul>
+
+<li><b>No lookahead</b> (use <code>n % 10</code>):
+<pre><code> // Base case
+if (n == 0) return 0;
+// access value:
+int last = n % 10;
+// Shrink + return:
+return last + recurse(n / 10);
+</code></pre>
+<li><b>Needs 1 lookahead</b> (use <code>(n / 10) % 10</code>):</p>
+<pre><code> // Base case
+if (n &lt; 10) return 0;
+// access value:
+(n / 10) % 10;
+// How move 2 steps (skip one digit)
+recurse(n / 100);
+</code></pre>
 
 <h3>Strings</h3>
 <ul>
-  <li><b>No lookahead</b> (only use s.charAt(0)):
-    <pre><code>if (s.isEmpty()) return "";</code></pre>
-    Neutral value: <code>""</code>
+  <li><b>No lookahead</b> (use s.charAt(0)):
+
+    <pre><code>// Base case
+if (s.isEmpty()) return "";
+// Access value:
+char first = s.charAt(0);
+// Shrink + return:
+return first + recurse(s.substring(1));</code></pre>
+
+    
   </li>
-  <li><b>Needs 1 lookahead</b> (you will read s.charAt(1)):
-    <pre><code>if (s.length() <= 1) return s;</code></pre>
-    Avoids OOB when no pair exists
+  <li><b>Needs 1 lookahead</b> (use s.charAt(1)):
+    <pre><code>// Base Case
+if (s.length() <= 1) return s;
+// Access values:
+char first = s.charAt(0);
+char next = s.charAt(1);
+// How move 2 steps (skip one character)
+recurse(s.substring(2));
+</code></pre>
   </li>
-  <li><b>Needs 2 lookahead</b> (you will read s.charAt(2)):
-    <pre><code>if (s.length() <= 2) return s;</code></pre>
+  <li><b>Needs 2 lookahead</b> (use s.charAt(2)):
+    <pre><code>//Base Case
+if (s.length() <= 2) return s;
+// How to move 3 steps (skip two character)
+recurse(s.substring(3));</code></pre>
   </li>
 </ul>
 
-<p><i>Tip:</i> In Java, never use <code>==</code> for strings. Prefer <code>s.isEmpty()</code> or <code>s.equals("")</code>.</p>
+<p><i>Tip1:</i> In Java, never use <code>==</code> for strings. Prefer <code>s.isEmpty()</code> or <code>s.equals("")</code>.</p>
+<p><i>Tip2:</i>
+Strings → <code>charAt(0)</code>, <code>charAt(1)</code><br>
+Digits → <code>n % 10</code>, <code>(n / 10) % 10</code>
+</p>
+
 
 <h3>Arrays (by index)</h3>
 <table>
