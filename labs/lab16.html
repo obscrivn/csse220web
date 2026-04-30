@@ -385,17 +385,17 @@ In this lab, you will practice recursion3 and continue working with event-based 
       <ul>
         <li>Consult the recursion resources: <a href="../recursion.html" target="_blank">Recursion Guide</a></li>
         <li>Write the method in CodingBat first</li>
-        <li>Once it passes all tests, copy the method into <code>Recursion2.java</code></li>
+        <li>Once it passes all tests, copy the method into <code>Recursion3.java</code></li>
       </ul>
     </li>
 
     <li>
-      <strong>Save Recursion2 class with all 6 recursion problems.</strong>
+      <strong>Save Recursion3 class with all 6 recursion problems.</strong>
       
     </li>
 
     <li>
-      <strong>Submit <code>Recursion2.java</code> to Gradescope.</strong>
+      <strong>Submit <code>Recursion3.java</code> to Gradescope.</strong>
     </li>
     <li>Make sure your file is on the package lab14</li>
   </ol>
@@ -404,13 +404,13 @@ In this lab, you will practice recursion3 and continue working with event-based 
 <details class="lab-card">
   <summary>
   <span class="lab-label">02.</span>
-    <span class="lab-title">Prep (Tier3): Loading Sprites</span>
+    <span class="lab-title">Prep (Tier4): Animation</span>
     <span class="lab-tag">Final Project</span>
   
   </summary>
 <h3>Importing a Tier Package (ZIP File)</h3>
-<p><strong>Starter ZIP:</strong> <a href="Tier3.zip">Download starter</a></p>
-<p><strong>Solution ZIP:</strong> <a href="Tier3Solution.zip">Download solution</a></p>
+<p><strong>Starter ZIP:</strong> <a href="Tier4.zip">Download starter</a></p>
+<p><strong>Solution ZIP:</strong> <a href="Tier4Solution.zip">Download solution</a></p>
 
 <p>
   The ZIP file is a <strong>package</strong>, not a full Java project.
@@ -437,124 +437,142 @@ In this lab, you will practice recursion3 and continue working with event-based 
   tier3/
 </code></pre>
 
-<h3>Step 1: Load a Sprite Image to the Ball Class</h3>
+<h3>Step 1: Add Direction Fields to the Ball</h3>
 
 <p>
-  So far, the ball is drawn as a circle. Now we will upgrade it into a sprite.
-  A <strong>sprite</strong> is an image used to represent a game object.
-</p>
-
-<p>
-  Add a field to store the sprite:
-</p>
-
-<pre><code>private BufferedImage sprite;</code></pre>
- <p>
-  A <code>BufferedImage</code> is an image stored in memory. Think of it as pixel data
-  that Java can draw on the screen.
-</p>
-<p>
-  <code>ImageIO</code> is a Java utility class that reads image files such as PNG or JPG.
-  It converts the image file into a <code>BufferedImage</code>.
-</p>
-<pre><code>sprite = ImageIO.read(
-      Ball.class.getResource("tennis.png"));
-</code></pre>
-<p>
-  This can fail if the image is missing, the file name is wrong, the path is wrong,
-  or the image file cannot be read. Java will force us to catch it.
-</p>
-<pre><code>try {
-  sprite = ImageIO.read(
-    Ball.class.getResource("tennis.png"));
-} catch (IOException | IllegalArgumentException e) {
-  sprite = null;
-}</code></pre>
-<p>
-  In this example, if the image does not load, we set <code>sprite</code> to
-  <code>null</code>. Then we can draw a simple shape instead of crashing the program. We also use <code>Ball.class</code> to use the Ball class as the reference point.
-</p>
-<p>
-  The single <code>|</code> in the catch statement means either exception type can be caught.
-
-
-  This is called multi-catch. It is different from boolean OR <code>||</code>.
-</p>
-
-<h3>Step 2: Draw Sprite Image to the Ball</h3>
-<p>
-  Inside Ball's <code>draw()</code> method call <code>drawImage()</code> to load the sprite.
-  If the image does not load, draw a circle as a backup.
-</p>
-<pre><code>if (sprite != null) {
-	g2.drawImage(sprite, x, y, 2*radius, 2*radius, null);
-} else {
-// set color and draw a circle if the image fails to load
- }</code></pre>
-
- <h3>Step 3: Load a Background Image</h3>  
- 
- <p>
-  The background belongs to the drawing surface, not the player. Add it to
-  <code>GameComponent</code>, because <code>GameComponent</code> controls what appears on the screen.
+  So far, the ball moves only when we press a key or button.
+  To make it move automatically, the ball needs to remember its direction.
 </p>
 
 <p>
-  Add a field:
+  Add two fields to the <code>Ball</code> class:
 </p>
-
-<pre><code>private BufferedImage background;</code></pre>
-<p>Follow the same steps to load image as we did for Ball but this time we will use getClass() which points to the current object’s class</p>
-<pre><code>try {
-  background = ImageIO.read(
-    getClass().getResource("background.png"));
-} catch (IOException | IllegalArgumentException e) {
-  background = null;
-}</code></pre>
-
- <h3>Step 4: Draw a Background Image</h3>
- <p>Follow similar steps to draw the background image as we did for the Ball sprite but draw inside paintComponent()</p>
-
-<pre><code> if (background!= null) {
-g2.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
-} else {
-	g2.setColor(FG);
-}
-</code></pre>
-  <h3>Step 5: Add a wall boundary</h3>
-  <p>
-  Now we will stop the ball from moving outside the screen.
-  This is not full wall collision yet. This is just screen-edge collision.
-</p>
-<p>
-  Check the left edge of the screen. If the ball tries to move past it, set the x position to 0.
-  Check the right edge using the constant for WIDTH
-</p>
-<pre><code>if (x &lt; 0) {
-    x = 0;
-  }
-  if (x + 2*radius &gt; GameComponent.WIDTH) {
-    x = GameComponent.WIDTH - 2*radius;
-  }
-</code></pre>
-<p>
-  We do not use <code>x == 0</code> for collision checks. Movement can skip over exact values.
-  Use <code>&lt;=</code>, <code>&gt;=</code>, <code>&lt;</code>, or <code>&gt;</code> instead.
-</p>
-<p>Do you see why we need to add diameter to x and subtract diameter from WIDTH?</p>
-<h3>Step 6: Checkpoint</h3>
 
 <ul>
-  <li>The ball is drawn using a sprite image</li>
-  <li>The background image appears behind the ball</li>
-  <li>The program still works if an image fails to load.</li>
-  <li>The ball cannot move off the left or right side of the screen</li>
+  <li><code>dx</code>: how much the ball moves left/right</li>
+  <li><code>dy</code>: how much the ball moves up/down</li>
 </ul>
 
+<pre><code>private int dx = 3;
+private int dy = 2;</code></pre>
+
 <p>
-  In the next tier, we will add a timer so the game updates automatically.
-  Then wall collision and direction changes will make more sense.
+  These are fields because the ball must remember them between timer updates.
 </p>
+
+<h3>Step 2: Add an Update Method to Ball</h3>
+
+<p>
+  Add a method named <code>update</code>. This method will move the ball once.
+</p>
+
+<p>
+  Inside <code>update</code>, change the ball's position using <code>dx</code> and <code>dy</code>.
+</p>
+
+<pre><code>x += dx;
+y += dy;</code></pre>
+
+<p>
+  This means every time <code>update</code> runs, the ball moves slightly.
+</p>
+
+<h3>Step 3: Reverse Direction at the Walls</h3>
+
+<p>
+  The ball should bounce when it reaches the edge of the screen.
+</p>
+
+<p>
+  If the ball hits the left or right wall, reverse <code>dx</code>. Use the same logic you built for shift()
+</p>
+
+<pre><code>dx = -dx;
+</code></pre>
+
+<p>
+  If the ball hits the top or bottom wall, reverse <code>dy</code>.
+</p>
+
+<pre><code>if (y + 2 * radius >= GameComponent.HEIGHT) {
+	        y = GameComponent.HEIGHT - 2 * radius;
+	        dy = -dy;}</code></pre>
+
+<p>
+  Remember that the ball's width and height are both <code>2 * radius</code>.
+</p>
+
+<h3>Step 4: Add a Timer to GameComponent</h3>
+
+<p>
+  A <code>Timer</code> lets Java run code over and over after a short delay.
+  We will use it to create animation.
+</p>
+
+<p>
+  Add this import to <code>GameComponent</code>:
+</p>
+
+<pre><code>import javax.swing.Timer;</code></pre>
+
+<p>
+  Add a field for the timer:
+</p>
+
+<pre><code>private Timer timer;</code></pre>
+
+<h3>Step 5: Start the Timer in the Constructor</h3>
+
+<p>
+  In the <code>GameComponent</code> constructor, create and start the timer.
+</p>
+
+<p>
+  The timer should do two things:
+</p>
+
+<ul>
+  <li>call <code>ball.update()</code></li>
+  <li>call <code>repaint()</code></li>
+</ul>
+
+<pre><code>timer = new Timer(30, e -&gt; {
+  ball.update();
+  repaint();
+});
+
+timer.start();</code></pre>
+
+<p>
+  The number <code>30</code> means the timer runs about every 30 milliseconds.
+</p>
+
+<h3>Step 6: Understand the Animation Loop</h3>
+
+<p>
+  Animation is created by updating the ball and redrawing the screen repeatedly.
+</p>
+
+<pre><code>update position → repaint screen → update position → repaint screen</code></pre>
+
+<p>
+  The image is not loaded every time. The image was loaded once into a
+  <code>BufferedImage</code>. During repainting, Java only redraws it.
+</p>
+
+<h3>Step 7: Keep Repaint in GameComponent</h3>
+
+<p>
+  Do not call <code>repaint()</code> inside <code>Ball</code>.
+</p>
+
+<p>
+  The <code>Ball</code> updates its own position. The <code>GameComponent</code> controls when
+  the screen redraws.
+</p>
+
+<pre><code>Ball: updates position
+GameComponent: repaints screen</code></pre>
 </details>
         </div>
       
