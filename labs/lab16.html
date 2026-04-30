@@ -463,16 +463,18 @@ private int dy = 2;</code></pre>
 <h3>Step 2: Add an Update Method to Ball</h3>
 
 <p>
-  Add a method named <code>update</code>. This method will move the ball once.
+  Add a method named <code>update()</code>. This method will move the ball once.
 </p>
 
 <p>
   Inside <code>update</code>, change the ball's position using <code>dx</code> and <code>dy</code>.
 </p>
 
-<pre><code>x += dx;
+<pre><code>
+  public void update() {
+x += dx;
 y += dy;</code></pre>
-
+  }
 <p>
   This means every time <code>update</code> runs, the ball moves slightly.
 </p>
@@ -486,17 +488,31 @@ y += dy;</code></pre>
 <p>
   If the ball hits the left or right wall, reverse <code>dx</code>. Use the same logic you built for shift()
 </p>
-
-<pre><code>dx = -dx;
+<p>Add to the update() method:</p>
+<pre><code>	    // LEFT / RIGHT walls
+	    if (x <= 0) {
+	        x = 0;
+	        dx = -dx;
+	    }
+	    if (x + 2 * radius >= GameComponent.WIDTH) {
+	        x = GameComponent.WIDTH - 2 * radius;
+	        dx = -dx;
+	    }
 </code></pre>
 
 <p>
   If the ball hits the top or bottom wall, reverse <code>dy</code>.
 </p>
-
+<pre><code>// TOP / BOTTOM walls
+	    if (y <= 0) {
+	        y = 0;
+	        dy = -dy;
+	    }
+</code></pre>
 <pre><code>if (y + 2 * radius >= GameComponent.HEIGHT) {
 	        y = GameComponent.HEIGHT - 2 * radius;
-	        dy = -dy;}</code></pre>
+	        dy = -dy;
+}</code></pre>
 
 <p>
   Remember that the ball's width and height are both <code>2 * radius</code>.
