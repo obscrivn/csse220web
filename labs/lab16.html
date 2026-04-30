@@ -6,8 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-
-body {
+  body {
           font-family: Arial, sans-serif;
           line-height: 1.5;
           margin: 0;
@@ -190,7 +189,9 @@ padding: 20px;
       background-color: #ddd;
     }
     code {
-        color: red;
+        /* color: red; */
+        font-weight: 600;
+        font-family: Consolas, "Courier New", monospace;
     }
     .code-window {
       background-color: #272822;
@@ -319,11 +320,11 @@ details.hint > summary {
   </style>
 </head>
 <body>
-  <div id="header">
+   <div id="header">
     <a id="index_link" href="../index.html">CSSE 220</a>
     <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
     <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="./design-principles.html">Design</a>
+    <a id="quiz_link" href="../design-principles.html">Design</a>
     <a id="quiz_link" href="../labs.html">Labs</a>
     <a id="quiz_link" href="../homework.html">Homework</a>
     <a id="quiz_link" href="../exams.html">Exams</a>
@@ -331,501 +332,341 @@ details.hint > summary {
     <a id="resources_link" href="../resources.html">Resources</a>
     <div style="clear:both;"></div>
 </div>
-<section id="content">
-<!-- <div id="content"> -->
+<div id="content">
     <h1>Lab Assignment 16</h1>
-    <nav id="lab-nav">
-        <ul>
-          <li><a href="#lab1">01. Moving Line with Buttons</a></li>
-          <li><a href="#lab2">02. Moving Ball with Keys</a></li>
-          <!-- Add more lab links as needed -->
-        </ul>
-      </nav>
+    <div id="main-content">
+         <div class="lab-section" id="lab">
 
-<!-- Lab Navigation Menu -->
-<!-- <div id="main-content"> -->
+ <p>
+In this lab, you will practice recursion3 and continue working with event-based programming.
+</p>
+        
+<details class="lab-card" id="lab-01">
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Recursion3</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
 
-  <p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Event Handling</a></p>
-  <p>Resources 2: <a href="../resources.html#swing-timer" target="_blank" class="resource-ref">Game Loop</a></p>
-  <p>Resources 3: <a href="../resources.html#focus" target="_blank" class="resource-ref">Focus Window</a></p>
+<h2>Instructions</h2>
 
- 
-  <h2>Lab: Mini Game Mechanics</h2>
-  <div class="callout ok">
-    <strong>Goal:</strong> Build the core mechanics we’ll reuse for the game project:
-    buttons → movement, timer → animation, key listener → focus.
-  </div>
-<!-- <p>
-    <img src="./lab16ball.png" alt="Line + buttons preview" width="350"/>
-  </p> -->
-</section>
-<section id="content">
-  <div class="lab-section" id="lab1">
-  <h2>01. Moving Wall (Line) + Buttons</h2>
-  <p>
-    In this lab, you’ll create a simple GUI application where a vertical line (representing a wall)
-    can be moved left and right using buttons. You will implement the Model-View-Controller (MVC)
-    pattern to separate the drawing logic, user interface, and control logic.</p>
-  </div>
-
-<details class="lab-card" open>
-  <summary>0️⃣ Setup — Run the starter</summary>
   <ol>
-    <li>Import the starter project into Eclipse: <a href="./Game-demo.zip" target="_blank">Game-demo.zip</a></li>
-    <li>Run <code>MyApp</code>.</li>
+    <li>
+      <strong>Inside the <code>lab14</code> package (from the last lab), create a new class named <code>Recursion3</code>.</strong>
+      <br>
+      This class will contain <em>all</em> of your methods for this lab.
+    </li>
+
+    <li>
+      <strong>Open CodingBat (Recursion-1):</strong>
+      <br>
+      Go to 
+      <a href="http://codingbat.com/java/Recursion-1" target="_blank">
+        https://codingbat.com/java/Recursion-1
+      </a>
+    </li>
+
+    <li>
+      <strong>Complete the following CodingBat problems:</strong>
+      <ul>
+        <li><code>array6</code></li>
+        <li><code>array11</code></li>
+        <li><code>array220</code></li>
+        <li><code>allStar</code></li>
+        <li><code>pairStar</code></li>
+        <li><code>endX</code></li>
+        
+   
+      </ul>
+    </li>
+
+    <li>
+      <strong>For each problem:</strong>
+      <ul>
+        <li>Consult the recursion resources: <a href="../recursion.html" target="_blank">Recursion Guide</a></li>
+        <li>Write the method in CodingBat first</li>
+        <li>Once it passes all tests, copy the method into <code>Recursion2.java</code></li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Save Recursion2 class with all 6 recursion problems.</strong>
+      
+    </li>
+
+    <li>
+      <strong>Submit <code>Recursion2.java</code> to Gradescope.</strong>
+    </li>
+    <li>Make sure your file is on the package lab14</li>
   </ol>
+</details>
+
+<details class="lab-card">
+  <summary>
+  <span class="lab-label">02.</span>
+    <span class="lab-title">Prep (Tier3): Loading Sprites</span>
+    <span class="lab-tag">Final Project</span>
+  
+  </summary>
+<h3>Importing a Tier Package (ZIP File)</h3>
+<p><strong>Starter ZIP:</strong> <a href="Tier3.zip">Download starter</a></p>
+<p><strong>Solution ZIP:</strong> <a href="Tier3Solution.zip">Download solution</a></p>
+
 <p>
-    <img src="./game-starter.png" alt="starter" width="350"/>
-  </p>
+  The ZIP file is a <strong>package</strong>, not a full Java project.
+  You will import it into your existing project (the one you used for previous tiers).
+</p>
 
-</details>
+<h4>Recommended Method (Drag and Drop)</h4>
 
-<details class="lab-card">
-  <summary>1️⃣ Draw the wall (vertical line)</summary>
-  <span class="tag">Graphics</span>
-  <ol>
-    <li>Open <code>DrawingComponent</code>.</li>
-    <li>Add fields for <code>x</code>, <code>y</code>, <code>step</code> (and <code>start_x</code>).</li>
-    <li>In <code>paintComponent</code>, draw a vertical line from <code>(x,y)</code> down 150 pixels.</li>
-  </ol>
-
-  <pre><code class="language-java">// DrawingComponent fields (example)
-private int start_x = 250;
-private int x = start_x;
-private int y = 20;
-private int step = 10;
-
-@Override
-protected void paintComponent(Graphics g) {
-  super.paintComponent(g);
-  Graphics2D g2 = (Graphics2D) g;
-  g2.setStroke(new BasicStroke(4));
-  g2.drawLine(x, y, x, y + 150);
-}</code></pre>
-
-  <details class="hint">
-  <summary>💡 Why do we keep both <code>start_x</code> and <code>x</code>?</summary>
-  <p>
-    <code>x</code> changes as the wall moves left and right.
-    <code>start_x</code> remembers the original position so we can
-    easily reset the wall back to where it started.
-  </p>
-
-</details>
-</details>
-
-<details class="lab-card">
-  <summary>2️⃣ Add wall (line) movement methods (Drawing Component)</summary>
-  <span class="tag">Repaint</span>
-  <p>Add these methods to <code>DrawingComponent</code>. Each one must call <code>repaint()</code>.</p>
 <ol>
-    <li>Move the vertical line to the right by incrementing x (x+=step) </li>
-    <li>Move the vertical line to the left by decrementing x (x-=step)</li>
-    <li>Reset the vertical line to its original position (x=start_x)</li>
-    <li>Add repaint() at the end of each movement method</li>
-  </ol>
-  <pre><code class="language-java">public void moveLeft() {
-  x -= step;
-  repaint();
-}
-
-public void moveRight() {
-  x += step;
-  repaint();
-}
-
-public void reset() {
-  x = start_x;
-  repaint();
-}</code></pre>
-
-  <details class="hint">
-    <summary>💡 Hint: What does <code>repaint()</code> actually do?</summary>
-    It schedules a redraw. Swing will call <code>paintComponent</code> again soon.
-    (You do not call <code>paintComponent</code> directly.)
-  </details>
-</details>
-
-<details class="lab-card">
-  <summary>3️⃣ Check three buttons (MyMenu)</summary>
-  <ol>
-    <li>In <code>MyMenu</code>, you have 3 buttons as instance variables: leftButton, resetButton, rightButton.</li>
-    <li>Add getters for those buttons (so that Controller can later attach listeners). Use source -> Generate getters</li>
-    </ol>
-    <pre><code class="language-java">
-      public JButton getLeftButton() { 
-        return leftButton; 
-      }
-public JButton getRightButton() { 
-  return rightButton; 
-}
-public JButton getResetButton() { 
-  return resetButton; 
-}
-
-</code></pre>
-</details>
-
-<details class="lab-card">
-  <summary>4️⃣ Button Listener (Controller)</summary>
-  <span class="tag">ActionListener</span>
-  <p>Create one inner listener class</p>
-
-<pre><code>private class ButtonListener implements ActionListener{
-		@Override
-		public void actionPerformed(ActionEvent e) {
-
-		}
-	}</code></pre>
-<ol>
-    <li>Use e.getActionCommand to apply the logic.</li>
-    <li>If the button pressed is "Left", call drawing.moveLeft().</li>
-    <li>If the button pressed is "Right", call drawing.moveRight().</li>
-    <li>If the button pressed is "Reset", call drawing.reset().</li>
+  <li>Unzip the downloaded file on your computer</li>
+  <li>Open Eclipse and locate your project</li>
+  <li>Expand your project and find the <code>src</code> folder</li>
+  <li>Drag the unzipped folder (<code>tier3</code>) into <code>src</code></li>
+  <li>When prompted, choose <strong>Copy files</strong></li>
 </ol>
-<pre><code class="language-java">
-private class ButtonListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			String buttonLabel = e.getActionCommand();
-      if (buttonLabel.equals("Left")) {
-        drawing.moveLeft();
-      } else if (buttonLabel.equals("Right")) {
-        drawing.moveRight();
-      } else {
-        drawing.reset();
-      }
-		}
-	}
+
+<p>
+  After importing, your project should look like:
+</p>
+
+<pre><code>src/
+  tier1/
+  tier2/
+  tier3/
 </code></pre>
-</details>
-  <details class="lab-card">
-    <summary>5️⃣ Register buttons (Controller)</summary>
-<p>Create an instance of Listener and register it with the buttons.</p>
-<pre><code class="language-java">
-  ButtonListener bl = new ButtonListener();
-  menu.getLeftButton().addActionListener(bl);
-  menu.getRightButton().addActionListener(bl);
-  menu.getResetButton().addActionListener(bl);
+
+<h3>Step 1: Load a Sprite Image to the Ball Class</h3>
+
+<p>
+  So far, the ball is drawn as a circle. Now we will upgrade it into a sprite.
+  A <strong>sprite</strong> is an image used to represent a game object.
+</p>
+
+<p>
+  Add a field to store the sprite:
+</p>
+
+<pre><code>private BufferedImage sprite;</code></pre>
+ <p>
+  A <code>BufferedImage</code> is an image stored in memory. Think of it as pixel data
+  that Java can draw on the screen.
+</p>
+<p>
+  <code>ImageIO</code> is a Java utility class that reads image files such as PNG or JPG.
+  It converts the image file into a <code>BufferedImage</code>.
+</p>
+<pre><code>sprite = ImageIO.read(
+      Ball.class.getResource("tennis.png"));
 </code></pre>
-<p><strong>Checkpoint:</strong> Clicking buttons moves the wall and resets it.</p>
-  </details>
-</section>
-<section id="content">
-<div class="lab-section" id="lab2">
-  <h2>02. Ball Animation</h2>
+<p>
+  This can fail if the image is missing, the file name is wrong, the path is wrong,
+  or the image file cannot be read. Java will force us to catch it.
+</p>
+<pre><code>try {
+  sprite = ImageIO.read(
+    Ball.class.getResource("tennis.png"));
+} catch (IOException | IllegalArgumentException e) {
+  sprite = null;
+}</code></pre>
+<p>
+  In this example, if the image does not load, we set <code>sprite</code> to
+  <code>null</code>. Then we can draw a simple shape instead of crashing the program. We also use <code>Ball.class</code> to use the Ball class as the reference point.
+</p>
+<p>
+  The single <code>|</code> in the catch statement means either exception type can be caught.
+
+
+  This is called multi-catch. It is different from boolean OR <code>||</code>.
+</p>
+
+<h3>Step 2: Draw Sprite Image to the Ball</h3>
+<p>
+  Inside Ball's <code>draw()</code> method call <code>drawImage()</code> to load the sprite.
+  If the image does not load, draw a circle as a backup.
+</p>
+<pre><code>if (sprite != null) {
+	g2.drawImage(sprite, x, y, 2*radius, 2*radius, null);
+} else {
+// set color and draw a circle if the image fails to load
+ }</code></pre>
+
+ <h3>Step 3: Load a Background Image</h3>  
+ 
+ <p>
+  The background belongs to the drawing surface, not the player. Add it to
+  <code>GameComponent</code>, because <code>GameComponent</code> controls what appears on the screen.
+</p>
+
+<p>
+  Add a field:
+</p>
+
+<pre><code>private BufferedImage background;</code></pre>
+<p>Follow the same steps to load image as we did for Ball but this time we will use getClass() which points to the current object’s class</p>
+<pre><code>try {
+  background = ImageIO.read(
+    getClass().getResource("background.png"));
+} catch (IOException | IllegalArgumentException e) {
+  background = null;
+}</code></pre>
+
+ <h3>Step 4: Draw a Background Image</h3>
+ <p>Follow similar steps to draw the background image as we did for the Ball sprite but draw inside paintComponent()</p>
+
+<pre><code> if (background!= null) {
+g2.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
+} else {
+	g2.setColor(FG);
+}
+</code></pre>
+  <h3>Step 5: Add a wall boundary</h3>
   <p>
-Now you’ll add the first “real game object”: a moving ball.
-You’ll build a <code style="color:darkred">Ball</code> class, animate with
-<code style="color:darkred">Timer</code>, flip direction, and finally add a key to flip.
-We’ll also discover why keys “stop working” after clicking buttons (focus).
-</p>
-</div>
-
-<details class="lab-card" open>
-  <summary><strong>6️⃣ The Ball class (red circle)</strong>
-  <span class="tag">OOP</span></summary>
-  <ol>
-    <li>Add fields for position (<code>x</code>, <code>y</code>) and size (<code>r</code>).</li>
-    <li>Add a <code>draw(Graphics2D)</code> method that draws a red circle.</li>
-  </ol>
-
-
-<pre><code class="language-java">public class Ball {
-private int x, y, radius;
-private int dx = 4; // direction + speed, 4 pixels per move
-private int dy = 0; // direction + speed
-
-
-public Ball(int x, int y, int radius) {
-this.x = x;
-this.y = y;
-this.radius = radius;
-}
-
-
-public void draw(Graphics2D g2) {
-g2.setColor(Color.RED);
-g2.fillOval(x, y, 2*radius, 2*radius);
-}
-}</code></pre>
-</details>
-
-  <details class="lab-card">
-    <summary>
-      <strong>7️⃣ Add the ball to DrawingComponent</strong>
-      <span class="tag">Composition</span>
-    </summary>
-
-    <ol>
-      <li>Add a <code>Ball</code> field to <code>DrawingComponent</code>.</li>
-      <li>In <code>paintComponent</code>, call <code>ball.draw(g2)</code>.</li>
-    </ol>
-
-    <pre><code class="language-java">// in DrawingComponent
-private Ball ball = new Ball(80,100,14);
-
-// in paintComponent (after drawing the wall)
-ball.draw(g2);</code></pre>
-  </details>
-
-  <details class="lab-card">
-    <summary>
-      <strong>8️⃣ Make the ball move using a Timer</strong>
- <span class="tag">Animation</span></summary>
-    <p>Now we add a game loop: timer tick → update → repaint.</p>
-
-    <ol>
-      <li>Add a <code>move()</code> method to <code>Ball</code>.</li>
-      <li>Create a <code>Timer</code> in <code>DrawingComponent</code> that calls <code>ball.move()</code> and <code>repaint()</code>.</li>
-    </ol>
-
-    <pre><code class="language-java">// in Ball class
-
-public void move() {
-  x += dx;
-}</code></pre>
-
-    <pre><code class="language-java">// in DrawingComponent constructor
-// in the field:
-private Timer timer;
-//in constructor:
-      timer = new Timer(50, e -&gt; {
-  ball.move();
-  repaint();
-});
-timer.start();</code></pre>
-
-    <details class="hint">
-      <summary>💡 Hint: Why does the ball keep moving without extra clicks?</summary>
-      Because the Timer triggers repeatedly (every 50ms here). That’s the “game heartbeat.”
-</details>
-
-    <details class="hint">
-<summary>💡 About <code>Timer</code> (important)</summary>
-
-
-<p>
-This is a <strong>Swing Timer</strong>:
-<code style="color:darkred">javax.swing.Timer</code>
-(not <code>java.util.Timer</code>).
-</p>
-
-
-<ul>
-<li>
-A Swing Timer runs on the <strong>Event Dispatch Thread</strong>,
-which makes it safe to update Swing components and call
-<code>repaint()</code>.
-<br/>
-<strong>This is the same thread you used earlier with
-<code>SwingUtilities.invokeLater(...)</code> in <code>MyApp</code>.</strong>
-</li>
-<li>
-If you accidentally import <code>java.util.Timer</code>,
-your code will compile but behave incorrectly or crash.
-</li>
-</ul>
-
-
-<details class="hint">
-<summary>What does <code>timer.start()</code> do?</summary>
-<p>
-<code>start()</code> begins the timer’s loop.
-Every 50 milliseconds, the lambda runs:
-</p>
-<pre><code class="language-java">ball.move();
-repaint();</code></pre>
-<p>Without <code>start()</code>, the timer exists but never fires.
-</p>
-</details>
-
-<details class="hint">
-<summary>Why don’t we call <code>timer.stop()</code>?</summary>
-<p>
-In this lab, we want the ball to move continuously for the entire time
-the program is running.
+  Now we will stop the ball from moving outside the screen.
+  This is not full wall collision yet. This is just screen-edge collision.
 </p>
 <p>
-We will use <code>timer.stop()</code> later when we add:
+  Check the left edge of the screen. If the ball tries to move past it, set the x position to 0.
+  Check the right edge using the constant for WIDTH
 </p>
-<ul>
-<li>Pause / Resume</li>
-<li>Game Over or Win screens</li>
-<li>Level switching</li>
-</ul>
-</details>
-
-
-<details class="hint">
-<summary>Why is the Timer created in the constructor?</summary>
-<p>
-The constructor sets up how the object behaves.
-Creating and starting the Timer here means:
-</p>
-<ul>
-<li>The animation starts automatically when the panel exists</li>
-<li>No extra method calls are needed from outside the class</li>
-<li>The panel is self-contained (good design)</li>
-</ul>
-<p>
-The Controller does not need to know how animation works,
-it just uses the drawing panel.
-</p>
-</details>
-</details>
-</details>
-
-  <details class="lab-card">
-    <summary>
-      <strong>9️⃣ Flip direction (ball.flip)</strong>
-      <span class="tag">State</span>
-    </summary>
-
-    <p>Add a method to reverse the ball direction.</p>
-
-    <pre><code class="language-java">// in Ball
-public void flip() {
-  dx = -dx;
-}</code></pre>
-
-    <p>Note: You will need to trigger <code>flip()</code> from a new button or a key (our next step).</p>
-  </details>
-</details>
-
-  <details class="lab-card">
-    <summary>
-      <strong>🔟 Add a KeyListener (Drawing Component)</strong>
-      <span class="tag">Input</span>
-    </summary>
-
-    <p>Add a key that flips the ball. Use a letter key like <code>T</code>.</p>
-
-    <pre><code class="language-java">// in DrawingComponent constructor
-  setFocusable(true);
-
-addKeyListener(new KeyAdapter() {
-  @Override
-  public void keyPressed(KeyEvent e) {
-    if (e.getKeyCode() == KeyEvent.VK_T) {
-      ball.flip();
-    }
+<pre><code>if (x &lt; 0) {
+    x = 0;
   }
-});</code></pre>
-
-<details class="hint">
-<summary>Why <code>KeyAdapter</code>? What is <code>KeyListener</code>? What is a key code?</summary>
-
-
+  if (x + 2*radius &gt; GameComponent.WIDTH) {
+    x = GameComponent.WIDTH - 2*radius;
+  }
+</code></pre>
 <p>
-<code>KeyListener</code> is an interface with <strong>three methods</strong>:
+  We do not use <code>x == 0</code> for collision checks. Movement can skip over exact values.
+  Use <code>&lt;=</code>, <code>&gt;=</code>, <code>&lt;</code>, or <code>&gt;</code> instead.
 </p>
+<p>Do you see why we need to add diameter to x and subtract diameter from WIDTH?</p>
+<h3>Step 6: Checkpoint</h3>
 
-
-<pre><code class="language-java">keyPressed(...)
-keyReleased(...)
-keyTyped(...)</code></pre>
-
-
-<p>
-If you implement <code>KeyListener</code> directly, Java forces you to write
-<em>all three</em> methods, even if you only care about one.
-</p>
-
-
-<p>
-<code><strong>KeyAdapter</strong></code> is a convenience class that already
-implements <code>KeyListener</code> for you with empty methods.
-You override only what you need.
-</p>
-
-
-<pre><code class="language-java">addKeyListener(new KeyAdapter() {
-@Override
-public void keyPressed(KeyEvent e) {
-// only the method we care about
-}
-});</code></pre>
-</details>
-
-<details class="hint">
-<summary>What is <code>e.getKeyCode()</code>?</summary>
-<p>
-A <strong>key code</strong> is a constant that represents a physical key on
-the keyboard.
-</p>
-<p>
-Examples:
-</p>
 <ul>
-<li><code>KeyEvent.VK_T</code> — the <kbd>T</kbd> key</li>
-<li><code>KeyEvent.VK_LEFT</code> — left arrow</li>
-<li><code>KeyEvent.VK_ENTER</code> — Enter (often conflicts with buttons)</li>
+  <li>The ball is drawn using a sprite image</li>
+  <li>The background image appears behind the ball</li>
+  <li>The program still works if an image fails to load.</li>
+  <li>The ball cannot move off the left or right side of the screen</li>
 </ul>
+
 <p>
-Using key codes is more reliable than checking characters,
-especially for non-letter keys.
+  In the next tier, we will add a timer so the game updates automatically.
+  Then wall collision and direction changes will make more sense.
 </p>
 </details>
+        </div>
+      
+        </div>
+        </div>
 
+<!-- <div class="lab-section" id="lab1">
+  <h2>Lab 1: Recursion Practice</h2>
+  <p>
+    In CodingBat <a href="https://codingbat.com/java/Recursion-1">Recursion-1</a>," complete the next 6 problems: count7, count8, powerN, countX, countHi, changeXY
+  </p>
 
-<details class="hint">
-<summary>Why not use <code>keyTyped()</code>?</summary>
-<p>
-<code>keyTyped()</code> is for character input (text fields).
-Games and controls usually respond to physical keys,
-so we use <code>keyPressed()</code> instead.
-</p>
-</details>
-  
+    <p>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example MyRecursion.java)</p>
+</div> -->
+        
+        <!-- <div class="lab-section" id="lab2">
+          <h2 style="color:black">My Counter</h2>
+        <p>
+            In this lab, you will create a Swing component with a button that increments the count
+        </p>
+        
+        <h3>Task Description</h3>
+        <p>
+            <image src="lab12a.png" alt="lab12 a" width="400"/>
+        </p>
+        <ul>
+          <li>A <code>JLabel</code> to describe the counter</li>
+          <li>A non‑editable <code>JTextField</code> to display the current count</li>
+          <li>A <code>JButton</code> labeled “Count” that, when clicked, increments the counter</li>
+        </ul>
 
-    <details class="hint">
-      <summary>Hint: What does “focus” mean?</summary>
-      Keyboard events only go to the component that currently has focus.
-      Clicking a button gives focus to that button ("button steals the focus").
-    </details>
-  
-  </details>
-
-  <details class="lab-card">
-    <summary>
-      <strong>Fix focus (requestFocusInWindow)</strong>
-      <span class="tag">Swing</span>
-    </summary>
-
-    <p>We want the drawing area to regain focus after UI interactions.</p>
-
+        <h3>Adding ActionListener to the Button</h3>
+    <p>Whenever the “Count” button is clicked, we want to execute  <code>setValues()</code> method:</p>
     <ol>
-      <li>1. In <code>Controller</code>, at the end of Button Listener class after buttons if/else logic, call <code>drawing.requestFocusInWindow()</code>.</li>
-      <li>2. Also request focus once when the UI first appears (inside Controller).</li>
-    <li>3. Make sure your drawing component constructor has <code>setFocusable(true)</code> before a key listener.</li>
+      <li>Add the listener registration at the end of the constructor:
+        <pre><code>button.addActionListener(e -> setValues());</code></pre>
+      </li>
+      <li>Implement the <code>setValues()</code> method to:
+        <ol type="a">
+          <li>Increment the counter</li>
+          <li>Update the text field: <code>text.setText(count + "");</code></li>
+        </ol>
+
+      </li>
     </ol>
 
-    <pre><code class="language-java">// After handling a button logic in Controller (button Listener class):
-drawing.requestFocusInWindow();</code></pre>
+        
+        
 
-    <pre><code class="language-java">// In Controller constructor (before initializing Button Listeners):
-SwingUtilities.invokeLater(() -&gt; drawing.requestFocusInWindow());</code></pre>
+        </div> -->
 
-    <details class="hint">
-      <summary>Hint: Why use <code>invokeLater</code> here?</summary>
-      This schedules the focus request at the right time.
-    </details>
-  </details>
+        <!-- <div class="lab-section" id="lab3">
+          <h2 style="color:black">My Accumulator</h2>
+          <h3>Overview</h3>
+    <p>
+      In this lab you will create a Swing <code>JPanel</code> that reads integer values,
+      keeps a running total, and displays the accumulated sum. You already have a
+      viewer class with a <code>JFrame</code> set up, you will build just the panel class.
+    </p>
+          <h3>Task Description</h3>
+          <p>
+              <image src="Lab12b.png" alt="lab12 b" width="400"/>
+          </p>
+          <section id="setup">
+          <h3>1. Setup</h3>
+          <ol>
+            <li>Create a new class named <code>MyAccumulator</code> that <em>extends</em> <code>JPanel</code></li>
+            <li>Ensure your project has necessary Swing imports</li>
+            <li>Add your panel to the existing frame in the viewer’s <code>main()</code> method</li>
+          </ol>
+        </section>
+      
+        <section id="layout">
+          <h3>2. Layout</h3>
+          <p>
+            Use a 2×2 grid to arrange the labels and text fields. For example:
+          </p>
+          <pre><code>setLayout(new GridLayout(2, 2, 5, 5));</code></pre>
+          <p>
+            – Row 1: A label “Enter an Integer:” and an editable text field for input<br>
+            – Row 2: A label “Accumulated Sum:” and a non‐editable text field for output
+          </p>
+          <p>Note: because yoru grid is 2x2, the panel will display your components in the order (see the screenshot) when you use <code>add()</code></p>
+        </section>
+      
+        <section id="event-wiring">
+          <h3>3. Event</h3>
+          <p>
+            Create a method processInput() and Configure the input text field so that when the user presses Enter, an event handler:
+          </p>
+          <ul>
+     
+            <li>Reads the integer from the input field. Note to read input use <code>getText()</code>. It is a good practice to trim text from spaces <code>.getText().trim()</code>
 
-  <h3>✅ Checkoff Demo</h3>
-  <p>
-    <img src="./game-demo2.png" alt="starter" width="350"/>
-  </p>
-  <ul>
-    <li>Buttons move the wall left/right and reset it.</li>
-    <li>A red ball is visible on the drawing panel.</li>
-    <li>The ball moves continuously using a Timer.</li>
-    <li>Pressing <code>T</code> flips the ball direction.</li>
-    <li>After clicking buttons, keys still work (focus fix applied).</li>
-  </ul>
-  </div>
-  </section>
+            </li>
+            <li>Adds it to a running total variable (you need Integer here)</li>
+            <li>Clears the input field</li>
+            <li>Updates the output field with the new sum (you need String here)
+              <pre><code>// to parse text to integer use Integer.parseInt()
+                to parse Integer to string use Integer.toString()
+                              </code></pre>
+            </li>
+          </ul>
+          <p>
+            Use a lambda expression to register the listener (no loops or error checks needed here).
+          </p>
+        </section> -->
+
+          </div>
+        </div>
+        </div>
+
 
 
         </body>

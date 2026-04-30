@@ -187,43 +187,44 @@ margin-top: 120px;
 <h3>Digits</h3>
 <ul>
 
-<li><b>No lookahead</b> (use <code>n % 10</code>):
+<li><b>No lookahead</b> - use <code>n % 10</code>
 <pre><code> // Base case
 if (n == 0) return 0;
-// access value:
+// Access current digit
 int last = n % 10;
-// Shrink + return:
+// Shrink the number:
 return last + recurse(n / 10);
 </code></pre>
-<li><b>Needs 1 lookahead</b> (use <code>(n / 10) % 10</code>):</p>
+<li><b>Needs 1 lookahead</b> - use <code>(n / 10) % 10</code></p>
 <pre><code> // Base case
 if (n &lt; 10) return 0;
-// access value:
-(n / 10) % 10;
+// Access values:
+int last = n%10;
+int next = (n / 10) % 10;
 // How move 2 steps (skip one digit)
 recurse(n / 100);
 </code></pre>
 
 <h3>Strings</h3>
 <ul>
-  <li><b>No lookahead</b> (use s.charAt(0)):
+  <li><b>No lookahead</b> - use s.charAt(0)
 
     <pre><code>// Base case
 if (s.isEmpty()) return "";
-// Access value:
+// Access current character
 char first = s.charAt(0);
-// Shrink + return:
+// Shrink the string
 return first + recurse(s.substring(1));</code></pre>
 
     
   </li>
-  <li><b>Needs 1 lookahead</b> (use s.charAt(1)):
+  <li><b>Needs 1 lookahead</b> - use s.charAt(1)
     <pre><code>// Base Case
 if (s.length() <= 1) return s;
 // Access values:
 char first = s.charAt(0);
 char next = s.charAt(1);
-// How move 2 steps (skip one character)
+// Usually shrink by 1 s.substring(1), but if you are asked to skip use
 recurse(s.substring(2));
 </code></pre>
   </li>
@@ -242,7 +243,16 @@ Digits → <code>n % 10</code>, <code>(n / 10) % 10</code>
 </p>
 
 
-<h3>Arrays (by index)</h3>
+<h3>Arrays</h3>
+<p>
+  For array recursion, the array stays the same.
+  The index moves forward each recursive call.
+</p>
+
+<pre><code>// basic movement
+recursiveMethod(nums, i + 1);</code></pre>
+
+
 <table>
 <tr><th>Access</th><th>Safe Base Case</th><th>Safe Index Range</th></tr>
 <tr><td>nums[i]</td><td><code>if (i >= nums.length) return …;</code></td><td>0..len-1</td></tr>
@@ -251,8 +261,60 @@ Digits → <code>n % 10</code>, <code>(n / 10) % 10</code>
 </table>
 
 <p><i>Why <code>&gt;=</code>?</i> It safely handles both the last valid index and empty arrays.</p>
+<h4>Array Recursion Template: Count Something</h4>
 
+<pre><code>int countSomething(int[] nums, int i) {
+    if (i >= nums.length) {
+        return 0;
+    }
+
+    int count = 0;
+
+    if (/* current item matches condition */) {
+        count = 1;
+    }
+
+    return count + countSomething(nums, i + 1);
+}</code></pre>
+
+<h4>Array Recursion Template: Search for Something</h4>
+
+<pre><code>boolean containsSomething(int[] nums, int i) {
+    if (i >= nums.length) {
+        return false;
+    }
+
+    if (/* current item matches condition */) {
+        return true;
+    }
+
+    return containsSomething(nums, i + 1);
+}</code></pre>
+
+<h4>Array Recursion Template: Compare Neighbors</h4>
+
+<pre><code>boolean hasNeighborPattern(int[] nums, int i) {
+    if (i >= nums.length - 1) {
+        return false;
+    }
+
+    if (/* nums[i] and nums[i + 1] match the pattern */) {
+        return true;
+    }
+
+    return hasNeighborPattern(nums, i + 1);
+}</code></pre>
 <h3>ArrayList&lt;&gt;</h3>
+
+<p>
+  With an <code>ArrayList</code>, you have two common recursion choices:
+</p>
+
+<ul>
+  <li><strong>Non-mutating:</strong> keep the list unchanged and move an index forward.</li>
+  <li><strong>Mutating:</strong> remove one item each time until the list is empty.</li>
+</ul>
+
 <p><b>Base case:</b> use <code>isEmpty()</code> to stop when the list has no elements left.</p>
 
 <pre><code>if (list.isEmpty()) return 0;     // for numeric sum
@@ -278,7 +340,11 @@ if (list.isEmpty()) return false; // for boolean search
 <h4>Example 3. Counting a Condition (non-mutating, using index)</h4>
 <pre><code>int countOdds(ArrayList&lt;Integer&gt; list, int i) {
     if (i == list.size()) return 0;
-    int count = (list.get(i) % 2 != 0) ? 1 : 0;
+    int count = 0;
+
+    if (list.get(i) % 2 != 0) {
+        count++;
+    }
     return count + countOdds(list, i + 1);
 }
 </code></pre>
@@ -331,7 +397,10 @@ private int countUppercaseHelper(String s, int index) {
     if (index == s.length()) {
         return 0;
     }
-    int count = Character.isUpperCase(s.charAt(index)) ? 1 : 0;
+    int count = 0;
+    if (Character.isUpperCase(s.charAt(index))) {
+    count++;
+}
     return count + countUppercaseHelper(s, index + 1);
 }
 </code></pre>
