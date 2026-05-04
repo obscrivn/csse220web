@@ -333,15 +333,13 @@ details.hint > summary {
     <div style="clear:both;"></div>
 </div>
 <div id="content">
-    <h1>Lab Assignment 16</h1>
+    <h1>Lab Assignment 17 (Tier 5)</h1>
     <div id="main-content">
          <div class="lab-section" id="lab">
 
- <p>
-In this lab, you will practice recursion3 and continue working with event-based programming.
-</p>
+
         
-<details class="lab-card" id="lab-01">
+<!-- <details class="lab-card" id="lab-01">
         <summary>
     <span class="lab-label">01.</span>
     <span class="lab-title">Recursion3</span>
@@ -399,18 +397,138 @@ In this lab, you will practice recursion3 and continue working with event-based 
     </li>
     <li>Make sure your file is on the package lab14</li>
   </ol>
-</details>
+</details> -->
+<details class="lab-card">
+  <summary>
+  <span class="lab-label">01.</span>
+    <span class="lab-title">Refactoring Bad Game Design</span>
+    <span class="lab-tag">Submission (Group)</span>
+  
+  </summary>
+<h3>Problem Statement</h3>
+      <p>
+        A Java program draws a minute-by-minute updated diagram of the solar system including all planets and moons. To update the moon's position, the moon's calculations must have have the updated position of the planet it is orbiting. The diagram is colored - all planets are drawn the same color and all moons are drawn the same color. However, 
+        it needs to be possible to reset the planet color or the moon color and the diagram should reflect that.
+      </p>
 
+
+      <h4>  Bad Design</h4>
+      <div class="image-container">
+        <img src="SolarSystem.png" alt="Bad Design" width="600"/>
+      </div>
+      <p>
+        <a href="https://www.plantuml.com/plantuml/uml/ZL9DQyCm3BtxLvYSqh7ilCCeZFRQKIZx0I8HhPdyWQKIokX_d-EsgqcoZukHz2IzzuJvmxW04QncEH6cDvfMZfQKQWcOzSuJnDs91Uq6ZDEVIki3k8vmvMqu2hvXl_Lin7XNYx780ZOilhlM4VfNedeV8HnCotVaFNGWk2LmA2jFFjOE-noCUpRUksd7UKPYagSIrFuXhPiHjKUvQE5weSxNrPTADXtkGeiiywn1u9-iOyh1Maauv9dEPi_bUdkxGehL7Db4qwF-ZJ_ThxnSqonrzLnTBQiif7gez4jpAus_GXeeIXFuQVdJO4A6zLy0" target="_blank">Source PlantUML</a>
+      
+<h3>Part 1: What is Each Class Doing?</h3>
+
+  <p>Look at <code>Solar System App</code> code and UML</p>
+
+
+<p>Answer on Gradescope:</p>
+
+<ul>
+  <li>What does <code>SolarSystemMain</code> do?</li>
+  <li>What does <code>SolarSystem</code> do?</li>
+  <li>What does <code>Planet</code> do?</li>
+  <li>What does <code>Moon</code> do?</li>
+</ul>
+
+<h3>Part 2: Find Two Design Problems</h3>
+
+<p>
+  Find at least <strong>2 places</strong> where a class is doing work that may
+  belong in another class.
+</p>
+
+<p>For each one, answer:</p>
+
+<pre><code>Example 1:
+Class/method:
+What is happening:
+Why is this not a good responsibility for this class:
+Which class should probably handle it instead:
+
+Example 2:
+Class/method:
+What is happening:
+Why is this not a good responsibility for this class:
+Which class should probably handle it instead:
+</code></pre>
+
+<h3>Part 3: Suggest One Refactor</h3>
+
+<p>
+  Choose one of your design problems from Part 2.
+  You do not need to write the full code.
+</p>
+
+<p>Answer:</p>
+
+<pre><code>Problem I would fix:
+Class I would move the logic FROM:
+Class I would move the logic TO:
+New method I would add:
+Why this improves the design:
+</code></pre>
+<h3>Submission</h3>
+
+<p>
+  Create a Google Doc titled:
+</p>
+
+<pre><code>Solar System Design Review - TeamName</code></pre>
+
+<p>
+  Share the document with your partner/team and submit the Google Doc link.
+</p>
+
+<p>
+  Your document should include:
+</p>
+
+<ul>
+  <li><strong>Part 1:</strong> What each class is responsible for</li>
+  <li><strong>Part 2:</strong> Two design problems you found</li>
+  <li><strong>Part 3:</strong> One refactor you would suggest</li>
+</ul>
+
+<p>
+  Make sure the link is accessible.
+</p>
+
+
+
+  </details>
 <details class="lab-card">
   <summary>
   <span class="lab-label">02.</span>
-    <span class="lab-title">Prep (Tier4): Animation</span>
+    <span class="lab-title">Prep (Tier5): Load a Level from a Text File</span>
     <span class="lab-tag">Final Project</span>
   
   </summary>
+  <p>
+    So far, our game creates the ball directly in <code>GameComponent</code>.
+    That works for one object, but it does not scale well.
+  </p>
+
+  <p>
+    In this tier, we will load the starting position of the ball from a text file.
+    This introduces two important ideas:
+  </p>
+  <ul>
+    <li><strong>File I/O:</strong> reading data from a file</li>
+    <li><strong>GameModel:</strong> storing game data separately from drawing code</li>
+  </ul>
+
+  <p>
+    Big idea:
+  </p>
+
+  <pre><code>GameComponent draws the game.
+GameModel stores and loads the game.</code></pre>
 <h3>Importing a Tier Package (ZIP File)</h3>
-<p><strong>Starter ZIP:</strong> <a href="Tier4.zip">Download starter</a></p>
-<p><strong>Solution ZIP:</strong> <a href="Tier4Solution.zip">Download solution</a></p>
+<p><strong>Starter ZIP:</strong> <a href="Tier5.zip">Download starter</a></p>
+<p><strong>Solution ZIP:</strong> <a href="Tier5Solution.zip">Download solution</a></p>
 
 <p>
   The ZIP file is a <strong>package</strong>, not a full Java project.
@@ -437,158 +555,324 @@ In this lab, you will practice recursion3 and continue working with event-based 
   tier3/
 </code></pre>
 
-<h3>Step 1: Add Direction Fields to the Ball</h3>
+<h3>Step 1: Create a Level File</h3>
 
 <p>
-  So far, the ball moves only when we press a key or button.
-  To make it move automatically, the ball needs to remember its direction.
-</p>
+    Create a file named <code>level1.txt</code>.
+  </p>
 
-<p>
-  Add two fields to the <code>Ball</code> class:
-</p>
+  <p>
+    Put it in the same package as your Java files and images.
+  </p>
 
-<ul>
-  <li><code>dx</code>: how much the ball moves left/right</li>
-  <li><code>dy</code>: how much the ball moves up/down</li>
-</ul>
+  <pre><code>src/
+  tier5Solution/
+    Ball.java
+    GameComponent.java
+    GameModel.java
+    level1.txt
+    tennis.png
+    background.png</code></pre>
 
-<pre><code>private int dx = 3;
-private int dy = 2;</code></pre>
+  <p>
+    Add this simple level:
+  </p>
 
-<p>
-  These are fields because the ball must remember them between timer updates.
-</p>
-
-<h3>Step 2: Add an Update Method to Ball</h3>
-
-<p>
-  Add a method named <code>update()</code>. This method will move the ball once.
-</p>
-
-<p>
-  Inside <code>update</code>, change the ball's position using <code>dx</code> and <code>dy</code>.
-</p>
-
-<pre><code>
-  public void update() {
-x += dx;
-y += dy;</code></pre>
-  }
-<p>
-  This means every time <code>update</code> runs, the ball moves slightly.
-</p>
-
-<h3>Step 3: Reverse Direction at the Walls</h3>
-
-<p>
-  The ball should bounce when it reaches the edge of the screen.
-</p>
-
-<p>
-  If the ball hits the left or right wall, reverse <code>dx</code>. Use the same logic you built for shift()
-</p>
-<p>Add to the update() method:</p>
-<pre><code>	    // LEFT / RIGHT walls
-	    if (x <= 0) {
-	        x = 0;
-	        dx = -dx;
-	    }
-	    if (x + 2 * radius >= GameComponent.WIDTH) {
-	        x = GameComponent.WIDTH - 2 * radius;
-	        dx = -dx;
-	    }
+  <pre><code>..........
+..B.......
+..........
+..........
 </code></pre>
 
+  <p>
+    For now, we only use two symbols:
+  </p>
+
+  <table>
+    <tr>
+      <th>Symbol</th>
+      <th>Meaning</th>
+    </tr>
+    <tr>
+      <td><code>.</code></td>
+      <td>empty space</td>
+    </tr>
+    <tr>
+      <td><code>B</code></td>
+      <td>ball starting position</td>
+    </tr>
+  </table>
+
+<h3>Step 2: Why Do We Need a GameModel?</h3>
 <p>
-  If the ball hits the top or bottom wall, reverse <code>dy</code>.
-</p>
-<pre><code>// TOP / BOTTOM walls
-	    if (y <= 0) {
-	        y = 0;
-	        dy = -dy;
-	    }
-</code></pre>
-<pre><code>if (y + 2 * radius >= GameComponent.HEIGHT) {
-	        y = GameComponent.HEIGHT - 2 * radius;
-	        dy = -dy;
+    So far, <code>GameComponent</code> creates the ball directly.
+  </p>
+
+  <pre><code>ball = new Ball(...);</code></pre>
+
+  <p>
+    This works for one object, but it does not scale:
+  </p>
+
+  <ul>
+    <li>What if we want multiple balls?</li>
+    <li>What if we load a level from a file?</li>
+    <li>What if the game rules get more complex?</li>
+  </ul>
+
+  <p>
+    We need a class that stores the game data.
+  </p>
+<pre><code>GameComponent → draws
+GameModel     → stores and updates game objects</code></pre>
+
+<p>
+    You are already provided with a new class named <code>GameModel</code>.
+  </p>
+
+<h3>Step 3: Add Tile Size to GameModel</h3>
+<p>
+    A level file uses <strong>rows and columns</strong>, but Java draws using
+    <strong>x and y pixels</strong>.
+  </p>
+
+  <p>
+    A <strong>tile</strong> is one square in the level file. 
+    <code>TILE_SIZE</code> tells us how large one tile should be on the screen.
+  </p>
+
+  <pre><code>public static final int TILE_SIZE = 40;</code></pre>
+
+  <p>
+    Add this constant to <code>GameModel</code>.
+  </p>
+
+  <pre><code>col * TILE_SIZE → x position
+row * TILE_SIZE → y position</code></pre>
+
+<h3>Step 4: Why Stream Instead of File?</h3>
+
+<p>
+    A <code>File</code> points to a file somewhere on your computer.
+    That sounds simple, but it can break when the project is moved, zipped, or submitted.
+  </p>
+
+  <p>
+    Instead, we will treat <code>level1.txt</code> as a project resource,
+    just like an image file.
+  </p>
+
+<p>
+    We already loaded images like this:
+  </p>
+
+  <pre><code>Ball.class.getResource("tennis.png")</code></pre>
+
+  <p>
+    We will load the level file like this:
+  </p>
+
+  <pre><code>InputStream stream =
+    GameModel.class.getResourceAsStream("level1.txt");</code></pre>
+
+<p>
+    Since <code>getResourceAsStream</code> returns <code>null</code> if the file is missing,
+    we must check for that and throw our own exception.
+  </p>
+  <pre><code>if (stream == null) {
+    throw new RuntimeException("Level file not found");
 }</code></pre>
 
 <p>
-  Remember that the ball's width and height are both <code>2 * radius</code>.
-</p>
-
-<h3>Step 4: Add a Timer to GameComponent</h3>
-
-<p>
-  A <code>Timer</code> lets Java run code over and over after a short delay.
-  We will use it to create animation.
+  Now go to your <code>loadLevel</code> method in <code>GameModel</code>
+  and add these two lines at the beginning of the method.
 </p>
 
 <p>
-  Add this import to <code>GameComponent</code>:
+  Replace <code>"level1.txt"</code> with the parameter <code>filename</code>.
 </p>
 
-<pre><code>import javax.swing.Timer;</code></pre>
+<pre><code>InputStream stream =
+  GameModel.class.getResourceAsStream(filename);
+
+if (stream == null) {
+  throw new RuntimeException("Level file not found: " + filename);
+}</code></pre>
+
+
+<h3>Step 5: Use scanner to load file</h3>
 
 <p>
-  Add a field for the timer:
-</p>
+    We will use a <code>Scanner</code> to read the level one line at a time. Add this first at the beginning of the method loadLevel():
+  </p>
 
-<pre><code>private Timer timer;</code></pre>
+ int row = 0;
+<p>
+    This method will stops after it finds the first <code>B</code>.
+  </p>
+Scanner scanner = new Scanner(stream);
 
-<h3>Step 5: Start the Timer in the Constructor</h3>
+    while (scanner.hasNextLine()) {
+        String line = scanner.nextLine();
+
+        for (int col = 0; col &lt; line.length(); col++) {
+            char ch = line.charAt(col);
+
+            if (ch == 'B') {
+                int x = col * TILE_SIZE;
+                int y = row * TILE_SIZE;
+
+                ball = new Ball(x, y, 14);
+
+                scanner.close();
+                return;
+            }
+        }
+
+        row++;
+    }
+
+    scanner.close();
+
+    throw new IllegalStateException("Level must contain a B.");
+}</code></pre>
+
+
+
+<h3>Step 6: Refactor GameModel</h3>
 
 <p>
-  In the <code>GameComponent</code> constructor, create and start the timer.
-</p>
+    Now <code>GameModel</code> should store the ball and load it from the file.
+  </p>
 
 <p>
-  The timer should do two things:
+  Add this to <code>GameModel</code> constructor:
 </p>
 
-<ul>
-  <li>call <code>ball.update()</code></li>
-  <li>call <code>repaint()</code></li>
-</ul>
-
-<pre><code>timer = new Timer(30, e -&gt; {
-  ball.update();
-  repaint();
-});
-
-timer.start();</code></pre>
+<pre><code>loadLevel("level1.txt");</code></pre>
 
 <p>
-  The number <code>30</code> means the timer runs about every 30 milliseconds.
+  Add a field:
 </p>
 
-<h3>Step 6: Understand the Animation Loop</h3>
+<pre><code>private Ball ball;</code></pre>
+<p>
+  Update the ball inside update():
+</p>
+
+<pre><code>ball.update();</code></pre>
+<p>
+  Draw the ball inside draw():
+</p>
+
+<pre><code>ball.draw(g2);</code></pre>
+
+
+<h3>Step 7: Refactor GameComponent</h3>
 
 <p>
-  Animation is created by updating the ball and redrawing the screen repeatedly.
-</p>
-
-<pre><code>update position → repaint screen → update position → repaint screen</code></pre>
-
-<p>
-  The image is not loaded every time. The image was loaded once into a
-  <code>BufferedImage</code>. During repainting, Java only redraws it.
-</p>
-
-<h3>Step 7: Keep Repaint in GameComponent</h3>
+    <code>GameComponent</code> should no longer create the ball directly.
+    It should create a <code>GameModel</code>.
+  </p>
 
 <p>
-  Do not call <code>repaint()</code> inside <code>Ball</code>.
-</p>
+    Replace:
+  </p>
+
+  <pre><code>private Ball ball;</code></pre>
+
+  <p>
+    with:
+  </p>
+
+  <pre><code>private GameModel model;</code></pre>
 
 <p>
-  The <code>Ball</code> updates its own position. The <code>GameComponent</code> controls when
-  the screen redraws.
-</p>
+    Replace:
+  </p>
 
-<pre><code>Ball: updates position
-GameComponent: repaints screen</code></pre>
+  <pre><code>ball = new Ball(WIDTH / 2, 100, 14);</code></pre>
+
+  <p>
+    with:
+  </p>
+
+  <pre><code>model = new GameModel();</code></pre>
+
+<p>
+    In the timer, replace:
+  </p>
+
+  <pre><code>ball.update();</code></pre>
+
+  <p>
+    with:
+  </p>
+
+  <pre><code>model.update();</code></pre>
+
+ <p>
+    In <code>paintComponent</code>, replace:
+  </p>
+
+  <pre><code>ball.draw(g2);</code></pre>
+
+  <p>
+    with:
+  </p>
+
+  <pre><code>model.draw(g2);</code></pre>
+
+Step 8 (Refactor): Keep Controls, Move Logic to GameModel</span>
+  </summary>
+
+  <p>
+    We still control one player with keys/buttons. Keep the methods in
+    <code>GameComponent</code>, but delegate the work to <code>GameModel</code>.
+  </p>
+
+  <p>
+    Update <code>GameComponent</code>:
+  </p>
+
+  <pre><code>public void move(int x) {
+    model.movePlayer(x);
+    repaint();
+}
+
+public void center() {
+    model.centerPlayer();
+    repaint();
+}</code></pre>
+
+  <p>
+    Add matching methods to <code>GameModel</code>:
+  </p>
+
+  <pre><code>public void movePlayer(int dx) {
+    if (ball != null) {
+        ball.shift(dx);
+    }
+}
+
+public void centerPlayer() {
+    if (ball != null) {
+        ball.reset();
+    }
+}</code></pre>
+
+  <p>
+    Flow:
+  </p>
+
+  <pre><code>keys/buttons → GamePanel → GameComponent → GameModel → Ball</code></pre>
+
+  <p>
+    This keeps input handling in the UI and game logic in the model.
+  </p>
+
+
+
 </details>
         </div>
       
