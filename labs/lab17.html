@@ -6,8 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-
-body {
+  body {
           font-family: Arial, sans-serif;
           line-height: 1.5;
           margin: 0;
@@ -190,7 +189,9 @@ padding: 20px;
       background-color: #ddd;
     }
     code {
-        color: red;
+        /* color: red; */
+        font-weight: 600;
+        font-family: Consolas, "Courier New", monospace;
     }
     .code-window {
       background-color: #272822;
@@ -319,11 +320,11 @@ details.hint > summary {
   </style>
 </head>
 <body>
-  <div id="header">
+   <div id="header">
     <a id="index_link" href="../index.html">CSSE 220</a>
     <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
     <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="./design-principles.html">Design</a>
+    <a id="quiz_link" href="../design-principles.html">Design</a>
     <a id="quiz_link" href="../labs.html">Labs</a>
     <a id="quiz_link" href="../homework.html">Homework</a>
     <a id="quiz_link" href="../exams.html">Exams</a>
@@ -331,450 +332,376 @@ details.hint > summary {
     <a id="resources_link" href="../resources.html">Resources</a>
     <div style="clear:both;"></div>
 </div>
-<section id="content">
-<!-- <div id="content"> -->
-    <h1>Lab Assignment 17</h1>
-    <nav id="lab-nav">
-        <ul>
-          <li><a href="#lab1">01. Collision</a></li>
-          <li><a href="#lab2">02. ImageIO (Sprites)</a></li>
+<div id="content">
+    <h1>Lab Assignment 16</h1>
+    <div id="main-content">
+         <div class="lab-section" id="lab">
 
-          <!-- Add more lab links as needed -->
-        </ul>
-      </nav>
-<!-- Lab Navigation Menu -->
-<!-- <div id="main-content"> -->
- <!-- <section>
-  <p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Events</a></p>
-  <p>Resources 2: <a href="../resources.html#listener" target="_blank" class="resource-ref">Understanding Listener with getActionCommand()</a></p>
-  <p>Resources 3: <a href="../resources.html#focus" target="_blank" class="resource-ref">How to keep focus on Frame for events</a></p>
+ <p>
+In this lab, you will practice recursion3 and continue working with event-based programming.
+</p>
+        
+<details class="lab-card" id="lab-01">
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Recursion3</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
 
-</section>-->
-<!-- <p>Submission: 1) BallModel, GameComponent, Ball</p> -->
-<!-- <div id="main-content">
+<h2>Instructions</h2>
 
-    <div class="lab-section" id="lab1"> -->
-<!-- </section> -->
+  <ol>
+    <li>
+      <strong>Inside the <code>lab14</code> package (from the last lab), create a new class named <code>Recursion3</code>.</strong>
+      <br>
+      This class will contain <em>all</em> of your methods for this lab.
+    </li>
 
+    <li>
+      <strong>Open CodingBat (Recursion-1):</strong>
+      <br>
+      Go to 
+      <a href="http://codingbat.com/java/Recursion-1" target="_blank">
+        https://codingbat.com/java/Recursion-1
+      </a>
+    </li>
 
-  <div class="lab-section" id="lab1">
-  <h2>01. Ball Collision</h2>
- 
+    <li>
+      <strong>Complete the following CodingBat problems:</strong>
+      <ul>
+        <li><code>array6</code></li>
+        <li><code>array11</code></li>
+        <li><code>array220</code></li>
+        <li><code>allStar</code></li>
+        <li><code>pairStar</code></li>
+        <li><code>endX</code></li>
+        
+   
+      </ul>
+    </li>
+
+    <li>
+      <strong>For each problem:</strong>
+      <ul>
+        <li>Consult the recursion resources: <a href="../recursion.html" target="_blank">Recursion Guide</a></li>
+        <li>Write the method in CodingBat first</li>
+        <li>Once it passes all tests, copy the method into <code>Recursion3.java</code></li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Save Recursion3 class with all 6 recursion problems.</strong>
+      
+    </li>
+
+    <li>
+      <strong>Submit <code>Recursion3.java</code> to Gradescope.</strong>
+    </li>
+    <li>Make sure your file is on the package lab14</li>
+  </ol>
+</details>
+
+<details class="lab-card">
+  <summary>
+  <span class="lab-label">02.</span>
+    <span class="lab-title">Prep (Tier4): Animation</span>
+    <span class="lab-tag">Final Project</span>
+  
+  </summary>
+<h3>Importing a Tier Package (ZIP File)</h3>
+<p><strong>Starter ZIP:</strong> <a href="Tier4.zip">Download starter</a></p>
+<p><strong>Solution ZIP:</strong> <a href="Tier4Solution.zip">Download solution</a></p>
+
+<p>
+  The ZIP file is a <strong>package</strong>, not a full Java project.
+  You will import it into your existing project (the one you used for previous tiers).
+</p>
+
+<h4>Recommended Method (Drag and Drop)</h4>
+
 <ol>
-<li>Use the same project you built for Lab16</li>
-
-<!-- <li>
-Download <a href="./tennis.png" target="_blank" class="resource-ref"><code>tennis.png</code></a> and place it in the
-<b>same package</b> as <code>Ball.java</code> (same folder in <code>src</code>).
-</li> -->
+  <li>Unzip the downloaded file on your computer</li>
+  <li>Open Eclipse and locate your project</li>
+  <li>Expand your project and find the <code>src</code> folder</li>
+  <li>Drag the unzipped folder (<code>tier4</code>) into <code>src</code></li>
+  <li>When prompted, choose <strong>Copy files</strong></li>
 </ol>
 
-
-</div>
-<!-- STEP 1 -->
-<details class="lab-card">
-<summary>1️⃣ Bounce off the walls</summary>
 <p>
-<p>
-Before we add sprites or multiple balls, we want a <b>clean, simple way</b>
-to say: “this object knows how to bounce inside a rectangle.”
+  After importing, your project should look like:
 </p>
 
-
-<p>
-We’ll do that with a <b>very small interface</b>.
-</p>
-<p>
-Right now, <code>Ball.move()</code> only updates position:
-</p>
-
-
-<pre><code class="language-java">public void move() {
-x += dx;
-y += dy;
-}</code></pre>
-
-
-<p>
-That’s intentional, the <code>Ball</code> does not know how big the window is.
-Bouncing depends on the <b>world</b>, not just the object.
-</p>
-
-
-<p>
-So instead of hard-coding screen size into <code>Ball</code>,
-we define a rule:
-</p>
-
-
-<blockquote>
-“Any object that can collide with the screen must know how to
-update itself <b>given</b> the screen size.”
-</blockquote>
-
-<p>
-Create a new interface called <code>Collidable</code>.
-It has <b>one method</b>. That’s it.
-</p>
-
-
-<pre><code class="language-java">public interface Collidable {
-void update(int worldWidth, int worldHeight);
-}</code></pre>
-
-
-<p>
-This method answers one question:
-</p>
-<p>
-<b>“Given the size of the world, how should this object move and bounce?”</b>
-</p>
-</details>
-</details>
-<details class="lab-card">
-<summary>2️⃣ Make <code>Ball</code> implement <code>Collidable</code></summary>
-
-
-<p>
-Now the <code>Ball</code> agrees to that contract.
-It still moves simply but now it also handles bouncing.
-</p>
-
-
-<pre><code class="language-java">public class Ball implements Collidable {
-@Override
-public void update(int worldWidth, int worldHeight) {
-// move first
-x += dx;
-y += dy;
-
-
-int diameter = radius * 2;
-
-
-// Left wall
-if (x < 0) {
-x = 0; // clamp
-dx = -dx;
-}
-// Right wall
-else if (x + diameter > worldWidth) {
-x = worldWidth - diameter;
-dx = -dx;
-}
-
-
-// Top wall
-if (y < 0) {
-y = 0;
-dy = -dy;
-}
-// Bottom wall
-else if (y + diameter > worldHeight) {
-y = worldHeight - diameter;
-dy = -dy;
-}
-}
-}</code></pre>
-</details>
-
-
-<details class="lab-card">
-<summary>3️⃣ Call <code>update</code> from the component (one line!)</summary>
-
-
-<p>
-In your animation loop (timer), updating a ball now looks like this:
-</p>
-
-
-<pre><code class="language-java">ball.update(WIDTH, HEIGHT);
-repaint();</code></pre>
-
-
-<p>
-That’s it. The component knows the world size.
-The ball knows how to behave inside it.
-</p>
-
-<p>
-In our game drawing component, let's define the world size as constants variables. Also adjust <code>private int dy = 4; // </code>
-</p>
-
-
-<pre><code class="language-java">public class DrawingComponent extends JPanel {
-public static final int WIDTH = 500;
-public static final int HEIGHT = 200;
-
-
-public DrawingComponent() {
-setPreferredSize(new Dimension(WIDTH, HEIGHT));
-}
-}</code></pre>
-</details>
-
-
-<div class="lab-section" id="lab2">
-
-<h2>02. Add a Sprite (Image)</h2>
-<ol>
-
-
-<li>
-Download <a href="./tennis.png" target="_blank" class="resource-ref"><code>tennis.png</code></a>
-</li>
-  <li>Place <code>tennis.png</code> in the <b>same package</b> as <code>Ball.java</code></li>
-  <li>Load with <code>ImageIO.read(Ball.class.getResource("tennis.png"))</code></li>
-  <li>Try/Catch: if loading fails, draw a circle so the game still works</li>
-</ol>
-</div>
-<details class="lab-card">
-  <summary>1️⃣  Load the sprite (once) inside <code>Ball</code></summary>
-We do <b>not</b> want to reload the image for every ball object.
-Instead, we store it in a <b>static</b> field and load it once the first time any ball is created.
-</p>
-
-
-<ol>
-<li>Open <code>Ball.java</code>.</li>
-<li>Add two static fields: <code>sprite</code> and <code>triedLoad</code>.</li>
-
-<!-- </ol> -->
-
-
-<pre><code class="language-java">public class Ball implements Collidable {
-
-// ✅ sprite cache (shared by ALL balls)
-private static BufferedImage sprite = null;
-private static boolean triedLoad = false;
+<pre><code>src/
+  tier1/
+  tier2/
+  tier3/
 </code></pre>
-<details class="hint">
-<summary>What is a <code>BufferedImage</code>?</summary>
 
+<h3>Step 1: Add Direction Fields to the Ball</h3>
 
 <p>
-A <code>BufferedImage</code> is Java’s way of storing an image
-<b>fully loaded into memory</b>.
+  So far, the ball moves only when we press a key or button.
+  To make it move automatically, the ball needs to remember its direction.
 </p>
 
+<p>
+  Add two fields to the <code>Ball</code> class:
+</p>
 
 <ul>
-<li>“Buffered” = the pixel data is already available</li>
-<li>“Image” = something Java can draw on the screen</li>
+  <li><code>dx</code>: how much the ball moves left/right</li>
+  <li><code>dy</code>: how much the ball moves up/down</li>
 </ul>
 
+<pre><code>private int dx = 3;
+private int dy = 2;</code></pre>
 
 <p>
-Once an image is a <code>BufferedImage</code>, Java can:
+  These are fields because the ball must remember them between timer updates.
 </p>
-<ul>
-<li>draw it quickly every frame</li>
-<li>resize it when drawing</li>
-<li>read or modify individual pixels (advanced)</li>
-</ul>
 
+<h3>Step 2: Add an Update Method to Ball</h3>
 
 <p>
-In this lab, <code>ImageIO.read(...)</code> loads <code>tennis.png</code>
-and turns it into a <code>BufferedImage</code> so we can draw it with
+  Add a method named <code>update()</code>. This method will move the ball once.
 </p>
-</details>
-<!-- <ol> -->
-<li>Add a helper method <code>loadSpriteOnce()</code> and call it in the constructor.</li>
-    </ol>
-<pre><code class="language-java">
-private static void loadSpriteOnce() {
-if (triedLoad) return;
-triedLoad = true;
 
-try {
-// tennis.png must be in the SAME package as Ball.java
-sprite = ImageIO.read(Ball.class.getResource("tennis.png"));
-} catch (IOException | IllegalArgumentException ex) {
-sprite = null; 
-}
-}
-}</code></pre>
+<p>
+  Inside <code>update</code>, change the ball's position using <code>dx</code> and <code>dy</code>.
+</p>
 
 <pre><code>
+  public void update() {
+x += dx;
+y += dy;</code></pre>
+  }
+<p>
+  This means every time <code>update</code> runs, the ball moves slightly.
+</p>
 
-public Ball(int x, int y) {
-this.x = x;
-this.y = y;
-loadSpriteOnce();
-}
+<h3>Step 3: Reverse Direction at the Walls</h3>
 
+<p>
+  The ball should bounce when it reaches the edge of the screen.
+</p>
 
+<p>
+  If the ball hits the left or right wall, reverse <code>dx</code>. Use the same logic you built for shift()
+</p>
+<p>Add to the update() method:</p>
+<pre><code>	    // LEFT / RIGHT walls
+	    if (x <= 0) {
+	        x = 0;
+	        dx = -dx;
+	    }
+	    if (x + 2 * radius >= GameComponent.WIDTH) {
+	        x = GameComponent.WIDTH - 2 * radius;
+	        dx = -dx;
+	    }
 </code></pre>
 
-<h4>What each part does</h4>
-
-
-<ul>
-<li>
-<code>sprite</code><br>
-Stores the actual image data in memory.
-It is <b>static</b>, so <em>all</em> Ball objects share the same image.
-</li>
-
-
-<li>
-<code>triedLoad</code><br>
-Remembers whether we already attempted to load the image.
-This prevents trying to reload the file every time a new ball is created.
-</li>
-</ul>
-
-
-<h4>Inside <code>loadSpriteOnce()</code></h4>
-
-
-<ol>
-<li>
-<code>if (triedLoad) return;</code><br>
-If we already tried loading the image earlier, stop immediately.
-No work is repeated.
-</li>
-
-
-<li>
-<code>triedLoad = true;</code><br>
-Mark that we are now attempting the load.
-Even if loading fails, we won’t keep retrying every frame.
-</li>
-
-
-<li>
-<code>ImageIO.read(...)</code><br>
-Reads <code>tennis.png</code> from the same package as <code>Ball.java</code>
-and loads it into memory as a <code>BufferedImage</code>.
-</li>
-
-
-<li>
-<code>catch (...)</code><br>
-If the image is missing or unreadable,
-we safely fall back to drawing a circle instead.
-</li>
-</ol>
-
-
-<details class="hint">
-<summary>💡 Why not load the image inside <code>draw()</code>?</summary>
 <p>
-<code>draw()</code> runs many times per second.
-Loading an image there would be extremely slow.
-This helper ensures loading happens once, up front.
+  If the ball hits the top or bottom wall, reverse <code>dy</code>.
 </p>
-</details>
-
-
-<details class="hint">
-<summary>💡 Why is this method <code>static</code>?</summary>
-<p>
-The image belongs to the <b>class</b>, not to any single ball.
-Every ball uses the same sprite, so we store and load it once.
-</p>
-</details>
-</details>
-
-<details class="lab-card">
-<summary>2️⃣ How the sprite replaces the red circle</summary>
-
-
-<p>
-Your ball used to be drawn like this:
-</p>
-
-
-<pre><code class="language-java">g2.setColor(Color.RED);
-g2.fillOval(x, y, diameter, diameter);</code></pre>
-
-
-<p>
-That code <b>always</b> draws a red circle.
-To replace it with a sprite, we must decide:
-</p>
-
-
-<blockquote>
-“Do we have an image loaded?
-If yes → draw the image.
-If no → fall back to the circle.”
-</blockquote>
-
-
-<h4>✅ The key idea</h4>
-<p>
-The sprite does not automatically replace the circle.
-<b>Your <code>draw</code> method decides what gets drawn.</b>
-</p>
-
-
-<h4>The updated <code>draw</code> method</h4>
-
-
-<pre><code class="language-java">public void draw(Graphics2D g2) {
-int diameter = radius * 2;
-
-
-if (sprite != null) {
-// sprite replaces the circle
-g2.drawImage(sprite, x, y, 2*radius, 2*radius, null);
-} else {
-// fallback if sprite failed to load
-g2.setColor(Color.RED);
-g2.fillOval(x, y, 2*radius, 2*radius);
-}
+<pre><code>// TOP / BOTTOM walls
+	    if (y <= 0) {
+	        y = 0;
+	        dy = -dy;
+	    }
+</code></pre>
+<pre><code>if (y + 2 * radius >= GameComponent.HEIGHT) {
+	        y = GameComponent.HEIGHT - 2 * radius;
+	        dy = -dy;
 }</code></pre>
 
-
-<h4>What’s happening here (step by step)</h4>
-<ol>
-<li>
-We check <code>sprite != null</code>
-<br>
-→ This means the image loaded successfully.
-</li>
-<li>
-If true, we call <code>drawImage</code>
-<br>
-→ The sprite is drawn instead of the circle.
-</li>
-<li>
-If false, we draw the red circle
-<br>
-→ The program still works even without the image.
-</li>
-</ol>
-
-
-<details class="hint">
-<summary>💡 Why do we keep the red circle code?</summary>
 <p>
-It’s a safety net.
-If the image path is wrong or the file is missing,
-the game still runs and you can debug visually.
+  Remember that the ball's width and height are both <code>2 * radius</code>.
 </p>
-</details>
 
+<h3>Step 4: Add a Timer to GameComponent</h3>
 
-<h4>✅ Final result</h4>
+<p>
+  A <code>Timer</code> lets Java run code over and over after a short delay.
+  We will use it to create animation.
+</p>
+
+<p>
+  Add this import to <code>GameComponent</code>:
+</p>
+
+<pre><code>import javax.swing.Timer;</code></pre>
+
+<p>
+  Add a field for the timer:
+</p>
+
+<pre><code>private Timer timer;</code></pre>
+
+<h3>Step 5: Start the Timer in the Constructor</h3>
+
+<p>
+  In the <code>GameComponent</code> constructor, create and start the timer.
+</p>
+
+<p>
+  The timer should do two things:
+</p>
+
 <ul>
-<li>Sprite loaded → red circle is <b>not drawn</b></li>
-<li>Sprite missing → red circle appears instead</li>
+  <li>call <code>ball.update()</code></li>
+  <li>call <code>repaint()</code></li>
 </ul>
 
+<pre><code>timer = new Timer(30, e -&gt; {
+  ball.update();
+  repaint();
+});
+
+timer.start();</code></pre>
 
 <p>
-You didn’t “delete” the circle.
-You made the sprite <b>override it</b> by drawing first.
+  The number <code>30</code> means the timer runs about every 30 milliseconds.
 </p>
+
+<h3>Step 6: Understand the Animation Loop</h3>
+
+<p>
+  Animation is created by updating the ball and redrawing the screen repeatedly.
+</p>
+
+<pre><code>update position → repaint screen → update position → repaint screen</code></pre>
+
+<p>
+  The image is not loaded every time. The image was loaded once into a
+  <code>BufferedImage</code>. During repainting, Java only redraws it.
+</p>
+
+<h3>Step 7: Keep Repaint in GameComponent</h3>
+
+<p>
+  Do not call <code>repaint()</code> inside <code>Ball</code>.
+</p>
+
+<p>
+  The <code>Ball</code> updates its own position. The <code>GameComponent</code> controls when
+  the screen redraws.
+</p>
+
+<pre><code>Ball: updates position
+GameComponent: repaints screen</code></pre>
 </details>
+        </div>
+      
+        </div>
+        </div>
+
+<!-- <div class="lab-section" id="lab1">
+  <h2>Lab 1: Recursion Practice</h2>
+  <p>
+    In CodingBat <a href="https://codingbat.com/java/Recursion-1">Recursion-1</a>," complete the next 6 problems: count7, count8, powerN, countX, countHi, changeXY
+  </p>
+
+    <p>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example MyRecursion.java)</p>
+</div> -->
+        
+        <!-- <div class="lab-section" id="lab2">
+          <h2 style="color:black">My Counter</h2>
+        <p>
+            In this lab, you will create a Swing component with a button that increments the count
+        </p>
+        
+        <h3>Task Description</h3>
+        <p>
+            <image src="lab12a.png" alt="lab12 a" width="400"/>
+        </p>
+        <ul>
+          <li>A <code>JLabel</code> to describe the counter</li>
+          <li>A non‑editable <code>JTextField</code> to display the current count</li>
+          <li>A <code>JButton</code> labeled “Count” that, when clicked, increments the counter</li>
+        </ul>
+
+        <h3>Adding ActionListener to the Button</h3>
+    <p>Whenever the “Count” button is clicked, we want to execute  <code>setValues()</code> method:</p>
+    <ol>
+      <li>Add the listener registration at the end of the constructor:
+        <pre><code>button.addActionListener(e -> setValues());</code></pre>
+      </li>
+      <li>Implement the <code>setValues()</code> method to:
+        <ol type="a">
+          <li>Increment the counter</li>
+          <li>Update the text field: <code>text.setText(count + "");</code></li>
+        </ol>
+
+      </li>
+    </ol>
+
+        
+        
+
+        </div> -->
+
+        <!-- <div class="lab-section" id="lab3">
+          <h2 style="color:black">My Accumulator</h2>
+          <h3>Overview</h3>
+    <p>
+      In this lab you will create a Swing <code>JPanel</code> that reads integer values,
+      keeps a running total, and displays the accumulated sum. You already have a
+      viewer class with a <code>JFrame</code> set up, you will build just the panel class.
+    </p>
+          <h3>Task Description</h3>
+          <p>
+              <image src="Lab12b.png" alt="lab12 b" width="400"/>
+          </p>
+          <section id="setup">
+          <h3>1. Setup</h3>
+          <ol>
+            <li>Create a new class named <code>MyAccumulator</code> that <em>extends</em> <code>JPanel</code></li>
+            <li>Ensure your project has necessary Swing imports</li>
+            <li>Add your panel to the existing frame in the viewer’s <code>main()</code> method</li>
+          </ol>
+        </section>
+      
+        <section id="layout">
+          <h3>2. Layout</h3>
+          <p>
+            Use a 2×2 grid to arrange the labels and text fields. For example:
+          </p>
+          <pre><code>setLayout(new GridLayout(2, 2, 5, 5));</code></pre>
+          <p>
+            – Row 1: A label “Enter an Integer:” and an editable text field for input<br>
+            – Row 2: A label “Accumulated Sum:” and a non‐editable text field for output
+          </p>
+          <p>Note: because yoru grid is 2x2, the panel will display your components in the order (see the screenshot) when you use <code>add()</code></p>
+        </section>
+      
+        <section id="event-wiring">
+          <h3>3. Event</h3>
+          <p>
+            Create a method processInput() and Configure the input text field so that when the user presses Enter, an event handler:
+          </p>
+          <ul>
+     
+            <li>Reads the integer from the input field. Note to read input use <code>getText()</code>. It is a good practice to trim text from spaces <code>.getText().trim()</code>
+
+            </li>
+            <li>Adds it to a running total variable (you need Integer here)</li>
+            <li>Clears the input field</li>
+            <li>Updates the output field with the new sum (you need String here)
+              <pre><code>// to parse text to integer use Integer.parseInt()
+                to parse Integer to string use Integer.toString()
+                              </code></pre>
+            </li>
+          </ul>
+          <p>
+            Use a lambda expression to register the listener (no loops or error checks needed here).
+          </p>
+        </section> -->
+
+          </div>
+        </div>
+        </div>
 
 
-</section>
 
-
-</body>
-</html>
+        </body>
+        </html>
