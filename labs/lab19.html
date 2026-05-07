@@ -6,8 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-
-body {
+  body {
           font-family: Arial, sans-serif;
           line-height: 1.5;
           margin: 0;
@@ -190,7 +189,9 @@ padding: 20px;
       background-color: #ddd;
     }
     code {
-        color: red;
+        /* color: red; */
+        font-weight: 600;
+        font-family: Consolas, "Courier New", monospace;
     }
     .code-window {
       background-color: #272822;
@@ -319,11 +320,11 @@ details.hint > summary {
   </style>
 </head>
 <body>
-  <div id="header">
+   <div id="header">
     <a id="index_link" href="../index.html">CSSE 220</a>
     <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
     <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="./design-principles.html">Design</a>
+    <a id="quiz_link" href="../design-principles.html">Design</a>
     <a id="quiz_link" href="../labs.html">Labs</a>
     <a id="quiz_link" href="../homework.html">Homework</a>
     <a id="quiz_link" href="../exams.html">Exams</a>
@@ -331,344 +332,405 @@ details.hint > summary {
     <a id="resources_link" href="../resources.html">Resources</a>
     <div style="clear:both;"></div>
 </div>
-<section id="content">
-<!-- <div id="content"> -->
-    <h1>Lab Assignment 19</h1>
-    <nav id="lab-nav">
-        <ul>
-    <li><a href="#lab1">01. File IO Levels</a></li>
-          <li><a href="#lab1">02. File IO Score</a></li>
+<div id="content">
+    <h1>Lab Assignment 19 (Tier 7)</h1>
+    <div id="main-content">
+         <div class="lab-section" id="lab">
 
 
+        
+<!-- <details class="lab-card" id="lab-01">
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Recursion3</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+
+<h2>Instructions</h2>
+
+  <ol>
+    <li>
+      <strong>Inside the <code>lab14</code> package (from the last lab), create a new class named <code>Recursion3</code>.</strong>
+      <br>
+      This class will contain <em>all</em> of your methods for this lab.
+    </li>
+
+    <li>
+      <strong>Open CodingBat (Recursion-1):</strong>
+      <br>
+      Go to 
+      <a href="http://codingbat.com/java/Recursion-1" target="_blank">
+        https://codingbat.com/java/Recursion-1
+      </a>
+    </li>
+
+    <li>
+      <strong>Complete the following CodingBat problems:</strong>
+      <ul>
+        <li><code>array6</code></li>
+        <li><code>array11</code></li>
+        <li><code>array220</code></li>
+        <li><code>allStar</code></li>
+        <li><code>pairStar</code></li>
+        <li><code>endX</code></li>
+        
+   
+      </ul>
+    </li>
+
+    <li>
+      <strong>For each problem:</strong>
+      <ul>
+        <li>Consult the recursion resources: <a href="../recursion.html" target="_blank">Recursion Guide</a></li>
+        <li>Write the method in CodingBat first</li>
+        <li>Once it passes all tests, copy the method into <code>Recursion3.java</code></li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Save Recursion3 class with all 6 recursion problems.</strong>
       
-         
-          <!-- Add more lab links as needed -->
-        </ul>
-      </nav>
-      <section>
-<!-- Lab Navigation Menu -->
-<!-- <div id="main-content"> -->
+    </li>
 
-<div class="lab-section" id="lab1">
-<!-- <div class="lab-section" id="lab1"> -->
-  <!-- <section id="lab1"> -->
-<h2>Lab: Exceptions + Loading Levels + Scanner (Game Dev)</h2>
-<p>You may reuse your Ball Lab project as the starting point for this lab.
-For Part 1, you do NOT need to change the animation loop or physics.
-Treat the Ball as the player and focus only on loading and validating a level from a file.</p>
-  <div class="callout">
-    <p><b>Goal:</b> Build a real "final-project-ish" feature: load a level from a text file, handle failures gracefully, then add a player name via <code>Scanner</code> and display it on the HUD.</p>
-    <p><b>Deliverables:</b> Demo + Your code</p>
-  </div>
-
-
-<details class="lab-card" open>
-  <summary>Part 1: Load a Level File and Place the Ball (Scanner + Exceptions)</summary>
-
-  <div class="callout">
-    <p><b>Goal:</b> Read a text file level (ASCII grid), translate characters, and use it to set the Ball’s starting position. That’s it. No collisions. No enemies. No fancy game logic.</p>
-    <p><b>What you will demonstrate:</b> Scanner file reading + validating characters + handling missing files.</p>
-  </div>
-
-  <h3>1) Create the level file</h3>
-  <p>In Eclipse: Right-click your project → <b>New → File</b> → name it <code>level1.txt</code>.</p>
-  <p><b>Place the file directly at the same level as <code>src</code></b> (not inside a Java package).</p>
-
-  <p>Paste this sample level:</p>
-  <pre><code>***E***
-*P...E*
-*******</code></pre>
-
-  <p><b>Legend:</b></p>
-  <ul>
-    <li><code>P</code> = Ball start location (exactly one)</li>
-    <li><code>*</code> = wall tile (we will not use collisions yet)</li>
-    <li><code>E</code> = enemy tile (ignore for Part 1; just treat as a tile)</li>
-    <li><code>.</code> or space = empty tile</li>
-  </ul>
-
-
-  <h3>Step 2: Read the level file - DrawingComponent</h3>
-  <p>Read the file inside yoru constructor</p>
-  <p>Scan and Read the file in the constructor</p>
-
-  <pre><code>
-    File file = new File("level1.txt");
-    Scanner scanner = new Scanner(file);
-  </code></pre>
-  <p> Add try/catch</p>
-  <pre><code>
-    try {
-  Scanner scanner = new Scanner(file);
-  while (scanner.hasNextLine()) {
-    String line = scanner.nextLine();
-    System.out.println(line);
-  }
-
-  scanner.close();
-} catch (FileNotFoundException e) {
-  System.out.println("level1.txt not found");
-}</code></pre>
-
-<h3>Step 3: Read the characters</h3>
-
-<p>
+    <li>
+      <strong>Submit <code>Recursion3.java</code> to Gradescope.</strong>
+    </li>
+    <li>Make sure your file is on the package lab14</li>
+  </ol>
+</details> -->
+<details class="lab-card">
+  <summary>
+  <span class="lab-label">01.</span>
+    <span class="lab-title">Recursion Tracing</span>
+    <span class="lab-tag">Practice</span>
   
-  Place the ball after your file reading code to confirm the file is read
-After you confirm the file can be read, update your code to examine
-<b>each character</b> in the level file.
-</p>
+  </summary>
+<h3>Instructions</h3>
+      <p>
+    In this activity, you will review recursion tracing.
+  </p>
 
-<p>
-Use a nested loop:
-</p>
+  <h3>Your Task</h3>
+
+  <p>
+    Use the provided worksheet practice.
+  </p>
+  <ul>
+    <li><a href="../worksheets_files/worksheetTrace1.pdf">Practice Sheet</a></li>
+    
+</ul>
+  
+
+
 <ul>
-  <li>The <code>while</code> loop reads each line (row)</li>
-  <li>The <code>for</code> loop reads each character in the line (column)</li>
+  <li>Show every recursive method call in order.</li>
+  <li>Clearly identify the base case condition.</li>
+  <li>Show whether the condition is <code>true</code> or <code>false</code>.</li>
+  <li>Draw arrows showing which method call returns to which previous call.</li>
+  <li>Write the return values as recursion “unwinds” back up.</li>
+  <li>Do not skip recursive calls even if the pattern repeats.</li>
 </ul>
 
-<pre><code>int row = 0;
+<p>
+  Use the recursion tracing framework shown in class and posted in the lecture slides: <a href="https://share.evernote.com/note/e8320333-efa6-eada-1367-b3e3098f56da" target="_blank">see slides</a>.
+</p>
 
-while (scanner.hasNextLine()) {
-  String line = scanner.nextLine();
-
-  for (int col = 0; col < line.length(); col++) {
-    char c = line.charAt(col);
-
-    if (c == 'P') {
-	      System.out.println(c);
-	      
-  }
-  }
-
-  row++;
-}
-
-scanner.close();
-</code></pre>
+  </details>
+<details class="lab-card">
+  <summary>
+  <span class="lab-label">02.</span>
+    <span class="lab-title">Prep (Tier7): HUD & GameOver </span>
+    <span class="lab-tag">Final Project</span>
+  
+  </summary>
 
 
-
-<h3>Step 4: Extract the position</h3>
+  <p>
+    In this tier, we will display the score and stop the game.
+  </p>
+  
+<h3>Importing a Tier Package (ZIP File)</h3>
+<p><strong>Starter ZIP:</strong> <a href="./Tier7.zip">Download starter</a></p>
+<p><strong>Solution ZIP:</strong> <a href="./Tier7Solution.zip">Download solution</a></p>
 
 <p>
-Use the row and column where the character <code>P</code> appears to compute
-the Ball’s starting position.
+  The ZIP file is a <strong>package</strong>, not a full Java project.
+  You will import it into your existing project (the one you used for previous tiers).
+</p>
+
+<h4>Recommended Method (Drag and Drop)</h4>
+
+<ol>
+  <li>Unzip the downloaded file on your computer</li>
+  <li>Open Eclipse and locate your project</li>
+  <li>Expand your project and find the <code>src</code> folder</li>
+  <li>Drag the unzipped folder (<code>tier6</code>) into <code>src</code></li>
+  <li>When prompted, choose <strong>Copy files</strong></li>
+</ol>
+
+
+
+<h3>Step 1: Update a Level File</h3>
+
+<p>
+    So far, the level may only contain one ball. Now update the level so it can
+    include a player and multiple balls.
+  </p><h3>Step 1: Add Score Fields to GameModel</h3>
+
+<p>
+  The game now needs to remember how many balls were in the level and how many
+  balls the player has removed.
 </p>
 
 <p>
-Convert grid coordinates to pixel coordinates using a tile size.
+  Add these fields to <code>GameModel</code>:
 </p>
 
-<pre><code>// Example tile size (pixels)
-final int TILE_SIZE = 200;
+<pre><code>private int totalBalls;
+private int ballsLost;</code></pre>
 
-// Inside the nested row/column loop
-if (c == 'P') {
-  startX = col * TILE_SIZE;
-  startY = row * TILE_SIZE;
+<p>
+  <code>totalBalls</code> stores how many balls existed at the start.
+  <code>ballsLost</code> stores how many balls have disappeared.
+</p>
 
 
+<h3>Step 2: Initialize the Score</h3>
+
+<p>
+  After the level is loaded and the balls have been added to the list,
+  initialize the score.
+</p>
+
+<pre><code>loadLevel();
+
+totalBalls = balls.size();
+ballsLost = 0;</code></pre>
+
+<p>
+  This should happen after <code>loadLevel()</code>, because the model needs to
+  know how many balls were actually created.
+</p>
+
+<h3>Step 3: Update the Score When a Ball Disappears</h3>
+
+<p>
+  Find the part of <code>GameModel</code> where the player collides with a ball
+  and the ball is removed from the list.
+</p>
+
+<p>
+  When a ball is removed, increase <code>ballsLost</code>.
+</p>
+
+<pre><code>balls.remove(i);
+ballsLost++;</code></pre>
+
+<p>
+  The counter should change at the same time as the game state changes.
+</p>
+
+<h3>Step 4: Add Getter Methods</h3>
+
+<p>
+  The fields should stay private. To let the screen display the score, add
+  getter methods to <code>GameModel</code>.
+</p>
+
+<pre><code>public int getTotalBalls() {
+    return totalBalls;
 }
-</code></pre>
 
-  <h3>Step 5: Update Field in Drawing component</h3>
-  <p>Add startX and startY variables</p>
-<pre><code>int startX = 80;
-int startY = 100;</code></pre>
-<h3>Update the ball object</h3>
-<p>Create the Ball after reading the file. Keep ball as a field, not a local variable
-
-Do NOT create the Ball before reading the file</p>
-<p>Place the ball after your scanned the level file to incorporate the change</p>
-<pre><code>ball = new Ball(startX,startY,14);</code></pre>
-</details></div><!-- </section> -->
-<!-- <div class="lab-section" id="lab2">
-
-    <h2 style="color:black">1. File IO in swing</h2>
-    <p>Objective: create a Game panel that stores and displays the scores and save them locally</p>
-
-
-            <h3>1. Fields</h3>
-            <pre><code>private int score = 0;
-private JLabel scoreLabel = new JLabel("Score: 0");
-private JButton addPointButton = new JButton("Add Point");
-private JButton endGameButton = new JButton("End Game");</code></pre>
-            <ul>
-              <li><strong>score</strong>: holds the current game score (model state)</li>
-              <li><strong>scoreLabel</strong>: displays the score to the user (view)</li>
-              <li><strong>addPointButton</strong>: when clicked, increases the score</li>
-              <li><strong>endGameButton</strong>: when clicked, ends the game, saving/loading scores</li>
-            </ul>
-
-          
-
-            <h3>2. Constructor &amp; Layout</h3>
-            <pre><code>public GamePanel() {
-   setLayout(new FlowLayout());
-   scoreLabel.setFont(scoreLabel.getFont().deriveFont(24f));
-   add(scoreLabel);
-  add(addPointButton);
-  add(endGameButton);
-          
-  addPointButton.addActionListener(e -> addScores());
-  endGameButton.addActionListener(e -> onEndGame());
+public int getBallsLost() {
+    return ballsLost;
 }</code></pre>
-            <ul>
-              
-              <li><code>deriveFont(24f)</code>: makes the score text larger and more visible</li>
-              
-            </ul>
 
-          
-            <h3>3. Incrementing the Score</h3>
-            <pre><code>private void addScores() {
-            score++;
-            scoreLabel.setText("Score: " + score);
-          }</code></pre>
-            <ul>
-              <li>Increase <code>score</code> by one</li>
-              <li>Update the label so the view matches the model</li>
-            </ul>
+<p>
+  The model owns the data. Other classes can ask for the data through methods.
+</p>
 
-          
-            <h3>4. Ending the Game</h3>
-            <pre><code>private void onEndGame() {
-            String player = JOptionPane.showInputDialog(this, "Enter your name", "Player");
-            if (player == null || player.isBlank()) player = "Anonymous";
-          
-            ScoreManager.saveScore(player, score);
-            showLeaderboard();
-          
-            score = 0;
-            scoreLabel.setText("Score: 0");
-          }</code></pre>
-            <ul>
- 
-              <li>Defaults to “Anonymous” if they cancel or enter nothing.</li>
-              <li><code>ScoreManager.saveScore(...)</code>: appends the name and score to a file (will create later)</li>
-              <li><code>showLeaderboard()</code>: reads and displays top scores (will create later)</li>
-              <li>Resets <code>score</code> and label for a fresh new game</li>
-            </ul>
 
-            <h3>5. Displaying the Leaderboard</h3>
-            <pre><code>private void showLeaderboard() {
-            List<String> lines = ScoreManager.loadScores();
-              StringBuilder html = new StringBuilder(
-                "&lt;html&gt;&lt;h2&gt;Leaderboard&lt;/h2&gt;&lt;ol&gt;"
-            );
-            for (int i = 0; i &lt; lines.size() && i &lt; 5; i++) {
-              String line = lines.get(i);
-                String[] parts = line.split(",", 2);
-                html.append("&lt;li&gt;")
-                    .append(parts[0])    // player name
-                    .append(": ")
-                    .append(parts[1])    // score
-                    .append("&lt;/li&gt;");
-            }
-            html.append("&lt;/ol&gt;&lt;/html&gt;");
-          
-            JOptionPane.showMessageDialog(
-              this,
-              new JLabel(html.toString()),
-              "Top Scores",
-              JOptionPane.PLAIN_MESSAGE
-            );
-          }</code></pre>
-            <ul>
-              <li><code>ScoreManager.loadScores()</code>: returns raw “name,score” lines from the file</li>
-              <li><code>StringBuilder + HTML</code>: builds a simple ordered list for Swing’s <code>JLabel</code></li>
-              <li><code style="color:black">showMessageDialog</code>: shows the leaderboard in a modal dialog</li>
-              <li style="color:black">Limits to top 5 entries</li>
-            </ul>
-            <h3 style="color:black">ScoreManager</h3>
-            <p>
-              The ScoreManager class handles all file I/O related to persisting and retrieving game scores
-              It exposes two static methods:
-            </p>
-            <ol>
-              <li><code style="color:red">saveScore(String player, int score)</code></li>
-              <li><code style="color:red">loadScores()</code></li>
-            </ol>
-          
-            <h3>1. File Path Constant</h3>
-            <pre><code style="color:red">
-          private static final String SCORES_FILE = "scores.txt";
-            </code></pre>
-            <ul>
-              <li><strong>Why a constant?</strong> Centralizes the filename so if you ever change where scores are saved, you update in one place</li>
-              <li><strong>Relative path:</strong> The file lives in the working directory (usually your project root or wherever the JVM was launched)</li>
-            </ul>
-          
-            <h3>2. Saving a Score</h3>
-            <pre><code style="color:red">
-          public static void saveScore(String player, int score) {
-              try (PrintWriter out = 
-                       new PrintWriter(
-                         new FileWriter(SCORES_FILE, true)  // append mode
-                       )
-                 ) {
-                  out.println(player + "," + score);
-              } catch (IOException e) {
-                  System.err.println("Error saving score: " + e.getMessage());
-              }
-          }
-            </code></pre>
-            <ul>
-              <li><strong>Append mode:</strong> <code style="color:red">new FileWriter(SCORES_FILE, true)</code> opens the file without erasing existing lines</li>
-              <li><strong>PrintWriter:</strong> wraps the <code style="color:red">FileWriter</code> to provide <code style="color:red">println(...)</code> convenience</li>
-              <li><strong>Try block</strong> ensures <code style="color:red">out.close()</code> is called automatically, flushing and releasing the file handle</li>
-              <li><strong>Exception handling:</strong> any <code style="color:red">IOException</code> (disk full, permission denied) is caught and logged to <code style="color:red">System.err</code> without crashing the game</li>
-            </ul>
-          
-            <h3>3. Loading Scores</h3>
-            <pre><code style="color:red">
-          public static List&lt;String&gt; loadScores() {
-              List&lt;String&gt; lines = new ArrayList&lt;&gt;();
-              File file = new File(SCORES_FILE);
-              if (!file.exists()) {
-                  return lines;  // no scores file yet,  return empty list
-              }
-          
-              try (BufferedReader in = 
-                       new BufferedReader(new FileReader(file))
-                 ) {
-                  String line;
-                  while ((line = in.readLine()) != null) {
-                      lines.add(line.trim());
-                  }
-              } catch (IOException e) {
-                  System.err.println("Error loading scores: " + e.getMessage());
-              }
-          
-              return lines;
-          }
-            </code></pre>
-            <ul>
-              <li><strong>Return type:</strong> <code style="color:red">List&lt;String&gt;</code> where each element is a line in <code style="color:red">"player,score"</code> format</li>
-              <li><strong>Existence check:</strong> <code style="color:red">if (!file.exists())</code> avoids a <code style="color:red">FileNotFoundException</code> on first run</li>
-              <li><strong>BufferedReader:</strong> efficient line-by-line reading, auto-closed by try block</li>
-              <li><strong>Trim:</strong> <code style="color:red">line.trim()</code> removes stray whitespace before/after each line</li>
-              <li><strong>Error handling:</strong> logs I/O errors but returns whatever lines were successfully read (or an empty list)</li>
-            </ul>
-          
-            <h3>4. How to Use in Your GamePanel</h3>
-            <pre><code style="color:red">
-          // Save a new score:
-          ScoreManager.saveScore(playerName, currentScore);
-          
-          // Later, display leaderboard:
-          List<String> allLines = ScoreManager.loadScores();
-          // split each "player,score" line in your UI code...
-            </code></pre> -->
-          
-            <h3>5. Best Practices</h3>
-            <ul>
-              <li><strong>Single Responsibility:</strong> File I/O is isolated in ScoreManager; your UI code does not need to know the details</li>
-              <li><strong>Robustness:</strong> All exceptions are caught and reported; the game continues even if the disk is full or the file is missing</li>
-              <li><strong>Maintainability:</strong> Using constants and standard Java I/O patterns makes the code easy to understand and update</li>
-            </ul>
-          </section>
+<h3>Step 5: Draw the Scoreboard</h3>
+
+<p>
+  The <code>GameComponent</code> draws what the user sees. Use the getter methods
+  from <code>GameModel</code> to display the score.
+</p>
+
+<p>
+  Add this near the end of <code>paintComponent</code>:
+</p>
+
+<pre><code>g2.drawString("Total Balls: " + model.getTotalBalls(), 30, 60);
+g2.drawString("Balls Lost: " + model.getBallsLost(), 30, 100);</code></pre>
+
+<p>
+  Draw the scoreboard after the background so the text is visible.
+</p>
+
+h3>Step 6: Add Game Over Logic</h3>
+
+<p>
+  The game should be over when all balls are gone.
+</p>
+
+<p>
+  Add this method to <code>GameModel</code>:
+</p>
+
+<pre><code>public boolean isGameOver() {
+    return balls.isEmpty();
+}</code></pre>
+
+<p>
+  The model decides whether the game is over because the model owns the game state.
+</p>
+
+<h3>Step 7: Display Game Over</h3>
+
+<p>
+  The <code>GameComponent</code> should draw a message when the game is over.
+  Put this near the end of <code>paintComponent</code> so it appears on top of
+  the game.
+</p>
+
+<pre><code>if (model.isGameOver()) {
+    g2.drawString("GAME OVER!!!!!", 100, 70);
+}</code></pre>
+
+<h3>Step 8: Stop Movement After Game Over</h3>
+
+<p>
+  Once the game is over, the player should stop moving.
+</p>
+
+<p>
+  In the timer, update the model only while the game is not over.
+</p>
+
+<pre><code>timer = new Timer(30, e -&gt; {
+    if (!model.isGameOver()) {
+        model.update();
+    }
+
+    repaint();
+});</code></pre>
+
+
+
+</details>
+        </div>
+      
+        </div>
+        </div>
+
+<!-- <div class="lab-section" id="lab1">
+  <h2>Lab 1: Recursion Practice</h2>
+  <p>
+    In CodingBat <a href="https://codingbat.com/java/Recursion-1">Recursion-1</a>," complete the next 6 problems: count7, count8, powerN, countX, countHi, changeXY
+  </p>
+
+    <p>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example MyRecursion.java)</p>
+</div> -->
+        
+        <!-- <div class="lab-section" id="lab2">
+          <h2 style="color:black">My Counter</h2>
+        <p>
+            In this lab, you will create a Swing component with a button that increments the count
+        </p>
+        
+        <h3>Task Description</h3>
+        <p>
+            <image src="lab12a.png" alt="lab12 a" width="400"/>
+        </p>
+        <ul>
+          <li>A <code>JLabel</code> to describe the counter</li>
+          <li>A non‑editable <code>JTextField</code> to display the current count</li>
+          <li>A <code>JButton</code> labeled “Count” that, when clicked, increments the counter</li>
+        </ul>
+
+        <h3>Adding ActionListener to the Button</h3>
+    <p>Whenever the “Count” button is clicked, we want to execute  <code>setValues()</code> method:</p>
+    <ol>
+      <li>Add the listener registration at the end of the constructor:
+        <pre><code>button.addActionListener(e -> setValues());</code></pre>
+      </li>
+      <li>Implement the <code>setValues()</code> method to:
+        <ol type="a">
+          <li>Increment the counter</li>
+          <li>Update the text field: <code>text.setText(count + "");</code></li>
+        </ol>
+
+      </li>
+    </ol>
+
+        
+        
+
+        </div> -->
+
+        <!-- <div class="lab-section" id="lab3">
+          <h2 style="color:black">My Accumulator</h2>
+          <h3>Overview</h3>
+    <p>
+      In this lab you will create a Swing <code>JPanel</code> that reads integer values,
+      keeps a running total, and displays the accumulated sum. You already have a
+      viewer class with a <code>JFrame</code> set up, you will build just the panel class.
+    </p>
+          <h3>Task Description</h3>
+          <p>
+              <image src="Lab12b.png" alt="lab12 b" width="400"/>
+          </p>
+          <section id="setup">
+          <h3>1. Setup</h3>
+          <ol>
+            <li>Create a new class named <code>MyAccumulator</code> that <em>extends</em> <code>JPanel</code></li>
+            <li>Ensure your project has necessary Swing imports</li>
+            <li>Add your panel to the existing frame in the viewer’s <code>main()</code> method</li>
+          </ol>
+        </section>
+      
+        <section id="layout">
+          <h3>2. Layout</h3>
+          <p>
+            Use a 2×2 grid to arrange the labels and text fields. For example:
+          </p>
+          <pre><code>setLayout(new GridLayout(2, 2, 5, 5));</code></pre>
+          <p>
+            – Row 1: A label “Enter an Integer:” and an editable text field for input<br>
+            – Row 2: A label “Accumulated Sum:” and a non‐editable text field for output
+          </p>
+          <p>Note: because yoru grid is 2x2, the panel will display your components in the order (see the screenshot) when you use <code>add()</code></p>
+        </section>
+      
+        <section id="event-wiring">
+          <h3>3. Event</h3>
+          <p>
+            Create a method processInput() and Configure the input text field so that when the user presses Enter, an event handler:
+          </p>
+          <ul>
+     
+            <li>Reads the integer from the input field. Note to read input use <code>getText()</code>. It is a good practice to trim text from spaces <code>.getText().trim()</code>
+
+            </li>
+            <li>Adds it to a running total variable (you need Integer here)</li>
+            <li>Clears the input field</li>
+            <li>Updates the output field with the new sum (you need String here)
+              <pre><code>// to parse text to integer use Integer.parseInt()
+                to parse Integer to string use Integer.toString()
+                              </code></pre>
+            </li>
+          </ul>
+          <p>
+            Use a lambda expression to register the listener (no loops or error checks needed here).
+          </p>
+        </section> -->
+
+          </div>
+        </div>
+        </div>
+
+
 
         </body>
         </html>
