@@ -596,17 +596,18 @@ public void testEmptyArray() {
 
 
 
- <h3>Step 1: Add a Grid to the Model</h3>
+ <h3>Step 1: Add a Grid Field to GameModel</h3>
 
-  <p>
-    In <code>GameModel</code>, add a field that stores the level layout:
-  </p>
+ <p>
+  In <code>GameModel</code>, add a field for the level map:
+</p>
 
-  <pre><code>private char[][] grid;</code></pre>
-
-  <p>
-    Each position in the grid represents one tile in the game world.
-  </p>
+<pre><code>private char[][] grid;</code></pre>
+ <p>
+  The grid stores the tiles from the level file, such as walls, empty spaces,
+  balls, and the player start location.
+</p> 
+<!-- 
 
   <p>
     Example:
@@ -614,36 +615,57 @@ public void testEmptyArray() {
 
   <pre><code>grid[0][0] == '*'
 grid[1][3] == 'B'
-grid[1][7] == 'P'</code></pre>
+grid[1][7] == 'P'</code></pre> -->
 
 
-<h3>Step 2: Read the File Into the Grid</h3>
+<h3>Step 2: Read the Level File into a List of Lines</h3>
+<p>
+  Inside <code>loadLevel</code>, first read the whole file into an
+  <code>ArrayList&lt;String&gt;</code>. Note - remove int row = 0; and row++ from the while loop (from Tier7).
+</p>
 
+<pre><code>ArrayList&lt;String&gt; lines = new ArrayList&lt;&gt;();
+
+while (scanner.hasNextLine()) {
+    lines.add(scanner.nextLine());
+}</code></pre>
 
 <p>
-  Your game already reads a level file line-by-line using a
-  <code>Scanner</code>. However, now we want to permanently store the map
-  inside a 2D array.
+  We do this because Java needs to know how many rows the grid has before
+  creating the array.
 </p>
+<!-- 
+
 
 <p>
   The challenge is that Java needs to know how many rows exist before
   creating:
+</p> -->
+
+<h3>Step 3: Create the Grid After Reading the File</h3>
+<p>
+  Inside <code>loadLevel</code>, after the file has been read:
 </p>
 
-<pre><code>char[][] grid</code></pre>
+<pre><code>grid = new char[lines.size()][];</code></pre>
 
-<p>
-  One simple approach is:
+<!-- <p>
+  This creates one row for each line in the level file.
+</p> -->
+
+<!-- <pre><code>char[][] grid</code></pre> -->
+
+<!-- <p>
+  This is a possible approach:
 </p>
 
 <ol>
   <li>Read and temporarily store all lines from the file</li>
   <li>Create the grid using the number of rows</li>
   <li>Convert each line into a row of characters</li>
-</ol>
+</ol> -->
 
-<h4>Part A: Store All Lines</h4>
+<!-- <h4>Part A: Store All Lines</h4>
 
 <p>
   Create an <code>ArrayList&lt;String&gt;</code>:
@@ -657,9 +679,9 @@ grid[1][7] == 'P'</code></pre>
 
 <pre><code>while (scanner.hasNextLine()) {
     lines.add(scanner.nextLine());
-}</code></pre>
+}</code></pre> -->
 
-<p>
+<!-- <p>
   Example:
 </p>
 
@@ -673,15 +695,15 @@ grid[1][7] == 'P'</code></pre>
 
 <pre><code>lines.get(0) → "***********"
 lines.get(1) → "*..B...P..*"
-lines.get(2) → "*..***....*"</code></pre>
+lines.get(2) → "*..***....*"</code></pre> -->
 
-<h4>Part B: Create the Grid</h4>
+<!-- <h4>Part B: Create the Grid</h4>
 
 <p>
   Once all lines are stored, create the grid:
 </p>
 
-<pre><code>grid = new char[lines.size()][];</code></pre>
+<pre><code>grid = new char[lines.size()][];</code></pre> -->
 
 <p>
   The number of rows comes from the number of lines in the file.
@@ -691,25 +713,29 @@ lines.get(2) → "*..***....*"</code></pre>
   array of separate row arrays.
 </p>
 
-<h4>Part C: Convert Each Line into Tiles</h4>
+<h3>Step 4: Convert Each Line into a Grid Row</h3>
 
 <p>
-  Loop through the lines:
+  Still inside <code>loadLevel</code>, loop through the lines:
 </p>
 
 <pre><code>for (int row = 0; row &lt; lines.size(); row++)</code></pre>
 
+<pre><code>for (int row = 0; row &lt; lines.size(); row++) {
+    String line = lines.get(row);
+    grid[row] = line.toCharArray();
+}</code></pre>
+
+<!-- <pre><code>String line = lines.get(row);</code></pre> -->
 <p>
-  Get the current line:
+  This changes each string into an array of individual characters.
 </p>
 
-<pre><code>String line = lines.get(row);</code></pre>
-
-<p>
+<!-- <p>
   Then convert the string into individual characters:
 </p>
 
-<pre><code>grid[row] = line.toCharArray();</code></pre>
+<pre><code>grid[row] = line.toCharArray();</code></pre> -->
 
 <p>
   This transforms:
@@ -722,47 +748,51 @@ lines.get(2) → "*..***....*"</code></pre>
 </p>
 
 <pre><code>'*' '.' '.' 'P' '.' '.' 'B' '*'</code></pre>
-
+<h3>Step 5: Use the Grid to Create Objects</h3>
 <p>
-  Now each tile can be accessed individually:
+  After storing the row in the grid, loop through each column and check the tile.
 </p>
 
-<pre><code>grid[row][col]</code></pre>
-
-<p>Then loop through columns</p>
 <pre><code>
-for (int col = 0; col < line.length(); col++) {
-char ch = line.charAt(col);
-// Process the character (e.g., create objects based on 'P', 'B', '*', etc.)
-}
-  </code></pre>
-
-
-
-
-
-<h3>Step 3: Draw Walls in GameModel</h3>
+for (int col = 0; col &lt; line.length(); col++) {
+        char ch = grid[row][col];
+// Check the symbol and create objects accordingly (see our example below)
+        if (ch == 'P') {
+            player = new Player(row, col);
+        } else if (ch == 'B') {
+            balls.add(new Ball(row, col));
+        }
+</code></pre>
+<p>
+  Note: The grid stores the map only. The objects store things that move or interact.
+</p>
+<h3>Step 6: Draw Walls Directly from the Grid (Example)</h3>
 
 <p>
   Now that your level is stored inside a <code>char[][] grid</code>,
   you can use the grid to draw wall tiles. 
 </p>
 <p>
-  For this scaffold, walls do not need their own <code>Wall</code> class.
-  Since walls are static tiles that never move, the grid itself already stores
-  where the walls exist.
+  You do not need a separate <code>Wall</code> class for this tier. The model can
+  draw wall tiles directly from the grid.
 </p>
 
 <p>
   This means walls can be drawn directly inside
-  <code>GameModel.draw(...)</code> by checking the grid symbols.
+  <code>GameModel.draw(...)</code> by checking the grid symbols. Example:
 </p>
 
-<p>
-  Loop through every row and column of the grid.
-  If a tile contains <code>'*'</code>, draw a wall square.
-</p>
-
+<pre><code>public void drawOn(Graphics2D g2) {
+    for (int row = 0; row &lt; grid.length; row++) {
+        for (int col = 0; col &lt; grid[row].length; col++) {
+            if (grid[row][col] == '*') {
+                g2.fillRect(col * TILE_SIZE, row * TILE_SIZE,
+                            TILE_SIZE, TILE_SIZE);
+            }
+        }
+    }
+    // Draw enemies and player after walls
+}</code></pre>  
 <ul>
   <li><code>col</code> controls horizontal position (<code>x</code>)</li>
   <li><code>row</code> controls vertical position (<code>y</code>)</li>
@@ -770,16 +800,11 @@ char ch = line.charAt(col);
   <li><code>y</code> is calculated as <code>int y = row * TILE_SIZE;</code></li>
 </ul>
 
+<h3>Step 7: Use the Grid for Wall Collision</h3>
 <p>
-  Suggested order:
+  Now before moving the player, you can check whether the next tile is a wall. 
+  You can check <code>if (grid[nextRow][nextCol] == '*'). Make sure your player has row, col as fields and getRow, getCol so you know where the player is.</code>
 </p>
-
-<ol>
-  <li>Draw walls first</li>
-  <li>Draw balls next</li>
-  <li>Draw player last</li>
-</ol>
-
 <h3>Suggested Improvement: Grid-Based Width and Height</h3>
 
 <p>
