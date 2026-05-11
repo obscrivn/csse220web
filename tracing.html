@@ -411,17 +411,17 @@ class D extends A { }
       </td>
       <td>
 <pre><code>// Safe downcasts (actual object is a C → also a B)
-A t1 = new C();
-((B) t1).onlyInB();   // OK → prints "B.onlyInB"
-((C) t1).cOnly();     // OK → prints "C.cOnly"
+A v1 = new C();
+((B) v1).onlyInB();   // OK → prints "B.onlyInB"
+((C) v1).cOnly();     // OK → prints "C.cOnly"
 
-// Unsafe downcast (sibling)
-A t2 = new B();
-((C) t2).cOnly();     // Runtime: ClassCastException
+// Unsafe downcast (C below B)
+A v2 = new B();
+((C) v2).cOnly();     // Runtime: ClassCastException
 
 // Upcast (always safe)
-B t3 = new B();
-A a3 = t3;            // OK (implicit upcast)
+B v3 = new B();
+A a3 = v3;            // OK (implicit upcast)
 
 </code></pre>
       </td>
@@ -429,12 +429,6 @@ A a3 = t3;            // OK (implicit upcast)
   </tbody>
 </table>
 
-<pre><code>A t1 = new C();
-((B) t1).onlyInB();   // OK
-((C) t1).cOnly();     // OK
-
-A t2 = new B();
-((C) t2).cOnly();     // compiles, but throws ClassCastException</code></pre>
 
 <!-- <h3>Example Set C (Overloading Gotcha)</h3>
 <pre><code>class Printer {
@@ -452,8 +446,8 @@ pr.print((B) ref);    // B (after cast)</code></pre> -->
 <p>Test your tracing skills and reinforce what you learned with these worksheet exercises:</p>
 
 <ul>
-  <li><a href="./worksheets_files/worksheet16.pdf" target="_blank">Worksheet 16 – Polymorphism & Casting</a></li>
-  <li><a href="./worksheets_files/worksheet17.pdf" target="_blank">Worksheet 17 – Method Dispatch & Inheritance</a></li>
+  <li><a href="./worksheets_files/worksheet14.pdf" target="_blank">Worksheet 14 – Polymorphism & Casting</a></li>
+  <li><a href="./worksheets_files/worksheet15.pdf" target="_blank">Worksheet 15 – Method Dispatch & Inheritance</a></li>
 </ul>
 
 <p>Once you’ve completed the worksheets, check your understanding by reviewing the guided solutions:</p>
