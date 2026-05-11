@@ -6,8 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-
-body {
+  body {
           font-family: Arial, sans-serif;
           line-height: 1.5;
           margin: 0;
@@ -190,7 +189,9 @@ padding: 20px;
       background-color: #ddd;
     }
     code {
-        color: red;
+        /* color: red; */
+        font-weight: 600;
+        font-family: Consolas, "Courier New", monospace;
     }
     .code-window {
       background-color: #272822;
@@ -319,11 +320,11 @@ details.hint > summary {
   </style>
 </head>
 <body>
-  <div id="header">
+   <div id="header">
     <a id="index_link" href="../index.html">CSSE 220</a>
     <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
     <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="../worksheets.html">Quizzes</a>
+    <a id="quiz_link" href="../design-principles.html">Design</a>
     <a id="quiz_link" href="../labs.html">Labs</a>
     <a id="quiz_link" href="../homework.html">Homework</a>
     <a id="quiz_link" href="../exams.html">Exams</a>
@@ -332,508 +333,604 @@ details.hint > summary {
     <div style="clear:both;"></div>
 </div>
 <div id="content">
-<!-- <div id="content"> -->
-    <h1>Lab Assignment 20</h1>
-    <!-- <nav id="lab-nav">
-        <ul>
-          <li><a href="#lab1">01. Refactor Timer</a></li>
-          <li><a href="#lab2">02. HUD / save files</a></li>
+    <h1>Lab Assignment 20 (Tier 8)</h1>
+    <div id="main-content">
+         <div class="lab-section" id="lab">
 
+
+        
+<!-- <details class="lab-card" id="lab-01">
+        <summary>
+    <span class="lab-label">01.</span>
+    <span class="lab-title">Recursion3</span>
+    <span class="lab-tag">Submission</span>
+  </summary>
+
+<h2>Instructions</h2>
+
+  <ol>
+    <li>
+      <strong>Inside the <code>lab14</code> package (from the last lab), create a new class named <code>Recursion3</code>.</strong>
+      <br>
+      This class will contain <em>all</em> of your methods for this lab.
+    </li>
+
+    <li>
+      <strong>Open CodingBat (Recursion-1):</strong>
+      <br>
+      Go to 
+      <a href="http://codingbat.com/java/Recursion-1" target="_blank">
+        https://codingbat.com/java/Recursion-1
+      </a>
+    </li>
+
+    <li>
+      <strong>Complete the following CodingBat problems:</strong>
+      <ul>
+        <li><code>array6</code></li>
+        <li><code>array11</code></li>
+        <li><code>array220</code></li>
+        <li><code>allStar</code></li>
+        <li><code>pairStar</code></li>
+        <li><code>endX</code></li>
+        
+   
+      </ul>
+    </li>
+
+    <li>
+      <strong>For each problem:</strong>
+      <ul>
+        <li>Consult the recursion resources: <a href="../recursion.html" target="_blank">Recursion Guide</a></li>
+        <li>Write the method in CodingBat first</li>
+        <li>Once it passes all tests, copy the method into <code>Recursion3.java</code></li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Save Recursion3 class with all 6 recursion problems.</strong>
       
-         
+    </li>
 
-        </ul>
-      </nav> -->
-<!-- Lab Navigation Menu -->
-<!-- <div id="main-content"> -->
- <!-- <section>
-  <p>Resources 1: <a href="../resources.html#events" target="_blank" class="resource-ref">Events</a></p>
-  <p>Resources 2: <a href="../resources.html#listener" target="_blank" class="resource-ref">Understanding Listener with getActionCommand()</a></p>
-  <p>Resources 3: <a href="../resources.html#focus" target="_blank" class="resource-ref">How to keep focus on Frame for events</a></p>
-
-</section>-->
-
-<div id="main-content">
-<div class="lab-section" id="lab1">
-<h2>Lab 20: Multiple Objects + Object Collisions</h2>
-
-<div class="lab-summary">
-  <p>
-    In this lab, you’ll level-up your game engine by managing <b>multiple objects</b>
-    and handling <b>collisions between objects</b> (not just walls).
-  </p>
-
-  
-</div>
-
-<details class="lab-card" open>
-  <summary>Design Rule: Who is responsible for what?</summary>
-
-  <p>
-    As we add more objects and collisions, it’s important to be clear about
-    <b>which class owns which responsibility</b>.
-    This prevents duplicated logic and keeps Milestone 2 manageable.
-  </p>
-
-  <table class="summary-table">
-    <tr>
-      <th>Responsibility</th>
-      <th>Class that owns it</th>
-    </tr>
-
-    <tr>
-      <td>Move the ball each frame</td>
-      <td><code>Ball</code></td>
-    </tr>
-
-    <tr>
-      <td>Handle wall collisions (bounce off edges)</td>
-      <td><code>Ball</code> (<code>update(worldWidth, worldHeight)</code>)</td>
-    </tr>
-
-    <tr>
-      <td>Know the world size</td>
-      <td><code>DrawingComponent</code></td>
-    </tr>
-
-    <tr>
-      <td>Ball vs Ball collisions</td>
-      <td><code>DrawingComponent</code></td>
-    </tr>
-
-    <tr>
-      <td>Ball vs Collectible collisions</td>
-      <td><code>DrawingComponent</code></td>
-    </tr>
-
-    <tr>
-      <td>Making a collectible disappear</td>
-      <td><code>DrawingComponent</code></td>
-    </tr>
-
-  
-  </table>
-
-  
-</details>
-
+    <li>
+      <strong>Submit <code>Recursion3.java</code> to Gradescope.</strong>
+    </li>
+    <li>Make sure your file is on the package lab14</li>
+  </ol>
+</details> -->
 <details class="lab-card">
-  <summary><strong>Step 1:</strong> Refactor Level Loading</summary>
-
-  <p>Move your current <code>Scanner</code> logic that reads <code>level1.txt</code> into a method:</p>
-
-      <pre><code>private void loadLevel() {
-    File file = new File("level1.txt");
-  // your code block with try / catch ....
-
-</code></pre>
-<h4>2️⃣ Call <code>loadLevel()</code> in your constructor</h4>
-  <p>
-    Call this method <strong>before</strong> creating the ball:
+  <summary>
+  <span class="lab-label">01.</span>
+    <span class="lab-title">JUnit Test</span>
+    <span class="lab-tag">Practice</span>
+  
+  </summary>
+<h3>Instructions</h3>
+     <p>
+    In this activity, you will practice writing and running JUnit tests
+    for sorting algorithms using the provided <code>Sort.java</code> class.
+    Download file: <a href="./Sort.java">Sort.java</a>
   </p>
-<pre><code>
-  loadLevel();
-		ball = new Ball(startX,startY,14);
-  </code></pre>
+<h3>Common JUnit Assertions</h3>
 
+<table>
+  <tr>
+    <th>Assertion</th>
+    <th>Purpose</th>
+    <th>Example</th>
+  </tr>
 
-  <h4>3️⃣ Add new Required fields</h4>
-  <p>
-    Your class should already have these fields + add enemies :
-  </p>
+  <tr>
+    <td><code>assertEquals()</code></td>
+    <td>Checks if two single values are equal</td>
+    <td>
+<pre><code>assertEquals(5, score);</code></pre>
+    </td>
+  </tr>
 
-  <pre><code>private int startX = 80;
-private int startY = 100;
-private ArrayList&lt;Ball&gt; enemies = new ArrayList&lt;&gt;();</code></pre>
+  <tr>
+    <td><code>assertTrue()</code></td>
+    <td>Checks if a condition is true</td>
+    <td>
+<pre><code>assertTrue(arr[0] == 0);</code></pre>
+    </td>
+  </tr>
 
-<h4>4️⃣ Extend <code>loadLevel()</code> to support enemies</h4>
-  <p>
-    Update your <code>loadLevel()</code> method by adding an additional
-    <code>if</code> statement:
-  </p>
+  <tr>
+    <td><code>assertFalse()</code></td>
+    <td>Checks if a condition is false</td>
+    <td>
+<pre><code>assertFalse(gameOver);</code></pre>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>assertArrayEquals()</code></td>
+    <td>Checks if two arrays contain the same values</td>
+    <td>
+<pre><code>assertArrayEquals(
+    new int[] {0, 2, 3, 5},
+    arr
+);</code></pre>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>assertNotNull()</code></td>
+    <td>Checks that an object exists</td>
+    <td>
+<pre><code>assertNotNull(player);</code></pre>
+    </td>
+  </tr>
+</table>
+  <h3>What We Did in Class</h3>
 
   <ul>
-    <li><code>'P'</code> → player spawn (one)</li>
-    <li><code>'E'</code> → enemy spawn (many)</li>
+    <li>Create a test class named <code>SortTest</code></li>
+    <li>Use the <code>@Test</code> annotation</li>
+    <li>Test both <code>selection()</code> and <code>insertion()</code></li>
+    <li>Use <code>assertArrayEquals()</code> to compare arrays</li>
+    <li>Use <code>assertTrue()</code> for simple checks</li>
+    <li>Test edge cases such as empty arrays</li>
   </ul>
 
-  <pre><code>    if (c == 'P') {
-	                	//System.out.println(c);
-	                	startX = col * TILE_SIZE;
-	                	startY = row * TILE_SIZE;
-	                 
-	                } else if (c == 'E') {
-	                    enemies.add(new Ball(col * TILE_SIZE, row * TILE_SIZE, 14));
-	                }</code></pre>
+  <h3>Example Patterns from Class</h3>
 
-  <p>
-    Each <code>'E'</code> in the file should create a new enemy object.
-  </p>
+  <pre><code>@Test
+public void testSelection() {
+    int[] arr = {5, 3, 2, 0};
 
-  <h4>Update <code>level1.txt</code></h4>
-  <p>
-    Add several <code>'E'</code> characters to represent enemies:
-  </p>
+    Sort.selection(arr);
 
-  <pre><code>##########
-#P....E..#
-#..E.....#
-#.....E..#
-##########</code></pre>
-    
+    assertArrayEquals(
+        new int[] {0, 2, 3, 5},
+        arr
+    );
+}</code></pre>
 
+  <pre><code>@Test
+public void testEmptyArray() {
+    int[] arr = {};
+
+    Sort.insertion(arr);
+
+    assertArrayEquals(
+        new int[] {},
+        arr
+    );
+}</code></pre>
+
+  <h3>Tips</h3>
+
+  <ul>
     <li>
-      Create the player <strong>after</strong> calling <code>loadLevel()</code>, so it uses the coordinates found in the file.
+      Remember that sorting methods modify the original array.
     </li>
 
     <li>
-      Store enemies in a collection (ex: <code>ArrayList&lt;Ball&gt;</code>) so your game can support multiple enemies.
+      The expected array goes first in
+      <code>assertArrayEquals(expected, actual)</code>.
     </li>
-  </ol>
 
-  <details class="hint">
-    <summary>Hint</summary>
-    <p>
-      One player needs one <code>(x, y)</code>.  
-      Many enemies need a list of objects.
-    </p>
-  </details>
+    <li>
+      Try multiple test cases:
+      sorted arrays, reverse order,
+      duplicates, and empty arrays.
+    </li>
+
+ 
+  </ul>
+
+  
 
 </details>
-
-
 <details class="lab-card">
-  <summary><strong>Step 2:</strong> Add Enemies to the Game - DrawingComponent</summary>
+  <summary>
+  <span class="lab-label">02.</span>
+    <span class="lab-title">Prep (Tier8): 2D World </span>
+    <span class="lab-tag">Final Project</span>
+  
+  </summary>
+
+
+  <h3>Goal</h3>
+
   <p>
-    Now that your level loader supports enemies, update
-    <code>DrawingComponent</code> to manage and draw them.
-  <h4>Draw all enemies</h4>
-  <p>
-    In <code>paintComponent</code>, draw the player first, then loop through
-    the enemies and draw each one.
+    In the previous scaffold, your game loaded objects from a file, moved objects,
+    checked collisions, updated the score, removed objects, and displayed game over.
   </p>
 
-  <pre><code>// draw player
-ball.draw(g2);
-
-// draw enemies
-for (Ball enemy : enemies) {
-    enemy.draw(g2);
-}</code></pre>
-
-  <h4>Move enemies</h4>
   <p>
-    Update enemies movements in the same timer
+    In this scaffold, you will upgrade the level file into a real
+    <strong>2D grid world</strong>. The text file should not only create objects.
+    It should also describe the map.
   </p>
 
-  <pre><code>for (Ball enemy : enemies) {
-    enemy.update(); // movement + wall collision
-}</code></pre>
+  <h3>Big Idea</h3>
 
-
-
-</details>
-
-
-
-</details>
-
-<details class="lab-card">
-  <summary><strong>Step 3:</strong> Add a Collision Box and Intersect</summary>
-
-  <h4>Goal</h4>
   <p>
-    Every moving object (player and enemies) needs a collision box
-    so we can detect when objects touch.
+    Your level file can represent the world using symbols:
   </p>
+
+  <pre><code>***********
+*..B...P..*
+*..***....*
+*.....B...*
+***********</code></pre>
+
+  <table>
+    <tr>
+      <th>Symbol</th>
+      <th>Meaning</th>
+      <th>Suggested Behavior</th>
+    </tr>
+    <tr>
+      <td><code>P</code></td>
+      <td>Player start</td>
+      <td>Create or position the player here</td>
+    </tr>
+    <tr>
+      <td><code>B</code></td>
+      <td>Ball / enemy / collectible</td>
+      <td>Add an object to a list</td>
+    </tr>
+    <tr>
+      <td><code>*</code></td>
+      <td>Wall</td>
+      <td>Store as part of the grid and draw as a square</td>
+    </tr>
+    <tr>
+      <td><code>.</code></td>
+      <td>Empty space</td>
+      <td>No object here</td>
+    </tr>
+  </table>
   <p>
-  For this lab, both the player and enemies are <code>Ball</code> objects,
-  so the <code>getBounds()</code> method only needed once in <code>Ball.java</code>.
+    Use <strong>one character per tile</strong>. For example, use
+    <code>*</code> for one wall tile, not <code>**</code>.
+  </p>
+  
+<h3>Importing a Tier Package (ZIP File)</h3>
+<p><strong>Use your Lab7 Solution as Starter:</strong> <a href="./Tier7Solution.zip">Download starter</a></p>
+<p>Follow instructions and learn how to make your 2D World (no solution is provided in this Tier) </p>
+
+
+
+ <h3>Step 1: Add a Grid to the Model</h3>
+
+  <p>
+    In <code>GameModel</code>, add a field that stores the level layout:
+  </p>
+
+  <pre><code>private char[][] grid;</code></pre>
+
+  <p>
+    Each position in the grid represents one tile in the game world.
+  </p>
+
+  <p>
+    Example:
+  </p>
+
+  <pre><code>grid[0][0] == '*'
+grid[1][3] == 'B'
+grid[1][7] == 'P'</code></pre>
+
+
+<h3>Step 2: Read the File Into the Grid</h3>
+
+
+<p>
+  Your game already reads a level file line-by-line using a
+  <code>Scanner</code>. However, now we want to permanently store the map
+  inside a 2D array.
 </p>
 
-  <h4>1️⃣ Open <code>Ball.java</code></h4>
-  <p>
-    Add the following method to your <code>Ball</code> class:
-  </p>
+<p>
+  The challenge is that Java needs to know how many rows exist before
+  creating:
+</p>
 
-  <pre><code>public Rectangle getBounds() {
-    Rectangle r = new Rectangle(
-			    x - radius,
-			    y - radius,
-			    radius * 2,
-			    radius * 2
-    );
-    return r;
+<pre><code>char[][] grid</code></pre>
+
+<p>
+  One simple approach is:
+</p>
+
+<ol>
+  <li>Read and temporarily store all lines from the file</li>
+  <li>Create the grid using the number of rows</li>
+  <li>Convert each line into a row of characters</li>
+</ol>
+
+<h4>Part A: Store All Lines</h4>
+
+<p>
+  Create an <code>ArrayList&lt;String&gt;</code>:
+</p>
+
+<pre><code>ArrayList&lt;String&gt; lines = new ArrayList&lt;&gt;();</code></pre>
+
+<p>
+  Then read the file:
+</p>
+
+<pre><code>while (scanner.hasNextLine()) {
+    lines.add(scanner.nextLine());
 }</code></pre>
 
+<p>
+  Example:
+</p>
 
-<h4>2️⃣  <code>intersects()</code></h4>
-  <p>
-    <code>intersects()</code> is a method provided by Java’s <code>Rectangle</code> class.
-    It checks whether two rectangles overlap.
-  </p>
+<pre><code>***********
+*..B...P..*
+*..***....*</code></pre>
 
-  <h4>How we use it</h4>
-  <p>
-    Since each object now has a collision box (<code>getBounds()</code>),
-    we can detect collisions like this:
-  </p>
+<p>
+  becomes:
+</p>
 
-  <pre><code>Rectangle r1 = enemy1.getBounds();
-Rectangle r2 = enemy2.getBounds();
+<pre><code>lines.get(0) → "***********"
+lines.get(1) → "*..B...P..*"
+lines.get(2) → "*..***....*"</code></pre>
 
-if (r1.intersects(r2)) {
-    // collision happened
-}</code></pre>
-  
+<h4>Part B: Create the Grid</h4>
 
-  <details class="hint">
-    <summary>Why are we using rectangles?</summary>
-    <p>
-      Rectangles are simple, fast, and built into Java.
-      If two rectangles overlap, we treat it as a collision.
-    </p>
-  </details>
+<p>
+  Once all lines are stored, create the grid:
+</p>
 
-</details>
+<pre><code>grid = new char[lines.size()][];</code></pre>
 
-<details class="lab-card">
-  <summary><strong>Step 4:</strong> Enemy–Enemy Collision (Bounce / Reverse Direction)</summary>
+<p>
+  The number of rows comes from the number of lines in the file.
+</p>
+<p>
+  Note: Arrays are fixed size, but a 2D array in Java is actually an
+  array of separate row arrays.
+</p>
 
-  <h4>1️⃣ Add or update <code>flip()</code> to <code>Ball</code></h4>
-  <pre><code>public void flip() {
-    dx = -dx;
-    dy = -dy;
-}</code></pre>
+<h4>Part C: Convert Each Line into Tiles</h4>
 
-  <h4>2️⃣ Add enemy–enemy collision checks inside the Timer</h4>
-  <p>
-    After updating all enemies, check each pair of enemies
-    to see if they collide.
-    If they do, call <code>flip()</code> on both enemies.
+<p>
+  Loop through the lines:
+</p>
 
-  <pre><code>// update enemies
-for (Ball enemy : enemies) {
-    enemy.update(WIDTH, HEIGHT);
-}
+<pre><code>for (int row = 0; row &lt; lines.size(); row++)</code></pre>
 
-// enemy-enemy collisions (nested loop)
-for (int i = 0; i &lt; enemies.size(); i++) {
-    for (int j = i + 1; j &lt; enemies.size(); j++) {
-        Ball e1 = enemies.get(i);
-        Ball e2 = enemies.get(j);
+<p>
+  Get the current line:
+</p>
 
-        if (e1.getBounds().intersects(e2.getBounds())) {
-            e1.flip();
-            e2.flip();
-        }
-    }
-}</code></pre>
+<pre><code>String line = lines.get(row);</code></pre>
 
-  <details class="hint">
-    <summary>Why does <code>j</code> start at <code>i + 1</code>?</summary>
-    <p>
-      So you don’t compare an enemy with itself, and you don’t check the same pair twice.
-    </p>
-  </details>
-</details>
-<details class="lab-card">
-  <summary><strong>Step 5:</strong> Player–Enemy Collision (Enemy Disappears)</summary>
+<p>
+  Then convert the string into individual characters:
+</p>
 
-  <p>
-    When the player collides with an enemy, remove the enemy from the game.
-  </p>
+<pre><code>grid[row] = line.toCharArray();</code></pre>
 
-  <h4>Inside the Timer</h4>
-  <pre><code>for (int i = 0; i &lt; enemies.size(); i++) {
-    if (ball.getBounds().intersects(enemies.get(i).getBounds())) {
-        enemies.remove(i);
-        break; // remove only one enemy per frame
-    }
-}</code></pre>
+<p>
+  This transforms:
+</p>
 
-<details class="hint">
-  <summary>ConcurrentModificationException Danger</summary>
-  <p>
-    Removing elements from an <code>ArrayList</code> inside a for-each loop
-    causes a <code>ConcurrentModificationException</code>.
-  </p>
-  <p>
-    An index-based loop is safe because you control the index yourself.
-    After removing one enemy, the <code>break</code> statement stops the loop.
-  </p>
-</details>
+<pre><code>"*..P..B*"</code></pre>
 
-</details>
-</details>
+<p>
+  into:
+</p>
 
-    </div>
-<!-- <div class="lab-section" id="lab2">
-<h2>02. Create HUD model and HUD viewer</h2>
+<pre><code>'*' '.' '.' 'P' '.' '.' 'B' '*'</code></pre>
 
+<p>
+  Now each tile can be accessed individually:
+</p>
 
-<pre><code class="language-java">public class HudModel {
+<pre><code>grid[row][col]</code></pre>
 
-	
-	private int score = 0;
-    private int ballCount = 0;
-
-    public int getScore() { return score; }
-    public int getBallCount() { return ballCount; }
-    
-    public void addScore(int delta) { 
-    	this.score +=delta; 
-    	}
-    public void setBallCount(int count) { 
-    	this.ballCount = count; 
-    	}
-}
-</code></pre>
-<p>Note - we are using some HTML tags and combine them using String Builder</p>
-<pre><code>public class HudView extends javax.swing.JLabel {
-public HudView() {
-setOpaque(false);
-setForeground(new java.awt.Color(230,240,255));
-setFont(getFont().deriveFont(java.awt.Font.BOLD, 13f));
-}
-public void refresh(HudModel hud) {
-StringBuilder html = new StringBuilder("<html><h2 style='margin:0'>Score</h2><ol>");
-html.append("<li>Current: ").append(hud.getScore()).append("</li>");
-html.append("<li>Balls: ").append(hud.getBallCount()).append("</li>");
-html.append("</ol></html>");
-setText(html.toString());
-}
+<p>Then loop through columns</p>
+<pre><code>
+for (int col = 0; col < line.length(); col++) {
+char ch = line.charAt(col);
+// Process the character (e.g., create objects based on 'P', 'B', '*', etc.)
 }
   </code></pre>
-<p>Add HUD to GamePanel using Overlay Layout</p>
-<p>Since HudView is a JLabel, you just layer it on top of the game canvas</p>
-<pre><code>private final HudModel hudModel = new HudModel();
-private final HudView hudView = new HudView();
 
 
-public GamePanel() {
-setLayout(new BorderLayout());
 
 
-JPanel layered = new JPanel();
-layered.setLayout(new OverlayLayout(layered));
-layered.setOpaque(false);
 
+<h3>Step 3: Draw Walls in GameModel</h3>
 
-canvas.setOpaque(true);
-layered.add(canvas); // back
+<p>
+  Now that your level is stored inside a <code>char[][] grid</code>,
+  you can use the grid to draw wall tiles. 
+</p>
+<p>
+  For this scaffold, walls do not need their own <code>Wall</code> class.
+  Since walls are static tiles that never move, the grid itself already stores
+  where the walls exist.
+</p>
 
+<p>
+  This means walls can be drawn directly inside
+  <code>GameModel.draw(...)</code> by checking the grid symbols.
+</p>
 
-hudView.setOpaque(false);
-hudView.setAlignmentX(0f); // left
-hudView.setAlignmentY(0f); // top
-hudView.setBorder(javax.swing.BorderFactory.createEmptyBorder(8,8,0,0));
-layered.add(hudView); // top
+<p>
+  Loop through every row and column of the grid.
+  If a tile contains <code>'*'</code>, draw a wall square.
+</p>
 
-
-add(layered, BorderLayout.CENTER);
-add(buildControls(), BorderLayout.SOUTH);
-
-
-// initial sync
-hudModel.setBallCount(ballModel.getBallCount());
-hudView.refresh(hudModel);</code></pre>
-
-<p>Update tick()</p>
-<pre><code class="language-java">private void tick() {
-  ballModel.updateAll(canvas.getWidth(), canvas.getHeight());
-  hudModel.setBallCount(ballModel.getBallCount());
-  hudView.refresh(hudModel);
-  canvas.repaint();
-}</code></pre>  
- <p>Update GameComponent. So GamePanel will create Models now but GameComponent only view them. So we will pass them as parameteres in constructor</p>
-<pre><code>	private final BallModel model;
-	private final HudModel hud;
-	public GameComponent(BallModel model, HudModel hud) {
-		this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
-		//  seed a couple so something is visible immediately
-	    this.model = model;
-	    this.hud = hud;
-	    setOpaque(true);   
-	}
-  </code></pre>
-  <p>Update Game Component constructor in GamePanel:</p>
-  <pre><code>private final GameComponent canvas = new GameComponent(ballModel,hudModel);</code></pre>
-  <p>Update the GAmePanel</p>
-  <pre><code>public GamePanel() {
-    	JPanel layered = new JPanel();
-        layered.setLayout(new OverlayLayout(layered));
-        layered.setOpaque(false);  // Make layered panel transparent
-        // view
-        canvas.setOpaque(false); // panels sets the background if you want it from canvas, set it to true
-        layered.add(hudView); 
-    	layered.add(canvas);
-    	layered.add(canvas);
-
-    	hudView.setOpaque(false);         // Transparent so no gray background
-    	hudView.setAlignmentX(0f);        // Left edge
-    	hudView.setAlignmentY(0f);        // Top edge
-    	layered.add(hudView);             // Add after canvas → goes on top
-       
-    	// PANEL LAYOUT
-    	this.setLayout(new BorderLayout());
-    	this.add(layered, BorderLayout.CENTER);
-    	this.setBackground(canvas.BG);
-    	this.add(buildControls(), BorderLayout.SOUTH);</code></pre>
-  
-  
-      
-<div class="lab-section" id="lab3">
-<h2>03. Score Manager</h2>
-<p>Create a score manager with 2 helper functions to save and load score. Create a folder in yoru Java Project named data (it should be not inside src but a the same level)</p>
-
-<pre><code>public class ScoreManager {
-
-	
-	private static final String FILE = "data/scores.txt";
-	
-	public static void save(int score, int balls) {
-        try (PrintWriter out = new PrintWriter(new FileWriter(FILE, true))) {
-            out.println(score + "," + balls + "," + System.currentTimeMillis());
-        } catch (IOException e) {
-            e.printStackTrace(); // or show a dialog if you prefer
-        }
-    }
-	
-	public static List<String> load() {
-        List<String> lines = new ArrayList<>();
-        File f = new File(FILE);
-        if (!f.exists()) return lines;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                lines.add(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return lines;
-    }
-	
-}</code></pre>
-<p>Add a key to save the text in GamePanel</p>
-<pre><code>case KeyEvent.VK_S -> {
-	                    ScoreManager.save(hudModel.getScore(), hudModel.getBallCount());
-	                    // quick feedback (optional)
-	                    System.out.println("Saved: score=" + hudModel.getScore() + ", balls=" + hudModel.getBallCount());
-	                }</code></pre>
-
-
-<h2>🧪 Checkpoints</h2>
 <ul>
-  <li>Refactor compiles; timer animates.</li>
-  <li>Score is saved in the fileSprite when pressing S key</li>
-  <li>Score is shown as overlay</li>
-  
+  <li><code>col</code> controls horizontal position (<code>x</code>)</li>
+  <li><code>row</code> controls vertical position (<code>y</code>)</li>
+  <li><code>x</code> is calculated as <code>int x = col * TILE_SIZE;</code></li>
+  <li><code>y</code> is calculated as <code>int y = row * TILE_SIZE;</code></li>
 </ul>
-<p>The refactored code is available here: <a href="./BallHud.zip">Unzip or import to Eclipse</a></p>
-</div>-->
 
-</body>
-</html>
+<p>
+  Suggested order:
+</p>
+
+<ol>
+  <li>Draw walls first</li>
+  <li>Draw balls next</li>
+  <li>Draw player last</li>
+</ol>
+
+<h3>Suggested Improvement: Grid-Based Width and Height</h3>
+
+<p>
+  Once your game becomes grid-based, the level file should help control the
+  game dimensions.
+</p>
+
+<p>
+  Instead of relying only on hardcoded values such as:
+</p>
+
+<pre><code>WIDTH = 400
+HEIGHT = 150</code></pre>
+
+<p>
+  consider calculating the dimensions from the grid itself.
+</p>
+
+<p>
+  Example helper methods inside <code>GameModel</code>:
+</p>
+
+<pre><code>public int getGridWidth() {
+    return grid[0].length * TILE_SIZE;
+}
+
+public int getGridHeight() {
+    return grid.length * TILE_SIZE;
+}</code></pre>
+<p>
+  Update setPreferredSize in the drawing component after loading the model
+</p
+
+<p>
+  Update width and height in painting component for drawing background image. Recall that you have model in the constructor of the drawing component, so you can call the helper methods to get dimensions from the model.
+</p>
+
+
+</details>
+        </div>
+      
+        </div>
+        </div>
+
+<!-- <div class="lab-section" id="lab1">
+  <h2>Lab 1: Recursion Practice</h2>
+  <p>
+    In CodingBat <a href="https://codingbat.com/java/Recursion-1">Recursion-1</a>," complete the next 6 problems: count7, count8, powerN, countX, countHi, changeXY
+  </p>
+
+    <p>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example MyRecursion.java)</p>
+</div> -->
+        
+        <!-- <div class="lab-section" id="lab2">
+          <h2 style="color:black">My Counter</h2>
+        <p>
+            In this lab, you will create a Swing component with a button that increments the count
+        </p>
+        
+        <h3>Task Description</h3>
+        <p>
+            <image src="lab12a.png" alt="lab12 a" width="400"/>
+        </p>
+        <ul>
+          <li>A <code>JLabel</code> to describe the counter</li>
+          <li>A non‑editable <code>JTextField</code> to display the current count</li>
+          <li>A <code>JButton</code> labeled “Count” that, when clicked, increments the counter</li>
+        </ul>
+
+        <h3>Adding ActionListener to the Button</h3>
+    <p>Whenever the “Count” button is clicked, we want to execute  <code>setValues()</code> method:</p>
+    <ol>
+      <li>Add the listener registration at the end of the constructor:
+        <pre><code>button.addActionListener(e -> setValues());</code></pre>
+      </li>
+      <li>Implement the <code>setValues()</code> method to:
+        <ol type="a">
+          <li>Increment the counter</li>
+          <li>Update the text field: <code>text.setText(count + "");</code></li>
+        </ol>
+
+      </li>
+    </ol>
+
+        
+        
+
+        </div> -->
+
+        <!-- <div class="lab-section" id="lab3">
+          <h2 style="color:black">My Accumulator</h2>
+          <h3>Overview</h3>
+    <p>
+      In this lab you will create a Swing <code>JPanel</code> that reads integer values,
+      keeps a running total, and displays the accumulated sum. You already have a
+      viewer class with a <code>JFrame</code> set up, you will build just the panel class.
+    </p>
+          <h3>Task Description</h3>
+          <p>
+              <image src="Lab12b.png" alt="lab12 b" width="400"/>
+          </p>
+          <section id="setup">
+          <h3>1. Setup</h3>
+          <ol>
+            <li>Create a new class named <code>MyAccumulator</code> that <em>extends</em> <code>JPanel</code></li>
+            <li>Ensure your project has necessary Swing imports</li>
+            <li>Add your panel to the existing frame in the viewer’s <code>main()</code> method</li>
+          </ol>
+        </section>
+      
+        <section id="layout">
+          <h3>2. Layout</h3>
+          <p>
+            Use a 2×2 grid to arrange the labels and text fields. For example:
+          </p>
+          <pre><code>setLayout(new GridLayout(2, 2, 5, 5));</code></pre>
+          <p>
+            – Row 1: A label “Enter an Integer:” and an editable text field for input<br>
+            – Row 2: A label “Accumulated Sum:” and a non‐editable text field for output
+          </p>
+          <p>Note: because yoru grid is 2x2, the panel will display your components in the order (see the screenshot) when you use <code>add()</code></p>
+        </section>
+      
+        <section id="event-wiring">
+          <h3>3. Event</h3>
+          <p>
+            Create a method processInput() and Configure the input text field so that when the user presses Enter, an event handler:
+          </p>
+          <ul>
+     
+            <li>Reads the integer from the input field. Note to read input use <code>getText()</code>. It is a good practice to trim text from spaces <code>.getText().trim()</code>
+
+            </li>
+            <li>Adds it to a running total variable (you need Integer here)</li>
+            <li>Clears the input field</li>
+            <li>Updates the output field with the new sum (you need String here)
+              <pre><code>// to parse text to integer use Integer.parseInt()
+                to parse Integer to string use Integer.toString()
+                              </code></pre>
+            </li>
+          </ul>
+          <p>
+            Use a lambda expression to register the listener (no loops or error checks needed here).
+          </p>
+        </section> -->
+
+          </div>
+        </div>
+        </div>
+
+
+
+        </body>
+        </html>
