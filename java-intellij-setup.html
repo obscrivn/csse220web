@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Java + IntelliJ IDEA Setup | CSSE 220</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    :root {
+      --rose: #800000;
+      --rose-dark: #4f0000;
+      --ink: #20242a;
+      --muted: #59636e;
+      --surface: #ffffff;
+      --soft: #f5f6f7;
+      --line: #d9dee3;
+      --info: #eaf3ff;
+      --info-line: #2774ae;
+      --success: #ecf7ef;
+      --success-line: #2f7d45;
+      --warning: #fff7e6;
+      --warning-line: #b56a00;
+      --code: #18212b;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--soft);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: #6f1010; }
+    a:hover { color: var(--rose-dark); }
+
+    .skip-link {
+      position: absolute;
+      top: -4rem;
+      left: 1rem;
+      z-index: 20;
+      padding: 0.65rem 0.9rem;
+      color: #fff;
+      background: #000;
+    }
+
+    .skip-link:focus { top: 1rem; }
+
+    .site-header {
+      background: #1c1515;
+      color: #fff;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 0.75rem;
+    }
+
+    .site-nav a {
+      padding: 0.9rem 0.75rem;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus {
+      background: #3c3a3a;
+      color: #fff;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .hero {
+      padding: 2rem;
+      color: #fff;
+      background: linear-gradient(135deg, var(--rose-dark), var(--rose));
+      border-radius: 0.8rem;
+      box-shadow: 0 0.35rem 1rem rgba(32, 36, 42, 0.16);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.25rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .hero p {
+      max-width: 48rem;
+      margin: 0.85rem 0 0;
+      font-size: 1.08rem;
+    }
+
+    .goal {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.45rem 0.7rem;
+      color: var(--ink);
+      background: #fff;
+      border-radius: 0.35rem;
+      font-weight: 700;
+    }
+
+    .contents,
+    section {
+      margin-top: 1.35rem;
+      padding: 1.4rem 1.6rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 0.65rem;
+    }
+
+    .contents h2,
+    section h2 {
+      margin-top: 0;
+      line-height: 1.25;
+    }
+
+    section h2 {
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--rose);
+    }
+
+    h3 {
+      margin: 1.3rem 0 0.35rem;
+      line-height: 1.3;
+    }
+
+    p { margin: 0.65rem 0; }
+
+    ol,
+    ul {
+      padding-left: 1.55rem;
+    }
+
+    li { margin: 0.45rem 0; }
+
+    .contents ol {
+      columns: 2;
+      column-gap: 2.5rem;
+      margin-bottom: 0;
+    }
+
+    .contents li { break-inside: avoid; }
+
+    code,
+    kbd {
+      padding: 0.12rem 0.32rem;
+      border-radius: 0.25rem;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.95em;
+    }
+
+    code { background: #eef0f2; }
+
+    kbd {
+      color: #fff;
+      background: #3b4148;
+      border: 1px solid #16191d;
+      box-shadow: 0 1px 0 #16191d;
+    }
+
+    pre {
+      overflow-x: auto;
+      margin: 0.8rem 0;
+      padding: 1rem;
+      color: #f4f7fa;
+      background: var(--code);
+      border-radius: 0.45rem;
+      line-height: 1.5;
+    }
+
+    pre code {
+      padding: 0;
+      color: inherit;
+      background: transparent;
+    }
+
+    .path {
+      padding: 0.75rem 0.9rem;
+      background: #f2edf0;
+      border-left: 4px solid var(--rose);
+      font-weight: 700;
+    }
+
+    .callout {
+      margin: 1rem 0;
+      padding: 0.85rem 1rem;
+      background: var(--info);
+      border-left: 5px solid var(--info-line);
+      border-radius: 0.3rem;
+    }
+
+    .callout.success {
+      background: var(--success);
+      border-left-color: var(--success-line);
+    }
+
+    .callout.warning {
+      background: var(--warning);
+      border-left-color: var(--warning-line);
+    }
+
+    .workspace-grid,
+    .troubleshooting-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .workspace-grid article,
+    .troubleshooting-grid article {
+      padding: 0.9rem;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 0.45rem;
+    }
+
+    .workspace-grid h3,
+    .troubleshooting-grid h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+    }
+
+    .workspace-grid p,
+    .troubleshooting-grid p { margin: 0; }
+
+    .checklist {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .checklist li {
+      position: relative;
+      padding: 0.5rem 0.6rem 0.5rem 2.3rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .checklist li::before {
+      position: absolute;
+      left: 0.55rem;
+      content: "☐";
+      font-size: 1.2rem;
+      line-height: 1.3;
+    }
+
+    footer {
+      padding: 1.5rem 1rem;
+      color: #5c6268;
+      text-align: center;
+    }
+
+    @media (max-width: 680px) {
+      .hero,
+      .contents,
+      section { padding: 1.15rem; }
+
+      .contents ol { columns: 1; }
+
+      .workspace-grid,
+      .troubleshooting-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to setup instructions</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Course navigation">
+      <a href="index.html">CSSE 220</a>
+      <a href="syllabus.html">Syllabus</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="design-principles.html">Design</a>
+      <a href="labs.html">Labs</a>
+      <a href="homework.html">Homework</a>
+      <a href="exams.html">Exams</a>
+      <a href="project.html">Final Project</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="hero">
+      <p class="eyebrow">CSSE 220 · Before-class setup</p>
+      <h1>Java + IntelliJ IDEA Setup</h1>
+      <p>Prepare your Windows 11 laptop for CSSE220, then compile and run a small Java program to prove that everything works.</p>
+      <span class="goal">Course standard: Java 21 LTS</span>
+    </div>
+
+    <nav class="contents" aria-label="Page contents">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#before">Before You Begin</a></li>
+        <li><a href="#install-intellij">Install IntelliJ IDEA</a></li>
+        <li><a href="#install-jdk">Install / Configure Java 21 LTS</a></li>
+        <li><a href="#create-project">Create Your First Project</a></li>
+        <li><a href="#hello-world">Create HelloWorld.java</a></li>
+        <li><a href="#run">Run the Program</a></li>
+        <li><a href="#verify">Verify Java and javac</a></li>
+        <li><a href="#checklist">CSSE220 Setup Checklist</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+      </ol>
+    </nav>
+
+    <section id="before">
+      <h2>1. Before You Begin</h2>
+      <p>This guide is written for a Rose-Hulman Windows 11 Lenovo laptop. Plan for about 20–30 minutes.</p>
+      <ul>
+        <li>Connect the laptop to power and to a reliable internet connection.</li>
+        <li>Have the laptop’s administrator credentials available. If Windows blocks an installation and you do not have permission, see <a href="#admin-permissions">Administrator permissions</a>.</li>
+        <li>Close any old IntelliJ projects so the Welcome screen is easy to find.</li>
+      </ul>
+      <div class="callout"><strong>Use Java 21 LTS.</strong> Do not choose “latest,” an early-access release, or Java 25. All CSSE220 examples and assignments use Java 21 LTS.</div>
+    </section>
+
+    <section id="install-intellij">
+      <h2>2. Install IntelliJ IDEA</h2>
+      <ol>
+        <li>Open the official <a href="https://www.jetbrains.com/idea/download/?section=windows" target="_blank" rel="noopener">IntelliJ IDEA download page</a>.</li>
+        <li>Download the Windows <code>.exe</code> installer. Use the x64 installer for the standard Rose-Hulman Lenovo laptop.</li>
+        <li>Open the downloaded installer. If Windows asks whether the installer may make changes, choose <strong>Yes</strong>.</li>
+        <li>Keep the default installation location. A desktop shortcut and the <strong>Open Folder as Project</strong> option are useful but not required.</li>
+        <li>Finish the installation and launch IntelliJ IDEA.</li>
+        <li>Accept the license terms if prompted. On the Welcome screen, do not open or import an old project.</li>
+      </ol>
+      <div class="callout"><strong>Two separate pieces:</strong> IntelliJ IDEA is the program where you edit and run code. The Java Development Kit (JDK) contains the Java compiler and runtime. You need both.</div>
+    </section>
+
+    <section id="install-jdk">
+      <h2>3. Install / Configure the Required Java JDK</h2>
+      <p>Let IntelliJ download and configure the JDK. You do not need to edit <code>JAVA_HOME</code> manually.</p>
+      <p class="path">New Project → Java → JDK → Download JDK</p>
+      <ol>
+        <li>From the Welcome screen, select <strong>New Project</strong>. If a project is already open, use <strong>File → New Project</strong>.</li>
+        <li>Select <strong>Java</strong> in the left column.</li>
+        <li>
+          For <strong>Location</strong>, create or select a <code>CSSE220</code> course folder instead of using the default <code>IdeaProjects</code> folder. Organize your work as separate project folders:
+          <pre><code>C:\Users\your-username\CSSE220\
+├── CSSE220-Setup\
+├── Lab01\
+├── Homework01\
+└── FinalProject\</code></pre>
+          For this exercise, the final project path should be <code>C:\Users\your-username\CSSE220\CSSE220-Setup</code>.
+        </li>
+        <li>Open the <strong>JDK</strong> menu and select <strong>Download JDK</strong>.</li>
+        <li>Set <strong>Version</strong> to <strong>21</strong>. Leave the vendor and installation location at their defaults unless your instructor says otherwise.</li>
+        <li>Select <strong>Download</strong> or <strong>Select</strong>. Wait for IntelliJ to finish before continuing.</li>
+      </ol>
+      <div class="callout success"><strong>Check:</strong> The project wizard’s JDK field should now show <strong>21</strong>. A longer label such as <code>21.0.x</code> is correct.</div>
+      <div class="callout">
+        <strong>One folder per project:</strong> For graded work, use the separate repository supplied by your instructor or GitHub Classroom and clone it into the <code>CSSE220</code> course folder. Do not put the entire course in one Git repository, and keep course repositories private unless your instructor explicitly says otherwise.
+      </div>
+    </section>
+
+    <section id="create-project">
+      <h2>4. Create Your First IntelliJ Java Project</h2>
+      <p>Remain in the New Project window and use these exact settings:</p>
+      <ul>
+        <li><strong>Name:</strong> <code>CSSE220-Setup</code></li>
+        <li><strong>Language:</strong> Java</li>
+        <li><strong>Build system:</strong> IntelliJ</li>
+        <li><strong>JDK:</strong> Java 21</li>
+        <li><strong>Add sample code:</strong> Off, if this option appears</li>
+        <li><strong>Create Git repository:</strong> Off for this setup exercise</li>
+      </ul>
+      <p>Select <strong>Create</strong>. IntelliJ may spend a minute indexing the project. Wait until its progress indicator finishes.</p>
+
+      <h3>Know Your IntelliJ Workspace</h3>
+      <div class="workspace-grid">
+        <article><h3>Project panel</h3><p>The file tree on the left. Your Java source files belong under <code>src</code>. Open it with <kbd>Alt</kbd>+<kbd>1</kbd>.</p></article>
+        <article><h3>Editor</h3><p>The large center area where you read and write Java code.</p></article>
+        <article><h3>Run button</h3><p>The green triangle beside a runnable class or its <code>main</code> method.</p></article>
+        <article><h3>Run/output window</h3><p>The panel that opens at the bottom after a run. It shows program output and errors.</p></article>
+        <article><h3>Terminal</h3><p>A command line inside IntelliJ. Open it with <strong>View → Tool Windows → Terminal</strong> or <kbd>Alt</kbd>+<kbd>F12</kbd>.</p></article>
+        <article><h3>Error indicators</h3><p>Red underlines or red marks in the scrollbar indicate code IntelliJ cannot compile. Read the message before changing code.</p></article>
+      </div>
+    </section>
+
+    <section id="hello-world">
+      <h2>5. Create HelloWorld.java</h2>
+      <ol>
+        <li>In the Project panel, expand <code>CSSE220-Setup</code>.</li>
+        <li>Right-click the <code>src</code> folder and select <strong>New → Java Class</strong>.</li>
+        <li>Enter <code>HelloWorld</code> and press <kbd>Enter</kbd>. Choose <strong>Class</strong> if IntelliJ asks for a type.</li>
+        <li>Replace the editor contents with the code below. Capitalization and punctuation matter.</li>
+      </ol>
+      <pre><code>public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("CSSE220 setup complete!");
+    }
+}</code></pre>
+      <div class="callout"><strong>Check:</strong> The file must be named <code>HelloWorld.java</code>, while the class inside it must be named <code>HelloWorld</code>. Both use the same capital <code>H</code> and <code>W</code>.</div>
+    </section>
+
+    <section id="run">
+      <h2>6. Run the Program</h2>
+      <ol>
+        <li>Find the green triangle in the left gutter beside <code>main</code> or <code>HelloWorld</code>.</li>
+        <li>Select it, then choose <strong>Run 'HelloWorld.main()'</strong>.</li>
+        <li>Wait for the Run window to open at the bottom of IntelliJ.</li>
+      </ol>
+      <p>Your Run window may include a long Java command first. The important final lines are:</p>
+      <pre><code>CSSE220 setup complete!
+
+Process finished with exit code 0</code></pre>
+      <div class="callout success"><strong>Success:</strong> Exit code <code>0</code> means the program finished normally.</div>
+    </section>
+
+    <section id="verify">
+      <h2>7. Verify Java and javac</h2>
+      <ol>
+        <li>Open <strong>View → Tool Windows → Terminal</strong>, or press <kbd>Alt</kbd>+<kbd>F12</kbd>.</li>
+        <li>At the prompt, enter each command separately and press <kbd>Enter</kbd>:</li>
+      </ol>
+      <pre><code>java --version
+javac --version</code></pre>
+      <p>The exact vendor and update number may differ. Confirm that:</p>
+      <ul>
+        <li><code>java --version</code> reports a version beginning with <code>21</code>, and</li>
+        <li><code>javac --version</code> reports <code>javac 21</code> followed by an optional update number.</li>
+      </ul>
+      <div class="callout"><strong>Why both?</strong> <code>java</code> runs compiled programs. <code>javac</code> compiles Java source code. A complete development setup needs both commands.</div>
+    </section>
+
+    <section id="checklist">
+      <h2>8. CSSE220 Setup Checklist</h2>
+      <p>Before class, confirm every item:</p>
+      <ul class="checklist">
+        <li>IntelliJ IDEA opens successfully.</li>
+        <li>The <code>CSSE220-Setup</code> project opens.</li>
+        <li>IntelliJ recognizes Java 21 LTS as the project JDK.</li>
+        <li><code>HelloWorld.java</code> compiles.</li>
+        <li>The program prints <code>CSSE220 setup complete!</code></li>
+        <li>The program finishes with exit code <code>0</code>.</li>
+        <li><code>java --version</code> works and reports Java 21.</li>
+        <li><code>javac --version</code> works and reports Java 21.</li>
+      </ul>
+      <div class="callout success"><strong>Ready for class:</strong> Keep this project. Your instructor may ask you to show its output or use it for a quick check.</div>
+    </section>
+
+    <section id="troubleshooting">
+      <h2>9. Troubleshooting</h2>
+      <p>Try the matching fix, then repeat the checklist item that failed.</p>
+      <div class="troubleshooting-grid">
+        <article>
+          <h3>No JDK appears in IntelliJ</h3>
+          <p>Open <strong>File → Project Structure → Project</strong>. At <strong>SDK</strong>, choose <strong>Download JDK</strong>, select version <strong>21</strong>, and wait for the download to finish.</p>
+        </article>
+        <article>
+          <h3>The Java file has many red errors</h3>
+          <p>Wait for indexing to finish. Confirm that the project SDK is Java 21, then compare your code character-for-character with the example above.</p>
+        </article>
+        <article>
+          <h3>The Run button is unavailable</h3>
+          <p>Confirm that <code>HelloWorld.java</code> is inside <code>src</code>, the braces match, and the class contains the exact <code>public static void main(String[] args)</code> line.</p>
+        </article>
+        <article>
+          <h3>The wrong JDK is selected</h3>
+          <p>Open <strong>File → Project Structure → Project</strong> and change <strong>SDK</strong> to Java 21. Apply the change, then run the program again.</p>
+        </article>
+        <article>
+          <h3><code>java</code> works but <code>javac</code> does not</h3>
+          <p>Verify that the project SDK is a Java 21 <em>JDK</em>, not a runtime. Close the current Terminal tab and open a new one so it picks up the project JDK, then retry both commands.</p>
+        </article>
+        <article>
+          <h3>You created a Maven or Gradle project</h3>
+          <p>Leave that project in place and create a new one with <strong>File → New Project</strong>. Select Java, choose <strong>IntelliJ</strong> as the build system, and use Java 21.</p>
+        </article>
+        <article>
+          <h3>IntelliJ cannot find the main method</h3>
+          <p>Check spelling and capitalization. The method must be inside the <code>HelloWorld</code> class and must read exactly <code>public static void main(String[] args)</code>.</p>
+        </article>
+        <article id="admin-permissions">
+          <h3>Installation requires administrator permissions</h3>
+          <p>Do not try to bypass the restriction. Use your laptop’s approved software installation process or contact Rose-Hulman EIT. Tell your instructor before class if access is still blocked.</p>
+        </article>
+      </div>
+      <div class="callout warning"><strong>Still stuck?</strong> Take a screenshot that includes the full IntelliJ window and the exact error message. Bring it to class or share it using the method your instructor specifies.</div>
+    </section>
+  </main>
+
+  <footer>CSSE 220 · Java 21 LTS · Fall 2026</footer>
+</body>
+</html>
