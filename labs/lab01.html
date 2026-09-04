@@ -335,253 +335,135 @@ details.hint > summary {
     
 
       <div id="main-content">
-         <div class="lab-section" id="lab">
-           <h2>⚡ Practice</h2>
-<ul>
-  <li>
-    Complete the
-    <a href="https://csse220-java-treasure-hunt-163831374566.us-west2.run.app/" target="_blank">
-      Java Treasure Hunt
-    </a>
-    to practice Java data types, operators, conditionals, strings, and loops.
-  </li>
-  <li>
-    You must complete all challenges and obtain the <strong>completion PDF</strong> as proof before moving on to <strong>Lab01</strong>.
-  </li>
-</ul>
-
-  <li>
-    <strong>Graded work:</strong>
-    Use the provided Lab starter <strong>ZIP</strong> to complete Tasks 03 and 04.
-  </li>
-  </ul>
-  <details class="lab-card" id="lab-00" open>
-<summary><h3>How to Import a ZIP File into Eclipse</h3></summary>
-  <p>Follow these steps to import a ZIP file containing an Eclipse project:</p>
-  <ol>
-    <li>
-      <strong>Download the ZIP File (containing a project)</strong> to your computer but do not place 
-      in the eclipse workspace folder: <a href="./Lab01.zip">Click here to donwload ZIP</a>
-    </li>
-    <li>
-      <strong>Open Eclipse:</strong> <em>You do not need to create a new project</em> because the ZIP file contains an existing project.
-    </li>
-    <li>
-      <strong>Import the Project:</strong>
-      <ol>
-        <li>Click on <code>File</code> in the menu bar and select <code>Import...</code>.</li>
-        <li>In the Import Wizard, expand the <strong>General</strong> category and select <strong>Existing Projects into Workspace</strong>. Click <strong>Next</strong>.</li>
-        <li>Select the <strong>Select archive file</strong> option and click the <strong>Browse...</strong> button</li>
-        <li>Navigate to the location where you saved the ZIP file, select it, and click <strong>Open</strong></li>
-        <li>The wizard will display the project(s) contained in the ZIP file. Make sure the desired project is checked</li>
-        <li>Check if the box <strong>Copy projects into workspace</strong> is selected</li>
-        <li>Click <strong>Finish</strong> to complete the import process</li>
-      </ol>
-    </li>
-    <li>
-      <strong>Verify the Imported Project:</strong> The project should now appear in your Package Explorer. Double-click it to open and review its contents.
-    </li>
-  </ol> 
-  <h3>What to submit on Gradescope:</h3>
-  <p>
-    
-    From the Lab starter project, upload <code>ConditionalExamples.java</code> (Task 03)
-    and <code>ForLoops.java</code> (Task 04) to Gradescope (Lab 01).
-    You can find the Gradescope link on the Moodle page.
-  </p>
-</details>
-      <details class="lab-card" id="lab-01">
-        <summary>
-    <span class="lab-label">01.</span>
-    <span class="lab-title">Coding Bat</span>
-    <span class="lab-tag">Practice</span>
-  </summary>
-  <div class="lab-body">
-      <!-- <h2>01. Print</h2> -->
-        <p>Resources 1: <a href="../resources.html#java-types" class="resource-ref" target="_blank">Data Types</a></p>
-        <p>Resources 2: <a href="../resources.html#syntax" class="resource-ref" target="_blank">Basic Syntax</a></p>
-        <p>
-          Complete the following practice:
-          <ol>
-
-            <li><a href="https://codingbat.com/prob/p154485" target="_blank">Warmup-1 sumDouble</a></li>
-            
-          <li><a href="https://codingbat.com/prob/p187868" target="_blank">Warmup-1 sleepIn</a></li>
-          <li><a href="https://codingbat.com/prob/p116624" target="_blank">Warmup-1 diff21</a></li>
-          <li><a href="https://codingbat.com/prob/p171896" target="_blank">String-1 helloName</a></li>
-          <li><a href="https://codingbat.com/prob/p161056" target="_blank">String-1 makeAbba</a></li>
-          <li><a href="https://codingbat.com/prob/p161642" target="_blank">Warmup-1 backAround</a></li>
-        <li><a href="https://codingbat.com/prob/p172267" target="_blank">String-1 firstHalf</a></li>
-        
-        </ol>
-          <!-- Write a program which creates an integer, a string, and a character variable to match the expected output. 
-          First, print each one separately per line. 
-          Then, print all variables together in one statement by concatenating them and separating by a space. Do not forget to add "Combined:". -->
-        </p>
-        
-  </details>
-      <!-- </div> -->
-
- <details class="lab-card" id="lab-02" >
-        <summary>
-    <span class="lab-label">02.</span>
-    <span class="lab-title">Backwards</span>
-    <span class="lab-tag">Practice</span>
-  </summary>
-<!-- 
-
-    <div class="lab-section" id="lab-02">
-        <h2>02. Backwards</h2> -->
-        <p>Resources 1: <a href="../resources.html#loops" class="resource-ref" target="_blank">For Loops</a></p>
-        <p>
-          Write a program <code>BackwardsDigits</code> that prints numbers from 0 to 9, but in the backward order. Do not use arrays in your solution.
-          All numbers must be on the same line, separated by a space character (" ").
-        </p>
-        <p><strong>Expected Output:</strong></p>
-        <div class="code-window">
-    9 8 7 6 5 4 3 2 1 0
+        <div class="lab-section" id="part-1">
+          <h2>Part 1: Unlock the Lab</h2>
+          <p>
+            Before beginning Lab01, complete the
+            <a href="https://csse220-java-treasure-hunt-163831374566.us-west2.run.app/"
+               target="_blank" rel="noopener">Java Treasure Hunt</a>.
+            This warm-up practices Java data types, operators, conditionals,
+            Strings, and loops.
+          </p>
+          <ul>
+            <li>Finish <strong>all challenges</strong> in the Treasure Hunt.</li>
+            <li>Obtain the <strong>completion PDF</strong> as proof.</li>
+            <li>Complete this requirement <strong>before</strong> moving to Part 2.</li>
+          </ul>
         </div>
-        <details class="hint">
-  <summary>💡 Hint 1: Which loop?</summary>
-  <p>Think about a <code>for</code> loop that starts at 9 and keeps going until it reaches 0. 
-     How would you write the update step so the number decreases each time?</p>
-</details>
 
-<details class="hint">
-  <summary>💡 Hint 2: Staying on one line</summary>
-  <p>Use <code>System.out.print()</code> instead of <code>println</code> so the numbers don’t each go on a new line. 
-     You can add a space <code>" "</code> after each number. It is ok to have extra space at the end!</p>
-</details>
+        <div class="lab-section" id="part-2">
+          <h2>Part 2: Get the Starter Project</h2>
+          <p>
+            The starter ZIP contains a Java 17 Maven project with
+            <code>Lab01.java</code>, <code>Lab01Tests.java</code>, and the
+            JUnit 5 configuration.
+          </p>
 
-<details class="hint">
-  <summary>💡 Hint 3: Concatenation approach</summary>
-  <p>Remember that you can use "+" operator to concatenate variables. To add a space between the numbers you can use <code>varible + " "</code>.</p>
- 
-</details>
-</details>
-      
- <details class="lab-card" id="lab-04" >
-        <summary>
-    <span class="lab-label">03.</span>
-    <span class="lab-title">Conditionals</span>
-    <span class="lab-tag">Submission</span>
-  </summary>
-<!-- <div class="lab-section" id="lab4"> -->
-  <!-- <h2>04. Working with Conditionals (Submission)</h2> -->
-  <p>Resources 1: <a href="../resources.html#return" class="resource-ref" target="_blank">Calling Methods</a></p>
-  <p>Resources 2: <a href="../resources.html#conditionals" class="resource-ref" target="_blank">Conditionals</a></p>
- 
-  
-  
-<h3>🛠 Instructions:</h3>
-Open ConditionalsExamples.java file (double-click to open in the editor) from the Lab01 project. You will be submitting this file to Gradescope.
-<strong>Complete the TODOs:</strong><br>
-    In the opened file, look for comments that say 
-    <code>// TODO Implement this method</code> (or <code>// TODO</code>). 
-    Type your solution <em>inside</em> without changing the method headers.
+          <p>
+            <strong>Starter ZIP:</strong>
+            <a href="./Lab01_starter.zip" download>Download Lab01_starter.zip</a>
+          </p>
 
+          <ol>
+            <li>Download the Lab01 starter ZIP using the link above.</li>
+            <li>Extract or unzip the downloaded file.</li>
+            <li>Open the extracted <code>Lab01_starter</code> folder in IntelliJ IDEA.</li>
+            <li>
+              If IntelliJ displays a Maven notification, choose
+              <strong>Load Maven Project</strong> and wait for the import to finish.
+              IntelliJ will recognize the source and test folders and load JUnit 5
+              from <code>pom.xml</code> automatically.
+            </li>
+            <li>
+              In the Project panel, locate:
+              <ul>
+                <li><code>src/main/java/lab/Lab01.java</code></li>
+                <li><code>src/test/java/lab/Lab01Tests.java</code></li>
+              </ul>
+            </li>
+            <li>
+              Open <code>Lab01.java</code> and run it with the green Run triangle.
+            </li>
+            <li>
+              Open <code>Lab01Tests.java</code> and run it with the green Run
+              triangle to run the JUnit tests.
+            </li>
+            <li>Use failed tests and their messages to guide your debugging.</li>
+          </ol>
+        </div>
 
-<p><strong>✅ Quick Checklist:</strong></p>
-<ul>
-  <li>There are no red ❌ errors in the editor.</li>
-  <li>Run the file with the <span class="run-btn"></span> <em>green Run button</em> and see some output in the Console.</li>
-</ul>
+        <div class="lab-section" id="part-3">
+          <h2>Part 3: Code + Test</h2>
+          <p>
+            Complete the methods marked <code>TODO</code> in
+            <code>src/main/java/lab/Lab01.java</code>. Keep the provided method
+            headers unchanged.
+          </p>
+          <p>This combined lab practices:</p>
+          <ul>
+            <li>arithmetic and numeric expressions</li>
+            <li>methods, parameters, and return values</li>
+            <li>Strings and concatenation</li>
+            <li>modulo and boolean expressions</li>
+            <li><code>if / else if / else</code> and logical OR (<code>||</code>)</li>
+            <li><code>for</code> loops and accumulation</li>
+            <li>String traversal with <code>charAt()</code></li>
+          </ul>
 
-
-
-<details class="hint">
-  <summary>💡 Hint: isDivisibleBy3</summary>
-  <p>Use the modulo operator <code>%</code> to check divisibility.  
-     If <code>i % 3 == 0</code>, then <code>i</code> is divisible by 3.</p>
-  <p>This method returns a <code>boolean</code>, so you can just return the condition directly.</p>
-</details>
-
- </details>   
-<!-- </div> -->
- <details class="lab-card" id="lab-05" >
-        <summary>
-    <span class="lab-label">04.</span>
-    <span class="lab-title">For Loops</span>
-    <span class="lab-tag">Submission</span>
-  </summary>
-<!-- <div class="lab-section" id="lab5"> -->
-  <!-- <h2>05. Working with For Loops (Submission)</h2> -->
-  <p>Open ForLoops.java file (double-click to open in the editor) from the Lab01 project. You will be submitting this file to Gradescope.</p>
-  <p>Resources 1: <a href="../resources.html#string-methods" class="resource-ref" target="_blank">String Methods</a></p>
-  <p>Resources 2: <a href="../resources.html#loops" class="resource-ref" target="_blank">For Loops</a></p>
-  <p>In you current Java project, switch to ForLoops.java file (double-click to open in the editor)</p>
-<details class="hint">
-  <summary>💡 Hint: bunchOfOnes()</summary>
-  Start with <code>result = 0</code>, then loop <code>length</code> times. In each loop, first do <code>result = result * 10;</code> to shift left, then <code>result = result + 1;</code> to add a new <code>1</code> digit at the end.
-</details>
-
-<details class="hint">
-  <summary>💡 Hint 1: Growing the number</summary>
-  <p>If you have <code>11</code> and want <code>111</code>, think: 
-     <br><code>11 * 10 = 110</code>, then add <code>1</code> → <code>111</code>.</p>
-    <p> Each time through the loop, the current value is multiplied by 10
-* to shift its digits left, and then 1 is added to append a new 1 at the end.
-* For instance, if current is 11, multiplying by 10 produces 110, and adding 1
-* results in 111.</p>
-</details>
-
-<details class="hint">
-  <summary>💡 Hint 2: The update rule</summary>
-  <p>The pattern each time is: 
-     <br><code>current = current * 10 + 1;</code></p>
-   <div class="code-window">
-<pre>
-Example Output (count = 5)
-
-1
-11
-111
-1111
-11111
-</pre>
-
-</details>
-
-<details class="hint">
-  <summary>💡 Hint: fact()</summary>
-  Initialize <code>long result = 1;</code>, then use a <code>for</code> loop that goes from <code>1</code> up to <code>num</code> (or from <code>num</code> down to <code>1</code>), and multiply <code>result</code> by the loop variable each time: <code>result *= i;</code>. This automatically gives 1 when <code>num</code> is 0 because the loop doesn’t run.
-</details>
-
-<details class="hint">
-  <summary>💡 Hint 4: countXX()</summary>
-  Use a <code>for</code> loop with an index <code>i</code> from <code>0</code> up to <code>str.length() - 2</code>. At each step, check the two characters starting at <code>i</code>, for example with <code>str.substring(i, i + 2).equals("xx")</code> or <code>str.charAt(i) == 'x' &amp;&amp; str.charAt(i + 1) == 'x'</code>, and increment a <code>count</code> variable whenever you find a match.
-</details>
-
-
- 
-<details class="hint">
-  <summary>💡 Hint: How to write a test for <code>countXX</code></summary>
-  <p>When you test a method, you want to:</p>
-  <ol>
-    <li>Call the method with known input</li>
-    <li>Compare the result to the expected output</li>
-    <li>Report or assert the result</li>
-  </ol>
-
-  <p><strong>Simple test in <code>main()</code></strong>. Note for your Lab, choose your own test values!</p>
-  <pre><code class="language-java">
-public static void main(String[] args) {
-    System.out.println(countXX("abcxx")); // expected: 1
-    System.out.println(countXX("xxxx"));  // expected: 3
-    System.out.println(countXX("hi"));    // expected: 0
-}
-</code></pre>
-
-  <p>Here you read the output in the console and check if it matches the expected results.</p>
-</details>
-</details>
-
+          <div class="lab-card">
+            <h3>Testing workflow</h3>
+            <ol>
+              <li>
+                <strong>Run <code>Lab01.java</code>.</strong>
+                Compare the visible output with the expected examples printed by
+                <code>main()</code>.
+              </li>
+              <li>
+                <strong>Run <code>Lab01Tests.java</code>.</strong>
+                Green tests mean those checks passed. A red test means something still needs
+                attention; read its name and failure message, revise your code,
+                and run the tests again.
+              </li>
+            </ol>
           </div>
 
-  </div>
+          <p>
+            <strong>Optional challenge:</strong> <code>countXX</code> provides
+            extra pattern-scanning practice. It is <strong>not graded</strong>.
+          </p>
 
+          <h3>Getting help</h3>
+          <p>
+            You may use approved AI assistance to understand compiler errors,
+            explain Java syntax, debug code you wrote, or understand why a test
+            failed. Do not ask an AI assistant to generate the complete solution.
+          </p>
+          <p>
+            Before finishing, replace the placeholders for
+            <code>STUDENT_NAME</code> and <code>HELP_CITATION</code>.
+          </p>
 
-</div>
+          <p>
+            Helpful course resources:
+            <a href="../resources.html#java-types" class="resource-ref"
+               target="_blank">Data Types</a>,
+            <a href="../resources.html#return" class="resource-ref"
+               target="_blank">Methods</a>,
+            <a href="../resources.html#conditionals" class="resource-ref"
+               target="_blank">Conditionals</a>,
+            <a href="../resources.html#loops" class="resource-ref"
+               target="_blank">For Loops</a>, and
+            <a href="../resources.html#string-methods" class="resource-ref"
+               target="_blank">String Methods</a>.
+          </p>
+        </div>
+
+        <div class="lab-section" id="submission">
+          <h2>Submission</h2>
+          <p><strong>Submission instructions will be provided in class.</strong></p>
+          <p>Keep your Treasure Hunt completion PDF and completed Lab01 files.</p>
+        </div>
+      </div>
 </div>
 
 
