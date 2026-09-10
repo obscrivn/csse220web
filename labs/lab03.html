@@ -332,82 +332,45 @@ details.hint > summary {
 </div>
 <div id="content">
     <h1>Lab Assignment 03</h1>
-  
-
-      <div id="main-content">
-         <div class="lab-section" id="lab">
-        <p>Today’s lab introduces two essential Java data structures: 2D arrays and HashMaps.  
-  These patterns are heavily used in next week’s homework (and future game projects),  
-  so this lab is your warm-up to build confidence before the challenge ramps up.</p>
-<h3>⚡ Instructions</h3>
-<ul>
-  <li>
-    <strong>Practice:</strong>
-    In <a href="https://codingbat.com/java" target="_blank">Coding Bat</a>, work through Practice exercices to get comfortable with the concepts.
-  </li>
-
-  <li>
-    <strong>Graded work:</strong>
-    Use the provided Lab starter <strong>ZIP</strong> to complete required tasks.
-  </li>
-  </ul>
-
-  <details class="lab-card" id="lab-00">
-<summary><h3>Lab ZIP File</h3></summary>
-<ul>
-<li>Download starter zip file: <a href="../labs/Lab03.zip">Lab03.zip</a> and import it into Eclipse as Existing Project (see Lab02 for details).</li>
-<!-- 
-  <li>
-    <strong>Graded work:</strong>
-    Complete the required methods in <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code>.
-  </li> -->
-
-  <li>
-    <strong>What to submit on Gradescope:</strong>
-    Upload your completed <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code> files to the Lab 03 assignment.
-    The Gradescope link is available on Moodle.
-  </li>
-</ul>
-</details>
-<details class="lab-card" id="lab-01">
-        <summary>
-    <span class="lab-label">01.</span>
-    <span class="lab-title">Coding Bat</span>
-    <span class="lab-tag">Practice</span>
-  </summary>
-  <div class="lab-body">
-      <!-- <h2>01. Print</h2> -->
-       <p>Resources 1: <a href="../resources.html#arrays" class="resource-ref" target="_blank">Arrays</a></p>
-       <p>Resources 1: <a href="../resources.html#arrayslist" class="resource-ref" target="_blank">ArrayList</a></p>
-       <p>Resources 2: <a href="../resources.html#hashmap" class="resource-ref" target="_blank">HashMap</a></p>
+    <div id="main-content">
+      <div class="lab-section" id="part-1">
+        <h2>Part 1: Java Treasure Hunt</h2>
         <p>
-          Complete the following practice:
-          <ol>
-
-            <li><a href="https://codingbat.com/prob/p162010" target="_blank">countEven</a></li>
-            
-          <li><a href="https://codingbat.com/prob/p121853" target="_blank">has22</a></li>
-          <li><a href="https://codingbat.com/prob/p194525" target="_blank">lucky13</a></li>
-          <li><a href="https://codingbat.com/prob/p197888" target="_blank">mapBully</a></li>
-          <li><a href="https://codingbat.com/prob/p107259" target="_blank">mapAB</a></li>
-          <li><a href="https://codingbat.com/prob/p182712" target="_blank">topping1</a></li>
-        
-        
-        </ol>
-         
+          Before beginning Lab03, complete the
+          <a href="https://csse220-java-treasure-hunt-163831374566.us-west2.run.app/" target="_blank" rel="noopener">Java Treasure Hunt</a>.
+          This warm-up targets 2D arrays and HashMaps.
         </p>
-        
-  </details>
+        <ul>
+          <li>Finish <strong>all challenges</strong> in the Treasure Hunt.</li>
+          <li>Obtain the <strong>completion PDF</strong> as proof and request your collectable card!</li>
+          <li>Complete this requirement <strong>before</strong> moving to Part 2.</li>
+        </ul>
+      </div>
+
+      <div class="lab-section" id="part-2">
+        <h2>Part 2: Lab 03 Instructions</h2>
+        <p>
+          This lab introduces two essential Java data structures: 2D arrays and HashMaps.
+          You will practice nested traversal, lookup, updates, and frequency counting.
+        </p>
+        <ol>
+          <li><strong>Download:</strong> Download the <a href="../labs/Lab03.zip">Lab03 starter ZIP</a> and extract it.</li>
+          <li><strong>Open in IntelliJ:</strong> Open IntelliJ IDEA, select <strong>Open</strong>, and choose the extracted <code>Lab03</code> folder.</li>
+          <li><strong>Load Maven:</strong> If prompted, trust the project and allow IntelliJ to load the Maven configuration.</li>
+          <li><strong>Complete the lab:</strong> Open <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code>, replace the required student information, and complete every TODO without changing method headers.</li>
+          <li><strong>Test your work:</strong> Run the provided JUnit tests before submitting.</li>
+          <li><strong>Submit:</strong> Upload <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code> to the Lab 03 assignment on Gradescope. The Gradescope link is available on Moodle.</li>
+        </ol>
+        <p><strong>Do not create a new IntelliJ project. Open the provided Lab03 folder directly.</strong></p>
 
 <details class="lab-card" id="lab-02-array">
   <summary>
-    <span class="lab-label">02.</span>
     <span class="lab-title">2D Arrays</span>
     <span class="lab-tag">Submission</span>
   </summary>
 
   <h3>🛠 Instructions:</h3>
-  Open the <code>Lab03</code> project in Eclipse and find the file for the 2D Array practice. You will be submitting this file to Gradescope.
+  Open <code>TwoDArrayPractice.java</code> in the provided <code>Lab03</code> project. You will submit this file to Gradescope.
   <strong>Complete the TODOs:</strong><br>
   In the opened file, look for comments that say
   <code>// TODO Implement this method</code> (or <code>// TODO</code>).
@@ -464,7 +427,6 @@ details.hint > summary {
 
 <details class="lab-card" id="lab-03-map">
   <summary>
-    <span class="lab-label">03.</span>
     <span class="lab-title">HashMap</span>
     <span class="lab-tag">Submission</span>
   </summary>
@@ -640,7 +602,8 @@ details.hint > summary {
   </ul>
 
   <p>
-    If something fails, read the assertion message, it usually tells you  
+    Open <code>src/test/java/lab/RunAllTests.java</code> and use the green Run button beside the class declaration.
+    If something fails, read the assertion message; it usually tells you
     exactly which input/output mismatched.
   </p>
 
@@ -653,14 +616,8 @@ details.hint > summary {
 
   <p><strong>You're all set! Happy coding! ✨</strong></p>
 </details>
-          </div>
-
+      </div>
   </div>
-
-
 </div>
-</div>
-
-
-        </body>
-        </html>
+</body>
+</html>
