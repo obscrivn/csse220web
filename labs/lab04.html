@@ -6,316 +6,338 @@
 <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
 <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
 <style>
-body {
-          font-family: Arial, sans-serif;
-          line-height: 1.5;
-          margin: 0;
-          padding: 1rem;
-          background: #f5f7fa;
-          color: #333;
-        }
-        
-        /* Section containers */
-        section {
-          background: #fff;
-          border: 1px solid #ddd;
-          border-radius: 6px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-          margin: 1.5rem 0;
-          padding: 1.2rem;
-        }
-        
-        /* Headings */
-        h2 {
-          margin-top: 0;
-          font-size: 1.6rem;
-          border-bottom: 2px solid #e0e0e0;
-          padding-bottom: 0.3rem;
-        }
-        h3 {
-          font-size: 1.3rem;
-          margin-top: 1rem;
-        }
-        
-        /* Image styling */
-        section img {
-          display: block;
-          max-width: 100%;
-          height: auto;
-          margin: 0.8rem auto;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-        
-        /* Code blocks */
-        /* pre {
-          background: #2d2d2d;
-          color: #f8f8f2;
-          padding: 0.8rem;
-          border-radius: 1px;
-          overflow-x: auto;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.9rem;
-        } */
-        /* pre code {
-          display: block;
-          white-space: pre-wrap;
-          word-wrap: break-word;
-        } */
-        
-        /* Inline code */
-        /* code {
-          background: #eaeaea;
-          color: #c7254e;
-          padding: 0.2rem 0.4rem;
-          border-radius: 1px;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.95em;
-        } */
-        
-        /* Highlight compile / runtime state */
-        strong + span {
-          font-weight: bold;
-          color: #d14;
-        }
-        
-        /* Lists */
-        ul, ol {
-          margin: 0.5rem 0 0.5rem 1.2rem;
-        }
-        li {
-          margin-bottom: 0.5rem;
-        }
-        
-        /* Method call subsections */
-        section#method-calls h4 {
-          margin: 1rem 0 0.3rem;
-          font-size: 1.1rem;
-          color: #444;
-          border-left: 3px solid #007acc;
-          padding-left: 0.5rem;
-        }
-        
-        /* Emphasis for compile/run status */
-        span[style*="darkred"] {
-          font-weight: bold;
-          color: #c00;
-        }
-
-
-
-    /* body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
-    } */
-    #main-content {
-      padding: 20px;
-    }
-/* Header styling */
-#header {
-        position: fixed;
-        top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-    }
-    #header a {
-      color: #fff;
-      margin-right: 15px;
-      text-decoration: none;
-
-    }
-    #header a:hover {
-      text-decoration: underline;
-    }
-    #header div {
-      clear: both;
-    }
-    /* Content container */
-    #content {
-      padding: 20px;
-      /* margin-top: 100px;  */
-      margin-bottom: 50px;
-      padding-top: 100px;
-    }
-    #section {
-margin-top: 1rem; 
-margin-bottom: 1rem;
-padding: 20px;
-} 
-    .lab-section {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    }
-    .lab-section h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      color: #333;
-    }
-    .lab-section p {
-      line-height: 1.5;
-      color: #555;
-    }
-/* Lab Navigation Menu Styling */
-#lab-nav {
-      background-color: #faf9fc;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      overflow-x: auto;  /* Enables horizontal scroll */
-      white-space: nowrap; /* Prevents wrapping */
-    }
-    #lab-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 15px;
-    }
-    #lab-nav ul li a {
-      text-decoration: none;
-      color: #333;
-      margin-left: 20px;
-      padding: 5px 10px;
-      border-radius: 3px;
-    }
-    #lab-nav ul li a:hover {
-      background-color: #ddd;
-    }
-    code {
-        color: red;
-    }
-    .code-window {
-      background-color: #272822;
-      color: #f8f8f2;
-      border: 1px solid #333;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      white-space: pre;
-      overflow-x: auto;
-      border-radius: 3px;
-      margin-top: 10px;
-    }
-    .solution-window {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #4caf50;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      border-radius: 3px;
-      overflow-x: auto;
-      white-space: pre;
-      margin-top: 10px;
-    }
-    .solution-header {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #2e7d32;
-    }
-
-    a.resource-ref {
-  background-color: #444; /* dark background for contrast */
-  color: #61dafb;         /* bright text color */
-  padding: 4px 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
+:root {
+  --ink: #1f2937;
+  --muted: #5f6b7a;
+  --surface: #ffffff;
+  --page: #f4f6fb;
+  --border: #d8deea;
+  --header: #1c1515;
+  --heading: #111111;
+  --accent: #2166d1;
+  --accent-soft: #edf4ff;
+  --success: #18794e;
+  --success-soft: #ecf8f2;
+  --optional: #9a6700;
+  --optional-soft: #fff8e6;
+  --shadow: 0 12px 30px rgba(34, 42, 66, 0.08);
 }
 
-a.resource-ref:hover {
-  background-color: #555;
-  color: #ffffff;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  min-height: 3.75rem;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: var(--header);
+  box-shadow: 0 4px 16px rgba(30, 17, 48, 0.2);
+}
+
+#header a {
+  margin: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+#header a:hover,
+#header a:focus-visible {
+  background: #222;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+#header div {
+  display: none;
+}
+
+#content {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6.75rem 0 4rem;
+}
+
+#main-content {
+  padding: 0;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  color: var(--heading);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h2,
+h3 {
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.65rem 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0.65rem 0;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+ul,
+ol {
+  margin: 0.65rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.3rem;
+  background: #eef1f6;
+  color: #9b1c4a;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  margin: 0.85rem 0 1rem;
+  overflow-x: auto;
 }
 
 pre code {
-  background-color: #f5f7fa;
-  color: #1a1a1a;
-  border-left: 4px solid #4a90e2;
-  padding: 0.75em;
   display: block;
-  border-radius: 6px;
-  font-size: 0.9em;
-  line-height: 1.4em;
+  min-width: max-content;
+  padding: 1rem 1.1rem;
+  border: 1px solid #ced8e8;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.6rem;
+  background: #f7f9fc;
+  color: #172033;
+  line-height: 1.5;
 }
-pre code:hover {
-  background-color: #dce1e8;
-  border-left-color: #28527a;
+
+.lab-section {
+  margin-bottom: 1.4rem;
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
+
+.treasure-panel {
+  border-color: #cfd4dc;
+  background: #f8f9fb;
+}
+
+.treasure-panel h2 {
+  color: var(--heading);
+}
+
+.assignment-panel {
+  padding-bottom: 0.85rem;
+}
+
 .lab-card {
-  margin: 0 0 1rem 0;
-  border-radius: 0.75rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  padding: 0.25rem 0.75rem 0.75rem;
+  margin: 1rem 0;
+  padding: 0 1rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  box-shadow: 0 5px 15px rgba(34, 42, 66, 0.05);
+}
+
+.setup-card {
+  background: var(--accent-soft);
+}
+
+.required-card {
+  border-left-color: var(--success);
+}
+
+.optional-card {
+  border-left-color: var(--optional);
+  background: #fffdf8;
 }
 
 .lab-card > summary {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  list-style: none;
+  gap: 0.6rem;
+  min-height: 3.4rem;
+  padding: 0.7rem 0;
+  color: var(--ink);
   cursor: pointer;
-  padding: 0.5rem 0;
-  font-weight: 600;
+  list-style: none;
 }
 
 .lab-card > summary::-webkit-details-marker {
-  display: none; /* hide default arrow in some browsers */
+  display: none;
 }
 
 .lab-card > summary::after {
   content: "›";
   margin-left: auto;
-  font-size: 1rem;
-  transition: transform 0.15s ease-out;
+  color: var(--muted);
+  font-size: 1.35rem;
+  transition: transform 0.18s ease;
 }
 
 .lab-card[open] > summary::after {
   transform: rotate(90deg);
 }
 
+.lab-card > summary h3 {
+  margin: 0;
+}
+
 .lab-label {
-  font-family: monospace;
-  opacity: 0.7;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .lab-title {
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 750;
 }
 
 .lab-tag {
-  font-size: 0.8rem;
-  padding: 0.1rem 0.4rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid #b7c8df;
   border-radius: 999px;
-  border: 1px solid #ccc;
   background: #fff;
+  color: #315a8d;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.required-card .lab-tag {
+  border-color: #a9d5c1;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.optional-card .lab-tag {
+  border-color: #ecd28b;
+  background: var(--optional-soft);
+  color: var(--optional);
 }
 
 .lab-body {
-  border-top: 1px solid #e0e0e0;
-  margin-top: 0.25rem;
-  padding-top: 0.5rem;
+  margin-top: 0.1rem;
+  padding: 0.45rem 0.25rem 0;
+  border-top: 1px solid var(--border);
 }
 
-details.hint {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background: #f9f9f9;
-  border-left: 3px solid #aaa;
+.notice {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.45rem;
+  background: var(--accent-soft);
+  color: #294869;
 }
 
-details.hint > summary {
+details.hint,
+.lab-body details:not(.lab-card) {
+  margin: 0.9rem 0;
+  padding: 0.75rem 0.9rem;
+  border-left: 4px solid #8c98aa;
+  border-radius: 0.45rem;
+  background: #f7f8fa;
+}
+
+details.hint > summary,
+.lab-body details:not(.lab-card) > summary {
+  color: #435064;
   cursor: pointer;
-  font-weight: 500;
-  color: #555;
+  font-weight: 700;
 }
-  </style>
+
+a.resource-ref {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+.lab-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+@media (max-width: 720px) {
+  #header {
+    gap: 0.25rem 0.75rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  #header a {
+    font-size: 0.78rem;
+  }
+
+  #content {
+    width: min(100% - 1rem, 1080px);
+    padding-top: 8rem;
+  }
+
+  .lab-card > summary {
+    flex-wrap: wrap;
+  }
+
+  .lab-tag {
+    order: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-card > summary::after {
+    transition: none;
+  }
+}
+</style>
 </head>
 <body>
   <div id="header">
@@ -332,219 +354,61 @@ details.hint > summary {
 </div>
 <div id="content">
   <h1>Lab Assignment 04</h1>
-  
-
-      <div id="main-content">
-         <div class="lab-section" id="lab">
+  <div id="main-content">
+    <div class="lab-section treasure-panel" id="part-1">
+      <h2>Part 1: Java Treasure Hunt</h2>
       <p>
-    Today’s lab introduces your first Java objects. You will practice creating a class,
-    adding fields and methods, and using objects from another class. These ideas are the
-    foundation for everything we do next with constructors, private fields, and bigger
-    object-oriented programs.
-  </p>
-<h3>⚡ Instructions</h3>
-<ul>
-  <li>
-    <strong>Practice:</strong>
-    Start with the in-class guided practice below to build your first object step by step.
-  </li>
+        Before beginning Lab04, complete the assigned challenges in the
+        <a href="https://csse220-java-treasure-hunt-163831374566.us-west2.run.app/" target="_blank" rel="noopener">Java Treasure Hunt</a>.
+      </p>
+      <ul>
+        <li>Finish <strong>all assigned challenges</strong>.</li>
+        <li>Obtain the <strong>completion PDF</strong> as proof and request your collectable card.</li>
+        <li>Complete this warm-up before moving to Part 2.</li>
+      </ul>
+    </div>
 
-  <li>
-    <strong>Graded work:</strong>
-    Use the provided Lab starter <strong>ZIP</strong> to complete the required tasks and
-      submit your work: Player.java and Main.java
-  </li>
-  </ul>
+    <div class="lab-section assignment-panel" id="part-2">
+      <h2>Part 2: Player Objects</h2>
+      <p>
+        In this lab, you will represent a game player with fields, initialize each object
+        with a constructor, change its state with methods, and use the object from
+        <code>Main</code>.
+      </p>
+      <p><strong>Learning goals:</strong></p>
+      <ul>
+        <li>Represent an object's state with fields.</li>
+        <li>Use <code>this</code> to initialize fields from constructor parameters.</li>
+        <li>Write methods that update state or return information.</li>
+        <li>Create objects and call their methods from a client program.</li>
+        <li>Use JUnit feedback to check an implementation.</li>
+      </ul>
 
-  <details class="lab-card" id="lab-00">
+  <details class="lab-card setup-card" id="lab-00" open>
 <summary><h3>Lab ZIP File</h3></summary>
-<ul>
-<li>Download starter zip file: <a href="../labs/Lab04.zip">Lab04.zip</a> and import it into Eclipse as Existing Project (see Lab02 for details).</li>
-<!-- 
-  <li>
-    <strong>Graded work:</strong>
-    Complete the required methods in <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code>.
-  </li> -->
-
-  <li>
-    <strong>What to submit on Gradescope:</strong>
-    Upload your completed <code>Player.java</code> and <code>App.java</code> files to the Lab 04 assignment.
-    The Gradescope link is available on Moodle.
-  </li>
-</ul>
+<ol>
+  <li><strong>Download:</strong> Download the <a href="../labs/Lab04.zip">Lab04 starter ZIP</a> and extract it.</li>
+  <li><strong>Open in IntelliJ:</strong> Open IntelliJ IDEA, select <strong>Open</strong>, and choose the extracted <code>Lab04</code> folder.</li>
+  <li><strong>Load Maven:</strong> If prompted, trust the project and allow IntelliJ to load the Maven configuration.</li>
+  <li><strong>Complete the lab:</strong> Replace the required student information and complete every TODO in <code>Player.java</code> and <code>Main.java</code>.</li>
+  <li><strong>Test your work:</strong> Run <code>RunAllTests</code> before submitting.</li>
+  <li><strong>Submit:</strong> Upload <code>Player.java</code> and <code>Main.java</code> to the Lab 04 assignment on Gradescope. The Gradescope link is available on Moodle.</li>
+</ol>
+<p class="notice"><strong>Important:</strong> Do not create a new IntelliJ project. Open the provided Lab04 folder directly.</p>
 </details>
 
-<details class="lab-card" id="lab-01">
+<details class="lab-card required-card" id="lab-02" open>
   <summary>
-    <span class="lab-label">01.</span>
-    <span class="lab-title">First Object</span>
-    <span class="lab-tag">Practice</span>
-  </summary>
-  <div class="lab-body">
-
-    <h3>🛠 Instructions:</h3>
-    <p>
-      Create your first Java class called <code>Block</code>, then create an object and call its methods
-      from a <code>Main</code> class.
-    </p>
-
-    <p><strong>You will practice:</strong></p>
-    <ul>
-      <li>creating a class</li>
-      <li>adding fields</li>
-      <li>writing methods</li>
-      <li>creating an object</li>
-      <li>calling methods</li>
-    </ul>
-
-    <h3>🧩 Steps</h3>
-
-    <p><strong>1️⃣ Create the <code>Block</code> class</strong></p>
-    <p>
-      Create a new class named <code>Block</code>.
-    </p>
-    <p>
-      Add these two fields:
-    </p>
-    <ul>
-      <li><code>String type</code></li>
-      <li><code>int hardness</code></li>
-    </ul>
-
-    <p><strong>2️⃣ Add a void method</strong></p>
-    <p>
-      Add a method named <code>displayInfo</code> that prints a message with the following information:
-    </p>
-    <pre><code>"Block Type: " + type
-      "Hardness: " + hardness
-    </code></pre>
-    <p>
-      Add a method named <code>breakBlock</code> that prints a message when the block is broken.
-    </p>
-    <p><strong>Example output:</strong></p>
-    <pre><code>Diamond Ore block was broken!</code></pre>
-
-    <p><strong>3️⃣ Add a return method</strong></p>
-    <p>
-      Add a method named <code>getBlockType</code> that returns the block's type.
-    </p>
-    <!-- <p><strong>Example usage later:</strong></p>
-    <pre><code>String name = block.getBlockType();</code></pre> -->
-
-    <p><strong>4️⃣ Add a method with arguments</strong></p>
-    <p>
-      Add a method named <code>mine</code> that takes:
-    </p>
-    <ul>
-      <li><code>String tool</code></li>
-      <li><code>int toolLevel</code></li>
-    </ul>
-    <p>
-      For now, have the method print which tool is being used and its level.
-    </p>
-
-    <p><strong>5️⃣ Create a <code>Main</code> class</strong></p>
-    <p>
-      Create a separate class named <code>Main</code> with the <code>main</code> method.
-    </p>
-    <p>
-      Inside <code>main</code>, create one <code>Block</code> object.
-    </p>
-
-    <p><strong>6️⃣ Assign field values</strong></p>
-    <p>
-      Give your object values such as:
-    </p>
-    <ul>
-      <li><code>type = "Diamond Ore"</code></li>
-      <li><code>hardness = 5</code></li>
-    </ul>
-
-    <p><strong>7️⃣ Call all three methods</strong></p>
-    <p>
-      From <code>Main</code>, call:
-    </p>
-    <ul>
-      <li>the <code>void</code> method</li>
-      <li>the <code>return</code> method</li>
-      <li>the method with arguments</li>
-    </ul>
-    <p>
-      Print any returned value to the console so you can see what happens.
-    </p>
-
- 
-
-    <h3>✅ Checkpoint</h3>
-    <ul>
-      <li>There are no red <strong>❌</strong> errors in the editor.</li>
-      <li>You created a <code>Block</code> class and a <code>Main</code> class.</li>
-      <li>Your <code>Block</code> class has two fields.</li>
-      <li>Your <code>Block</code> class has three methods.</li>
-      <li>Your <code>Main</code> class creates a <code>Block</code> object.</li>
-      <li>You successfully call all three methods.</li>
-      <li>You see output in the console.</li>
-    </ul>
-
-    <details>
-      <summary><strong>💡 Need a hint?</strong></summary>
-
-      <p><strong>Method shapes:</strong></p>
-      <pre><code>public void methodName() {
-
-}</code></pre>
-
-      <pre><code>public String methodName() {
-    return "something";
-}</code></pre>
-
-      <pre><code>public void methodName(String text, int number) {
-
-}</code></pre>
-
-      <p><strong>Creating an object:</strong></p>
-      <pre><code>Block block = new Block();</code></pre>
-
-      <p><strong>Calling methods:</strong></p>
-      <pre><code>block.breakBlock();
-
-String name = block.getBlockType();
-System.out.println(name);
-
-block.mine("Iron Pickaxe", 3);</code></pre>
-    </details>
-
-  </div>
-</details>
-
-<details class="lab-card" id="lab-02">
-  <summary>
-    <span class="lab-label">02.</span>
+    <span class="lab-label">Required.</span>
     <span class="lab-title">Player</span>
     <span class="lab-tag">Submission</span>
   </summary>
   <div class="lab-body">
 
-    <h3>🛠 Instructions:</h3>
-<p>
-      In this part of the lab you will implement the <code>Player</code> class and complete
-      the practice code in <code>Main</code>.
-    </p>
-
     <p>
-      Open the provided project and look for comments marked:
-      <code>// TODO</code>.  
-      Each TODO describes a small step you must complete.
+      Implement the <code>Player</code> class, then use it from <code>Main</code>.
+      Work through the provided <code>// TODO</code> comments in order.
     </p>
-
-    <p><strong>You will practice:</strong></p>
-    <ul>
-      <li>Creating fields for an object</li>
-      <li>Writing constructors</li>
-      <li>Implementing methods with parameters</li>
-      <li>Returning values from methods</li>
-      <li>Calling methods from a client program (<code>Main</code>)</li>
-    </ul>
 
     <p><strong>Files you will modify and submit:</strong></p>
     <ul>
@@ -552,43 +416,35 @@ block.mine("Iron Pickaxe", 3);</code></pre>
       <li><code>Main.java</code> – create objects and call the methods</li>
     </ul>
 
-       <h3><strong>⚠️ Gradescope Note</strong></h3>
+    <h3>Complete <code>Player.java</code></h3>
+    <ol>
+      <li>Replace <code>STUDENT_NAME</code> and <code>HELP_CITATION</code>.</li>
+      <li>Add the public fields <code>String name</code> and <code>int health</code>.</li>
+      <li>Complete <code>Player(String name, int health)</code>. Use <code>this</code> to initialize both fields.</li>
+      <li>Complete <code>takeDamage</code> and <code>heal</code> so they update the object's health.</li>
+      <li>Complete <code>getName</code>.</li>
+      <li>Complete <code>getStatus</code> using the exact format shown in its Javadoc.</li>
+    </ol>
 
-<p>
-For this lab you will temporarily create 2 constructors.
-However, the autograder only accept one constructor.
-</p>
+    <p><strong>Do not change the provided constructor or method headers.</strong></p>
 
-<p>
-After you finish testing locally in Eclipse, please follow these steps before submitting:
-</p>
+    <h3>Complete <code>Main.java</code></h3>
+    <ol>
+      <li>Replace <code>STUDENT_NAME</code> and <code>HELP_CITATION</code>.</li>
+      <li>Create <code>player1</code> with the values <code>"Unknown"</code> and <code>0</code>.</li>
+      <li>Before running the program, predict what <code>player1.getStatus()</code> will return. Then print it and check your prediction.</li>
+      <li>Create <code>player2</code> with a name and starting health of your choice.</li>
+      <li>Print its status, apply damage, and print its status again.</li>
+      <li>Heal it and print its final status.</li>
+    </ol>
 
-<ol>
-<li>
-<strong>In <code>Player.java</code></strong><br>
-Comment out the default constructor. Do <strong>not delete it</strong>.
-</li>
-</ol>
-
-<pre><code>// Comment this out before submitting to Gradescope
-/*
-public Player() {
-    name = "Unknown";
-    health = 0;
-}
-*/
-</code></pre>
-
-<ol start="2">
-<li>
-<strong>In <code>Main.java</code></strong><br>
-Comment lines for TODO 1 and TODO 2.
-</li>
-</ol>
-
-<pre><code>// Player player1 = new Player();  // used for testing only
-// System.out.println(player1.getStatus()); used for testing only
-</code></pre>
+    <h3>Test and submit</h3>
+    <ol>
+      <li>Open <code>src/test/java/lab/RunAllTests.java</code>.</li>
+      <li>Select the green Run button next to <code>RunAllTests</code>.</li>
+      <li>Resolve all failures before submitting.</li>
+      <li>Submit only <code>Player.java</code> and <code>Main.java</code>.</li>
+    </ol>
 
 
   </div>
@@ -597,18 +453,19 @@ Comment lines for TODO 1 and TODO 2.
 
 
 
-<details class="lab-card" id="lab-03">
+<details class="lab-card optional-card" id="lab-03">
   <summary>
-    <span class="lab-label">03.</span>
+    <span class="lab-label">Optional.</span>
     <span class="lab-title">PlayerStats</span>
-    <span class="lab-tag">Practice</span>
+    <span class="lab-tag">Extra Practice</span>
   </summary>
   <div class="lab-body">
 
     <h3>🛠 Instructions</h3>
 
     <p>
-      In this practice activity, you will create your own class <code>PlayerStats</code> to model
+      If you finish the required Player work, use this optional activity to create your own
+      <code>PlayerStats</code> class and model
       a game player’s stats: their name and scores from different Minecraft areas
       such as the Overworld, Nether, and End.
     </p>
@@ -616,13 +473,16 @@ Comment lines for TODO 1 and TODO 2.
     <p>
       You will then use the provided <code>PlayerStatsMain</code> class inside the Lab04 project to test your work.
     </p>
+    <p>
+      <strong>This section is optional and is not submitted to Gradescope.</strong>
+    </p>
 
     <p>Resources: <a href="../resources.html#fields" class="resource-ref">Understanding Fields and Classes</a></p>
 
     <p><strong>This practice is designed to help you get comfortable with:</strong></p>
     <ul>
       <li>Defining your own classes and fields</li>
-      <li>Writing constructors</li>
+      <li>Writing a constructor</li>
       <li>Adding methods that update and compute values</li>
       <li>Working with a <code>HashMap</code> inside a class</li>
       <li>Building and returning a formatted <code>String</code></li>
@@ -654,16 +514,14 @@ Comment lines for TODO 1 and TODO 2.
 
     <h3>1️⃣ Create the <code>PlayerStats</code> class</h3>
 
-    <img src="../labs/playerstatUML.png" alt="PlayerStats UML Diagram" style="max-width: 100%; height: auto; border: 1px solid #ccc; padding: 5px; margin-top: 10px;">
+    <img src="../labs/playerstatUML.png" alt="PlayerStats UML Diagram">
 
     <ol>
       <li>Open <code>PlayerStatsMain</code> and uncomment the first line:
         <code>PlayerStats mineMaster = new PlayerStats("MineMaster");</code>
       </li>
-      <li>
-        Eclipse should show an error because the <code>PlayerStats</code> class does not exist yet.
-        Use the quick fix to create the class.
-      </li>
+      <li>In the Project window, right-click <code>src/main/java/lab</code> and select <strong>New → Java Class</strong>.</li>
+      <li>Name the class <code>PlayerStats</code>. IntelliJ will create it in the existing <code>lab</code> package.</li>
       <li>
         Add class-level Javadoc and your name in the <code>@author</code> line.
       </li>
@@ -681,7 +539,7 @@ Comment lines for TODO 1 and TODO 2.
  */
 public class PlayerStats {
 
-    // TODO: fields, constructors, and methods go here
+    // TODO: fields, constructor, and methods go here
 
 }</code></pre>
     </details>
@@ -712,33 +570,19 @@ public class PlayerStats {
       <pre><code>HashMap&lt;String, Integer&gt; levelScores = new HashMap&lt;&gt;();</code></pre>
     </details>
 
-    <h3>3️⃣ Add two constructors</h3>
-    <p>
-      Write:
-    </p>
-    <ul>
-      <li>a <strong>default constructor</strong></li>
-      <li>a <strong>constructor with a name parameter</strong></li>
-    </ul>
-
-    <p>
-      The default constructor should give the player a simple default name.
-    </p>
+    <h3>3️⃣ Add a constructor</h3>
+    <p>Write a constructor that receives the player's name.</p>
 
     <details>
       <summary><strong>💡 Hint</strong></summary>
-      <pre><code>public PlayerStats() {
-    // default constructor
-}
-
-public PlayerStats(String name) {
+      <pre><code>public PlayerStats(String name) {
     // constructor that sets the player's name
 }</code></pre>
       <p>
-        Use <code>this.name = name;</code> in the constructor with a parameter.
+        Use <code>this.name = name;</code> in the constructor.
       </p>
       <p>
-        Do not reassign <code>levelScores</code> inside the constructors.
+        Do not reassign <code>levelScores</code> inside the constructor.
       </p>
     </details>
 
@@ -858,7 +702,7 @@ The report should include:
 
 <p><strong>If there are no scores yet</strong>, return something like:</p>
 
-<pre><code>Player1: (no scores yet)</code></pre>
+<pre><code>Alex: (no scores yet)</code></pre>
 
 <p><strong>If scores exist</strong>, return a report similar to:</p>
 
@@ -935,350 +779,20 @@ report += " - Average: " + getAverageScore();</code></pre>
 
     <p>You should see output similar to this:</p>
     <pre><code>MineMaster: VillageRaid - 2200 Nether - 3000 Overworld - 1200 End - 5000 - Total: 11400 - Average: 2850.0
-Player1: Nether - 800 Overworld - 400 - Total: 1200 - Average: 600.0</code></pre>
+</code></pre>
 
     <h3>✅ Checkpoint</h3>
     <ul>
-      <li>There are no red ❌ errors in Eclipse.</li>
-      <li>Your <code>PlayerStats</code> class has fields, constructors, and methods.</li>
+      <li>There are no red ❌ errors in IntelliJ.</li>
+      <li>Your <code>PlayerStats</code> class has fields, a constructor, and methods.</li>
       <li><code>PlayerStatsMain</code> runs successfully.</li>
       <li>Your report string includes the player name, level scores, total, and average.</li>
     </ul>
 
   </div>
 </details>
-
-
-    <!-- <details class="lab-card" id="lab-03">
-  <summary>
-    <span class="lab-label">03.</span>
-    <span class="lab-title">PlayerStats</span>
-    <span class="lab-tag">Practice</span>
-  </summary>
-  <div class="lab-body">
-
-    <h3>🛠 Instructions:</h3>
-
-In this lab practice, you will create your own class <code>PlayerStats</code> that models a game player’s stats: their name and scores from different areas (Overworld, Nether, End, etc.). 
-You’ll then use a provided <code>PlayerStatsMain</code> class to test your code.
-</p>
-<p>Resources: <a href="../resources.html#fields" class="resource-ref">Understanding Fields and Classes</a></p>
-<p>
-The main goal is to get comfortable with:
-</p>
-<ul>
-  <li>Defining your own classes and fields</li>
-  <li>Writing constructors (default + parameterized)</li>
-  <li>Adding methods that update and compute values</li>
-  <li>Using <code>public</code> vs <code>private</code> fields and methods</li>
- <li>Building and returning a formatted <code>String</code> report</li>
-</ul>
-
-  <p>1️⃣ What Are We Building?</p>
-  <p>
-    You’re modeling a typical <strong>player stats card</strong>.
-  </p>
-
-  <p>Each <code>PlayerStats</code> object will represent one player and store:</p>
-  <ul>
-    <li>the player’s <strong>name</strong>, e.g. <code>"MineMiner"</code>, <code>"Alex"</code>, <code>"Nova"</code></li>
-    <li>a collection of <strong>level scores</strong>, like:
-      <ul>
-        <li><code>"Overworld" → 1200</code></li>
-        <li><code>"Nether" → 3000</code></li>
-        <li><code>"End" → 5000</code></li>
-      </ul>
-    </li>
-  </ul>
-
-  <p>Your class will be able to:</p>
-  <ul>
-    <li>store scores for different Minecraft areas</li>
-    <li>compute the total and average score</li>
-    <li>build a single-line report string that summarizes the player’s stats</li>
-  </ul>
-
-  <p>2️⃣ Create the <code>PlayerStats</code> Class & Fields</p>
-
-
-  <img src="../labs/playerstatUML.png" alt="PlayerStats UML Diagram" style="max-width: 100%; height: auto; border: 1px solid #ccc; padding: 5px; margin-top: 10px;">
-  <ol>
-    <li>
-      In the <code>PlayerStatsMain</code> uncomment the first line <code>PlayerStats mineMaster = new PlayerStats("MineMaster");</code>.
-    </li>
-    <li>
-      You will notice the error message asking you to create a new class named <code>PlayerStats</code>. Follow the prompt and create it.
-    </li>
-    <li>Add the following javadoc (below the import package declaration)</li>
-  </ol>
-
-<pre><code>package lab;
-
-/**
- * Represents the stats of a Minecraft player.
-  * Stores the player's name and their scores from different levels.
-  * @author Your Name Here
- */
-public class PlayerStats {
-
-    // TODO: fields, constructors, and methods go here
-
-}
-</code></pre>
-
-  <p>Inside <code>PlayerStats</code>, add two <strong>fields</strong>:</p>
-
-<!-- <pre><code>private String name; 
-
-// Each level name maps to its score
-private HashMap&lt;String, Integer&gt; levelScores =
-        new HashMap&lt;&gt;();
-</code></pre> -->
-
-  <!-- <ul>
-    <li><code>name</code> = the player’s name.</li>
-    <li><code>levelScores</code> = a <code>HashMap</code> mapping area names (keys) to scores (values).</li>
-  <pre><code>HashMap&lt;String, Integer&gt; levelScores =
-        new HashMap&lt;&gt;();
-  </code></pre>
-  </ul>
-
-  <p><strong>Hint:</strong> Initializing <code>levelScores</code> at the field means every new
-  <code>PlayerStats</code> object automatically starts with an empty, ready-to-use map.</p>
-
-  <p>3️⃣ Constructors: Default and Parameterized (with Named Player)</p>
-
-  <p>
-    You will write two constructors so we can create players with or without a given name.
-  </p>
-
-<pre><code>public PlayerStats() {
-    // default constructor
-}
-
-public PlayerStats(String name) {
-    // constructor that sets the player's name
-}
-</code></pre>
-
-
-  <p>
-    Pick a simple default name so that if no name is provided, the player still has some label.
-    For example:
-  </p>
-
-<pre><code>public PlayerStats() {
-    this.name = "Player1";
-}
-</code></pre>
-
-  <h3>Parameterized constructor</h3>
-
-<pre><code>public PlayerStats(String name) {
-    this.name = name;
-}
-</code></pre>
-
-  <p><strong>Hints:</strong></p>
-  <ul>
-    <li>Use <code>this.name = name;</code> to distinguish the field from the parameter.</li>
-    <li>Do not reassign <code>levelScores</code> in the constructors; it’s already initialized at the field.</li>
-  </ul>
-
-  <p>4️⃣ Adding Level Scores</p>
-
-  <p>
-    Next, write a method that records a score for a specific area (e.g. Overworld, Nether, End).
-  </p>
-
-<pre><code>public void addLevelScore(String levelName, int score) {
-    // TODO: store or update the score for this level
-}
-</code></pre>
-
-  <p><strong>Hint:</strong> Use the <code>put</code> method on the <code>HashMap</code>:</p>
-
-
-
-  <ul>
-    <li>If you call <code>addLevelScore("Overworld", 1000);</code>
-        and then later <code>addLevelScore("Overworld", 2000);</code>, the second call will
-        replace the score for <code>"Overworld"</code>.
-    </li>
-  </ul>
-
-  <p>5️⃣ Computing Total and Average Score</p>
-
-  <p>Add methods to compute the total and average scores across all levels:</p>
-
-<pre><code>public int getTotalScore() {
-    // sum all scores in levelScores
-}
-
-public double getAverageScore() {
-    // average of all scores in levelScores
-}
-</code></pre>
-
-  <h3>Hints for <code>getTotalScore()</code></h3>
-
-<pre><code>public int getTotalScore() {
-    int sum = 0;
-    for (String level : levelScores.keySet()) {
-        sum += levelScores.get(level);
-    }
-    return sum;
-}
-</code></pre>
-
-  <h3>Hints for <code>getAverageScore()</code></h3>
-
-<pre><code>public double getAverageScore() {
-    if (levelScores.isEmpty()) {
-        return 0.0;
-    }
-    return getTotalScore() / (double) levelScores.size();
-}
-</code></pre>
-
-  <p>
-    Returning <code>0.0</code> for “no scores yet” is fine for this lab. Just be consistent.
-  </p>
-
-  <p>6️⃣ Building a Stats Report String</p>
-
-  <p>
-    Instead of printing in multiple places, we’ll have one method that builds and returns a single
-    <strong>stats report</strong> string.
-  </p>
-
-<pre><code>public String buildStatsReport() {
-    // Example format:
-    // "MineMiner: Overworld - 1200 Nether - 3000 End - 5000 - Total: 9200 - Average: 3066.6666666666665"
-}
-</code></pre>
-
-  <h3>Behavior</h3>
-  <ul>
-    <li>If there are <strong>no level scores yet</strong>, return something like:
-      <pre><code>Player1: (no scores yet)</code></pre>
-      (or <code>"Alex: (no scores yet)"</code> if the name is Alex)
-    </li>
-    <li>If there are scores, return a single-line report, for example:
-      <pre><code>Steve: Overworld - 1200 Nether - 3000 End - 5000 - Total: 9200 - Average: 3066.6666666666665</code></pre>
-    </li>
-  </ul>
-
-  <h3>Hint: build the String step by step</h3>
-
-<pre><code>public String buildStatsReport() {
-    String report = name + ":";
-
-    if (levelScores.isEmpty()) {
-        return report + " (no scores yet)";
-    }
-
-    for (String level : levelScores.keySet()) {
-        int score = levelScores.get(level);
-        report += " " + level + " - " + score;
-    }
-
-    report += " - Total: " + getTotalScore();
-    report += " - Average: " + getAverageScore();
-
-    return report;
-}
-</code></pre>
-
-  <p><strong>Note:</strong> The order of levels may vary because <code>HashMap</code> does not guarantee order.</p>
-
-  <p>7️⃣ Printing the Stats Report</p>
-
-  <p>
-    Finally, write a small helper method that prints the report to the console.
-  </p>
-
-<pre><code>public void printStatsReport() {
-    System.out.println(buildStatsReport());
-}
-</code></pre>
-
-  <p>
-    This method is <code>void</code>: it doesn’t return anything, it just prints the result of
-    <code>buildStatsReport()</code>.
-  </p>
-
-  <p>8️⃣ Using <code>PlayerStats</code> from <code>PlayerStatsMain</code></p>
-
-  <p>
-    Open <code>PlayerStatsMain.java</code> from the starter project. Uncomment and execute it. You should expect output like this:
-  </p>
-
-<pre><code>MineMaster: VillageRaid - 2200 Nether - 3000 Overworld - 1200 End - 5000 - Total: 11400 - Average: 2850.0
-Player1: Nether - 800 Overworld - 400 - Total: 1200 - Average: 600.0
-
-</code></pre>
-
-</details>
-</div> --> 
-
-<!-- <details class="lab-card">
-  <summary>9️⃣ Public / Private</summary>
-
-  <p>
-    As you write your class, make sure your design matches what we discussed in lecture and Worksheet 04:
-  </p>
-
-  <ul>
-    <li>Fields (instance variables) should be <strong>private</strong>:
-      <pre><code>private String name;
-private java.util.HashMap&lt;String, Integer&gt; levelScores;</code></pre>
-    </li>
-    <li>Methods that clients use should be <strong>public</strong>:
-      <ul>
-        <li>constructors</li>
-        <li><code>addLevelScore</code></li>
-        <li><code>getTotalScore</code></li>
-        <li><code>getAverageScore</code></li>
-        <li><code>buildStatsReport</code></li>
-        <li><code>printStatsReport</code></li>
-      </ul>
-    </li>
-  </ul>
-
-  <p>
-    <strong>Recall:</strong> <code>private</code> means only the class itself can access that field/method.
-    <code>public</code> means other classes (like <code>PlayerStatsMain</code>) can call it.
-  </p>
-</details>
-
-<details class="lab-card">
-  <summary>🔟 Turn-In Checklist</summary>
-
-  <p>Before submitting:</p>
-
-  <ul>
-    <li>Open <code>PlayerStatsTest.java</code> in Eclipse labTest package. Uncomment import and uncomment all tests. Save it.</li>
-    <li>Execute <code>RunAllTests</code> </li>
-    <li>Comment out your no-argument constructor in PlayerStats.
-The autograder only supports a single constructor.</li>
-  </ul>
-
-  <p><strong>Submit to Gradescope:</strong> <code>PlayerStats.java</code>.</p>
-</details> -->
-
-<!--   
-  
- 
-        </div>
-        </div>
-
-
-
-        </div> -->
-        </div>
-
-
-
-        </body>
-        </html>
+    </div>
+  </div>
+</div>
+</body>
+</html>
