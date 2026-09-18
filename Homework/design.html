@@ -6,87 +6,144 @@
     <title>Design</title>
     <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
     <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
-  <style>
-    /* Header styling */
-    #header {
+    <style>
+      #header {
         position: fixed;
         top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-    }
-    #header a {
-      color: #fff;
-      margin-right: 15px;
-      text-decoration: none;
-
-    }
-    #header a:hover {
-      text-decoration: underline;
-    }
-    #header div {
-      clear: both;
-    }
-    /* Content container */
-    #content {
-      padding: 20px;
-      margin-top: 100px; 
-      margin-bottom: 50px;
-    }
-    h1, h2, h3 {
-      color: #00539C;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px 30px;
-      border-radius: 8px;
-      margin-top: 100px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    section {
-      margin-bottom: 30px;
-    }
-    pre {
-      background-color: #eee;
-      padding: 10px;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-    a {
-      color: #0077B6;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    ul {
-      margin-left: 20px;
-    }
-    .image-container {
-      text-align: center;
-      margin: 15px 0;
-    }
-    .image-container img {
-      max-width: 100%;
-      height: auto;
-    }
-    .note {
-      background-color: #fff3cd;
-      border: 1px solid #ffeeba;
-      padding: 10px;
-      border-radius: 4px;
-      margin-top: 10px;
-    }
-
-    section::before {
-  content: "";
-  display: block;
-  height: 90px; /* equal to your header's height */
-  margin-top: -90px;
-}
-  </style>
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+      #header a {
+        color: #fff;
+        margin-right: 15px;
+        text-decoration: none;
+      }
+      #header a:hover {
+        text-decoration: underline;
+      }
+      #header div {
+        clear: both;
+      }
+      #content {
+        padding: 20px;
+        margin-top: 100px;
+        margin-bottom: 50px;
+      }
+      h1, h2, h3 {
+        color: #00539C;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px 30px;
+        border-radius: 8px;
+        margin-top: 100px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      section {
+        margin-bottom: 30px;
+      }
+      a {
+        color: #0077B6;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      ul {
+        margin-left: 20px;
+      }
+      .image-container {
+        text-align: center;
+        margin: 15px 0;
+      }
+      .image-container img,
+      .scenario-image {
+        max-width: 100%;
+        height: auto;
+      }
+      .note {
+        background-color: #fff3cd;
+        border: 1px solid #ffeeba;
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+      .hub-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .hub-nav a {
+        border: 1px solid #cbd5e1;
+        border-radius: 999px;
+        padding: 4px 10px;
+        background: #f8fafc;
+        font-size: 0.95em;
+      }
+      details.hub-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        margin: 1rem 0;
+        background: #ffffff;
+      }
+      details.hub-card summary {
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1.03rem;
+        list-style: none;
+      }
+      details.hub-card summary::-webkit-details-marker {
+        display: none;
+      }
+      details.hub-card summary::before {
+        content: "▸ ";
+        font-weight: bold;
+      }
+      details.hub-card[open] summary::before {
+        content: "▾ ";
+      }
+      details.hub-card > *:not(summary) {
+        margin-top: 0.75rem;
+      }
+      .callout {
+        padding: 0.75rem 1rem;
+        margin: 1rem 0;
+        border-radius: 8px;
+        background: #f1f5f9;
+        border-left: 6px solid #94a3b8;
+      }
+      .callout.ok {
+        background: #ecfdf5;
+        border-left-color: #10b981;
+      }
+      .callout.warn {
+        background: #fff7ed;
+        border-left-color: #f97316;
+      }
+      details.hint {
+        margin-top: 0.75rem;
+        padding: 0.5rem 0.75rem;
+        border-left: 4px solid #cbd5e1;
+        background: #f8fafc;
+      }
+      code, pre {
+        background: #f1f5f9;
+      }
+      pre {
+        padding: 0.6rem 0.8rem;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+      section[id],
+      details[id] {
+        scroll-margin-top: 110px;
+      }
+    </style>
   </head>
   <body>
     <div id="header">
@@ -100,342 +157,565 @@
       <a id="quiz_link" href="../project.html">Final Project</a>
       <a id="resources_link" href="../resources.html">Resources</a>
       <div style="clear:both;"></div>
-  </div>
+    </div>
 
-  <div class="container">
-    <!-- General Description -->
-    <section id="general-description">
-      <h2>Design Problems Overview</h2>
-      <p>
-        This design problem provides opportunities to practice object-oriented design. You will work on these design problems with your partner.
-      </p>
-      <p>OOD Principles <a href="../resources_files/Basic_OO_Principles_for_CSSE220.pdf">Handout</a></p>
-    </section>
-    
-    <!-- Example Problems -->
-    <section id="example-problems">
-      <h2>Example Problems</h2>
-      <p>
-        The <a href="./ExampleDesignProblemsDP1andDP2.pdf" target="_blank">Example Problems DP1/DP2</a> document includes a set of design problems for you to practice on.
-        Since these are practice problems, you can work on them alone or collaborate with other students.
-      </p>
-      <p>
-        Solutions with commentary and good designs are provided <a href="./SolutionsToExampleDesignProblemsDP1andDP2.pdf" target="_blank">Solutions Example Problems DP1/DP2</a>. Use these to evaluate your proposed solutions.
-      </p>
-      <p>
-        If you would like, you can use 
-        <a href="TEMPLATE_DesignProblemPractice.docx" target="_blank">this template</a> for practicing with these example design problems to prepare your for exam 1 and exam 2. 
-      </p>
-    </section>
-    
-    <!-- Homework Problems List -->
-    <section id="hw-list">
-      <h2>The Design Problems overview</h2>
-      <p>The links for the 5 design problems are provided below:</p>
-      <ul>
-        <li>DesignProbHW1 - <a href="#design-prob-1">Online Quizzes</a></li>
-        <li>DesignProbHW2 - <a href="#design-prob-2">Vapor Sales Manager</a> </li>
-        <li>DesignProbHW3 - <a href="#design-prob-3">Spaceships</a></li>
-        <li>DesignProbHW4 - <a href="#design-prob-4">Team Budget</a></li>
-        <li>DesignProbHW5 - <a href="#design-prob-5">Tag</a></li>
-        <li>DesignProbHW6 - <a href="#design-prob-6">Lab Inventory</a></li>
-      </ul>
-    </section>
-    
-    <!-- Turn-In Instructions -->
-    <section id="turn-in">
-      <h2>Turn-In Instructions</h2>
-      <p>
-        Work on each problem (use template as needed), create UML diagrams, complete questions on GradeScope and submit your diagrams.
-      </p>
-    </section>
-    
-    <!-- Grading -->
-    <section id="grading">
-      <h2>Grading</h2>
-      <h3>Assignment Parts and Points</h3>
-      <p>
-        Details on the specific parts and point values are provided in GradeScope.
-      </p>
-      <h3>Proposed Defective Solutions:</h3>
-      <ul>
-        <li>
-          When identifying the principles that a defective solution has violated, you must clearly explain why you believe a principle is violated.
-        </li>
-        <li>
-          Within individual problems, to earn full credit, you must identify the single main problem in each flawed design.
-          You may list several flaws, but there is usually one primary issue that should be identified.
-        </li>
-      </ul>
-      <h3>Your Solution:</h3>
-      <ul>
-        <li>
-          In each problem, your final design must address the issues you have identified and present a solution that is better than the problematic ones.
-        </li>
-        <li>
-          If your design is no better or is worse than the provided solutions, you will not earn full credit.
-        </li>
-<li>To earn full credit, you must submit a solution that improves <strong>at least</strong> one of the two provided solutions by correctly fixing the identified violations. </li>
-      </ul>
-    </section>
-    
-    <!-- Specific Problem: Design Problem 1 -->
-    <section id="design-prob-1">
-      <h2>Design Problem 1 - Online Quizzes</h2>
-      <h3>Problem Statement</h3>
-      <p>
-        In an online quiz application, teachers update quizzes and students take them. Quizzes and questions have their own unique ID numbers.
-        The same quiz question can appear in multiple quizzes. When a teacher updates the actual query made by a quiz question,
-        the update should be reflected in all quizzes that utilize that question. A student takes a quiz by providing a quiz ID
-        to the application at the time of taking the quiz.
-      </p>
-      <h3>Part 1 in Gradescope</h3>
-      <p>Identify a list of primary nouns (classes), identify attribute (secondary nouns) for each of these classes, identify methods (verbs)</p>
-      <h3> Part 2 in Gradescope</h3>
+    <div class="container" id="content">
+      <section id="object-design-hub">
+        <h1>Object Design Hub</h1>
+        <p>
+          Use this page throughout the object design unit to practice turning scenarios into classes,
+          fields, methods, and relationships, and to evaluate alternative UML designs.
+        </p>
+        <p>OOD Principles <a href="../resources_files/Basic_OO_Principles_for_CSSE220.pdf">Handout</a></p>
+      </section>
 
-      <h4>  Bad Design A</h4>
-      <div class="image-container">
-        <img src="DP1_A.png" alt="Bad Design A" width="800"/>
-      </div>
-      <p>
-        <a href="http://www.plantuml.com/plantuml/uml/RP11JiCm44NtFiLNDr2W5-W2bIKI5LIb1nZL9Xd5cGHxl4WGTyT984ealB1iF__tPH-YKj1KUnChbfO2rOZQUPVdmDUHv763Dq-Yb-CBFfg0L_4i3gV4FSwDJygDuCcOgwSOn-CZiU3B0BWlIQntbzQIkW6Taej3uFRpT_5izopwWBzzlX2wFSuQM8hjml5ErMZ8IUvp2ZcsDT_BtgcJ9xP4atgDWVyxXzpyY5tWejJTu-PkCslCx5jJxit1YSsVzWC0" target="_blank">Source PlantUML</a>
-      
-      <h4>Bad Design B</h4>
-      <div class="image-container">
-        <img src="DP1_B.png" alt="Bad Design B" width="800"/>
-      </div>
-      <p>
-        <a href="http://www.plantuml.com/plantuml/uml/RO_1Je8n48JlVOe95q7b1JWOF9f8b20FiA4LDko_FxJR0nhVtVwjcbzZ3vjslivCTfcCekLEN3godYXIXsGN2ML6tbLIpXMUXTIsgqUyzX5FAgm1wynlsFIIZNl5lNCxePIgl29Ml3i0DmTIBs5xycHXGEiSqc2Odhyk3tx1QhVuVfSFyRB0nYBhVZRAUA5ZJPYUooWk5DlCVOnxMoStDaOj-ZS6_kySV3zBp2Fl3pQ_crnFQaCbVzIMuPP1VUxa4m00" target="_blank">Source PlantUML</a>
-      </p>
-      
-<div class="note">
-  <strong>Details:</strong> Both designs have the worst kind of problem: <em>they don’t function</em>.  
-  <br><br>
-  <ul>
-    <li><strong>No constructors in UML:</strong> You don’t need to list constructors in your class diagrams. We’ll add them later when coding.</li>
-    <li><strong>Object fields via arrows:</strong> If a class has another class as a field, don’t write it directly in the field list—>show it with an arrow (see the UML handout).</li>
-    <li><strong>Focus on Design Principle #1:</strong> For this first design problem, just aim to make the system <em>functional</em>. Don’t overcomplicate.</li>
-    <li><strong>No extra methods:</strong> For now, don’t add new methods—>stick to the basics given in the problem.</li>
- <li><strong>Actors/Users (like Teacher or Student)</strong> are 
-  <u>not</u> part of this quiz application. For this assignment we’re modeling the data and behaviors of the quiz system itself (questions, quizzes), not the login/permissions layer or user profiles</li>
-  </ul>
-</div>
-    </section>
-        <!-- Specific Problem: Design Problem 2 -->
-        <section id="design-prob-2">
-          <h2>Design Problem 2 - Vapor Sales</h2>
+      <section id="quick-design-checkdown">
+        <h2>Quick Design Checkdown</h2>
+        <p>Inspect designs in this order and stop at the first major failure:</p>
+        <ol>
+          <li><strong>Functionality</strong></li>
+          <li><strong>Structure around the data</strong></li>
+          <li><strong>Distribute responsibilities efficiently (high cohesion)</strong></li>
+          <li><strong>Minimize dependencies (low coupling)</strong></li>
+          <li><strong>Avoid duplication</strong></li>
+        </ol>
+        <div class="callout ok">
+          <strong>Rule of thumb:</strong> The first <strong>No</strong> is usually the primary issue.
+        </div>
+      </section>
+
+      <details id="uml-intellij-card" class="hub-card">
+        <summary>📐 UML in IntelliJ — install plugins and use both UML workflows</summary>
+        <p>
+          Install the UML plugins and learn how to create a design diagram or generate UML from Java code.
+        </p>
+        <h3>Install</h3>
+        <p>In IntelliJ: <code>Settings → Plugins → Marketplace</code></p>
+        <ul>
+          <li><strong>PlantUML4Idea</strong>: creates and renders PlantUML diagrams.</li>
+          <li><strong>PlantUML Parser</strong>: generates PlantUML from existing Java code.</li>
+        </ul>
+        <div class="callout ok">
+          ✅ <strong>Checkpoint:</strong> After installing PlantUML4Idea, <code>New</code> should include <code>PlantUML File</code>.
+        </div>
+
+        <h3>Design → UML</h3>
+        <p><code>Scenario → Classes + Data + Behavior → UML → Java</code></p>
+        <p>Small PlantUML example:</p>
+        <pre>@startuml
+class Player {
+    - name : String
+    - score : int
+
+    + Player(name : String)
+    + addPoints(points : int) : void
+    + getScore() : int
+}
+@enduml</pre>
+
+        <h3>Java → UML</h3>
+        <p><code>Java → PlantUML Parser → PlantUML → UML Diagram</code></p>
+        <p>
+          In IntelliJ, right-click the relevant Java package/source area and run PlantUML Parser to generate PlantUML,
+          then view the diagram with PlantUML4Idea.
+        </p>
+        <div class="callout warn">
+          <strong>Important:</strong> PlantUML Parser does not design your program. It shows the structure of the Java code you already wrote.
+        </div>
+      </details>
+
+      <section id="example-problems">
+        <h2>Example Problems</h2>
+        <p>
+          The <a href="./ExampleDesignProblemsDP1andDP2.pdf" target="_blank">Example Problems DP1/DP2</a>
+          document includes a set of design problems for you to practice on.
+          Since these are practice problems, you can work on them alone or collaborate with other students.
+        </p>
+        <p>
+          Solutions with commentary and good designs are provided
+          <a href="./SolutionsToExampleDesignProblemsDP1andDP2.pdf" target="_blank">Solutions Example Problems DP1/DP2</a>.
+          Use these to evaluate your proposed solutions.
+        </p>
+        <p>
+          If you would like, you can use
+          <a href="TEMPLATE_DesignProblemPractice.docx" target="_blank">this template</a>
+          for practicing with these example design problems to prepare your for exam 1 and exam 2.
+        </p>
+      </section>
+
+      <section id="design-challenges">
+        <h2>Design Challenges</h2>
+        <p>Jump to a challenge:</p>
+        <nav class="hub-nav" aria-label="Design problem navigation">
+          <a href="#design-prob-1">DP1</a>
+          <a href="#design-prob-2">DP2</a>
+          <a href="#design-prob-3">DP3</a>
+          <a href="#design-prob-4">DP4</a>
+          <a href="#design-prob-5">DP5</a>
+          <a href="#design-prob-6">DP6</a>
+        </nav>
+      </section>
+
+      <div id="scenario-accordion">
+        <details id="design-prob-1" class="hub-card scenario-card">
+          <summary>🎮 DP1: Online Quizzes — shared questions and quiz updates</summary>
           <h3>Problem Statement</h3>
+          <p>
+            RoseQuiz is an online quiz system used by instructors and students.
+          </p>
+          <p>
+            Each quiz has a unique ID and contains several questions. Each question also has its own unique ID and stores the question text.
+          </p>
+          <p>
+            A question may appear on more than one quiz. For example, Question 17 might appear on both the Week 2 Quiz and the Exam Review Quiz.
+          </p>
+          <p>
+            An instructor can update the text of a question. Because it is the same question, changing Question 17 should automatically affect every quiz that uses Question 17.
+          </p>
+          <p>
+            When a student wants to take a quiz, the student provides the quiz ID and the application retrieves that quiz.
+          </p>
+          <p>
+            Students should inspect the proposed object design and decide whether it correctly represents the required data and relationships.
+          </p>
+          <h3>Part 1 in Gradescope</h3>
+          <p>Identify a list of primary nouns (classes), identify attribute (secondary nouns) for each of these classes, identify methods (verbs)</p>
+          <h3>Part 2 in Gradescope</h3>
 
-          <p>Vapor, the popular video game digital store, has hired you as a consultant to design a 
-            sales management application. Each game available to purchase through Vapor has a title, 
-            ESRB rating (e.g., "T" for "Teen"), and price, all of which are fixed. 
-            You may assume game titles are unique.</p>
+          <p>
+            This design problem includes two intentionally flawed but plausible UML designs. Both designs look reasonable at first glance, but each one violates the same core rule: the same logical question should not be duplicated across multiple quizzes. Updating one copy should not require manually updating every other copy.
+          </p>
 
-    <p>Vapor also sells game bundles, which complicates their sales records (hence why they hired 
-      you instead of designing the application themselves). 
-      Each bundle is a set of games with a clever name (e.g., "Boom Bundle 2") and price (less than the sum of the individual game prices) 
-      determined in advance by the marketing team. Every bundle contains at least two games, 
-      and a game may appear in more than one bundle. You may assume bundle names are unique.</p>
-    
-   <p>For any given bundle, Vapor wants to be able to generate a report including 
-    the bundle's name, price, included game titles, how many times 
-    the bundle was purchased, and the total revenue from that bundle.</p> 
-    
-    <p>Also, Vapor wants to be able to produce a sales report for each game, 
-      including how many times the game has been sold individually or as part of a bundle 
-      (e.g., "TeamCastle has sold 27 copies individually and 44 copies as part of a bundle").</p>
-    
-    <p>The game's sales report should also include the total revenue from that game. 
-      For computing total revenue, Vapor distributes the sales price of 
-      each bundle evenly across all games in the bundle. 
-      For example, a bundle of four games sold for $60 should count as $15 of revenue for each game.</p>
-    
-   <p>Finally, Vapor wants a method to determine the game with 
-    the highest total revenue and a method to determine the most popular (i.e., most copies sold) bundle.</p> 
-    <h3>Part 1 in Gradescope</h3>
-    <p>Identify a list of primary nouns (classes), identify attribute (secondary nouns) for each of these classes, identify methods (verbs)</p>
-    <h3> Part 2 in Gradescope</h3>
+          <h4>Bad Design A</h4>
+          <p>
+            This version is the most direct mistake: each <code>Quiz</code> stores its own list of <code>QuizQuestion</code> objects, and each question copy contains its own <code>questionId</code> and <code>questionText</code>. The same question can appear in multiple quizzes as separate objects.
+          </p>
+          <div class="image-container">
+            <img src="DP1_A.png" alt="Bad Design A" width="800" />
+          </div>
+          <pre>@startuml
+class QuizApplication {
+    - quizzes : ArrayList&lt;Quiz&gt;
+    + QuizApplication()
+    + getQuiz(id : int) : Quiz
+    + takeQuiz(id : int) : void
+}
 
-    <h4>  Bad Design A</h4>
-    <div class="image-container">
-      <img src="DP2_A.png" alt="Bad Design A" width="800"/>
+class Quiz {
+    - id : int
+    - questions : ArrayList&lt;QuizQuestion&gt;
+    + Quiz(id : int)
+    + getId() : int
+    + getQuestions() : ArrayList&lt;QuizQuestion&gt;
+    + addQuestion(question : QuizQuestion) : void
+}
+
+class QuizQuestion {
+    - questionId : int
+    - questionText : String
+    + QuizQuestion(id : int, text : String)
+    + getQuestionId() : int
+    + getQuestionText() : String
+    + setQuestionText(text : String) : void
+}
+
+QuizApplication --> Quiz
+Quiz --> QuizQuestion
+@enduml</pre>
+
+          <h4>Bad Design B</h4>
+          <p>
+            This version looks organized but is still wrong: the application points directly to <code>QuizQuestion</code>, and <code>QuizQuestion</code> points back to the <code>Quiz</code>. The relationship is reversed from a shared-question design and still gives each question a strong quiz-specific dependency instead of a single shared object that multiple quizzes can reference.
+          </p>
+          <div class="image-container">
+            <img src="DP1_B.png" alt="Bad Design B" width="800" />
+          </div>
+          <pre>@startuml
+class QuizApplication {
+    - quizzes : ArrayList&lt;Quiz&gt;
+    + QuizApplication()
+    + getQuiz(id : int) : Quiz
+    + takeQuiz(id : int) : void
+}
+
+class QuizQuestion {
+    - questionId : int
+    - questionText : String
+    + QuizQuestion(id : int, text : String)
+    + getQuestionId() : int
+    + getQuestionText() : String
+    + setQuestionText(text : String) : void
+}
+
+class Quiz {
+    - id : int
+    + Quiz(id : int)
+    + getId() : int
+}
+
+QuizApplication -right-> QuizQuestion
+QuizQuestion -right-> Quiz
+@enduml</pre>
+
+          <div class="note">
+            <strong>Details:</strong> Both designs have the worst kind of problem: <em>they don’t function</em>.
+            <ul>
+              <li><strong>No constructors in UML:</strong> You don’t need to list constructors in your class diagrams. We’ll add them later when coding.</li>
+              <li><strong>Object fields via arrows:</strong> Object fields and relationships: When a class stores another object, show the relationship with an association arrow. While learning UML, we may also show the object field inside the class box to make the Java-to-UML connection explicit.</li>
+              <li><strong>Focus on Design Principle #1:</strong> For this first design problem, just aim to make the system <em>functional</em>. Don’t overcomplicate.</li>
+              <li><strong>No extra methods:</strong> For now, don’t add new methods—>stick to the basics given in the problem.</li>
+              <li><strong>Actors/Users (like Teacher or Student)</strong> are <u>not</u> part of this quiz application. For this assignment we’re modeling the data and behaviors of the quiz system itself (questions, quizzes), not the login/permissions layer or user profiles.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="design-prob-2" class="hub-card scenario-card">
+          <summary>🛍️ DP2: Vapor Sales — games, bundles, and revenue reporting</summary>
+          <h3>Problem Statement</h3>
+          <p>
+            Vapor, the popular video game digital store, has hired you as a consultant to design a
+            sales management application. Each game available to purchase through Vapor has a title,
+            ESRB rating (e.g., "T" for "Teen"), and price, all of which are fixed.
+            You may assume game titles are unique.
+          </p>
+          <p>
+            Vapor also sells game bundles, which complicates their sales records (hence why they hired
+            you instead of designing the application themselves).
+            Each bundle is a set of games with a clever name (e.g., "Boom Bundle 2") and price (less than the sum of the individual game prices)
+            determined in advance by the marketing team. Every bundle contains at least two games,
+            and a game may appear in more than one bundle. You may assume bundle names are unique.
+          </p>
+          <p>
+            For any given bundle, Vapor wants to be able to generate a report including
+            the bundle's name, price, included game titles, how many times
+            the bundle was purchased, and the total revenue from that bundle.
+          </p>
+          <p>
+            Also, Vapor wants to be able to produce a sales report for each game,
+            including how many times the game has been sold individually or as part of a bundle
+            (e.g., "TeamCastle has sold 27 copies individually and 44 copies as part of a bundle").
+          </p>
+          <p>
+            The game's sales report should also include the total revenue from that game.
+            For computing total revenue, Vapor distributes the sales price of
+            each bundle evenly across all games in the bundle.
+            For example, a bundle of four games sold for $60 should count as $15 of revenue for each game.
+          </p>
+          <p>
+            Finally, Vapor wants a method to determine the game with
+            the highest total revenue and a method to determine the most popular (i.e., most copies sold) bundle.
+          </p>
+          <h3>Part 1 in Gradescope</h3>
+          <p>Identify a list of primary nouns (classes), identify attribute (secondary nouns) for each of these classes, identify methods (verbs)</p>
+          <h3>Part 2 in Gradescope</h3>
+
+          <h4>Bad Design A</h4>
+          <div class="image-container">
+            <img src="DP2_A.png" alt="Bad Design A" width="800" />
+          </div>
+          <p>
+            <a href="http://www.plantuml.com/plantuml/uml/XLBDQiCm3BxhAKnFtUXUe8pITeVsiC9e-W9gBL8pnmwsN2XZxpx5DCGXOxiaMFf-FbbUHyR0gR4GFurhCM2Z8jyjoJUOI-x0nMACga9ByO0EQmhg2yx9QIairHxZzO3jQoK4Lo_K9WIylvl8Zyfg1N353hpHUeSDpTcmfQNg2G5P_iEv5MDfQv_Ebfxw-g2npSxpMgHEeYGPffuBvQJzdsOVh29hfya6s81wU9VY4xKFEN0dbs_iIAqF_BToPcJfaZDrAIWxuhsfhnJvI3ToYNB-Nr1RWNJ9fPWTIX1yGx_TZYvR7SM4yMPWT8dWKlFcMqEnybOlbKm04CL8YlVEu-QDXejlsiHqyeps4LHwlKGnVJdt453oZPxToshsFCjPOKrEfyR-0000" target="_blank">Source PlantUML</a>
+          </p>
+
+          <h4>Bad Design B</h4>
+          <div class="image-container">
+            <img src="DP2_B.png" alt="Bad Design B" width="1000" />
+          </div>
+          <p>
+            <a href="http://www.plantuml.com/plantuml/uml/jPFDQW8n483lynJ1IssnBo15r1xieItY-WAf6TRGRB8a4q6Axzw96zaiIaiFlHWpFr--JDXv8EafDWR2fxQjzB8HWOu6-TVhtJa3EoD349Kq6DwabJLwyGMmbrOPN2YraWsEIPF1gQYuozOJuINnskzRXd5QkVXXyFuIxndBcFwCQqPj4obCnS9xUNpLWPwwujb4M4x_oipG2esvDklB-gfyTWc_egrvGmbtdi86M-Vf9tBkwD1bpyrJSiiAwKNNUmoqmGFQY6V_6rLBBadc7CpoXV09BY-Mslcb1femV1aO315iR9vTgp5KpgYfu1i0t8aQwRrCfDDIAh02HuzfVt1QmSurRIJSEf8cNu5p6LxEfPX8eNwwY7UNOlKqhNzLpPPhz3oilyeEleZ7sUXXbCsXMt8iaM6ELiN6V0C0" target="_blank">Source PlantUML</a>
+          </p>
+        </details>
+
+        <details id="design-prob-3" class="hub-card scenario-card">
+          <summary>🚀 DP3: Spaceships — player control and AI ship movement</summary>
+          <h3>Problem Statement</h3>
+          <p>
+            In a single-player spaceship racing game, the mechanics surrounding ships are particularly important.
+            Each ship has its own current position, rotation, and velocity. The game consists of a single-player ship,
+            controlled by the player, and several "enemy" ships controlled by AI. Rotation and velocity can be increased or
+            decreased to steer any ship.
+          </p>
+          <ul>
+            <li>
+              <strong>Enemy Ships:</strong> AI-controlled ships are steered using a single AI strategy that depends on a <em>flying strategy</em>.
+              This strategy (which could be different for each enemy ship) sets the rotation and velocity at regular intervals (e.g., every 10ms).
+            </li>
+            <li>
+              <strong>Player Ship:</strong> The ship controlled by the player gets its rotation and velocity input from the player's controller.
+            </li>
+          </ul>
+          <p>There are two commands to consider:</p>
+          <ol>
+            <li><code>updatePlayerInput(inputData)</code>: Called when a player presses a key on the controller.</li>
+            <li><code>moveAllShips()</code>: First asks the enemy/AI ships to update their rotation and velocity, then updates the position of <em>all</em> ships in the game based on their current settings.</li>
+          </ol>
+
+          <h4>Bad Design A</h4>
+          <div class="image-container">
+            <img src="DP3_A.png" alt="Bad Design A" width="800" />
+          </div>
+          <p>
+            <a href="http://www.plantuml.com/plantuml/uml/RP11JiCm44NtFiLNDr2W5-W2bIKI5LIb1nZL9Xd5cGHxl4WGTyT984ealB1iF__tPH-YKj1KUnChbfO2rOZQUPVdmDUHv763Dq-Yb-CBFfg0L_4i3gV4FSwDJygDuCcOgwSOn-CZiU3B0BWlIQntbzQIkW6Taej3uFRpT_5izopwWBzzlX2wFSuQM8hjml5ErMZ8IUvp2ZcsDT_BtgcJ9xP4atgDWVyxXzpyY5tWejJTu-PkCslCx5jJxit1YSsVzWC0" target="_blank">Source PlantUML</a>
+          </p>
+
+          <h4>Bad Design B</h4>
+          <div class="image-container">
+            <img src="DP3_B.png" alt="Bad Design B" width="800" />
+          </div>
+          <p>
+            <a href="http://www.plantuml.com/plantuml/uml/TP1DQWCn38NtFeN9AYdq2YKffP15Q67e0SHO9AAAR2nDm9JUlV8a7RfeDaBsU_hqirM3QjEPWtwI5AXmZcgDqMEbSLR2oA0QXnEL0v34hn3Z2IGnVfG4XkyC3UjUocHhwl4533QBwP0lk6FkvRhUXEy_k1a5zCgDv3XOTTYn-HVfbTaz_YnPoIYBfpKRtD8BSXx9kd-wpf7r6HJJcmnevaHljuWTTLDt-zzM_-jtzl79mtA3nwUuUbZDIuGjIl8x_G00" target="_blank">Source PlantUML</a>
+          </p>
+        </details>
+
+        <details id="design-prob-4" class="hub-card scenario-card">
+          <summary>💼 DP4: Team Budget — departments, teams, people, and equipment costs</summary>
+          <h3>Problem Statement</h3>
+          <p>
+            Review <a href="./ExampleDesignProblemsDP3-5.pdf" target="_blank">Example Problems DP3-5</a> with a set of design problems for you to practice on.
+            Solutions with commentary and good designs are provided
+            <a href="./SolutionsToExampleDesignProblemsDP3-5.pdf" target="_blank">Solutions Example Problems DP1/DP2</a>.
+            Use these to evaluate your proposed solutions.
+          </p>
+          <p>
+            At a particular company, departments are composed of named teams and each team has a yearly budget. Teams have both employees and equipment, each of which have a calculated yearly cost. Employees consist of a position and a start date, and their cost is calculated based on their position and how long they have been in the company. Equipment consists of dimensions (length, width and height) and weight, which are used to calculate the cost of the equipment due to storage. A team is over budget if the total yearly cost of all employees and equipment is greater than the team's budget. It should be possible to print a list of all teams within a department that are over budget.
+          </p>
+
+          <h4>Bad Design A</h4>
+          <div class="image-container">
+            <img src="DP4_A.png" alt="Bad Design A" width="800" />
+          </div>
+          <p>
+            <a href="http://www.plantuml.com/plantuml/uml/RL3DJiCm3BxtAQATDYJU0A71ne43WWClO1hJMZXkQLnGXNXtt7GBxTHBykdxyHTd7nKwxGCNyOEaXGw2YpemsjbHcPIYP8ZH7PhGWWnFGE9-2kTg4C_uqf7e7VFp5tRtlQzGNn52t7gqOHfGT6VUTn8_Ejx-7OzouVazzHmpcse40XPdRKncrgvfdW4xf_RjpimdzqDekHaGKw9j8YarOZ3jV0H5moLmsRFXGnENuS-UslmAHgcqDl1DFjqrKbNhI2ImFcd-PTUtRdErcMstL2SvBRWMowzP4VEUnPXEp8qfiwQSpcBgEUUMx1x5zu7_0000" target="_blank">Source PlantUML</a>
+          </p>
+
+          <h4>Bad Design B</h4>
+          <div class="image-container">
+            <img src="DP4_B.png" alt="Bad Design B" width="800" />
+          </div>
+          <p>
+            <a href="http://www.plantuml.com/plantuml/uml/LL1BJiCm4Dtx55PN2L9kW521ikIpu093Cqf6s9FWcO0YrBjZkt5hDl7C-xpORoyAGHVlZ7mIpn30Mz7LOVm6EcR671s8sCV9py3hCn3RNsFj2DmxV0l4Uk_SwpU6XwKVKDyHl3GznZ3roDf6xMdBE5pG7C7WCHxHzD_-4d5faf4axLUsqRYsfkGbiaxwoA9pv6PepzkJdzsq8ie5-5feziX9SIflBAgSEKz2IXF7CRTq0CLAMlnPwv077UFmGtq-HwHXr0Ja8Vdg0hixkxlPLNsOgffkOzFhpFK_6RljDhZSj0RtoFtYtHy0" target="_blank">Source PlantUML</a>
+          </p>
+        </details>
+
+        <details id="design-prob-5" class="hub-card scenario-card">
+          <summary>🏷️ DP5: Tag — circuit boards, power-ups, and collision outcomes</summary>
+          <h3>Problem Statement</h3>
+          <p>
+            We are designing a portion of a multiplayer tag game with some interesting features.
+            There are characters and each character is designated a rendering color (blue, red, etc.) and a name.
+            Characters may collide with circuit boards that may be collected (max of 4) and each circuit board has an ID
+            and a total number of ports (ports are used to store power-ups) on each board.
+            Circuit boards carry power-ups, one per port. Characters can also collide with power-ups on the playing surface,
+            and if there is an open port on any circuit board, the power-up can be attached to a board.
+            Once the ports are filled, no more power-ups may be added nor any discarded. When characters collide,
+            their power-up combinations determine who "tagged" whom. For simplicity, think of a complex
+            "Paper, Rock, Scissors" type set of rules (or "Paper, Rock, Scissors, Lizard, Spock" if you're a
+            Big Bang Theory fan) for all the power-ups — each power-up, or set therein, can beat some and lose to others.
+            The set of rules for the power-ups are an implementation detail that is not important to our design,
+            we simply need the names of the power-ups of each character to determine which character "won" the tag.
+            Also, for simplicity, assume we only need to track the characters, circuit boards and power-ups
+            (each with pertinent data); we will not worry about the rendering/drawing parts of the design
+            or the playing surface (which could be 2D or 3D) or even the movement of the characters.
+            When characters collide, the winner name should be printed along with all the names of the winner's power-ups.
+          </p>
+
+          <h4>Bad Design</h4>
+          <div class="image-container">
+            <img src="DP5_A.png" alt="Bad Design A" width="1000" />
+          </div>
+          <p>
+            <a href="http://www.plantuml.com/plantuml/uml/VP0_Ry8m4CLtVmehKwWWwj2f0qA59KjXe68-x2EnwZ_H-IA44D-zG698ggfBOh-xzxjxNaG6ujPP4R-DRu30oSWdYzSl6NMlA0inoYrKPr63rnQNDH0eHbe6Qut6k3DSBmsfrl170DAvIXsVu70gLLShLvEEy2TW4uv8NyrlRnEEtN7ot_IDXHDIVZ0K-T4mbH5LyFeX9CI6ZEUTyHwfz8T03jW4dnzlIZ_hqiT-UELPg6032GyEXHhCJXidQuKyV8oOFsb3_GeiLyAtRe-qFfI-QJaAq3gzGnSy4Njr2EibUUvMgf1l_sl37e7Zcckan0g3o-HTxaEm25vSn1OgEPlBx2Lx9XNFp3CoLSspUVPQ56_PQ7qnl2H6F-AEBUxUOZvsZIgfVO5Ujyx-0000" target="_blank">Source PlantUML</a>
+          </p>
+        </details>
+
+        <details id="design-prob-6" class="hub-card scenario-card">
+          <summary>💻 DP6: Inventory — serviced laptops, owners, and device-specific extras</summary>
+          <h3>Problem Statement</h3>
+          <p>
+            EIT needs to keep inventory of the laptops from various professors that are currently being serviced by EIT.
+            It is important for EIT to know the current OS version installed so that it can be updated while being serviced,
+            if necessary. Also, EIT must track the laptop's owner. Each device comes with an extra as follows:
+          </p>
+          <ul>
+            <li>SurfaceBook owners get a pen, for which we track the pen's model number.</li>
+            <li>MacBook owners get a trackpad and the condition of the trackpad should be tracked.</li>
+            <li>ChromeBook owners get an unlimited number of speakers to use with the Chromebook and the number must be tracked.</li>
+          </ul>
+          <p>At the end of each workday the manager of EIT wants two different reports generated:</p>
+          <ol>
+            <li>
+              A <em>service ticket report</em> that lists each laptop being serviced and includes:
+              the laptop type (e.g., MacBook, Surface, etc.), its OS version, and its owner.
+            </li>
+            <li>
+              A <em>laptop owner report</em> that just lists all the owners of laptops currently being serviced by EIT
+              with their respective extra device information.
+            </li>
+          </ol>
+
+          <h4>Bad Design</h4>
+          <div class="image-container">
+            <img src="DP5_B.png" alt="Bad Design B" width="1000" />
+          </div>
+          <p>
+            <a href="https://www.plantuml.com/plantuml/uml/lPH1R-8m48Nl-HKMfx0BXztZ7bQqLAgGIa4DwjquKx2IsDPuGaMh_lTcGerJGOK44XSEVi_Vctao6NcII7LL9hxGnacKbL2bzFw62FMo9fWeQpBz1kBFtoHf9V4W7LatCHimP76RRJr19TuJ8OPhQV8Ixi40Ie8CSACLBBGgW9x0MIIVzWzzE-3irG3kN8tf8wIDrsWhkBMss4LOjZtA2iG_aH5gi-9JLIE2ePbhfda6zDgQHizjlIo1TUz05iszkcgEjQ6aEVmTqUcU6g03SGGPY0CHUIskpxZLpskdNmOQ7qBJVdTIDit2C2p59LdAzhciSNHiQYhLfJKHIbNCPJws9jVKg7VW5KO4Jy4nvrGMs2qotBbQSOjkUfhphtQyOV356x7HhCONgIv-V0xCrEPGjg-lMsNWdrDdW5wzoNdS9lrUsl4Fmt3uN_H-zJf_v1D6Vc2dNPtkaX6OlAxAJm00" target="_blank">Source PlantUML</a>
+          </p>
+        </details>
+      </div>
+
+      <section id="turn-in-and-grading">
+        <h2>Turn-In Instructions</h2>
+        <p>
+          Work on each problem (use template as needed), create UML diagrams, complete questions on GradeScope and submit your diagrams.
+          You will complete these design problems via GradeScope, which is linked from Moodle.
+        </p>
+        <h2>Grading</h2>
+        <h3>Assignment Parts and Points</h3>
+        <p>Details on the specific parts and point values are provided in GradeScope.</p>
+        <h3>Defective Solutions and Your Response</h3>
+        <ul>
+          <li>When identifying the problems in a defective solution, you must clearly explain why a design principle is violated.</li>
+          <li>You should identify the main flaw in each defective design. While multiple flaws may exist, there is usually one primary issue.</li>
+          <li>Within individual problems, to earn full credit, identify the single main problem in each flawed design.</li>
+        </ul>
+        <h3>Your Solution</h3>
+        <ul>
+          <li>Your final solution must address the issues you have identified and propose a design that is better than the problematic solutions.</li>
+          <li>To earn full credit, your design must improve <strong>at least</strong> one of the two bad solutions.</li>
+          <li>If your design is no better or is worse than the provided solutions, you will not earn full credit.</li>
+        </ul>
+      </section>
+
+      <section id="design-principles-reference">
+        <h2>Detailed Design Principles Reference</h2>
+        <p>
+          Full page reference: <a href="../design-principles.html" target="_blank">CSSE220 OOP Design Principles</a>
+          &nbsp;|&nbsp;
+          Handout: <a href="../resources_files/Basic_OO_Principles_for_CSSE220.pdf" target="_blank">Basic OO Principles for CSSE220</a>
+        </p>
+        <p>Use this checklist in order and stop at the first big failure.</p>
+        <div class="callout ok">
+          <strong>Rule of thumb:</strong> The first <strong>No</strong> is usually the <strong>primary</strong> violation.
+          Later problems are often consequences.
+        </div>
+
+        <details class="hub-card" open>
+          <summary><strong>Main Focus and Sequence</strong> (how to check principles in order)</summary>
+          <ol>
+            <li><strong>Principle #1:</strong> Functionality (can it work at all?)</li>
+            <li><strong>Principle #2:</strong> Structure around data (nouns → classes, encapsulation)</li>
+            <li><strong>Principle #3:</strong> Distribute responsibility efficiently (high cohesion)</li>
+            <li><strong>Principle #4:</strong> Minimize dependencies (low coupling: tell-don't-ask, avoid chains)</li>
+            <li><strong>Principle #5:</strong> Avoid duplication (DRY - don't repeat yourself)</li>
+          </ol>
+          <div class="callout warn">
+            <strong>If #1 is No:</strong> the design is broken. Don't over-analyze #2-#5 - it can't meet the requirements.
+          </div>
+        </details>
+
+        <details class="hub-card" open>
+          <summary><strong>1️⃣ Functionality:</strong> Does the design support the required functionality?</summary>
+          <p><strong>What this principle is asking:</strong> "Could this system technically meet the requirements?"<br>(Not "is it elegant?" Not "is it good OO?" Just: can it work?)</p>
+          <p><strong>Guiding questions:</strong></p>
+          <ul>
+            <li>Is all required <strong>data</strong> represented somewhere in the design?</li>
+            <li>Are all required <strong>relationships</strong> possible (1-1, 1-many, many-many)?</li>
+            <li>Can all required <strong>operations</strong> be implemented without changing the requirements?</li>
+            <li>Even if messy, could it <strong>run</strong> and produce correct results?</li>
+          </ul>
+          <div class="callout ok">
+            <strong>Yes</strong> → move to #2.<br>
+            <strong>No</strong> ❌ → broken design (everything after is basically irrelevant).
+          </div>
+        </details>
+
+        <details class="hub-card" open>
+          <summary><strong>2️⃣ Structure around the data (Encapsulation):</strong> Is the design built from the problem nouns?</summary>
+          <p><strong>What this principle is asking:</strong> "Did you model the real things in the problem, and do they own their behavior?"</p>
+          <p><strong>Guiding questions:</strong></p>
+          <ul>
+            <li><strong>2a (Nouns → classes):</strong> What are the key <strong>nouns</strong> in the prompt? Are they represented as classes?</li>
+            <li><strong>2b (Intelligent behavior):</strong> Does each class have <strong>intelligent behavior</strong> that operates on its own data?</li>
+            <li><strong>2b (Data class check):</strong> Are you avoiding <strong>data classes</strong> (only fields + getters/setters, no real behavior)?</li>
+            <li><strong>2b (Ownership of decisions):</strong> When you see a domain question, does the answer live in the class that owns the data?</li>
+          </ul>
+          <div class="callout warn">
+            <strong>Primary failure pattern:</strong> A "manager/controller" class does the real work while domain classes just store data.
+            That's usually a <strong>2️⃣ violation first</strong>.
+          </div>
+        </details>
+
+        <details class="hub-card" open>
+          <summary><strong>3️⃣ Distribute responsibility efficiently (High Cohesion):</strong> Is the workload split cleanly?</summary>
+          <p><strong>What this principle is asking:</strong> "Does each class have one main job, or is one class doing everything?"</p>
+          <p><strong>Guiding questions:</strong></p>
+          <ul>
+            <li><strong>3a:</strong> Is any class getting <strong>too large</strong> or doing too much?</li>
+            <li><strong>3b:</strong> Does each class have a <strong>single responsibility</strong> (high cohesion)?</li>
+            <li>Would one requirement change force edits in <strong>many unrelated methods</strong> in the same class?</li>
+          </ul>
+        </details>
+
+        <details class="hub-card" open>
+          <summary><strong>4️⃣ Minimize dependencies (Low Coupling):</strong> Are objects "telling" instead of "asking"?</summary>
+          <p><strong>What this principle is asking:</strong> "Are classes too entangled? Are you reaching through objects to get work done?"</p>
+          <p><strong>Guiding questions:</strong></p>
+          <ul>
+            <li><strong>4a (Tell, Don't Ask):</strong> Are you pulling data out with getters and making decisions elsewhere?</li>
+            <li>Could you replace "ask for internals + compute" with a single message like <code>team.isOverBudget()</code>?</li>
+            <li><strong>4b (Message chains):</strong> Do you have chains like <code>a.getB().getC().doThing()</code>?</li>
+            <li>Does one class need deep knowledge of another class's internal structure?</li>
+          </ul>
+        </details>
+
+        <details class="hub-card" open>
+          <summary><strong>5️⃣ Avoid duplication:</strong> Is code duplicated?</summary>
+          <p><strong>What this principle is asking:</strong> "Will you copy-paste the same logic in multiple places?"</p>
+          <p><strong>Guiding questions:</strong></p>
+          <ul>
+            <li>Are the same logic patterns likely to be copy-pasted across multiple classes or methods?</li>
+            <li>If you fixed a bug in one place, would you need to fix it again elsewhere?</li>
+            <li>Are multiple classes implementing nearly identical behavior?</li>
+            <li>Could shared logic be pulled into a helper method, common interface, or superclass?</li>
+          </ul>
+        </details>
+      </section>
     </div>
-    <p>
-      <a href="http://www.plantuml.com/plantuml/uml/XLBDQiCm3BxhAKnFtUXUe8pITeVsiC9e-W9gBL8pnmwsN2XZxpx5DCGXOxiaMFf-FbbUHyR0gR4GFurhCM2Z8jyjoJUOI-x0nMACga9ByO0EQmhg2yx9QIairHxZzO3jQoK4Lo_K9WIylvl8Zyfg1N353hpHUeSDpTcmfQNg2G5P_iEv5MDfQv_Ebfxw-g2npSxpMgHEeYGPffuBvQJzdsOVh29hfya6s81wU9VY4xKFEN0dbs_iIAqF_BToPcJfaZDrAIWxuhsfhnJvI3ToYNB-Nr1RWNJ9fPWTIX1yGx_TZYvR7SM4yMPWT8dWKlFcMqEnybOlbKm04CL8YlVEu-QDXejlsiHqyeps4LHwlKGnVJdt453oZPxToshsFCjPOKrEfyR-0000" target="_blank">Source PlantUML</a>
-    
-    <h4>Bad Design B</h4>
-    <div class="image-container">
-      <img src="DP2_B.png" alt="Bad Design B" width="1000"/>
-    </div>
-    <p>
-      <a href="http://www.plantuml.com/plantuml/uml/jPFDQW8n483lynJ1IssnBo15r1xieItY-WAf6TRGRB8a4q6Axzw96zaiIaiFlHWpFr--JDXv8EafDWR2fxQjzB8HWOu6-TVhtJa3EoD349Kq6DwabJLwyGMmbrOPN2YraWsEIPF1gQYuozOJuINnskzRXd5QkVXXyFuIxndBcFwCQqPj4obCnS9xUNpLWPwwujb4M4x_oipG2esvDklB-gfyTWc_egrvGmbtdi86M-Vf9tBkwD1bpyrJSiiAwKNNUmoqmGFQY6V_6rLBBadc7CpoXV09BY-Mslcb1femV1aO315iR9vTgp5KpgYfu1i0t8aQwRrCfDDIAh02HuzfVt1QmSurRIJSEf8cNu5p6LxEfPX8eNwwY7UNOlKqhNzLpPPhz3oilyeEleZ7sUXXbCsXMt8iaM6ELiN6V0C0" target="_blank">Source PlantUML</a>
-    </p>
- 
-  </section>
 
-  <section id="design-prob-3">
-    <h2>CSSE 220: Design Problem 3 - Spaceships</h2>
-    <p>
-      In a single-player spaceship racing game, the mechanics surrounding ships are particularly important.
-      Each ship has its own current position, rotation, and velocity. The game consists of a single-player ship,
-      controlled by the player, and several "enemy" ships controlled by AI. Rotation and velocity can be increased or
-      decreased to steer any ship.
-    </p>
-    <ul>
-      <li>
-        <strong>Enemy Ships:</strong> AI-controlled ships are steered using a single AI strategy that depends on a <em>flying strategy</em>.
-        This strategy (which could be different for each enemy ship) sets the rotation and velocity at regular intervals (e.g., every 10ms).
-      </li>
-      <li>
-        <strong>Player Ship:</strong> The ship controlled by the player gets its rotation and velocity input from the player’s controller.
-      </li>
-    </ul>
-    <p>
-      There are two commands to consider:
-    </p>
-    <ol>
-      <li>
-        <code>updatePlayerInput(inputData)</code>: Called when a player presses a key on the controller.
-      </li>
-      <li>
-        <code>moveAllShips()</code>: First asks the enemy/AI ships to update their rotation and velocity, then updates the position of <em>all</em> ships in the game based on their current settings.
-      </li>
-    </ol>
-    
-    <h3>Bad Design A</h3>
-    <div class="image-container">
-      <img src="DP3_A.png" alt="Bad Design A" width="800">
-    </div>
-    <p>
-      <a href="http://www.plantuml.com/plantuml/uml/RP11JiCm44NtFiLNDr2W5-W2bIKI5LIb1nZL9Xd5cGHxl4WGTyT984ealB1iF__tPH-YKj1KUnChbfO2rOZQUPVdmDUHv763Dq-Yb-CBFfg0L_4i3gV4FSwDJygDuCcOgwSOn-CZiU3B0BWlIQntbzQIkW6Taej3uFRpT_5izopwWBzzlX2wFSuQM8hjml5ErMZ8IUvp2ZcsDT_BtgcJ9xP4atgDWVyxXzpyY5tWejJTu-PkCslCx5jJxit1YSsVzWC0" target="_blank">Source PlantUML</a>
-    </p>
-    
-    <h3>Bad Design B</h3>
-    <div class="image-container">
-      <img src="DP3_B.png" alt="Bad Design B" width="800">
-    </div>
-    <p>
-      <a href="http://www.plantuml.com/plantuml/uml/TP1DQWCn38NtFeN9AYdq2YKffP15Q67e0SHO9AAAR2nDm9JUlV8a7RfeDaBsU_hqirM3QjEPWtwI5AXmZcgDqMEbSLR2oA0QXnEL0v34hn3Z2IGnVfG4XkyC3UjUocHhwl4533QBwP0lk6FkvRhUXEy_k1a5zCgDv3XOTTYn-HVfbTaz_YnPoIYBfpKRtD8BSXx9kd-wpf7r6HJJcmnevaHljuWTTLDt-zzM_-jtzl79mtA3nwUuUbZDIuGjIl8x_G00" target="_blank">Source PlantUML</a>
-    </p>
-    
+    <script>
+      (function () {
+        var accordionCards = Array.prototype.slice.call(
+          document.querySelectorAll("#uml-intellij-card, #scenario-accordion .scenario-card")
+        );
 
-  </section>
-  <section id="design-prob-4">
-    <h2>CSSE 220: Design Problem 4 - Team Budget</h2>
-    <p>
-      Review <a href="./ExampleDesignProblemsDP3-5.pdf" target="_blank">Example Problems DP3-5</a> with a set of design problems for you to practice on.
-      Solutions with commentary and good designs are provided <a href="./SolutionsToExampleDesignProblemsDP3-5.pdf" target="_blank">Solutions Example Problems DP1/DP2</a>. Use these to evaluate your proposed solutions.
-    </p>
-  <p>
-    At a particular company, departments are composed of named teams and each team has a yearly budget. Teams have both employees and equipment, each of which have a calculated yearly cost. Employees consist of a position and a start date, and their cost is calculated based on their position and how long they have been in the company. Equipment consists of dimensions (length, width and height) and weight, which are used to calculate the cost of the equipment due to storage. A team is over budget if the total yearly cost of all employees and equipment is greater than the team's budget. It should be possible to print a list of all teams within a department that are over budget.
-  </p>
-  
-  <h3>Bad Design A</h3>
-  <img src="DP4_A.png" alt="Bad Design A" width="800" />
-  <p>
-    <a href="http://www.plantuml.com/plantuml/uml/RL3DJiCm3BxtAQATDYJU0A71ne43WWClO1hJMZXkQLnGXNXtt7GBxTHBykdxyHTd7nKwxGCNyOEaXGw2YpemsjbHcPIYP8ZH7PhGWWnFGE9-2kTg4C_uqf7e7VFp5tRtlQzGNn52t7gqOHfGT6VUTn8_Ejx-7OzouVazzHmpcse40XPdRKncrgvfdW4xf_RjpimdzqDekHaGKw9j8YarOZ3jV0H5moLmsRFXGnENuS-UslmAHgcqDl1DFjqrKbNhI2ImFcd-PTUtRdErcMstL2SvBRWMowzP4VEUnPXEp8qfiwQSpcBgEUUMx1x5zu7_0000" target="_blank">Source PlantUML</a>
-  </p>
-  
-  <h3>Bad Design B</h3>
-  <img src="DP4_B.png" alt="Bad Design B" width="800" />
-  <p>
-    <a href="http://www.plantuml.com/plantuml/uml/LL1BJiCm4Dtx55PN2L9kW521ikIpu093Cqf6s9FWcO0YrBjZkt5hDl7C-xpORoyAGHVlZ7mIpn30Mz7LOVm6EcR671s8sCV9py3hCn3RNsFj2DmxV0l4Uk_SwpU6XwKVKDyHl3GznZ3roDf6xMdBE5pG7C7WCHxHzD_-4d5faf4axLUsqRYsfkGbiaxwoA9pv6PepzkJdzsq8ie5-5feziX9SIflBAgSEKz2IXF7CRTq0CLAMlnPwv077UFmGtq-HwHXr0Ja8Vdg0hixkxlPLNsOgffkOzFhpFK_6RljDhZSj0RtoFtYtHy0" target="_blank">Source PlantUML</a>
-  </p>
+        accordionCards.forEach(function (card) {
+          card.addEventListener("toggle", function () {
+            if (!card.open) {
+              return;
+            }
+            accordionCards.forEach(function (otherCard) {
+              if (otherCard !== card) {
+                otherCard.open = false;
+              }
+            });
+          });
+        });
 
-    </section>
+        function openFromHash() {
+          if (!window.location.hash) {
+            return;
+          }
+          var target = document.querySelector(window.location.hash);
+          if (!target || target.tagName.toLowerCase() !== "details") {
+            return;
+          }
+          target.open = true;
+          target.scrollIntoView({ block: "start" });
+        }
 
-    <section id="design-prob-5">
-      <h2>CSSE 220: Design Problem 5 – Tag</h2>
-      <p>
-        We are designing a portion of a multiplayer tag game with some interesting features.
-        There are characters and each character is designated a rendering color (blue, red, etc.) and a name.
-        Characters may collide with circuit boards that may be collected (max of 4) and each circuit board has an ID
-        and a total number of ports (ports are used to store power‑ups) on each board.
-        Circuit boards carry power‑ups, one per port. Characters can also collide with power‑ups on the playing surface,
-        and if there is an open port on any circuit board, the power‑up can be attached to a board.
-        Once the ports are filled, no more power‑ups may be added nor any discarded. When characters collide,
-        their power‑up combinations determine who “tagged” whom. For simplicity, think of a complex
-        “Paper, Rock, Scissors” type set of rules (or “Paper, Rock, Scissors, Lizard, Spock” if you’re a
-        Big Bang Theory fan) for all the power‑ups — each power‑up, or set therein, can beat some and lose to others.
-        The set of rules for the power‑ups are an implementation detail that is not important to our design,
-        we simply need the names of the power‑ups of each character to determine which character “won” the tag.
-        Also, for simplicity, assume we only need to track the characters, circuit boards and power‑ups
-        (each with pertinent data); we will not worry about the rendering/drawing parts of the design
-        or the playing surface (which could be 2D or 3D) or even the movement of the characters.
-        When characters collide, the winner name should be printed along with all the names of the winner's power‑ups.
-      </p>
-    
-      <h3>Bad Design</h3>
-      <img src="DP5_A.png" alt="Bad Design A" width="1000"/>
-      <p>
-        <a href="http://www.plantuml.com/plantuml/uml/VP0_Ry8m4CLtVmehKwWWwj2f0qA59KjXe68-x2EnwZ_H-IA44D-zG698ggfBOh-xzxjxNaG6ujPP4R-DRu30oSWdYzSl6NMlA0inoYrKPr63rnQNDH0eHbe6Qut6k3DSBmsfrl170DAvIXsVu70gLLShLvEEy2TW4uv8NyrlRnEEtN7ot_IDXHDIVZ0K-T4mbH5LyFeX9CI6ZEUTyHwfz8T03jW4dnzlIZ_hqiT-UELPg6032GyEXHhCJXidQuKyV8oOFsb3_GeiLyAtRe-qFfI-QJaAq3gzGnSy4Njr2EibUUvMgf1l_sl37e7Zcckan0g3o-HTxaEm25vSn1OgEPlBx2Lx9XNFp3CoLSspUVPQ56_PQ7qnl2H6F-AEBUxUOZvsZIgfVO5Ujyx-0000">
-          Source PlantUML
-        </a>
-      </p>
-    </section>
-    
-    <section id="design-prob-6">
-      <h2>CSSE 220: Design Problem 6 – Inventory</h2>
-      <p>
-        EIT needs to keep inventory of the laptops from various professors that are currently being serviced by EIT.
-        It is important for EIT to know the current OS version installed so that it can be updated while being serviced,
-        if necessary. Also, EIT must track the laptop's owner. Each device comes with an extra as follows:
-      </p>
-      <ul>
-        <li>SurfaceBook owners get a pen, for which we track the pen's model number.</li>
-        <li>MacBook owners get a trackpad and the condition of the trackpad should be tracked.</li>
-        <li>ChromeBook owners get an unlimited number of speakers to use with the Chromebook and the number must be tracked.</li>
-      </ul>
-      <p>
-        At the end of each workday the manager of EIT wants two different reports generated:
-      </p>
-      <ol>
-        <li>
-          A <em>service ticket report</em> that lists each laptop being serviced and includes:
-          the laptop type (e.g., MacBook, Surface, etc.), its OS version, and its owner.
-        </li>
-        <li>
-          A <em>laptop owner report</em> that just lists all the owners of laptops currently being serviced by EIT
-          with their respective extra device information.
-        </li>
-      </ol>
-    
-      <h3>Bad Design</h3>
-      <img src="DP5_B.png" alt="Bad Design B" width="1000"/>
-      <p>
-        <a href="https://www.plantuml.com/plantuml/uml/lPH1R-8m48Nl-HKMfx0BXztZ7bQqLAgGIa4DwjquKx2IsDPuGaMh_lTcGerJGOK44XSEVi_Vctao6NcII7LL9hxGnacKbL2bzFw62FMo9fWeQpBz1kBFtoHf9V4W7LatCHimP76RRJr19TuJ8OPhQV8Ixi40Ie8CSACLBBGgW9x0MIIVzWzzE-3irG3kN8tf8wIDrsWhkBMss4LOjZtA2iG_aH5gi-9JLIE2ePbhfda6zDgQHizjlIo1TUz05iszkcgEjQ6aEVmTqUcU6g03SGGPY0CHUIskpxZLpskdNmOQ7qBJVdTIDit2C2p59LdAzhciSNHiQYhLfJKHIbNCPJws9jVKg7VW5KO4Jy4nvrGMs2qotBbQSOjkUfhphtQyOV356x7HhCONgIv-V0xCrEPGjg-lMsNWdrDdW5wzoNdS9lrUsl4Fmt3uN_H-zJf_v1D6Vc2dNPtkaX6OlAxAJm00">
-          Source PlantUML
-        </a>
-      </p>
-    </section>
-    <!-- Final Submission -->
-    <section id="final-submission">
-      <h2>Turn-In Instructions</h2>
-      <p>
-        You will complete these design problems via GradeScope, which is linked from Moodle.
-      </p>
-      <h2>Grading</h2>
-      <h3>Assignment Parts and Points</h3>
-      <p>
-        Details on the specific parts and point values are provided in GradeScope.
-      </p>
-      <h3>Defective Solutions and Your Response</h3>
-      <ul>
-        <li>
-          When identifying the problems in a defective solution, you must clearly explain why a design principle is violated.
-        </li>
-        <li>
-          You should identify the main flaw in each defective design. While multiple flaws may exist, there is usually one primary issue.
-        </li>
-        <li>
-          Your final solution must address the issues you have identified and propose a design that is better than the problematic solutions.
-        </li>
-        <li>
-          To earn full credit, your design must improve <strong>at least</strong> one of the two bad solutions.
-        </li>
-      </ul>
-    </section>
-    
-  </div>
+        window.addEventListener("hashchange", openFromHash);
+        openFromHash();
+      })();
+    </script>
   </body>
 </html>
