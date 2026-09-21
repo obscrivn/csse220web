@@ -3,640 +3,235 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CSSE 220</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
-<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
-<style>
-body {
-          font-family: Arial, sans-serif;
-          line-height: 1.5;
-          margin: 0;
-          padding: 1rem;
-          background: #f5f7fa;
-          color: #333;
-        }
-        
-        /* Section containers */
-        section {
-          background: #fff;
-          border: 1px solid #ddd;
-          border-radius: 6px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-          margin: 1.5rem 0;
-          padding: 1.2rem;
-        }
-        
-        /* Headings */
-        h2 {
-          margin-top: 0;
-          font-size: 1.6rem;
-          border-bottom: 2px solid #e0e0e0;
-          padding-bottom: 0.3rem;
-        }
-        h3 {
-          font-size: 1.3rem;
-          margin-top: 1rem;
-        }
-        
-        /* Image styling */
-        section img {
-          display: block;
-          max-width: 100%;
-          height: auto;
-          margin: 0.8rem auto;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-        
-        /* Code blocks */
-        /* pre {
-          background: #2d2d2d;
-          color: #f8f8f2;
-          padding: 0.8rem;
-          border-radius: 1px;
-          overflow-x: auto;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.9rem;
-        } */
-        /* pre code {
-          display: block;
-          white-space: pre-wrap;
-          word-wrap: break-word;
-        } */
-        
-        /* Inline code */
-        /* code {
-          background: #eaeaea;
-          color: #c7254e;
-          padding: 0.2rem 0.4rem;
-          border-radius: 1px;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.95em;
-        } */
-        
-        /* Highlight compile / runtime state */
-        strong + span {
-          font-weight: bold;
-          color: #d14;
-        }
-        
-        /* Lists */
-        ul, ol {
-          margin: 0.5rem 0 0.5rem 1.2rem;
-        }
-        li {
-          margin-bottom: 0.5rem;
-        }
-        
-        /* Method call subsections */
-        section#method-calls h4 {
-          margin: 1rem 0 0.3rem;
-          font-size: 1.1rem;
-          color: #444;
-          border-left: 3px solid #007acc;
-          padding-left: 0.5rem;
-        }
-        
-        /* Emphasis for compile/run status */
-        span[style*="darkred"] {
-          font-weight: bold;
-          color: #c00;
-        }
-
-
-
-    /* body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
-    } */
-    #main-content {
-      padding: 20px;
-    }
-/* Header styling */
-#header {
-        position: fixed;
-        top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-    }
-    #header a {
-      color: #fff;
-      margin-right: 15px;
-      text-decoration: none;
-
-    }
-    #header a:hover {
-      text-decoration: underline;
-    }
-    #header div {
-      clear: both;
-    }
-    /* Content container */
-    #content {
-      padding: 20px;
-      /* margin-top: 100px;  */
-      margin-bottom: 50px;
-      padding-top: 100px;
-    }
-    #section {
-margin-top: 1rem; 
-margin-bottom: 1rem;
-padding: 20px;
-} 
-    .lab-section {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    }
-    .lab-section h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      color: #333;
-    }
-    .lab-section p {
-      line-height: 1.5;
-      color: #555;
-    }
-/* Lab Navigation Menu Styling */
-#lab-nav {
-      background-color: #faf9fc;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      overflow-x: auto;  /* Enables horizontal scroll */
-      white-space: nowrap; /* Prevents wrapping */
-    }
-    #lab-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 15px;
-    }
-    #lab-nav ul li a {
-      text-decoration: none;
-      color: #333;
-      margin-left: 20px;
-      padding: 5px 10px;
-      border-radius: 3px;
-    }
-    #lab-nav ul li a:hover {
-      background-color: #ddd;
-    }
-    code {
-        color: red;
-    }
-    .code-window {
-      background-color: #272822;
-      color: #f8f8f2;
-      border: 1px solid #333;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      white-space: pre;
-      overflow-x: auto;
-      border-radius: 3px;
-      margin-top: 10px;
-    }
-    .solution-window {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #4caf50;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      border-radius: 3px;
-      overflow-x: auto;
-      white-space: pre;
-      margin-top: 10px;
-    }
-    .solution-header {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #2e7d32;
-    }
-
-    a.resource-ref {
-  background-color: #444; /* dark background for contrast */
-  color: #61dafb;         /* bright text color */
-  padding: 4px 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-}
-
-a.resource-ref:hover {
-  background-color: #555;
-  color: #ffffff;
-}
-
-pre code {
-  background-color: #f5f7fa;
-  color: #1a1a1a;
-  border-left: 4px solid #4a90e2;
-  padding: 0.75em;
-  display: block;
-  border-radius: 6px;
-  font-size: 0.9em;
-  line-height: 1.4em;
-}
-pre code:hover {
-  background-color: #dce1e8;
-  border-left-color: #28527a;
-}
-.lab-card {
-  margin: 0 0 1rem 0;
-  border-radius: 0.75rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  padding: 0.25rem 0.75rem 0.75rem;
-}
-
-.lab-card > summary {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  list-style: none;
-  cursor: pointer;
-  padding: 0.5rem 0;
-  font-weight: 600;
-}
-
-.lab-card > summary::-webkit-details-marker {
-  display: none; /* hide default arrow in some browsers */
-}
-
-.lab-card > summary::after {
-  content: "›";
-  margin-left: auto;
-  font-size: 1rem;
-  transition: transform 0.15s ease-out;
-}
-
-.lab-card[open] > summary::after {
-  transform: rotate(90deg);
-}
-
-.lab-label {
-  font-family: monospace;
-  opacity: 0.7;
-}
-
-.lab-title {
-  font-weight: 700;
-}
-
-.lab-tag {
-  font-size: 0.8rem;
-  padding: 0.1rem 0.4rem;
-  border-radius: 999px;
-  border: 1px solid #ccc;
-  background: #fff;
-}
-
-.lab-body {
-  border-top: 1px solid #e0e0e0;
-  margin-top: 0.25rem;
-  padding-top: 0.5rem;
-}
-
-details.hint {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background: #f9f9f9;
-  border-left: 3px solid #aaa;
-}
-
-details.hint > summary {
-  cursor: pointer;
-  font-weight: 500;
-  color: #555;
-}
-  </style>
+    <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+    <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+    <style>
+      :root {
+        --ink: #1f2937;
+        --muted: #5f6b7a;
+        --surface: #ffffff;
+        --page: #f4f6fb;
+        --border: #d8deea;
+        --header: #1c1515;
+        --heading: #111111;
+        --accent: #2166d1;
+        --accent-soft: #edf4ff;
+        --success: #18794e;
+        --success-soft: #ecf8f2;
+        --optional: #9a6700;
+        --optional-soft: #fff8e6;
+        --shadow: 0 12px 30px rgba(34, 42, 66, 0.08);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; background: var(--page); color: var(--ink);
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 16px; line-height: 1.65;
+      }
+      #header {
+        position: fixed; inset: 0 0 auto 0; z-index: 1000;
+        display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 1rem;
+        min-height: 3.75rem; padding: 0.7rem clamp(1rem, 4vw, 3rem);
+        background: var(--header); box-shadow: 0 4px 16px rgba(30, 17, 48, 0.2);
+      }
+      #header a {
+        margin: 0; color: #fff; font-size: 0.9rem; font-weight: 650; text-decoration: none;
+      }
+      #header a:hover, #header a:focus-visible {
+        background: #222; text-decoration: underline; text-underline-offset: 0.25rem;
+      }
+      #header div { display: none; }
+      #content { width: min(1080px, calc(100% - 2rem)); margin: 0 auto; padding: 6.75rem 0 4rem; }
+      h2, h3 { color: var(--heading); line-height: 1.25; }
+      h2 { margin: 0 0 0.75rem; font-size: clamp(1.45rem, 3vw, 2rem); }
+      h3 { margin: 1.65rem 0 0.6rem; font-size: 1.2rem; }
+      p { margin: 0.65rem 0; color: var(--muted); }
+      a { color: var(--accent); }
+      ul, ol { margin: 0.65rem 0 1rem; padding-left: 1.5rem; }
+      li { margin: 0.35rem 0; }
+      code {
+        padding: 0.12rem 0.32rem; border-radius: 0.3rem; background: #eef1f6;
+        color: #9b1c4a; font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 0.92em;
+      }
+      pre { margin: 0.85rem 0 1rem; overflow-x: auto; }
+      pre code {
+        display: block; min-width: max-content; padding: 1rem 1.1rem; border: 1px solid #ced8e8;
+        border-left: 4px solid var(--accent); border-radius: 0.6rem; background: #f7f9fc; color: #172033; line-height: 1.5;
+      }
+      .lab-section {
+        margin-bottom: 1.4rem; padding: clamp(1.15rem, 3vw, 1.75rem);
+        border: 1px solid var(--border); border-radius: 1rem; background: var(--surface); box-shadow: var(--shadow);
+      }
+      .treasure-panel { border-color: #cfd4dc; background: #f8f9fb; }
+      .lab-card {
+        margin: 1rem 0; padding: 0 1rem 0.9rem; border: 1px solid var(--border);
+        border-left: 5px solid var(--accent); border-radius: 0.8rem; background: var(--surface);
+        box-shadow: 0 5px 15px rgba(34, 42, 66, 0.05);
+      }
+      .setup-card { background: var(--accent-soft); }
+      .required-card { border-left-color: var(--success); }
+      .lab-card > summary {
+        display: flex; align-items: center; gap: 0.6rem; min-height: 3.4rem; padding: 0.7rem 0;
+        color: var(--ink); cursor: pointer; list-style: none;
+      }
+      .lab-card > summary::-webkit-details-marker { display: none; }
+      .lab-card > summary::after {
+        content: "›"; margin-left: auto; color: var(--muted); font-size: 1.35rem; transition: transform 0.18s ease;
+      }
+      .lab-card[open] > summary::after { transform: rotate(90deg); }
+      .hint {
+        margin-top: 0.75rem; padding: 0.6rem 0.8rem; border-left: 3px solid #a2b7d6; background: #f7f9ff;
+      }
+      .hint summary { cursor: pointer; font-weight: 600; }
+    </style>
 </head>
 <body>
   <div id="header">
-    <a id="index_link" href="../index.html">CSSE 220</a>
-    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
-    <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="./design-principles.html">Design</a>
-    <a id="quiz_link" href="../labs.html">Labs</a>
-    <a id="quiz_link" href="../homework.html">Homework</a>
-    <a id="quiz_link" href="../exams.html">Exams</a>
-    <a id="quiz_link" href="../project.html">Final Project</a>
-    <a id="resources_link" href="../resources.html">Resources</a>
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+    <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../resources.html">Resources</a>
     <div style="clear:both;"></div>
-</div>
-<div id="content">
-  <h1>Lab Assignment 06</h1>
-  
+  </div>
 
-      <div id="main-content">
-         <div class="lab-section" id="lab">
+  <div id="content">
+    <div class="lab-section treasure-panel">
+      <h1>Lab Assignment 06: Refactoring as a Team</h1>
+
       <p>
-    In today’s lab, you will learn how to refactor your design. You are not creating a completely new design. You are <strong>refactoring</strong>
-  the existing code to match the refactored UML structure.
-  </p>
-<h3>⚡ Instructions</h3>
-<ul>
-  <!-- <li>
-    <strong>Practice:</strong>
-    Start with the in-class guided practice below to build your first object step by step.
-  </li> -->
+        This lab is a short first refactoring exercise. Your goal is not to write a big new design from scratch.
+        Your goal is to notice that the current structure is awkward, propose a small improvement, and preserve the program's behavior while changing the design.
+      </p>
 
-  <li>
-    <strong>Graded work:</strong>
-    Use the provided Lab starter <strong>ZIP</strong> to complete the required tasks and
-      submit your work: 1) TreasureChest.java, 2) Item.java, 3) Bad design UML, 4) Good design UML
-  </li>
-  </ul>
-
-  <details class="lab-card" id="lab-00">
-<summary><h3>Lab ZIP File</h3></summary>
-<ul>
-<li>Download starter zip file: <a href="../labs/Lab06.zip">Lab06.zip</a> and import it into Eclipse as Existing Project (see Lab02 for details).</li>
-<!-- 
-  <li>
-    <strong>Graded work:</strong>
-    Complete the required methods in <code>TwoDArrayPractice.java</code> and <code>HashMapPractice.java</code>.
-  </li> -->
-
-  <li>
-    <strong>What to submit on Gradescope:</strong>
-    Upload your completed <code>TreasureChest.java</code> and <code>Item.java</code> files to the Lab 06 assignment.
-    Also upload your UML diagrams (Bad design and Good design)The Gradescope link is available on Moodle.
-  </li>
-</ul>
-</details>
-
-<details class="lab-card" id="lab-01">
-  <summary>
-    <span class="lab-label">01.</span>
-    <span class="lab-title">Encapsulation and Refactoring</span>
-    <span class="lab-tag">Submission</span>
-  </summary>
-  <div class="lab-body">
-<h3>🎮 Scenario</h3>
-  <p>
-    <p> In your Minecraft world, players explore caves and dungeons to collect loot. 
-      When a player finds a <strong>Treasure Chest</strong>, they can store items inside it. </p> 
-      <p>Each item can be something like:</p> 
-      <ul> 
-        <li>a sword</li> 
-        <li>a diamond</li> </ul> 
-        <p>Every item has:</p> 
-        <ul> <li>a name</li> 
-          <li>a gold value, such as 100 or 10</li> 
-        </ul> 
-        <p>The <code>TreasureChest</code> should be able to:</p> 
-        <ul> 
-          <li>store items</li> 
-          <li>add items</li> 
-          <li>remove items</li> 
-          <li>count how many items it has</li> 
-          <li>calculate the total value of all items</li> 
-          <li>enforce a maximum capacity</li> </ul> 
-          <p>Each item should also be able to determine whether it is rare:</p> 
-          <ul> 
-      <li>if its value is greater than 50, it is considered rare</li> </ul>
-   <p>Right now, the code works, but the design is not great.
-  </p>
-
-<h3>🧱 Bad Design UML</h3>
-<p>
-  Below is the starter <strong>bad design</strong>. This version works, but the
-  <code>TreasureChest</code> class is doing too much.
-</p>
-
-<p>
-  Copy the PlantUML code below into a PlantUML viewer to generate the diagram.
-  Save or download the image for reference while you work on the lab.
-</p>
-
-<pre><code>@startuml
-title Bad Design: TreasureChest Does Too Much
-
-class TreasureChest {
-  - ownerName : String
-  - maxCapacity : int
-  - itemNames : ArrayList&lt;String&gt;
-  - itemValues : ArrayList&lt;Integer&gt;
-
-  + addItem(name : String, value : int)
-  + removeItem(name : String)
-  + getItemCount() : int
-  + getTotalValue() : int
-  + isRare(name : String) : boolean
-}
-@enduml</code></pre>
-
-<p><strong>What to do:</strong></p>
-<ul>
-  <li>Generate the UML diagram from this code</li>
-  <li>Download or save the image</li>
-  <li>Use it as a reference while refactoring to the improved design</li>
-</ul>
-
-  <p>
-    This design is awkward because one item is split into separate pieces of data.
-    Also, the chest is deciding whether an item is rare, even though rarity really belongs to the item itself.
-  </p>
-
-  <p>
-    Your job in this lab is to <strong>refactor</strong> the design by creating an
-    <code>Item</code> class and updating <code>TreasureChest</code> to store
-    <code>ArrayList&lt;Item&gt;</code>.
-  </p>
-
-  <h3>🧩 Starter Code</h3>
-  <p>
-    Download and open <strong>lab06zip</strong>. It contains:
-  </p>
-  <ul>
-    <li><code>TreasureChest.java</code> with the <strong>bad design</strong></li>
-    <li><code>GameApp.java</code> to run and observe the bad design</li>
-  </ul>
-
-  <p>
-    Before changing anything, <strong>run GameApp</strong> and observe how the bad design works.
-  </p>
-
-  <h3>⚠️ Bad Design</h3>
-  <p>The current design has problems:</p>
-  <ul>
-    <li>One item is stored as separate pieces of data instead of as one object</li>
-    <li><code>TreasureChest</code> is doing item-specific work</li>
-    <li>The design will become messier if items later need more data</li>
-  </ul>
-
-  <p>
-    Example of the current awkward design:
-  </p>
-  <pre><code>chest.addItem("Diamond", 100);
-chest.isRare("Diamond");</code></pre>
-
-  <p>
-    A better design would treat one item as one object:
-  </p>
-  <pre><code>Item diamond = new Item("Diamond", 100);
-chest.addItem(diamond);
-diamond.isRare();</code></pre>
-
-  <h3>✅ Your Goal: Refactor to the Good Design</h3>
-<p>
-  Use the UML diagram below as your target design. Paste to Plantum UML and download the image for reference while you work on the lab. 
-</p>
-<p><strong>Key idea:</strong></p>
-<ul>
-  <li><code>TreasureChest</code> manages items</li>
-  <li><code>Item</code> represents one item and knows its own data</li>
-</ul>
-<pre><code>@startuml
-title Good Design
-
-class TreasureChest {
-  - ownerName : String
-  - maxCapacity : int
-  - items : ArrayList&lt;Item&gt;
-
-  + addItem(item : Item)
-  + removeItem(item : Item)
-  + getItemCount() : int
-  + getTotalValue() : int
-}
-
-class Item {
-  - name : String
-  - value : int
-
-  + getName() : String
-  + getValue() : int
-  + isRare() : boolean
-}
-
-TreasureChest --> Item
-@enduml</code></pre>
-
-  <h3>🛠 What You Need to Do</h3>
-  <ol>
-    <li>Use <code>Item</code> class.</li>
-    <li>Add private fields:
-      <ul>
-        <li><code>name</code></li>
-        <li><code>value</code></li>
-      </ul>
-    </li>
-    <li>Write a constructor:
-      <pre><code>public Item(String name, int value)</code></pre>
-    </li>
-    <li>Add these methods to <code>Item</code>:
-      <pre><code>public String getName()
-public int getValue()
-public boolean isRare()</code></pre>
-    </li>
-    <li>Update <code>TreasureChest</code> so it stores:
-      <pre><code>private ArrayList&lt;Item&gt; items;</code></pre>
-      instead of separate lists for names and values.
-    </li>
-    <li>Change:
-      <pre><code>addItem(String name, int value)</code></pre>
-      to:
-      <pre><code>addItem(Item item)</code></pre>
-    </li>
-    <li>Change:
-      <pre><code>removeItem(String name)</code></pre>
-      to:
-      <pre><code>removeItem(Item item)</code></pre>
-    </li>
-    <li>Update <code>getTotalValue()</code> so it loops through <code>Item</code> objects and adds up their values.</li>
-    <li>Update <code>GameApp</code> so it creates <code>Item</code> objects before adding them to the chest.</li>
-  </ol>
-
-  <h3>💡 Important Design Notes</h3>
-  <p><strong>Why move <code>isRare()</code> into Item?</strong></p>
-  <p>
-    Rarity is something about <em>one item</em>, not about the chest.
-    The chest should manage items. The item should know item-specific information about itself.
-  </p>
-
-  <p><strong>How should <code>isRare()</code> work?</strong></p>
-  <p>
-    Do <strong>not</strong> add a separate <code>rare</code> field.
-    Instead, compute rarity from the value.
-  </p>
-
-  <pre><code>public boolean isRare() {
-    return this.value &gt; 50;
-}</code></pre>
-
-  <p>
-    This is better because we do not want to store extra data if we can compute it from existing data.
-  </p>
-
-  <h3>🧠 Do not get stuck</h3>
-  <p><strong>1. Updating <code>addItem</code></strong></p>
-  <p>Old version:</p>
-  <pre><code>public void addItem(String name, int value)</code></pre>
-  <p>New version:</p>
-  <pre><code>public void addItem(Item item)</code></pre>
-
-  <p>
-    You are no longer adding separate pieces of data. You are adding one object.
-  </p>
-
-  <p><strong>2. Updating <code>getTotalValue()</code></strong></p>
-  <p>Old idea:</p>
-  <pre><code>for (int value : itemValues) {
-    total += value;
-}</code></pre>
-
-  <p>New idea:</p>
-  <pre><code>for (Item item : items) {
-    total += item.getValue();
-}</code></pre>
-
-  <p><strong>3. Updating <code>removeItem</code></strong></p>
-  <p>
-    In the bad design, removal used a name.
-    In the refactored design, remove the actual object:
-  </p>
-  <pre><code>items.remove(item);</code></pre>
-
-  <p><strong>4. Updating <code>GameApp</code></strong></p>
-  <p>Old version:</p>
-  <pre><code>chest.addItem("Diamond", 100);</code></pre>
-
-  <p>New version:</p>
-  <pre><code>Item diamond = new Item("Diamond", 100);
-chest.addItem(diamond);</code></pre>
-
-  <h3>🧪 Example of Refactored Usage</h3>
-  <p> In GameApp: Uncomment Part 2 to match your new design and comment Part 1 (old design). Run as App</p>
-  <p> Run as JUnit Test TreasureChestRefactoredTest - do you pass all tests?</p>
-  
-
-  <h3>✅ Quick Checklist</h3>
-  <ul>
-    <li>You created <code>Item.java</code></li>
-    <li><code>Item</code> fields are <code>private</code></li>
-    <li><code>TreasureChest</code> now stores <code>ArrayList&lt;Item&gt;</code></li>
-    <li><code>isRare()</code> is in <code>Item</code>, not <code>TreasureChest</code></li>
-    <li><code>GameApp</code> creates <code>Item</code> objects</li>
-    <li>Your code runs with no red errors</li>
-  </ul>
-
-  <h3>🚀 Submission</h3>
-  <p>
-    Submit the required Java files to Gradescope + UML diagrams.
-  </p>
-</details>
-
+      <details class="lab-card setup-card">
+        <summary><strong>Download starter project</strong></summary>
+        <div>
+          <p>Download the starter ZIP here: <a href="../labs/Lab06.zip">Lab06.zip</a></p>
+          <p>Open the project in IntelliJ and run <code>GameApp.main()</code>. You do not need any extra build setup for this lab.</p>
         </div>
+      </details>
 
+      <details class="lab-card required-card">
+        <summary><strong>Start CodeTogether</strong></summary>
+        <div>
+          <ol>
+            <li>One teammate opens the Lab06 project.</li>
+            <li>Start a CodeTogether session in IntelliJ.</li>
+            <li>Share the session link with your teammate.</li>
+            <li>Join the session and alternate driver/navigator roles.</li>
+            <li>Discuss the design together before changing code.</li>
+          </ol>
+          <p>Both teammates should contribute to the design discussion and the refactoring.</p>
+        </div>
+      </details>
+    </div>
 
+    <div class="lab-section">
+      <h2>Why this lab matters</h2>
+      <p>
+        Refactoring is about improving structure without changing the behavior the program is supposed to provide.
+        A good refactoring makes the code easier to understand and easier to extend.
+      </p>
+      <p>
+        In this lab, the starter program already works, but it has a clear design problem: related item information is split across multiple structures, and one class is doing work that seems more natural for the item itself.
+      </p>
+    </div>
 
-        </body>
-        </html>
+    <div class="lab-section">
+      <h2>Run the starter program</h2>
+      <p>Before editing anything, run <code>GameApp</code> and observe the output.</p>
+      <p>The program should:</p>
+      <ul>
+        <li>add items to the treasure chest</li>
+        <li>remove an item</li>
+        <li>report how many items are stored</li>
+        <li>compute the total value</li>
+        <li>report whether an item is rare</li>
+      </ul>
+      <p>Write down what the program does correctly before changing the design.</p>
+    </div>
+
+    <div class="lab-section">
+      <h2>Inspect before you edit</h2>
+      <p>Discuss these questions with your teammate before changing the code:</p>
+      <ul>
+        <li>Which pieces of data always belong together?</li>
+        <li>Is there a noun in the scenario that is not currently represented as a class?</li>
+        <li>Does <code>TreasureChest</code> contain behavior that seems to belong to something else?</li>
+        <li>What structural change would remove the need to keep two collections synchronized?</li>
+      </ul>
+      <p>
+        The main idea is to identify one important design problem and fix it, not to rewrite the entire program.
+      </p>
+
+      <details class="hint">
+        <summary>Need a hint?</summary>
+        <div>
+          <p>Look for places where item data is split across two lists. Ask yourself which data belongs together and which class should own the item-specific behavior.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="lab-section">
+      <h2>Refactor together</h2>
+      <p>
+        Once your team agrees on one small structural improvement, refactor the code together.
+        Keep the behavior the same while simplifying the design.
+      </p>
+      <p>Focus on the most obvious design issue first. Your refactoring should be small and understandable.</p>
+      <ul>
+        <li>Move related item data together.</li>
+        <li>Represent an item as an object instead of storing its parts separately.</li>
+        <li>Move item-specific behavior to the class that owns that information.</li>
+        <li>Update the chest to work with the refactored item representation.</li>
+      </ul>
+      <p>
+        Do not add large hierarchies, unnecessary abstractions, or extra requirements.
+        This lab is meant to be a first, manageable refactoring activity.
+      </p>
+    </div>
+
+    <div class="lab-section">
+      <h2>Run and verify</h2>
+      <p>After refactoring, run <code>GameApp.main()</code> again.</p>
+      <p>Your refactored version should still:</p>
+      <ul>
+        <li>add items</li>
+        <li>remove items</li>
+        <li>count the number of items</li>
+        <li>calculate total value</li>
+        <li>determine whether an item is rare</li>
+      </ul>
+      <p>
+        If the output changes in a way that breaks the original behavior, you have likely changed too much or moved responsibilities incorrectly.
+      </p>
+    </div>
+
+    <div class="lab-section">
+      <h2>Generate UML from your final code</h2>
+      <p>Use IntelliJ's UML/Class Diagram tool to generate a diagram from your completed Java code.</p>
+      <p>The key is that the UML should match what your team actually implemented, not what you intended to write.</p>
+      <p>Save or export the final diagram and include it in your submission.</p>
+    </div>
+
+    <div class="lab-section">
+      <h2>Submit</h2>
+      <p>Each team submits:</p>
+      <ol>
+        <li>The final UML diagram generated from the finished code</li>
+        <li>A short reflection with approximately 3 questions:</li>
+      </ol>
+      <ul>
+        <li>What was the biggest design problem you identified in the starter code?</li>
+        <li>What did your team change, and why does that make the design easier to understand or extend?</li>
+        <li>How did you verify that the refactoring did not change the required program behavior?</li>
+      </ul>
+      <p>Keep the reflection brief. This is a small design discussion, not a long essay.</p>
+    </div>
+  </div>
+</body></html>
