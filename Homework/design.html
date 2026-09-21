@@ -84,6 +84,20 @@
         background: #f8fafc;
         font-size: 0.95em;
       }
+      .uml-setup-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 0.65rem 0.9rem;
+        border: 2px solid #00539C;
+        border-radius: 8px;
+        background: #eaf4ff;
+        color: #003d73;
+        font-weight: 700;
+      }
+      .uml-setup-link:hover {
+        background: #d7ebff;
+        text-decoration: none;
+      }
       details.hub-card {
         border: 1px solid #e2e8f0;
         border-radius: 10px;
@@ -150,7 +164,7 @@
       <a id="index_link" href="../index.html">CSSE 220</a>
       <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
       <a id="schedule_link" href="../schedule.html">Schedule</a>
-      <a id="quiz_link" href="../design-principles.html">Design</a>
+      <a id="quiz_link" href="../design.html">Design</a>
       <a id="quiz_link" href="../labs.html">Labs</a>
       <a id="quiz_link" href="../homework.html">Homework</a>
       <a id="quiz_link" href="../exams.html">Exams</a>
@@ -167,6 +181,7 @@
           fields, methods, and relationships, and to evaluate alternative UML designs.
         </p>
         <p>OOD Principles <a href="../resources_files/Basic_OO_Principles_for_CSSE220.pdf">Handout</a></p>
+        <a class="uml-setup-link" href="#uml-in-intellij">📐 Set up UML in IntelliJ before starting a design challenge</a>
       </section>
 
       <section id="quick-design-checkdown">
@@ -184,7 +199,7 @@
         </div>
       </section>
 
-      <details id="uml-intellij-card" class="hub-card">
+      <details id="uml-in-intellij" class="hub-card">
         <summary>📐 UML in IntelliJ — install plugins and use both UML workflows</summary>
         <p>
           Install the UML plugins and learn how to create a design diagram or generate UML from Java code.
@@ -370,60 +385,120 @@ QuizQuestion -right-> Quiz
         </details>
 
         <details id="design-prob-2" class="hub-card scenario-card">
-          <summary>🛍️ DP2: Vapor Sales — games, bundles, and revenue reporting</summary>
+          <summary>🎮 DP2: PixelVault — Games, Bundles, and Encapsulation</summary>
           <h3>Problem Statement</h3>
           <p>
-            Vapor, the popular video game digital store, has hired you as a consultant to design a
-            sales management application. Each game available to purchase through Vapor has a title,
-            ESRB rating (e.g., "T" for "Teen"), and price, all of which are fixed.
-            You may assume game titles are unique.
+            PixelVault is an online video game store. Games can be purchased individually or as part
+            of discounted bundles.
           </p>
-          <p>
-            Vapor also sells game bundles, which complicates their sales records (hence why they hired
-            you instead of designing the application themselves).
-            Each bundle is a set of games with a clever name (e.g., "Boom Bundle 2") and price (less than the sum of the individual game prices)
-            determined in advance by the marketing team. Every bundle contains at least two games,
-            and a game may appear in more than one bundle. You may assume bundle names are unique.
-          </p>
-          <p>
-            For any given bundle, Vapor wants to be able to generate a report including
-            the bundle's name, price, included game titles, how many times
-            the bundle was purchased, and the total revenue from that bundle.
-          </p>
-          <p>
-            Also, Vapor wants to be able to produce a sales report for each game,
-            including how many times the game has been sold individually or as part of a bundle
-            (e.g., "TeamCastle has sold 27 copies individually and 44 copies as part of a bundle").
-          </p>
-          <p>
-            The game's sales report should also include the total revenue from that game.
-            For computing total revenue, Vapor distributes the sales price of
-            each bundle evenly across all games in the bundle.
-            For example, a bundle of four games sold for $60 should count as $15 of revenue for each game.
-          </p>
-          <p>
-            Finally, Vapor wants a method to determine the game with
-            the highest total revenue and a method to determine the most popular (i.e., most copies sold) bundle.
-          </p>
+          <ul>
+            <li>Each game has a unique title, a rating such as <code>"E"</code>, <code>"T"</code>, or <code>"M"</code>, and an individual price.</li>
+            <li>Each bundle has a unique name, a fixed bundle price, and at least two games. A game may appear in more than one bundle.</li>
+            <li>The application must add games, create bundles containing existing games, sell a game individually, and sell a bundle.</li>
+            <li>The application must report how many times each game was sold individually and as part of a bundle, report how many times a particular bundle was purchased, and determine the most popular bundle.</li>
+          </ul>
+          <p>When a bundle is purchased, every game in that bundle counts as one additional copy sold through a bundle.</p>
+          <p>Students should inspect the proposed object designs and determine the most important design problem in each one.</p>
           <h3>Part 1 in Gradescope</h3>
-          <p>Identify a list of primary nouns (classes), identify attribute (secondary nouns) for each of these classes, identify methods (verbs)</p>
+          <p>Identify primary nouns that may become classes, attributes associated with those nouns, and relevant behaviors or verbs.</p>
           <h3>Part 2 in Gradescope</h3>
+          <p>Before working with the diagrams, review <a href="#uml-in-intellij">UML in IntelliJ — install plugins and use both UML workflows</a>.</p>
 
           <h4>Bad Design A</h4>
           <div class="image-container">
-            <img src="DP2_A.png" alt="Bad Design A" width="800" />
+            <img src="DP2_A.png" alt="Bad Design A for PixelVault" width="1000" />
           </div>
-          <p>
-            <a href="http://www.plantuml.com/plantuml/uml/XLBDQiCm3BxhAKnFtUXUe8pITeVsiC9e-W9gBL8pnmwsN2XZxpx5DCGXOxiaMFf-FbbUHyR0gR4GFurhCM2Z8jyjoJUOI-x0nMACga9ByO0EQmhg2yx9QIairHxZzO3jQoK4Lo_K9WIylvl8Zyfg1N353hpHUeSDpTcmfQNg2G5P_iEv5MDfQv_Ebfxw-g2npSxpMgHEeYGPffuBvQJzdsOVh29hfya6s81wU9VY4xKFEN0dbs_iIAqF_BToPcJfaZDrAIWxuhsfhnJvI3ToYNB-Nr1RWNJ9fPWTIX1yGx_TZYvR7SM4yMPWT8dWKlFcMqEnybOlbKm04CL8YlVEu-QDXejlsiHqyeps4LHwlKGnVJdt453oZPxToshsFCjPOKrEfyR-0000" target="_blank">Source PlantUML</a>
-          </p>
+          <pre><code class="language-plantuml">@startuml
+
+class GameStore {
+    - games : ArrayList&lt;Game&gt;
+    - bundleGames : HashMap&lt;String, ArrayList&lt;Game&gt;&gt;
+    - bundlePrices : HashMap&lt;String, double&gt;
+    - bundleSales : HashMap&lt;String, int&gt;
+
+    + addGame(game : Game) : void
+    + createBundle(name : String, price : double, games : ArrayList&lt;Game&gt;) : void
+    + sellGame(title : String) : void
+    + sellBundle(name : String) : void
+    + getIndividualSales(title : String) : int
+    + getBundleSales(title : String) : int
+    + getBundlePurchases(name : String) : int
+    + getMostPopularBundle() : String
+}
+
+class Game {
+    - title : String
+    - rating : String
+    - price : double
+    - individualSales : int
+    - bundleSales : int
+
+    + sellIndividually() : void
+    + recordBundleSale() : void
+    + getTitle() : String
+    + getIndividualSales() : int
+    + getBundleSales() : int
+}
+
+GameStore --&gt; Game
+
+@enduml</code></pre>
 
           <h4>Bad Design B</h4>
           <div class="image-container">
-            <img src="DP2_B.png" alt="Bad Design B" width="1000" />
+            <img src="DP2_B.png" alt="Bad Design B for PixelVault" width="1000" />
           </div>
-          <p>
-            <a href="http://www.plantuml.com/plantuml/uml/jPFDQW8n483lynJ1IssnBo15r1xieItY-WAf6TRGRB8a4q6Axzw96zaiIaiFlHWpFr--JDXv8EafDWR2fxQjzB8HWOu6-TVhtJa3EoD349Kq6DwabJLwyGMmbrOPN2YraWsEIPF1gQYuozOJuINnskzRXd5QkVXXyFuIxndBcFwCQqPj4obCnS9xUNpLWPwwujb4M4x_oipG2esvDklB-gfyTWc_egrvGmbtdi86M-Vf9tBkwD1bpyrJSiiAwKNNUmoqmGFQY6V_6rLBBadc7CpoXV09BY-Mslcb1femV1aO315iR9vTgp5KpgYfu1i0t8aQwRrCfDDIAh02HuzfVt1QmSurRIJSEf8cNu5p6LxEfPX8eNwwY7UNOlKqhNzLpPPhz3oilyeEleZ7sUXXbCsXMt8iaM6ELiN6V0C0" target="_blank">Source PlantUML</a>
-          </p>
+          <pre><code class="language-plantuml">@startuml
+
+class GameStore {
+    - games : ArrayList&lt;Game&gt;
+    - bundles : ArrayList&lt;Bundle&gt;
+
+    + addGame(game : Game) : void
+    + addBundle(bundle : Bundle) : void
+    + sellGame(game : Game) : void
+    + sellBundle(bundle : Bundle) : void
+    + getIndividualSales(game : Game) : int
+    + getBundleSales(game : Game) : int
+    + getBundlePurchases(bundle : Bundle) : int
+    + getMostPopularBundle() : Bundle
+}
+
+class Game {
+    - title : String
+    - rating : String
+    - price : double
+    - individualSales : int
+    - bundleSales : int
+
+    + getTitle() : String
+    + getRating() : String
+    + getPrice() : double
+    + getIndividualSales() : int
+    + setIndividualSales(count : int) : void
+    + getBundleSales() : int
+    + setBundleSales(count : int) : void
+}
+
+class Bundle {
+    - name : String
+    - price : double
+    - games : ArrayList&lt;Game&gt;
+    - timesPurchased : int
+
+    + getName() : String
+    + getPrice() : double
+    + getGame(index : int) : Game
+    + getNumberOfGames() : int
+    + getTimesPurchased() : int
+    + setTimesPurchased(count : int) : void
+}
+
+GameStore --&gt; Game
+GameStore --&gt; Bundle
+Bundle --&gt; Game
+
+@enduml</code></pre>
         </details>
 
         <details id="design-prob-3" class="hub-card scenario-card">
@@ -685,7 +760,7 @@ QuizQuestion -right-> Quiz
     <script>
       (function () {
         var accordionCards = Array.prototype.slice.call(
-          document.querySelectorAll("#uml-intellij-card, #scenario-accordion .scenario-card")
+          document.querySelectorAll("#uml-in-intellij, #scenario-accordion .scenario-card")
         );
 
         accordionCards.forEach(function (card) {
