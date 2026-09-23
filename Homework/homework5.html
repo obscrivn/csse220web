@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Homework 5: Shared Questions</title>
+  <title>Homework 5: Quiz App</title>
   <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
   <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
   <style>
@@ -17,6 +17,7 @@
     code { background-color: #e0e0e0; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
     pre { overflow-x: auto; background-color: #f5f5f5; padding: 12px; border-radius: 4px; }
     .note { background-color: #fffbcc; border: 1px solid #ffe58f; padding: 10px; border-radius: 4px; }
+    .uml-diagram { display: block; max-width: 100%; height: auto; margin: 16px auto; border: 1px solid #ccc; }
   </style>
 </head>
 <body>
@@ -32,8 +33,8 @@
     <a href="../resources.html">Resources</a>
   </div>
   <div id="content"><main class="container">
-    <h1>Homework 5: Shared Questions in Online Quizzes</h1>
-    <p>In this assignment, you will model Questions and Quizzes so one Question object can appear in more than one Quiz. Updating that object once must update what every associated Quiz displays.</p>
+    <h1>Homework 5: Quiz App</h1>
+    <p>You are hired to finish an app that was started to build a quiz platform for teachers. Teachers need to create Questions, organize them into Quizzes, and revise a Question later. Because the same Question can appear in more than one Quiz, one revision must automatically be visible everywhere that Question is used. The platform must also locate Questions and Quizzes by their unique IDs.</p>
 
     <h2>Open the project in IntelliJ IDEA</h2>
     <ol>
@@ -54,6 +55,10 @@
 
     <h2>Design freedom</h2>
     <p>You choose private fields, collection types, lookup strategy, helper methods, and quiz contents. Both an <code>ArrayList</code> with a search and a <code>HashMap</code> lookup can be valid designs. The supplied JUnit tests check behavior, not your chosen internal collection.</p>
+
+    <h2>Expected object model</h2>
+    <p>Use the expected-solution UML diagram to understand the required public classes, operations, and object relationships. It shows the shared-Question relationship without prescribing private fields or a particular collection implementation.</p>
+    <img class="uml-diagram" src="DP1.png" alt="UML diagram showing QuizMain, Quiz, and Question relationships for Homework 5">
 
     <h2>Document your design with Javadoc</h2>
     <p>Write Javadoc for the public classes and methods in <code>Question</code> and <code>Quiz</code>. Javadoc explains what a class or method promises to do; it should describe behavior, not repeat the Java code line by line.</p>

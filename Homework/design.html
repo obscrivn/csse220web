@@ -502,44 +502,119 @@ Bundle --&gt; Game
         </details>
 
         <details id="design-prob-3" class="hub-card scenario-card">
-          <summary>🚀 DP3: Spaceships — player control and AI ship movement</summary>
+          <summary>🚀 DP3: Galaxy Grand Prix — player vs. AI ship movement</summary>
           <h3>Problem Statement</h3>
           <p>
-            In a single-player spaceship racing game, the mechanics surrounding ships are particularly important.
-            Each ship has its own current position, rotation, and velocity. The game consists of a single-player ship,
-            controlled by the player, and several "enemy" ships controlled by AI. Rotation and velocity can be increased or
-            decreased to steer any ship.
+            Galaxy Grand Prix is an arcade space-racing game. Every ship on the track, whether controlled by the player or by the computer, has a position, rotation (heading), and velocity. Every ship moves the same way: during each game tick, its position changes based on its current rotation and velocity.
           </p>
+          <p>
+            The player controls one ship directly. When the player provides input, that ship's rotation and velocity are updated.
+          </p>
+          <p>
+            The remaining ships are AI-controlled drones. Each drone determines its own rotation and velocity during each tick using its own flight behavior, so different drones may race differently.
+          </p>
+          <p>
+            During each tick, the game first lets every drone determine its next steering values. Then every ship, including the player ship, moves based on its current rotation and velocity.
+          </p>
+
+          <h3>Your Design Job</h3>
           <ul>
-            <li>
-              <strong>Enemy Ships:</strong> AI-controlled ships are steered using a single AI strategy that depends on a <em>flying strategy</em>.
-              This strategy (which could be different for each enemy ship) sets the rotation and velocity at regular intervals (e.g., every 10ms).
-            </li>
-            <li>
-              <strong>Player Ship:</strong> The ship controlled by the player gets its rotation and velocity input from the player's controller.
-            </li>
+            <li>What are the important nouns in this scenario?</li>
+            <li>Which nouns should become classes?</li>
+            <li>What data and behavior are shared by all ships?</li>
+            <li>What behavior differs between player-controlled and AI-controlled ships?</li>
+            <li>Which object should compute a ship's new position? Why?</li>
+            <li>Which objects need references to other objects in order to do their jobs?</li>
           </ul>
-          <p>There are two commands to consider:</p>
-          <ol>
-            <li><code>updatePlayerInput(inputData)</code>: Called when a player presses a key on the controller.</li>
-            <li><code>moveAllShips()</code>: First asks the enemy/AI ships to update their rotation and velocity, then updates the position of <em>all</em> ships in the game based on their current settings.</li>
-          </ol>
+
+          <h3>Part 1 in Gradescope</h3>
+          <p>Identify a list of primary nouns (classes), identify attributes (secondary nouns) for each of these classes, identify methods (verbs).</p>
+          <h3>Part 2 in Gradescope</h3>
+          <p>
+            This design problem includes two intentionally flawed but plausible UML designs. Both designs can satisfy the required functionality, but each one violates a different core rule about where behavior and data should live.
+          </p>
 
           <h4>Bad Design A</h4>
           <div class="image-container">
             <img src="DP3_A.png" alt="Bad Design A" width="800" />
           </div>
-          <p>
-            <a href="http://www.plantuml.com/plantuml/uml/RP11JiCm44NtFiLNDr2W5-W2bIKI5LIb1nZL9Xd5cGHxl4WGTyT984ealB1iF__tPH-YKj1KUnChbfO2rOZQUPVdmDUHv763Dq-Yb-CBFfg0L_4i3gV4FSwDJygDuCcOgwSOn-CZiU3B0BWlIQntbzQIkW6Taej3uFRpT_5izopwWBzzlX2wFSuQM8hjml5ErMZ8IUvp2ZcsDT_BtgcJ9xP4atgDWVyxXzpyY5tWejJTu-PkCslCx5jJxit1YSsVzWC0" target="_blank">Source PlantUML</a>
-          </p>
+          <pre><code class="language-plantuml">@startuml
+class Ship {
+    - x : double
+    - y : double
+    - rotation : double
+    - velocity : double
+    - flightBehavior : FlightBehavior
+    + getX() : double
+    + setX(x : double) : void
+    + getY() : double
+    + setY(y : double) : void
+    + getRotation() : double
+    + setRotation(r : double) : void
+    + getVelocity() : double
+    + setVelocity(v : double) : void
+    + getFlightBehavior() : FlightBehavior
+}
+
+class FlightBehavior {
+    + pickRotation() : double
+    + pickVelocity() : double
+}
+
+class RaceController {
+    - ships : ArrayList&lt;Ship&gt;
+    + updatePlayerInput(inputData : String) : void
+    + moveAllShips() : void
+}
+
+RaceController --&gt; Ship
+Ship --&gt; FlightBehavior
+@enduml</code></pre>
 
           <h4>Bad Design B</h4>
           <div class="image-container">
             <img src="DP3_B.png" alt="Bad Design B" width="800" />
           </div>
-          <p>
-            <a href="http://www.plantuml.com/plantuml/uml/TP1DQWCn38NtFeN9AYdq2YKffP15Q67e0SHO9AAAR2nDm9JUlV8a7RfeDaBsU_hqirM3QjEPWtwI5AXmZcgDqMEbSLR2oA0QXnEL0v34hn3Z2IGnVfG4XkyC3UjUocHhwl4533QBwP0lk6FkvRhUXEy_k1a5zCgDv3XOTTYn-HVfbTaz_YnPoIYBfpKRtD8BSXx9kd-wpf7r6HJJcmnevaHljuWTTLDt-zzM_-jtzl79mtA3nwUuUbZDIuGjIl8x_G00" target="_blank">Source PlantUML</a>
-          </p>
+          <pre><code class="language-plantuml">@startuml
+class PlayerShip {
+    - x : double
+    - y : double
+    - rotation : double
+    - velocity : double
+    + updateFromInput(inputData : String) : void
+    + move() : void
+    + getX() : double
+    + getY() : double
+}
+
+class DroneShip {
+    - x : double
+    - y : double
+    - rotation : double
+    - velocity : double
+    - flightBehavior : FlightBehavior
+    + updateFromBehavior() : void
+    + move() : void
+    + getX() : double
+    + getY() : double
+}
+
+class FlightBehavior {
+    + pickRotation() : double
+    + pickVelocity() : double
+}
+
+class RaceController {
+    - player : PlayerShip
+    - drones : ArrayList&lt;DroneShip&gt;
+    + updatePlayerInput(inputData : String) : void
+    + moveAllShips() : void
+}
+
+RaceController --&gt; PlayerShip
+RaceController --&gt; DroneShip
+DroneShip --&gt; FlightBehavior
+@enduml</code></pre>
         </details>
 
         <details id="design-prob-4" class="hub-card scenario-card">
