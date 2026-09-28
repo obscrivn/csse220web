@@ -1,731 +1,367 @@
-<!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CSSE 220</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
-<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
-<style>
-  body {
-          font-family: Arial, sans-serif;
-          line-height: 1.5;
-          margin: 0;
-          padding: 1rem;
-          background: #f5f7fa;
-          color: #333;
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSSE 220 | Lab 09: Arena Player System</title>
+    <link rel="stylesheet" href="../syllabus_files/schedule.css">
+    <link rel="stylesheet" href="../syllabus_files/screen.css">
+    <style>
+        :root {
+            --ink: #1f2937;
+            --muted: #526071;
+            --page: #f4f6fb;
+            --surface: #fff;
+            --border: #d8deea;
+            --accent: #2166d1;
+            --soft: #edf4ff;
+            --green: #18794e;
+            --green-soft: #ecf8f2;
+            --gold: #9a6700;
+            --gold-soft: #fff8e6
         }
-        
-        /* Section containers */
-        section {
-          background: #fff;
-          border: 1px solid #ddd;
-          border-radius: 6px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-          margin: 1.5rem 0;
-          padding: 1.2rem;
+
+        * {
+            box-sizing: border-box
         }
-        
-        /* Headings */
-        h2 {
-          margin-top: 0;
-          font-size: 1.6rem;
-          border-bottom: 2px solid #e0e0e0;
-          padding-bottom: 0.3rem;
+
+        body {
+            margin: 0;
+            background: var(--page);
+            color: var(--ink);
+            font: 16px/1.6 Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
         }
+
+        #header {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .35rem 1rem;
+            min-height: 3.75rem;
+            padding: .7rem clamp(1rem, 4vw, 3rem);
+            background: #1c1515;
+            box-shadow: 0 4px 16px rgba(30, 17, 48, .2)
+        }
+
+        #header a {
+            color: #fff;
+            font-size: .9rem;
+            font-weight: 650;
+            text-decoration: none
+        }
+
+        #header a:hover {
+            text-decoration: underline
+        }
+
+        #content {
+            width: min(1050px, calc(100% - 2rem));
+            margin: auto;
+            padding: 6.75rem 0 4rem
+        }
+
+        h1,
+        h2,
         h3 {
-          font-size: 1.3rem;
-          margin-top: 1rem;
+            color: #111827;
+            line-height: 1.25
         }
-        
-        /* Image styling */
-        section img {
-          display: block;
-          max-width: 100%;
-          height: auto;
-          margin: 0.8rem auto;
-          border: 1px solid #ccc;
-          border-radius: 4px;
+
+        h1 {
+            margin: 0 0 .65rem;
+            font-size: clamp(2rem, 5vw, 3rem)
         }
-        
-        /* Code blocks */
-        /* pre {
-          background: #2d2d2d;
-          color: #f8f8f2;
-          padding: 0.8rem;
-          border-radius: 1px;
-          overflow-x: auto;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.9rem;
-        } */
-        /* pre code {
-          display: block;
-          white-space: pre-wrap;
-          word-wrap: break-word;
-        } */
-        
-        /* Inline code */
-        /* code {
-          background: #eaeaea;
-          color: #c7254e;
-          padding: 0.2rem 0.4rem;
-          border-radius: 1px;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.95em;
-        } */
-        
-        /* Highlight compile / runtime state */
-        strong + span {
-          font-weight: bold;
-          color: #d14;
+
+        h2 {
+            margin: 0 0 .6rem;
+            font-size: 1.55rem
         }
-        
-        /* Lists */
-        ul, ol {
-          margin: 0.5rem 0 0.5rem 1.2rem;
+
+        h3 {
+            margin: 1rem 0 .35rem;
+            font-size: 1.1rem
         }
+
+        p {
+            margin: .55rem 0;
+            color: var(--muted)
+        }
+
+        ul,
+        ol {
+            margin: .55rem 0 1rem;
+            padding-left: 1.45rem
+        }
+
         li {
-          margin-bottom: 0.5rem;
-        }
-        
-        /* Method call subsections */
-        section#method-calls h4 {
-          margin: 1rem 0 0.3rem;
-          font-size: 1.1rem;
-          color: #444;
-          border-left: 3px solid #007acc;
-          padding-left: 0.5rem;
-        }
-        
-        /* Emphasis for compile/run status */
-        span[style*="darkred"] {
-          font-weight: bold;
-          color: #c00;
+            margin: .3rem 0
         }
 
+        code {
+            padding: .1rem .3rem;
+            border-radius: .25rem;
+            background: #eef1f6;
+            color: #9b1c4a;
+            font-family: Consolas, "Liberation Mono", monospace
+        }
 
+        pre {
+            overflow: auto;
+            margin: .8rem 0 1rem;
+            padding: 1rem;
+            border: 1px solid #ced8e8;
+            border-left: 4px solid var(--accent);
+            border-radius: .55rem;
+            background: #f7f9fc;
+            color: #172033;
+            line-height: 1.48
+        }
 
-    /* body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
-    } */
-    #main-content {
-      padding: 20px;
-    }
-/* Header styling */
-#header {
-        position: fixed;
-        top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-    }
-    #header a {
-      color: #fff;
-      margin-right: 15px;
-      text-decoration: none;
+        .section {
+            margin: 1.25rem 0;
+            padding: clamp(1.1rem, 3vw, 1.6rem);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            background: var(--surface);
+            box-shadow: 0 8px 22px rgba(34, 42, 66, .06)
+        }
 
-    }
-    #header a:hover {
-      text-decoration: underline;
-    }
-    #header div {
-      clear: both;
-    }
-    /* Content container */
-    #content {
-      padding: 20px;
-      /* margin-top: 100px;  */
-      margin-bottom: 50px;
-      padding-top: 100px;
-    }
-    #section {
-margin-top: 1rem; 
-margin-bottom: 1rem;
-padding: 20px;
-} 
-    .lab-section {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    }
-    .lab-section h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      color: #333;
-    }
-    .lab-section p {
-      line-height: 1.5;
-      color: #555;
-    }
-/* Lab Navigation Menu Styling */
-#lab-nav {
-      background-color: #faf9fc;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      overflow-x: auto;  /* Enables horizontal scroll */
-      white-space: nowrap; /* Prevents wrapping */
-    }
-    #lab-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 15px;
-    }
-    #lab-nav ul li a {
-      text-decoration: none;
-      color: #333;
-      margin-left: 20px;
-      padding: 5px 10px;
-      border-radius: 3px;
-    }
-    #lab-nav ul li a:hover {
-      background-color: #ddd;
-    }
-    code {
-        /* color: red; */
-        font-weight: 600;
-        font-family: Consolas, "Courier New", monospace;
-    }
-    .code-window {
-      background-color: #272822;
-      color: #f8f8f2;
-      border: 1px solid #333;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      white-space: pre;
-      overflow-x: auto;
-      border-radius: 3px;
-      margin-top: 10px;
-    }
-    .solution-window {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #4caf50;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      border-radius: 3px;
-      overflow-x: auto;
-      white-space: pre;
-      margin-top: 10px;
-    }
-    .solution-header {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #2e7d32;
-    }
+        .eyebrow {
+            margin-bottom: .3rem;
+            color: #315a8d;
+            font-size: .8rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
 
-    a.resource-ref {
-  background-color: #444; /* dark background for contrast */
-  color: #61dafb;         /* bright text color */
-  padding: 4px 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-}
+        .callout {
+            margin: 1rem 0;
+            padding: .85rem 1rem;
+            border-left: 5px solid var(--accent);
+            border-radius: .5rem;
+            background: var(--soft)
+        }
 
-a.resource-ref:hover {
-  background-color: #555;
-  color: #ffffff;
-}
+        .callout.required {
+            border-left-color: var(--green);
+            background: var(--green-soft)
+        }
 
-pre code {
-  background-color: #f5f7fa;
-  color: #1a1a1a;
-  border-left: 4px solid #4a90e2;
-  padding: 0.75em;
-  display: block;
-  border-radius: 6px;
-  font-size: 0.9em;
-  line-height: 1.4em;
-}
-pre code:hover {
-  background-color: #dce1e8;
-  border-left-color: #28527a;
-}
-.lab-card {
-  margin: 0 0 1rem 0;
-  border-radius: 0.75rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  padding: 0.25rem 0.75rem 0.75rem;
-}
+        .callout.checkpoint {
+            border-left-color: var(--gold);
+            background: var(--gold-soft)
+        }
 
-.lab-card > summary {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  list-style: none;
-  cursor: pointer;
-  padding: 0.5rem 0;
-  font-weight: 600;
-}
+        .callout p {
+            color: var(--ink)
+        }
 
-.lab-card > summary::-webkit-details-marker {
-  display: none; /* hide default arrow in some browsers */
-}
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: .85rem;
+            margin: .9rem 0
+        }
 
-.lab-card > summary::after {
-  content: "›";
-  margin-left: auto;
-  font-size: 1rem;
-  transition: transform 0.15s ease-out;
-}
+        .card {
+            padding: .85rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: .65rem;
+            background: #fbfcff
+        }
 
-.lab-card[open] > summary::after {
-  transform: rotate(90deg);
-}
+        .card h3 {
+            margin: 0 0 .25rem
+        }
 
-.lab-label {
-  font-family: monospace;
-  opacity: 0.7;
-}
+        details {
+            margin: .75rem 0;
+            border: 1px solid var(--border);
+            border-radius: .6rem;
+            background: #fbfcff
+        }
 
-.lab-title {
-  font-weight: 700;
-}
+        summary {
+            cursor: pointer;
+            padding: .7rem .9rem;
+            font-weight: 700
+        }
 
-.lab-tag {
-  font-size: 0.8rem;
-  padding: 0.1rem 0.4rem;
-  border-radius: 999px;
-  border: 1px solid #ccc;
-  background: #fff;
-}
+        details>div {
+            padding: 0 .9rem .9rem
+        }
 
-.lab-body {
-  border-top: 1px solid #e0e0e0;
-  margin-top: 0.25rem;
-  padding-top: 0.5rem;
-}
-
-details.hint {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background: #f9f9f9;
-  border-left: 3px solid #aaa;
-}
-
-details.hint > summary {
-  cursor: pointer;
-  font-weight: 500;
-  color: #555;
-}
-  </style>
+        .uml {
+            display: block;
+            max-width: min(100%, 500px);
+            margin: 1rem auto;
+            border: 1px solid var(--border);
+            border-radius: .55rem;
+            background: #fff
+        }
+    </style>
 </head>
+
 <body>
-  <div id="header">
-    <a id="index_link" href="../index.html">CSSE 220</a>
-    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
-    <a id="schedule_link" href="../schedule.html">Schedule</a>
-      <a id="quiz_link" href="../design.html">Design</a>
-    <a id="quiz_link" href="../labs.html">Labs</a>
-    <a id="quiz_link" href="../homework.html">Homework</a>
-    <a id="quiz_link" href="../exams.html">Exams</a>
-    <a id="quiz_link" href="../project.html">Final Project</a>
-    <a id="resources_link" href="../resources.html">Resources</a>
-    <div style="clear:both;"></div>
-</div>
-<div id="content">
-    <h1>Lab Assignment 09</h1>
-    
-<div id="main-content">
-         <div class="lab-section" id="lab">
-<p>
-In this lab, you will analyze a poorly designed system and improve it using object-oriented design principles.
-You will practice choosing appropriate access modifiers, understanding scope, and deciding when fields should be <code>static</code> or <code>final</code>.
-You will also refactor the design to improve data ownership, reduce duplication, and simplify interactions between classes.
-</p>
+    <nav id="header" aria-label="Course navigation"><a href="../index.html">CSSE 220</a><a
+            href="../syllabus.html">Syllabus</a><a href="../schedule.html">Schedule</a><a
+            href="../design.html">Design</a><a href="../labs.html">Labs</a><a href="../homework.html">Homework</a><a
+            href="../resources.html">Resources</a></nav>
+    <main id="content">
+        <p class="eyebrow">Lab 09</p>
+        <h1>🎮 Arena Player System</h1>
+        <p><strong>The <code>Player</code> class is broken. Can you fix the design?</strong></p>
+        <p>You are working on a small arena game. The previous developer left behind a UML diagram, but some important
+            design information is missing. Your job is to figure out what belongs to each player, what should be shared
+            by all players, and what should not be changed directly from outside the <code>Player</code> class.</p>
+        <section class="section">
+            <h2>Learning goals</h2>
+            <ul>
+                <li>Tell the difference between <code>private</code>, <code>static</code>, and <code>final</code>.</li>
+                <li>Decide what belongs to one object and what is shared by every object of a class.</li>
+                <li>Read a UML diagram and create Java classes and an interface from it.</li>
+                <li>Use methods to safely change an object, then check that the program works.</li>
+            </ul>
+        </section>
+        <section class="section">
+            <h2>Part 1: 🔎 What’s Wrong with This Design?</h2>
+            <p>Study the broken UML image before you write any code. It shows the names of the pieces, but not the
+                access or scope choices.</p><img class="uml" src="lab09broken.png"
+                alt="Broken UML Export - Player Design, showing a Healable interface and Player fields and methods without visibility or scope symbols.">
+            <ol>
+                <li>Which fields should belong separately to each <code>Player</code>?</li>
+                <li>Is <code>playerCount</code> different for each Player, or should all Players share it?</li>
+                <li>Should <code>MAX_HEALTH</code> ever change while the program is running?</li>
+                <li>Should another class be able to directly change a Player’s health or score?</li>
+                <li>What does <code>Player implements Healable</code> mean?</li>
+            </ol>
+            <div class="callout checkpoint">
+                <p><strong>Checkpoint:</strong> Make your predictions first. Then ask an instructor or TA to review one
+                    decision before you start coding.</p>
+            </div>
+            <details>
+                <summary>View PlantUML source</summary>
+                <div>
+                    <pre>@startuml&#10;title Broken UML Export - Player Design&#10;interface Healable { heal(amount : int) : void }&#10;class Player {&#10;  health : int&#10;  level : int&#10;  score : int&#10;  playerCount : int&#10;  MAX_HEALTH : int&#10;  getHealth() : int&#10;  getLevel() : int&#10;  getScore() : int&#10;  addScore(points : int) : void&#10;  heal(amount : int) : void&#10;}&#10;Player ..|&gt; Healable&#10;@enduml</pre>
+                </div>
+            </details>
+        </section>
+        <section class="section">
+            <h2>Part 2: 🛠️ Build It</h2>
+            <p>Create a Java project in IntelliJ. See Lab08 how to create a new package.</p>
+            <div class="callout required">
+                <p><strong>Required package name: <code>lab</code></strong><br>In the <code>src</code> folder, create a
+                    package named exactly <code>lab</code>. Every Java file in this lab must begin with
+                    <code>package lab;</code>. The autograder expects this package name.</p>
+            </div>
+            <pre>src/&#10;└── lab/&#10;    ├── Healable.java&#10;    ├── Player.java&#10;    └── GameApp.java</pre>
+            <ol>
+                <li>In IntelliJ, create a new <strong>Java</strong> project using Java 21.</li>
+                <li>Create the <code>lab</code> package inside <code>src</code>.</li>
+                <li>Create new Java classes: <code>Healable.java</code>, <code>Player.java</code>, and <code>GameApp.java</code> in the
+                    <code>lab</code> package.</li>
+            </ol>
+            <details>
+                <summary>Your design needs to support these requirements</summary>
+                <div>
+                    <ul>
+                        <li>Each player has a name, health, level, and score.</li>
+                        <li>Creating a new player increases the total number of players, and the program can find that
+                            total.</li>
+                        <li>Every player has the same maximum health of 100, and that maximum does not change while the
+                            program runs.</li>
+                        <li>A player’s health and score change only through appropriate <code>Player</code> methods.
+                        </li>
+                        <li>Health cannot drop below 0 or increase above the maximum.</li>
+                        <li><code>Player</code> implements <code>Healable</code>, which declares
+                            <code>void heal(int amount)</code>.</li>
+                    </ul>
+                    <p>Use what you have learned about <code>private</code>, <code>static</code>, <code>final</code>,
+                        instance fields, and interfaces to choose the design.</p>
+                </div>
+            </details>
+        </section>
+        <section class="section">
+            <h2>Part 3: 🎮 Make the Player Work</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>New Player</h3>
+                    <p>Store the name. Start at level 1, score 0, and full health. Creating a Player increases the total
+                        number of players.</p>
+                </div>
+                <div class="card">
+                    <h3>Score</h3>
+                    <p><code>addScore</code> adds points to that Player’s score.</p>
+                </div>
+                <div class="card">
+                    <h3>Damage</h3>
+                    <p><code>takeDamage</code> reduces health but never lets health go below 0.</p>
+                </div>
+                <div class="card">
+                    <h3>Healing</h3>
+                    <p><code>heal</code> restores health but never lets it go above the maximum.</p>
+                </div>
+            </div>
+            <div class="callout required">
+                <p><strong>Keep the challenge focused:</strong> Use the requirements to decide what belongs to one
+                    Player, what belongs to all Players, what can change, and what outside code should be allowed to
+                    change.</p>
+            </div>
+        </section>
+        <section class="section">
+            <h2>Part 4: 🧪 Check Your Program</h2>
+            <p>Use <code>GameApp</code> to create Ava and Noah and tell a short game story. Check that their values
+                behave as the requirements describe.</p>
+            <div class="callout checkpoint">
+                <p><strong>Checkpoint:</strong> Your output does not need identical spacing, but the values and behavior
+                    should match the example.</p>
+            </div>
+            <details>
+                <summary>🖥️ Show expected output</summary>
+                <div>
+                    <pre>Players created: 2&#10;Ava starts -- health: 100, level: 1, score: 0&#10;Noah starts -- health: 100, level: 1, score: 0&#10;Ava earns 25 points.&#10;Ava -- health: 100, level: 1, score: 25&#10;Noah -- health: 100, level: 1, score: 0&#10;Noah takes 30 damage.&#10;Noah -- health: 70, level: 1, score: 0&#10;Ava -- health: 100, level: 1, score: 25&#10;Noah heals 20 health.&#10;Noah -- health: 90, level: 1, score: 0&#10;Noah takes 200 damage.&#10;Noah -- health: 0, level: 1, score: 0&#10;Noah heals 150 health.&#10;Noah -- health: 100, level: 1, score: 0</pre>
+                </div>
+            </details>
+        </section>
+        <section class="section">
+            <h2>Part 5: 📐 Did You Fix the UML?</h2>
+            <p>Generate UML from your finished Java code. Compare it with the broken UML from Part 1.</p>
+            <p><strong>Reflection:</strong> What is one important difference between the original UML and your final
+                UML? Why does that change make the design better?</p>
+            <details>
+                <summary>Need help generating UML in IntelliJ?</summary>
+                <div>
+                    <ol>
+                        <li>Install the IntelliJ plugins <strong>PlantUML Parser</strong> and
+                            <strong>PlantUML4Idea</strong> if needed.</li>
+                        <li>Use PlantUML Parser to generate PlantUML source from your completed <code>lab</code>
+                            package.</li>
+                        <li>Open the generated <code>.puml</code> file with PlantUML4Idea to view the diagram.</li>
+                    </ol>
+                </div>
+            </details>
+        </section>
+        <section class="section">
+            <h2>Gradescope submission</h2>
+            <details>
+                <summary>Submission checklist</summary>
+                <div>
+                    <ul>
+                        <li>Submit <code>Healable.java</code>, <code>Player.java</code>, and <code>GameApp.java</code>.
+                        </li>
+                        <li>Make sure all three files are in the <code>lab</code> package and begin with
+                            <code>package lab;</code>.</li>
+                        <li>Submit your generated <code>UML</code> file as png or jpg</li>
+                        <li>Run <code>GameApp</code> one final time before submitting.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
 
- 
-<h3>⚡ Instructions</h3>
-<ul>
-  <!-- <li>
-    <strong>Practice:</strong>
-    Start with the in-class guided practice below to learn about interfaces.
-  </li> -->
-  <li>
-    <strong>Graded work:</strong>
-    <ul>
-      <li><code>Lab09</code></li>
-    </ul>
-Complete the required tasks in the provided starter zip project and submit your work to Gradescope.
-all completed <code>.java</code> files and
-your fixed UML diagram</li>
-      </ul>
-
-  <details class="lab-card" id="lab-00">
-<summary><h3>Starter ZIP File</h3></summary>
-<ul>
-<li> <strong>Download starter zip file:</strong> <a href="../labs/Lab09.zip">Lab09.zip</a> and import it into Eclipse as Existing Project (see Lab02 for details).</li>
-
-
-  <li>
-    <strong>What to submit on Gradescope:</strong>
-    Upload all completed <code>java</code> files and your UML diagrams to the Lab 09 assignment.
-    The Gradescope link is available on Moodle.
-  </li>
-</ul>
-</details>
-
-<details class="lab-card" id="lab-01">
-        <summary>
-    <span class="lab-label">01.</span>
-    <span class="lab-title">Broken UML</span>
-    <span class="lab-tag">Submission</span>
-  </summary>
-<div class="lab-body">
-       <p>Resources 1: <a href="../resources.html#access-scope" target="_blank" class="resource-ref">Access & Scope</a></p>
- <h3>💻 Coding guide: Fix the Broken Code</h3>
-<p>
-      A broken export removed important Java design information from a game project.
-      Your job is to restore the correct design by choosing the proper:
-    </p>
-    <ul>
-      <li>access modifiers: <code>private</code>, default, <code>protected</code>, <code>public</code></li>
-      <li><code>static</code> fields</li>
-      <li><code>final</code> constants</li>
-      <li>correct use of scope</li>
-      <li>fix the bug in <code>setHealth</code> so that it correctly updates the player's health</li>
-    </ul>
-
-<details class="lab-card">
-<summary><h3>Step 1: Scenario + UML</h3></summary>
-
-<p>
-      In your game, each <code>Player</code> stores information about its own health, level, and score.
-      Some of this data should be carefully protected, while some should be shared across all players.
-    </p>
-
-    <p>
-      Your team received a broken UML/code export where the access modifiers and some keywords were lost.
-      Your job is to restore the correct design based on the intended behavior below.
-    </p>
-    <image src="../labs/lab09broken.png" alt="UML diagram with missing access modifiers and keywords" style="width: 300px; border-radius:8px;">
-<pre><code>
-@startuml
-title Broken UML Export - Player Design
-
-interface Healable {
-    heal(amount : int) : void
-}
-class Player {
-    health : int
-    level : int
-    score : int
-    totalPlayers : int
-    MAX_HEALTH : int
-
-    setHealth(health : int) : void
-    getHealth() : int
-    addScore(points : int) : void
-    heal(amount : int) : void
-}
-Player ..|> Healable
-@enduml  
-</code></pre>
-      <h3>Design Requirements</h3>
-    <ul>
-      <li>
-        Each player has its own <strong>health</strong>.
-        Health belongs to one specific player and should not be changed directly by other classes.
-        Other code should use methods to update or read it safely.
-      </li>
-      <li>
-        Each player has its own <strong>level</strong>.
-        Level belongs to one specific player and should be stored as part of that player's internal state.
-      </li>
-      <li>
-        Each player has a <strong>score</strong>.
-        Score belongs to one specific player and should be visible to subclasses, because special kinds of players may need to update or use score directly later.
-      </li>
-      <li>
-        The game tracks the <strong>total number of players</strong>.
-        This value is shared across all players, so there should be only one copy for the whole class.
-      </li>
-      <li>
-        The game has a <strong>maximum health value</strong>.
-        This value is the same for every player, should be shared by all players, and should not be changed after it is defined.
-      </li>
-      <li>
-        A player can be <strong>healed</strong>.
-        Healing is a behavior required by the <code>Healable</code> interface.
-      </li>
-      <li>
-        When setting health, the code should correctly update the player’s field.
-        Avoid scope mistakes such as assigning a parameter to itself.
-      </li>
-    </ul>
-</details>
-
-<details class="lab-card">
-<summary><h3>Step 2: Your Tasks</h3></summary>
-<p>
-      Restore the correct Java design by choosing:
-    </p>
-    <ul>
-      <li>the correct access modifier for each field and method</li>
-      <li>which fields should be <code>static</code></li>
-      <li>which fields should be <code>final</code></li>
-    </ul>
-
-    <p>
-      Then fix the code so it behaves correctly and passes the tests.
-    </p>
-
-</details>
-
-<details class="lab-card">
-<summary><h3>Step 3: Submission</h3></summary>
-<p>Demo your solution UML before the submission to verify its correctness.</p>
-<p>Submit the following files to Gradescope:</p>
-<!-- <UML (eclipse plugin)> -->
-    <ul>
-      <li><code>Player.java</code></li>
-      <li><code>Healable.java</code></li>
-      <li><code>MainApp.java</code></li>
-      <li><code>UML (eclipse plugin)</code></li>
-    </ul>
-
-    <h3>Before You Submit</h3>
-    <ul>
-      <li>Make sure your code compiles with no errors</li>
-      <li>Make sure to demo your UML solution</li>
-      <li>Run the provided tests and check that they pass</li>
-      <li>Verify that your design matches the scenario requirements</li>
-      <li>Double-check access modifiers, <code>static</code>, and <code>final</code> usage</li>
-      <li>Make sure your <code>setHealth</code> method correctly updates the field</li>
-    </ul>
-
-    <h3>Reminder</h3>
-    <p>
-      This lab is not only about making the code work.
-      It is also about restoring a clean object-oriented design.
-    </p>
-</details>
-</div>
-</details>
-
-
-<details class="lab-card" id="lab-02">
-  <summary>
-    <span class="lab-label">02.</span>
-    <span class="lab-title">Books Refactoring (Part 1)</span>
-    <span class="lab-tag">Submission</span>
-  </summary>
-  <div class="lab-body">
-       <h2>Lab-Design 1: Fix the Broken System</h2>
-
-<p>
-In this lab, you will analyze a poorly designed Java system and redesign it using better
-object-oriented design ideas. This is not just about making code work. It is about learning
-how to recognize design problems and improve them.
-</p>
-
-<details class="lab-card">
-  <summary>
-    <strong>Overview</strong>
-    <span class="lab-tag">Design Refactoring</span>
-  </summary>
-
-  <p>
-    You are given:
-  </p>
-  <ul>
-    <li>a scenario</li>
-    <li>a bad UML design</li>
-    <li>a bad Java implementation in the <code>bad</code> package</li>
-  </ul>
-
-  <p>
-    Your team will study the bad design, identify what is wrong, and create a better version
-    in a new package called <code>good</code>.
-  </p>
-
-  <p>
-    This activity will take place over <strong>two class days</strong>.
-  </p>
-</details>
-<details class="lab-card" open>
-  <summary>
-    <strong>Scenario</strong>
-    <span class="lab-tag">Context</span>
-  </summary>
-
-  <p>
-    A website tracks books and the kids who read them.
-  </p>
-
-  <ul>
-    <li>Each <strong>Book</strong> has a name and author</li>
-    <li>Each <strong>Kid</strong> has a name and grade level</li>
-    <li>The teacher records when a kid reads a book</li>
-  </ul>
-
-  <p>
-    The system must support:
-  </p>
-
-  <ul>
-    <li>Printing all kids who read a given book</li>
-    <li>Printing all books read by a given kid</li>
-  </ul>
-
-  <p>
-    The current system works, but its design has serious issues.
-    Your job is to analyze and redesign it.
-  </p>
-  <image src="../labs/BooksA.png" alt="UML diagram with design problems" style="width: 400px; border-radius:8px;">
-</details>
-
-<details class="lab-card">
-  <summary>
-    <strong>Team Roles</strong>
-    <span class="lab-tag">Groups of 3</span>
-  </summary>
-
-  <p>
-    Work in a team of <strong>3 students</strong>. Each person should have one role.
-  </p>
-
-  <ul>
-    <li><strong>Navigator</strong> - leads discussion and keeps the team focused on design decisions</li>
-    <li><strong>Driver</strong> - explores code and implements changes when coding begins</li>
-    <li><strong>Recorder</strong> - writes down design problems, team decisions, and reflections</li>
-  </ul>
-
-  <p>
-    You will rotate roles on Day 2.
-  </p>
-</details>
-
-<details class="lab-card">
-  <summary>
-    <strong>Project Setup</strong>
-    <span class="lab-tag">Starter Code</span>
-  </summary>
-<p>ZIP Code <a href="../labs/Books.zip" download>Books.zip</a></p>
-<p>Project Reflection template: <a href="https://docs.google.com/document/d/1sgjND1iZClJBIX8u-QwPkvJ95H_rn0sOXiPLeyqk0Yg/edit?usp=sharing" download>project_reflection_template</a></p>
-  <p>
-    The project already contains the bad design in the <code>bad</code> package.
-  </p>
-
-  <pre><code>bad/
-  Book.java
-  Kid.java
-  BookMain.java</code></pre>
-
-  <h3>Rules</h3>
-  <ul>
-    <li>Do <strong>not</strong> modify anything in the <code>bad</code> package</li>
-    <li>Create a new package called <code>good</code></li>
-    <li>Your redesigned system must go inside the <code>good</code> package</li>
-  </ul>
-
-  <pre><code>good/
-  // your redesigned classes go here</code></pre>
-</details>
-
-<details class="lab-card">
-  <summary>
-    <strong>Day 1: Understand and Redesign</strong>
-    <span class="lab-tag">Analysis</span>
-  </summary>
-
-  <h3>Step 1: Understand the Current System</h3>
-  <p>
-    Run the program and study the UML and code in the <code>bad</code> package.
-  </p>
-
-  <p>As a team, discuss these questions:</p>
-  <ul>
-    <li>Where are books stored?</li>
-    <li>Where are kids stored?</li>
-    <li>How does the system find a book?</li>
-    <li>What happens when multiple kids read the same book?</li>
-  </ul>
-
-  <h3>Step 2: Identify Design Problems</h3>
-  <p>
-    Find at least <strong>3 important design problems</strong> in the current system.
-  </p>
-
-  <p>Use these prompts to guide your thinking:</p>
-  <ul>
-    <li>Is any data duplicated?</li>
-    <li>Is anything hard or inefficient to find?</li>
-    <li>Is any class doing too much work?</li>
-    <li>Is ownership of data clear?</li>
-  </ul>
-
-  <p>
-    The <strong>Recorder</strong> should use the provided google doc to create one for team and write down your team’s answers.
-  </p>
-
-  <h3>Step 3: Redesign the System</h3>
-  <p>
-    Create a better design that solves the main problems.
-  </p>
-
-  <p>Your redesign should:</p>
-  <ul>
-    <li>avoid duplicate books</li>
-    <li>make lookup easier and cleaner</li>
-    <li>clearly define ownership of data</li>
-    <li>reduce unnecessary searching and coupling</li>
-  </ul>
-
-  <h3>Day 1 Deliverable</h3>
-  <p>
-    Create <strong>one</strong> of the following:
-  </p>
-  <ul>
-    <li>a UML diagram of your improved design, or</li>
-    <li>a structured class plan listing classes, fields, and responsibilities</li>
-  </ul>
-
-  <pre><code>Example:
-
-Class: Library
-- stores all books
-- stores all kids
-- records reading events
-
-Class: Book
-- name
-- author
-
-Class: Kid
-- name
-- gradeLevel</code></pre>
-</details>
-
-<details class="lab-card">
-  <summary>
-    <strong>Day 1 Reflection</strong>
-    <span class="lab-tag">Required</span>
-  </summary>
-
-  <p>
-    At the end of Day 1, the <strong>Recorder</strong> must submit one reflection for the group - URL to Google doc (make sure select Share > public).
-  </p>
-
-  <ol>
-    <li>What are the top 3 problems in the original design? (in general, e.g., is it hard to reuse, extend, or understand?)</li>
-    <li>What is the most important design change your team made?</li>
-    <li>What was the hardest design decision for your team?</li>
-  </ol>
-</details> 
-
-      </details>
-    </div>
-  </div>
-
-        </body>
-        </html>
+</html>
