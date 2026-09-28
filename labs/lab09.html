@@ -203,6 +203,31 @@
             border-radius: .55rem;
             background: #fff
         }
+        details.section {
+            padding: 0
+        }
+
+        .section-summary {
+            padding: clamp(1.1rem, 3vw, 1.6rem)
+        }
+
+        .section-summary h2 {
+            display: inline;
+            margin: 0
+        }
+
+        details.section[open] > .section-summary {
+            padding-bottom: .5rem
+        }
+
+        details.section > :not(summary) {
+            margin-left: clamp(1.1rem, 3vw, 1.6rem);
+            margin-right: clamp(1.1rem, 3vw, 1.6rem)
+        }
+
+        details.section > :last-child {
+            margin-bottom: clamp(1.1rem, 3vw, 1.6rem)
+        }
     </style>
 </head>
 
@@ -218,17 +243,17 @@
         <p>You are working on a small arena game. The previous developer left behind a UML diagram, but some important
             design information is missing. Your job is to figure out what belongs to each player, what should be shared
             by all players, and what should not be changed directly from outside the <code>Player</code> class.</p>
-        <section class="section">
-            <h2>Learning goals</h2>
+        <details class="section">
+            <summary class="section-summary"><h2>Learning goals</h2></summary>
             <ul>
                 <li>Tell the difference between <code>private</code>, <code>static</code>, and <code>final</code>.</li>
                 <li>Decide what belongs to one object and what is shared by every object of a class.</li>
                 <li>Read a UML diagram and create Java classes and an interface from it.</li>
                 <li>Use methods to safely change an object, then check that the program works.</li>
             </ul>
-        </section>
-        <section class="section">
-            <h2>Part 1: 🔎 What’s Wrong with This Design?</h2>
+        </details>
+        <details class="section">
+            <summary class="section-summary"><h2>Part 1: 🔎 What’s Wrong with This Design?</h2></summary>
             <p>Study the broken UML image before you write any code. It shows the names of the pieces, but not the
                 access or scope choices.</p><img class="uml" src="lab09broken.png"
                 alt="Broken UML Export - Player Design, showing a Healable interface and Player fields and methods without visibility or scope symbols.">
@@ -249,9 +274,9 @@
                     <pre>@startuml&#10;title Broken UML Export - Player Design&#10;interface Healable { heal(amount : int) : void }&#10;class Player {&#10;  health : int&#10;  level : int&#10;  score : int&#10;  playerCount : int&#10;  MAX_HEALTH : int&#10;  getHealth() : int&#10;  getLevel() : int&#10;  getScore() : int&#10;  addScore(points : int) : void&#10;  heal(amount : int) : void&#10;}&#10;Player ..|&gt; Healable&#10;@enduml</pre>
                 </div>
             </details>
-        </section>
-        <section class="section">
-            <h2>Part 2: 🛠️ Build It</h2>
+        </details>
+        <details class="section">
+            <summary class="section-summary"><h2>Part 2: 🛠️ Build It</h2></summary>
             <p>Create a Java project in IntelliJ. See Lab08 how to create a new package.</p>
             <div class="callout required">
                 <p><strong>Required package name: <code>lab</code></strong><br>In the <code>src</code> folder, create a
@@ -284,9 +309,9 @@
                         instance fields, and interfaces to choose the design.</p>
                 </div>
             </details>
-        </section>
-        <section class="section">
-            <h2>Part 3: 🎮 Make the Player Work</h2>
+        </details>
+        <details class="section">
+            <summary class="section-summary"><h2>Part 3: 🎮 Make the Player Work</h2></summary>
             <div class="grid">
                 <div class="card">
                     <h3>New Player</h3>
@@ -311,9 +336,9 @@
                     Player, what belongs to all Players, what can change, and what outside code should be allowed to
                     change.</p>
             </div>
-        </section>
-        <section class="section">
-            <h2>Part 4: 🧪 Check Your Program</h2>
+        </details>
+        <details class="section">
+            <summary class="section-summary"><h2>Part 4: 🧪 Check Your Program</h2></summary>
             <p>Use <code>GameApp</code> to create Ava and Noah and tell a short game story. Check that their values
                 behave as the requirements describe.</p>
             <div class="callout checkpoint">
@@ -326,9 +351,9 @@
                     <pre>Players created: 2&#10;Ava starts -- health: 100, level: 1, score: 0&#10;Noah starts -- health: 100, level: 1, score: 0&#10;Ava earns 25 points.&#10;Ava -- health: 100, level: 1, score: 25&#10;Noah -- health: 100, level: 1, score: 0&#10;Noah takes 30 damage.&#10;Noah -- health: 70, level: 1, score: 0&#10;Ava -- health: 100, level: 1, score: 25&#10;Noah heals 20 health.&#10;Noah -- health: 90, level: 1, score: 0&#10;Noah takes 200 damage.&#10;Noah -- health: 0, level: 1, score: 0&#10;Noah heals 150 health.&#10;Noah -- health: 100, level: 1, score: 0</pre>
                 </div>
             </details>
-        </section>
-        <section class="section">
-            <h2>Part 5: 📐 Did You Fix the UML?</h2>
+        </details>
+        <details class="section">
+            <summary class="section-summary"><h2>Part 5: 📐 Did You Fix the UML?</h2></summary>
             <p>Generate UML from your finished Java code. Compare it with the broken UML from Part 1.</p>
             <p><strong>Reflection:</strong> What is one important difference between the original UML and your final
                 UML? Why does that change make the design better?</p>
@@ -344,9 +369,9 @@
                     </ol>
                 </div>
             </details>
-        </section>
-        <section class="section">
-            <h2>Gradescope submission</h2>
+        </details>
+        <details class="section">
+            <summary class="section-summary"><h2>Gradescope submission</h2></summary>
             <details>
                 <summary>Submission checklist</summary>
                 <div>
@@ -360,7 +385,7 @@
                     </ul>
                 </div>
             </details>
-        </section>
+        </details>
     </main>
 </body>
 
