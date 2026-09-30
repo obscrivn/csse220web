@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSSE 220 | Take-Home Exam 1: GameHub</title>
+    <link rel="stylesheet" href="./syllabus_files/schedule.css">
+    <link rel="stylesheet" href="./syllabus_files/screen.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        :root {
+            --ink: #1f2937;
+            --muted: #526071;
+            --page: #f4f6fb;
+            --surface: #fff;
+            --border: #d8deea;
+            --accent: #2166d1;
+            --soft: #edf4ff;
+            --green: #18794e;
+            --green-soft: #ecf8f2;
+            --gold: #9a6700;
+            --gold-soft: #fff8e6;
+            --red: #9a1c1c;
+            --red-soft: #fdecec
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--page);
+            color: var(--ink);
+            font: 16px/1.6 Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
+        }
+
+        #header {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .35rem 1rem;
+            min-height: 3.75rem;
+            padding: .7rem clamp(1rem, 4vw, 3rem);
+            background: #1c1515;
+            box-shadow: 0 4px 16px rgba(30, 17, 48, .2)
+        }
+
+        #header a {
+            color: #fff;
+            font-size: .9rem;
+            font-weight: 650;
+            text-decoration: none
+        }
+
+        #header a:hover {
+            text-decoration: underline
+        }
+
+        #content {
+            width: min(1050px, calc(100% - 2rem));
+            margin: auto;
+            padding: 6.75rem 0 4rem
+        }
+
+        h1, h2, h3 {
+            color: #111827;
+            line-height: 1.25
+        }
+
+        h1 {
+            margin: 0 0 .65rem;
+            font-size: clamp(1.9rem, 5vw, 2.75rem)
+        }
+
+        h2 {
+            margin: 0 0 .6rem;
+            font-size: 1.45rem
+        }
+
+        h3 {
+            margin: 1rem 0 .35rem;
+            font-size: 1.05rem
+        }
+
+        p {
+            margin: .55rem 0;
+            color: var(--muted)
+        }
+
+        ul, ol {
+            margin: .55rem 0 1rem;
+            padding-left: 1.45rem
+        }
+
+        li {
+            margin: .3rem 0
+        }
+
+        code {
+            padding: .1rem .3rem;
+            border-radius: .25rem;
+            background: #eef1f6;
+            color: #9b1c4a;
+            font-family: Consolas, "Liberation Mono", monospace;
+            font-size: .92em
+        }
+
+        pre {
+            overflow: auto;
+            margin: .8rem 0 1rem;
+            padding: 1rem;
+            border: 1px solid #ced8e8;
+            border-left: 4px solid var(--accent);
+            border-radius: .55rem;
+            background: #f7f9fc;
+            color: #172033;
+            line-height: 1.48
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0
+        }
+
+        .eyebrow {
+            margin-bottom: .3rem;
+            color: #315a8d;
+            font-size: .8rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .section {
+            margin: 1.25rem 0;
+            padding: clamp(1.1rem, 3vw, 1.6rem);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            background: var(--surface);
+            box-shadow: 0 8px 22px rgba(34, 42, 66, .06)
+        }
+
+        .mission-number {
+            display: inline-block;
+            margin-right: .5rem;
+            padding: .1rem .6rem;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #fff;
+            font-size: .8rem;
+            font-weight: 800;
+            letter-spacing: .03em;
+            vertical-align: middle
+        }
+
+        .callout {
+            margin: 1rem 0;
+            padding: .85rem 1rem;
+            border-left: 5px solid var(--accent);
+            border-radius: .5rem;
+            background: var(--soft)
+        }
+
+        .callout.required {
+            border-left-color: var(--green);
+            background: var(--green-soft)
+        }
+
+        .callout.checkpoint {
+            border-left-color: var(--gold);
+            background: var(--gold-soft)
+        }
+
+        .callout.warning {
+            border-left-color: var(--red);
+            background: var(--red-soft)
+        }
+
+        .callout p {
+            color: var(--ink);
+            margin: .3rem 0
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: .85rem;
+            margin: .9rem 0
+        }
+
+        .card {
+            padding: .85rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: .65rem;
+            background: #fbfcff
+        }
+
+        .card h3 {
+            margin: 0 0 .25rem
+        }
+
+        details {
+            margin: .75rem 0;
+            border: 1px solid var(--border);
+            border-radius: .6rem;
+            background: #fbfcff
+        }
+
+        summary {
+            cursor: pointer;
+            padding: .7rem .9rem;
+            font-weight: 700
+        }
+
+        details > div {
+            padding: 0 .9rem .9rem
+        }
+
+        details.section {
+            padding: 0
+        }
+
+        .section-summary {
+            padding: clamp(1.1rem, 3vw, 1.6rem)
+        }
+
+        .section-summary h2 {
+            display: inline;
+            margin: 0
+        }
+
+        details.section[open] > .section-summary {
+            padding-bottom: .5rem
+        }
+
+        details.section > :not(summary) {
+            margin-left: clamp(1.1rem, 3vw, 1.6rem);
+            margin-right: clamp(1.1rem, 3vw, 1.6rem)
+        }
+
+        details.section > :last-child {
+            margin-bottom: clamp(1.1rem, 3vw, 1.6rem)
+        }
+
+        .uml {
+            display: block;
+            max-width: 100%;
+            margin: 1rem auto;
+            border: 1px solid var(--border);
+            border-radius: .55rem;
+            background: #fff
+        }
+
+        table.grading {
+            width: 100%;
+            border-collapse: collapse;
+            margin: .8rem 0 1.2rem;
+            font-size: .95rem
+        }
+
+        table.grading th, table.grading td {
+            text-align: left;
+            padding: .5rem .6rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        table.grading th {
+            background: #f1f4fa;
+            color: #111827
+        }
+
+        table.grading td.pts, table.grading th.pts {
+            text-align: right;
+            white-space: nowrap
+        }
+
+        table.grading tr.total td {
+            font-weight: 800;
+            border-top: 2px solid var(--ink);
+            border-bottom: none
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0
+        }
+
+        .checklist li {
+            position: relative;
+            padding-left: 1.7rem
+        }
+
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.1rem;
+            color: var(--accent)
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="header" aria-label="Course navigation">
+        <a href="./index.html">CSSE 220</a>
+        <a href="./syllabus.html">Syllabus</a>
+        <a href="./schedule.html">Schedule</a>
+        <a href="./design.html">Design</a>
+        <a href="./labs.html">Labs</a>
+        <a href="./homework.html">Homework</a>
+        <a href="./exams.html">Exams</a>
+        <a href="./project.html">Final Project</a>
+        <a href="./resources.html">Resources</a>
+    </nav>
+
+    <main id="content">
+        <p class="eyebrow">Take-Home Exam 1 · Coding Portion</p>
+        <h1>Take-Home Exam 1 - GameHub</h1>
+        <p><strong>You've joined the development team behind GameHub, a small digital game storefront.</strong>
+            The prototype works, but part of its customer-data design needs serious cleanup. Once you refactor
+            it, the product team has another request: GameHub must support both individual games and game
+            bundles without creating a separate purchase system for every kind of item it sells.</p>
+
+        <div class="section">
+            <h2>What this exam demonstrates</h2>
+            <p>This exam is a small professional software-development task, not a syntax quiz. You'll show that
+                you can:</p>
+            <div class="grid">
+                <div class="card"><h3>Classes &amp; objects</h3><p>Design a class around the data and behavior it
+                        owns.</p></div>
+                <div class="card"><h3>Object relationships</h3><p>Decide which object should store, retrieve, and
+                        coordinate which data.</p></div>
+                <div class="card"><h3>Collections</h3><p>Select and use collections based on how the program needs
+                        to store, retrieve, and process data.</p></div>
+                <div class="card"><h3>Interfaces</h3><p>Use a shared capability so different types can be treated
+                        one way.</p></div>
+                <div class="card"><h3>Refactoring &amp; responsibility</h3><p>Improve a design while preserving
+                        required behavior.</p></div>
+                <div class="card"><h3>JUnit-based testing</h3><p>Use tests as a safety net while you work.</p>
+                </div>
+            </div>
+            <div class="callout required">
+                <p><strong>You do not need inheritance, subclasses, abstract classes, <code>instanceof</code>,
+                        casting, or exceptions anywhere in this exam.</strong> If your solution seems to need one
+                    of these, stop and reconsider your design - none of them are necessary.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Start Here</h2>
+            <ol>
+                <li>Download the starter project: <a href="./Homework/Exam1GameHub.zip">Exam1GameHub.zip</a></li>
+                <li>Extract/unzip it.</li>
+                <li>In IntelliJ IDEA, choose <strong>Open</strong> and select the extracted <code>Exam1GameHub</code>
+                    folder - the folder containing <code>pom.xml</code>. <strong>Do not create a new IntelliJ
+                        project.</strong></li>
+                <li>Trust the project if asked, and let IntelliJ finish loading and indexing (allow Maven to
+                    download dependencies) before you do anything else.</li>
+                <li>In the project tree, locate the <code>exam</code> package under
+                    <code>src/main/java</code>.</li>
+            </ol>
+            <div class="callout">
+                <p><strong>You do not need to install Maven yourself.</strong> IntelliJ IDEA includes its own
+                    bundled Maven. <code>pom.xml</code> already lists everything the project needs (JUnit 4 and
+                    its own required files); IntelliJ downloads them automatically the first time you open the
+                    project. You just need internet access for that first load.</p>
+            </div>
+            <ol start="6">
+                <li>Open <code>GameHub.java</code> and replace <code>STUDENT_NAME</code> with your actual name.</li>
+                <li>Complete <code>HELP_CITATION</code> according to course policy (see the
+                    <a href="./syllabus.html">Syllabus</a>'s "Help Citation" section) - list anyone or anything
+                    outside CSSE220 materials that helped you, or state that you only used CSSE220 materials.</li>
+                <li>Locate the provided JUnit 4 tests under <code>src/test/java/examTest</code> and the suite
+                    runner <code>src/test/java/exam/RunAllTests.java</code>.</li>
+            </ol>
+            <div class="callout">
+                <p><strong>Don't start editing yet.</strong> Read the next two sections first - they explain what
+                    the tests will and won't tell you, and what design problem you're actually walking into.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧯 Know Your Safety Net: JUnit Tests</h2>
+            <p>This project uses <strong>JUnit 4</strong>. You will use these tests constantly while you work, so
+                make sure you know how to run them before you start coding.</p>
+
+            <h3>Run one test class</h3>
+            <ul>
+                <li>Open the test class you want to run.</li>
+                <li>Click the green run icon beside the class name, or right-click the class and choose
+                    <strong>Run</strong>.</li>
+                <li>Review the results in IntelliJ's Run/Test Results window.</li>
+            </ul>
+
+            <h3>Run the full suite</h3>
+            <p>Open <code>src/test/java/exam/RunAllTests.java</code> and run it the same way. It runs every
+                visible test class in one pass.</p>
+
+            <div class="callout warning">
+                <p><strong>The full test suite is NOT expected to pass when you first open the starter
+                        project.</strong> Several tests correspond to methods you haven't implemented yet - that
+                    is expected, not a sign something is broken.</p>
+                <p>Before you touch the customer representation, run
+                    <code>GameHubCustomerInfoTest</code> by itself. <strong>That test should already
+                        pass</strong> - it checks the customer information that already works against the
+                    starter's given (legacy) representation. Keep it passing as you refactor.</p>
+            </div>
+
+            <h3>Suggested workflow</h3>
+            <ol>
+                <li>Run the appropriate test.</li>
+                <li>Make a small change.</li>
+                <li>Run the test again.</li>
+                <li>Fix any issues before continuing.</li>
+                <li>Run the full suite again as you complete more missions.</li>
+                <li>Before submission, run the complete test suite one final time.</li>
+            </ol>
+            <p><em>Red tests are feedback, not a disaster.</em> Read the failed test's name and message to figure
+                out which requirement isn't satisfied yet.</p>
+            <div class="callout required">
+                <p><strong>Before you submit, all provided tests in <code>RunAllTests</code> should pass.</strong>
+                </p>
+            </div>
+            <div class="callout">
+                <p>Passing the visible tests is not, by itself, a guarantee of full credit. Additional
+                    instructor/autograder tests may check required behaviors and edge cases not covered by the
+                    visible tests - see "How This Exam Is Graded" below.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📐 Starting Design: This Is Not the Target Design</h2>
+            <p>This diagram shows the design you're inheriting, generated from the unmodified starter code.
+                <strong>Do not try to reproduce this diagram.</strong> Study it for design problems before you
+                write any code.</p>
+            <img class="uml" src="./exam1-gamehub-starting-design.png"
+                alt="Starting UML design for GameHub: a Purchasable interface implemented by Game and GameBundle, a Customer class with a scaffolded purchases list, and a GameHub class whose only stored data is two parallel lists, customerNames and customerIds.">
+            <ul>
+                <li>Look closely at what <code>GameHub</code> actually stores today.</li>
+                <li>Which pieces of information describe the same real-world thing?</li>
+                <li>What happens if GameHub needs one more piece of information about a customer later?</li>
+            </ul>
+        </div>
+
+        <div class="callout">
+            <p><strong>Recommended approach:</strong> Complete the missions in order and run the relevant JUnit
+                tests after each mission.</p>
+        </div>
+
+        <details class="section" open>
+            <summary class="section-summary"><span class="mission-number">Mission 1</span><h2>Understand the Legacy Code</h2></summary>
+            <p>Before changing anything:</p>
+            <ul>
+                <li>Inspect <code>GameHub</code>.</li>
+                <li>Inspect the parallel customer collections it currently uses.</li>
+                <li>Inspect the provided tests - they tell you what behavior already works and what's expected
+                    later.</li>
+                <li>Run the designated initial regression test (<code>GameHubCustomerInfoTest</code>) and confirm
+                    it passes.</li>
+                <li>Make sure you understand exactly what existing behavior must be preserved.</li>
+            </ul>
+            <!-- <div class="callout required">
+                <p><strong>Do not delete working behavior simply because the design is awkward.</strong>
+                    Refactoring changes structure while preserving required behavior.</p>
+            </div> -->
+        </details>
+
+        <details class="section" open>
+            <summary class="section-summary"><span class="mission-number">Mission 2</span><h2>Refactor the Customer Design</h2></summary>
+            <p>The prototype stores pieces of customer information in separate parallel collections
+                (<code>customerNames</code>, <code>customerIds</code>) instead of proper objects. Redesign this so
+                customer information is represented using appropriate objects.</p>
+            <p>Complete the <code>Customer</code> class and use it in <code>GameHub</code>. At minimum,
+                <code>Customer</code> needs:</p>
+            <ul>
+                <li><code>Customer(int id, String name)</code></li>
+                <li><code>getId()</code>, <code>getName()</code></li>
+            </ul>
+            <p><code>GameHub.getCustomerInfo(int customerId)</code> must keep returning the same information for
+                the same seeded customers after your refactor - that's what
+                <code>GameHubCustomerInfoTest</code> checks.</p>
+            <div class="callout">
+                <p>Think about which data belongs together, and which object should own that data and the
+                    behavior that goes with it. You'll explain the design principle behind this yourself in
+                    <code>reflections.txt</code>.</p>
+            </div>
+        </details>
+
+        <details class="section">
+            <summary class="section-summary"><span class="mission-number">Mission 3</span><h2>Build GameHub's Collections</h2></summary>
+            <p>GameHub has two requirements to satisfy:</p>
+            <ul>
+                <li>Customers have unique integer IDs. GameHub must frequently retrieve a customer using that
+                    ID.</li>
+                <li>Every catalog item has a unique integer ID. GameHub must frequently retrieve a catalog item
+                    using that ID.</li>
+                <li>The catalog may contain both <code>Game</code> and <code>GameBundle</code> objects.</li>
+            </ul>
+            <p>Select an appropriate Java collection for each requirement yourself - the specification above is
+                enough to decide. Implement:</p>
+            <ul>
+                <li><code>addCustomer(int id, String name)</code></li>
+                <li><code>getCustomerById(int id)</code> - returns <code>null</code> if no such customer exists</li>
+                <li><code>addToCatalog(Purchasable item)</code></li>
+                <li><code>getCatalogItemById(int id)</code> - returns <code>null</code> if no such item exists</li>
+            </ul>
+            <div class="callout required">
+                <p><strong>A <code>Game</code> and a <code>GameBundle</code> must never share the same ID.</strong>
+                    There is one shared catalog, not two.</p>
+            </div>
+        </details>
+
+        <details class="section">
+            <summary class="section-summary"><span class="mission-number">Mission 4</span><h2>Game Bundles</h2></summary>
+            <p>GameHub now needs to sell bundles containing multiple games.
+                <code>GameBundle</code> already contains its game collection. <strong>Do not change the provided
+                    collection type.</strong></p>
+            <p>Complete these methods:</p>
+            <ul>
+                <li><code>addGame(Game game)</code></li>
+                <li><code>getNumberOfGames()</code></li>
+                <li><code>getRegularTotalPrice()</code> - the sum of the <em>individual</em> selling price of
+                    every game the bundle contains. This is <strong>not</strong> the bundle's own selling price
+                    - it's what a customer would pay buying each game separately.</li>
+            </ul>
+            <p><code>getId()</code>, <code>getName()</code>, and <code>getPrice()</code> also need to be
+                completed - <code>getPrice()</code> is the bundle's own selling price, stored independently of
+                <code>getRegularTotalPrice()</code>.</p>
+        </details>
+
+        <details class="section">
+            <summary class="section-summary"><span class="mission-number">Mission 5</span><h2>One Purchase Workflow</h2></summary>
+            <p>GameHub should be able to sell either an individual <code>Game</code> or a <code>GameBundle</code>
+                without requiring separate purchase methods for every type of item. Complete:</p>
+            <pre><code>boolean purchase(int customerId, int itemId)</code></pre>
+            <p>Its observable behavior:</p>
+            <ul>
+                <li>Find the requested customer.</li>
+                <li>Find the requested catalog item.</li>
+                <li>If either ID does not exist, return <code>false</code> and change nothing.</li>
+                <li>Otherwise, record the purchase and return <code>true</code>.</li>
+            </ul>
+            <div class="callout warning">
+                <p>Do not use <code>instanceof</code>, casting, inheritance, or separate <code>purchaseGame</code>/
+                    <code>purchaseBundle</code> methods. None of them are needed.</p>
+            </div>
+            <div class="callout">
+                <p><code>purchase()</code> must support every type of item currently sold by GameHub. 
+                    <!-- Review the -->
+                    <!-- provided <code>Purchasable</code> interface as you decide how to implement this
+                    requirement. -->
+                    <!--  -->
+                </p>
+            </div>
+        </details>
+
+        <details class="section">
+            <summary class="section-summary"><span class="mission-number">Mission 6</span><h2>Customer Purchase History</h2></summary>
+            <p><code>Customer</code>'s purchase-history collection is already provided. Do not change its
+                provided type. Complete:</p>
+            <ul>
+                <li><code>addPurchase(Purchasable item)</code></li>
+                <li><code>getNumberOfPurchases()</code></li>
+                <li><code>getTotalSpent()</code> - the sum of the actual selling prices of everything the
+                    customer has purchased.</li>
+            </ul>
+        </details>
+
+        <details class="section">
+            <summary class="section-summary"><span class="mission-number">Mission 7</span><h2>Prove It Works</h2></summary>
+            <p>Run the complete JUnit 4 suite. Before moving on, check off:</p>
+            <ul class="checklist">
+                <li>The starter's regression behavior still works.</li>
+                <li>Customers can be added and retrieved.</li>
+                <li>Catalog items can be added and retrieved.</li>
+                <li>An individual <code>Game</code> purchase works.</li>
+                <li>A <code>GameBundle</code> purchase works through the <em>same</em> purchase workflow.</li>
+                <li><code>GameBundle</code> calculations (<code>getNumberOfGames</code>,
+                    <code>getRegularTotalPrice</code>) work.</li>
+                <li>Customer purchase count works.</li>
+                <li>Total spent works.</li>
+                <li>Invalid IDs are handled the way the specification describes.</li>
+                <li><code>STUDENT_NAME</code> is complete.</li>
+                <li><code>HELP_CITATION</code> is complete.</li>
+            </ul>
+            <div class="callout">
+                <p>The visible tests are guardrails, not the whole spec. Additional autograder/instructor tests
+                    may evaluate other required behavior.</p>
+            </div>
+        </details>
+
+        <details class="section">
+            <summary class="section-summary"><span class="mission-number">Mission 8</span><h2>Generate Final UML</h2></summary>
+            <p>Generate a UML diagram from your <strong>completed</strong> Java implementation using the course's
+                IntelliJ to PlantUML workflow. See
+                <a href="./labs/lab09.html">Lab 09's UML generation steps</a> for the plugin setup and workflow -
+                it isn't repeated here.
+            </p>
+            <ul>
+                <li>Generate the diagram from your <em>final</em> code, not a sketch made beforehand.</li>
+                <li>Include <code>GameHub</code>, <code>Customer</code>, <code>Game</code>, <code>GameBundle</code>,
+                    and <code>Purchasable</code>.</li>
+                <li>Submit the diagram as described in the Submission section below.</li>
+            </ul>
+            <div class="callout">
+                <p>Your UML is evidence of the design you actually implemented - it should look like your code,
+                    not like the starting design diagram above.</p>
+            </div>
+        </details>
+
+        <details class="section">
+            <summary class="section-summary"><span class="mission-number">Mission 9</span><h2>Design Reflection</h2></summary>
+            <p>Complete <code>reflections.txt</code>. Passing tests demonstrates that your program behaves
+                correctly; the reflection demonstrates that you understand <em>why</em> your design works.</p>
+            <p>Three design topics, so nothing here surprises you partway through:</p>
+            <ol>
+                <li>Customer refactoring and the CSSE220 design principle it addresses.</li>
+                <li>How your collection choices match the way GameHub stores and retrieves different kinds of
+                    data.</li>
+                <li>How <code>Purchasable</code> lets one <code>purchase()</code> workflow support both
+                    <code>Game</code> and <code>GameBundle</code>.</li>
+            </ol>
+            <p>There are no model answers on this page. Short, specific explanations that refer to your own
+                classes, fields, and methods are worth more than generic definitions.</p>
+        </details>
+
+        <div class="section">
+            <h2>🤖 AI Assistance: Allowed, but Document It</h2>
+            <p>This exam follows the course's AI policy (see the <a href="./syllabus.html">Syllabus</a>'s "AI
+                Learning Log Policy" section for the authoritative version). For this exam specifically:</p>
+            <ul>
+                <li>AI assistance is permitted according to the course AI policy.</li>
+                <li>You remain responsible for all submitted code and design decisions.</li>
+                <li>You should understand and be able to explain everything you submit.</li>
+                <li>AI-generated code is not automatically correct or appropriate for the concepts Exam 1
+                    covers.</li>
+                <li>You must document AI usage in <code>reflections.txt</code> - Part B.</li>
+                <li>IDE-integrated AI assistants (e.g. an AI autocomplete/chat feature built into IntelliJ) count
+                    as AI use.</li>
+                <li><strong>AI usage itself is not rewarded or penalized</strong> - complete, honest
+                    documentation is what's required.</li>
+            </ul>
+            <p>If you used AI, document for each tool: the tool's name, what you used it for, which part of your
+                code/design/debugging/reflection it influenced, and what you personally verified, changed,
+                rejected, or corrected afterward. You do not need to paste full chat transcripts or every prompt.
+            </p>
+            <p>If you did not use AI, write exactly: <code>"I did not use AI assistance on this exam."</code></p>
+        </div>
+
+        <div class="section">
+            <h2>📊 How This Exam Is Graded</h2>
+            <p>The complete Exam 1 is worth 100 points, split between the paper portion and this coding portion.
+            </p>
+            <table class="grading">
+                <tr><th>Portion</th><th class="pts">Points</th></tr>
+                <tr><td>Paper portion</td><td class="pts">60</td></tr>
+                <tr><td>Coding portion (this page)</td><td class="pts">40</td></tr>
+                <tr class="total"><td>Exam 1 total</td><td class="pts">100</td></tr>
+            </table>
+
+            <h3>Automated Coding / JUnit - 30 points</h3>
+            <table class="grading">
+                <tr><th>Category</th><th class="pts">Points</th></tr>
+                <tr><td>Customer refactor &amp; regression behavior</td><td class="pts">6</td></tr>
+                <tr><td>Customer add/retrieve operations</td><td class="pts">4</td></tr>
+                <tr><td>Catalog add/retrieve operations (Game and GameBundle)</td><td class="pts">4</td></tr>
+                <tr><td>GameBundle operations</td><td class="pts">4</td></tr>
+                <tr><td>Purchase workflow (one method, both item types)</td><td class="pts">7</td></tr>
+                <tr><td>Purchase history / total spent</td><td class="pts">4</td></tr>
+                <tr><td>Administrative (<code>STUDENT_NAME</code>/<code>HELP_CITATION</code>)</td><td class="pts">1</td></tr>
+                <tr class="total"><td>Subtotal</td><td class="pts">30</td></tr>
+            </table>
+            <p>Some of this credit comes from the visible tests you can run yourself; the rest comes from
+                additional instructor/autograder tests that are intentionally not all shown to you in advance.</p>
+
+            <h3>Design Reflection - 8 points (manually graded)</h3>
+            <table class="grading">
+                <tr><th>Question</th><th class="pts">Points</th></tr>
+                <tr><td>Q1 - Refactoring / OO design reasoning</td><td class="pts">3</td></tr>
+                <tr><td>Q2 - Collection-choice reasoning</td><td class="pts">2</td></tr>
+                <tr><td>Q3 - <code>Purchasable</code>/interface reasoning</td><td class="pts">3</td></tr>
+                <tr class="total"><td>Subtotal</td><td class="pts">8</td></tr>
+            </table>
+
+            <h3>Final UML / Design Consistency - 2 points (manually graded)</h3>
+            <ul>
+                <li>UML was generated from your completed implementation.</li>
+                <li>Required classes/interface appear (<code>GameHub</code>, <code>Customer</code>,
+                    <code>Game</code>, <code>GameBundle</code>, <code>Purchasable</code>).</li>
+                <li>The UML reasonably corresponds to your submitted Java design.</li>
+            </ul>
+            <p>Visual polish is not graded.</p>
+
+            <h3>AI Usage Documentation - required, not separately point-bearing</h3>
+            <p>Every student must complete the AI Usage Documentation section of <code>reflections.txt</code>,
+                whether or not you used AI. It is graded for completion and meaningful disclosure as part of a
+                complete submission - <strong>not</strong> for whether you used AI, and it does not carry its own
+                exam points. A student who used no AI and clearly states so meets this requirement in full. A
+                student who used AI and documents it completely and specifically also meets it in full.</p>
+
+            <div class="callout checkpoint">
+                <p><strong>Coding portion: 30 (autograder) + 8 (reflection) + 2 (UML) = 40 points.</strong> Added
+                    to the 60-point paper portion, Exam 1 totals 100 points. The reflection and UML scores are
+                    entered as a manual Gradescope score alongside the autograder result.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>✅ Submission</h2>
+            <p>Submit to Gradescope:</p>
+            <ul class="checklist">
+                <li>Your completed Java source files (the files Gradescope requests from your
+                    <code>Exam1GameHub</code> project).</li>
+                <li>Completed <code>reflections.txt</code> (Parts A, B, and C).</li>
+                <li>Your final UML diagram, generated from your completed implementation.</li>
+                <li><code>STUDENT_NAME</code> completed in <code>GameHub.java</code>.</li>
+                <li><code>HELP_CITATION</code> completed in <code>GameHub.java</code>.</li>
+                <li>The AI Usage Documentation section of <code>reflections.txt</code> completed, even if you
+                    used no AI.</li>
+            </ul>
+            <div class="callout required">
+                <p><strong>Before submitting, all provided tests in <code>RunAllTests</code> should pass.</strong>
+                </p>
+            </div>
+            <div class="callout">
+                <p>After uploading, reopen your Gradescope submission and confirm every expected file was
+                    received.</p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
