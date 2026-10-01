@@ -181,7 +181,7 @@
           fields, methods, and relationships, and to evaluate alternative UML designs.
         </p>
         <p>OOD Principles <a href="../resources_files/Basic_OO_Principles_for_CSSE220.pdf">Handout</a></p>
-        <a class="uml-setup-link" href="#uml-in-intellij">📐 Set up UML in IntelliJ before starting a design challenge</a>
+        <a class="uml-setup-link" href="../uml-tools.html">📐 Set up UML in IntelliJ before starting a design challenge</a>
       </section>
 
       <section id="quick-design-checkdown">
@@ -199,45 +199,10 @@
         </div>
       </section>
 
-      <details id="uml-in-intellij" class="hub-card">
-        <summary>📐 UML in IntelliJ — install plugins and use both UML workflows</summary>
-        <p>
-          Install the UML plugins and learn how to create a design diagram or generate UML from Java code.
-        </p>
-        <h3>Install</h3>
-        <p>In IntelliJ: <code>Settings → Plugins → Marketplace</code></p>
-        <ul>
-          <li><strong>PlantUML4Idea</strong>: creates and renders PlantUML diagrams.</li>
-          <li><strong>PlantUML Parser</strong>: generates PlantUML from existing Java code.</li>
-        </ul>
-        <div class="callout ok">
-          ✅ <strong>Checkpoint:</strong> After installing PlantUML4Idea, <code>New</code> should include <code>PlantUML File</code>.
-        </div>
-
-        <h3>Design → UML</h3>
-        <p><code>Scenario → Classes + Data + Behavior → UML → Java</code></p>
-        <p>Small PlantUML example:</p>
-        <pre>@startuml
-class Player {
-    - name : String
-    - score : int
-
-    + Player(name : String)
-    + addPoints(points : int) : void
-    + getScore() : int
-}
-@enduml</pre>
-
-        <h3>Java → UML</h3>
-        <p><code>Java → PlantUML Parser → PlantUML → UML Diagram</code></p>
-        <p>
-          In IntelliJ, right-click the relevant Java package/source area and run PlantUML Parser to generate PlantUML,
-          then view the diagram with PlantUML4Idea.
-        </p>
-        <div class="callout warn">
-          <strong>Important:</strong> PlantUML Parser does not design your program. It shows the structure of the Java code you already wrote.
-        </div>
-      </details>
+      <section id="uml-in-intellij" class="hub-card">
+        <h2>UML Tools &amp; Instructions</h2>
+        <p><a href="../uml-tools.html">Install the IntelliJ plugins, generate UML from Java, create diagrams, and troubleshoot the preview.</a> Use the guide and course cheatsheet when checking relationships.</p>
+      </section>
 
       <section id="example-problems">
         <h2>Example Problems</h2>
@@ -402,7 +367,7 @@ QuizQuestion -right-> Quiz
           <h3>Part 1 in Gradescope</h3>
           <p>Identify primary nouns that may become classes, attributes associated with those nouns, and relevant behaviors or verbs.</p>
           <h3>Part 2 in Gradescope</h3>
-          <p>Before working with the diagrams, review <a href="#uml-in-intellij">UML in IntelliJ — install plugins and use both UML workflows</a>.</p>
+          <p>Before working with the diagrams, review <a href="../uml-tools.html">UML in IntelliJ — install plugins and use both UML workflows</a>.</p>
 
           <h4>Bad Design A</h4>
           <div class="image-container">
