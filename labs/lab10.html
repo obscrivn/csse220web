@@ -1,836 +1,569 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CSSE 220</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
-<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
-<style>
-  body {
-          font-family: Arial, sans-serif;
-          line-height: 1.5;
-          margin: 0;
-          padding: 1rem;
-          background: #f5f7fa;
-          color: #333;
-        }
-        
-        /* Section containers */
-        section {
-          background: #fff;
-          border: 1px solid #ddd;
-          border-radius: 6px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-          margin: 1.5rem 0;
-          padding: 1.2rem;
-        }
-        
-        /* Headings */
-        h2 {
-          margin-top: 0;
-          font-size: 1.6rem;
-          border-bottom: 2px solid #e0e0e0;
-          padding-bottom: 0.3rem;
-        }
-        h3 {
-          font-size: 1.3rem;
-          margin-top: 1rem;
-        }
-        
-        /* Image styling */
-        section img {
-          display: block;
-          max-width: 100%;
-          height: auto;
-          margin: 0.8rem auto;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-        
-        /* Code blocks */
-        /* pre {
-          background: #2d2d2d;
-          color: #f8f8f2;
-          padding: 0.8rem;
-          border-radius: 1px;
-          overflow-x: auto;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.9rem;
-        } */
-        /* pre code {
-          display: block;
-          white-space: pre-wrap;
-          word-wrap: break-word;
-        } */
-        
-        /* Inline code */
-        /* code {
-          background: #eaeaea;
-          color: #c7254e;
-          padding: 0.2rem 0.4rem;
-          border-radius: 1px;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.95em;
-        } */
-        
-        /* Highlight compile / runtime state */
-        strong + span {
-          font-weight: bold;
-          color: #d14;
-        }
-        
-        /* Lists */
-        ul, ol {
-          margin: 0.5rem 0 0.5rem 1.2rem;
-        }
-        li {
-          margin-bottom: 0.5rem;
-        }
-        
-        /* Method call subsections */
-        section#method-calls h4 {
-          margin: 1rem 0 0.3rem;
-          font-size: 1.1rem;
-          color: #444;
-          border-left: 3px solid #007acc;
-          padding-left: 0.5rem;
-        }
-        
-        /* Emphasis for compile/run status */
-        span[style*="darkred"] {
-          font-weight: bold;
-          color: #c00;
-        }
-
-
-
-    /* body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
-    } */
-    #main-content {
-      padding: 20px;
-    }
-/* Header styling */
-#header {
-        position: fixed;
-        top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-    }
-    #header a {
-      color: #fff;
-      margin-right: 15px;
-      text-decoration: none;
-
-    }
-    #header a:hover {
-      text-decoration: underline;
-    }
-    #header div {
-      clear: both;
-    }
-    /* Content container */
-    #content {
-      padding: 20px;
-      /* margin-top: 100px;  */
-      margin-bottom: 50px;
-      padding-top: 100px;
-    }
-    #section {
-margin-top: 1rem; 
-margin-bottom: 1rem;
-padding: 20px;
-} 
-    .lab-section {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    }
-    .lab-section h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      color: #333;
-    }
-    .lab-section p {
-      line-height: 1.5;
-      color: #555;
-    }
-/* Lab Navigation Menu Styling */
-#lab-nav {
-      background-color: #faf9fc;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      overflow-x: auto;  /* Enables horizontal scroll */
-      white-space: nowrap; /* Prevents wrapping */
-    }
-    #lab-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 15px;
-    }
-    #lab-nav ul li a {
-      text-decoration: none;
-      color: #333;
-      margin-left: 20px;
-      padding: 5px 10px;
-      border-radius: 3px;
-    }
-    #lab-nav ul li a:hover {
-      background-color: #ddd;
-    }
-    code {
-        /* color: red; */
-        font-weight: 600;
-        font-family: Consolas, "Courier New", monospace;
-    }
-    .code-window {
-      background-color: #272822;
-      color: #f8f8f2;
-      border: 1px solid #333;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      white-space: pre;
-      overflow-x: auto;
-      border-radius: 3px;
-      margin-top: 10px;
-    }
-    .solution-window {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #4caf50;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      border-radius: 3px;
-      overflow-x: auto;
-      white-space: pre;
-      margin-top: 10px;
-    }
-    .solution-header {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #2e7d32;
-    }
-
-    a.resource-ref {
-  background-color: #444; /* dark background for contrast */
-  color: #61dafb;         /* bright text color */
-  padding: 4px 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSE 220 | Lab 10: Treasure Hunt Gear</title>
+  <link rel="stylesheet" href="../syllabus_files/schedule.css">
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <style>
+:root {
+  --ink: #1f2937;
+  --muted: #5f6b7a;
+  --surface: #ffffff;
+  --page: #f4f6fb;
+  --border: #d8deea;
+  --header: #1c1515;
+  --heading: #111111;
+  --accent: #2166d1;
+  --accent-soft: #edf4ff;
+  --success: #18794e;
+  --success-soft: #ecf8f2;
+  --optional: #9a6700;
+  --optional-soft: #fff8e6;
+  --shadow: 0 12px 30px rgba(34, 42, 66, 0.08);
 }
 
-a.resource-ref:hover {
-  background-color: #555;
-  color: #ffffff;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  min-height: 3.75rem;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: var(--header);
+  box-shadow: 0 4px 16px rgba(30, 17, 48, 0.2);
+}
+
+#header a {
+  margin: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+#header a:hover,
+#header a:focus-visible {
+  background: #222;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+#header div {
+  display: none;
+}
+
+#content {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6.75rem 0 4rem;
+}
+
+#main-content {
+  padding: 0;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  color: var(--heading);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h2,
+h3 {
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.65rem 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0.65rem 0;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+ul,
+ol {
+  margin: 0.65rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.3rem;
+  background: #eef1f6;
+  color: #9b1c4a;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  margin: 0.85rem 0 1rem;
+  overflow-x: auto;
 }
 
 pre code {
-  background-color: #f5f7fa;
-  color: #1a1a1a;
-  border-left: 4px solid #4a90e2;
-  padding: 0.75em;
   display: block;
-  border-radius: 6px;
-  font-size: 0.9em;
-  line-height: 1.4em;
+  min-width: max-content;
+  padding: 1rem 1.1rem;
+  border: 1px solid #ced8e8;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.6rem;
+  background: #f7f9fc;
+  color: #172033;
+  line-height: 1.5;
 }
-pre code:hover {
-  background-color: #dce1e8;
-  border-left-color: #28527a;
+
+.lab-section {
+  margin-bottom: 1.4rem;
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
+
+.intro-panel {
+  border-color: #cfd4dc;
+  background: #f8f9fb;
+}
+
 .lab-card {
-  margin: 0 0 1rem 0;
-  border-radius: 0.75rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  padding: 0.25rem 0.75rem 0.75rem;
+  margin: 1rem 0;
+  padding: 0 1rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  box-shadow: 0 5px 15px rgba(34, 42, 66, 0.05);
+}
+
+.setup-card {
+  background: var(--accent-soft);
+}
+
+.required-card {
+  border-left-color: var(--success);
+}
+
+.optional-card {
+  border-left-color: var(--optional);
+  background: #fffdf8;
 }
 
 .lab-card > summary {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  list-style: none;
+  gap: 0.6rem;
+  min-height: 3.4rem;
+  padding: 0.7rem 0;
+  color: var(--ink);
   cursor: pointer;
-  padding: 0.5rem 0;
-  font-weight: 600;
+  list-style: none;
 }
 
 .lab-card > summary::-webkit-details-marker {
-  display: none; /* hide default arrow in some browsers */
+  display: none;
 }
 
 .lab-card > summary::after {
   content: "›";
   margin-left: auto;
-  font-size: 1rem;
-  transition: transform 0.15s ease-out;
+  color: var(--muted);
+  font-size: 1.35rem;
+  transition: transform 0.18s ease;
 }
 
 .lab-card[open] > summary::after {
   transform: rotate(90deg);
 }
 
+.lab-card > summary h3 {
+  margin: 0;
+}
+
 .lab-label {
-  font-family: monospace;
-  opacity: 0.7;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .lab-title {
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 750;
 }
 
 .lab-tag {
-  font-size: 0.8rem;
-  padding: 0.1rem 0.4rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid #b7c8df;
   border-radius: 999px;
-  border: 1px solid #ccc;
   background: #fff;
+  color: #315a8d;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.required-card .lab-tag {
+  border-color: #a9d5c1;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.optional-card .lab-tag {
+  border-color: #ecd28b;
+  background: var(--optional-soft);
+  color: var(--optional);
 }
 
 .lab-body {
-  border-top: 1px solid #e0e0e0;
-  margin-top: 0.25rem;
-  padding-top: 0.5rem;
+  margin-top: 0.1rem;
+  padding: 0.45rem 0.25rem 0;
+  border-top: 1px solid var(--border);
 }
 
-details.hint {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background: #f9f9f9;
-  border-left: 3px solid #aaa;
+.notice {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.45rem;
+  background: var(--accent-soft);
+  color: #294869;
 }
 
-details.hint > summary {
+details.hint,
+.lab-body details:not(.lab-card) {
+  margin: 0.9rem 0;
+  padding: 0.75rem 0.9rem;
+  border-left: 4px solid #8c98aa;
+  border-radius: 0.45rem;
+  background: #f7f8fa;
+}
+
+details.hint > summary,
+.lab-body details:not(.lab-card) > summary {
+  color: #435064;
   cursor: pointer;
-  font-weight: 500;
-  color: #555;
+  font-weight: 700;
 }
+
+a.resource-ref {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  #header {
+    gap: 0.25rem 0.75rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  #header a {
+    font-size: 0.78rem;
+  }
+
+  #content {
+    width: min(100% - 1rem, 1080px);
+    padding-top: 8rem;
+  }
+
+  .lab-card > summary {
+    flex-wrap: wrap;
+  }
+
+  .lab-tag {
+    order: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-card > summary::after {
+    transition: none;
+  }
+}
+
+.method-table { overflow-x: auto; margin: 1rem 0; }
+.method-table table { width: 100%; border-collapse: collapse; text-align: left; }
+.method-table caption { text-align: left; font-weight: 700; padding-bottom: .5rem; }
+.method-table th, .method-table td { padding: .65rem; border: 1px solid var(--border); vertical-align: top; }
+.method-table th { background: var(--accent-soft); }
+.lab-body > h3:first-child { margin-top: .75rem; }
   </style>
 </head>
 <body>
-  <div id="header">
-    <a id="index_link" href="../index.html">CSSE 220</a>
-    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
-    <a id="schedule_link" href="../schedule.html">Schedule</a>
-      <a id="quiz_link" href="../design-principles.html">Design</a>
-    <a id="quiz_link" href="../labs.html">Labs</a>
-    <a id="quiz_link" href="../homework.html">Homework</a>
-    <a id="quiz_link" href="../exams.html">Exams</a>
-    <a id="quiz_link" href="../project.html">Final Project</a>
-    <a id="resources_link" href="../resources.html">Resources</a>
+<div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+      <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../resources.html">Resources</a>
     <div style="clear:both;"></div>
 </div>
 <div id="content">
-    <h1>Lab Assignment 10</h1>
-    
-<div id="main-content">
-         <div class="lab-section" id="lab">
-<p>
-In this lab, you will practice using <strong>interfaces</strong> and <strong>inheritance</strong>
-to model a small snack shop menu system.
-You will learn when to use a class hierarchy and when to use an interface,
-and you will apply constructor chaining with <code>this(...)</code>,
-superclass constructors with <code>super(...)</code>,
-method overriding, and <code>super.method()</code>.
-</p>
-
- 
-<h3>⚡ Instructions</h3>
-<ul>
-  <li>
-    <strong>Graded work:</strong>
-    Complete the required tasks in the provided starter zip project and submit your completed <code>.java</code> + UML files to Gradescope.
-  </li>
-  <li>
-    As you work, pay attention to <strong>when inheritance is appropriate</strong> and
-    <strong>when an interface is a better design choice</strong>.
-  </li>
-</ul>
-
-  <details class="lab-card" id="lab-00">
-<summary><h3>Starter ZIP File</h3></summary>
-<ul>
-<li> <strong>Download starter zip file:</strong> <a href="../labs/Lab10.zip">Lab10.zip</a> and import it into Eclipse as Existing Project (see Lab02 for details).</li>
-
-
-  <li>
-    <strong>What to submit on Gradescope:</strong>
-    Upload all completed <code>java</code> files and your UML diagrams to the Lab 10 assignment.
-    The Gradescope link is available on Moodle.
-  </li>
-</ul>
-</details>
-
-<details class="lab-card" id="lab-01">
-        <summary>
-    <span class="lab-label">01.</span>
-    <span class="lab-title">Inheritance</span>
-    <span class="lab-tag">Submission</span>
-  </summary>
-<div class="lab-body">
-       <!-- <p>Resources 1: <a href="../resources.html#access-scope" target="_blank" class="resource-ref">Access & Scope</a></p> -->
- <details class="lab-card" open>
+  <h1>Lab Assignment 10</h1>
+  <div id="main-content">
+ <div class="lab-section treasure-panel" id="part-1">
+      <h2>Part 1: Java Treasure Hunt</h2>
+      <p>
+        Before beginning Lab10, complete the assigned challenges in the
+        <a href="https://csse220-java-treasure-hunt-163831374566.us-west2.run.app/" target="_blank" rel="noopener">Java Treasure Hunt</a>.
+      </p>
+      <ul>
+        <li>Finish <strong>all assigned challenges</strong>.</li>
+        <li>Obtain the <strong>completion PDF</strong> as proof and request your collectable card.</li>
+        <li>Complete this warm-up before moving to Part 2.</li>
+      </ul>
+    </div>
+    <div class="lab-section assignment-panel" id="part-2">
+      <h2>Part 2: Inheritance: Treasure Hunt Gear</h2>
+      <p>The sword and pickaxe repeat the same code. Move their shared state and behavior into <code>Item</code>, then give the sword its own action.</p>
+      <h3>Learning Goals</h3>
+      <ul>
+        <li>Recognize duplicated state and behavior in related classes.</li>
+        <li>Create a superclass and inherit its fields and methods using <code>extends</code>.</li>
+        <li>Initialize shared state with <code>super(...)</code>.</li>
+        <li>Override <code>toString()</code> and a subclass method with <code>@Override</code>.</li>
+        <li>Use a superclass reference to call a subclass's behavior.</li>
+      </ul>
+    </div>
+<details class="lab-card setup-card" id="lab-01" open>
   <summary>
-    <span class="lab-card-title"><h3>Step 1: Understand the Design</h3></span>
-    <span class="lab-tag">Read First</span>
-  </summary>
-  <div class="lab-card-content">
-
-    <p>
-      Before writing code, think about the difference between
-      <strong>inheritance</strong> and <strong>interfaces</strong>.
-    </p>
-
-    <p><strong>Use inheritance when:</strong></p>
-    <ul>
-      <li>One class is a more specific version of another (<em>is-a</em>)</li>
-      <li>Classes share data (fields) and behavior (methods)</li>
-    </ul>
-
-    <p><strong>Use an interface when:</strong></p>
-    <ul>
-      <li>Different classes share a capability (<em>can-do</em>)</li>
-      <li>They do NOT need to share fields or common implementation</li>
-    </ul>
-
-    <p><strong>Examples in this lab:</strong></p>
-    <ul>
-      <li><code>Drink extends MenuItem</code> because a drink <em>is a</em> menu item</li>
-      <li><code>Smoothie extends Drink</code> because a smoothie <em>is a</em> drink</li>
-      <li><code>Discountable</code> is an interface because an item <em>can be</em> discounted</li>
-    </ul>
-
-    <p>
-      <strong>Think:</strong> Should this relationship share data? Or just behavior?
-    </p>
-
-  </div>
-</details>
-
-<details class="lab-card">
-  <summary><h3>Step 2: Make <code>Drink</code> a Subclass of <code>MenuItem</code></h3></summary>
-  <p>
-    A <code>Drink</code> is a kind of <code>MenuItem</code>, so this relationship should use
-    <strong>inheritance</strong>.
-  </p>
-
-  <p><strong>Your tasks:</strong></p>
-  <ul>
-    <li>Update <code>Drink</code> so it <code>extends MenuItem</code>.</li>
-    <li>Complete the full constructor so it calls the superclass constructor with <code>super(...)</code>.</li>
-    <li>Initialize the <code>iced</code> field in <code>Drink</code>.</li>
-    <li>
-  Add a method <code>public boolean isIced()</code> that returns whether the drink is iced.
-  <strong>Use the exact method name <code>isIced()</code>.</strong>
-    </ul>
-
-  <p>
-  <strong>Note:</strong> In Java, boolean methods typically use <code>is</code> instead of <code>get</code>.
-  For example: <code>isEmpty()</code>, <code>isEnabled()</code>.
-</p>
-
-<details class="lab-hint">
-  <summary>💡 Hint</summary>
-  <ul>
-    <li>Use inheritance when one class is a more specific version of another class.</li>
-    <li>A <code>Drink</code> should reuse the shared data from <code>MenuItem</code> instead of redefining it.</li>
-    <li>If the parent class has a constructor, the subclass must call it.</li>
-  </ul>
-</details>
-</details>
-
-<details class="lab-card">
-  <summary><h3>Step 3: Use <code>this(...)</code> to Chain Constructors</h3></summary>
-  <p>
-    The <code>Drink</code> class has a shorter constructor that should not repeat setup code.
-    Instead, it should call another constructor in the same class.
-  </p>
-
-  <p><strong>Your tasks:</strong></p>
-  <ul>
-    <li>Complete the shorter <code>Drink</code> constructor using <code>this(...)</code>.</li>
-    <li>Use the shorter constructor to make drinks iced by default.</li>
-  </ul>
-<details class="lab-hint">
-  <summary>💡 Hint</summary>
-  <ul>
-    <li>Use <code>this(...)</code> when you want one constructor to call another constructor in the <em>same class</em>.</li>
-    <li>This helps reduce duplicated initialization code.</li>
-    <li><code>this(...)</code> must be the first line in the constructor.</li>
-  </ul>
-</details>
-</details>
-
-<details class="lab-card">
-  <summary><h3>Step 4: Make <code>Smoothie</code> a Subclass of <code>Drink</code></h3></summary>
-  <p>
-    A <code>Smoothie</code> is a more specific kind of <code>Drink</code>.
-    It should inherit the drink data and behavior, then add its own field.
-  </p>
-
-  <p><strong>Your tasks:</strong></p>
-  <ul>
-    <li>Update <code>Smoothie</code> so it <code>extends Drink</code>.</li>
-    <li>Add and initialize the <code>flavor</code> field.</li>
-    <li>Complete the constructor using <code>super(...)</code> to initialize inherited data.</li>
-</ul>
-  
-<details class="lab-hint">
-  <summary>💡 Hint</summary>
-  <ul>
-    <li>Use <code>super(...)</code> when the subclass needs the parent class to initialize its part of the object.</li>
-    <li>A <code>Smoothie</code> should not repeat the setup code that already belongs in <code>Drink</code> or <code>MenuItem</code>.</li>
-    <li><code>super(...)</code> must be the first line in the constructor.</li>
-  </ul>
-</details>
-</details>
-
-<details class="lab-card">
-  <summary><h3>Step 5: Override <code>getDescription()</code></h3></summary>
-  <p>
-    The <code>MenuItem</code> class already provides a description.
-    A smoothie should keep that base description and then add more specific information.
-  </p>
-
-  <p><strong>Your tasks:</strong></p>
-  <ul>
-    <li>Override <code>getDescription()</code> in <code>Smoothie</code>.</li>
-    <li>Call <code>super.getDescription()</code> to reuse the parent version.</li>
-    <li>Add the smoothie flavor to the final returned string.</li>
-  </ul> 
-  <ul>
-    <li><code>super.getDescription()</code> returns something like:
-      <code>"Smoothie ($5.0)"</code></li>
-    <li>Your final result should look like:
-      <code>"Smoothie ($5.0) - Strawberry"</code></li>
-    <li>Use string concatenation with <code>+</code>.</li>
-  </ul>
-<details class="lab-hint">
-  <summary>💡 Hint</summary>
-  <ul>
-    <li>Use overriding when a subclass needs the same method name but more specific behavior.</li>
-    <li>Use <code>super.method()</code> when you want to keep the parent behavior and add to it.</li>
-    <li>This is better than rewriting the whole description from scratch.</li>
-  </ul>
-</details>
-</details>
-
-<details class="lab-card">
-  <summary><h3>Step 6: Implement the <code>Discountable</code> Interface</h3></summary>
-  <p>
-    Some menu items can provide a discount.
-    That is a shared capability, so this relationship should use an <strong>interface</strong>.
-  </p>
-  <p>
-    The <code>Discountable</code> interface defines the following method: <code>getDiscountAmount()</code> that return double
-  </p>
-
-  <p><strong>Your tasks:</strong></p>
-  <ul>
-    <li>Update <code>Smoothie</code> so it <code>implements Discountable</code>.</li>
-    <li>Complete the required interface method.</li>
-    <li>Return a fixed discount amount of <code>1.50</code>.</li>
-  </ul>
-<details class="lab-hint">
-  <summary>💡 Hint</summary>
-
-  <ul>
-    <li>Use an interface when classes share a behavior or capability, but do not need to share fields or constructors.</li>
-    <li><code>Discountable</code> is about what an object <em>can do</em>, not what it <em>is</em>.</li>
-    <li>Very different kinds of items could be discountable.</li>
-  </ul>
-</details>
-</details>
-
-<details class="lab-card">
-  <summary><h3>Step 7: Run the Tests</h3></summary>
-  <p>
-    Run the provided JUnit tests as you work. The tests will help you check both correctness and design.
-  </p>
-
-  <p><strong>Before moving on, make sure:</strong></p>
-  <ul>
-    <li><code>Drink</code> extends <code>MenuItem</code>.</li>
-    <li><code>Drink</code> uses both <code>super(...)</code> and <code>this(...)</code> correctly.</li>
-    <li><code>Smoothie</code> extends <code>Drink</code>.</li>
-    <li><code>Smoothie</code> overrides <code>getDescription()</code>.</li>
-    <li><code>Smoothie</code> uses <code>super.getDescription()</code>.</li>
-    <li><code>Smoothie</code> implements <code>Discountable</code>.</li>
-    <li>All tests pass.</li>
-  </ul>
-</details>
-</div>
-</details>
-
-
-<details class="lab-card" id="lab-02">
-  <summary>
-    <span class="lab-label">02.</span>
-    <span class="lab-title">Books Refactoring (Part 2)</span>
-    <span class="lab-tag">Submission</span>
+    <span class="lab-label">Setup</span>
+    <span class="lab-title">Start here</span>
+    <span class="lab-tag">Setup</span>
   </summary>
   <div class="lab-body">
-       <h2>Lab-Design 1: Fix the Broken System</h2>
+<ol>
+  <li><strong>Download and extract</strong> <a href="Lab10.zip">Lab10.zip</a>.</li>
+  <li>In IntelliJ, choose <strong>Open</strong> and select the <code>Lab10</code> folder containing <code>pom.xml</code>.</li>
+  <li>Select <strong>JDK 21</strong> and let Maven load.</li>
+  <li>Run <code>lab.MainApp</code>.</li>
+  <li>Run <code>lab.RunAllTests</code> under <code>src/test/java</code>.</li>
+</ol>
+<p class="notice"><strong>Check:</strong> the program runs and all three tests pass.</p>
+<details class="hint"><summary>Opening the project</summary>
+<p>Open the extracted folder directly. Do not create a new project. IntelliJ's bundled Maven is enough.</p></details>
 
-<p>
-In this lab, you will analyze a poorly designed Java system and redesign it using better
-object-oriented design ideas. This is not just about making code work. It is about learning
-how to recognize design problems and improve them.
-</p>
-
-<details class="lab-card">
-  <summary>
-    <strong>Scenario</strong>
-    <span class="lab-tag">Context</span>
-  </summary>
-
-  <p>
-    A website tracks books and the kids who read them.
-  </p>
-
-  <ul>
-    <li>Each <strong>Book</strong> has a name and author</li>
-    <li>Each <strong>Kid</strong> has a name and grade level</li>
-    <li>The teacher records when a kid reads a book</li>
-  </ul>
-
-  <p>
-    The system must support:
-  </p>
-
-  <ul>
-    <li>Printing all kids who read a given book</li>
-    <li>Printing all books read by a given kid</li>
-  </ul>
-
-  <p>
-    The current system works, but its design has serious issues.
-    Your job is to analyze and redesign it.
-  </p>
-  <image src="../labs/BooksA.png" alt="UML diagram with design problems" style="width: 400px; border-radius:8px;">
+<h3>Inspect the Starting Design</h3>
+<p>Open <code>Sword.java</code> and <code>Pickaxe.java</code>. Compare them with the UML below.</p>
+<img src="lab10-starter-design.svg" alt="Starting UML: Sword and Pickaxe each declare private name and value fields and public getName, getValue, getDescription, and use methods. MainApp depends on both classes." style="display:block;width:100%;max-width:760px;height:auto;margin:1rem auto;">
+<details class="hint">
+  <summary>View PlantUML source</summary>
+  <pre><code>@startuml
+skinparam classAttributeIconSize 0
+class Sword {
+  - name : String
+  - value : int
+  + getName() : String
+  + getValue() : int
+  + getDescription() : String
+  + use() : String
+}
+class Pickaxe {
+  - name : String
+  - value : int
+  + getName() : String
+  + getValue() : int
+  + getDescription() : String
+  + use() : String
+}
+class MainApp {
+  {static} + main(args : String[]) : void
+}
+MainApp ..&gt; Sword
+MainApp ..&gt; Pickaxe
+@enduml
+</code></pre>
 </details>
-
-
-
-<details class="lab-card">
-  <summary>
-    <strong>Project Setup</strong>
-    <span class="lab-tag">Starter Code</span>
-  </summary>
-<p>ZIP Code <a href="../labs/Books.zip" download>Books.zip</a></p>
-<p>Project Reflection template: <a href="https://docs.google.com/document/d/1sgjND1iZClJBIX8u-QwPkvJ95H_rn0sOXiPLeyqk0Yg/edit?usp=sharing" download>project_reflection_template</a></p>
-  <p>
-    The project already contains the bad design in the <code>bad</code> package.
-  </p>
-
-  <pre><code>bad/
-  Book.java
-  Kid.java
-  BookMain.java</code></pre>
-
-  <h3>Rules</h3>
-  <ul>
-    <li>Do <strong>not</strong> modify anything in the <code>bad</code> package</li>
-    <li>Create a new package called <code>good</code></li>
-    <li>Your redesigned system must go inside the <code>good</code> package</li>
-  </ul>
-
-  <pre><code>good/
-  // your redesigned classes go here</code></pre>
+<p><strong>Write in <code>reflections.txt</code>:</strong></p>
+<ul><li>Which fields and methods repeat?</li><li>Why does <code>Item</code> make sense as a superclass for both <code>Sword</code> and <code>Pickaxe</code>? Consider what they represent and what data and behavior they share.</li></ul></div>
 </details>
-
-<details class="lab-card">
+<details class="lab-card required-card" id="lab-02" open>
   <summary>
-    <strong>Day 2</strong>
-    <span class="lab-tag">Analysis</span>
-  </summary>
-
-  <h3>Step 1: Understand the Current Design</h3>
-<p>
-Before changing anything, review the provided <code>Books and Kids</code> code.
-</p>
-
-<ul>
-<li>What classes exist?</li>
-<li>Who owns the data?</li>
-<li>Where do responsibilities feel unclear?</li>
-</ul>
-
-<p><strong>Team Task:</strong> Spend 5–7 minutes discussing before coding.</p>
-
-<h3>Step 2: Decide What to Fix First</h3>
-
-<p>
-You should NOT start coding immediately.
-As a team, decide your first refactoring step.
-</p>
-
-<ul>
-<li>What is the most important problem to fix?</li>
-<li>Why does it matter?</li>
-<li>What will you change first?</li>
-</ul>
-
-<p><strong>Write down your decision before coding.</strong></p>
-
-<h3>Step 3: Refactor the Design</h3>
-
-<ul>
-<li>Make small, incremental changes</li>
-<li>Test frequently</li>
-<li>Do NOT rewrite everything at once</li>
-</ul>
-
-<p><strong>Focus on:</strong></p>
-<ul>
-<li>Clear class responsibilities</li>
-<li>Reducing duplication</li>
-<li>Improving data ownership</li>
-</ul>
-
-<h3>Step 4: Team Roles</h3>
-
-<ul>
-<li><strong>Driver:</strong> writes code</li>
-<li><strong>Navigator:</strong> checks design decisions</li>
-<li><strong>Reviewer:</strong> asks “why are we doing this?”</li>
-</ul>
-
-
-
-
-  </details>
-
-<details class="lab-card">
-  <summary>
-    <strong>Day 2 Submission</strong>
+    <span class="lab-label">Step 1.</span>
+    <span class="lab-title">Share state and behavior</span>
     <span class="lab-tag">Required</span>
   </summary>
-<h3>Step 5: Reflection</h3>
-
-<p>Project Reflection template: <a href="https://docs.google.com/document/d/1sgjND1iZClJBIX8u-QwPkvJ95H_rn0sOXiPLeyqk0Yg/edit?usp=sharing" download>project_reflection_template</a></p>
-<p>Use the same google doc but add the second part (see the link)</p>
-<p> submit URL</p>
+  <div class="lab-body">
+<h3>A. Create the shared class</h3>
+<ol>
+  <li>Create <code>Item.java</code> in <code>src/main/java/lab</code> with <code>package lab;</code>.</li>
+  <li>Make <code>Item</code> a concrete class.</li>
+  <li>Move the private <code>name</code> and <code>value</code> fields into it.</li>
+  <li>Add <code>public Item(String name, int value)</code> to initialize both fields.</li>
+  <li>Move the four shared methods into <code>Item</code>. Keep their behavior below.</li>
+</ol>
+<div class="method-table"><table>
+  <caption>Item's public methods</caption>
+  <thead><tr><th scope="col">Method</th><th scope="col">Return value</th></tr></thead>
+  <tbody>
+    <tr><td><code>public String getName()</code></td><td>The item's name</td></tr>
+    <tr><td><code>public int getValue()</code></td><td>The item's value</td></tr>
+    <tr><td><code>public String getDescription()</code></td><td><code>name + " (value " + value + ")"</code></td></tr>
+    <tr><td><code>public String use()</code></td><td><code>"Use " + name + "."</code></td></tr>
+  </tbody>
+</table></div>
+<h3>B. Give items a useful string representation</h3>
+<p>Java classes inherit <code>toString()</code> from <code>Object</code>. Override it to describe your item when it is printed.</p>
+<ol>
+  <li>In <code>Item</code>, add <code>public String toString()</code> with <code>@Override</code>.</li>
+  <li>Return <code>getDescription()</code> to reuse the description you already have.</li>
+  <li>Return a string; do not print inside <code>toString()</code>.</li>
+</ol>
+<p class="notice"><strong>Try it:</strong> after refactoring the subclasses, <code>System.out.println(sword);</code> will use the inherited <code>toString()</code> to print the item's description.</p>
+<h3>C. Refactor both subclasses</h3>
+<ol>
+  <li>Make <code>Sword</code> and <code>Pickaxe</code> directly <code>extend Item</code>.</li>
+  <li>Keep each public <code>(String name, int value)</code> constructor.</li>
+  <li>Use <code>super(...)</code> in each constructor to initialize shared state.</li>
+  <li>Remove the repeated fields and four shared methods from both subclasses.</li>
+</ol>
+<p class="notice"><strong>Check:</strong> run <code>MainApp</code> and <code>RunAllTests</code>. The output stays the same and all tests pass.</p>
+<details class="hint"><summary>Keep these design rules</summary>
 <ul>
-<li>What problem did your team fix first? Why?</li>
-<li>What was your second change? Why?</li>
-<li>What was the hardest design decision?</li>
-<li>Did your approach change while working? Explain.</li>
-<li>If you had more time, what would you improve next?</li>
-</ul>
-  
-</details> 
-
-      </details>
-
-      <details class="lab-card" id="lab-03">
-        <summary>
-          <span class="lab-label">03.</span>
-          <span class="lab-title">Book refactoring (Part 3)</span>
-          <span class="lab-tag">Code Submission</span>
-        </summary>
-        <div class="lab-body">
-          <h2>Part 3 Instructions</h2>
-
-
-  <p>
-    In this part, your team will begin refactoring the provided Books and Kids code.
-    Your goal is <strong>not</strong> to add new features. Your goal is to
-    <strong>improve the design while keeping the required behavior working</strong>.
-  </p>
-
-  <h3>What your refactoring should focus on</h3>
-  <ul>
-    <li>Improve <strong>encapsulation</strong> by making fields private and using methods instead of direct field access</li>
-    <li>Add <strong>constructors</strong> so objects are created in a valid state</li>
-    <li>Reduce <strong>duplication</strong> in logic and data storage</li>
-    <li>Give each class a <strong>clear responsibility</strong></li>
-    <li>Avoid designs where books can only be found by searching through every kid</li>
-    <li>Create a <strong>central way to access both kids and books</strong></li>
-    <li>Use better collection design, such as <code>ArrayList</code> or <code>HashMap</code>, when appropriate</li>
-    <li>Keep the connection between books and kids consistent when a new reading is recorded</li>
-  </ul>
-
-  <h3>Required behavior to preserve</h3>
-  <ul>
-    <li>The system should still record when a kid reads a book</li>
-    <li>The system should still print a report for a kid</li>
-    <li>The system should still print a report for a book</li>
-    <li>The system should avoid duplicate entries when possible</li>
-    <li>The system should handle missing kids or books reasonably</li>
-  </ul>
-
-  <h3>What you may change</h3>
-  <ul>
-    <li>You may add constructors, getters, and helper methods</li>
-    <li>You may add a new central class or improve the current main system class</li>
-    <li>You may use <code>ArrayList</code>, <code>HashMap</code>, or another reasonable collection</li>
-    <li>You may move methods to more appropriate classes</li>
-  </ul>
-
-  <h3>What to avoid</h3>
-  <ul>
-    <li>Do not leave all logic in one large class</li>
-    <li>Do not rely on direct field access like <code>book.name</code> or <code>kid.gradeLevel</code> from other classes</li>
-    <li>Do not keep the design where books only exist inside kids</li>
-    <li>Do not rewrite the scenario into something unrelated</li>
-  </ul>
-
-  <h3>Testing (optional)</h3>
-  <p>
-    Note - this testing may not work for every solution. sample JUnit test file will be provided to help you check whether your refactored design
-    still preserves the required behavior. You can also set up your own testing in the main class.  Your code should compile and run with those tests.
-  <a href="../labs/BookMainTest.java" download>BooksMainTest.java</a>. To add the provided Junit file, add this file inside <code>good</code> package in your workspace. You will also need to install JUnit Library (ask if you want to try it out)
-  </p>
-
-  <h3>Submission</h3>
-  <ul>
-    <li>Submit all completed <code>.java</code> files for your refactored solution</li>
-    <li>Submit any new classes you created</li>
-    <li>Submit your updated UML</li>
-    <li>Submit your team reflection</li>
-  </ul>
-
-
-    <h3>Team Reflection</h3>
-
-
-  <p>
-    As a team, reflect on your refactoring process. Focus on your decisions, not just the final result.
-  </p>
-
-  <h3>Reflection Questions</h3>
-  <ul>
-    <li>What were the most important changes your team made to the design?</li>
-    <li>What problem in the original code did you choose to fix first, and why?</li>
-    <li>What design improvement are you most proud of?</li>
-    <li>What was the most challenging part of the refactoring process?</li>
-    <li>What did your team learn about good object-oriented design from this activity?</li>
-    <li>If you had more time, what would you improve next?</li>
-  </ul>
-
-  <h3>Guidelines</h3>
-  <ul>
-    <li>Be specific — refer to actual design changes you made</li>
-    <li>Focus on reasoning, not just what you changed</li>
-    <li>Keep responses concise (2–4 sentences per question)</li>
-  </ul>
+  <li>Store instance fields only in <code>Item</code> and keep them private.</li>
+  <li>Use getters when a subclass needs that data.</li>
+  <li>Keep the existing public signatures.</li>
+  <li>Assume non-null names and nonnegative values, including zero.</li>
+  <li>No abstract classes, interfaces, or extra hierarchy levels are needed.</li>
+</ul></details>
+</div>
 </details>
-
+<details class="lab-card required-card" id="lab-03" open>
+  <summary>
+    <span class="lab-label">Step 2.</span>
+    <span class="lab-title">Override one action</span>
+    <span class="lab-tag">Required</span>
+  </summary>
+  <div class="lab-body">
+<ol>
+  <li>In <code>Sword</code>, add <code>public String use()</code> with <code>@Override</code>.</li>
+  <li>Return <code>"Swing " + getName() + "!"</code>.</li>
+  <li>Leave <code>Pickaxe</code> using the inherited <code>Item.use()</code>.</li>
+</ol>
+<h3>Predict, then run</h3>
+<ol>
+  <li>In <code>reflections.txt</code>, predict which output line will change.</li>
+  <li>Run <code>MainApp</code> and record the result.</li>
+</ol>
+<h3>Add two tests</h3>
+<p>In <code>ItemBehaviorTest</code>, add two JUnit tests for a Sword named <code>Trail Sword</code> with value <code>12</code>:</p>
+<ul><li><code>use()</code> returns <code>"Swing Trail Sword!"</code>.</li><li><code>toString()</code> returns <code>"Trail Sword (value 12)"</code>.</li></ul>
+<p class="notice"><strong>Check:</strong> its <code>use()</code> returns <code>"Swing Trail Sword!"</code>. Run <code>RunAllTests</code>; all tests should pass.</p>
+</div>
+</details>
+<details class="lab-card required-card" id="lab-04" open>
+  <summary>
+    <span class="lab-label">Step 3.</span>
+    <span class="lab-title">Use Item references and explain</span>
+    <span class="lab-tag">Required</span>
+  </summary>
+  <div class="lab-body">
+<h3>A. Change the reference types</h3>
+<ol>
+  <li>In <code>MainApp</code>, change both variable types to <code>Item</code>.</li>
+  <li>Keep <code>new Sword(...)</code>, <code>new Pickaxe(...)</code>, and the two <code>use()</code> calls.</li>
+  <li>Replace the two description print statements with <code>System.out.println(sword);</code> and <code>System.out.println(pickaxe);</code>.</li>
+  <li>Predict the output, then run <code>MainApp</code>.</li>
+</ol>
+<details class="hint"><summary>Check the expected output</summary>
+<pre><code>Trail Sword (value 12)
+Cave Pickaxe (value 7)
+Swing Trail Sword!
+Use Cave Pickaxe.</code></pre>
+</details>
+<p><strong>Explain in <code>reflections.txt</code>:</strong> why does <code>sword.use()</code> run Sword's version when the variable type is Item?</p>
+<h3>B. Update your UML</h3>
+<ol>
+  <li>Generate or update the diagram from your finished code. Use <a href="../uml-tools.html#generate">UML Tools &amp; Instructions</a>.</li>
+  <li>Show shared fields once, in <code>Item</code>.</li>
+  <li>Point the hollow-triangle inheritance arrows toward <code>Item</code>.</li>
+  <li>Export your final diagram as a PNG or PDF.</li>
+</ol>
+<details class="hint"><summary>UML reminders</summary>
+<p>Constructors may be omitted. If rendering is delayed, submit your <code>.puml</code> file instead. Make sure your diagram shows the relationships between classes. The <code>.puml</code> source is not required when you submit a rendered diagram.</p></details>
+</div>
+</details>
+<details class="lab-card setup-card" id="lab-submit" open>
+  <summary>
+    <span class="lab-label">Submit</span>
+    <span class="lab-title">What to Submit</span>
+    <span class="lab-tag">Required</span>
+  </summary>
+  <div class="lab-body">
+<p>All supplied and added tests should pass.</p>
+<p>Fill in <code>MainApp.STUDENT_NAME</code> and <code>HELP_CITATION</code> (write None if appropriate). Follow the <a href="../syllabus.html">syllabus</a>'s AI Learning Log and help citation policy.</p>
+<p>Upload these files to the <strong>Lab 10</strong> assignment on Gradescope. The link is available on Moodle.</p>
+<ul>
+  <li><code>Item.java</code></li>
+  <li><code>Sword.java</code></li>
+  <li><code>Pickaxe.java</code></li>
+  <li><code>MainApp.java</code></li>
+  <li><code>ItemBehaviorTest.java</code> (with your added tests)</li>
+  <li><code>reflections.txt</code></li>
+  <li>Your final UML diagram (<code>.png</code> or <code>.pdf</code>). If rendering is delayed, a <code>.puml</code> file is an acceptable alternative.</li>
+</ul>
+<p>Keep the supplied package declarations and upload the Java files directly.</p></div>
+</details>
+    <div class="lab-section" id="lab-checklist">
+      <h2>Before You Submit</h2>
+      <ul>
+        <li><code>Sword</code> and <code>Pickaxe</code> directly extend the concrete <code>Item</code> class.</li>
+        <li>Shared instance fields and shared methods appear only in <code>Item</code>.</li>
+        <li>Both subclass constructors initialize inherited state with <code>super(...)</code>.</li>
+        <li><code>Item.toString()</code> uses <code>@Override</code> and returns the item description.</li>
+        <li><code>Sword.use()</code> uses <code>@Override</code>; Pickaxe inherits the default behavior.</li>
+        <li>MainApp uses two <code>Item</code> variables and prints the expected output.</li>
+        <li>All supplied and added tests pass; your final UML and reflections match your code.</li>
+      </ul>
+      <h3>Why this matters</h3>
+      <p>Classes with similar internals can share state and implementation through inheritance. A superclass keeps the common work in one place, while a subclass can override a method to provide a more specific behavior. The relationship should also make sense: a sword and a pickaxe are both items.</p>
     </div>
   </div>
-
-        </body>
-        </html>
+</div>
+</body>
+</html>
