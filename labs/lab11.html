@@ -1,649 +1,548 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CSSE 220</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
-<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
-<style>
-  body {
-          font-family: Arial, sans-serif;
-          line-height: 1.5;
-          margin: 0;
-          padding: 1rem;
-          background: #f5f7fa;
-          color: #333;
-        }
-        
-        /* Section containers */
-        section {
-          background: #fff;
-          border: 1px solid #ddd;
-          border-radius: 6px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-          margin: 1.5rem 0;
-          padding: 1.2rem;
-        }
-        
-        /* Headings */
-        h2 {
-          margin-top: 0;
-          font-size: 1.6rem;
-          border-bottom: 2px solid #e0e0e0;
-          padding-bottom: 0.3rem;
-        }
-        h3 {
-          font-size: 1.3rem;
-          margin-top: 1rem;
-        }
-        
-        /* Image styling */
-        section img {
-          display: block;
-          max-width: 100%;
-          height: auto;
-          margin: 0.8rem auto;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-        
-        /* Code blocks */
-        /* pre {
-          background: #2d2d2d;
-          color: #f8f8f2;
-          padding: 0.8rem;
-          border-radius: 1px;
-          overflow-x: auto;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.9rem;
-        } */
-        /* pre code {
-          display: block;
-          white-space: pre-wrap;
-          word-wrap: break-word;
-        } */
-        
-        /* Inline code */
-        /* code {
-          background: #eaeaea;
-          color: #c7254e;
-          padding: 0.2rem 0.4rem;
-          border-radius: 1px;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.95em;
-        } */
-        
-        /* Highlight compile / runtime state */
-        strong + span {
-          font-weight: bold;
-          color: #d14;
-        }
-        
-        /* Lists */
-        ul, ol {
-          margin: 0.5rem 0 0.5rem 1.2rem;
-        }
-        li {
-          margin-bottom: 0.5rem;
-        }
-        
-        /* Method call subsections */
-        section#method-calls h4 {
-          margin: 1rem 0 0.3rem;
-          font-size: 1.1rem;
-          color: #444;
-          border-left: 3px solid #007acc;
-          padding-left: 0.5rem;
-        }
-        
-        /* Emphasis for compile/run status */
-        span[style*="darkred"] {
-          font-weight: bold;
-          color: #c00;
-        }
-
-
-
-    /* body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
-    } */
-    #main-content {
-      padding: 20px;
-    }
-/* Header styling */
-#header {
-        position: fixed;
-        top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-    }
-    #header a {
-      color: #fff;
-      margin-right: 15px;
-      text-decoration: none;
-
-    }
-    #header a:hover {
-      text-decoration: underline;
-    }
-    #header div {
-      clear: both;
-    }
-    /* Content container */
-    #content {
-      padding: 20px;
-      /* margin-top: 100px;  */
-      margin-bottom: 50px;
-      padding-top: 100px;
-    }
-    #section {
-margin-top: 1rem; 
-margin-bottom: 1rem;
-padding: 20px;
-} 
-    .lab-section {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    }
-    .lab-section h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      color: #333;
-    }
-    .lab-section p {
-      line-height: 1.5;
-      color: #555;
-    }
-/* Lab Navigation Menu Styling */
-#lab-nav {
-      background-color: #faf9fc;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      overflow-x: auto;  /* Enables horizontal scroll */
-      white-space: nowrap; /* Prevents wrapping */
-    }
-    #lab-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 15px;
-    }
-    #lab-nav ul li a {
-      text-decoration: none;
-      color: #333;
-      margin-left: 20px;
-      padding: 5px 10px;
-      border-radius: 3px;
-    }
-    #lab-nav ul li a:hover {
-      background-color: #ddd;
-    }
-    code {
-        /* color: red; */
-        font-weight: 600;
-        font-family: Consolas, "Courier New", monospace;
-    }
-    .code-window {
-      background-color: #272822;
-      color: #f8f8f2;
-      border: 1px solid #333;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      white-space: pre;
-      overflow-x: auto;
-      border-radius: 3px;
-      margin-top: 10px;
-    }
-    .solution-window {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #4caf50;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      border-radius: 3px;
-      overflow-x: auto;
-      white-space: pre;
-      margin-top: 10px;
-    }
-    .solution-header {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #2e7d32;
-    }
-
-    a.resource-ref {
-  background-color: #444; /* dark background for contrast */
-  color: #61dafb;         /* bright text color */
-  padding: 4px 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSE 220 | Lab 11: Dungeon Arena</title>
+  <link rel="stylesheet" href="../syllabus_files/schedule.css">
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <style>
+:root {
+  --ink: #1f2937;
+  --muted: #5f6b7a;
+  --surface: #ffffff;
+  --page: #f4f6fb;
+  --border: #d8deea;
+  --header: #1c1515;
+  --heading: #111111;
+  --accent: #2166d1;
+  --accent-soft: #edf4ff;
+  --success: #18794e;
+  --success-soft: #ecf8f2;
+  --optional: #9a6700;
+  --optional-soft: #fff8e6;
+  --shadow: 0 12px 30px rgba(34, 42, 66, 0.08);
 }
 
-a.resource-ref:hover {
-  background-color: #555;
-  color: #ffffff;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  min-height: 3.75rem;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: var(--header);
+  box-shadow: 0 4px 16px rgba(30, 17, 48, 0.2);
+}
+
+#header a {
+  margin: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+#header a:hover,
+#header a:focus-visible {
+  background: #222;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+#header div {
+  display: none;
+}
+
+#content {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6.75rem 0 4rem;
+}
+
+#main-content {
+  padding: 0;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  color: var(--heading);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h2,
+h3 {
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.65rem 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0.65rem 0;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+ul,
+ol {
+  margin: 0.65rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.3rem;
+  background: #eef1f6;
+  color: #9b1c4a;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  margin: 0.85rem 0 1rem;
+  overflow-x: auto;
 }
 
 pre code {
-  background-color: #f5f7fa;
-  color: #1a1a1a;
-  border-left: 4px solid #4a90e2;
-  padding: 0.75em;
   display: block;
-  border-radius: 6px;
-  font-size: 0.9em;
-  line-height: 1.4em;
+  min-width: max-content;
+  padding: 1rem 1.1rem;
+  border: 1px solid #ced8e8;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.6rem;
+  background: #f7f9fc;
+  color: #172033;
+  line-height: 1.5;
 }
-pre code:hover {
-  background-color: #dce1e8;
-  border-left-color: #28527a;
+
+.lab-section {
+  margin-bottom: 1.4rem;
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
+
+.intro-panel {
+  border-color: #cfd4dc;
+  background: #f8f9fb;
+}
+
 .lab-card {
-  margin: 0 0 1rem 0;
-  border-radius: 0.75rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  padding: 0.25rem 0.75rem 0.75rem;
+  margin: 1rem 0;
+  padding: 0 1rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  box-shadow: 0 5px 15px rgba(34, 42, 66, 0.05);
+}
+
+.setup-card {
+  background: var(--accent-soft);
+}
+
+.required-card {
+  border-left-color: var(--success);
+}
+
+.optional-card {
+  border-left-color: var(--optional);
+  background: #fffdf8;
 }
 
 .lab-card > summary {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  list-style: none;
+  gap: 0.6rem;
+  min-height: 3.4rem;
+  padding: 0.7rem 0;
+  color: var(--ink);
   cursor: pointer;
-  padding: 0.5rem 0;
-  font-weight: 600;
+  list-style: none;
 }
 
 .lab-card > summary::-webkit-details-marker {
-  display: none; /* hide default arrow in some browsers */
+  display: none;
 }
 
 .lab-card > summary::after {
   content: "›";
   margin-left: auto;
-  font-size: 1rem;
-  transition: transform 0.15s ease-out;
+  color: var(--muted);
+  font-size: 1.35rem;
+  transition: transform 0.18s ease;
 }
 
 .lab-card[open] > summary::after {
   transform: rotate(90deg);
 }
 
+.lab-card > summary h3 {
+  margin: 0;
+}
+
 .lab-label {
-  font-family: monospace;
-  opacity: 0.7;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .lab-title {
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 750;
 }
 
 .lab-tag {
-  font-size: 0.8rem;
-  padding: 0.1rem 0.4rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid #b7c8df;
   border-radius: 999px;
-  border: 1px solid #ccc;
   background: #fff;
+  color: #315a8d;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.required-card .lab-tag {
+  border-color: #a9d5c1;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.optional-card .lab-tag {
+  border-color: #ecd28b;
+  background: var(--optional-soft);
+  color: var(--optional);
 }
 
 .lab-body {
-  border-top: 1px solid #e0e0e0;
-  margin-top: 0.25rem;
-  padding-top: 0.5rem;
+  margin-top: 0.1rem;
+  padding: 0.45rem 0.25rem 0;
+  border-top: 1px solid var(--border);
 }
 
-details.hint {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background: #f9f9f9;
-  border-left: 3px solid #aaa;
+.notice {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.45rem;
+  background: var(--accent-soft);
+  color: #294869;
 }
 
-details.hint > summary {
+details.hint,
+.lab-body details:not(.lab-card) {
+  margin: 0.9rem 0;
+  padding: 0.75rem 0.9rem;
+  border-left: 4px solid #8c98aa;
+  border-radius: 0.45rem;
+  background: #f7f8fa;
+}
+
+details.hint > summary,
+.lab-body details:not(.lab-card) > summary {
+  color: #435064;
   cursor: pointer;
-  font-weight: 500;
-  color: #555;
+  font-weight: 700;
 }
+
+a.resource-ref {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  #header {
+    gap: 0.25rem 0.75rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  #header a {
+    font-size: 0.78rem;
+  }
+
+  #content {
+    width: min(100% - 1rem, 1080px);
+    padding-top: 8rem;
+  }
+
+  .lab-card > summary {
+    flex-wrap: wrap;
+  }
+
+  .lab-tag {
+    order: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-card > summary::after {
+    transition: none;
+  }
+}
+
+.method-table { overflow-x: auto; margin: 1rem 0; }
+.method-table table { width: 100%; border-collapse: collapse; text-align: left; }
+.method-table caption { text-align: left; font-weight: 700; padding-bottom: .5rem; }
+.method-table th, .method-table td { padding: .65rem; border: 1px solid var(--border); vertical-align: top; }
+.method-table th { background: var(--accent-soft); }
+.lab-body > h3:first-child { margin-top: .75rem; }
   </style>
 </head>
 <body>
-  <div id="header">
-    <a id="index_link" href="../index.html">CSSE 220</a>
-    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
-    <a id="schedule_link" href="../schedule.html">Schedule</a>
-      <a id="quiz_link" href="../design-principles.html">Design</a>
-    <a id="quiz_link" href="../labs.html">Labs</a>
-    <a id="quiz_link" href="../homework.html">Homework</a>
-    <a id="quiz_link" href="../exams.html">Exams</a>
-    <a id="quiz_link" href="../project.html">Final Project</a>
-    <a id="resources_link" href="../resources.html">Resources</a>
+<div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+      <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../resources.html">Resources</a>
     <div style="clear:both;"></div>
 </div>
 <div id="content">
-    <h1>Lab Assignment 11</h1>
-    
-<div id="main-content">
-         <div class="lab-section" id="lab">
-<p>
-In this lab, you will practice basic shapes using Java graphics.
-</p>
-<h3>⚡ Instructions</h3>
-<ul>
-    <li>
-    <strong>Ungraded work:</strong>
-    Complete the demo practice
-  </li>
-  <li>
-    <strong>Graded work:</strong>
-    Complete the required tasks in the provided starter zip project and submit your completed <code>.java</code> + UML files to Gradescope.
-  </li>
-</ul>
-  <details class="lab-card" id="lab-00">
-<summary><h3>Starter ZIP File</h3></summary>
-<ul>
-<li> <strong>Download starter zip file:</strong> <a href="./basicShapesCoding.zip">Download Link</a>.</li>
-<li>
-    This is <strong>not a full project</strong>. It contains two files:
-    <code>EmptyFrameViewer.java</code> and <code>MyComponent.java</code>.
-  </li>
-
-  <li>
-    The files are inside a package folder. Drag or import this folder into your project’s <code>src</code> directory.
-  </li>
-
-  <li>
-    After importing, verify the package name appears correctly at the top of both files.
-  </li>
-
-  <li>
-    Run <code>EmptyFrameViewer</code> to launch the window.
-  </li>
-  <li>
-    <strong>What to submit on Gradescope:</strong>
-    Upload all completed <code>java</code> files and the screenshot output of your drawing.
-    The Gradescope link is available on Moodle.
-    This assignment requires a demo verification for grade.
-  </li>
-</ul>
-</details>
-<details class="lab-card" id="lab-01">
-        <summary>
-    <span class="lab-label">01.</span>
-    <span class="lab-title">Basic Java Graphics</span>
-    <span class="lab-tag">Practice</span>
-  </summary>
-<div class="lab-body">
-<ul>
-  <li>
-    Follow along and code: <a href="../graphics/swingIntro.html">Swing Graphics Introduction</a>.
-  </li>
-
-  <li>
-    You will recreate shapes and transformations demonstrated in class.
-  </li>
-
-  <li>
-    Do not rush ahead. Focus on understanding how each step works.
-  </li>
-
-  <li>
-    We will use this as a foundation before moving to Part 2.
-  </li>
-
-  </div>
-  </details>
-
-        <details class="lab-card" id="lab-02">
-        <summary>
-    <span class="lab-label">02.</span>
-    <span class="lab-title">Shapes</span>
-    <span class="lab-tag">Submission</span>
-  </summary>
-<div class="lab-body">
-          <h2>Graphics with Swing</h2>
-          <p>Use two starter files: <code>EmptyFrameViewer.java</code> and <code>MyComponent.java</code>.
-          <!-- <p>Import as archived zip <a href="./basicShapesCoding.zip">Download Link</a> - it is a package folder so you should be able to import into your src folder (inside your current project)</p> -->
-  <details class="lab-card">
-  <summary>Getting Started</summary>
-  <p><strong>Step 1: Run the starter</strong></p>
-  <ol>
-    <li>Open <code>EmptyFrameViewer.java</code>.</li>
-    <li>Set a title for your <code>JFrame</code> (e.g., “Lab 10 Drawing”).</li>
-    <li>Create an instance of <code>MyComponent</code> and add it to the frame.</li>
-    <li>Run the program -> you should see an empty window. ✅</li>
-  </ol>
-</details>
-<details class="lab-card">
-  <summary>Step 2: Add drawing tasks</summary>
-
-  <p>All drawing happens inside <code>paintComponent</code> of <code>MyComponent</code>.  
-  For each task, you will complete the provided methods (e.g., <code>drawSimpleSquare</code>). The methods have been alreday called from <code>paintComponent</code>.</p>
-
-
-
-  <section id="drawSimpleSquare">
-    <h2>1. Method: <code>drawSimpleSquare(Graphics2D g2d)</code></h2>
-    <h3>Objective</h3>
-    <p>Draw a simple square. The square should be positioned at (10, 10) with a width and height of 10 pixels.</p>
-    <h3>Steps</h3>
-    <ol>
-      <li>Create a <code>Rectangle</code> object using the given coordinates and dimensions.</li>
-      <li>Use the <code>g2d.draw()</code> method to draw the square.</li>
-    </ol>
-    <h3>Hints</h3>
-    <ul>
-      <li>The <code>Rectangle</code> class (from <code>java.awt</code>) can be used to represent the square.</li>
-      <li>Remember that a square is just a rectangle with equal width and height.</li>
-    </ul>
-    <pre>
-// TODO: Implement drawSimpleSquare
-private void drawSimpleSquare(Graphics2D g2d) {
-    // Use constants: sqLocX = 10, sqLocY = 10, sqWidth = 10, sqHeight = 10
-    // Create a Rectangle and use g2d.draw(rectangle);
-}
-    </pre>
-  </section>
-  
-  <section id="drawManyRectangles">
-    <h2>2. Method: <code>drawManyRectangles(Graphics2D g2d)</code></h2>
-    <h3>Objective</h3>
-    <p>Draw a series of nested rectangles (squares) that increase in size. They should start at (25, 25) with an initial size of 10, and increase by 10 pixels each time.</p>
-    <h3>Steps</h3>
-    <ol>
-      <li>Obtain the component's width (<code>this.getWidth()</code>). Then subtract the width of rectangle to obtain the limit. This will be the "length" you will use in your for loop </li>
-      <li>Use a <code>for</code> loop starting at 10 and increment the size by 10 until a limit is reached</li>
-      <li>In each iteration, create and draw a new <code>Rectangle</code> at (25, 25) with the current size</li>
-      <li>Draw each rectangle inside the for loop</li>
-      <li>Test the application - squares should fill up the frame regardless even if you stretch it</li>
-    </ol>
-    <h3>Hints</h3>
-    <ul>
-      <li>Keep the top-left corner constant at (25, 25)</li>
-      <li>The loop's variable represents both the width and height for each square</li>
-    </ul>
-    <pre>
-// TODO: Implement drawManyRectangles
-private void drawManyRectangles(Graphics2D g2d) {
-  
-    // Use a loop to create a new rectangle and to increment its size
-    // Note square is a rectangle with the same height and width
-}
-    </pre>
-  </section>
-  
-  <section id="drawShapesLines">
-    <h2>3. Method: <code>drawShapesLines(Graphics2D g2d)</code></h2>
-    <h3>Objective</h3>
-    <p>Draw a circle and two lines starting from the circle's center. One line should be diagonal (from northwest to southeast) and the other horizontal.</p>
-    <h3>Steps</h3>
-    <ol>
-      <li>Use <code>Ellipse2D.Double</code> to create a circle.</li>
+  <h1>Lab Assignment 11</h1>
+  <div id="main-content">
+ <div class="lab-section treasure-panel" id="part-1">
+      <h2>Part 1: Java Treasure Hunt</h2>
+      <p>
+        Before beginning Lab11, complete the assigned expeditions in the
+        <a href="https://csse220-java-treasure-hunt.ai.studio" target="_blank" rel="noopener">Java Treasure Hunt</a>.
+      </p>
       <ul>
-  <li><code>Ellipse2D.Double</code> takes four parameters: 
-    <code>x</code> (left), <code>y</code> (top), <code>width</code>, <code>height</code>.</li>
-  <li>Example: <code>(10, 400, 30, 30)</code> → a circle at position (10,400) with 30 pixels width and height.</li>
- 
-</ul>
-      <li>Draw circle - if you do not see it it is because you need to stretch your frame window (or adjust the height of the frame): final int frameHeight = 600;</li>
-      <li>Calculate the center of the circle</li>
-      <li>Create a diagonal line that starts at the center and extends 40 pixels down and to the right.</li>
-      <li>Create a horizontal line from the center extending 40 pixels to the right</li>
-      <li>Draw both lines using <code>g2d.draw()</code></li>
-    </ol>
-   <h3>🎨 Example Output</h3>
-<p>Your final application should look similar to this screenshot (exact positions/colors may vary slightly):</p>
+        <li>Obtain the <strong>completion PDF</strong> as proof and request your collectable card.</li>
+        <li>Complete this warm-up before moving to Part 2.</li>
+      </ul>
+    </div>
+    <div class="lab-section assignment-panel" id="part-2">
+      <h2>Part 2: Abstract Classes: Dungeon Arena</h2>
+      <p>You are playing a working console game: your hero battles a Goblin, then a Skeleton, in the Dungeon Arena. Goblin and Skeleton repeat the same fields and methods. An abstract <code>Enemy</code> class is already started for you, finish it, refactor Goblin and Skeleton to use it, and add one enemy of your own.</p>
+      <h3>Learning Goals</h3>
+      <ul>
+        <li>Recognize duplicated state and behavior across related classes.</li>
+        <li>Inherit shared fields and methods from a superclass using <code>extends</code>.</li>
+        <li>Initialize shared state with <code>super(...)</code>.</li>
+        <li>Declare an abstract method and override it with <code>@Override</code>.</li>
+        <li>Add a small <code>Scanner</code>-based input feature.</li>
+      </ul>
+      <p class="notice"><strong>Time Completion Estimates:</strong> Part 2 is designed to take about 40 minutes once your project is open and running.</p>
+    </div>
+<details class="lab-card setup-card" id="lab-01" open>
+  <summary>
+    <span class="lab-label">Setup</span>
+    <span class="lab-title">Start here</span>
+    <span class="lab-tag">Setup</span>
+  </summary>
+  <div class="lab-body">
+<ol>
+  <li><strong>Download and extract</strong> <a href="Lab11.zip">Lab11.zip</a>.</li>
+  <li>In IntelliJ, choose <strong>Open</strong> and select the <code>Lab11</code> folder containing <code>pom.xml</code>.</li>
+  <li>Select <strong>JDK 21</strong> and let Maven load.</li>
+  <li>Run <code>lab.MainApp</code>. Choose <code>1</code> to attack, <code>2</code> to defend, or <code>3</code> to run on each turn.</li>
+  <li>Run <code>lab.RunAllTests</code> under <code>src/test/java</code>.</li>
+</ol>
+<p class="notice"><strong>Check:</strong> the game plays all the way through a Goblin and a Skeleton battle, and all seven tests pass.</p>
+<details class="hint"><summary>Opening the project</summary>
+<p>Open the extracted folder directly. Do not create a new project. IntelliJ's bundled Maven is enough.</p></details>
 
-<div class="example-image">
-  <img src="./sample.png" alt="Expected drawing window with shapes" style="max-width:600px; border:1px solid #ccc; padding:4px; background:#fff;">
+<h3>Inspect the Starting Design</h3>
+<p>Open <code>Goblin.java</code> and <code>Skeleton.java</code>. Compare them with the UML below.</p>
+<p>Your project also already includes <code>Enemy.java</code>: an abstract class with the shared <code>name</code>/<code>health</code> fields, a constructor, and <code>getName</code>/<code>getHealth</code>/<code>isAlive</code>/<code>takeDamage</code> already written. It isn't connected to <code>Goblin</code> or <code>Skeleton</code> yet; that is your job in Step 1.</p>
+<img src="lab11-starter-design.svg" alt="Starting UML: Goblin and Skeleton each declare private name and health fields and public getName, getHealth, isAlive, takeDamage, and attack methods. MainApp depends on both classes." style="display:block;width:100%;max-width:760px;height:auto;margin:1rem auto;">
+<details class="hint">
+  <summary>View PlantUML source</summary>
+  <pre><code>@startuml
+skinparam classAttributeIconSize 0
+class Goblin {
+  - name : String
+  - health : int
+  + getName() : String
+  + getHealth() : int
+  + isAlive() : boolean
+  + takeDamage(amount : int) : void
+  + attack(player : Player) : String
+}
+class Skeleton {
+  - name : String
+  - health : int
+  + getName() : String
+  + getHealth() : int
+  + isAlive() : boolean
+  + takeDamage(amount : int) : void
+  + attack(player : Player) : String
+}
+class MainApp {
+  {static} + main(args : String[]) : void
+  {static} + fightGoblin(player : Player, goblin : Goblin, scanner : Scanner) : void
+  {static} + fightSkeleton(player : Player, skeleton : Skeleton, scanner : Scanner) : void
+}
+MainApp ..&gt; Goblin
+MainApp ..&gt; Skeleton
+@enduml
+</code></pre>
+</details>
+<p><strong>Write in <code>reflections.txt</code>:</strong></p>
+<ul><li>Which fields and methods repeat between <code>Goblin</code> and <code>Skeleton</code>?</li><li>Why does <code>Enemy</code> make sense as a superclass for both? Consider what they represent and what data and behavior they share.</li></ul></div>
+</details>
+<details class="lab-card required-card" id="lab-02" open>
+  <summary>
+    <span class="lab-label">Step 1.</span>
+    <span class="lab-title">Finish Enemy; refactor Goblin and Skeleton</span>
+    <span class="lab-tag">Required</span>
+  </summary>
+  <div class="lab-body">
+<h3>A. Declare the abstract method</h3>
+<p>Open <code>Enemy.java</code>. It already has the shared <code>name</code>/<code>health</code> fields, a constructor, and <code>getName</code>/<code>getHealth</code>/<code>isAlive</code>/<code>takeDamage</code>. It is missing one thing:</p>
+<ol>
+  <li>Declare <code>public abstract String attack(Player player);</code> in <code>Enemy</code>, do not give it a body there.</li>
+</ol>
+<h3>B. Refactor Goblin and Skeleton</h3>
+<ol>
+  <li>Make <code>Goblin</code> and <code>Skeleton</code> directly <code>extend Enemy</code>.</li>
+  <li>Give each a constructor that calls <code>super(name, health)</code> with its fixed name and starting health (Goblin: <code>"Goblin"</code>, 20; Skeleton: <code>"Skeleton"</code>, 25).</li>
+  <li>Remove their repeated fields and the four shared methods, inherit them from <code>Enemy</code> instead.</li>
+  <li>Keep each class's own <code>attack(Player player)</code> method, but mark it <code>@Override</code>. This is how each enemy keeps its own damage amount and its own text.</li>
+</ol>
+<p class="notice"><strong>Check:</strong> run <code>MainApp</code> and <code>RunAllTests</code>. The game plays the same way and all tests pass.</p>
+<details class="hint"><summary>Keep these design rules</summary>
+<ul>
+  <li>Store instance fields only in <code>Enemy</code> and keep them private.</li>
+  <li>Use <code>Enemy</code>'s getters when subclass behavior needs that data.</li>
+  <li>Keep the existing public method signatures.</li>
+  <li>Constructors are not inherited, each subclass must declare its own and call <code>super(...)</code>.</li>
+</ul></details>
 </div>
-    <h3>Hints</h3>
-    <ul>
-      <li>Use the <code>Line2D.Double</code> class to define lines.</li>
-      <li>Calculate the center coordinates by adding half the width/height to the starting coordinates</li>
-      <pre>
-      CenterX = X + (Width / 2);
-      CenterY = Y + (Height / 2);
-    </pre>
-    </ul>
-    <pre>
-// TODO: Implement drawShapesLines
-private void drawShapesLines(Graphics2D g2d) {
-    // Create an Ellipse2D.Double for the circle and calculate its center
-    // Define two lines: one diagonal and one horizontal, then draw them
-}
-    </pre>
-  </section>
-  
-  <section id="drawSomeText">
-    <h2>4. Method: <code>drawSomeText(Graphics2D g2d)</code></h2>
-    <h3>Objective</h3>
-    <p>Display the text "Some text" at a specified location, using a custom font, and then reset the font to the original.</p>
-    <h3>Steps</h3>
-    <ol>
-      <li>Store the current font from the <code>Graphics2D</code> context using <code>g2d.getFont()</code>. Remember Font is a class</li>
-      <li>Set a new font (e.g., "Times New Roman", plain, size 36) using <code>g2d.setFont()</code>
-      <pre>g2d.setFont(new Font("Times New Roman", Font.PLAIN, 36));</pre></li>
-      <li>Draw the text at coordinates (80, 440) using <code>g2d.drawString()</code>.</li>
-      <li>Reset the font back to the original font.</li>
-    </ol>
-    <h3>Hints</h3>
-    <ul>
-      <li>Use the <code>Font</code> class to create a new font.</li>
-      <li>Restoring the original font is important for subsequent drawings.</li>
-    </ul>
-    <pre>
-// TODO: Implement drawSomeText
-private void drawSomeText(Graphics2D g2d) {
-    // Save the current font, set a new font, draw the text, then reset the font
-}
-    </pre>
-  </section>
-  
-  <section id="drawUsingColors">
-    <h2>5. Method: <code>drawUsingColors(Graphics2D g2d)</code></h2>
-    <h3>Objective</h3>
-    <p>Fill the entire component with a semi-transparent background color.</p>
-    <h3>Steps</h3>
-    <ol>
-      <li>Retrieve the component's width and height using <code>this.getWidth()</code> and <code>this.getHeight()</code>.</li>
-      <li>Save the current drawing color using <code>g2d.getColor()</code></li>
-      <li>Set a new background color (for example, a semi-transparent purple) <br>
-      Note: In the constructor call <code>new Color(128, 0, 128, 128)</code>, the fourth parameter represents the alpha value, which controls the transparency of the color. The alpha value ranges from 0 (completely transparent) to 255 (completely opaque). Here, an alpha of 128 means the color is approximately 50% transparent, 
-      resulting in a semi-transparent purple </li>
-      <pre>Color backgroundColor = new Color(128, 0, 128, 128);
- g2d.setColor(backgroundColor);</pre>
-      <li>Create a <code>Rectangle</code> covering the entire component and fill it using <code>g2d.fill()</code></li>
-      <li>Restore the original color.</li>
-    </ol>
-    <h3>Hints</h3>
-    <ul>
-      <li>Use the <code>Color</code> constructor that accepts RGBA values.</li>
-      <li>Ensure you fill the entire area by using the component dimensions.</li>
-    </ul>
-    <pre>
-// TODO: Implement drawUsingColors
-private void drawUsingColors(Graphics2D g2d) {
-    // Fill the component background with a semi-transparent color and restore the original color
-}
-    </pre>
-  </section>
-  
-  
-  
-  <section id="drawRoundedRect">
-    <h2>6. Method: <code>drawRoundedRect(Graphics2D g2d)</code></h2>
-    <h3>Objective</h3>
-    <p>Draw a filled rounded rectangle with a yellow color</p>
-    <h3>Steps</h3>
-    <ol>
-      <li>Define the position (10, 500), dimensions (80 x 40), and corner arc dimensions (15 x 15)</li>
-      <li>Save the current drawing color</li>
-      <li>Create a <code>RoundRectangle2D.Double</code> with the specified parameters</li>
-
-      <li>Set the color to yellow (Color.YELLOW) and fill the rectangle using <code>g2d.fill()</code></li>
-      <li>Restore the original color</li>
-    </ol>
-    <h3>Hints</h3>
-    <ul>
-      <li>The <code>RoundRectangle2D.Double</code> class is used for drawing rectangles with rounded corners</li>
-    </ul>
-    <pre>
-// TODO: Implement drawRoundedRect
-private void drawRoundedRect(Graphics2D g2d) {
-    // Create a rounded rectangle and fill it with yellow color, then restore the original color
-}
-    </pre>
-  </section>
-  
-  <section id="paintComponent">
-    <h2>7. Method: <code>paintComponent(Graphics g)</code></h2>
-    <h3>Objective</h3>
-    <p>Override the <code>paintComponent</code> method to combine all your drawing methods and render your custom component.</p>
-    <h3>Steps</h3>
-    <ol>
-      <li>Call <code>super.paintComponent(g)</code> to ensure proper rendering.</li>
-      <li>Cast the <code>Graphics</code> object to <code>Graphics2D</code>.</li>
-      <li>Invoke each of your drawing methods in the desired order.</li>
-    </ol>
-    <h3>Hints</h3>
-    <ul>
-      <li>This method is automatically called by the Swing framework when the component needs to be repainted.</li>
-      <li>Make sure all helper methods are correctly implemented before integrating them here.</li>
-    </ul>
-    <pre>
-// TODO: Implement paintComponent
-@Override
-protected void paintComponent(Graphics g) {
-    // Always call super.paintComponent(g) first
-    // Cast g to Graphics2D and call your drawing methods
-}
-    </pre>
-  </section>
-  
-  <section id="conclusion">
-    <h2>Conclusion</h2>
-    <p>By completing this lab, you'll gain hands-on experience with Java Swing graphics. Follow each instruction carefully and experiment with different values to see how they affect your drawing. Once you have implemented all methods, run your application using the <code>emptyFrameViewer</code> template to view your custom graphics!</p>
-    <p class="note">Note: Do not compare your solution with any provided answers until you have attempted the implementation on your own.</p>
-  </section>
-  </details>
-      
-        </div>
-        </div>
-
-
-
-        </body>
-        </html>
+</details>
+<details class="lab-card required-card" id="lab-03" open>
+  <summary>
+    <span class="lab-label">Step 2.</span>
+    <span class="lab-title">Add a new enemy</span>
+    <span class="lab-tag">Required</span>
+  </summary>
+  <div class="lab-body">
+<p>Pick one: <strong>Dragon</strong>, <strong>Zombie</strong>, or <strong>Ice Golem</strong> (or propose your own).</p>
+<ol>
+  <li>Create a new class that <code>extends Enemy</code> with its own name, starting health, and a fixed damage amount.</li>
+  <li>Override <code>attack(Player player)</code> with its own text, using <code>@Override</code>.</li>
+  <li>In <code>MainApp</code>, write a new battle method for it, following the same pattern as <code>fightGoblin</code> and <code>fightSkeleton</code> (for example, <code>fightDragon(Player player, Dragon dragon, Scanner scanner)</code>).</li>
+  <li>Call your new method from <code>main</code> so the hero fights your enemy too.</li>
+</ol>
+<p class="notice"><strong>Check:</strong> run <code>MainApp</code>. Your new enemy battle plays out the same way the Goblin and Skeleton battles do.</p>
+</div>
+</details>
+<details class="lab-card required-card" id="lab-04" open>
+  <summary>
+    <span class="lab-label">Step 3.</span>
+    <span class="lab-title">Add a Scanner feature; explain</span>
+    <span class="lab-tag">Required</span>
+  </summary>
+  <div class="lab-body">
+<h3>A. Ask for the hero's name</h3>
+<p><code>Player player = new Player("Hero", 30);</code> hardcodes the hero's name. Replace it with a Scanner prompt.</p>
+<ol>
+  <li>At the start of <code>main</code>, print a prompt such as <code>"Enter your hero's name:"</code>.</li>
+  <li>Read a line with <code>scanner.nextLine()</code> and use it as the name passed to <code>new Player(...)</code>.</li>
+  <li>Run <code>MainApp</code> again and confirm your name appears in the battle messages.</li>
+</ol>
+<h3>B. Explain the design</h3>
+<p><strong>Answer in <code>reflections.txt</code>:</strong></p>
+<ul>
+  <li>Why is <code>Enemy</code> abstract rather than a regular class?</li>
+  <li>Which methods are shared, and which must be overridden?</li>
+  <li>How does this design reduce duplicated code compared to the starter?</li>
+</ul>
+<h3>C. Update your UML</h3>
+<ol>
+  <li>Generate or update the diagram from your finished code. Use <a href="../uml-tools.html#generate">UML Tools &amp; Instructions</a>.</li>
+  <li>Show shared fields once, in <code>Enemy</code>.</li>
+  <li>Point the hollow-triangle inheritance arrows toward <code>Enemy</code> for all three enemy classes.</li>
+  <li>Export your final diagram as a PNG or PDF.</li>
+</ol>
+<details class="hint"><summary>UML reminders</summary>
+<p>Constructors may be omitted. If rendering is delayed, submit your <code>.puml</code> file instead. Make sure your diagram shows the relationships between classes. The <code>.puml</code> source is not required when you submit a rendered diagram.</p></details>
+</div>
+</details>
+<details class="lab-card setup-card" id="lab-submit" open>
+  <summary>
+    <span class="lab-label">Submit</span>
+    <span class="lab-title">What to Submit</span>
+    <span class="lab-tag">Required</span>
+  </summary>
+  <div class="lab-body">
+<p>All supplied tests should pass.</p>
+<p>Fill in <code>MainApp.STUDENT_NAME</code> and <code>HELP_CITATION</code> (write None if appropriate). Follow the <a href="../syllabus.html">syllabus</a>'s AI Learning Log and help citation policy.</p>
+<p>Upload these files to the <strong>Lab 11</strong> assignment on Gradescope. The link is available on Moodle.</p>
+<ul>
+  <li><code>Enemy.java</code></li>
+  <li><code>Goblin.java</code></li>
+  <li><code>Skeleton.java</code></li>
+  <li>Your new enemy's <code>.java</code> file</li>
+  <li><code>Player.java</code></li>
+  <li><code>MainApp.java</code></li>
+  <li><code>EnemyBehaviorTest.java</code></li>
+  <li><code>reflections.txt</code></li>
+  <li>Your final UML diagram (<code>.png</code> or <code>.pdf</code>). If rendering is delayed, a <code>.puml</code> file is an acceptable alternative.</li>
+</ul>
+<p>Keep the supplied package declarations and upload the Java files directly.</p></div>
+</details>
+    <div class="lab-section" id="lab-checklist">
+      <h2>Before You Submit</h2>
+      <ul>
+        <li><code>Goblin</code> and <code>Skeleton</code> directly extend the abstract <code>Enemy</code> class.</li>
+        <li>Shared instance fields and shared methods appear only in <code>Enemy</code>.</li>
+        <li>Both subclass constructors initialize inherited state with <code>super(...)</code>.</li>
+        <li><code>Enemy.attack(Player)</code> is abstract; every enemy overrides it with <code>@Override</code>.</li>
+        <li>Your new enemy has its own battle method, following the same pattern as <code>fightGoblin</code> and <code>fightSkeleton</code>.</li>
+        <li><code>MainApp</code> asks for the hero's name with <code>Scanner</code> and uses it in the battle.</li>
+        <li>All supplied tests pass; your final UML and reflections match your code.</li>
+      </ul>
+      <h3>Why this matters</h3>
+      <p>Classes with similar internals can share state and implementation through an abstract superclass. The superclass keeps the common work (the fields, the constructor, and methods like <code>getHealth()</code> and <code>takeDamage()</code>) in one place, and declares an abstract method for the one behavior every subclass must provide its own way. That is why adding a new enemy only meant writing one new class and one new method, instead of retyping the same fields and methods a third time.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
