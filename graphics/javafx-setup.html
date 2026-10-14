@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSE220 | JavaFX Setup in IntelliJ</title>
+  <link rel="stylesheet" href="../syllabus_files/schedule.css">
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <style>
+:root {
+  --ink: #1f2937;
+  --muted: #5f6b7a;
+  --surface: #ffffff;
+  --page: #f4f6fb;
+  --border: #d8deea;
+  --header: #1c1515;
+  --heading: #111111;
+  --accent: #2166d1;
+  --accent-soft: #edf4ff;
+  --success: #18794e;
+  --success-soft: #ecf8f2;
+  --optional: #9a6700;
+  --optional-soft: #fff8e6;
+  --shadow: 0 12px 30px rgba(34, 42, 66, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  min-height: 3.75rem;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: var(--header);
+  box-shadow: 0 4px 16px rgba(30, 17, 48, 0.2);
+}
+
+#header a {
+  margin: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+#header a:hover,
+#header a:focus-visible {
+  background: #222;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+#header div {
+  display: none;
+}
+
+#content {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6.75rem 0 4rem;
+}
+
+#main-content {
+  padding: 0;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  color: var(--heading);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h2,
+h3 {
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.65rem 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0.65rem 0;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+ul,
+ol {
+  margin: 0.65rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.3rem;
+  background: #eef1f6;
+  color: #9b1c4a;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  margin: 0.85rem 0 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  display: block;
+  min-width: max-content;
+  padding: 1rem 1.1rem;
+  border: 1px solid #ced8e8;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.6rem;
+  background: #f7f9fc;
+  color: #172033;
+  line-height: 1.5;
+}
+
+.lab-section {
+  margin-bottom: 1.4rem;
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.intro-panel {
+  border-color: #cfd4dc;
+  background: #f8f9fb;
+}
+
+.lab-card {
+  margin: 1rem 0;
+  padding: 0 1rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  box-shadow: 0 5px 15px rgba(34, 42, 66, 0.05);
+}
+
+.setup-card {
+  background: var(--accent-soft);
+}
+
+.required-card {
+  border-left-color: var(--success);
+}
+
+.optional-card {
+  border-left-color: var(--optional);
+  background: #fffdf8;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.4rem;
+  padding: 0.7rem 0;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 1.35rem;
+  transition: transform 0.18s ease;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-card > summary h3 {
+  margin: 0;
+}
+
+.lab-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lab-title {
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+
+.lab-tag {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid #b7c8df;
+  border-radius: 999px;
+  background: #fff;
+  color: #315a8d;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.required-card .lab-tag {
+  border-color: #a9d5c1;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.optional-card .lab-tag {
+  border-color: #ecd28b;
+  background: var(--optional-soft);
+  color: var(--optional);
+}
+
+.lab-body {
+  margin-top: 0.1rem;
+  padding: 0.45rem 0.25rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.notice {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.45rem;
+  background: var(--accent-soft);
+  color: #294869;
+}
+
+details.hint,
+.lab-body details:not(.lab-card) {
+  margin: 0.9rem 0;
+  padding: 0.75rem 0.9rem;
+  border-left: 4px solid #8c98aa;
+  border-radius: 0.45rem;
+  background: #f7f8fa;
+}
+
+details.hint > summary,
+.lab-body details:not(.lab-card) > summary {
+  color: #435064;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+a.resource-ref {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  #header {
+    gap: 0.25rem 0.75rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  #header a {
+    font-size: 0.78rem;
+  }
+
+  #content {
+    width: min(100% - 1rem, 1080px);
+    padding-top: 8rem;
+  }
+
+  .lab-card > summary {
+    flex-wrap: wrap;
+  }
+
+  .lab-tag {
+    order: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-card > summary::after {
+    transition: none;
+  }
+}
+
+.method-table { overflow-x: auto; margin: 1rem 0; }
+.method-table table { width: 100%; border-collapse: collapse; text-align: left; }
+.method-table caption { text-align: left; font-weight: 700; padding-bottom: .5rem; }
+.method-table th, .method-table td { padding: .65rem; border: 1px solid var(--border); vertical-align: top; }
+.method-table th { background: var(--accent-soft); }
+.lab-body > h3:first-child { margin-top: .75rem; }
+  </style>
+</head>
+<body>
+<div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+      <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+
+  <div id="main-content"><h1>JavaFX Setup in IntelliJ</h1>
+<section class="lab-section"><h2>1. Download and open a project</h2><ol><li>Choose a demo from the <a href="index.html">Graphics Hub</a> or download your assignment starter.</li><li>Extract the ZIP completely. In IntelliJ choose <strong>Open</strong> and select the extracted folder containing <code>pom.xml</code>. Do not create a new project.</li><li>Trust the project if prompted. Choose <strong>JDK 21</strong> as Project SDK and allow Maven to load the dependencies. The first import needs internet access.</li></ol><p>IntelliJ includes Maven. The supplied POM downloads JavaFX, including native libraries for your operating system; no separate JavaFX SDK or Scene Builder installation is needed.</p></section>
+<section class="lab-section"><h2>2. Find Maven</h2><ol><li>Choose <strong>View → Tool Windows → Maven</strong>.</li><li>If Maven is missing, right-click <code>pom.xml</code> in the Project panel and choose <strong>Add as Maven Project</strong>. Wait for import.</li><li>Use Settings → Build, Execution, Deployment → Build Tools → Maven: select <strong>Bundled Maven</strong>. Under Maven → Runner, set JRE to <strong>Project JDK (21)</strong>.</li></ol><p>You can also press Shift twice, search for Maven, and choose its tool window.</p></section>
+<section class="lab-section"><h2>3. Run the application</h2><ol><li>In the Maven tool window choose <strong>Execute Maven Goal</strong>.</li><li>Select the Maven root for the project you opened.</li><li>Enter <code>javafx:run</code> and run it. Do not include <code>mvn</code> in IntelliJ's goal field.</li><li>Wait for the window to open. Close the window to end the run.</li></ol><p><code>clean javafx:run</code> also runs the project after deleting previous build output. For normal editing, <code>javafx:run</code> compiles changed source files before launching.</p>
+<p class="notice"><strong>OneDrive note:</strong> sometimes <code>clean javafx:run</code> fails when OneDrive or another process locks files in the project's build folder. If the error says Maven cannot delete build output, close the running app and use <strong><code>javafx:run</code></strong> instead. If problems continue, keep a working copy in a local folder outside OneDrive and reopen that copy. Skipping clean does not fix unrelated compile errors.</p></section>
+<section class="lab-section"><h2>4. Use the green Run button</h2><ol><li>Choose <strong>Run → Edit Configurations → + → Maven</strong>.</li><li>Name it, for example, <strong>Run JavaFX Demo 1</strong>.</li><li>Set Working directory to the extracted project folder containing <code>pom.xml</code>.</li><li>Set Command line to <code>javafx:run</code>. Apply the configuration.</li><li>Select that configuration in the top toolbar, then click its green Run arrow.</li></ol><p>Use this saved Maven configuration. The arrow beside the Java <code>main()</code> method may bypass the JavaFX launch settings and report missing runtime components.</p></section>
+<section class="lab-section"><h2>5. Switch demos or classes</h2><p>Each demo has its own folder and POM. Stop the current app, open the next demo folder, and run the Maven configuration whose Working directory points to that folder.</p><p>If you create a different Application class in the same project, change the JavaFX plugin's <code>mainClass</code> in <code>pom.xml</code> to its package and class name, such as <code>demo.MyDemo</code>. Do not add <code>.java</code>. Another Maven configuration using the same POM still launches the class named there.</p></section>
+<section class="lab-section"><h2>Quick troubleshooting</h2><ul><li><strong>Imports are red:</strong> reload Maven and check internet access.</li><li><strong>Release 21 unsupported:</strong> check both Project SDK and Maven Runner JDK.</li><li><strong>Old demo opens:</strong> check Working directory and the POM's mainClass.</li><li><strong>JavaFX runtime components missing:</strong> use the saved Maven run configuration.</li><li><strong>Window already running:</strong> close it or stop the previous run before relaunching.</li></ul><p>With Maven installed in a terminal, run <code>mvn javafx:run</code> from the project folder. IntelliJ's bundled Maven does not automatically make <code>mvn</code> available in your terminal.</p><p><a href="index.html">Graphics Hub</a> · <a href="https://openjfx.io/openjfx-docs/maven">Official OpenJFX Maven guide</a> · <a href="https://www.jetbrains.com/help/idea/work-with-maven-goals.html">IntelliJ Maven goals</a></p></section>
+
+</div></div></body></html>

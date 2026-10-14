@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSE220 | JavaFX Architecture and Events</title>
+  <link rel="stylesheet" href="../syllabus_files/schedule.css">
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <style>
+:root {
+  --ink: #1f2937;
+  --muted: #5f6b7a;
+  --surface: #ffffff;
+  --page: #f4f6fb;
+  --border: #d8deea;
+  --header: #1c1515;
+  --heading: #111111;
+  --accent: #2166d1;
+  --accent-soft: #edf4ff;
+  --success: #18794e;
+  --success-soft: #ecf8f2;
+  --optional: #9a6700;
+  --optional-soft: #fff8e6;
+  --shadow: 0 12px 30px rgba(34, 42, 66, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  min-height: 3.75rem;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: var(--header);
+  box-shadow: 0 4px 16px rgba(30, 17, 48, 0.2);
+}
+
+#header a {
+  margin: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+#header a:hover,
+#header a:focus-visible {
+  background: #222;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+#header div {
+  display: none;
+}
+
+#content {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6.75rem 0 4rem;
+}
+
+#main-content {
+  padding: 0;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  color: var(--heading);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h2,
+h3 {
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.65rem 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0.65rem 0;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+ul,
+ol {
+  margin: 0.65rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.3rem;
+  background: #eef1f6;
+  color: #9b1c4a;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  margin: 0.85rem 0 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  display: block;
+  min-width: max-content;
+  padding: 1rem 1.1rem;
+  border: 1px solid #ced8e8;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.6rem;
+  background: #f7f9fc;
+  color: #172033;
+  line-height: 1.5;
+}
+
+.lab-section {
+  margin-bottom: 1.4rem;
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.intro-panel {
+  border-color: #cfd4dc;
+  background: #f8f9fb;
+}
+
+.lab-card {
+  margin: 1rem 0;
+  padding: 0 1rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  box-shadow: 0 5px 15px rgba(34, 42, 66, 0.05);
+}
+
+.setup-card {
+  background: var(--accent-soft);
+}
+
+.required-card {
+  border-left-color: var(--success);
+}
+
+.optional-card {
+  border-left-color: var(--optional);
+  background: #fffdf8;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.4rem;
+  padding: 0.7rem 0;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 1.35rem;
+  transition: transform 0.18s ease;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-card > summary h3 {
+  margin: 0;
+}
+
+.lab-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lab-title {
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+
+.lab-tag {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid #b7c8df;
+  border-radius: 999px;
+  background: #fff;
+  color: #315a8d;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.required-card .lab-tag {
+  border-color: #a9d5c1;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.optional-card .lab-tag {
+  border-color: #ecd28b;
+  background: var(--optional-soft);
+  color: var(--optional);
+}
+
+.lab-body {
+  margin-top: 0.1rem;
+  padding: 0.45rem 0.25rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.notice {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.45rem;
+  background: var(--accent-soft);
+  color: #294869;
+}
+
+details.hint,
+.lab-body details:not(.lab-card) {
+  margin: 0.9rem 0;
+  padding: 0.75rem 0.9rem;
+  border-left: 4px solid #8c98aa;
+  border-radius: 0.45rem;
+  background: #f7f8fa;
+}
+
+details.hint > summary,
+.lab-body details:not(.lab-card) > summary {
+  color: #435064;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+a.resource-ref {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  #header {
+    gap: 0.25rem 0.75rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  #header a {
+    font-size: 0.78rem;
+  }
+
+  #content {
+    width: min(100% - 1rem, 1080px);
+    padding-top: 8rem;
+  }
+
+  .lab-card > summary {
+    flex-wrap: wrap;
+  }
+
+  .lab-tag {
+    order: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-card > summary::after {
+    transition: none;
+  }
+}
+
+.method-table { overflow-x: auto; margin: 1rem 0; }
+.method-table table { width: 100%; border-collapse: collapse; text-align: left; }
+.method-table caption { text-align: left; font-weight: 700; padding-bottom: .5rem; }
+.method-table th, .method-table td { padding: .65rem; border: 1px solid var(--border); vertical-align: top; }
+.method-table th { background: var(--accent-soft); }
+.lab-body > h3:first-child { margin-top: .75rem; }
+  </style>
+</head>
+<body>
+<div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+      <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+
+  <div id="main-content"><h1>JavaFX Architecture and Events</h1>
+<section class="lab-section"><h2>The objects behind a window</h2><div class="method-table"><table><thead><tr><th>Object</th><th>Responsibility</th></tr></thead><tbody><tr><td>Application</td><td>Your entry point. JavaFX calls start(Stage) to build the UI.</td></tr><tr><td>Stage</td><td>The top-level window, including its title.</td></tr><tr><td>Scene</td><td>The window's content, starting from one root node.</td></tr><tr><td>Node</td><td>An item in the scene graph: a control, shape, text, or container.</td></tr><tr><td>VBox / HBox</td><td>Arrange children vertically / horizontally.</td></tr><tr><td>Pane</td><td>Holds drawings at coordinates you choose.</td></tr><tr><td>Group</td><td>Combines nodes into one view you can move or transform.</td></tr></tbody></table></div>
+<pre><code>Stage
+  Scene
+    VBox (root)
+      Label
+      Button
+      Pane
+        Rectangle</code></pre><p>A node has one parent at a time. Create new nodes when you need another independent copy.</p></section>
+<section class="lab-section"><h2>Build, attach, show</h2><pre><code>Label message = new Label("Ready");
+Button button = new Button("Say hello");
+VBox root = new VBox(12, message, button);
+Scene scene = new Scene(root, 400, 300);
+stage.setTitle("My JavaFX app");
+stage.setScene(scene);
+stage.show();</code></pre><p>This belongs inside <code>start(Stage stage)</code> of your Application subclass. Use imports from <code>javafx.scene.control</code>, <code>javafx.scene.layout</code>, <code>javafx.scene</code>, and <code>javafx.stage</code>. Creating a node alone does not display it; attach it to the displayed scene graph.</p></section>
+<section class="lab-section"><h2>Events happen after setup</h2><pre><code>button.setOnAction(event -&gt; {
+    message.setText("Hello!");
+});</code></pre><p>This registers a callback. Its body runs when the button is activated, rather than while the handler is registered. JavaFX keeps processing events after <code>start()</code> returns. A button action can come from a mouse click or keyboard activation.</p><p>For a shape, <code>setOnMouseClicked(...)</code> responds specifically to mouse input. For example, a handler can call <code>rectangle.setFill(Color.GOLD)</code> to change a Rectangle's color.</p></section>
+<section class="lab-section"><h2>State and display are different</h2><p>An integer field can store the gold total across events. A handler updates that field and then refreshes the Label with <code>setText()</code>. Updating an ordinary field does not automatically change the displayed text.</p><p>Predict → activate a control → observe state and display → explain which handler ran. In larger applications, put domain rules in model objects and let handlers call those objects, then refresh the view.</p></section>
+<section class="lab-section"><h2>Application lifecycle</h2><p><code>main()</code> normally calls <code>launch(args)</code>. JavaFX creates the Application and calls <code>start(stage)</code>. Closing the last window normally ends the application. <code>start()</code> and UI event handlers run on the JavaFX Application Thread; avoid long-running loops in handlers because they block input and drawing.</p><p><a href="index.html">Graphics Hub</a> · <a href="javafx-shapes.html">Shapes, colors, text, and coordinates</a> · <a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/application/Application.html">Official Application API</a></p></section>
+
+</div></div></body></html>
