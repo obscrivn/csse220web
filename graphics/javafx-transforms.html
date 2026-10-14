@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSE220 | Manipulating JavaFX Objects</title>
+  <link rel="stylesheet" href="../syllabus_files/schedule.css">
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <style>
+:root {
+  --ink: #1f2937;
+  --muted: #5f6b7a;
+  --surface: #ffffff;
+  --page: #f4f6fb;
+  --border: #d8deea;
+  --header: #1c1515;
+  --heading: #111111;
+  --accent: #2166d1;
+  --accent-soft: #edf4ff;
+  --success: #18794e;
+  --success-soft: #ecf8f2;
+  --optional: #9a6700;
+  --optional-soft: #fff8e6;
+  --shadow: 0 12px 30px rgba(34, 42, 66, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  min-height: 3.75rem;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: var(--header);
+  box-shadow: 0 4px 16px rgba(30, 17, 48, 0.2);
+}
+
+#header a {
+  margin: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+#header a:hover,
+#header a:focus-visible {
+  background: #222;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+#header div {
+  display: none;
+}
+
+#content {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6.75rem 0 4rem;
+}
+
+#main-content {
+  padding: 0;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  color: var(--heading);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h2,
+h3 {
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.65rem 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0.65rem 0;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+ul,
+ol {
+  margin: 0.65rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.3rem;
+  background: #eef1f6;
+  color: #9b1c4a;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  margin: 0.85rem 0 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  display: block;
+  min-width: max-content;
+  padding: 1rem 1.1rem;
+  border: 1px solid #ced8e8;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.6rem;
+  background: #f7f9fc;
+  color: #172033;
+  line-height: 1.5;
+}
+
+.lab-section {
+  margin-bottom: 1.4rem;
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.intro-panel {
+  border-color: #cfd4dc;
+  background: #f8f9fb;
+}
+
+.lab-card {
+  margin: 1rem 0;
+  padding: 0 1rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  box-shadow: 0 5px 15px rgba(34, 42, 66, 0.05);
+}
+
+.setup-card {
+  background: var(--accent-soft);
+}
+
+.required-card {
+  border-left-color: var(--success);
+}
+
+.optional-card {
+  border-left-color: var(--optional);
+  background: #fffdf8;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.4rem;
+  padding: 0.7rem 0;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 1.35rem;
+  transition: transform 0.18s ease;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-card > summary h3 {
+  margin: 0;
+}
+
+.lab-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lab-title {
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+
+.lab-tag {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid #b7c8df;
+  border-radius: 999px;
+  background: #fff;
+  color: #315a8d;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.required-card .lab-tag {
+  border-color: #a9d5c1;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.optional-card .lab-tag {
+  border-color: #ecd28b;
+  background: var(--optional-soft);
+  color: var(--optional);
+}
+
+.lab-body {
+  margin-top: 0.1rem;
+  padding: 0.45rem 0.25rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.notice {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.45rem;
+  background: var(--accent-soft);
+  color: #294869;
+}
+
+details.hint,
+.lab-body details:not(.lab-card) {
+  margin: 0.9rem 0;
+  padding: 0.75rem 0.9rem;
+  border-left: 4px solid #8c98aa;
+  border-radius: 0.45rem;
+  background: #f7f8fa;
+}
+
+details.hint > summary,
+.lab-body details:not(.lab-card) > summary {
+  color: #435064;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+a.resource-ref {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  #header {
+    gap: 0.25rem 0.75rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  #header a {
+    font-size: 0.78rem;
+  }
+
+  #content {
+    width: min(100% - 1rem, 1080px);
+    padding-top: 8rem;
+  }
+
+  .lab-card > summary {
+    flex-wrap: wrap;
+  }
+
+  .lab-tag {
+    order: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-card > summary::after {
+    transition: none;
+  }
+}
+
+.method-table { overflow-x: auto; margin: 1rem 0; }
+.method-table table { width: 100%; border-collapse: collapse; text-align: left; }
+.method-table caption { text-align: left; font-weight: 700; padding-bottom: .5rem; }
+.method-table th, .method-table td { padding: .65rem; border: 1px solid var(--border); vertical-align: top; }
+.method-table th { background: var(--accent-soft); }
+.lab-body > h3:first-child { margin-top: .75rem; }
+  </style>
+</head>
+<body>
+<div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+      <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+
+  <div id="main-content"><h1>Manipulating JavaFX Objects</h1>
+<section class="lab-section" id="backgrounds"><h2>Backgrounds and layer order</h2><p>Add background rectangles to a drawing Pane first, then the object Groups, then foreground text. Later children normally draw over earlier children. A background added last can hide the whole drawing.</p><pre><code>Rectangle sky = new Rectangle(0, 0, 500, 220);
+sky.setFill(Color.LIGHTSKYBLUE);
+Rectangle ground = new Rectangle(0, 220, 500, 140);
+ground.setFill(Color.LIGHTGREEN);
+Pane drawing = new Pane(sky, ground);
+drawing.getChildren().add(objectView);</code></pre><p>These snippets assume the referenced objectView has already been created, and use javafx.scene classes. For a resizable solid panel background, a Region can instead use setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY))). The shape background approach matches the fixed-size homework drawing area.</p></section>
+<section class="lab-section" id="objects"><h2>One object, one local coordinate system</h2><p>Construct a meaningful object from several shapes inside one Group. Keep its shapes in local coordinates. A createView() method can return a newly built Group; store x, y, angle, and color in private fields initialized by the object's constructor. Each instance should use its own data.</p><pre><code>Group view = new Group(body, detail, marker);
+view.setTranslateX(x);
+view.setTranslateY(y);
+return view;</code></pre><p>Construct new body/detail/marker nodes on each call. Do not cache and return the same Group to several parents. Reuse your object-building code, not the individual Node instances. Use a loop to create multiple object instances at distinct positions.</p></section>
+<section class="lab-section" id="translation"><h2>Translation moves the whole object</h2><pre><code>view.setTranslateX(160);
+view.setTranslateY(120);
+// Later: move 20 units to the right.
+view.setTranslateX(view.getTranslateX() + 20);</code></pre><p>Translation changes where the Group appears without rewriting every child's x/y values. Positive x moves right; positive y moves down. Prefer a plain Pane for a coordinate drawing; a layout container may arrange children for you.</p></section>
+<section class="lab-section" id="rotation"><h2>Rotation needs an angle and a pivot</h2><pre><code>Rotate turn = new Rotate(30, 0, 0);
+view.getTransforms().add(turn);
+// Change this existing transform instead of adding another every click.
+turn.setAngle(turn.getAngle() + 15);</code></pre><p>Import javafx.scene.transform.Rotate. Angles are in degrees. Pivot (0,0) is in the Group's local coordinates; choose a meaningful point for your design. If its center is (30,10), use new Rotate(angle,30,10). Translate the Group to place that local origin in the drawing Pane. In ordinary screen coordinates a positive rotation appears clockwise.</p><p>setRotate(angle) instead uses the layout-bounds center as pivot. An explicit Rotate avoids a pivot that changes when you add more shapes. Transform order matters: rotate local geometry, then use the Group translation to position the object. Unlike old Swing drawing code, this does not modify a shared drawing context that must be restored.</p></section>
+<section class="lab-section" id="scale"><h2>Scale and reset</h2><p>setScaleX(1.5) and setScaleY(1.5) enlarge a node's view; the convenience scale properties use its bounds center. Required homework geometry uses original shape coordinates, so do not scale the fixed Part 1 tasks instead of supplying the specified sizes. For creative objects, consider how scale and rotation affect visibility.</p><pre><code>view.setTranslateX(startX);
+view.setTranslateY(startY);
+turn.setAngle(0);
+view.setScaleX(1);
+view.setScaleY(1);</code></pre><p>Shape getters such as Rectangle.getX() describe local geometry. getBoundsInParent() includes transforms. A shape can retain the same local x yet appear elsewhere after moving its Group.</p></section>
+<section class="lab-section"><h2>Check your understanding</h2><ol><li>Predict two 20-unit moves from x=160. Confirm the view ends at x=200.</li><li>Rotate a three-shape object; all parts should stay together.</li><li>Make a second instance; moving one must not move the other.</li><li>Check backgrounds remain behind both objects and that neither is clipped.</li></ol><p><a href="index.html#transforms">Graphics Hub: Transforms</a> · <a href="javafx-layout.html">GUI Layout</a> · <a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/transform/Rotate.html">Official Rotate API</a></p></section>
+
+</div></div></body></html>

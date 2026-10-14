@@ -346,16 +346,22 @@ a.resource-ref {
 </div>
 <div id="content">
 
-  <div id="main-content"><h1>Graphics Hub</h1>
+  <div id="main-content"><h1>Graphics Hub</h1><nav aria-label="Graphics topics"><p><a href="#setup">Setup</a> · <a href="#architecture">Architecture</a> · <a href="#shapes">Shapes</a> · <a href="#transforms">Transforms</a> · <a href="#layout">Layout</a> · <a href="#events">Events</a> · <a href="#friday-demo">Friday Demo</a></p></nav>
 <section class="lab-section intro-panel"><h2>Build graphical applications with JavaFX</h2>
 <p>Start with setup, follow the three class demos, and use the references as you build your own drawings and interactions.</p></section>
-<section class="lab-section"><h2>Start here</h2><ol><li><a href="javafx-setup.html">JavaFX setup in IntelliJ</a>: open a supplied project, find Maven, and run it.</li><li><a href="javafx-basics.html">JavaFX architecture and events</a>: Application, Stage, Scene, nodes, layouts, and callbacks.</li><li><a href="javafx-shapes.html">Shapes reference</a>: objects, coordinates, methods, colors, text, and transforms.</li></ol></section>
+<section class="lab-section" id="setup"><h2>Start here</h2><ol><li><a href="javafx-setup.html">JavaFX setup in IntelliJ</a>: open a supplied project, find Maven, and run it.</li><li><a href="javafx-basics.html">JavaFX architecture and events</a>: Application, Stage, Scene, nodes, layouts, and callbacks.</li><li><a href="javafx-shapes.html">Shapes reference</a>: objects, coordinates, methods, colors, text, and transforms.</li></ol></section>
 <section class="lab-section"><h2>Three class demo projects</h2><p>Each ZIP is a complete, independently runnable Java 21 Maven project. These are completed examples for review, not assignment starters.</p>
 <div class="method-table"><table><thead><tr><th>Download</th><th>What to explore</th></tr></thead><tbody>
 <tr><td><a href="Step01-HelloJavaFX.zip">Demo 1: Hello JavaFX</a></td><td>A window, labels, VBox, and a button without a handler.</td></tr>
 <tr><td><a href="Step02-TreasureClicker.zip">Demo 2: Treasure Clicker</a></td><td>Open Chest adds 10 gold; the label updates after each action.</td></tr>
 <tr><td><a href="Step03-TreasureGraphics.zip">Demo 3: Treasure Graphics</a></td><td>Shapes form a chest; clicking it changes its fill color.</td></tr></tbody></table></div>
 <p>Extract one ZIP and open its folder containing <code>pom.xml</code>. Run the Maven goal <code>javafx:run</code>. Close the window before changing projects.</p></section>
+<section class="lab-section" id="architecture"><h2>Architecture</h2><p><a href="javafx-basics.html">Application, Stage, Scene, and the scene graph</a>: identify the objects before adding behavior.</p></section>
+<section class="lab-section" id="shapes"><h2>Shapes</h2><p><a href="javafx-shapes.html">Shapes, coordinates, colors, fonts, and text</a>: quick examples and method reference.</p></section>
+<section class="lab-section" id="transforms"><h2>Transforms and Backgrounds</h2><p><a href="javafx-transforms.html">Manipulating objects</a>: background layer order, Groups, fresh views, translation, rotation pivots, scale, and reset.</p></section>
+<section class="lab-section" id="layout"><h2>Layout</h2><p><a href="javafx-layout.html">Multiple panels and layout containers</a>: BorderPane, HBox, VBox, GridPane, StackPane, Pane, and TabPane.</p></section>
+<section class="lab-section" id="events"><h2>Events</h2><p><a href="javafx-basics.html#events">Callbacks and state/display updates</a> connect controls to object methods. Review Demo 2 for an action handler and Demo 3 for a mouse handler.</p></section>
+<section class="lab-section" id="friday-demo"><h2>Friday: Shared Scene Demo</h2><p>On October 16 we will build background layers, a multi-panel layout, and a movable/rotatable Group together, then work on Homework Scenes. This is a class demo, not a separate graded lab.</p><ol><li>Add background rectangles before the object.</li><li>Arrange heading, controls, drawing, and status using BorderPane.</li><li>Rotate around an explicit local pivot.</li><li>Translate and reset the complete object.</li></ol><p>Prepare with <a href="javafx-transforms.html">Transforms</a> and <a href="javafx-layout.html">Layout</a>. The homework viewer is already provided; no new panel implementation is required for submission.</p></section>
 <section class="lab-section"><h2>Practice and homework</h2><ul><li><a href="../labs/lab12.html">Lab12: Treasure Clicker</a> — build button handlers and demonstrate your work.</li><li><a href="../Homework/scenes.html">Homework Scenes: JavaFX Shapes</a> — shape exercises, JUnit 4 checks, and a reusable-object scene.</li></ul></section>
 
 </div></div></body></html>

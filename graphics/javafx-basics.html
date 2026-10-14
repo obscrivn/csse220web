@@ -362,7 +362,7 @@ Scene scene = new Scene(root, 400, 300);
 stage.setTitle("My JavaFX app");
 stage.setScene(scene);
 stage.show();</code></pre><p>This belongs inside <code>start(Stage stage)</code> of your Application subclass. Use imports from <code>javafx.scene.control</code>, <code>javafx.scene.layout</code>, <code>javafx.scene</code>, and <code>javafx.stage</code>. Creating a node alone does not display it; attach it to the displayed scene graph.</p></section>
-<section class="lab-section"><h2>Events happen after setup</h2><pre><code>button.setOnAction(event -&gt; {
+<section class="lab-section"><h2 id="events">Events happen after setup</h2><pre><code>button.setOnAction(event -&gt; {
     message.setText("Hello!");
 });</code></pre><p>This registers a callback. Its body runs when the button is activated, rather than while the handler is registered. JavaFX keeps processing events after <code>start()</code> returns. A button action can come from a mouse click or keyboard activation.</p><p>For a shape, <code>setOnMouseClicked(...)</code> responds specifically to mouse input. For example, a handler can call <code>rectangle.setFill(Color.GOLD)</code> to change a Rectangle's color.</p></section>
 <section class="lab-section"><h2>State and display are different</h2><p>An integer field can store the gold total across events. A handler updates that field and then refreshes the Label with <code>setText()</code>. Updating an ordinary field does not automatically change the displayed text.</p><p>Predict → activate a control → observe state and display → explain which handler ran. In larger applications, put domain rules in model objects and let handlers call those objects, then refresh the view.</p></section>
