@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSE220 | JavaFX Shapes Reference</title>
+  <link rel="stylesheet" href="../syllabus_files/schedule.css">
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <style>
+:root {
+  --ink: #1f2937;
+  --muted: #5f6b7a;
+  --surface: #ffffff;
+  --page: #f4f6fb;
+  --border: #d8deea;
+  --header: #1c1515;
+  --heading: #111111;
+  --accent: #2166d1;
+  --accent-soft: #edf4ff;
+  --success: #18794e;
+  --success-soft: #ecf8f2;
+  --optional: #9a6700;
+  --optional-soft: #fff8e6;
+  --shadow: 0 12px 30px rgba(34, 42, 66, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  min-height: 3.75rem;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: var(--header);
+  box-shadow: 0 4px 16px rgba(30, 17, 48, 0.2);
+}
+
+#header a {
+  margin: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+#header a:hover,
+#header a:focus-visible {
+  background: #222;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+#header div {
+  display: none;
+}
+
+#content {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6.75rem 0 4rem;
+}
+
+#main-content {
+  padding: 0;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  color: var(--heading);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h2,
+h3 {
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.65rem 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0.65rem 0;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+ul,
+ol {
+  margin: 0.65rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.3rem;
+  background: #eef1f6;
+  color: #9b1c4a;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  margin: 0.85rem 0 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  display: block;
+  min-width: max-content;
+  padding: 1rem 1.1rem;
+  border: 1px solid #ced8e8;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.6rem;
+  background: #f7f9fc;
+  color: #172033;
+  line-height: 1.5;
+}
+
+.lab-section {
+  margin-bottom: 1.4rem;
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.intro-panel {
+  border-color: #cfd4dc;
+  background: #f8f9fb;
+}
+
+.lab-card {
+  margin: 1rem 0;
+  padding: 0 1rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  box-shadow: 0 5px 15px rgba(34, 42, 66, 0.05);
+}
+
+.setup-card {
+  background: var(--accent-soft);
+}
+
+.required-card {
+  border-left-color: var(--success);
+}
+
+.optional-card {
+  border-left-color: var(--optional);
+  background: #fffdf8;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.4rem;
+  padding: 0.7rem 0;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 1.35rem;
+  transition: transform 0.18s ease;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-card > summary h3 {
+  margin: 0;
+}
+
+.lab-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lab-title {
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+
+.lab-tag {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid #b7c8df;
+  border-radius: 999px;
+  background: #fff;
+  color: #315a8d;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.required-card .lab-tag {
+  border-color: #a9d5c1;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.optional-card .lab-tag {
+  border-color: #ecd28b;
+  background: var(--optional-soft);
+  color: var(--optional);
+}
+
+.lab-body {
+  margin-top: 0.1rem;
+  padding: 0.45rem 0.25rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.notice {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.45rem;
+  background: var(--accent-soft);
+  color: #294869;
+}
+
+details.hint,
+.lab-body details:not(.lab-card) {
+  margin: 0.9rem 0;
+  padding: 0.75rem 0.9rem;
+  border-left: 4px solid #8c98aa;
+  border-radius: 0.45rem;
+  background: #f7f8fa;
+}
+
+details.hint > summary,
+.lab-body details:not(.lab-card) > summary {
+  color: #435064;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+a.resource-ref {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  #header {
+    gap: 0.25rem 0.75rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  #header a {
+    font-size: 0.78rem;
+  }
+
+  #content {
+    width: min(100% - 1rem, 1080px);
+    padding-top: 8rem;
+  }
+
+  .lab-card > summary {
+    flex-wrap: wrap;
+  }
+
+  .lab-tag {
+    order: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-card > summary::after {
+    transition: none;
+  }
+}
+
+.method-table { overflow-x: auto; margin: 1rem 0; }
+.method-table table { width: 100%; border-collapse: collapse; text-align: left; }
+.method-table caption { text-align: left; font-weight: 700; padding-bottom: .5rem; }
+.method-table th, .method-table td { padding: .65rem; border: 1px solid var(--border); vertical-align: top; }
+.method-table th { background: var(--accent-soft); }
+.lab-body > h3:first-child { margin-top: .75rem; }
+  </style>
+</head>
+<body>
+<div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+      <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+
+  <div id="main-content"><h1 id="javafx-shapes-reference">JavaFX Shapes Reference</h1>
+<p>A CSSE220 reference for JavaFX 21. Examples illustrate the API; use your assignment&#x27;s values and requirements when implementing a task.</p>
+<div class="lab-section"><p><a href="../Homework/scenes.html">Return to Homework Scenes</a></p>
+<svg role="img" aria-labelledby="coordinate-title" viewBox="0 0 540 250" style="max-width:100%;height:auto">
+<title id="coordinate-title">Local coordinates: x points right and y points down. A rectangle uses its upper-left corner; a circle uses its center.</title>
+<rect width="540" height="250" fill="#f5f8fc"/>
+<path d="M30 30 H505 M30 30 V220 M505 30 l-10 -5 m10 5 l-10 5 M30 220 l-5 -10 m5 10 l5 -10" fill="none" stroke="#253449" stroke-width="2"/>
+<g font-family="sans-serif" font-size="15" fill="#253449"><text x="6" y="22">(0,0)</text><text x="490" y="55">x</text><text x="44" y="220">y</text></g>
+<rect x="80" y="80" width="130" height="85" fill="#a7c9eb" stroke="#255e97" stroke-width="2"/>
+<circle cx="365" cy="120" r="43" fill="#f6c570" stroke="#955900" stroke-width="2"/>
+<circle cx="80" cy="80" r="4" fill="#162534"/><circle cx="365" cy="120" r="4" fill="#162534"/>
+<g font-family="sans-serif" font-size="15" fill="#162534"><text x="70" y="68">corner (x,y)</text><text x="324" y="186">center (x,y)</text><text x="88" y="190">width × height</text></g>
+</svg></div><section class="lab-section"><h2 id="1-objects-form-the-drawing">1. Objects form the drawing</h2>
+<p>Application opens a Stage (window) containing a Scene. The Scene holds a tree of Node objects. Group combines objects into one movable unit; Pane provides a drawing area where shapes keep their coordinates. VBox instead arranges children vertically and is useful for controls.</p>
+<p>Creating a shape does not display it. Add it to the scene graph:</p>
+<pre><code>Rectangle tile = new Rectangle(40, 50, 120, 70);
+tile.setFill(Color.STEELBLUE);
+Group drawing = new Group(tile);
+Pane area = new Pane(drawing);</code></pre>
+<p>Imports for the examples:</p>
+<pre><code>import javafx.scene.Group;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Polygon;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font;
+import javafx.scene.transform.Rotate;</code></pre>
+<p>Use javafx.scene classes, rather than java.awt shapes/colors or javax.swing components. JavaFX redraws nodes when their properties change; these assignments do not need paintComponent() or Graphics2D.</p>
+</section><section class="lab-section"><h2 id="2-coordinates-and-dimensions">2. Coordinates and dimensions</h2>
+<p>The local origin is (0,0) at the top left; x increases rightward and y increases downward. Values are doubles in JavaFX logical units, normally experienced as pixels at default scale. A parent&#x27;s transform can change where those coordinates appear.</p>
+<div class="method-table"><table><tr><th scope="col">Object</th><th scope="col">Constructor</th><th scope="col">What position means</th></tr><tr><td>Rectangle</td><td>new Rectangle(x,y,width,height)</td><td>Upper-left corner</td></tr><tr><td>Circle</td><td>new Circle(centerX,centerY,radius)</td><td>Center, not bounding-box corner</td></tr><tr><td>Ellipse</td><td>new Ellipse(centerX,centerY,radiusX,radiusY)</td><td>Center and two radii</td></tr><tr><td>Line</td><td>new Line(startX,startY,endX,endY)</td><td>Two endpoints</td></tr><tr><td>Polygon</td><td>new Polygon(x1,y1,x2,y2,x3,y3)</td><td>Alternating coordinates of vertices</td></tr><tr><td>Text</td><td>new Text(x,y,message)</td><td>x at text origin; y at the baseline by default</td></tr></table></div>
+<p>For a circle specified by a bounding box (left,top,diameter,diameter), calculate centerX=left+diameter/2, centerY=top+diameter/2, and radius=diameter/2. Rectangle right edge is x+width; bottom edge is y+height. A stroke can extend beyond these geometric edges.</p>
+</section><section class="lab-section"><h2 id="3-shapes-and-useful-methods">3. Shapes and useful methods</h2>
+<h3 id="rectangle-and-rounded-corners">Rectangle and rounded corners</h3>
+<pre><code>Rectangle card = new Rectangle(40, 50, 120, 70);
+card.setFill(Color.STEELBLUE);
+card.setStroke(Color.NAVY);
+card.setStrokeWidth(2);
+card.setArcWidth(20);
+card.setArcHeight(20);</code></pre>
+<p>setX/setY move the geometric corner; setWidth/setHeight resize it. getX/getY/getWidth/getHeight read those properties. Rounded corners use arc dimensions; these values are not corner radii. Zero arc dimensions produce ordinary square corners.</p>
+<h3 id="circle-and-ellipse">Circle and ellipse</h3>
+<pre><code>Circle marker = new Circle(240, 85, 30);
+marker.setFill(Color.ORANGE);
+Ellipse cloud = new Ellipse(350, 80, 45, 20);
+cloud.setFill(Color.LIGHTGRAY);</code></pre>
+<p>Circle: setCenterX, setCenterY, setRadius and matching getters. Ellipse: setCenterX, setCenterY, setRadiusX, setRadiusY. Setting a circle radius to 30 makes its diameter 60.</p>
+<h3 id="line">Line</h3>
+<pre><code>Line axis = new Line(30, 200, 200, 200);
+axis.setStroke(Color.DARKGREEN);
+axis.setStrokeWidth(3);</code></pre>
+<p>setStartX/setStartY and setEndX/setEndY change endpoints. Lines are styled through stroke; fill does not provide their visible line color. A zero-length line may be hard to see.</p>
+<h3 id="polygon">Polygon</h3>
+<pre><code>Polygon triangle = new Polygon(280, 140, 250, 200, 310, 200);
+triangle.setFill(Color.FORESTGREEN);
+triangle.setStroke(Color.BLACK);</code></pre>
+<p>Vertices are supplied as x,y pairs. getPoints() returns the coordinate list. The boundary closes automatically from the last vertex to the first. Keep each pair together when planning a triangle.</p>
+</section><section class="lab-section"><h2 id="4-fill-stroke-and-colors">4. Fill, stroke, and colors</h2>
+<div class="method-table"><table><tr><th scope="col">Method</th><th scope="col">Purpose</th></tr><tr><td>setFill(Color.BLUE)</td><td>Interior color of a filled shape</td></tr><tr><td>setFill(null)</td><td>No interior paint; useful for outlines</td></tr><tr><td>setFill(Color.TRANSPARENT)</td><td>Transparent interior paint</td></tr><tr><td>setStroke(Color.BLACK)</td><td>Boundary color</td></tr><tr><td>setStrokeWidth(2)</td><td>Boundary width</td></tr><tr><td>setOpacity(0.5)</td><td>Transparency of the entire node, including stroke</td></tr></table></div>
+<p>Rectangles/circles normally begin with a black fill and no stroke. Set an absent fill and a visible stroke for outlines. A filled later shape can hide an earlier one. Do not expect a Line&#x27;s setFill() to replace its stroke.</p>
+<pre><code>Color named = Color.CORNFLOWERBLUE;
+Color rgb = Color.rgb(70, 120, 200);
+Color translucent = Color.rgb(70, 120, 200, 0.4);
+Color normalized = Color.color(0.2, 0.5, 0.8, 1.0);
+Color hex = Color.web(&quot;#4678c8&quot;);</code></pre>
+<p>Color.rgb uses integer red/green/blue components from 0 to 255; its alpha is a double from 0 to 1. Color.color and the Color constructor use doubles from 0 to 1 for all components. Alpha 0 is transparent; 1 is opaque. Combining a color alpha of 0.4 with node opacity 0.5 gives a fill opacity of 0.2. Avoid accidentally applying both.</p>
+<p>Useful named colors: BLACK, WHITE, RED, BLUE, GOLD, YELLOW, SADDLEBROWN, FORESTGREEN, LIGHTSKYBLUE, DARKSLATEGRAY, STEELBLUE. You may choose other distinguishable colors for creative work.</p>
+</section><section class="lab-section"><h2 id="5-text-and-fonts">5. Text and fonts</h2>
+<pre><code>Text caption = new Text(40, 250, &quot;Coordinate garden&quot;);
+caption.setFill(Color.DARKBLUE);
+caption.setFont(Font.font(&quot;Serif&quot;, 24));
+caption.setText(&quot;Updated caption&quot;);</code></pre>
+<p>setX/setY position the Text origin; default y is the baseline, so much of the lettering lies above it. Font.font(24) uses a default family at size 24. Font.font(&quot;Serif&quot;,24) requests a family; installed font availability varies. getText() and getFont().getSize() read content and size. A Text node draws text in the coordinate system; a Label is a UI control generally positioned by a layout container.</p>
+<p>Each node owns its own fill and font. You do not save and restore a shared graphics color or font after each object.</p>
+</section><section class="lab-section"><h2 id="6-groups-layering-and-fresh-nodes">6. Groups, layering, and fresh nodes</h2>
+<pre><code>Group motif = new Group(card, marker);
+motif.getChildren().add(caption);</code></pre>
+<p>Within one parent, nodes added later normally appear above earlier nodes (assuming ordinary viewOrder values). Add the background first, then objects, then any foreground caption. Group is a Parent; its children can be other Groups, so a scene can contain complete object views.</p>
+<p>A Node has one parent at a time. Reusing the same Rectangle or Group in two object views can move it out of the first view. A createView() method should create fresh nodes each time. Color values can safely be shared; they are immutable.</p>
+</section><section class="lab-section"><h2 id="7-translation-and-rotation">7. Translation and rotation</h2>
+<pre><code>Group motif = new Group(new Rectangle(-15, -10, 30, 20));
+motif.getTransforms().add(new Rotate(30, 0, 0));
+motif.setTranslateX(180);
+motif.setTranslateY(320);</code></pre>
+<p>Build around a local origin. Translate the group to position the entire object without rewriting every shape&#x27;s coordinates. Rotate&#x27;s angle is in degrees; its pivot coordinates belong to the object&#x27;s local space. Positive angles rotate clockwise in the usual screen coordinate system. The example rotates around local (0,0), then places that origin at (180,320).</p>
+<p>setRotate(30) is convenient but rotates around the node&#x27;s layout-bounds center; that may differ from the pivot you intend. Use an explicit Rotate when the assignment calls for a specific pivot. setScaleX/setScaleY resize the view; getBoundsInParent() includes transforms while shape coordinate getters retain local geometry. When debugging, distinguish local geometry from where the object appears after transformations.</p>
+</section><section class="lab-section"><h2 id="8-repetition-with-loops">8. Repetition with loops</h2>
+<pre><code>Group row = new Group();
+for (int i = 0; i &lt; 4; i++) {
+    Circle dot = new Circle(40 + 50 * i, 80, 8);
+    dot.setFill(Color.DARKBLUE);
+    row.getChildren().add(dot);
+}</code></pre>
+<p>Create a new object on each iteration. Separate starting position, spacing, and count. Predict the first and last positions before running. For a composite object, create several instances of your class and add each instance&#x27;s createView() result.</p>
+</section><section class="lab-section"><h2 id="9-test-debug-and-run">9. Test, debug, and run</h2>
+<p>Detached shapes and Groups can be constructed and inspected without opening a Stage. JUnit can check dimensions, fill, text content, and repeated-node geometry. Pixel appearance, clipping, font rendering, layering in a completed window, and creative choices still need visual review.</p>
+<div class="method-table"><table><tr><th scope="col">Symptom</th><th scope="col">First check</th></tr><tr><td>Nothing appears</td><td>Was the node added to the displayed root? Is its fill/stroke visible?</td></tr><tr><td>Drawing appears shifted</td><td>Did you confuse a center with a corner, or add a group transform?</td></tr><tr><td>Outline disappears</td><td>Is fill covering it, or stroke absent?</td></tr><tr><td>First copy vanishes</td><td>Did you reuse a node that already has another parent?</td></tr><tr><td>Text seems too high</td><td>Its y-coordinate is the baseline</td></tr><tr><td>Rotation looks wrong</td><td>Check angle units and local pivot</td></tr><tr><td>Shape is clipped</td><td>Compare transformed extents with the drawing-area size</td></tr><tr><td>Tests pass but screenshot looks wrong</td><td>Check actual scene assembly and visual visibility</td></tr><tr><td>Maven tool window missing</td><td>View → Tool Windows → Maven; or right-click pom.xml → Add as Maven Project</td></tr><tr><td>JavaFX runtime components missing</td><td>Use the Maven goal clean javafx:run</td></tr></table></div>
+<p>For the provided projects: JDK 21, IntelliJ bundled Maven, and the goal clean javafx:run. A saved Maven run configuration lets you use the toolbar green arrow. All changes to a displayed scene occur on the JavaFX Application Thread; the provided Application.start method already runs there.</p>
+</section><section class="lab-section"><h2 id="official-javafx-21-api">Official JavaFX 21 API</h2>
+<ul><li><a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/Node.html">Node: coordinates, parents, transforms</a></li><li><a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/Group.html">Group</a></li><li><a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/shape/Rectangle.html">Rectangle</a></li><li><a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/shape/Circle.html">Circle</a></li><li><a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/shape/Ellipse.html">Ellipse</a></li><li><a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/shape/Line.html">Line</a></li><li><a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/shape/Polygon.html">Polygon</a></li><li><a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/shape/Shape.html">Shape: fill and stroke</a></li><li><a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/paint/Color.html">Color</a></li><li><a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/text/Text.html">Text</a></li><li><a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/transform/Rotate.html">Rotate</a></li></ul></section>
+</div></div></body></html>
