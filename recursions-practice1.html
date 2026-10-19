@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recursions Practice 1 | CSSE 220</title>
+  <link rel="stylesheet" href="./syllabus_files/schedule.css">
+  <link rel="stylesheet" href="./syllabus_files/screen.css">
+  <style>
+:root {
+  --ink: #1f2937;
+  --muted: #5f6b7a;
+  --surface: #ffffff;
+  --page: #f4f6fb;
+  --border: #d8deea;
+  --header: #1c1515;
+  --heading: #111111;
+  --accent: #2166d1;
+  --accent-soft: #edf4ff;
+  --success: #18794e;
+  --success-soft: #ecf8f2;
+  --optional: #9a6700;
+  --optional-soft: #fff8e6;
+  --shadow: 0 12px 30px rgba(34, 42, 66, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  min-height: 3.75rem;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: var(--header);
+  box-shadow: 0 4px 16px rgba(30, 17, 48, 0.2);
+}
+
+#header a {
+  margin: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+#header a:hover,
+#header a:focus-visible {
+  background: #222;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+#header div {
+  display: none;
+}
+
+#content {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6.75rem 0 4rem;
+}
+
+#main-content {
+  padding: 0;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  color: var(--heading);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h2,
+h3 {
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.65rem 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0.65rem 0;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+ul,
+ol {
+  margin: 0.65rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.3rem;
+  background: #eef1f6;
+  color: #9b1c4a;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  margin: 0.85rem 0 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  display: block;
+  min-width: max-content;
+  padding: 1rem 1.1rem;
+  border: 1px solid #ced8e8;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.6rem;
+  background: #f7f9fc;
+  color: #172033;
+  line-height: 1.5;
+}
+
+.lab-section {
+  margin-bottom: 1.4rem;
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.intro-panel {
+  border-color: #cfd4dc;
+  background: #f8f9fb;
+}
+
+.lab-card {
+  margin: 1rem 0;
+  padding: 0 1rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  box-shadow: 0 5px 15px rgba(34, 42, 66, 0.05);
+}
+
+.setup-card {
+  background: var(--accent-soft);
+}
+
+.required-card {
+  border-left-color: var(--success);
+}
+
+.optional-card {
+  border-left-color: var(--optional);
+  background: #fffdf8;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.4rem;
+  padding: 0.7rem 0;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 1.35rem;
+  transition: transform 0.18s ease;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-card > summary h3 {
+  margin: 0;
+}
+
+.lab-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lab-title {
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+
+.lab-tag {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid #b7c8df;
+  border-radius: 999px;
+  background: #fff;
+  color: #315a8d;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.required-card .lab-tag {
+  border-color: #a9d5c1;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.optional-card .lab-tag {
+  border-color: #ecd28b;
+  background: var(--optional-soft);
+  color: var(--optional);
+}
+
+.lab-body {
+  margin-top: 0.1rem;
+  padding: 0.45rem 0.25rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.notice {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.45rem;
+  background: var(--accent-soft);
+  color: #294869;
+}
+
+details.hint,
+.lab-body details:not(.lab-card) {
+  margin: 0.9rem 0;
+  padding: 0.75rem 0.9rem;
+  border-left: 4px solid #8c98aa;
+  border-radius: 0.45rem;
+  background: #f7f8fa;
+}
+
+details.hint > summary,
+.lab-body details:not(.lab-card) > summary {
+  color: #435064;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+a.resource-ref {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  #header {
+    gap: 0.25rem 0.75rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  #header a {
+    font-size: 0.78rem;
+  }
+
+  #content {
+    width: min(100% - 1rem, 1080px);
+    padding-top: 8rem;
+  }
+
+  .lab-card > summary {
+    flex-wrap: wrap;
+  }
+
+  .lab-tag {
+    order: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-card > summary::after {
+    transition: none;
+  }
+}
+
+.method-table { overflow-x: auto; margin: 1rem 0; }
+.method-table table { width: 100%; border-collapse: collapse; text-align: left; }
+.method-table caption { text-align: left; font-weight: 700; padding-bottom: .5rem; }
+.method-table th, .method-table td { padding: .65rem; border: 1px solid var(--border); vertical-align: top; }
+.method-table th { background: var(--accent-soft); }
+.lab-body > h3:first-child { margin-top: .75rem; }
+  figure{margin:1rem 0}figure img{display:block;width:100%;max-width:640px;height:auto;border:1px solid var(--border);border-radius:.5rem}figcaption{font-size:.9rem;color:var(--muted);margin-top:.5rem}.file-location{background:#edf2f7;border-radius:.4rem;padding:.5rem .75rem}.lab-body pre{overflow-x:auto}.lab-body ol>li{margin:.55rem 0}.lab-body h3{margin-top:1.2rem}
+</style>
+</head>
+<body>
+<div id="header">
+    <a href="./index.html">CSSE 220</a>
+    <a href="./syllabus.html">Syllabus</a>
+    <a href="./schedule.html">Schedule</a>
+      <a href="./design.html">Design</a>
+    <a href="./labs.html">Labs</a>
+    <a href="./homework.html">Homework</a>
+    <a href="./exams.html">Exams</a>
+    <a href="./project.html">Final Project</a>
+    <a href="./graphics/index.html">Graphics</a>
+    <a href="./resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content">
+
+  <div id="main-content">
+
+<h1>Recursions Practice 1</h1>
+<div class="lab-section intro-panel"><h2>Start with factorial, then build six recursive solutions</h2>
+<p>Practice the first six exercises from <a href="https://codingbat.com/java/Recursion-1">CodingBat Java Recursion-1</a>. The summaries below are paraphrased; open each original exercise to write and test your method.</p>
+<ol><li><strong>Predict:</strong> work out the examples by hand.</li><li><strong>Plan:</strong> identify the base case, the smaller input, and how to combine the result.</li><li><strong>Solve:</strong> enter your Java method in CodingBat and run its tests. Use recursion; follow each problem's operation restrictions.</li><li><strong>Explain:</strong> trace one call until it reaches a base case, then trace the returned values.</li></ol>
+<p>Use CodingBat's method signature. Enter only the method, with no class or main method. Try all six before opening the solutions at the end.</p></div>
+<section class="lab-section" id="factorial"><h2>1. factorial</h2><p>For n ≥ 1, compute the product of the integers from 1 through n. Use recursion without loops.</p><pre><code>factorial(1) → 1; factorial(4) → 24; factorial(5) → 120</code></pre><p><a href="https://codingbat.com/prob/p154669">Solve factorial on CodingBat</a></p><pre><code>public int factorial(int n) {
+    // Your base case and recursive case
+}</code></pre><details class="hint"><summary>Planning hint</summary><p>What is the smallest allowed input? What factor can you separate from the remaining product?</p></details></section>
+<section class="lab-section" id="bunnyEars"><h2>2. bunnyEars</h2><p>Each bunny contributes two ears. For a nonnegative bunny count, calculate the total recursively, without loops or multiplication.</p><pre><code>bunnyEars(0) → 0; bunnyEars(3) → 6; bunnyEars(5) → 10</code></pre><p><a href="https://codingbat.com/prob/p183649">Solve bunnyEars on CodingBat</a></p><pre><code>public int bunnyEars(int bunnies) {
+    // Your base case and recursive case
+}</code></pre><details class="hint"><summary>Planning hint</summary><p>How many ears are there with no bunnies? How much does one additional bunny contribute?</p></details></section>
+<section class="lab-section" id="fibonacci"><h2>3. fibonacci</h2><p>Use zero-based positions: F(0) = 0 and F(1) = 1. Every later value adds the two preceding values. Return F(n) recursively for n ≥ 0.</p><pre><code>fibonacci(0) → 0; fibonacci(4) → 3; fibonacci(6) → 8</code></pre><p><a href="https://codingbat.com/prob/p120015">Solve fibonacci on CodingBat</a></p><pre><code>public int fibonacci(int n) {
+    // Your base case and recursive case
+}</code></pre><details class="hint"><summary>Planning hint</summary><p>Why are two base cases needed? Which two smaller positions determine the current one?</p></details></section>
+<section class="lab-section" id="bunnyEars2"><h2>4. bunnyEars2</h2><p>Number the bunnies starting at 1. Odd-numbered bunnies contribute 2 ears; even-numbered bunnies contribute 3. Return the total for a nonnegative count using recursion, without loops or multiplication.</p><pre><code>bunnyEars2(0) → 0; bunnyEars2(3) → 7; bunnyEars2(4) → 10</code></pre><p><a href="https://codingbat.com/prob/p107330">Solve bunnyEars2 on CodingBat</a></p><pre><code>public int bunnyEars2(int bunnies) {
+    // Your base case and recursive case
+}</code></pre><details class="hint"><summary>Planning hint</summary><p>Use the position of the last bunny to decide its contribution. What does bunnies % 2 tell you?</p></details></section>
+<section class="lab-section" id="triangle"><h2>5. triangle</h2><p>Build rows of blocks with lengths 1, 2, 3, and so on. For a nonnegative number of rows, find the total recursively, without loops or multiplication.</p><pre><code>triangle(0) → 0; triangle(3) → 6; triangle(4) → 10</code></pre><p><a href="https://codingbat.com/prob/p194781">Solve triangle on CodingBat</a></p><pre><code>public int triangle(int rows) {
+    // Your base case and recursive case
+}</code></pre><details class="hint"><summary>Planning hint</summary><p>How many blocks are in the last row? What remains if you remove that row?</p></details></section>
+<section class="lab-section" id="sumDigits"><h2>6. sumDigits</h2><p>For a nonnegative integer, add its decimal digits recursively without loops. Integer division by 10 removes the last digit; remainder by 10 extracts it.</p><pre><code>sumDigits(0) → 0; sumDigits(305) → 8; sumDigits(827) → 17</code></pre><p><a href="https://codingbat.com/prob/p163932">Solve sumDigits on CodingBat</a></p><pre><code>public int sumDigits(int n) {
+    // Your base case and recursive case
+}</code></pre><details class="hint"><summary>Planning hint</summary><p>Try 305 % 10 and 305 / 10. How does division make the next recursive input smaller?</p></details></section>
+<section class="lab-section" id="solutions"><h2>Reference solutions — check after trying</h2><p>These course reference implementations are written for this practice page. If a test failed, find the first input where your result differs. Compare your base case and recursive call before replacing any code.</p><details class="hint"><summary>factorial solution</summary><pre><code>public int factorial(int n) {
+    if (n == 1) return 1;
+    return n * factorial(n - 1);
+}</code></pre><p>The smallest product is 1. Multiply n by the product for n − 1.</p></details>
+<details class="hint"><summary>bunnyEars solution</summary><pre><code>public int bunnyEars(int bunnies) {
+    if (bunnies == 0) return 0;
+    return 2 + bunnyEars(bunnies - 1);
+}</code></pre><p>Remove one bunny, solve the smaller group, then add its two ears.</p></details>
+<details class="hint"><summary>fibonacci solution</summary><pre><code>public int fibonacci(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}</code></pre><p>Both recursive calls move toward a base case. This direct version repeats work; use small inputs for tracing.</p></details>
+<details class="hint"><summary>bunnyEars2 solution</summary><pre><code>public int bunnyEars2(int bunnies) {
+    if (bunnies == 0) return 0;
+    if (bunnies % 2 == 0) {
+        return 3 + bunnyEars2(bunnies - 1);
+    }
+    return 2 + bunnyEars2(bunnies - 1);
+}</code></pre><p>The current bunny contributes either two or three; the same smaller group is solved in either branch.</p></details>
+<details class="hint"><summary>triangle solution</summary><pre><code>public int triangle(int rows) {
+    if (rows == 0) return 0;
+    return rows + triangle(rows - 1);
+}</code></pre><p>Add the last row to the total for the smaller triangle.</p></details>
+<details class="hint"><summary>sumDigits solution</summary><pre><code>public int sumDigits(int n) {
+    if (n &lt; 10) return n;
+    return n % 10 + sumDigits(n / 10);
+}</code></pre><p>A single digit is already its own sum. Otherwise, add the last digit to the sum of the remaining digits.</p></details>
+</section><section class="lab-section"><h2>What to notice</h2><ul><li>The base case answers a small input directly.</li><li>Every recursive branch moves toward a base case.</li><li>The return statement combines the smaller answer with the current contribution.</li><li>Different problems shrink differently: subtract one, subtract two, or remove a digit.</li></ul><p><a href="./recursion.html">Review Recursion Fundamentals</a> · <a href="./schedule.html">Back to schedule</a></p></section></div></div></body></html>
