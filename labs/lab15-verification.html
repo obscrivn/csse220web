@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lab 15: Drone Arena Verification Sheet</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 24px auto; max-width: 816px; padding: 0 42px; color: #111; background: white; font: 16px/1.3 Georgia, 'Times New Roman', serif; }
+.screen { font: 14px/1.4 system-ui, sans-serif; margin-bottom: 24px; }
+button { padding: 6px 12px; cursor: pointer; }
+.running { display: flex; justify-content: space-between; font-size: 12px; }
+header { text-align: center; margin: 24px 0; }
+header p { margin: 0; }
+.school { color: #c3344c; }
+h1 { font-size: 19px; font-weight: normal; margin: 22px 0 0; }
+.identity { display: flex; gap: 22px; margin: 14px 0; }
+.field { display: flex; align-items: baseline; flex: 1; white-space: nowrap; gap: 5px; }
+.section { flex: .48; }
+.line { flex: 1; border-bottom: 1px solid #111; min-width: 50px; height: 18px; }
+.instructions { font-size: 13px; margin: 18px 0 12px; }
+table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+col.signoff { width: 23%; }
+th, td { padding: 10px 8px; vertical-align: middle; border-bottom: 1px solid #bbb; }
+thead th { font-size: 13px; border-top: 1px solid #111; border-bottom: 1px solid #111; text-align: center; }
+thead th:first-child { text-align: left; }
+tbody th { text-align: left; font-size: 14px; }
+tbody th span { display: block; font-size: 12px; font-weight: normal; margin-top: 3px; }
+td { text-align: center; }
+.initial-line { display: block; width: 85%; height: 22px; margin: auto; border-bottom: 1px solid #111; }
+.status { font-size: 13px; margin: 17px 0 10px; }
+.box { display: inline-block; width: 10px; height: 10px; border: 1px solid #111; margin: 0 4px 0 9px; }
+.comments { font-size: 13px; margin: 12px 0; }
+.writing-line { border-bottom: 1px solid #777; height: 22px; }
+.signature { margin-top: 14px; }
+footer { border-top: 1px solid #111; padding-top: 7px; margin-top: 18px; font-size: 11px; }
+@page { size: letter portrait; margin: .5in .65in; }
+@media print {
+ body { margin: 0; padding: 0; max-width: none; font-size: 12pt; }
+ .screen { display: none; }
+ header { margin: 18px 0; }
+ h1 { margin-top: 17px; }
+ th, td { padding: 8px 6px; }
+ tbody th { font-size: 10.5pt; }
+ tbody th span { font-size: 9pt; }
+ .identity { margin: 12px 0; }
+ tr, header, .signature, footer { break-inside: avoid; }
+}
+@media screen and (max-width: 600px) {
+ body { padding: 0 14px; }
+ .identity { flex-wrap: wrap; gap: 10px; }
+ .field { flex-basis: 100%; }
+ col.signoff { width: 27%; }
+}
+</style>
+</head>
+<body>
+<div class="screen"><a href="lab15.html">Return to Lab 15</a> · <a href="../worksheets_files/lab15-verification.html">Worksheet print copy</a> · <button type="button" onclick="window.print()">Print / Save as PDF</button><p>One sheet per student. Print and write on it, or save as PDF and annotate. Upload a readable scan/photo or the annotated PDF.</p></div>
+<div class="running"><span>Fall 2026-2027</span><span>CSSE 220</span></div>
+<header><p>CSSE 220 - Object-Oriented Software Development</p><p><span class="school">Rose-Hulman</span> Institute of Technology</p><h1>Lab 15: Drone Arena - Verification Sheet</h1></header>
+<div class="identity"><div class="field">Name (Print): <span class="line"></span></div></div>
+<div class="identity"><div class="field">Reviewer (Print): <span class="line"></span></div><div class="field section">Date: <span class="line"></span></div></div>
+<p class="instructions"><strong>Reviewer:</strong> observe this student's app and initial each completed checkpoint. Leave incomplete items blank and note the needed fix. The reviewer may be the group lead, a peer, or instructor/TA; students do not sign off their own work.</p>
+<table><colgroup><col><col class="signoff"></colgroup><thead><tr><th scope="col">Check-off point</th><th scope="col">Reviewer initials</th></tr></thead><tbody><tr><th scope="row">1. Keyboard controls<span>Demonstrate movement in all four directions, including after clicking a control.</span></th><td><span class="initial-line"></span></td></tr><tr><th scope="row">2. Second game object<span>Show the drone and target visible and independently positioned.</span></th><td><span class="initial-line"></span></td></tr><tr><th scope="row">3. Collision and response<span>Collect by keyboard movement, then Reset and collect using Start animation. Show visible feedback and target restoration on Reset.</span></th><td><span class="initial-line"></span></td></tr></tbody></table>
+<p class="status"><strong>Overall:</strong> <span class="box"></span>Pass <span class="box"></span>Small fix needed <span class="box"></span>Follow-up needed</p>
+<div class="comments"><em>Comments / needed fixes:</em><div class="writing-line"></div></div>
+<footer>Mark Pass after all three checkpoints are initialed. The group lead uploads one completed sheet per student to Lab 15 in Gradescope, listing all verified students. No written reflection is required.</footer>
+</body>
+</html>

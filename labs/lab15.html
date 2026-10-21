@@ -1,673 +1,381 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CSSE 220</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
-<link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
-<style>
-  body {
-          font-family: Arial, sans-serif;
-          line-height: 1.5;
-          margin: 0;
-          padding: 1rem;
-          background: #f5f7fa;
-          color: #333;
-        }
-        
-        /* Section containers */
-        section {
-          background: #fff;
-          border: 1px solid #ddd;
-          border-radius: 6px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-          margin: 1.5rem 0;
-          padding: 1.2rem;
-        }
-        
-        /* Headings */
-        h2 {
-          margin-top: 0;
-          font-size: 1.6rem;
-          border-bottom: 2px solid #e0e0e0;
-          padding-bottom: 0.3rem;
-        }
-        h3 {
-          font-size: 1.3rem;
-          margin-top: 1rem;
-        }
-        
-        /* Image styling */
-        section img {
-          display: block;
-          max-width: 100%;
-          height: auto;
-          margin: 0.8rem auto;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-        
-        /* Code blocks */
-        /* pre {
-          background: #2d2d2d;
-          color: #f8f8f2;
-          padding: 0.8rem;
-          border-radius: 1px;
-          overflow-x: auto;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.9rem;
-        } */
-        /* pre code {
-          display: block;
-          white-space: pre-wrap;
-          word-wrap: break-word;
-        } */
-        
-        /* Inline code */
-        /* code {
-          background: #eaeaea;
-          color: #c7254e;
-          padding: 0.2rem 0.4rem;
-          border-radius: 1px;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 0.95em;
-        } */
-        
-        /* Highlight compile / runtime state */
-        strong + span {
-          font-weight: bold;
-          color: #d14;
-        }
-        
-        /* Lists */
-        ul, ol {
-          margin: 0.5rem 0 0.5rem 1.2rem;
-        }
-        li {
-          margin-bottom: 0.5rem;
-        }
-        
-        /* Method call subsections */
-        section#method-calls h4 {
-          margin: 1rem 0 0.3rem;
-          font-size: 1.1rem;
-          color: #444;
-          border-left: 3px solid #007acc;
-          padding-left: 0.5rem;
-        }
-        
-        /* Emphasis for compile/run status */
-        span[style*="darkred"] {
-          font-weight: bold;
-          color: #c00;
-        }
-
-
-
-    /* body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
-    } */
-    #main-content {
-      padding: 20px;
-    }
-/* Header styling */
-#header {
-        position: fixed;
-        top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-    }
-    #header a {
-      color: #fff;
-      margin-right: 15px;
-      text-decoration: none;
-
-    }
-    #header a:hover {
-      text-decoration: underline;
-    }
-    #header div {
-      clear: both;
-    }
-    /* Content container */
-    #content {
-      padding: 20px;
-      /* margin-top: 100px;  */
-      margin-bottom: 50px;
-      padding-top: 100px;
-    }
-    #section {
-margin-top: 1rem; 
-margin-bottom: 1rem;
-padding: 20px;
-} 
-    .lab-section {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    }
-    .lab-section h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      color: #333;
-    }
-    .lab-section p {
-      line-height: 1.5;
-      color: #555;
-    }
-/* Lab Navigation Menu Styling */
-#lab-nav {
-      background-color: #faf9fc;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      overflow-x: auto;  /* Enables horizontal scroll */
-      white-space: nowrap; /* Prevents wrapping */
-    }
-    #lab-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 15px;
-    }
-    #lab-nav ul li a {
-      text-decoration: none;
-      color: #333;
-      margin-left: 20px;
-      padding: 5px 10px;
-      border-radius: 3px;
-    }
-    #lab-nav ul li a:hover {
-      background-color: #ddd;
-    }
-    code {
-        /* color: red; */
-        font-weight: 600;
-        font-family: Consolas, "Courier New", monospace;
-    }
-    .code-window {
-      background-color: #272822;
-      color: #f8f8f2;
-      border: 1px solid #333;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      white-space: pre;
-      overflow-x: auto;
-      border-radius: 3px;
-      margin-top: 10px;
-    }
-    .solution-window {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #4caf50;
-      padding: 10px;
-      font-family: Consolas, "Courier New", monospace;
-      border-radius: 3px;
-      overflow-x: auto;
-      white-space: pre;
-      margin-top: 10px;
-    }
-    .solution-header {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #2e7d32;
-    }
-
-    a.resource-ref {
-  background-color: #444; /* dark background for contrast */
-  color: #61dafb;         /* bright text color */
-  padding: 4px 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSE 220 | Lab 15: Drone Arena</title>
+  <link rel="stylesheet" href="../syllabus_files/schedule.css">
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <style>
+:root {
+  --ink: #1f2937;
+  --muted: #5f6b7a;
+  --surface: #ffffff;
+  --page: #f4f6fb;
+  --border: #d8deea;
+  --header: #1c1515;
+  --heading: #111111;
+  --accent: #2166d1;
+  --accent-soft: #edf4ff;
+  --success: #18794e;
+  --success-soft: #ecf8f2;
+  --optional: #9a6700;
+  --optional-soft: #fff8e6;
+  --shadow: 0 12px 30px rgba(34, 42, 66, 0.08);
 }
 
-a.resource-ref:hover {
-  background-color: #555;
-  color: #ffffff;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  min-height: 3.75rem;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: var(--header);
+  box-shadow: 0 4px 16px rgba(30, 17, 48, 0.2);
+}
+
+#header a {
+  margin: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+#header a:hover,
+#header a:focus-visible {
+  background: #222;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+#header div {
+  display: none;
+}
+
+#content {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6.75rem 0 4rem;
+}
+
+#main-content {
+  padding: 0;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  color: var(--heading);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h2,
+h3 {
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.65rem 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0.65rem 0;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+ul,
+ol {
+  margin: 0.65rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.3rem;
+  background: #eef1f6;
+  color: #9b1c4a;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  margin: 0.85rem 0 1rem;
+  overflow-x: auto;
 }
 
 pre code {
-  background-color: #f5f7fa;
-  color: #1a1a1a;
-  border-left: 4px solid #4a90e2;
-  padding: 0.75em;
   display: block;
-  border-radius: 6px;
-  font-size: 0.9em;
-  line-height: 1.4em;
+  min-width: max-content;
+  padding: 1rem 1.1rem;
+  border: 1px solid #ced8e8;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.6rem;
+  background: #f7f9fc;
+  color: #172033;
+  line-height: 1.5;
 }
-pre code:hover {
-  background-color: #dce1e8;
-  border-left-color: #28527a;
+
+.lab-section {
+  margin-bottom: 1.4rem;
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
+
+.intro-panel {
+  border-color: #cfd4dc;
+  background: #f8f9fb;
+}
+
 .lab-card {
-  margin: 0 0 1rem 0;
-  border-radius: 0.75rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  padding: 0.25rem 0.75rem 0.75rem;
+  margin: 1rem 0;
+  padding: 0 1rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  box-shadow: 0 5px 15px rgba(34, 42, 66, 0.05);
+}
+
+.setup-card {
+  background: var(--accent-soft);
+}
+
+.required-card {
+  border-left-color: var(--success);
+}
+
+.optional-card {
+  border-left-color: var(--optional);
+  background: #fffdf8;
 }
 
 .lab-card > summary {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  list-style: none;
+  gap: 0.6rem;
+  min-height: 3.4rem;
+  padding: 0.7rem 0;
+  color: var(--ink);
   cursor: pointer;
-  padding: 0.5rem 0;
-  font-weight: 600;
+  list-style: none;
 }
 
 .lab-card > summary::-webkit-details-marker {
-  display: none; /* hide default arrow in some browsers */
+  display: none;
 }
 
 .lab-card > summary::after {
   content: "›";
   margin-left: auto;
-  font-size: 1rem;
-  transition: transform 0.15s ease-out;
+  color: var(--muted);
+  font-size: 1.35rem;
+  transition: transform 0.18s ease;
 }
 
 .lab-card[open] > summary::after {
   transform: rotate(90deg);
 }
 
+.lab-card > summary h3 {
+  margin: 0;
+}
+
 .lab-label {
-  font-family: monospace;
-  opacity: 0.7;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .lab-title {
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 750;
 }
 
 .lab-tag {
-  font-size: 0.8rem;
-  padding: 0.1rem 0.4rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid #b7c8df;
   border-radius: 999px;
-  border: 1px solid #ccc;
   background: #fff;
+  color: #315a8d;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.required-card .lab-tag {
+  border-color: #a9d5c1;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.optional-card .lab-tag {
+  border-color: #ecd28b;
+  background: var(--optional-soft);
+  color: var(--optional);
 }
 
 .lab-body {
-  border-top: 1px solid #e0e0e0;
-  margin-top: 0.25rem;
-  padding-top: 0.5rem;
+  margin-top: 0.1rem;
+  padding: 0.45rem 0.25rem 0;
+  border-top: 1px solid var(--border);
 }
 
-details.hint {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background: #f9f9f9;
-  border-left: 3px solid #aaa;
+.notice {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.45rem;
+  background: var(--accent-soft);
+  color: #294869;
 }
 
-details.hint > summary {
+details.hint,
+.lab-body details:not(.lab-card) {
+  margin: 0.9rem 0;
+  padding: 0.75rem 0.9rem;
+  border-left: 4px solid #8c98aa;
+  border-radius: 0.45rem;
+  background: #f7f8fa;
+}
+
+details.hint > summary,
+.lab-body details:not(.lab-card) > summary {
+  color: #435064;
   cursor: pointer;
-  font-weight: 500;
-  color: #555;
+  font-weight: 700;
 }
-  </style>
+
+a.resource-ref {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  #header {
+    gap: 0.25rem 0.75rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  #header a {
+    font-size: 0.78rem;
+  }
+
+  #content {
+    width: min(100% - 1rem, 1080px);
+    padding-top: 8rem;
+  }
+
+  .lab-card > summary {
+    flex-wrap: wrap;
+  }
+
+  .lab-tag {
+    order: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-card > summary::after {
+    transition: none;
+  }
+}
+
+.method-table { overflow-x: auto; margin: 1rem 0; }
+.method-table table { width: 100%; border-collapse: collapse; text-align: left; }
+.method-table caption { text-align: left; font-weight: 700; padding-bottom: .5rem; }
+.method-table th, .method-table td { padding: .65rem; border: 1px solid var(--border); vertical-align: top; }
+.method-table th { background: var(--accent-soft); }
+.lab-body > h3:first-child { margin-top: .75rem; }
+  figure{margin:1rem 0}figure img{display:block;width:100%;max-width:640px;height:auto;border:1px solid var(--border);border-radius:.5rem}figcaption{font-size:.9rem;color:var(--muted);margin-top:.5rem}.file-location{background:#edf2f7;border-radius:.4rem;padding:.5rem .75rem}.lab-body pre{overflow-x:auto}.lab-body ol>li{margin:.55rem 0}.lab-body h3{margin-top:1.2rem}
+</style>
 </head>
 <body>
-   <div id="header">
-    <a id="index_link" href="../index.html">CSSE 220</a>
-    <a id="syllabus_link" href="../syllabus.html">Syllabus</a>
-    <a id="schedule_link" href="../schedule.html">Schedule</a>
-    <a id="quiz_link" href="../design-principles.html">Design</a>
-    <a id="quiz_link" href="../labs.html">Labs</a>
-    <a id="quiz_link" href="../homework.html">Homework</a>
-    <a id="quiz_link" href="../exams.html">Exams</a>
-    <a id="quiz_link" href="../project.html">Final Project</a>
+<div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+      <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
     <a href="../graphics/index.html">Graphics</a>
-    <a id="resources_link" href="../resources.html">Resources</a>
+    <a href="../resources.html">Resources</a>
     <div style="clear:both;"></div>
 </div>
-<div id="content">
-    <h1>Lab Assignment 15</h1>
-    <div id="main-content">
-         <div class="lab-section" id="lab">
-
- <p>
-In this lab, you will practice recursion2 and continue working with event-based programming.
-</p>
-        
-<details class="lab-card" id="lab-01">
-        <summary>
-    <span class="lab-label">01.</span>
-    <span class="lab-title">Recursion2</span>
-    <span class="lab-tag">Submission</span>
-  </summary>
-
-<h2>Instructions</h2>
-
-  <ol>
-    <li>
-      <strong>Inside the <code>lab14</code> package (from the last lab), create a new class named <code>Recursion2</code>.</strong>
-      <br>
-      This class will contain <em>all</em> of your methods for this lab.
-    </li>
-
-    <li>
-      <strong>Open CodingBat (Recursion-1):</strong>
-      <br>
-      Go to 
-      <a href="http://codingbat.com/java/Recursion-1" target="_blank">
-        https://codingbat.com/java/Recursion-1
-      </a>
-    </li>
-
-    <li>
-      <strong>Complete the following CodingBat problems:</strong>
-      <ul>
-        <li><code>count7</code></li>
-        <li><code>count8</code></li>
-        <li><code>powerN</code></li>
-        <li><code>countX</code></li>
-        <li><code>countHi</code></li>
-        <li><code>changeXY</code></li>
-   
-      </ul>
-    </li>
-
-    <li>
-      <strong>For each problem:</strong>
-      <ul>
-        <li>Consult the recursion resources: <a href="../recursion.html" target="_blank">Recursion Guide</a></li>
-        <li>Write the method in CodingBat first</li>
-        <li>Once it passes all tests, copy the method into <code>Recursion2.java</code></li>
-      </ul>
-    </li>
-
-    <li>
-      <strong>Save Recursion2 class with all 6 recursion problems.</strong>
-      
-    </li>
-
-    <li>
-      <strong>Submit <code>Recursion2.java</code> to Gradescope.</strong>
-    </li>
-    <li>Make sure your file is on the package lab14</li>
-  </ol>
-</details>
-
-<details class="lab-card">
-  <summary>
-  <span class="lab-label">02.</span>
-    <span class="lab-title">Prep (Tier3): Loading Sprites</span>
-    <span class="lab-tag">Final Project</span>
-  
-  </summary>
-<h3>Importing a Tier Package (ZIP File)</h3>
-<p><strong>Starter ZIP:</strong> <a href="Tier3.zip">Download starter</a></p>
-<p><strong>Solution ZIP:</strong> <a href="Tier3Solution.zip">Download solution</a></p>
-
-<p>
-  The ZIP file is a <strong>package</strong>, not a full Java project.
-  You will import it into your existing project (the one you used for previous tiers).
-</p>
-
-<h4>Recommended Method (Drag and Drop)</h4>
-
-<ol>
-  <li>Unzip the downloaded file on your computer</li>
-  <li>Open Eclipse and locate your project</li>
-  <li>Expand your project and find the <code>src</code> folder</li>
-  <li>Drag the unzipped folder (<code>tier3</code>) into <code>src</code></li>
-  <li>When prompted, choose <strong>Copy files</strong></li>
-</ol>
-
-<p>
-  After importing, your project should look like:
-</p>
-
-<pre><code>src/
-  tier1/
-  tier2/
-  tier3/
-</code></pre>
-
-<h3>Step 1: Load a Sprite Image to the Ball Class</h3>
-
-<p>
-  So far, the ball is drawn as a circle. Now we will upgrade it into a sprite.
-  A <strong>sprite</strong> is an image used to represent a game object.
-</p>
-
-<p>
-  Add a field to store the sprite:
-</p>
-
-<pre><code>private BufferedImage sprite;</code></pre>
- <p>
-  A <code>BufferedImage</code> is an image stored in memory. Think of it as pixel data
-  that Java can draw on the screen.
-</p>
-<p>
-  <code>ImageIO</code> is a Java utility class that reads image files such as PNG or JPG.
-  It converts the image file into a <code>BufferedImage</code>.
-</p>
-<pre><code>sprite = ImageIO.read(
-      Ball.class.getResource("tennis.png"));
-</code></pre>
-<p>
-  This can fail if the image is missing, the file name is wrong, the path is wrong,
-  or the image file cannot be read. Java will force us to catch it.
-</p>
-<pre><code>try {
-  sprite = ImageIO.read(
-    Ball.class.getResource("tennis.png"));
-} catch (IOException | IllegalArgumentException e) {
-  sprite = null;
-}</code></pre>
-<p>
-  In this example, if the image does not load, we set <code>sprite</code> to
-  <code>null</code>. Then we can draw a simple shape instead of crashing the program. We also use <code>Ball.class</code> to use the Ball class as the reference point.
-</p>
-<p>
-  The single <code>|</code> in the catch statement means either exception type can be caught.
-
-
-  This is called multi-catch. It is different from boolean OR <code>||</code>.
-</p>
-
-<h3>Step 2: Draw Sprite Image to the Ball</h3>
-<p>
-  Inside Ball's <code>draw()</code> method call <code>drawImage()</code> to load the sprite.
-  If the image does not load, draw a circle as a backup.
-</p>
-<pre><code>if (sprite != null) {
-	g2.drawImage(sprite, x, y, 2*radius, 2*radius, null);
-} else {
-// set color and draw a circle if the image fails to load
- }</code></pre>
-
- <h3>Step 3: Load a Background Image</h3>  
- 
- <p>
-  The background belongs to the drawing surface, not the player. Add it to
-  <code>GameComponent</code>, because <code>GameComponent</code> controls what appears on the screen.
-</p>
-
-<p>
-  Add a field:
-</p>
-
-<pre><code>private BufferedImage background;</code></pre>
-<p>Follow the same steps to load image as we did for Ball but this time we will use getClass() which points to the current object’s class</p>
-<pre><code>try {
-  background = ImageIO.read(
-    getClass().getResource("background.png"));
-} catch (IOException | IllegalArgumentException e) {
-  background = null;
-}</code></pre>
-
- <h3>Step 4: Draw a Background Image</h3>
- <p>Follow similar steps to draw the background image as we did for the Ball sprite but draw inside paintComponent()</p>
-
-<pre><code> if (background!= null) {
-g2.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
-} else {
-	g2.setColor(FG);
-}
-</code></pre>
-  <h3>Step 5: Add a wall boundary</h3>
-  <p>
-  Now we will stop the ball from moving outside the screen.
-  This is not full wall collision yet. This is just screen-edge collision.
-</p>
-<p>
-  Check the left edge of the screen. If the ball tries to move past it, set the x position to 0.
-  Check the right edge using the constant for WIDTH
-</p>
-<pre><code>if (x &lt; 0) {
-    x = 0;
-  }
-  if (x + 2*radius &gt; GameComponent.WIDTH) {
-    x = GameComponent.WIDTH - 2*radius;
-  }
-</code></pre>
-<p>
-  We do not use <code>x == 0</code> for collision checks. Movement can skip over exact values.
-  Use <code>&lt;=</code>, <code>&gt;=</code>, <code>&lt;</code>, or <code>&gt;</code> instead.
-</p>
-<p>Do you see why we need to add diameter to x and subtract diameter from WIDTH?</p>
-<h3>Step 6: Checkpoint</h3>
-
-<ul>
-  <li>The ball is drawn using a sprite image</li>
-  <li>The background image appears behind the ball</li>
-  <li>The program still works if an image fails to load.</li>
-  <li>The ball cannot move off the left or right side of the screen</li>
-</ul>
-
-<p>
-  In the next tier, we will add a timer so the game updates automatically.
-  Then wall collision and direction changes will make more sense.
-</p>
-</details>
-        </div>
-      
-        </div>
-        </div>
-
-<!-- <div class="lab-section" id="lab1">
-  <h2>Lab 1: Recursion Practice</h2>
-  <p>
-    In CodingBat <a href="https://codingbat.com/java/Recursion-1">Recursion-1</a>," complete the next 6 problems: count7, count8, powerN, countX, countHi, changeXY
-  </p>
-
-    <p>Paste all the problems (from CodingBat Recursion-1) into one java file and submit (example MyRecursion.java)</p>
-</div> -->
-        
-        <!-- <div class="lab-section" id="lab2">
-          <h2 style="color:black">My Counter</h2>
-        <p>
-            In this lab, you will create a Swing component with a button that increments the count
-        </p>
-        
-        <h3>Task Description</h3>
-        <p>
-            <image src="lab12a.png" alt="lab12 a" width="400"/>
-        </p>
-        <ul>
-          <li>A <code>JLabel</code> to describe the counter</li>
-          <li>A non‑editable <code>JTextField</code> to display the current count</li>
-          <li>A <code>JButton</code> labeled “Count” that, when clicked, increments the counter</li>
-        </ul>
-
-        <h3>Adding ActionListener to the Button</h3>
-    <p>Whenever the “Count” button is clicked, we want to execute  <code>setValues()</code> method:</p>
-    <ol>
-      <li>Add the listener registration at the end of the constructor:
-        <pre><code>button.addActionListener(e -> setValues());</code></pre>
-      </li>
-      <li>Implement the <code>setValues()</code> method to:
-        <ol type="a">
-          <li>Increment the counter</li>
-          <li>Update the text field: <code>text.setText(count + "");</code></li>
-        </ol>
-
-      </li>
-    </ol>
-
-        
-        
-
-        </div> -->
-
-        <!-- <div class="lab-section" id="lab3">
-          <h2 style="color:black">My Accumulator</h2>
-          <h3>Overview</h3>
-    <p>
-      In this lab you will create a Swing <code>JPanel</code> that reads integer values,
-      keeps a running total, and displays the accumulated sum. You already have a
-      viewer class with a <code>JFrame</code> set up, you will build just the panel class.
-    </p>
-          <h3>Task Description</h3>
-          <p>
-              <image src="Lab12b.png" alt="lab12 b" width="400"/>
-          </p>
-          <section id="setup">
-          <h3>1. Setup</h3>
-          <ol>
-            <li>Create a new class named <code>MyAccumulator</code> that <em>extends</em> <code>JPanel</code></li>
-            <li>Ensure your project has necessary Swing imports</li>
-            <li>Add your panel to the existing frame in the viewer’s <code>main()</code> method</li>
-          </ol>
-        </section>
-      
-        <section id="layout">
-          <h3>2. Layout</h3>
-          <p>
-            Use a 2×2 grid to arrange the labels and text fields. For example:
-          </p>
-          <pre><code>setLayout(new GridLayout(2, 2, 5, 5));</code></pre>
-          <p>
-            – Row 1: A label “Enter an Integer:” and an editable text field for input<br>
-            – Row 2: A label “Accumulated Sum:” and a non‐editable text field for output
-          </p>
-          <p>Note: because yoru grid is 2x2, the panel will display your components in the order (see the screenshot) when you use <code>add()</code></p>
-        </section>
-      
-        <section id="event-wiring">
-          <h3>3. Event</h3>
-          <p>
-            Create a method processInput() and Configure the input text field so that when the user presses Enter, an event handler:
-          </p>
-          <ul>
-     
-            <li>Reads the integer from the input field. Note to read input use <code>getText()</code>. It is a good practice to trim text from spaces <code>.getText().trim()</code>
-
-            </li>
-            <li>Adds it to a running total variable (you need Integer here)</li>
-            <li>Clears the input field</li>
-            <li>Updates the output field with the new sum (you need String here)
-              <pre><code>// to parse text to integer use Integer.parseInt()
-                to parse Integer to string use Integer.toString()
-                              </code></pre>
-            </li>
-          </ul>
-          <p>
-            Use a lambda expression to register the listener (no loops or error checks needed here).
-          </p>
-        </section> -->
-
-          </div>
-        </div>
-        </div>
-
-
-
-        </body>
-        </html>
+<div id="content"><div id="main-content"><p><a href="../graphics/index.html">Graphics Hub</a> · <a href="../graphics/javafx-setup.html">JavaFX setup and launch help</a></p>
+<h1>Lab 15: Drone Arena</h1>
+<div class="lab-section intro-panel"><p><strong>Your goal:</strong> steer the drone with arrow keys and collect a blue energy orb.</p><p><a href="DroneArena.zip">Download DroneArena starter</a> · <a href="lab15-verification.html">Verification sheet</a></p>
+<p>The completed Lab 13 behavior is provided. You will complete <strong>only three TODOs</strong> in ArrowApp.java. Keep SceneToken and its movement helpers unchanged.</p></div>
+<figure><img src="lab13-preview.png" width="640" height="400" alt="The starting drone application, with Start, Reset, and Rotate beside a blue-sky and green-ground arena."><figcaption>Your starting point. The energy orb will appear after Step 2.</figcaption></figure>
+<div class="notice"><strong>How to follow this lab:</strong> complete Setup, then Steps 1–3 in order. Find the exact TODO shown, make the lettered edits, and run each checkpoint before continuing. Close the app before rerunning <code>javafx:run</code>. Ask your group lead to verify each finished step.</div>
+<details class="lab-card required-card" open><summary><span class="lab-label">Setup</span><span class="lab-title">Run the supplied app — no edits</span></summary><div class="lab-body"><ol><li>Extract DroneArena.zip. In IntelliJ, Open the <strong>DroneArena</strong> folder containing pom.xml.</li><li>Use <strong>JDK 21</strong> and Bundled Maven; set Maven Runner JRE to Project JDK. Reload Maven.</li><li>In the Maven tool window, Execute Maven Goal: <code>javafx:run</code>.</li></ol><p class="notice"><strong>You should now see…</strong> the drone and background. Start flies right and stops at the wall; Rotate turns it; Reset stops and restores it. Click the arena and press Right: it already works. No orb is visible yet.</p><p><strong>Two controls:</strong> arrow keys move 10 pixels per key press; Start runs the existing animation. Holding a key uses your computer’s key repeat. Do not add another Timeline.</p></div></details>
+<details class="lab-card required-card" open><summary><span class="lab-label">Step 1</span><span class="lab-title">Move in all four directions</span></summary><div class="lab-body"><p class="file-location"><strong>File:</strong> <code>src/main/java/demo/ArrowApp.java</code><br><strong>Method/location:</strong> <code>start(Stage stage)</code> → inside <code>canvas.setOnKeyPressed(...)</code><br><strong>Find this exact comment:</strong> <code>TODO 1: Add LEFT, UP, and DOWN branches using moveBy.</code></p><p><strong>New idea:</strong> <code>setOnKeyPressed</code> runs a handler when a key is pressed. <code>event.getCode()</code> tells you which key. The supplied Right branch is your model.</p>
+<h3>1a. Read the working Right branch</h3><pre><code>if (code == KeyCode.RIGHT) {
+    token.moveBy(10, 0, canvas.getWidth(), canvas.getHeight());
+}</code></pre><p>The first two arguments are horizontal and vertical changes. Right is <code>(10, 0)</code>. Screen y increases <strong>downward</strong>.</p>
+<h3>1b. Add Left immediately after Right</h3><p>At TODO 1, add this <code>else if</code> before the existing collision/consume block:</p><pre><code>else if (code == KeyCode.LEFT) {
+    token.moveBy(-10, 0, canvas.getWidth(), canvas.getHeight());
+}</code></pre><p class="notice"><strong>You should now see…</strong> Right and Left move the drone in opposite directions. Up and Down still do nothing at this point.</p><h3>1c. Add Up and Down using the same pattern</h3><table><thead><tr><th>KeyCode</th><th>Horizontal change</th><th>Vertical change</th></tr></thead><tbody><tr><td>UP</td><td>0</td><td>−10</td></tr><tr><td>DOWN</td><td>0</td><td>10</td></tr></tbody></table>
+<p>Keep all four directions in <strong>one if/else-if chain</strong>. Leave the supplied block below it intact:</p><pre><code>if (code == KeyCode.RIGHT || code == KeyCode.LEFT
+        || code == KeyCode.UP || code == KeyCode.DOWN) {
+    checkCollision(token, status);
+    event.consume();
+}</code></pre><p class="notice"><strong>You should now see…</strong> movement in all four directions. The drone stays inside all four edges, including when rotated. Try the keys after clicking Start, Rotate, and Reset. Click inside the arena if keys do not respond.</p><p><strong>Checkpoint 1:</strong> ask your group lead to verify four-direction movement.</p><details class="hint"><summary>Optional OOP discussion — after your code works</summary><p>The canvas receives the key event; SceneToken changes the drone’s position through moveBy. Receiving an event and changing state are separate jobs. This helper already pushes movement intelligence down to the object that owns the position. In a future design, a Drone class could own position and movement rules; the event handler would tell that drone to move.</p><p><strong>Think:</strong> If the drone later needs a speed limit, should every key handler enforce it, or should the object owning movement enforce it?</p><p>Discussion only; no additional code or graded checkpoint.</p></details></div></details>
+<details class="lab-card required-card"><summary><span class="lab-label">Step 2</span><span class="lab-title">Place an independent energy orb</span></summary><div class="lab-body"><p class="file-location"><strong>File:</strong> <code>src/main/java/demo/ArrowApp.java</code><br><strong>Method/location:</strong> <code>start(Stage stage)</code> → immediately after <code>Pane canvas = ...</code><br><strong>Find this exact comment:</strong> <code>TODO 2: Position and add the energy orb.</code></p><p><strong>New idea:</strong> creating a shape does not display it. It must be added to a container’s child list. The <code>crystal</code> Circle field is already supplied (radius 14, blue); do not create a second one.</p>
+<h3>2a. Set its center</h3><p>At TODO 2, set the center to <strong>(390, 205)</strong>. Start with:</p><pre><code>crystal.setCenterX(390);</code></pre><p>Add the matching <code>setCenterY(...)</code> call for 205.</p>
+<h3>2b. Add it to the arena</h3><p>Use the existing canvas, not the drone’s Group. Here is the pattern; replace <code>someNode</code> with the supplied orb field:</p><pre><code>canvas.getChildren().add(someNode);</code></pre><p>Keep both the drone and orb as separate children of canvas. Putting the orb inside <code>token.getView()</code> would make it move and rotate with the drone.</p><p class="notice"><strong>You should now see…</strong> a blue orb to the right of the drone. Move and rotate the drone: the orb stays still. Flying through the orb has no effect yet; Step 3 adds collection.</p><p><strong>Checkpoint 2:</strong> ask your group lead to verify both objects are visible and independently positioned.</p><details class="hint"><summary>Optional OOP discussion — after your code works</summary><p>The drone and orb are separate scene objects with their own identity and state. The drone moves and rotates; the orb has a location and a collected/available state. The current orb is simply a Circle. Later, separate Drone and EnergyCrystal classes could keep each object’s related state and behavior together, giving each one a clear responsibility and high cohesion.</p><p><strong>Think:</strong> Would a change to the orb’s reward value belong with the drone’s rotation code? Why?</p><p>Discussion only; no additional code or graded checkpoint.</p></details></div></details>
+<details class="lab-card required-card"><summary><span class="lab-label">Step 3</span><span class="lab-title">Collect the orb on contact</span></summary><div class="lab-body"><p class="file-location"><strong>File:</strong> <code>src/main/java/demo/ArrowApp.java</code><br><strong>Method/location:</strong> <code>checkCollision(SceneToken token, Label status)</code> → near the bottom of ArrowApp.java<br><strong>Find this exact comment:</strong> <code>TODO 3: Collect a visible overlapping orb and show a result.</code></p><p><strong>New idea:</strong> bounds are a rectangle around a node. <code>intersects</code> reports whether two rectangles overlap. Both objects share canvas, so their parent-coordinate bounds can be compared.</p>
+<h3>3a. Check overlap inside checkCollision</h3><pre><code>boolean touching = token.getView().getBoundsInParent()
+        .intersects(crystal.getBoundsInParent());</code></pre><h3>3b. Collect only a visible orb</h3><p>Below that calculation, use this condition:</p><pre><code>if (crystal.isVisible() &amp;&amp; touching) {
+    // Hide the orb.
+    // Stop flight.
+    // Show the collection message.
+}</code></pre><p>The visibility check matters: a hidden node still has bounds. It should be collected only once until Reset.</p>
+<h3>3c. Fill in the three actions</h3><ol type="a"><li>Hide the orb with <code>crystal.setVisible(false);</code>.</li><li>Stop the existing Timeline with its <code>stop()</code> method.</li><li>Use <code>status.setText(...)</code> to display <code>Energy collected! Reset to play again.</code></li></ol>
+<p><strong>No new callers needed:</strong> collision checks already run after key movement, each animation tick, and rotation. Reset already restores the orb and drone. Stopping flight keeps an arrival-at-wall message from replacing the collection message.</p><p class="notice"><strong>You should now see…</strong> when you steer into the orb, it disappears and the collection message appears.</p><h3>3d. Test the full interaction</h3><ol><li>Reset. Press Start without steering: the drone should reach and collect the orb.</li><li>Reset again: both objects should return.</li><li>Click Start repeatedly before collection: flight should not speed up.</li></ol><p class="notice"><strong>You should now see…</strong> collection works with both keyboard movement and animation, Reset restores the orb, and repeated Start clicks do not accelerate movement.</p><p><strong>Checkpoint 3:</strong> ask your group lead to verify collection and Reset.</p><details class="hint"><summary>Why might contact count before the pictures visibly touch?</summary><p>This is bounding-box overlap, not pixel-perfect collision. Transparent image corners can count as contact.</p></details><details class="hint"><summary>Optional OOP discussion — after your code works</summary><p>Collection requires collaboration: drone position, orb availability, animation, and the status label all participate. The current small ArrowApp coordinates these objects in one method. A future GameController could coordinate collisions and scoring while Drone and EnergyCrystal manage their own state. That keeps either object from depending on unrelated controls and helps reduce coupling.</p><p><strong>Think:</strong> Why would making EnergyCrystal directly change a status label and stop a Timeline create unnecessary dependencies?</p><p>Discussion only; no additional code or graded checkpoint.</p></details></div></details>
+<details class="lab-card"><summary>From Demo to Game Architecture</summary><div class="lab-body"><p>Optional discussion: Drone could own position and movement; EnergyCrystal could own availability and reward; GameController could coordinate collection, score, and reset. How would you divide these responsibilities so each class has one clear job?</p><p>This is a possible future design. Keep today’s two-class application; no new classes, UML, written reflection, or submission are required for this discussion.</p><p>Conceptual reference: <a href="../resources_files/Basic_OO_Principles_for_CSSE220.pdf">CSSE220 Object Oriented Design Principles</a>.</p></div></details>
+<details class="lab-card required-card"><summary><span class="lab-label">Help</span><span class="lab-title">If something does not work</span></summary><div class="lab-body"><ul><li><strong>Keys do nothing:</strong> click the arena. Keep the supplied focus calls; do not create a second key handler.</li><li><strong>Up moves down:</strong> use negative y for Up and positive y for Down.</li><li><strong>No orb:</strong> use the supplied crystal field, set both coordinates, and add it to canvas.getChildren().</li><li><strong>Orb follows the drone:</strong> remove it from the token Group; add it directly to canvas.</li><li><strong>No collection:</strong> edit checkCollision, compare both bounds in parent coordinates, and check visibility.</li><li><strong>Message gets replaced:</strong> stop flight when collecting.</li></ul></div></details>
+<section class="lab-section"><h2>Verify and submit</h2><ol><li>Open the <a href="lab15-verification.html">three-checkpoint verification sheet</a>. Use one sheet per student.</li><li>The group lead observes and initials each checkpoint. A peer or instructor verifies the lead. Recheck incomplete items.</li><li>The lead uploads one signed sheet per student to <strong>Lab 15 in Gradescope</strong>, listing all verified students.</li></ol><p>OOP discussion is optional; no additional classes, UML, written reflection, or graded checkpoints are required.</p></section></div></div></body></html>
