@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSE 220 | Recursion Quest</title>
+  <link rel="stylesheet" href="../syllabus_files/schedule.css">
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <style>
+:root {
+  --ink: #1f2937;
+  --muted: #5f6b7a;
+  --surface: #ffffff;
+  --page: #f4f6fb;
+  --border: #d8deea;
+  --header: #1c1515;
+  --heading: #111111;
+  --accent: #2166d1;
+  --accent-soft: #edf4ff;
+  --success: #18794e;
+  --success-soft: #ecf8f2;
+  --optional: #9a6700;
+  --optional-soft: #fff8e6;
+  --shadow: 0 12px 30px rgba(34, 42, 66, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  min-height: 3.75rem;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: var(--header);
+  box-shadow: 0 4px 16px rgba(30, 17, 48, 0.2);
+}
+
+#header a {
+  margin: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+#header a:hover,
+#header a:focus-visible {
+  background: #222;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+#header div {
+  display: none;
+}
+
+#content {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6.75rem 0 4rem;
+}
+
+#main-content {
+  padding: 0;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  color: var(--heading);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h2,
+h3 {
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.65rem 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0.65rem 0;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+ul,
+ol {
+  margin: 0.65rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.3rem;
+  background: #eef1f6;
+  color: #9b1c4a;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  margin: 0.85rem 0 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  display: block;
+  min-width: max-content;
+  padding: 1rem 1.1rem;
+  border: 1px solid #ced8e8;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.6rem;
+  background: #f7f9fc;
+  color: #172033;
+  line-height: 1.5;
+}
+
+.lab-section {
+  margin-bottom: 1.4rem;
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.intro-panel {
+  border-color: #cfd4dc;
+  background: #f8f9fb;
+}
+
+.lab-card {
+  margin: 1rem 0;
+  padding: 0 1rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  box-shadow: 0 5px 15px rgba(34, 42, 66, 0.05);
+}
+
+.setup-card {
+  background: var(--accent-soft);
+}
+
+.required-card {
+  border-left-color: var(--success);
+}
+
+.optional-card {
+  border-left-color: var(--optional);
+  background: #fffdf8;
+}
+
+.lab-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.4rem;
+  padding: 0.7rem 0;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.lab-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.lab-card > summary::after {
+  content: "›";
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 1.35rem;
+  transition: transform 0.18s ease;
+}
+
+.lab-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.lab-card > summary h3 {
+  margin: 0;
+}
+
+.lab-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lab-title {
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+
+.lab-tag {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid #b7c8df;
+  border-radius: 999px;
+  background: #fff;
+  color: #315a8d;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.required-card .lab-tag {
+  border-color: #a9d5c1;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.optional-card .lab-tag {
+  border-color: #ecd28b;
+  background: var(--optional-soft);
+  color: var(--optional);
+}
+
+.lab-body {
+  margin-top: 0.1rem;
+  padding: 0.45rem 0.25rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.notice {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.45rem;
+  background: var(--accent-soft);
+  color: #294869;
+}
+
+details.hint,
+.lab-body details:not(.lab-card) {
+  margin: 0.9rem 0;
+  padding: 0.75rem 0.9rem;
+  border-left: 4px solid #8c98aa;
+  border-radius: 0.45rem;
+  background: #f7f8fa;
+}
+
+details.hint > summary,
+.lab-body details:not(.lab-card) > summary {
+  color: #435064;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+a.resource-ref {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  #header {
+    gap: 0.25rem 0.75rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  #header a {
+    font-size: 0.78rem;
+  }
+
+  #content {
+    width: min(100% - 1rem, 1080px);
+    padding-top: 8rem;
+  }
+
+  .lab-card > summary {
+    flex-wrap: wrap;
+  }
+
+  .lab-tag {
+    order: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-card > summary::after {
+    transition: none;
+  }
+}
+
+.method-table { overflow-x: auto; margin: 1rem 0; }
+.method-table table { width: 100%; border-collapse: collapse; text-align: left; }
+.method-table caption { text-align: left; font-weight: 700; padding-bottom: .5rem; }
+.method-table th, .method-table td { padding: .65rem; border: 1px solid var(--border); vertical-align: top; }
+.method-table th { background: var(--accent-soft); }
+.lab-body > h3:first-child { margin-top: .75rem; }
+  figure{margin:1rem 0}figure img{display:block;width:100%;max-width:640px;height:auto;border:1px solid var(--border);border-radius:.5rem}figcaption{font-size:.9rem;color:var(--muted);margin-top:.5rem}.file-location{background:#edf2f7;border-radius:.4rem;padding:.5rem .75rem}.lab-body pre{overflow-x:auto}.lab-body ol>li{margin:.55rem 0}.lab-body h3{margin-top:1.2rem}
+.card {background:white;border:1px solid #d8deea;border-radius:12px;padding:1.5rem;margin:1.2rem 0;} </style>
+</head>
+<body>
+<div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+      <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../graphics/index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+</div>
+<div id="content"><main id="main-content">
+<h1>Recursion Quest: Unlock the Portal</h1>
+<p>Five recursive challenges stand between you and the treasure hunt. Complete the Java methods, test your work, then use your portal code to begin the RecursionQuest and pursue your Recursion collectible card.</p>
+<section class="card"><h2>Before you start</h2>
+<p>You have practiced numeric recursion. Now apply the same reasoning to strings and arrays. Review <a href="../recursion.html">Recursion Tips &amp; Patterns</a>: base cases, string recursion, array indexes, and helper methods.</p>
+<p><strong>For every quest:</strong> complete the method and run the unit tests. Use recursion, with no loops or streams. Keep arrays unchanged. Assume non-null inputs and indexes from zero through the array length.</p></section>
+<h2>Part 1: Complete the starter and unlock the mystery code</h2>
+<section class="card"><h3>Step 1: Open the starter</h3>
+<p><a href="RecursionQuest.zip" download>Download RecursionQuest.zip</a>. Extract it first. In IntelliJ, choose <strong>File → Open</strong> and select the extracted <code>RecursionQuest</code> folder containing <code>pom.xml</code>. Load the Maven project and use <strong>Java 21</strong>. Wait for dependencies to load.</p>
+<p>Open <code>src/main/java/RecursionPractice.java</code>. Your edits go here. Tests are in <code>src/test/java/RecursionPracticeTest.java</code>. The starter compiles, but its unfinished methods deliberately throw exceptions.</p></section>
+<section class="card"><h2>Step 2: String quests</h2>
+<p>Complete both <code>TODO STEP 2</code> markers.</p>
+<ul><li><strong>Quest 1 — <a href="https://codingbat.com/prob/p170371">countX</a>:</strong> count lowercase x characters. For example, <code>countX("xXx")</code> returns <code>2</code>.</li>
+<li><strong>Quest 2 — <a href="https://codingbat.com/prob/p101372">changeXY</a>:</strong> replace lowercase x with y, keeping everything else. <code>changeXY("xX")</code> returns <code>"yX"</code>.</li></ul>
+<p>Predict each method's result for an empty string before coding. What does the first character contribute? What should the smaller call return?</p>
+<p>Work in CodingBat, then copy only the working <strong>method body</strong> into the matching Java method, replacing the exception. Keep the starter's <code>public static</code> signature and parameter name <code>str</code>; do not paste another method inside it.</p>
+<details><summary>Hint: choose the return value for this problem</summary><p>Both methods can shrink the string with <code>substring(1)</code>. A counting method returns an integer; a string-building method returns a String. Their base-case return values differ.</p></details></section>
+<section class="card"><h2>Step 3: Array quests</h2>
+<p>Complete both <code>TODO STEP 3</code> markers.</p>
+<ul><li><strong>Quest 3 — <a href="https://codingbat.com/prob/p108997">array6</a>:</strong> report whether a 6 exists at or after <code>index</code>.</li>
+<li><strong>Quest 4 — <a href="https://codingbat.com/prob/p135988">array11</a>:</strong> count 11s at or after <code>index</code>. Use the array-index patterns in the reference page as needed.</li></ul>
+<p>Predict <code>array6(new int[]{6, 2}, 1)</code> and <code>array11(new int[]{11, 2, 11}, 1)</code>. The prefix before the starting index must be ignored. Then transfer your CodingBat method bodies as in Step 2.</p>
+<details><summary>Hint: the array stays; the index moves</summary><p>Check your base case before reading <code>nums[index]</code>. When index equals the length, no elements remain. Move the index forward on each recursive call without modifying the array.</p></details></section>
+<section class="card"><h2>Step 4: Build a recursive helper</h2>
+<p><strong>Quest 5 — countEven:</strong> count even integers in the whole array. Zero and negative even integers count. For <code>{0, -2, 3}</code>, predict <code>2</code>.</p>
+<ol type="a"><li>At <code>TODO STEP 4a</code>, implement <code>countEven(int[] nums)</code> as a public wrapper that starts the private helper at the beginning.</li>
+<li>At <code>TODO STEP 4b</code>, implement <code>countEvenHelper(int[] nums, int index)</code> recursively. Decide its base case, the current element's contribution, and how to combine that with the remaining count.</li></ol>
+<p>Keep the helper private. Do not change the array. The public method starts the helper at the beginning of the array.</p></section>
+<section class="card"><h2>Step 5: Run the unit tests and obtain your mystery code</h2>
+<ol><li>Open <code>src/test/java/RecursionPracticeTest.java</code> in IntelliJ.</li>
+<li>Click the green arrow beside the <strong>class name</strong> to run all unit tests.</li>
+<li>If a test fails, use its failure message to fix your method, then run the tests again. Keep the supplied tests unchanged.</li>
+<li>When all six tests pass, find your <strong>mystery code in the IntelliJ Run console</strong>. The unlock test checks all five recursion challenges before printing the code.</li></ol>
+<p>No reflection or written explanation is required. Continue to Part 2 with your mystery code.</p></section>
+<section class="card"><h2>Part 2: Play RecursionQuest</h2>
+<p>The <code>unlockPortal</code> test repeats every required check and prints the portal message only after they all succeed. Read the <strong>Run console</strong> for your code, then enter it in Treasure Hunt to begin the RecursionQuest.</p>
+<ol><li>Finish Part 1 and run the complete JUnit class. All six tests must be green; copy the mystery code from the IntelliJ Run console. You do not need to edit or configure the portal code.</li>
+<li>Open <a href="https://csse220-java-treasure-hunt-163831374566.us-west2.run.app/" target="_blank" rel="noopener">Java Treasure Hunt</a>.</li>
+<li>Choose <strong>RecursionQuest</strong> and use your mystery code to enter. Complete the Treasure Hunt game challenges and pursue your Recursion collectible card.</li></ol>
+<p>If RecursionQuest is not yet available in the game, keep your code and completed project ready for the instructor’s launch announcement.</p>
+<p>No separate Gradescope submission is required. Keep your completed Java project as a recursion reference. The Treasure Hunt reward is a separate activity.</p></section>
+</main></div></body></html>
