@@ -1,396 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Recursion Tips & Patterns</title>
-      <link rel="stylesheet" type="text/css" href="./syllabus_files/screen.css">
-<link rel="stylesheet" type="text/css" href="./syllabus_files/schedule.css">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-  <style>
-    :root{
-      --ink:#1f2937;/* slate-800 */
-      --muted:#6b7280;/* gray-500 */
-      --accent:#2563eb;/* blue-600 */
-      --bg:#ffffff;
-      --card:#f8fafc;/* slate-50 */
-      --code:#0f172a;/* slate-900 */
-      --chip:#eef2ff;/* indigo-50 */
-    }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      /* padding: 0; */
-      padding-top: 0;
-    }
-   /* html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"}
-    /* Header styling */
-#header {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-z-index: 1000;
-
-padding: 0.8rem 1rem;
-}
-#header a {
-color: #fff;
-margin-right: 15px;
-text-decoration: none;
-font-weight: 600;
-}
-#header a:hover {
-text-decoration: underline;
-}
-#header div {
-clear: both;
-}
-.badge {
-background: #fef3c7;
-color: #78350f;
-border-radius: 999px;
-padding: 0.2rem 0.6rem;
-font-size: 0.8rem;
-font-weight: bold;
-}
-main {
-padding: 20px;
-margin-top: 120px;
-}
-   /* main{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem; padding: 20px;}*/
-    h1{font-size:2rem;margin:.2rem 0 1rem}
-    h2{margin:2rem 0 .5rem}
-    h3{margin:1.2rem 0 .4rem}
-    .lead{color:var(--muted)}
-    .grid{display:grid;gap:1rem}
-    @media (min-width:900px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr 1fr}}
-    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;padding:1rem}
-    .callout{border-left:4px solid var(--accent);background:#eff6ff;padding:0.75rem 1rem;border-radius:8px}
-    code,kbd,pre{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
-    pre{background:#0b1220;color:#d1d5db;border-radius:12px;padding:1rem;overflow:auto}
-    .table{width:100%;border-collapse:collapse}
-    .table th,.table td{border:1px solid #e5e7eb;padding:.6rem;text-align:left;vertical-align:top}
-    .chips{display:flex;flex-wrap:wrap;gap:.5rem}
-    .chip{background:#f1f5f9;border:1px solid #e2e8f0;padding:.25rem .5rem;border-radius:999px;font-size:.85rem}
-    details{background:#f9fafb;border:1px solid #eceff3;border-radius:12px;padding:.6rem 1rem}
-    details summary{cursor:pointer;font-weight:600}
-    .small{font-size:.9rem;color:var(--muted)}
-    .kbd{border:1px solid #e5e7eb;border-bottom-width:2px;border-radius:6px;padding:.1rem .35rem;background:#fff}
-  </style>
-</head>
-<body>
-
-    <div id="header">
-                <a id="index_link" href="./index.html">CSSE 220</a>
-                <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
-                <a id="schedule_link" href="./schedule.html">Schedule</a>
-                <a id="quiz_link" href="./demos.html">Demos</a>
-                <a id="quiz_link" href="./worksheets.html">Quizzes</a>
-                <a id="quiz_link" href="./labs.html">Labs</a>
-                <a id="quiz_link" href="./homework.html">Homework</a>
-                <a id="quiz_link" href="./exams.html">Exams</a>
-                <a id="quiz_link" href="./project.html">Final Project</a>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CSSE 220 | Recursion Tips &amp; Patterns</title><link rel="stylesheet" href="./syllabus_files/screen.css"><link rel="stylesheet" href="./syllabus_files/schedule.css"><style>
+:root{--ink:#1f2937;--accent:#2563eb;--card:#f8fafc}*{box-sizing:border-box}body{margin:0;color:var(--ink);font:16px/1.65 Arial,sans-serif;background:#f4f6fb}#header{display:flex;flex-wrap:wrap;gap:.4rem 1rem;padding:1rem;background:#1c1515}#header a{color:white;text-decoration:none;font-weight:600}#header a:hover{text-decoration:underline}#header div{display:none}main{max-width:1100px;margin:auto;padding:2rem 1rem 4rem}h1{line-height:1.2}h2{margin-top:0}.topic{background:white;border:1px solid #d8deea;border-radius:12px;padding:clamp(1rem,3vw,2rem);margin-top:1rem}.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0}.tabs a{padding:.65rem 1rem;border:1px solid #b7c4d8;border-radius:8px;background:white;color:#173b78;text-decoration:none}.tabs [aria-selected=true]{background:#173b78;color:white}a:focus-visible,summary:focus-visible{outline:3px solid #ad5700;outline-offset:3px}[hidden]{display:none!important}.pattern{border-left:4px solid var(--accent);padding:.5rem 1rem;background:#eff6ff}pre{background:#0b1220;color:#e2e8f0;border-radius:8px;padding:1rem;overflow:auto;line-height:1.55;font-size:.9rem}code{font-family:ui-monospace,monospace}dt{font-weight:bold}dd{margin:0 0 .6rem 1rem}details{border:1px solid #d8deea;border-radius:8px;padding:1rem;margin:1rem 0}summary{cursor:pointer;font-weight:bold}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse}td,th{padding:.6rem;border:1px solid #d8deea;text-align:left}figure{margin:1rem 0}.warning{background:#fff7df;padding:.8rem;border-radius:8px}.keyword{color:#c4b5fd}.string{color:#86efac}.comment{color:#a5b4c8}@media(max-width:600px){main{padding-top:1rem}.tabs a{flex:1 1 45%;text-align:center}pre{font-size:.8rem}}@media print{.tabs{display:none}.topic[hidden]{display:block!important}pre{white-space:pre-wrap;background:white;color:black}}
+</style></head><body><div id="header">
+                <a href="./index.html">CSSE 220</a>
+                <a href="./syllabus.html">Syllabus</a>
+                <a href="./schedule.html">Schedule</a>
+                <a href="./demos.html">Demos</a>
+                <a href="./worksheets.html">Quizzes</a>
+                <a href="./labs.html">Labs</a>
+                <a href="./homework.html">Homework</a>
+                <a href="./exams.html">Exams</a>
+                <a href="./project.html">Final Project</a>
                 <a href="graphics/index.html">Graphics</a>
-                <a id="resources_link" href="./resources.html">Resources</a>
+                <a href="./resources.html">Resources</a>
                 <div style="clear:both;"></div>
    
 
 </div>
 
-  <main>
-    <h1>Recursion Tips & Patterns</h1>
-    <p class="lead">A fast, practical guide to mastering recursion for CSSE 220. Use this page before quizzes, labs, and exams. Includes base-case patterns, boolean logic (AND/OR), array/string templates, and example solutions.</p>
+<main><h1>Recursion Tips &amp; Patterns</h1><p>Choose a topic for a focused reference while working on labs and homework. Predict → Build → Test → Explain.</p><nav class="tabs" aria-label="Recursion topics"><a id="tab-basics" href="#basics">Recursion Basics</a><a id="tab-strings" href="#strings">Strings</a><a id="tab-arrays" href="#arrays">Arrays</a><a id="tab-helpers" href="#helpers">Helper Methods</a><a id="tab-tracing" href="#tracing">Tracing &amp; Debugging</a></nav><p>Keyboard: use Left/Right arrows or Home/End within the tabs. Tab moves to the selected topic. Without JavaScript, all topics remain visible.</p><section class="topic" id="basics"><h2>Recursion Basics</h2><p class="pattern">When to use: solve a problem by solving a smaller version of the same problem.</p>
+<ol><li><strong>Define the result.</strong> What must this call return?</li><li><strong>Choose a base case.</strong> Answer the simplest input directly.</li><li><strong>Make progress.</strong> Shrink a string, advance an index, or reduce a number.</li><li><strong>Use the smaller result.</strong> Combine it with the current step.</li></ol>
+<p>For empty input, common identities are:</p><div class="table-wrap"><table><tr><th>Goal</th><th>Empty-input result</th><th>Reason</th></tr><tr><td>Count or sum</td><td>0</td><td>Adds nothing</td></tr><tr><td>Build text</td><td>""</td><td>Adds no characters</td></tr><tr><td>Multiply</td><td>1</td><td>Leaves product unchanged</td></tr><tr><td>Find any match (OR)</td><td>false</td><td>No match exists</td></tr><tr><td>All items satisfy a condition (AND)</td><td>true</td><td>No counterexample exists</td></tr></table></div>
+<p>Choose the base-case answer from the problem, not just the input type. Counting characters returns an integer, not an empty String.</p><pre><code class="language-java">public int digitSum(int n) { // precondition: n &gt;= 0
+    if (n == 0) return 0;
+    return n % 10 + digitSum(n / 10);
+}</code></pre><dl><dt>Base case</dt><dd><code>n == 0</code> returns 0.</dd><dt>Recursive call</dt><dd><code>n / 10</code> removes the last digit.</dd><dt>Return value</dt><dd>Add this digit to the sum returned by the smaller call.</dd></dl><p class="warning">Common error: calling <code>digitSum(n)</code> again leaves the problem unchanged. Even with a base case, that call cannot reach it.</p></section><section class="topic" id="strings"><h2>Strings</h2><p class="pattern">When to use: inspect the first character and let recursion process the remaining text.</p><p><code>charAt(0)</code> reads the first character; <code>substring(1)</code> creates the remaining string. Check the length before accessing a character. Strings are immutable.</p><pre><code class="language-java">String allStar(String s){
+  if (s.length() &lt;= 1) return s; // need lookahead
+  return s.charAt(0) + &quot;*&quot; + allStar(s.substring(1));
+}</code></pre><dl><dt>Base case</dt><dd>Length 0 or 1 needs no separator.</dd><dt>Recursive call</dt><dd>Process <code>s.substring(1)</code>.</dd><dt>Return value</dt><dd>First character + separator + the remaining result, in that order.</dd></dl><p class="warning">Common errors: forgetting <code>return</code>, reading <code>charAt(0)</code> on an empty string, or using <code>==</code> for text equality. Use <code>equals</code> or <code>isEmpty</code>.</p><div class="table-wrap"><table><tr><th>Access needed</th><th>Stop before access when</th></tr><tr><td>charAt(0)</td><td>length == 0</td></tr><tr><td>charAt(1)</td><td>length &lt;= 1</td></tr><tr><td>charAt(2)</td><td>length &lt;= 2</td></tr></table></div><p>These bounds tell you when access is unsafe; the problem still determines the return value.</p><details><summary>Another pattern: remove characters</summary><pre><code class="language-java">String noX(String s){
+  if (s.isEmpty()) return &quot;&quot;;
+  char c = s.charAt(0);
+  String rest = noX(s.substring(1));
+  return (c==&#x27;x&#x27;) ? rest : c + rest;
+}</code></pre><dl><dt>Base case</dt><dd>Empty text returns empty text.</dd><dt>Recursive call</dt><dd>Remove the first character from the recursive input.</dd><dt>Return value</dt><dd>Keep or omit the first character, then use the returned suffix.</dd></dl></details></section><section class="topic" id="arrays"><h2>Arrays</h2><p class="pattern">When to use: process a suffix without copying or changing the array.</p><p>The array stays the same. The index advances. Assume a non-null array and a nonnegative starting index. An index at the length represents an empty suffix.</p><pre><code class="language-java">public int sumArray(int[] nums, int index) {
+    if (index &gt;= nums.length) return 0;
+    return nums[index] + sumArray(nums, index + 1);
+}</code></pre><dl><dt>Base case</dt><dd>Stop at or beyond the array length before reading an element.</dd><dt>Recursive call</dt><dd>Advance <code>index + 1</code>, keeping the array unchanged.</dd><dt>Return value</dt><dd>Add this element to the sum of the remaining suffix.</dd></dl><div class="table-wrap"><table><tr><th>Elements inspected</th><th>Stop before access</th></tr><tr><td>nums[i]</td><td>i &gt;= nums.length</td></tr><tr><td>nums[i], nums[i+1]</td><td>i &gt;= nums.length - 1</td></tr><tr><td>nums[i], nums[i+1], nums[i+2]</td><td>i &gt;= nums.length - 2</td></tr></table></div><p>The last valid index is <code>length - 1</code>. The single-element base case stops at the exhausted index, not the last valid element.</p><p class="warning">Common error: restarting at zero in each recursive call. That revisits the same suffix forever. Starting at a nonzero index must ignore the earlier prefix.</p><details><summary>Neighbor search: array220</summary><pre><code class="language-java">boolean array220(int[] nums, int index) {
+if (index &gt;= nums.length - 1) {
+return false; // base: need a pair (index and index+1)
+}
 
-    <section class="card">
-      <h2>Quick-Start Cheatsheet</h2>
-<h3>How to start</h3>
-          <ul>
-            <li><strong>Define the goal:</strong> What must this function return?</li>
-            <li><strong>Find the simplest case:</strong> empty / last / zero → return a neutral value</li>
-            <li><strong>Shrink the problem:</strong> move to <code>substring(1)</code>, <code>index + 1</code>, <code>n - 1</code>,
-  or for digits: <code>n / 10</code></li>
-          </ul>
-      <div class="grid grid-2">
+int current = nums[index];
+int next = nums[index + 1];
+if (next == (long) current * 10) {
+return true; // found a valid pair
+}
 
-        <div>
-  <h3>What should the base case return?</h3>
-
-  <p>
-    When recursion reaches the end (no more work to do), return a value that
-    does NOT change your result.
-  </p>
-
-  <table>
-    <tr>
-      <th>Method</th>
-      <th>Base case</th>
-      <th>why</th>
-    </tr>
-    <tr>
-      <td>Build a String</td>
-      <td><code>""</code></td>
-      <td>Adding empty text changes nothing</td>
-    </tr>
-    <tr>
-      <td>Count things</td>
-      <td><code>0</code></td>
-      <td>Adding 0 keeps the count correct</td>
-    </tr>
-    <tr>
-      <td>Multiply numbers</td>
-      <td><code>1</code></td>
-      <td>Multiplying by 1 keeps the value</td>
-    </tr>
-    <tr>
-      <td>Check All (AND condition)</td>
-      <td><code>true</code></td>
-      <td>true does not break the condition</td>
-    </tr>
-    <tr>
-      <td>Check Any (OR condition)</td>
-      <td><code>false</code></td>
-      <td>false does not falsely trigger a match</td>
-    </tr>
-  </table>
-
-  <p><strong>Think:</strong> “What value is safe to return at the end?”</p>
-</div>
-        <div>
-          <h3>Neutral values</h3>
-          <div class="chips">
-            <span class="chip">String → <code>""</code></span>
-            <span class="chip">Counting → <code>0</code></span>
-            <span class="chip">Product/AND → <code>1</code>/<code>true</code></span>
-            <span class="chip">OR/search → <code>false</code></span>
-          </div>
-        </div>
-        <div>
-  <h3>Golden pattern</h3>
-<pre><code>return result_of_this_step + recurse(smaller_input);
-</code></pre>
-<p class="small">Examples:<br>
-<code>count + recurse(...)</code><br>
-<code>(cond) || recurse(...)</code><br>
-<code>char + recurse(...)</code><br>
-<code>(cond) && recurse(...)</code>
-</p>          
-        </div>
-</div>
-</section>
-
-
-
-
-
-    <section>
-<h2>Base-Case Cookbook</h2>
-<h3>Digits</h3>
-<ul>
-
-<li><b>No lookahead</b> - use <code>n % 10</code>
-<pre><code> // Base case
-if (n == 0) return 0;
-// Access current digit
-int last = n % 10;
-// Shrink the number:
-return last + recurse(n / 10);
-</code></pre>
-<li><b>Needs 1 lookahead</b> - use <code>(n / 10) % 10</code></p>
-<pre><code> // Base case
-if (n &lt; 10) return 0;
-// Access values:
-int last = n%10;
-int next = (n / 10) % 10;
-// How move 2 steps (skip one digit)
-recurse(n / 100);
-</code></pre>
-
-<h3>Strings</h3>
-<ul>
-  <li><b>No lookahead</b> - use s.charAt(0)
-
-    <pre><code>// Base case
-if (s.isEmpty()) return "";
-// Access current character
-char first = s.charAt(0);
-// Shrink the string
-return first + recurse(s.substring(1));</code></pre>
-
-    
-  </li>
-  <li><b>Needs 1 lookahead</b> - use s.charAt(1)
-    <pre><code>// Base Case
-if (s.length() <= 1) return s;
-// Access values:
-char first = s.charAt(0);
-char next = s.charAt(1);
-// Usually shrink by 1 s.substring(1), but if you are asked to skip use
-recurse(s.substring(2));
-</code></pre>
-  </li>
-  <li><b>Needs 2 lookahead</b> (use s.charAt(2)):
-    <pre><code>//Base Case
-if (s.length() <= 2) return s;
-// How to move 3 steps (skip two character)
-recurse(s.substring(3));</code></pre>
-  </li>
-</ul>
-
-<p><i>Tip1:</i> In Java, never use <code>==</code> for strings. Prefer <code>s.isEmpty()</code> or <code>s.equals("")</code>.</p>
-<p><i>Tip2:</i>
-Strings → <code>charAt(0)</code>, <code>charAt(1)</code><br>
-Digits → <code>n % 10</code>, <code>(n / 10) % 10</code>
-</p>
-
-
-<h3>Arrays</h3>
-<p>
-  For array recursion, the array stays the same.
-  The index moves forward each recursive call.
-</p>
-
-<pre><code>// basic movement
-recursiveMethod(nums, i + 1);</code></pre>
-
-
-<table>
-<tr><th>Access</th><th>Safe Base Case</th><th>Safe Index Range</th></tr>
-<tr><td>nums[i]</td><td><code>if (i >= nums.length) return …;</code></td><td>0..len-1</td></tr>
-<tr><td>nums[i], nums[i+1]</td><td><code>if (i >= nums.length - 1) return …;</code></td><td>0..len-2</td></tr>
-<tr><td>nums[i], nums[i+1], nums[i+2]</td><td><code>if (i >= nums.length - 2) return …;</code></td><td>0..len-3</td></tr>
-</table>
-
-<p><i>Why <code>&gt;=</code>?</i> It safely handles both the last valid index and empty arrays.</p>
-<h4>Array Recursion Template: Count Something</h4>
-
-<pre><code>int countSomething(int[] nums, int i) {
-    if (i >= nums.length) {
-        return 0;
-    }
-
-    int count = 0;
-
-    if (/* current item matches condition */) {
-        count = 1;
-    }
-
-    return count + countSomething(nums, i + 1);
-}</code></pre>
-
-<h4>Array Recursion Template: Search for Something</h4>
-
-<pre><code>boolean containsSomething(int[] nums, int i) {
-    if (i >= nums.length) {
-        return false;
-    }
-
-    if (/* current item matches condition */) {
-        return true;
-    }
-
-    return containsSomething(nums, i + 1);
-}</code></pre>
-
-<h4>Array Recursion Template: Compare Neighbors</h4>
-
-<pre><code>boolean hasNeighborPattern(int[] nums, int i) {
-    if (i >= nums.length - 1) {
-        return false;
-    }
-
-    if (/* nums[i] and nums[i + 1] match the pattern */) {
-        return true;
-    }
-
-    return hasNeighborPattern(nums, i + 1);
-}</code></pre>
-<h3>ArrayList&lt;&gt;</h3>
-
-<p>
-  With an <code>ArrayList</code>, you have two common recursion choices:
-</p>
-
-<ul>
-  <li><strong>Non-mutating:</strong> keep the list unchanged and move an index forward.</li>
-  <li><strong>Mutating:</strong> remove one item each time until the list is empty.</li>
-</ul>
-
-<p><b>Base case:</b> use <code>isEmpty()</code> to stop when the list has no elements left.</p>
-
-<pre><code>if (list.isEmpty()) return 0;     // for numeric sum
-if (list.isEmpty()) return "";    // for string build
-if (list.isEmpty()) return false; // for boolean search
-</code></pre>
-<h4>Example 1. Summing Integers (mutating)</h4>
-<pre><code>int sumList(ArrayList&lt;Integer&gt; list) {
+// otherwise, move forward
+return array220(nums, index + 1);
+}</code></pre><dl><dt>Base case</dt><dd>Fewer than two remaining elements means no pair.</dd><dt>Recursive call</dt><dd>Try the next adjacent pair.</dd><dt>Return value</dt><dd>Return true when a pair matches; otherwise return the recursive search result.</dd></dl><p>The long cast prevents integer overflow in the comparison.</p></details><details><summary>ArrayLists: mutating versus preserving</summary><p>Removing index zero changes the caller’s list and shifts the remaining elements. Use <code>isEmpty()</code> for a shrinking list; for an unchanged list, advance an index and stop at its size. Import <code>java.util.ArrayList</code> for these examples.</p><pre><code class="language-java">int sumList(ArrayList&lt;Integer&gt; list) {
     if (list.isEmpty()) return 0;
     int first = list.remove(0);
     return first + sumList(list);
-}
-</code></pre>
-
-<h4>Example 2. Building a String from Words (mutating)</h4>
-<pre><code>String joinWords(ArrayList&lt;String&gt; words) {
-    if (words.isEmpty()) return "";
+}</code></pre><dl><dt>Base case</dt><dd>Empty list returns 0.</dd><dt>Recursive call</dt><dd>Remove the first item, then recurse on the now-shorter list.</dd><dt>Return value</dt><dd>Add the removed value to the recursive sum; the original list is emptied.</dd></dl><pre><code class="language-java">String joinWords(ArrayList&lt;String&gt; words) {
+    if (words.isEmpty()) return &quot;&quot;;
     String first = words.remove(0);
-    return first + " " + joinWords(words);
-}
-</code></pre>
-
-<h4>Example 3. Counting a Condition (non-mutating, using index)</h4>
-<pre><code>int countOdds(ArrayList&lt;Integer&gt; list, int i) {
-    if (i == list.size()) return 0;
+    if (words.isEmpty()) return first;
+    return first + &quot; &quot; + joinWords(words);
+}</code></pre><dl><dt>Base case</dt><dd>Empty list returns empty text; after the last removal, return the last word.</dd><dt>Recursive call</dt><dd>Process the shortened list.</dd><dt>Return value</dt><dd>Insert spaces only between word entries, with no extra trailing separator. This example empties the list.</dd></dl><pre><code class="language-java">int countOdds(ArrayList&lt;Integer&gt; list, int i) {
+    if (i &gt;= list.size()) return 0;
     int count = 0;
 
     if (list.get(i) % 2 != 0) {
         count++;
     }
     return count + countOdds(list, i + 1);
-}
-</code></pre>
-<h3>Boolean Recursion Patterns (Quick Reminder)</h3>
-<ul>
-  <li><b>OR (search for any):</b> return <code>foundHere || recurse(...)</code></li>
-  <li><b>AND (all must pass):</b> return <code>okHere &amp;&amp; recurse(...)</code></li>
-</ul>
-</section>
-<section>
-<hr>
-<h2>Recursion with Helper Methods</h2>
-
-<p><strong>Why use a helper?</strong>  
-Sometimes a recursive problem needs <em>extra information</em> (like an index or a running total) that you don’t want in the public method’s parameters.  
-A <code>helper</code> method lets you hide those details while keeping your recursion clean and organized.</p>
-
-<p>Typical reasons to use a helper:</p>
-<ul>
-  <li>Track progress with an index</li>
-  <li>Accumulate partial results</li>
-  <li>Hide technical parameters from the caller</li>
-</ul>
-
-<h4>General Pattern</h4>
-<pre><code class="language-java">
-public returnType methodName(parameters) {
-    // Setup or validate input
-    // Call helper with extra arguments
-    return helper(parameters, extraInfo);
-}
-
-private returnType helper(type param1, type extraInfo) {
-    if (base case) {
-        return something;
-    }
-    // Recursive step using extraInfo
-    return helper(updatedParam1, updatedExtraInfo);
-}
-</code></pre>
-
-<h4>Example 1 – Count Uppercase Letters</h4>
-<p>We only want the user to pass in a <code>String</code>, not an index. The helper keeps track of where we are.</p>
-<pre><code class="language-java">
-public int countUppercase(String s) {
+}</code></pre><dl><dt>Base case</dt><dd>Index reaches the list size: return 0.</dd><dt>Recursive call</dt><dd>Advance the index without removing elements.</dd><dt>Return value</dt><dd>Add the current odd-number contribution to the suffix count.</dd></dl></details></section><section class="topic" id="helpers"><h2>Helper Methods</h2><p class="pattern">When to use: callers should supply the data while a private helper tracks an index or running result.</p><p>An explicit-index method asks its caller where to start. A public wrapper starts at a sensible position, keeping that detail private. The wrapper does not need to call itself.</p><pre><code class="language-java">public int countUppercase(String s) {
     return countUppercaseHelper(s, 0);
 }
 
@@ -403,29 +78,8 @@ private int countUppercaseHelper(String s, int index) {
     count++;
 }
     return count + countUppercaseHelper(s, index + 1);
-}
-</code></pre>
-
-<h4>Example 2 – Sum of Digits</h4>
-<pre><code class="language-java">
-public int sumDigits(int n) {
-    return sumDigitsHelper(Math.abs(n), 0);
-}
-
-private int sumDigitsHelper(int n, int sum) {
-    if (n == 0) {
-        return sum;
-    }
-    return sumDigitsHelper(n / 10, sum + n % 10);
-}
-</code></pre>
-
-<p><strong>Why a helper?</strong> The helper tracks the running total instead of returning through the call stack.</p>
-
-<h4>Example 3 – Reverse a String</h4>
-<pre><code class="language-java">
-public String reverse(String s) {
-    return reverseHelper(s, "");
+}</code></pre><dl><dt>Base case</dt><dd>The helper returns 0 at the end of the string.</dd><dt>Recursive call</dt><dd>The wrapper starts at zero; the helper advances its index.</dd><dt>Return value</dt><dd>Each helper call adds its uppercase contribution to the returned suffix count.</dd></dl><p class="warning">Common error: having the helper call the public wrapper again. That resets its progress. Recursive calls belong in the helper and keep its extra state.</p><details><summary>Accumulator example: reverse a string</summary><pre><code class="language-java">public String reverse(String s) {
+    return reverseHelper(s, &quot;&quot;);
 }
 
 private String reverseHelper(String s, String soFar) {
@@ -433,229 +87,72 @@ private String reverseHelper(String s, String soFar) {
         return soFar;
     }
     return reverseHelper(s.substring(1), s.charAt(0) + soFar);
-}
-</code></pre>
-
-<p>The helper accumulates the reversed portion in <code>soFar</code>.</p>
-
-<h4>Design Tips</h4>
-<table>
-  <tr><th>When to use a helper</th><th>Why</th></tr>
-  <tr><td>You need an index or accumulator variable</td><td>To track progress or partial results</td></tr>
-  <tr><td>You want to simplify the user-facing method</td><td>Hide technical parameters</td></tr>
-  <tr><td>You need multiple recursive calls with extra state</td><td>Maintain state cleanly between calls</td></tr>
-</table>
-
-</section>
-    <!-- <section>
-
-      <h2>Base-Case Patterns</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Strings</h3>
-          <table class="table">
-            <thead><tr><th>Lookahead Need</th><th>Safe Base Case</th><th>Why</th><th>Examples</th></tr></thead>
-            <tbody>
-              <tr>
-                <td>None (current char only)</td>
-                <td><code>if (str.isEmpty()) return "";</code></td>
-                <td>No chars left; neutral string is empty.</td>
-                <td><code>noX</code>, <code>countX</code></td>
-              </tr>
-              <tr>
-                <td>Needs next char</td>
-                <td><code>if (str.length() &lt;= 1) return str;</code></td>
-                <td>No pair exists; avoid <code>charAt(1)</code> OOB.</td>
-                <td><code>allStar</code>, pair checks</td>
-              </tr>
-              <tr>
-                <td>Needs two ahead</td>
-                <td><code>if (str.length() &lt;= 2) return str;</code></td>
-                <td>No triple exists; avoid <code>charAt(2)</code> OOB.</td>
-                <td>triple patterns</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="card">
-          <h3>Arrays (by index)</h3>
-          <table class="table">
-            <thead><tr><th>Access Pattern</th><th>Safe Base Case</th><th>Safe Index Range</th><th>Examples</th></tr></thead>
-            <tbody>
-              <tr>
-                <td>Single element: <code>nums[i]</code></td>
-                <td><code>if (i &gt;= nums.length) return ...;</code></td>
-                <td><code>0..len-1</code></td>
-                <td><code>array11</code> (counting/search)</td>
-              </tr>
-              <tr>
-                <td>Pair: <code>nums[i], nums[i+1]</code></td>
-                <td><code>if (i &gt;= nums.length - 1) return ...;</code></td>
-                <td><code>0..len-2</code></td>
-                <td><code>array220</code>, adjacency checks</td>
-              </tr>
-              <tr>
-                <td>Triple: <code>nums[i], nums[i+1], nums[i+2]</code></td>
-                <td><code>if (i &gt;= nums.length - 2) return ...;</code></td>
-                <td><code>0..len-3</code></td>
-                <td><code>array123</code> style</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="callout small">💡 Use <strong><code>&gt;=</code></strong> in array base cases to cover both the last valid index <em>and</em> empty arrays safely.</div>
-    </section> -->
-
-    <!-- <section class="card">
-<h2>Boolean Recursion (Intro Style)</h2>
-<h3>OR pattern (search for any)</h3>
-<pre><code>boolean contains11(int[] a, int i) {
-if (i &gt;= a.length) {
-return false; // base: nothing left → not found
+}</code></pre><dl><dt>Base case</dt><dd>Empty remaining string returns the accumulated result.</dd><dt>Recursive call</dt><dd>Move the first character to the front of <code>soFar</code> and shorten the remaining string.</dd><dt>Return value</dt><dd>Return the helper’s answer through every pending call.</dd></dl></details><details><summary>Accumulator example: sum digits, including negative integers</summary><pre><code class="language-java">public int sumDigits(int n) {
+    return sumDigitsHelper(Math.abs((long) n), 0);
 }
 
-
-if (a[i] == 11) {
-return true; // found at this step
-}
-
-
-// otherwise, check the rest
-return contains11(a, i + 1);
-}
-</code></pre>
-<h3>AND pattern (all must pass)</h3>
-<pre><code>boolean allLower(String s) {
-if (s.isEmpty()) {
-return true; // base: no violations in empty string
-}
-
-
-char c = s.charAt(0);
-if (!Character.isLowerCase(c)) {
-return false; // found a violation
-}
-
-
-// otherwise, the rest must also be lower-case
-return allLower(s.substring(1));
-}
-</code></pre>
-</section> -->
-
-    <section>
-      <h2>Canonical Solutions (for practice)</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3><code>noX</code> (remove all 'x')</h3>
-<pre><code>String noX(String s){
-  if (s.isEmpty()) return "";
-  char c = s.charAt(0);
-  String rest = noX(s.substring(1));
-  return (c=='x') ? rest : c + rest;
-}
-</code></pre>
-        </div>
-        <div class="card">
-          <h3><code>allStar</code> (insert '*')</h3>
-<pre><code>String allStar(String s){
-  if (s.length() &lt;= 1) return s; // need lookahead
-  return s.charAt(0) + "*" + allStar(s.substring(1));
-}
-</code></pre>
-        </div>
-        <div class="card">
-          <h3><code>array11</code> (count 11s)</h3>
-<pre><code>int array11(int[] a, int i){
-  if (i &gt;= a.length) return 0;
-  int add = (a[i]==11) ? 1 : 0;
-  return add + array11(a, i+1);
-}
-</code></pre>
-        </div>
-        <div class="card">
-          <h3><code>array220</code> (next is 10× current)</h3>
-<pre><code>boolean array220(int[] nums, int index) {
-if (index &gt;= nums.length - 1) {
-return false; // base: need a pair (index and index+1)
-}
-
-int current = nums[index];
-int next = nums[index + 1];
-if (next == current * 10) {
-return true; // found a valid pair
-}
-
-// otherwise, move forward
-return array220(nums, index + 1);
-}
-</code></pre>
-        </div>
-
-
-        <div class="card">
-          <h3><code>Helper Method Builder</code></h3>
-<h5>Starter Code:</h5>
-<pre><code class="language-java">
-public boolean containsX(String s) {
-    // TODO: use a helper with an index
-}
-</code></pre>
-<h5>Transformed Version with a Helper:</h5>
-<pre><code class="language-java">
-public boolean containsX(String s) {
-    return containsXHelper(s, 0);
-}
-
-private boolean containsXHelper(String s, int i) {
-    if (i == s.length()) {
-        return false;
+private int sumDigitsHelper(long n, int sum) {
+    if (n == 0) {
+        return sum;
     }
-    if (s.charAt(i) == 'x') {
-        return true;
-    }
-    return containsXHelper(s, i + 1);
+    return sumDigitsHelper(n / 10, sum + (int) (n % 10));
+}</code></pre><dl><dt>Base case</dt><dd>No digits remain: return the running sum.</dd><dt>Recursive call</dt><dd>Divide by ten and add the current digit to the accumulator.</dd><dt>Return value</dt><dd>The completed sum travels back through the call stack.</dd></dl><p>Convert to long before taking the absolute value so Integer.MIN_VALUE works too. Java still creates stack frames for these calls.</p></details></section><section class="topic" id="tracing"><h2>Tracing &amp; Debugging</h2><p class="pattern">When to use: explain what each call knows, what it waits for, and what it returns.</p><p>Each call has its own parameters and local variables. Reaching the base case begins the return journey.</p><figure><pre class="trace">CALLS DESCEND                        RESULTS RETURN
+sumArray([3, 5], 0)  waits for 3 + …  ← 3 + 5 = 8
+  sumArray([3, 5], 1) waits for 5 + … ← 5 + 0 = 5
+    sumArray([3, 5], 2)              → 0 (base case)</pre><figcaption>The caller cannot finish its addition until the smaller call returns.</figcaption></figure>
+<ol><li>Write the current arguments for each call.</li><li>Mark the base case and its answer.</li><li>Work upward, substituting each returned value.</li></ol><h3>Check tiny cases first</h3><p>Test empty input, one item, several items, and a nonzero array index. Check original contents when mutation is forbidden. This JUnit 4 test assumes the example methods are in the same class:</p><pre><code class="language-java">@org.junit.Test public void checksArraySum() {
+    int[] nums = {3, 5};
+    org.junit.Assert.assertEquals(0, sumArray(new int[]{}, 0));
+    org.junit.Assert.assertEquals(8, sumArray(nums, 0));
+    org.junit.Assert.assertEquals(5, sumArray(nums, 1));
+    org.junit.Assert.assertEquals(0, sumArray(nums, 2));
+    org.junit.Assert.assertArrayEquals(new int[]{3, 5}, nums);
+}</code></pre><dl><dt>Base case</dt><dd>Empty arrays and an exhausted index should return zero.</dd><dt>Recursive call</dt><dd>Nonzero starting indexes check that recursion processes only the suffix.</dd><dt>Return value</dt><dd>Assertions compare the returned sums and confirm the input is unchanged.</dd></dl><details><summary>Diagnose common failures</summary><ul><li><strong>StackOverflowError:</strong> check that a reachable base case exists and every call moves toward it.</li><li><strong>Index out of bounds:</strong> check the base case before accessing a character or array element; account for lookahead.</li><li><strong>Wrong count or missing text:</strong> check how the current contribution combines with the smaller result.</li><li><strong>Always false or zero:</strong> check that recursive results are returned rather than discarded.</li></ul></details><p>In RecursionQuest, run the complete test class after debugging individual quests. The unlock check verifies all five challenges. Passing tests supports correctness; also inspect your recursive progress and absence of loops or streams.</p></section><p>Apply these patterns in <a href="labs/recursion-quest.html">RecursionQuest</a>. For additional practice, visit <a href="https://codingbat.com/java/Recursion-1">CodingBat Recursion-1</a>.</p></main><script>
+const tabs = [...document.querySelectorAll('.tabs a')];
+const panels = [...document.querySelectorAll('.topic')];
+const tablist = document.querySelector('.tabs');
+tablist.setAttribute('role', 'tablist');
+function activate(tab, focus = false) {
+  tabs.forEach(item => { const selected = item === tab;
+    item.setAttribute('aria-selected', String(selected));
+    item.tabIndex = selected ? 0 : -1;
+  });
+  panels.forEach(panel => { panel.hidden = panel.id !== tab.hash.slice(1); });
+  if (focus) tab.focus();
 }
-</code></pre>
-
-<p><strong>Pattern to Notice:</strong></p>
-<ul>
-  <li>The public method hides the index, it just calls the helper.</li>
-  <li>The helper adds one parameter (<code>i</code>) to track progress through the string.</li>
-  <li>The helper defines its own <em>base case</em> and <em>recursive step</em>.</li>
-</ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Trace Template (use with tiny inputs)</h2>
-      <details open>
-        <summary>Copy this for your notebook</summary>
-<pre><code>// Example: array11([11,2,11], 0)
-Call 0: i=0 → (a[0]==11 ? 1 : 0) + array11(a,1)
-Call 1: i=1 → (a[1]==11 ? 1 : 0) + array11(a,2)
-Call 2: i=2 → (a[2]==11 ? 1 : 0) + array11(a,3)
-Call 3: i=3 → base → 0
-Unwind: Call2=1+0=1 → Call1=0+1=1 → Call0=1+1=2
-</code></pre>
-      </details>
-    </section>
-
-    <section>
-      <h2>Common Pitfalls</h2>
-      <ul>
-        <li>For arrays with pair/triple access, use <strong><code>i &gt;= length-1</code></strong> / <strong><code>-2</code></strong> bases (empty arrays included).</li>
-        <li>For strings that look ahead, prefer <strong><code>length() &lt;= 1</code></strong> (or <code>&lt;= 2</code> for triples) over <code>isEmpty()</code>.</li>
-        <li>Every call must <em>shrink</em> the input (e.g., <code>i+1</code>, <code>substring(1)</code>, <code>n-1</code>), otherwise you’ll stack overflow.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>More Practice</h2>
-      <p>Try additional small problems on <a href="https://codingbat.com/java">CodingBat</a> → Java → Recursion. Focus on writing the base case first, then combine current work with the smaller result.</p>
-    </section>
-</main>
-</body>
-</html>
+tabs.forEach((tab, index) => {
+  tab.setAttribute('role', 'tab');
+  tab.setAttribute('aria-controls', tab.hash.slice(1));
+  tab.addEventListener('click', event => {
+    event.preventDefault(); activate(tab); history.replaceState(null, '', tab.hash);
+  });
+  tab.addEventListener('keydown', event => {
+    let next;
+    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+    if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = tabs.length - 1;
+    if (event.key === ' ') { event.preventDefault(); tab.click(); return; }
+    if (next !== undefined) { event.preventDefault(); tabs[next].click(); tabs[next].focus(); }
+  });
+});
+panels.forEach(panel => {
+  panel.setAttribute('role', 'tabpanel');
+  panel.setAttribute('aria-labelledby', 'tab-' + panel.id);
+  panel.tabIndex = 0;
+});
+function fromHash() { activate(tabs.find(tab => tab.hash === location.hash) || tabs[0]); }
+window.addEventListener('hashchange', fromHash);
+fromHash();
+// Highlight using text nodes: never interpret example Java as markup.
+document.querySelectorAll('code.language-java').forEach(block => {
+  const tokens = block.textContent.split(/(\/\/[^\n]*|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|\b(?:public|private|int|long|boolean|char|return|if|new|true|false)\b)/g);
+  block.replaceChildren(...tokens.map(token => {
+    const span = document.createElement('span'); span.textContent = token;
+    if (token.startsWith('//')) span.className = 'comment';
+    else if (/^["']/.test(token)) span.className = 'string';
+    else if (/^(public|private|int|long|boolean|char|return|if|new|true|false)$/.test(token)) span.className = 'keyword';
+    return span;
+  }));
+});
+</script></body></html>
