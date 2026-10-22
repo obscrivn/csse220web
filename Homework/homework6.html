@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Homework 6: Recursion</title>
+  <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+  <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; color: #333; }
+    #header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+    #header a { color: #fff; margin-right: 15px; text-decoration: none; }
+    #header a:hover { text-decoration: underline; }
+    #content { padding: 20px; margin-top: 100px; margin-bottom: 50px; }
+    .container { max-width: 800px; margin: 0 auto; background-color: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+    p { line-height: 1.6; }
+    code { background-color: #e0e0e0; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    pre { overflow-x: auto; background-color: #f5f5f5; padding: 12px; border-radius: 4px; }
+    .note { background-color: #fffbcc; border: 1px solid #ffe58f; padding: 10px; border-radius: 4px; }
+    .uml-diagram { display: block; max-width: 100%; height: auto; margin: 16px auto; border: 1px solid #ccc; }
+
+    html { scroll-padding-top: 130px; }
+    #header::after { content: ''; display: block; clear: both; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #1769aa; outline-offset: 3px; }
+    .actions { margin: 16px 0; } .actions a { margin-right: 18px; }
+    .problem-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 24px; }
+    .problem-card { flex: 1 1 120px; padding: 10px; border: 1px solid #ccc; background: #f5f5f5; border-radius: 4px; line-height: 1.4; }
+    .problem-card span { display: block; font-size: .8em; color: #555; }
+    .problem-card strong { font-size: .9em; }
+    .problem-card:hover { background: #e7f3fe; }
+    section { margin: 24px 0; padding-top: 12px; border-top: 1px solid #ddd; }
+    h2 { font-size: 1.4em; } .location, .check, .back { font-size: .9em; }
+    .method { display: block; overflow-wrap: anywhere; } code { overflow-wrap: anywhere; background: transparent; padding: 0;
+      border-radius: 0; font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size: .95em; color: inherit; }
+    pre code { padding: 0; background: transparent; }
+    summary { cursor: pointer; font-weight: bold; } details { margin: 12px 0; }
+    .extra { padding: 12px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9; }
+    .back { float: right; } .meta, footer { color: #555; }
+    @media (max-width: 700px) {
+      body { padding: 10px; } #header { position: static; }
+      #header a { margin: 0; padding: 12px; }
+      #content { margin-top: 16px; padding: 0; max-width: 100%; width: 100%; }
+      .container { padding: 18px; } html { scroll-padding-top: 12px; }
+      h1 { font-size: 1.8em; } .back { float: none; display: block; margin-bottom: 8px; }
+    }
+    @media print { #header, .problem-nav, .actions, .back { display: none; }
+      #content { margin: 0; padding: 0; } .container { box-shadow: none; padding: 0; }
+    }
+  </style>
+</head>
+<body><div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+    <a href="../worksheets.html">Quizzes</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../graphics/index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+  </div>
+  <div id="content"><main class="container" id="top"><h1>Homework 6: Recursion</h1>
+<p class="meta">Individual work · 5 problems · 50 points</p>
+<div class="actions"><a class="download" href="HWRecursion.zip">Download starter ZIP</a><a href="../recursion.html">Recursion reference</a></div>
+<nav class="problem-nav" aria-label="Jump to a problem">
+<a class="problem-card" href="#step1"><span>PROBLEM 1</span><strong>Factors of three</strong></a>
+<a class="problem-card" href="#step2"><span>PROBLEM 2</span><strong>Transform text</strong></a>
+<a class="problem-card" href="#step3"><span>PROBLEM 3</span><strong>Match brackets</strong></a>
+<a class="problem-card" href="#step4"><span>PROBLEM 4</span><strong>Third capital</strong></a>
+<a class="problem-card" href="#step5"><span>PROBLEM 5</span><strong>Find a sequence</strong></a>
+</nav>
+<section id="setup"><h2>Start here</h2><ol>
+<li>Extract the ZIP. In IntelliJ, <strong>Open</strong> the <code>HWRecursion</code> folder containing <code>pom.xml</code>. Use JDK 21 and let Maven load.</li>
+<li>Open the two Java files in <code>src/main/java</code>. Add your name and help citations in both.</li>
+<li>Complete TODOs 1 to 5. <strong>Read each method's Javadoc for the full specification.</strong></li></ol>
+<p class="check">Open the supplied project directly; do not create a new project.</p></section>
+<section id="run-tests"><h2>Run the tests in IntelliJ</h2>
+<ol><li>In the Project panel, open <code>src/test/java/recursionTest/RunAllTests.java</code>.</li>
+<li>Right-click inside the file and choose <strong>Run 'RunAllTests'</strong>. This runs all five problems.</li>
+<li>Read the results in the Run window. After completing a TODO, run the tests again.</li></ol>
+<p class="check">Tests initially fail with <code>UnsupportedOperationException</code> because the TODOs are unfinished. To test just one problem, open its test file in <code>recursionTest</code>, right-click, and choose <strong>Run</strong> for that test class.</p></section>
+<section class="rules" id="rules"><h2>Keep these rules in mind</h2><ul>
+<li>Use recursion, not loops, streams, or bulk library shortcuts.</li><li>Keep package declarations and public method headers.</li><li>Problems 4 and 5 each need a private recursive helper. Choose its parameters; avoid mutable static state.</li></ul>
+<p class="check">Inputs are non-null and small (up to 200 characters or array elements). Self-checks need no written submission.</p></section>
+<section id="step1"><a class="back" href="#top">Back to problems ↑</a><h2>1. Factors of three</h2>
+<p class="location"><code>Part1Problems.java</code> · TODO 1</p><code class="method">countNumberOf3sInPrimeFactorization(int inputNumber)</code>
+<p>Count the factors of 3 in a positive integer. You do not need its full prime factorization.</p><pre>45 → 2     81 → 4     1 → 0</pre>
+<details><summary>Planning hint and quick trace</summary><p>What input can you answer directly? What smaller input helps? How will you use its answer?</p><p>Predict the calls and returns for 81.</p><details><summary>Check your trace</summary><p>Calls: 81 → 27 → 9 → 3 → 1.<br>Returns: 0 → 1 → 2 → 3 → 4.</p></details></details>
+<p class="check">Test: <code>FactorCountTest</code></p></section>
+<section id="step2"><a class="back" href="#top">Back to problems ↑</a><h2>2. Transform text</h2>
+<p class="location"><code>Part1Problems.java</code> · TODO 2</p><code class="method">weirdoString(String stringInput)</code>
+<p>Remove lowercase <code>a</code> and <code>b</code>. Replace uppercase <code>C</code> with <code>QQQ</code>. Keep everything else in order.</p><pre>"aBCd" → "BQQQd"</pre>
+<p class="check">No <code>replace</code> or <code>replaceAll</code>. Test: <code>WeirdoStringTest</code></p></section>
+<section id="step3"><a class="back" href="#top">Back to problems ↑</a><h2>3. Match brackets</h2>
+<p class="location"><code>Part1Problems.java</code> · TODO 3</p><code class="method">bracketMatch(String inputString)</code>
+<p>Check one nested group of <code>() [] {} &lt;&gt;</code>. Empty text is valid. Inputs have opening brackets followed by closing brackets, possibly missing or mismatched; adjacent groups such as <code>()()</code> are outside this problem.</p><pre>"([&lt;&gt;])" → true     "(]" → false</pre>
+<p class="check">Test: <code>BracketMatchTest</code></p></section>
+<section id="step4"><a class="back" href="#top">Back to problems ↑</a><h2>4. Third capital</h2>
+<p class="location"><code>Part2Problems.java</code> · TODO 4</p><code class="method">findThirdCapital(String input)</code>
+<p>Return the original index of the third uppercase character, or <code>-1</code> if there isn't one. Use <code>Character.isUpperCase(char)</code> and a private recursive helper.</p><pre>"aBCdE" → 4     "aBcD" → -1</pre>
+<details><summary>Quick self-check</summary><p>Why would returning an index within a shortened suffix give the wrong result?</p><details><summary>Check your reasoning</summary><p>The answer must locate the character in the original String, so your helper must preserve that position.</p></details></details>
+<p class="check">Test: <code>ThirdCapitalTest</code></p></section>
+<section id="step5"><a class="back" href="#top">Back to problems ↑</a><h2>5. Find a sequence</h2>
+<p class="location"><code>Part2Problems.java</code> · TODO 5</p><code class="method">findIn(int[] input, int[] toFind)</code>
+<p>Find the target values in source order. Gaps are allowed; each source position can be used only once. Preserve both arrays and use a private recursive helper.</p><pre>source [1,2,3,4,5], target [1,3,5] → true</pre>
+<details><summary>Quick self-check</summary><p>Predict these: source [2,2,3], target [2,3]; source [2], target [2,2]; two empty arrays.</p><details><summary>Check your predictions</summary><p>true, false, true. An empty target is always found. Track how both positions change.</p></details></details>
+<p class="check">No array copying. Test: <code>FindInTest</code></p></section>
+<section id="submit"><h2>Test and submit</h2><p>All tests are together in <code>src/test/java/recursionTest</code>. One <code>RunAllTests.java</code> runs all five problems.</p><ol>
+<li>Right-click inside <code>RunAllTests.java</code> and choose <strong>Run 'RunAllTests'</strong>. Fix failures and rerun.</li>
+<li>Upload <strong>both <code>Part1Problems.java</code> and <code>Part2Problems.java</code></strong> together to Homework 6 on Gradescope. Submit source files only.</li></ol>
+<p><strong>10 points per problem, 50 total.</strong> Use the deadline in the schedule or Gradescope.</p>
+<details><summary>Tests and grading details</summary><p>Unfinished TODOs initially fail with <code>UnsupportedOperationException</code>. Do not edit the tests.</p><p>Each problem has five public and five instructor checks, worth one point each. Automated scores are provisional: an instructor may reduce a problem to zero for nonrecursive work, prohibited shortcuts, or missing required private recursive helpers.</p></details></section>
+<details class="extra" id="void"><summary>A short void recursion example</summary><p>Read and predict; this is not another coding requirement.</p><pre><code>// Precondition: n &gt;= 0
+static void echoSteps(int n) {
+    if (n == 0) return;
+    System.out.print(n + " ");
+    echoSteps(n - 1);
+    System.out.print(n + " ");
+}</code></pre><p>What does <code>echoSteps(2)</code> print?</p><details><summary>Check your prediction</summary><p><code>2 1 1 2 </code>. The first print happens during descent; the second during return. A void call returns control rather than a computed value.</p></details></details>
+<details class="extra" id="optional"><summary>Optional challenge: numbersGame (ungraded)</summary><p>Can you reach 1 from a positive integer by subtracting 7 or dividing by 3 when divisible by 3? Explore recursive alternatives. Reaching 1 succeeds; dropping below 1 fails. For example, 15 succeeds and 5 fails.</p><p>Use a separate scratch project. Do not submit this work; it adds no points and cannot reduce your score.</p></details>
+<footer><p>Need a reminder? <a href="../recursion.html">Open the recursion reference.</a></p></footer>
+</main></div></body></html>
