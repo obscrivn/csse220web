@@ -73,15 +73,31 @@ CSSE220FinalProject/          ← local parent folder; not a Git repository
 <p><strong>Checkpoint:</strong> everyone can open the same repository URL and see the starter files. The setup lead keeps using this local folder; the lead does not need to clone it again. This initial baseline commit is the one setup exception to doing work on feature branches.</p>
 <h2>4. OTHER TEAMMATES ONLY: accept the invitation, then clone</h2>
 <ol>
-<li><strong>Wait until the setup lead finishes Steps 2–3 and sends your invitation and the team repository URL.</strong> Accept the invitation on GitHub in your web browser while signed in to your own account. Confirm you can see the starter files in the repository before continuing.</li>
-<li>Now open GitHub Desktop and sign in with that same account. Check your Git name/email in Desktop settings. Choose File → Clone repository → URL and paste the team&#x27;s URL.</li>
-<li>Under Local path, choose a new repository folder inside your local <code>CSSE220FinalProject</code> folder, outside any existing Git repository. For example: <code>C:\Users\YourName\CSSE220FinalProject\TeamProject</code> on Windows or <code>/Users/YourName/CSSE220FinalProject/TeamProject</code> on macOS. Check that the full path does not contain <code>OneDrive</code> and is not inside another cloud-synced folder. Do not clone into an extracted starter folder. Click Clone.</li>
-<li>Confirm Current Repository is your team&#x27;s repository and Current Branch is <code>main</code>.</li>
-<li>Use Repository → Show in Finder / Show in Explorer to identify the clone&#x27;s actual location.</li>
-<li>In IntelliJ choose File → Open and select that cloned folder containing <code>pom.xml</code>. Let Maven load and select JDK 21.</li>
-<li>Run Maven goal <code>clean javafx:run</code> and check the same window/button behavior. Close the app.</li>
+<li><strong>Wait until the setup lead finishes Steps 2–3 and sends your invitation and the team repository URL.</strong> Accept the invitation on GitHub in your browser using your own account. Confirm you can see the starter files before continuing. Do not download/extract a starter or create a repository yourself.</li>
+<li>In File Explorer/Finder, create the local parent folder <code>CSSE220FinalProject</code> directly inside your user/home folder if it does not already exist. Keep it outside OneDrive, iCloud Drive, Dropbox, Google Drive, and other Git repositories. Do not rely on Desktop/Documents being local; check the full path.</li>
+<li>Open <strong>GitHub Desktop</strong>, sign in with the invited account, and check your Git name/email. Choose <strong>File → Clone repository → URL</strong> and paste the exact URL sent by your team lead.</li>
+<li>In the clone dialog’s <strong>Local path</strong>, enter the <strong>full destination path including a new repository folder at the end</strong>. For example, use <code>C:\Users\YourName\CSSE220FinalProject\TeamProject</code> on Windows or <code>/Users/YourName/CSSE220FinalProject/TeamProject</code> on macOS. Replace <code>YourName</code> with your computer username. <code>TeamProject</code> is an example local folder name; you may use the team repository name instead. This is a location on your computer, not the GitHub URL.</li>
+<li><strong>Before clicking Clone:</strong> read the complete Local path field. It must end with exactly one repository folder inside <code>CSSE220FinalProject</code>. If Choose selects only the parent folder, append <code>/TeamProject</code> (macOS) or <code>\TeamProject</code> (Windows) in the Local path field. If Desktop already filled in the repository folder name, do not append it a second time. Let Desktop create the new destination; do not select a nonempty folder, an extracted starter, <code>src/</code>, or a folder inside another Git repository.</li>
+<li>Click <strong>Clone</strong> and wait for it to finish. If Desktop says the destination is not empty, do not overwrite/delete files; select a different new destination folder. Confirm <strong>Current Repository</strong> is the team repository and <strong>Current Branch</strong> is <code>main</code>.</li>
+<li>In Desktop choose <strong>Repository → Show in Finder / Show in Explorer</strong>. The folder that opens must directly contain <code>pom.xml</code>, <code>README.md</code>, <code>.gitignore</code>, and <code>src/</code>. If you see another project folder instead, ask the lead to check the repository layout before proceeding; do not initialize another repository to fix it.</li>
+<li>In <strong>IntelliJ → File → Open</strong>, select <strong>that exact cloned folder containing <code>pom.xml</code></strong>, such as <code>CSSE220FinalProject/TeamProject</code>. Do not select its parent, <code>src/</code>, a ZIP, or an old extracted copy. Let Maven load, select JDK 21, and run <code>clean javafx:run</code> from the Maven tool window.</li>
 </ol>
-<p><strong>Checkpoint:</strong> every student runs their own clone. Do not download another ZIP, copy a teammate&#x27;s <code>.git</code> folder, fork the repository, or make a second team repository.</p>
+<p>After cloning, your local layout should be:</p>
+<pre><code>
+CSSE220FinalProject/       ← parent folder; do not open this as the project
+
+└── TeamProject/           ← clone destination; open this folder in IntelliJ
+
+    ├── pom.xml
+
+    ├── README.md
+
+    ├── .gitignore
+
+    └── src/
+
+</code></pre>
+<p><strong>Checkpoint:</strong> GitHub Desktop’s Show in Finder/Explorer and IntelliJ both point to the same cloned project folder, and the starter runs. Your local folder name may differ from the lead’s <code>Milestone1Starter</code>; the shared GitHub repository URL must be the same. The lead keeps the original repository and skips cloning. Other teammates never use New Repository for this setup.</p>
 <h2>5. Everyone: agree on different files, then branch</h2>
 <p><strong>Where to work:</strong> create and switch branches, commit, push, fetch, and pull in <strong>GitHub Desktop</strong>. Edit Java and documentation in <strong>IntelliJ</strong>. Review and merge pull requests on the <strong>GitHub website</strong>.</p>
 <p>For this first practice, use documentation files so the single Java class does not become a collision point. These files are <strong>not supplied in the ZIP</strong>; create them during the exercise.</p>
