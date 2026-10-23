@@ -159,15 +159,47 @@ CSSE220FinalProject/       ← parent folder; do not open this as the project
 <li>Recheck the next PR against the now-current <code>main</code>. For this practice, separate new documentation files should combine automatically. Different files reduce text conflicts but do not guarantee that Java features will work together.</li>
 <li>If GitHub reports a conflict, leave the PR open and ask the instructor for help. Do not overwrite one version, discard work, or force-push. If a repository rule requires the branch to be updated first, use the update procedure below.</li>
 </ol>
-<h2>9. Everyone: pull the combined result</h2>
+<h2>9. Team integration checkpoint: everyone agrees, then merge one branch at a time</h2>
+<p>Suppose Alex and Sam each have a feature branch and edited different files. The team agrees Alex’s change is ready first. Use this order: <strong>Alex’s PR → main → everyone pulls main → Sam updates Sam’s branch from main → Sam’s PR → main → everyone pulls again</strong>.</p>
+<p><strong>Two merge directions have different purposes:</strong> feature branch <strong>into main</strong> shares reviewed work with the team (use a PR). Main <strong>into your feature branch</strong> brings the team’s latest work into your unfinished task (use GitHub Desktop). Check the direction before clicking Merge.</p>
+<h3>A. Everyone: finish a small checkpoint and pause</h3>
 <ol>
-<li>In Desktop confirm there are no uncommitted edits, then select Current Branch → <code>main</code>.</li>
-<li>Click Fetch origin, then Pull origin if offered.</li>
-<li>Open the project in IntelliJ. Verify all teammates&#x27; files are present and run <code>clean javafx:run</code> again.</li>
-<li>Record each student&#x27;s PR URL and verify that all PRs show Merged. Create the next task branch from this updated <code>main</code>.</li>
+<li>Agree who goes first and which files each person owns. Pause edits to shared files during integration. Different files reduce text conflicts; changes to class interfaces can still break the combined app.</li>
+<li>Each person saves files in IntelliJ, then in <strong>GitHub Desktop</strong> checks their own feature branch, reviews Changes, commits intended edits, and clicks <strong>Push origin</strong> (or Publish branch for the first upload).</li>
+<li>Confirm each person has no uncommitted changes before switching branches. Do not move unfinished edits onto main.</li>
+</ol>
+<h3>B. First author and reviewer: merge Alex’s work into main</h3>
+<ol>
+<li>Alex opens a PR with <strong>base: main</strong>, <strong>compare: Alex’s feature branch</strong>. A teammate reviews the files and checks the app as described in Step 8.</li>
+<li>When the team agrees, <strong>one designated reviewer/lead</strong> clicks <strong>Merge pull request</strong> on GitHub and confirms it. Wait for the PR to say <strong>Merged</strong>. This updates the shared main on GitHub.</li>
+<li>Do not also merge Alex’s branch directly into main in Desktop. For this course, PRs provide the review step and participation evidence. The remaining Git navigation happens in Desktop.</li>
+</ol>
+<h3>C. Everyone, including Alex: receive updated main in Desktop</h3>
+<ol>
+<li>Open <strong>GitHub Desktop</strong> and verify Current Repository is the team repository.</li>
+<li>Select <strong>Current Branch → main</strong>.</li>
+<li>Click <strong>Fetch origin</strong>, then <strong>Pull origin</strong> if it appears. If no incoming commits are offered, main is already current.</li>
+<li>In IntelliJ, inspect Alex’s merged file in the same project folder and run <code>clean javafx:run</code>. Your local main now includes Alex’s work. Do not edit main directly.</li>
+</ol>
+<h3>D. Next author: bring updated main into the existing feature branch</h3>
+<p>Sam still has unmerged work on <code>sam-design</code>. Sam now does the following in <strong>GitHub Desktop</strong>:</p>
+<ol>
+<li>Complete Part C first so the local <strong>main</strong> contains Alex’s merged work.</li>
+<li>Select <strong>Current Branch → sam-design</strong>. Confirm the top of Desktop now shows <strong>sam-design</strong>, not main.</li>
+<li>Click <strong>Current Branch → Choose a branch to merge into sam-design</strong>.</li>
+<li>Select <strong>main</strong>, then click <strong>Merge main into sam-design</strong>. Read the direction: <strong>main → sam-design</strong>. This keeps Sam’s work and adds the latest main changes to Sam’s branch; it does not publish Sam’s work to main.</li>
+<li>If there are no new changes to merge, Desktop may report the branch is already up to date. Otherwise let the merge finish. If a conflict appears, stop and ask the instructor; do not guess which version to keep or discard either teammate’s work.</li>
+<li>In IntelliJ check that both Alex’s and Sam’s files are present, run the app, and check their interactions. A merge without text conflicts is not proof that the combined code works.</li>
+<li>Click <strong>Push origin</strong> in Desktop to upload the updated feature branch. A successful ordinary merge is recorded by Git; any further code fixes must be saved, reviewed in Changes, committed to sam-design, and pushed too. If Sam already has an open PR, it updates automatically.</li>
+</ol>
+<h3>E. Merge the next PR, then repeat</h3>
+<ol>
+<li>Review Sam’s PR with <strong>base: main</strong>, <strong>compare: sam-design</strong>. When approved, the designated reviewer/lead merges it on GitHub.</li>
+<li><strong>Everyone repeats Part C:</strong> Current Branch → main → Fetch origin → Pull origin. Run the combined app again.</li>
+<li>For another unfinished feature branch, its author repeats Part D using their own branch name, then requests review. Merge only one PR at a time.</li>
+<li>Once your own branch has been merged, start the next task on a <strong>new branch from updated main</strong>. Do not keep adding work to the already-merged branch. Record each student’s merged PR URL.</li>
 </ol>
 <p><strong>Switching branches:</strong> save your edits in IntelliJ, commit them on the correct branch in GitHub Desktop, then use <strong>GitHub Desktop → Current Branch → the desired branch</strong>. Desktop changes the files in the same local folder; IntelliJ should show those changes. You do not download or open a separate folder for each branch. If Desktop offers to carry uncommitted edits between branches and you are unsure where they belong, cancel and get help.</p>
-<p><strong>Continuing an existing feature branch after a teammate merges:</strong> pulling <code>main</code> does not update your other branches. With your edits committed, switch to <code>main</code>, fetch and pull; switch back to your feature branch; choose Current Branch → Choose a branch to merge into [your feature branch] → <code>main</code> → Merge main into [your feature branch]. If successful, run the app and push your branch. Stop for help if a conflict appears. New tasks should normally start on a fresh branch from updated <code>main</code>.</p>
 <h2>Quick recovery checks</h2>
 <ul>
 <li>Cannot clone/push: check the exact team URL, accepted invitation, signed-in account, and write access. Do not create a substitute repository.</li>
