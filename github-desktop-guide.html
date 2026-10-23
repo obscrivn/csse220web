@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSE220 GitHub Desktop Guide</title>
+  <link rel="stylesheet" href="./milestone1-student-page.html">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f4f4;
+      margin: 0;
+      color: #1f2933;
+    }
+    .page {
+      max-width: 920px;
+      margin: 32px auto;
+      background: white;
+      padding: 24px 30px 48px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h1, h2, h3 { color: #00539c; }
+    code { background: #eef3f8; padding: 2px 5px; }
+    ul, ol { padding-left: 1.4em; }
+    .note {
+      background: #eef6ff;
+      border-left: 4px solid #00539c;
+      padding: 12px 16px;
+      margin: 20px 0;
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: #00539c;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="back-link" href="./milestone1-student-page.html">← Back to Milestone 1</a>
+    <h1>GitHub Desktop guide for Milestone 1</h1>
+    <p>This guide is for beginners using GitHub Desktop with a shared CSSE220 final-project repository. The goal is to practice the safe team workflow without touching <code>main</code> directly.</p>
+
+    <h2>1. One-time setup</h2>
+    <ol>
+      <li>Make sure you have a GitHub account and GitHub Desktop installed.</li>
+      <li>Sign in to GitHub Desktop using the same GitHub account used for the team repo.</li>
+      <li>Confirm the team setup lead created the repository and invited you as a collaborator.</li>
+      <li>Choose a project folder that is not already a Git repository.</li>
+    </ol>
+
+    <h2>2. Clone the team repository</h2>
+    <ol>
+      <li>Open GitHub Desktop and choose <strong>File → Clone repository</strong>.</li>
+      <li>Select the correct shared repository, or paste the repository URL.</li>
+      <li>Choose a local folder and click <strong>Clone</strong>.</li>
+      <li>Open the project in your IDE.</li>
+    </ol>
+
+    <h2>3. Create a branch</h2>
+    <ol>
+      <li>Check the current branch name.</li>
+      <li>Click <strong>Current Branch</strong> and choose <strong>New Branch</strong>.</li>
+      <li>Use a descriptive name such as <code>alex-project-pitch</code> or <code>sam-uml</code>.</li>
+      <li>Base the branch on the current <code>main</code> branch.</li>
+    </ol>
+
+    <h2>4. Make a small, independent change</h2>
+    <p>Pick one file to edit. Good examples:</p>
+    <ul>
+      <li><code>docs/idea.md</code></li>
+      <li><code>docs/design.md</code></li>
+      <li><code>docs/team-plan.md</code></li>
+    </ul>
+    <p>Then open GitHub Desktop in the repository and check the changed files before committing.</p>
+
+    <h2>5. Commit locally</h2>
+    <ol>
+      <li>Review the changed files.</li>
+      <li>Write a meaningful message like <code>Add project idea draft</code>.</li>
+      <li>Click <strong>Commit to [branch]</strong>.</li>
+    </ol>
+    <div class="note"><strong>Important:</strong> <code>commit</code> is a local saved snapshot. It does not upload your work to GitHub.</div>
+
+    <h2>6. Push the branch</h2>
+    <ol>
+      <li>Click <strong>Publish branch</strong> or <strong>Push origin</strong>.</li>
+      <li>GitHub Desktop uploads the branch to the shared repository.</li>
+      <li>Your teammates can now review the branch on GitHub.</li>
+    </ol>
+
+    <h2>7. Open a pull request</h2>
+    <ol>
+      <li>Choose <strong>Create Pull Request</strong>.</li>
+      <li>Set the base branch to <code>main</code> and the compare branch to your feature branch.</li>
+      <li>Write a short explanation of the change and why it matters.</li>
+      <li>Ask a teammate to review it.</li>
+    </ol>
+
+    <h2>8. Review and merge</h2>
+    <ol>
+      <li>Another teammate opens the pull request and checks the files.</li>
+      <li>If the work is correct, the reviewer merges it into <code>main</code>.</li>
+      <li>If the content is unclear or there is a conflict, stop and ask the instructor or team lead.</li>
+    </ol>
+
+    <h2>9. Sync local <code>main</code></h2>
+    <ol>
+      <li>Switch back to <code>main</code>.</li>
+      <li>Click <strong>Fetch origin</strong> or <strong>Pull origin</strong>.</li>
+      <li>Now your local repo is up to date with the merged version.</li>
+      <li>Create the next feature branch from updated <code>main</code>.</li>
+    </ol>
+
+    <h2>10. Common problems</h2>
+    <ul>
+      <li><strong>Invite not visible:</strong> accept the GitHub repository invite and refresh GitHub Desktop.</li>
+      <li><strong>Branch not appearing:</strong> make sure it is based on the correct repository and the current branch is set correctly.</li>
+      <li><strong>No changes to commit:</strong> confirm the file saved and includes the expected edits.</li>
+      <li><strong>Merge conflict:</strong> do not discard changes; ask for help before doing anything risky.</li>
+    </ul>
+
+    <div class="note"><strong>Safety reminder:</strong> never commit directly to <code>main</code>, never force-push, and never delete the repository's hidden Git files to try to fix a problem.</div>
+
+    <h2>11. Core vocabulary</h2>
+    <ul>
+      <li><strong>Commit</strong> = a local save point.</li>
+      <li><strong>Push</strong> = upload local commits to GitHub.</li>
+      <li><strong>Pull request</strong> = request to merge a feature branch into <code>main</code>.</li>
+      <li><strong>Pull</strong> = update your local branch with the latest remote changes.</li>
+    </ul>
+
+    <p><a href="https://docs.github.com/en/desktop">Official GitHub Desktop documentation</a></p>
+  </div>
+</body>
+</html>

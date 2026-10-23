@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSE220 Final Project - Milestone 1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+    #header {
+      background: #1c1515;
+      color: white;
+      padding: 0;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    #header a {
+      position: relative;
+      font-weight: bold;
+      float: left;
+      margin-left: 1em;
+      margin-right: 1em;
+      padding: 1em;
+      color: #f0f0f0;
+      background: #1c1515;
+      text-decoration: none;
+    }
+    #header a:hover {
+      background: #222;
+    }
+    main {
+      max-width: 980px;
+      margin: 30px auto;
+      background: white;
+      padding: 26px 28px 44px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h1, h2, h3 { color: #2b2b2b; }
+    .subtitle {
+      font-size: 1.1em;
+      margin-top: -8px;
+      color: #4a5568;
+    }
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      margin: 18px 0 28px;
+    }
+    .step-card {
+      border: 1px solid #d9e2ec;
+      background: #f8fbff;
+      padding: 14px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .tabbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 24px;
+    }
+    .tabbar a {
+      background: #eaf3ff;
+      color: #00539c;
+      border: 1px solid #cfe1ff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .panel {
+      border: 1px solid #d9e2ec;
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: #fafcff;
+    }
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+    .checklist li::before {
+      content: "☐ ";
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #d9e2ec;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .small {
+      font-size: 0.95em;
+      color: #425466;
+    }
+    ul, ol { padding-left: 1.4em; }
+    .badge {
+      display: inline-block;
+      background: #eaf3ff;
+      color: #00539c;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: bold;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    a { color: #00539c; }
+    @media (max-width: 700px) {
+      main { padding: 18px; }
+      #header a { display: inline-block; margin: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a href="./index.html">CSSE 220</a>
+    <a href="./syllabus.html">Syllabus</a>
+    <a href="./schedule.html">Schedule</a>
+    <a href="./design.html">Design</a>
+    <a href="./labs.html">Labs</a>
+    <a href="./homework.html">Homework</a>
+    <a href="./exams.html">Exams</a>
+    <a href="./project.html">Final Project</a>
+    <a href="graphics/index.html">Graphics</a>
+    <a href="./resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <h1>Final Project: Milestone 1</h1>
+    <p class="subtitle">Idea, OO Design, and Team Launch</p>
+
+    <div class="tabbar">
+      <a href="#idea">Idea</a>
+      <a href="#design">Design</a>
+      <a href="#starter">Starter</a>
+      <a href="#github">GitHub</a>
+      <a href="#submission">Submission</a>
+      <a href="#demo">Demo</a>
+      <a href="#ai">AI Coach</a>
+    </div>
+
+    <div class="badge">Idea</div>
+    <div class="badge">OO Design</div>
+    <div class="badge">First Running Feature</div>
+    <div class="badge">Team Integration</div>
+    <div class="badge">Test &amp; Polish</div>
+    <div class="badge">Showcase</div>
+
+    <div class="pipeline">
+      <div class="step-card">1. Idea</div>
+      <div class="step-card">2. OO design</div>
+      <div class="step-card">3. Starter runs</div>
+      <div class="step-card">4. Branch workflow</div>
+      <div class="step-card">5. Team integration</div>
+      <div class="step-card">6. Showcase</div>
+    </div>
+
+    <section id="idea">
+      <h2>What is required now vs. later</h2>
+      <div class="grid">
+        <div class="panel">
+          <h3>Milestone 1 focus</h3>
+          <ul>
+            <li>Choose a user and a small meaningful interaction.</li>
+            <li>Draft the main classes, data, and responsibilities.</li>
+            <li>Get the JavaFX starter running in a shared team repo.</li>
+            <li>Practice a safe branch → review → merge workflow.</li>
+            <li>Submit a clear design summary and team plan.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Later project work</h3>
+          <ul>
+            <li>More game/app features</li>
+            <li>Polished UI or animations</li>
+            <li>Multiple screens or levels</li>
+            <li>Testing, debugging, and final showcase</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Milestone steps</h2>
+      <ol>
+        <li><strong>Step 1: Define the user.</strong> State who the app is for, what problem it solves, and the first 30 seconds of the experience. Ask: What does the user do first? What should the app show immediately?</li>
+        <li><strong>Step 2: UML draft.</strong> Sketch the main classes, fields, methods, and relationships. Write a short explanation for why the design makes sense.</li>
+        <li><strong>Step 3: Starter and Git setup.</strong> Clone or create the shared repo, import the starter, and verify the app launches.</li>
+        <li><strong>Step 4: Branch workflow.</strong> Each person should create a feature branch, make a small independent change, commit, push, open a PR, review, merge, and sync main.</li>
+      </ol>
+      <p class="small">This milestone is about building an initial product direction and a working team process. You are not expected to finish a polished game yet.</p>
+    </section>
+
+    <section id="design">
+      <h2>Helpful team template</h2>
+      <p>Your team should keep a shared Google Doc or planning sheet with:</p>
+      <ul>
+        <li>Project title and target user</li>
+        <li>Core user actions and the first interaction</li>
+        <li>Primary classes and responsibilities</li>
+        <li>Team member ownership table</li>
+        <li>Next tasks and branch owners</li>
+      </ul>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Team member</th>
+            <th>Primary role</th>
+            <th>Current task</th>
+            <th>Next task or check</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Student 1</td>
+            <td>UI / screen setup</td>
+            <td>Build the start screen</td>
+            <td>Review button behavior</td>
+          </tr>
+          <tr>
+            <td>Student 2</td>
+            <td>Model / data classes</td>
+            <td>Draft class design</td>
+            <td>Record responsibilities in UML</td>
+          </tr>
+          <tr>
+            <td>Student 3</td>
+            <td>GitHub / workflow</td>
+            <td>Set up repo, branches</td>
+            <td>Verify PR and merge flow</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="starter">
+      <h2>Starter and public resources</h2>
+      <ul>
+        <li><a href="./Milestone1Starter.zip">Download the JavaFX starter ZIP</a></li>
+        <li><a href="./github-desktop-guide.html">Open the GitHub Desktop guide</a></li>
+        <li><a href="#submission">Review the Milestone 1 submission checklist</a></li>
+      </ul>
+      <p>Start by importing the JavaFX starter project and confirming that the app launches before you add project-specific code. If a teammate created the repo, everyone should <strong>clone</strong> it instead of creating a second copy.</p>
+    </section>
+
+    <section id="github">
+      <h2>GitHub Desktop branch workflow</h2>
+      <ol>
+        <li>Accept the team repository invitation or confirm the repo exists.</li>
+        <li>Clone the shared repository.</li>
+        <li>Open it in your IDE and make sure the main branch is current.</li>
+        <li>Create a named feature branch such as <code>ui-start-screen</code> or <code>uml-notes</code>.</li>
+        <li>Make a small independent edit.</li>
+        <li>Review the changed files.</li>
+        <li>Commit locally.</li>
+        <li>Publish or push the branch.</li>
+        <li>Create a pull request on GitHub.</li>
+        <li>Have a teammate review it.</li>
+        <li>Merge the PR and then sync main locally.</li>
+      </ol>
+      <p>Important: <strong>commit</strong> saves your work locally, while <strong>push</strong> sends it to the remote repository. A <strong>pull request</strong> is not the same as a pull command. Use <strong>main</strong> as the shared baseline, not as the place for ad hoc direct edits.</p>
+      <p><a href="./github-desktop-guide.html">Open the full beginner GitHub Desktop guide</a></p>
+    </section>
+
+    <section id="submission">
+      <h2>Submission checklist</h2>
+      <ul class="checklist">
+        <li>Repository URL</li>
+        <li>Team members and GitHub usernames</li>
+        <li>Project pitch and brief design rationale</li>
+        <li>Initial UML or class diagram</li>
+        <li>Evidence that the app launches on the current main branch</li>
+        <li>At least one merged PR per teammate or a documented blocker</li>
+        <li>AI usage log entry if AI was used</li>
+      </ul>
+      <p>Use the team submission process already used in the course. One member should submit the work, and the team should confirm the correct names are visible.</p>
+
+      <h3>Provisional rubric</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Criterion</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Clear, realistic idea and user</td><td>4</td></tr>
+          <tr><td>Meaningful first-pass OO design and UML</td><td>8</td></tr>
+          <tr><td>Working shared JavaFX starter</td><td>3</td></tr>
+          <tr><td>GitHub participation and team workflow</td><td>4</td></tr>
+          <tr><td>Submission readability and completeness</td><td>1</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>20</strong></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="demo">
+      <h2>Instructor GitHub demo guide</h2>
+      <p>During class, the instructor can demonstrate the flow in a few minutes:</p>
+      <ol>
+        <li>Create a throwaway demo repo from the starter.</li>
+        <li>Invite a second account or teammate as a collaborator.</li>
+        <li>Clone the project and open it in the IDE.</li>
+        <li>Create a feature branch.</li>
+        <li>Change a small file such as a note or label.</li>
+        <li>Commit, push, and open a pull request.</li>
+        <li>Review the change on GitHub.</li>
+        <li>Merge the branch and pull the updated main branch.</li>
+      </ol>
+      <p>Keep the demonstration small and focused so students see the exact workflow without relying on a perfect project implementation.</p>
+    </section>
+
+    <section id="ai">
+      <h2>AI Team Coach</h2>
+      <p>This milestone is designed to be usable with any AI assistant. Students can use a browser-based assistant, an IDE assistant, or a pasted markdown workflow. The key requirement is that students still do the design work themselves and keep a record of AI usage according to course policy.</p>
+      <ul>
+        <li>Ask AI to explain one class relationship at a time.</li>
+        <li>Require the AI to justify suggestions.</li>
+        <li>Explain the result back to the team before implementing it.</li>
+        <li>Keep an AI usage log if your instructor requires one.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Future roadmap</h2>
+      <p>These topics are not assigned for Friday. They are useful later when the project grows bigger:</p>
+      <ul>
+        <li>OpenJFX docs and JavaFX API reference</li>
+        <li>AnimationTimer and Timeline</li>
+        <li>Keyboard input and focus handling</li>
+        <li>Multiple screens using Scene and root containers</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
+        <li>Separating model from view logic</li>
+        <li>Basic unit testing</li>
+        <li>GitHub Desktop documentation and Maven basics</li>
+      </ul>
+      <p class="small">GitHub Pages is for static websites; it does not run a normal JavaFX app. A packaged desktop release or video demo is optional later, not a Milestone 1 requirement.</p>
+    </section>
+  </main>
+</body>
+</html>

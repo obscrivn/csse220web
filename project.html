@@ -1,19 +1,124 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CSSE220 Final Project — Milestone 0</title><link rel="stylesheet" href="./syllabus_files/screen.css"><link rel="icon" href="favicon.ico"><style>body{font-family:Arial,sans-serif;color:#263238;line-height:1.6;margin:0;background:#f4f4f4} main{max-width:880px;margin:32px auto;padding:24px;background:white} h1,h2{color:#00539c} table{border-collapse:collapse;width:100%}th,td{border:1px solid #bbc7d2;text-align:left;padding:10px}section{margin:24px 0}a{color:#075985} @media(max-width:600px){main{margin:0;padding:16px}h1{font-size:1.6rem}} #header{display:flow-root}h3{margin-bottom:0} section{scroll-margin-top:20px}</style></head><body><div id="header">
-                <a id="index_link" href="./index.html">CSSE 220</a>
-                <a id="syllabus_link" href="./syllabus.html">Syllabus</a>
-                <a id="schedule_link" href="./schedule.html">Schedule</a>
-                <!-- <a href="./demos.html">Demos</a> -->
-                <a href="./design.html">Design</a>
-                <a href="./labs.html">Labs</a>
-                <a href="./homework.html">Homework</a>
-                <a href="./exams.html">Exams</a>
-                <a href="./project.html">Final Project</a>
-                <a href="graphics/index.html">Graphics</a>
-                <a id="resources_link" href="./resources.html">Resources</a>
-                <div style="clear:both;"></div>
-            </div><main><h1>Final Project</h1><p>Build a Java interactive GUI project that applies object-oriented programming. Your project may be a game, interactive application, simulation, or useful tool.</p>
-<section id="milestone0"><h2>🚀 Milestone 0: Pitch Your Idea</h2><p><strong>Project Idea &amp; Feasibility · 20 points</strong><br><strong>Due: Sunday, October 18, 2026</strong></p>
-<p><strong>Goal:</strong> Decide what your team wants to build and describe how someone would use it.</p>
-<p>One team submission. No UML, Java code, or GitHub repository is required for this milestone.</p>
-<p><a href="https://docs.google.com/document/d/1qhYn23wkNBUIu8p5gGl_M02tAjUVRxzEazWIZ1Bk-y0/edit?usp=sharing"><strong>Open the Google Docs proposal template</strong></a></p>
-<p>Open the view-only template and choose <strong>File → Make a copy</strong>. Share the copy with your teammates and fill it in together.</p><h3>1. Project Identity</h3><p>Include team members, a working project title, and a category: Game / Interactive App / Simulation / Utility / Other.</p><h3>2. The Big Idea</h3><p>In 3–5 sentences, explain what your application does, who would use it and why, and what makes it interesting, useful, or fun.</p><h3>3. What Can the User Actually Do?</h3><p>Describe at least three specific user actions and what happens in response to each. Think about buttons, keyboard input, mouse clicks, menus, and changes to application state.</p><p><em>Example: In a dungeon exploration game, the player clicks a room on the map. The application displays the room and updates the player’s current location.</em></p><h3>4. What Will the User See?</h3><p>Describe the main screen: its information, graphics, and controls. Explain how the display changes when the user acts.</p><p>Include one simple sketch of the main screen. Hand-drawn or digital is fine; no polished design is needed.</p><h3>5. Start Small, Dream Bigger</h3><p>Identify 2–3 essential <strong>Core (Must Have)</strong> features for a small, complete usable/playable version, and 1–3 <strong>Stretch (Nice to Have)</strong> features to add only if time permits.</p><h3>6. Your Biggest Unknown</h3><p>Name one technical challenge or feature your team does not yet know how to implement, such as graphics, input, data storage, or application logic. You do not need to solve it yet.</p></section><section id="submission"><h2>Submission</h2><p>Approximately 1–2 pages of text plus one simple screen sketch. In Google Docs, choose <strong>File → Download → PDF Document</strong>. Upload <strong>one PDF per team to Gradescope</strong> and add <strong>all team members</strong> to the submission.</p></section><section><h2>Grading Rubric: 20 Points</h2><table><thead><tr><th scope="col">Criterion</th><th scope="col">Points</th></tr></thead><tbody><tr><td>Clear, specific project idea and purpose</td><td>5</td></tr><tr><td>Three meaningful user actions and responses</td><td>5</td></tr><tr><td>Main screen description and sketch</td><td>5</td></tr><tr><td>Realistic core features and stretch goals</td><td>5</td></tr><tr><th scope="row">Total</th><td>20</td></tr></tbody></table></section><section><h2>Coming Next (Tentative)</h2><p>Initial Object-Oriented Design → Working Prototype → Functionality, Testing &amp; Polish. Details will be released later.</p></section></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CSSE220 Final Project</title>
+  <link rel="stylesheet" href="./syllabus_files/screen.css">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+    #header {
+      background: #1c1515;
+      color: white;
+      padding: 0;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    #header a {
+      position: relative;
+      font-weight: bold;
+      float: left;
+      margin-left: 1em;
+      margin-right: 1em;
+      padding: 1em;
+      color: #f0f0f0;
+      background: #1c1515;
+      text-decoration: none;
+    }
+    #header a:hover {
+      background: #222;
+    }
+    main {
+      max-width: 1000px;
+      margin: 32px auto;
+      background: white;
+      padding: 28px 30px 44px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h1, h2, h3 {
+      color: #2b2b2b;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .project-card {
+      display: block;
+      background: #edf4ff;
+      border: 1px solid #cfe1ff;
+      border-radius: 10px;
+      padding: 22px 20px;
+      text-decoration: none;
+      color: #1f2933;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.11);
+    }
+    .project-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.4rem;
+    }
+    .tag {
+      display: inline-block;
+      background: #dfeeff;
+      color: #00539c;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .muted { color: #4a5568; }
+    @media (max-width: 700px) {
+      main { padding: 18px; margin: 24px 10px; }
+      #header a { display: inline-block; margin: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a href="./index.html">CSSE 220</a>
+    <a href="./syllabus.html">Syllabus</a>
+    <a href="./schedule.html">Schedule</a>
+    <a href="./design.html">Design</a>
+    <a href="./labs.html">Labs</a>
+    <a href="./homework.html">Homework</a>
+    <a href="./exams.html">Exams</a>
+    <a href="./project.html">Final Project</a>
+    <a href="graphics/index.html">Graphics</a>
+    <a href="./resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <h1>Final Project</h1>
+    <p class="muted">Build a Java interactive GUI project that applies object-oriented design. Your team may create a game, app, simulation, utility, or visualization.</p>
+
+    <div class="card-grid">
+      <a class="project-card" href="./project-milestone1.html">
+        <div class="tag">Milestone 1</div>
+        <h3>Idea, Design, and Team Launch</h3>
+        <p>Define the user, sketch the main classes, run the starter, and practice a safe team GitHub workflow.</p>
+      </a>
+    </div>
+
+    <section style="margin-top: 32px;">
+      <h2>Project goals</h2>
+      <p>The final project is about turning a rough idea into an object-oriented design that can be implemented in Java. In the early milestones, your team should focus on a clear user, a small runnable interaction, and an understandable class structure.</p>
+      <p>Later milestones will build on this foundation with more features, testing, and polish.</p>
+    </section>
+  </main>
+</body>
+</html>
