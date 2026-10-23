@@ -5,7 +5,7 @@
 <body><main><a href="./project-milestone1.html">← Back to Milestone 1</a>
 <h1>Milestone 1: one team repository, one local copy per student</h1>
 <p><strong>Order:</strong> setup lead downloads → runs starter → initializes local Git → publishes to GitHub → invites team. Other students accept → clone → open → run. Then everyone branches → edits a different file → commits → pushes → requests review → merges → pulls main.</p>
-<div class="checkpoint"><p><strong>Teammates: wait for the setup lead.</strong> Only the lead performs Steps 2–3. Everyone else waits until the lead publishes the starter and invites them. While waiting, you may prepare your GitHub account, install the tools, and create the local folder below. Do not create a repository, download another starter, or start cloning in GitHub Desktop. Begin Step 4 only after receiving and accepting the invitation.</p></div>
+<p><strong>Teammates: wait for the setup lead.</strong> Only the lead performs Steps 2–3. Everyone else waits until the lead publishes the starter and invites them. While waiting, you may prepare your GitHub account, install the tools, and create the local folder below. Do not create a repository, download another starter, or start cloning in GitHub Desktop. Begin Step 4 only after receiving and accepting the invitation.</p>
 <p>If the instructor already supplied a team repository, use that repository and skip creation. If your team already has code or commits, ask the instructor how to bring the starter into that repository before copying files. Do not create a competing repository.</p>
 <h2>1. Everyone: prepare</h2>
 <ol>
@@ -46,19 +46,23 @@ CSSE220FinalProject/          ← local parent folder; not a Git repository
 
 </code></pre>
 <p><strong>Check in File Explorer/Finder:</strong> open <code>Milestone1Starter</code>. You should immediately see <code>pom.xml</code> and <code>src/</code>. If you see only another folder named <code>Milestone1Starter</code>, open that inner folder to find the actual project. You may move the actual project folder into <code>CSSE220FinalProject</code> before initializing Git, provided the destination does not already contain another project; do not overwrite or combine folders.</p>
-<p><strong>Two dialogs use different folder selections:</strong></p>
-<ul>
-<li><strong>Add Local Repository → Choose:</strong> select <code>CSSE220FinalProject/Milestone1Starter</code>, the folder containing <code>pom.xml</code>.</li>
-<li><strong>Create Repository (if prompted) → Name:</strong> <code>Milestone1Starter</code>.</li>
-<li><strong>Create Repository (if prompted) → Local path:</strong> select only the parent <code>CSSE220FinalProject</code> folder. Desktop combines Local path + Name to form the repository path.</li>
-</ul>
-<p><strong>Before clicking Create Repository:</strong> the resulting path should end in <code>CSSE220FinalProject/Milestone1Starter</code>, with the project name appearing once. If it ends in <code>Milestone1Starter/Milestone1Starter</code>, change Local path to the parent folder. Keep the supplied README and <code>.gitignore</code> and do not select replacement templates.</p>
+<p><strong>TEAM LEAD ONLY: use File → New Repository in GitHub Desktop.</strong> The Create a New Repository dialog initializes Git in the existing starter folder when you enter the matching Name and parent Local Path. Do not use Add Local Repository for this new starter.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Create a New Repository field</th><th scope="col">Team lead enters/selects</th></tr></thead><tbody>
+<tr><td>Name</td><td><code>Milestone1Starter</code> (match the extracted project folder name exactly)</td></tr>
+<tr><td>Description</td><td>Optional short team/project description</td></tr>
+<tr><td>Local Path</td><td>The parent <code>CSSE220FinalProject</code> folder, not its <code>Milestone1Starter</code> child</td></tr>
+<tr><td>Initialize this repository with a README</td><td>Leave unchecked; the starter already includes README.md</td></tr>
+<tr><td>Git ignore</td><td>Leave <code>None</code>; the starter already includes <code>.gitignore</code></td></tr>
+<tr><td>License</td><td>Leave <code>None</code> for this setup exercise</td></tr>
+</tbody></table></div>
+<p><strong>Before clicking Create Repository:</strong> Local Path + Name must resolve to the existing folder containing <code>pom.xml</code>, for example <code>/Users/YourName/CSSE220FinalProject/Milestone1Starter</code>. The project name should appear once. If the resulting path ends in <code>Milestone1Starter/Milestone1Starter</code>, change Local Path to the parent <code>CSSE220FinalProject</code> folder. The supplied <code>.gitignore</code> is used even though the template dropdown says None.</p>
 <p><strong>After creating it:</strong> use GitHub Desktop → Repository → Show in Finder / Show in Explorer. The folder that opens must directly contain <code>pom.xml</code> and <code>src/</code>. If it opens an empty folder or a folder containing only another project folder, stop before committing or publishing and ask the instructor to check the path. Do not delete <code>.git</code> or move files around to repair an initialized repository yourself.</p>
-<h2>3. Setup lead only: initialize this folder, then publish</h2>
+<h2>3. TEAM LEAD ONLY: create the local repository, publish, and invite</h2>
+<p><strong>Other teammates: skip this entire section.</strong> Do not create a repository. Wait for the lead’s invitation, then follow Step 4 to clone.</p>
 <ol>
-<li>In <strong>GitHub Desktop</strong>, choose <strong>File → Add Local Repository → Choose</strong> (Windows may use lower-case wording). Select the extracted <strong><code>Milestone1Starter</code> folder that directly contains <code>pom.xml</code>, <code>README.md</code>, <code>.gitignore</code>, and <code>src/</code></strong>. For example: <code>C:\Users\YourName\CSSE220FinalProject\Milestone1Starter</code> or <code>/Users/YourName/CSSE220FinalProject/Milestone1Starter</code>. Select this same folder in IntelliJ. Do not select the ZIP, the parent <code>CSSE220FinalProject</code> folder, or <code>src/</code>. If extraction produced an extra outer folder, open it and select the inner folder containing <code>pom.xml</code>.</li>
-<li>Because a ZIP is not a Git repository, Desktop should offer to <strong>create a repository here</strong>. Use that option. Confirm the resulting repository path is the existing starter folder, not a new folder inside it. If the dialog asks for Name and Local path, use <code>Milestone1Starter</code> as Name and its parent folder as Local path; inspect the resulting path before continuing.</li>
-<li>Keep the supplied README and <code>.gitignore</code>; do not replace them with generated templates. Create the repository. This initializes local Git, equivalent to <code>git init</code>; it has not uploaded anything.</li>
+<li><strong>TEAM LEAD:</strong> in <strong>GitHub Desktop</strong>, choose <strong>File → New Repository</strong> to open <strong>Create a New Repository</strong>, as shown in the field table above.</li>
+<li>Enter <strong>Name: <code>Milestone1Starter</code></strong> and set <strong>Local Path to the parent <code>CSSE220FinalProject</code> folder</strong>. Keep README unchecked, Git ignore set to None, and License set to None. Confirm the combined path points to the extracted folder containing <code>pom.xml</code>; do not create another folder inside it.</li>
+<li>Click <strong>Create Repository</strong>. This initializes Git locally in the starter folder and keeps the supplied README and <code>.gitignore</code>. It has not uploaded anything. Use Repository → Show in Finder / Show in Explorer to check that the repository folder directly contains <code>pom.xml</code> and <code>src/</code> before continuing.</li>
 <li>Confirm Current Branch is <code>main</code>. If it has another name, use Branch → Rename to change it to <code>main</code> before publishing or inviting anyone.</li>
 <li>Inspect History and Changes. Repository creation may already have made the initial commit. Confirm <code>pom.xml</code>, README, <code>.gitignore</code>, and <code>src/main/java/finalproject/StarterApp.java</code> are included in history. If needed, select these files and commit with message <code>Add JavaFX starter</code> on <code>main</code>.</li>
 <li>Build output must not be committed: no <code>target/</code>, <code>.class</code>, <code>.jar</code>, <code>.idea/</code>, or <code>.DS_Store</code> files should be selected. The supplied <code>.gitignore</code> also excludes IntelliJ <code>*.iml</code> files, other IDE settings, logs, and editor backup files. Keep <code>.gitignore</code> itself tracked. Java source, <code>pom.xml</code>, Markdown, and app resources such as FXML, CSS, images, and JSON should remain trackable.</li>
@@ -67,7 +71,7 @@ CSSE220FinalProject/          ← local parent folder; not a Git repository
 <li>On GitHub open repository Settings → Collaborators (or Collaborators and teams), add each teammate by username, and send the repository URL to your team. Each teammate must accept the invitation.</li>
 </ol>
 <p><strong>Checkpoint:</strong> everyone can open the same repository URL and see the starter files. The setup lead keeps using this local folder; the lead does not need to clone it again. This initial baseline commit is the one setup exception to doing work on feature branches.</p>
-<h2>4. Other teammates: clone, then open the cloned code</h2>
+<h2>4. OTHER TEAMMATES ONLY: accept the invitation, then clone</h2>
 <ol>
 <li><strong>Wait until the setup lead finishes Steps 2–3 and sends your invitation and the team repository URL.</strong> Accept the invitation on GitHub in your web browser while signed in to your own account. Confirm you can see the starter files in the repository before continuing.</li>
 <li>Now open GitHub Desktop and sign in with that same account. Check your Git name/email in Desktop settings. Choose File → Clone repository → URL and paste the team&#x27;s URL.</li>
