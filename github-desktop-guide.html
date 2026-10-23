@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Milestone 1 GitHub Desktop guide</title>
-<style>body{font:17px/1.6 Arial,sans-serif;max-width:950px;margin:30px auto;padding:20px;color:#222}code{background:#eee;overflow-wrap:anywhere}li{margin-bottom:10px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #aaa;padding:8px;text-align:left}h2{margin-top:2em}.checkpoint{background:#fff6dc;border-left:5px solid #865d00;padding:6px 18px}code{overflow-wrap:anywhere}.table-wrap{overflow-x:auto}a{color:#174c7e}h1{line-height:1.2}@media print{body{font-size:11pt;margin:0}h2{break-after:avoid}}</style></head>
+<style>body{font:17px/1.6 Arial,sans-serif;max-width:950px;margin:30px auto;padding:20px;color:#222}code{background:#eee;overflow-wrap:anywhere}li{margin-bottom:10px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #aaa;padding:8px;text-align:left}h2{margin-top:2em}.checkpoint{background:#fff6dc;border-left:5px solid #865d00;padding:6px 18px}code{overflow-wrap:anywhere}.table-wrap{overflow-x:auto}a{color:#174c7e}h1{line-height:1.2}pre{overflow-x:auto;background:#f4f4f4;padding:14px}pre code{background:transparent}@media print{body{font-size:11pt;margin:0}h2{break-after:avoid}}</style></head>
 <body><main><a href="./project-milestone1.html">← Back to Milestone 1</a>
 <h1>Milestone 1: one team repository, one local copy per student</h1>
 <p><strong>Order:</strong> setup lead downloads → runs starter → initializes local Git → publishes to GitHub → invites team. Other students accept → clone → open → run. Then everyone branches → edits a different file → commits → pushes → requests review → merges → pulls main.</p>
@@ -14,24 +14,49 @@
 <li>Choose one setup lead. Agree on a team repository name and who owns it; the setup lead will share its URL after publishing. Use the instructor&#x27;s visibility requirement; if none is given, keep the repository private and invite the instructor if access is needed.</li>
 </ol>
 <h3>Create a local course folder (everyone)</h3>
-<p>Use File Explorer on Windows or Finder on macOS to create a folder named <code>CSSE220</code> directly inside your user/home folder. Examples (replace <code>YourName</code> with your computer username):</p>
+<p>Use File Explorer on Windows or Finder on macOS to create a folder named <code>CSSE220FinalProject</code> directly inside your user/home folder. Examples (replace <code>YourName</code> with your computer username):</p>
 <ul>
-<li>Windows: <code>C:\Users\YourName\CSSE220</code></li>
-<li>macOS: <code>/Users/YourName/CSSE220</code> (Finder → Go → Home, then File → New Folder)</li>
+<li>Windows: <code>C:\Users\YourName\CSSE220FinalProject</code></li>
+<li>macOS: <code>/Users/YourName/CSSE220FinalProject</code> (Finder → Go → Home, then File → New Folder)</li>
 </ul>
 <p><strong>Keep the repository outside OneDrive and other cloud-sync folders.</strong> On Windows, Desktop and Documents may be redirected into OneDrive even when they look local. In File Explorer, click the address bar and check the full path; if it contains <code>OneDrive</code>, choose a different location. On macOS, avoid iCloud Drive and any synced Desktop/Documents folders. Also avoid Dropbox and Google Drive folders. Cloud sync can interfere with Git&#x27;s frequent file updates. Use GitHub Desktop to share project changes.</p>
 <p>The setup lead puts the extracted starter here. Other teammates choose a new folder here as the clone destination after accepting their invitations. Do not put one Git repository inside another.</p>
 <h2>2. Setup lead only: download and run first</h2>
 <ol>
-<li><a href="Milestone1Starter.zip">Download Milestone1Starter.zip</a> and extract it.</li>
-<li>Move the extracted <code>Milestone1Starter</code> folder into the local <code>CSSE220</code> folder described above, outside any existing Git repository. Check the full path: it must not contain <code>OneDrive</code>. Do not work inside the ZIP or a temporary preview.</li>
+<li><a href="Milestone1Starter.zip">Download Milestone1Starter.zip</a>, then <strong>unzip/extract it before opening it</strong>. On Windows, right-click the ZIP → Extract All; on macOS, double-click the ZIP. Do not open the project from inside the ZIP preview.</li>
+<li>Move the extracted <code>Milestone1Starter</code> folder into the local <code>CSSE220FinalProject</code> folder described above, outside any existing Git repository. Check the full path: it must not contain <code>OneDrive</code>. Do not work inside the ZIP or a temporary preview.</li>
 <li>Open the folder containing <code>pom.xml</code> in IntelliJ with File → Open. Let Maven load, select JDK 21, and open View → Tool Windows → Maven. In that tool window choose Execute Maven Goal, enter <code>clean javafx:run</code>, and run it. If the Maven project is missing, use Add Maven Projects and select <code>pom.xml</code>. Set both the project SDK and Maven runner JRE to JDK 21. IntelliJ bundles Maven.</li>
 <li>Check that the window opens and its button changes the message. Close the app.</li>
 </ol>
 <p><strong>Checkpoint:</strong> the unchanged starter runs before anyone initializes Git or changes the Java code.</p>
+<h3>Check the folder before initializing Git</h3>
+<p>Use one parent folder name throughout this guide: <code>CSSE220FinalProject</code>. Create it directly inside your user/home folder, outside OneDrive or other cloud-sync folders. After unzipping, arrange the starter like this:</p>
+<pre><code>
+CSSE220FinalProject/          ← local parent folder; not a Git repository
+
+└── Milestone1Starter/        ← select this project folder in Desktop and IntelliJ
+
+    ├── pom.xml
+
+    ├── README.md
+
+    ├── .gitignore
+
+    └── src/
+
+</code></pre>
+<p><strong>Check in File Explorer/Finder:</strong> open <code>Milestone1Starter</code>. You should immediately see <code>pom.xml</code> and <code>src/</code>. If you see only another folder named <code>Milestone1Starter</code>, open that inner folder to find the actual project. You may move the actual project folder into <code>CSSE220FinalProject</code> before initializing Git, provided the destination does not already contain another project; do not overwrite or combine folders.</p>
+<p><strong>Two dialogs use different folder selections:</strong></p>
+<ul>
+<li><strong>Add Local Repository → Choose:</strong> select <code>CSSE220FinalProject/Milestone1Starter</code>, the folder containing <code>pom.xml</code>.</li>
+<li><strong>Create Repository (if prompted) → Name:</strong> <code>Milestone1Starter</code>.</li>
+<li><strong>Create Repository (if prompted) → Local path:</strong> select only the parent <code>CSSE220FinalProject</code> folder. Desktop combines Local path + Name to form the repository path.</li>
+</ul>
+<p><strong>Before clicking Create Repository:</strong> the resulting path should end in <code>CSSE220FinalProject/Milestone1Starter</code>, with the project name appearing once. If it ends in <code>Milestone1Starter/Milestone1Starter</code>, change Local path to the parent folder. Keep the supplied README and <code>.gitignore</code> and do not select replacement templates.</p>
+<p><strong>After creating it:</strong> use GitHub Desktop → Repository → Show in Finder / Show in Explorer. The folder that opens must directly contain <code>pom.xml</code> and <code>src/</code>. If it opens an empty folder or a folder containing only another project folder, stop before committing or publishing and ask the instructor to check the path. Do not delete <code>.git</code> or move files around to repair an initialized repository yourself.</p>
 <h2>3. Setup lead only: initialize this folder, then publish</h2>
 <ol>
-<li>In GitHub Desktop choose File → Add Local Repository (Windows may use lower-case wording). Choose the extracted folder that directly contains <code>pom.xml</code>.</li>
+<li>In <strong>GitHub Desktop</strong>, choose <strong>File → Add Local Repository → Choose</strong> (Windows may use lower-case wording). Select the extracted <strong><code>Milestone1Starter</code> folder that directly contains <code>pom.xml</code>, <code>README.md</code>, <code>.gitignore</code>, and <code>src/</code></strong>. For example: <code>C:\Users\YourName\CSSE220FinalProject\Milestone1Starter</code> or <code>/Users/YourName/CSSE220FinalProject/Milestone1Starter</code>. Select this same folder in IntelliJ. Do not select the ZIP, the parent <code>CSSE220FinalProject</code> folder, or <code>src/</code>. If extraction produced an extra outer folder, open it and select the inner folder containing <code>pom.xml</code>.</li>
 <li>Because a ZIP is not a Git repository, Desktop should offer to <strong>create a repository here</strong>. Use that option. Confirm the resulting repository path is the existing starter folder, not a new folder inside it. If the dialog asks for Name and Local path, use <code>Milestone1Starter</code> as Name and its parent folder as Local path; inspect the resulting path before continuing.</li>
 <li>Keep the supplied README and <code>.gitignore</code>; do not replace them with generated templates. Create the repository. This initializes local Git, equivalent to <code>git init</code>; it has not uploaded anything.</li>
 <li>Confirm Current Branch is <code>main</code>. If it has another name, use Branch → Rename to change it to <code>main</code> before publishing or inviting anyone.</li>
@@ -46,7 +71,7 @@
 <ol>
 <li><strong>Wait until the setup lead finishes Steps 2–3 and sends your invitation and the team repository URL.</strong> Accept the invitation on GitHub in your web browser while signed in to your own account. Confirm you can see the starter files in the repository before continuing.</li>
 <li>Now open GitHub Desktop and sign in with that same account. Check your Git name/email in Desktop settings. Choose File → Clone repository → URL and paste the team&#x27;s URL.</li>
-<li>Under Local path, choose a new repository folder inside your local <code>CSSE220</code> folder, outside any existing Git repository. For example: <code>C:\Users\YourName\CSSE220\TeamProject</code> on Windows or <code>/Users/YourName/CSSE220/TeamProject</code> on macOS. Check that the full path does not contain <code>OneDrive</code> and is not inside another cloud-synced folder. Do not clone into an extracted starter folder. Click Clone.</li>
+<li>Under Local path, choose a new repository folder inside your local <code>CSSE220FinalProject</code> folder, outside any existing Git repository. For example: <code>C:\Users\YourName\CSSE220FinalProject\TeamProject</code> on Windows or <code>/Users/YourName/CSSE220FinalProject/TeamProject</code> on macOS. Check that the full path does not contain <code>OneDrive</code> and is not inside another cloud-synced folder. Do not clone into an extracted starter folder. Click Clone.</li>
 <li>Confirm Current Repository is your team&#x27;s repository and Current Branch is <code>main</code>.</li>
 <li>Use Repository → Show in Finder / Show in Explorer to identify the clone&#x27;s actual location.</li>
 <li>In IntelliJ choose File → Open and select that cloned folder containing <code>pom.xml</code>. Let Maven load and select JDK 21.</li>
