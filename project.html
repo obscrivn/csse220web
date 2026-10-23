@@ -53,8 +53,8 @@
     }
     .project-card {
       display: block;
-      background: #edf4ff;
-      border: 1px solid #cfe1ff;
+      background: #f3f3f3;
+      border: 1px solid #d9d9d9;
       border-radius: 10px;
       padding: 22px 20px;
       text-decoration: none;
@@ -72,13 +72,32 @@
     }
     .tag {
       display: inline-block;
-      background: #dfeeff;
-      color: #00539c;
+      background: #ececec;
+      color: #2b2b2b;
       border-radius: 999px;
       padding: 5px 10px;
       font-size: 0.82rem;
       font-weight: 700;
       margin-bottom: 8px;
+    }
+    .milestone-section {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #ddd;
+    }
+    .milestone-section h2 {
+      margin-bottom: 8px;
+    }
+    .milestone-section table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    .milestone-section th, .milestone-section td {
+      border: 1px solid #d9d9d9;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
     }
     .muted { color: #4a5568; }
     @media (max-width: 700px) {
@@ -106,11 +125,61 @@
     <h1>Final Project</h1>
     <p class="muted">Build a Java interactive GUI project that applies object-oriented design. Your team may create a game, app, simulation, utility, or visualization.</p>
 
+    <section id="milestone0" class="milestone-section">
+      <h2>Milestone 0: Pitch Your Idea</h2>
+      <p><strong>Project Idea &amp; Feasibility · 20 points</strong><br>
+      <strong>Due: Sunday, October 18, 2026</strong></p>
+      <p><strong>Goal:</strong> Decide what your team wants to build and describe how someone would use it.</p>
+      <p>One team submission. No UML, Java code, or GitHub repository is required for this milestone.</p>
+      <p><a href="https://docs.google.com/document/d/1qhYn23wkNBUIu8p5gGl_M02tAjUVRxzEazWIZ1Bk-y0/edit?usp=sharing"><strong>Open the Google Docs proposal template</strong></a></p>
+      <p>Open the view-only template and choose <strong>File → Make a copy</strong>. Share the copy with your teammates and fill it in together.</p>
+
+      <h3>1. Project Identity</h3>
+      <p>Include team members, a working project title, and a category: Game / Interactive App / Simulation / Utility / Other.</p>
+
+      <h3>2. The Big Idea</h3>
+      <p>In 3–5 sentences, explain what your application does, who would use it and why, and what makes it interesting, useful, or fun.</p>
+
+      <h3>3. What Can the User Actually Do?</h3>
+      <p>Describe at least three specific user actions and what happens in response to each. Think about buttons, keyboard input, mouse clicks, menus, and changes to application state.</p>
+      <p><em>Example: In a dungeon exploration game, the player clicks a room on the map. The application displays the room and updates the player’s current location.</em></p>
+
+      <h3>4. What Will the User See?</h3>
+      <p>Describe the main screen: its information, graphics, and controls. Explain how the display changes when the user acts.</p>
+      <p>Include one simple sketch of the main screen. Hand-drawn or digital is fine; no polished design is needed.</p>
+
+      <h3>5. Start Small, Dream Bigger</h3>
+      <p>Identify 2–3 essential <strong>Core (Must Have)</strong> features for a small, complete usable/playable version, and 1–3 <strong>Stretch (Nice to Have)</strong> features to add only if time permits.</p>
+
+      <h3>6. Your Biggest Unknown</h3>
+      <p>Name one technical challenge or feature your team does not yet know how to implement, such as graphics, input, data storage, or application logic. You do not need to solve it yet.</p>
+
+      <h3>Submission</h3>
+      <p>Approximately 1–2 pages of text plus one simple screen sketch. In Google Docs, choose <strong>File → Download → PDF Document</strong>. Upload <strong>one PDF per team to Gradescope</strong> and add <strong>all team members</strong> to the submission.</p>
+
+      <h3>Grading Rubric: 20 Points</h3>
+      <table>
+        <thead>
+          <tr><th>Criterion</th><th>Points</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Clear, specific project idea and purpose</td><td>5</td></tr>
+          <tr><td>Three meaningful user actions and responses</td><td>5</td></tr>
+          <tr><td>Main screen description and sketch</td><td>5</td></tr>
+          <tr><td>Realistic core features and stretch goals</td><td>5</td></tr>
+          <tr><th>Total</th><td>20</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Coming Next (Tentative)</h3>
+      <p>Initial Object-Oriented Design → Working Prototype → Functionality, Testing &amp; Polish. Details will be released later.</p>
+    </section>
+
     <div class="card-grid">
-      <a class="project-card" href="./project-copy.html">
+      <a class="project-card" href="#milestone0">
         <div class="tag">Milestone 0</div>
-        <h3>Legacy reference</h3>
-        <p>Older project milestone materials kept for reference. This page documents the earlier milestone structure and planning guidance.</p>
+        <h3>Pitch Your Idea</h3>
+        <p>Choose a project direction, define the user, and describe the core idea and design goals.</p>
       </a>
       <a class="project-card" href="./project-milestone1.html">
         <div class="tag">Milestone 1</div>
