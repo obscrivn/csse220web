@@ -1,102 +1,30 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Milestone 1 GitHub Desktop guide</title>
-<style>body{font:17px/1.6 Arial,sans-serif;max-width:950px;margin:30px auto;padding:20px;color:#222}code{background:#eee;overflow-wrap:anywhere}li{margin-bottom:10px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #aaa;padding:8px;text-align:left}h2{margin-top:2em}.checkpoint{background:#fff6dc;border-left:5px solid #865d00;padding:6px 18px}code{overflow-wrap:anywhere}.table-wrap{overflow-x:auto}a{color:#174c7e}h1{line-height:1.2}pre{overflow-x:auto;background:#f4f4f4;padding:14px}pre code{background:transparent}@media print{body{font-size:11pt;margin:0}h2{break-after:avoid}}</style></head>
+<title>Milestone 1: get your team started with GitHub</title>
+<style>body{font:17px/1.6 Arial,sans-serif;max-width:950px;margin:30px auto;padding:20px;color:#222}code{background:#eee;overflow-wrap:anywhere}li{margin-bottom:10px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #aaa;padding:8px;text-align:left}h2{margin-top:2em;scroll-margin-top:20px}h3{margin-top:1.6em}li strong:first-child{color:#253c53}.checkpoint{background:#fff6dc;border-left:5px solid #865d00;padding:6px 18px}code{overflow-wrap:anywhere}.table-wrap{overflow-x:auto}a{color:#174c7e}h1{line-height:1.2}pre{overflow-x:auto;background:#f4f4f4;padding:14px}pre code{background:transparent}@media print{body{font-size:11pt;margin:0}h2{break-after:avoid}}</style></head>
 <body><main><a href="./project-milestone1.html">← Back to Milestone 1</a>
-<h1>Milestone 1: one team repository, one local copy per student</h1>
-<p><strong>Order:</strong> setup lead downloads → runs starter → initializes local Git → publishes to GitHub → invites team. Other students accept → clone → open → run. Then everyone branches → edits a different file → commits → pushes → requests review → merges → pulls main.</p>
-<p><strong>Teammates: wait for the setup lead.</strong> Only the lead performs Steps 2–3. Everyone else waits until the lead publishes the starter and invites them. While waiting, you may prepare your GitHub account, install the tools, and create the local folder below. Do not create a repository, download another starter, or start cloning in GitHub Desktop. Begin Step 4 only after receiving and accepting the invitation.</p>
-<p>If the instructor already supplied a team repository, use that repository and skip creation. If your team already has code or commits, ask the instructor how to bring the starter into that repository before copying files. Do not create a competing repository.</p>
-<h2>Which folder is the project?</h2>
-<p><strong>The starter folder becomes your team’s project folder.</strong> Do not create another project folder inside it or keep a separate working copy. For this exercise, keep its name <code>Milestone1Starter</code>, even after you start developing your own app.</p>
-<ul>
-<li><code>CSSE220FinalProject</code> is only a local parent folder for organizing work. Do not initialize Git there or open it as the IntelliJ project.</li>
-<li><code>CSSE220FinalProject/Milestone1Starter</code> is the actual <strong>project folder / repository root</strong>. It directly contains <code>pom.xml</code>, <code>README.md</code>, <code>.gitignore</code>, and <code>src/</code>. GitHub Desktop manages this folder and IntelliJ opens this same folder.</li>
-<li>The <strong>Create a New Repository</strong> dialog is the exception: its <strong>Local Path</strong> is the parent, because Desktop appends the <strong>Name</strong> <code>Milestone1Starter</code>. The final combined path must point to the actual project folder.</li>
-<li>The <strong>Clone repository</strong> dialog takes the <strong>full destination path</strong>, ending in <code>CSSE220FinalProject/Milestone1Starter</code>. It downloads the project files directly into that new folder. Teammates do not download another starter ZIP.</li>
-</ul>
-<p>The name of the repository on GitHub may be your team’s project name. That online name does not require you to rename or duplicate your local folder.</p>
-<h2>1. Everyone: prepare</h2>
-<ol>
-<li>Have a GitHub account, GitHub Desktop, IntelliJ IDEA, and JDK 21 ready.</li>
-<li>If you are the setup lead, sign in to GitHub Desktop with your own account and check its Git name and email settings. Other teammates wait until Step 4 to begin the GitHub Desktop repository steps.</li>
-<li>Choose one setup lead. Agree on a team repository name and who owns it; the setup lead will share its URL after publishing. Use the instructor&#x27;s visibility requirement; if none is given, keep the repository private and invite the instructor if access is needed.</li>
-</ol>
-<h3>Create a local course folder (everyone)</h3>
-<p>Use File Explorer on Windows or Finder on macOS to create a folder named <code>CSSE220FinalProject</code> directly inside your user/home folder. Examples (replace <code>YourName</code> with your computer username):</p>
-<ul>
-<li>Windows: <code>C:\Users\YourName\CSSE220FinalProject</code></li>
-<li>macOS: <code>/Users/YourName/CSSE220FinalProject</code> (Finder → Go → Home, then File → New Folder)</li>
-</ul>
-<p><strong>Keep the repository outside OneDrive and other cloud-sync folders.</strong> On Windows, Desktop and Documents may be redirected into OneDrive even when they look local. In File Explorer, click the address bar and check the full path; if it contains <code>OneDrive</code>, choose a different location. On macOS, avoid iCloud Drive and any synced Desktop/Documents folders. Also avoid Dropbox and Google Drive folders. Cloud sync can interfere with Git&#x27;s frequent file updates. Use GitHub Desktop to share project changes.</p>
-<p>The setup lead puts the extracted starter here. Other teammates choose a new folder here as the clone destination after accepting their invitations. Do not put one Git repository inside another.</p>
-<h2>2. Setup lead only: download and run first</h2>
-<ol>
-<li><a href="Milestone1Starter.zip">Download Milestone1Starter.zip</a>, then <strong>unzip/extract it before opening it</strong>. On Windows, right-click the ZIP → Extract All; on macOS, double-click the ZIP. Do not open the project from inside the ZIP preview.</li>
-<li>Move the extracted <code>Milestone1Starter</code> folder into the local <code>CSSE220FinalProject</code> folder described above, outside any existing Git repository. Check the full path: it must not contain <code>OneDrive</code>. Do not work inside the ZIP or a temporary preview.</li>
-<li>Open the folder containing <code>pom.xml</code> in IntelliJ with File → Open. Let Maven load, select JDK 21, and open View → Tool Windows → Maven. In that tool window choose Execute Maven Goal, enter <code>clean javafx:run</code>, and run it. If the Maven project is missing, use Add Maven Projects and select <code>pom.xml</code>. Set both the project SDK and Maven runner JRE to JDK 21. IntelliJ bundles Maven.</li>
-<li>Check that the window opens and its button changes the message. Close the app.</li>
-</ol>
-<p><strong>Checkpoint:</strong> the unchanged starter runs before anyone initializes Git or changes the Java code.</p>
-<h3>Check the folder before initializing Git</h3>
-<p>Use one parent folder name throughout this guide: <code>CSSE220FinalProject</code>. Create it directly inside your user/home folder, outside OneDrive or other cloud-sync folders. After unzipping, arrange the starter like this:</p>
-<pre><code>
-CSSE220FinalProject/          ← local parent folder; not a Git repository
-
-└── Milestone1Starter/        ← select this project folder in Desktop and IntelliJ
-
-    ├── pom.xml
-
-    ├── README.md
-
-    ├── .gitignore
-
-    └── src/
-
-</code></pre>
-<p><strong>Check in File Explorer/Finder:</strong> open <code>Milestone1Starter</code>. You should immediately see <code>pom.xml</code> and <code>src/</code>. If you see only another folder named <code>Milestone1Starter</code>, open that inner folder to find the actual project. You may move the actual project folder into <code>CSSE220FinalProject</code> before initializing Git, provided the destination does not already contain another project; do not overwrite or combine folders.</p>
-<p><strong>TEAM LEAD ONLY: use File → New Repository in GitHub Desktop.</strong> The Create a New Repository dialog initializes Git in the existing starter folder when you enter the matching Name and parent Local Path. Do not use Add Local Repository for this new starter.</p>
-<div class="table-wrap"><table><thead><tr><th scope="col">Create a New Repository field</th><th scope="col">Team lead enters/selects</th></tr></thead><tbody>
-<tr><td>Name</td><td><code>Milestone1Starter</code> (match the extracted project folder name exactly)</td></tr>
-<tr><td>Description</td><td>Optional short team/project description</td></tr>
-<tr><td>Local Path</td><td>The parent <code>CSSE220FinalProject</code> folder, not its <code>Milestone1Starter</code> child</td></tr>
-<tr><td>Initialize this repository with a README</td><td>Leave unchecked; the starter already includes README.md</td></tr>
-<tr><td>Git ignore</td><td>Leave <code>None</code>; the starter already includes <code>.gitignore</code></td></tr>
-<tr><td>License</td><td>Leave <code>None</code> for this setup exercise</td></tr>
+<h1>Get your team started with GitHub</h1>
+<p>By the end of this guide, everyone on your team will have the JavaFX starter running and will have shared one small change with the team.</p>
+<p>Choose <strong>one team lead</strong> for setup. The lead goes first. Everyone else waits for an invitation before cloning. You can install the tools and plan your project together while you wait.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Who are you?</th><th scope="col">Where do you start?</th></tr></thead><tbody>
+<tr><td>Team lead</td><td>Do <a href="#step-1">Step 1</a>, then <a href="#step-2">Steps 2–3</a>. Join everyone at <a href="#step-5">Step 5</a>. You do not need to clone.</td></tr>
+<tr><td>Other teammate</td><td>Do <a href="#step-1">Step 1</a>, wait for your invitation, then do <a href="#step-4">Step 4</a>. Join everyone at <a href="#step-5">Step 5</a>.</td></tr>
 </tbody></table></div>
-<p><strong>Before clicking Create Repository:</strong> Local Path + Name must resolve to the existing folder containing <code>pom.xml</code>, for example <code>/Users/YourName/CSSE220FinalProject/Milestone1Starter</code>. The project name should appear once. If the resulting path ends in <code>Milestone1Starter/Milestone1Starter</code>, change Local Path to the parent <code>CSSE220FinalProject</code> folder. The supplied <code>.gitignore</code> is used even though the template dropdown says None.</p>
-<p><strong>After creating it:</strong> use GitHub Desktop → Repository → Show in Finder / Show in Explorer. The folder that opens must directly contain <code>pom.xml</code> and <code>src/</code>. If it opens an empty folder or a folder containing only another project folder, stop before committing or publishing and ask the instructor to check the path. Do not delete <code>.git</code> or move files around to repair an initialized repository yourself.</p>
-<h2>3. TEAM LEAD ONLY: create the local repository, publish, and invite</h2>
-<p><strong>Other teammates: skip this entire section.</strong> Do not create a repository. Wait for the lead’s invitation, then follow Step 4 to clone.</p>
-<ol>
-<li><strong>TEAM LEAD:</strong> in <strong>GitHub Desktop</strong>, choose <strong>File → New Repository</strong> to open <strong>Create a New Repository</strong>, as shown in the field table above.</li>
-<li>Enter <strong>Name: <code>Milestone1Starter</code></strong> and set <strong>Local Path to the parent <code>CSSE220FinalProject</code> folder</strong>. Keep README unchecked, Git ignore set to None, and License set to None. Confirm the combined path points to the extracted folder containing <code>pom.xml</code>; do not create another folder inside it.</li>
-<li>Click <strong>Create Repository</strong>. This initializes Git locally in the starter folder and keeps the supplied README and <code>.gitignore</code>. It has not uploaded anything. Use Repository → Show in Finder / Show in Explorer to check that the repository folder directly contains <code>pom.xml</code> and <code>src/</code> before continuing.</li>
-<li>Confirm Current Branch is <code>main</code>. If it has another name, use Branch → Rename to change it to <code>main</code> before publishing or inviting anyone.</li>
-<li><strong>Check the first local commit in GitHub Desktop.</strong> Click <strong>History</strong> in the left panel. Desktop may have automatically created an <strong>Initial commit</strong> when you created the repository. Select it and verify that <code>pom.xml</code>, <code>README.md</code>, <code>.gitignore</code>, and <code>src/main/java/finalproject/StarterApp.java</code> are included. If they are already there and Changes is empty, your first commit is complete: continue to the first upload below. You do not need to change a file just to make another commit.</li>
-<li><strong>If the starter files still appear under Changes:</strong> click <strong>Changes</strong>, review each file, and check the boxes for the intended starter files. In the <strong>Summary (required)</strong> box at the bottom left, enter <code>Add JavaFX starter</code>. Click <strong>Commit to main</strong>. Then click History and verify that commit contains the starter files. This saves a snapshot <strong>only on your computer</strong>.</li>
-<li>Before uploading, check that no <code>target/</code>, <code>.class</code>, <code>.jar</code>, <code>.idea/</code>, or OS files are in the commit. The supplied <code>.gitignore</code> excludes build output and local settings. If generated files were already committed, ask the instructor for help before publishing. Source, <code>pom.xml</code>, README/docs, <code>.gitignore</code>, and app resources should be included.</li>
-<li><strong>First upload: click Publish repository in GitHub Desktop.</strong> Enter the agreed GitHub repository name and visibility, then confirm <strong>Publish Repository</strong>. This creates the online repository and uploads the local commit history and tracked files. Do not create a separate empty repository on the GitHub website first. The first upload uses <strong>Publish repository</strong>; later uploads of new commits use <strong>Push origin</strong> (or <strong>Publish branch</strong> for a new feature branch).</li>
-<li>If Desktop now shows <strong>Push origin</strong>, click it to upload any remaining local commits. Select <strong>Repository → View on GitHub</strong> and check the <code>main</code> branch: <code>pom.xml</code>, <code>README.md</code>, <code>.gitignore</code>, and <code>src/</code> must be visible at the top level. If the online repository is empty or shows only another project folder, do not invite teammates yet; check the selected local repository and ask for help.</li>
-<li><strong>Only after the files are online:</strong> on GitHub open repository <strong>Settings → Collaborators</strong> (or Collaborators and teams), invite every teammate by username, and share the exact repository URL. Ask them to accept the invitation and follow Step 4. The lead continues using the same local project folder and does not clone again.</li>
-</ol>
-<p><strong>Checkpoint:</strong> everyone can open the same repository URL and see the starter files. The setup lead keeps using this local folder; the lead does not need to clone it again. This initial baseline commit is the one setup exception to doing work on feature branches.</p>
-<h2>4. OTHER TEAMMATES ONLY: accept the invitation, then clone</h2>
-<ol>
-<li><strong>Wait until the setup lead finishes Steps 2–3 and sends your invitation and the team repository URL.</strong> Accept the invitation on GitHub in your browser using your own account. Confirm you can see the starter files before continuing. Do not download/extract a starter or create a repository yourself.</li>
-<li>In File Explorer/Finder, create the local parent folder <code>CSSE220FinalProject</code> directly inside your user/home folder if it does not already exist. Keep it outside OneDrive, iCloud Drive, Dropbox, Google Drive, and other Git repositories. Do not rely on Desktop/Documents being local; check the full path.</li>
-<li>Open <strong>GitHub Desktop</strong>, sign in with the invited account, and check your Git name/email. Choose <strong>File → Clone repository → URL</strong> and paste the exact URL sent by your team lead.</li>
-<li>In the clone dialog’s <strong>Local path</strong>, enter the <strong>full destination path including a new repository folder at the end</strong>. For example, use <code>C:\Users\YourName\CSSE220FinalProject\Milestone1Starter</code> on Windows or <code>/Users/YourName/CSSE220FinalProject/Milestone1Starter</code> on macOS. Replace <code>YourName</code> with your computer username. For this exercise, use <code>Milestone1Starter</code> as the local folder name, matching the lead’s folder. This is a location on your computer, not the GitHub URL.</li>
-<li><strong>Before clicking Clone:</strong> read the complete Local path field. It must end with exactly one repository folder inside <code>CSSE220FinalProject</code>. If Choose selects only the parent folder, append <code>/Milestone1Starter</code> (macOS) or <code>\Milestone1Starter</code> (Windows) in the Local path field. If Desktop already filled in the repository folder name, do not append it a second time. Let Desktop create the new destination; do not select a nonempty folder, an extracted starter, <code>src/</code>, or a folder inside another Git repository.</li>
-<li>Click <strong>Clone</strong> and wait for it to finish. If Desktop says the destination is not empty, do not overwrite/delete files; select a different new destination folder. Confirm <strong>Current Repository</strong> is the team repository and <strong>Current Branch</strong> is <code>main</code>.</li>
-<li>In Desktop choose <strong>Repository → Show in Finder / Show in Explorer</strong>. The folder that opens must directly contain <code>pom.xml</code>, <code>README.md</code>, <code>.gitignore</code>, and <code>src/</code>. If you see another project folder instead, ask the lead to check the repository layout before proceeding; do not initialize another repository to fix it.</li>
-<li>In <strong>IntelliJ → File → Open</strong>, select <strong>that exact cloned folder containing <code>pom.xml</code></strong>, such as <code>CSSE220FinalProject/Milestone1Starter</code>. Do not select its parent, <code>src/</code>, a ZIP, or an old extracted copy. Let Maven load, select JDK 21, and run <code>clean javafx:run</code> from the Maven tool window.</li>
-</ol>
-<p>After cloning, your local layout should be:</p>
+<p>Use <strong>GitHub Desktop</strong> for branches, commits, push, and pull. Use <strong>IntelliJ</strong> to edit and run your code. The <strong>GitHub website</strong> is where you accept invitations and review and merge pull requests.</p>
+<p>Already have a team repository or code you want to keep? Check with your instructor before creating another repository or copying files into it.</p>
+<h2 id="step-1">1. Everyone: choose a place for your project</h2>
+<p>Have your GitHub account, GitHub Desktop, IntelliJ, and JDK 21 ready. Each student uses their own GitHub account.</p>
+<p>Create a folder named <code>CSSE220FinalProject</code> inside your user/home folder. Replace <code>YourName</code> below with your computer username:</p>
+<ul>
+<li><strong>Windows:</strong> <code>C:\Users\YourName\CSSE220FinalProject</code>. In File Explorer, go to your user folder and create the new folder there.</li>
+<li><strong>macOS:</strong> <code>/Users/YourName/CSSE220FinalProject</code>. In Finder, choose <strong>Go → Home</strong>, then <strong>File → New Folder</strong>.</li>
+</ul>
+<p><strong>Keep this folder outside OneDrive, iCloud Drive, Dropbox, and Google Drive.</strong> Desktop and Documents may sync automatically. On Windows, click File Explorer’s address bar to check the full path. If it includes OneDrive, choose a different location. GitHub will handle sharing your project files.</p>
+<p>Your files will eventually look like this:</p>
 <pre><code>
-CSSE220FinalProject/       ← parent folder; do not open this as the project
+CSSE220FinalProject/       ← holds your project; leave this folder alone
 
-└── Milestone1Starter/           ← clone destination; open this folder in IntelliJ
+└── Milestone1Starter/     ← your actual project folder
 
     ├── pom.xml
 
@@ -107,120 +35,184 @@ CSSE220FinalProject/       ← parent folder; do not open this as the project
     └── src/
 
 </code></pre>
-<p><strong>Checkpoint:</strong> GitHub Desktop’s Show in Finder/Explorer and IntelliJ both point to the same cloned project folder, and the starter runs. Use the same local project-folder name <code>Milestone1Starter</code> throughout this exercise; the shared GitHub repository URL must also be the same. The lead keeps the original repository and skips cloning. Other teammates never use New Repository for this setup.</p>
-<h3>Everyone: when and how to pull</h3>
-<p><strong>Push sends your commits up to GitHub; pull brings teammates’ uploaded/merged commits down to your computer.</strong> Clone is the initial download; pull updates that same clone later. Do not clone again each day.</p>
-<p>Follow these steps <strong>before starting a new task</strong> and <strong>after a teammate’s PR has been merged</strong>. Keep using the same project folder; you do not need to download the ZIP or clone again.</p>
+<p><strong>The starter becomes your project.</strong> Keep working in <code>Milestone1Starter</code> as your app grows. GitHub Desktop and IntelliJ should both use this folder. You do not need a second “real project” folder.</p>
+<h2 id="step-2">2. Team lead only: unzip and run the starter</h2>
+<p><strong>Other teammates: wait for your invitation. Skip Steps 2–3.</strong></p>
 <ol>
-<li><strong>Save your files in IntelliJ.</strong> Choose <strong>File → Save All</strong>. This saves your edits on your computer; it does not upload them to GitHub.</li>
-<li><strong>Open GitHub Desktop and check your branch.</strong> At the top, check <strong>Current Repository</strong> is your team’s repository and <strong>Current Branch</strong> is the feature branch you were working on, such as <code>sam-design</code>. If you have edits but the branch says <code>main</code> or a different branch, stop and ask for help before continuing.</li>
-<li><strong>Save a Git snapshot of your work.</strong> Click the <strong>Changes</strong> tab on the left. If files are listed, click each file and review the changes. Select the checkboxes for the files you intended to change. In <strong>Summary (required)</strong> at the bottom left, write a short message such as <code>Add class responsibilities</code>, then click <strong>Commit to sam-design</strong> (the button should name your own feature branch). If Changes already says <strong>No local changes</strong>, you can skip this commit. Before continuing, make sure no uncommitted files remain. If files are unfamiliar or unexpected, ask for help; do not discard them.</li>
-<li><strong>Upload that saved work.</strong> If Desktop shows <strong>Publish branch</strong>, click it; otherwise click <strong>Push origin</strong> if it appears. Wait for the upload to finish. If neither button is offered and there are no outgoing commits, your branch is already uploaded. Your work is now on your feature branch on GitHub; it has not been merged into <code>main</code>.</li>
-<li><strong>Switch to main in GitHub Desktop.</strong> Click <strong>Current Branch</strong> at the top, then select <strong>main</strong> from the branch list. Check that the top of Desktop now says <strong>main</strong>. The files in your local project folder change to show main’s version. Your saved feature-branch work is still on its own branch.</li>
-<li><strong>Check GitHub for teammates’ updates.</strong> Click <strong>Fetch origin</strong> at the top of Desktop and wait. Fetch checks whether GitHub has new commits. This check alone does not put those changes into your project files.</li>
-<li><strong>Download the updates into main.</strong> If the top button changes to <strong>Pull origin</strong>, click it and wait until it finishes. If Desktop offers no incoming commits after fetching, your local main is already up to date and there is nothing to pull. You do not need to create a commit for the downloaded changes.</li>
-<li><strong>Check the result in IntelliJ.</strong> Return to the same open project. Find a file your teammate changed and check that their merged changes are visible. Run Maven goal <strong>clean javafx:run</strong> and check the app still launches. If the expected changes are missing or the app fails, check with your teammate before starting more work.</li>
-<li><strong>Create a fresh branch for a new task.</strong> Return to <strong>GitHub Desktop → Current Branch → New Branch</strong>. Enter a new task name, choose <strong>main</strong> as the base, and click <strong>Create Branch</strong>. Check that Current Branch shows the new name, then return to IntelliJ to start editing. If you are continuing unfinished work on an existing branch instead, use <strong>Section 9, Part D</strong> below to bring updated main into that branch.</li>
+<li><a href="Milestone1Starter.zip">Download Milestone1Starter.zip</a>.</li>
+<li><strong>Unzip it.</strong> On Windows, right-click the ZIP and choose <strong>Extract All</strong>. On macOS, double-click it.</li>
+<li>Move the extracted <code>Milestone1Starter</code> folder into your local <code>CSSE220FinalProject</code> folder.</li>
+<li>Open <code>Milestone1Starter</code> in File Explorer/Finder. You should immediately see <code>pom.xml</code> and <code>src/</code>. If you see another <code>Milestone1Starter</code> folder instead, open that inner folder to find the actual project. Arrange it as shown above <strong>before creating the Git repository</strong>. Do not overwrite an existing project.</li>
+<li>In <strong>IntelliJ → File → Open</strong>, select the folder containing <code>pom.xml</code>. Do not create a new IntelliJ project.</li>
+<li>Let Maven load the project. Select <strong>JDK 21</strong> for both the project SDK and Maven runner JRE.</li>
+<li>Open <strong>View → Tool Windows → Maven</strong>. Choose <strong>Execute Maven Goal</strong>, enter <code>clean javafx:run</code>, and run it. If the project is missing from Maven, use <strong>Add Maven Projects</strong> and select <code>pom.xml</code>.</li>
 </ol>
-<p><strong>You are ready when:</strong> your local main contains the team’s merged changes, the app runs, and Desktop shows your task’s feature branch before you edit again.</p>
-<p>Pulling <code>main</code> does not merge an unfinished feature branch into it or update your other feature branches. Use a reviewed PR to merge work into main; see the continuing-branch instructions below if you need updated main changes on an existing branch.</p>
-<h2>5. Everyone: agree on different files, then branch</h2>
-<p><strong>Where to work:</strong> create and switch branches, commit, push, fetch, and pull in <strong>GitHub Desktop</strong>. Edit Java and documentation in <strong>IntelliJ</strong>. Review and merge pull requests on the <strong>GitHub website</strong>.</p>
-<p>For this first practice, use documentation files so the single Java class does not become a collision point. These files are <strong>not supplied in the ZIP</strong>; create them during the exercise.</p>
-<div class="table-wrap"><table><thead><tr><th scope="col">Student</th><th scope="col">Example branch</th><th scope="col">Only file this student creates/edits</th></tr></thead><tbody>
+<p><strong>You should see:</strong> a window titled “CSSE220 Team Starter.” Click its button. The message should change to “Your team has launched the shared starter.” Close the window before continuing.</p>
+<p>IntelliJ includes Maven; you do not need to install it separately. Use the Maven goal above rather than the run arrow beside <code>StarterApp</code>.</p>
+<h2 id="step-3">3. Team lead only: put the starter on GitHub</h2>
+<h3>Create the local repository</h3>
+<p>A repository is your project files plus their saved Git history. This first step creates that history on your computer; it does not upload anything yet.</p>
+<ol>
+<li>Sign in to <strong>GitHub Desktop</strong> with your own account. Check your Git name and email in Desktop’s settings.</li>
+<li>Choose <strong>File → New Repository</strong>. Fill in the dialog like this:</li>
+</ol>
+<div class="table-wrap"><table><thead><tr><th scope="col">Field</th><th scope="col">What to enter</th></tr></thead><tbody>
+<tr><td>Name</td><td><code>Milestone1Starter</code>, exactly matching the extracted folder name</td></tr>
+<tr><td>Description</td><td>Optional: a short description of your team’s project</td></tr>
+<tr><td>Local Path</td><td>Your <strong>parent</strong> folder, <code>CSSE220FinalProject</code></td></tr>
+<tr><td>Initialize this repository with a README</td><td>Leave unchecked; we supplied README.md</td></tr>
+<tr><td>Git ignore</td><td>Leave <strong>None</strong>; we supplied <code>.gitignore</code></td></tr>
+<tr><td>License</td><td>Leave <strong>None</strong> for this exercise</td></tr>
+</tbody></table></div>
+<p><strong>Check before you click:</strong> Desktop combines Local Path + Name. The result must be the existing folder <code>CSSE220FinalProject/Milestone1Starter</code> containing <code>pom.xml</code>. If you see <code>Milestone1Starter/Milestone1Starter</code>, change Local Path to the parent folder.</p>
+<ol start="3">
+<li>Click <strong>Create Repository</strong>.</li>
+<li>Choose <strong>Repository → Show in Finder / Show in Explorer</strong>. The folder that opens should directly contain <code>pom.xml</code> and <code>src/</code>. If it is empty or contains only another project folder, ask your instructor to check it before continuing.</li>
+<li>Check <strong>Current Branch</strong> at the top of Desktop. It should say <strong>main</strong>. If needed, use <strong>Branch → Rename</strong> to name it <code>main</code>.</li>
+</ol>
+<p>The Git ignore dropdown says None because you are not adding a new template. Your supplied <code>.gitignore</code> still works. It keeps build output and computer settings out of the repository. Keep <code>.gitignore</code> itself with the project. Your file browser may hide this dotfile; that does not mean it is missing. You do not need to create another one.</p>
+<h3>Check your first commit</h3>
+<p>A <strong>commit</strong> saves a snapshot of your files in Git on your computer.</p>
+<ol>
+<li>In Desktop, click <strong>History</strong> on the left. Desktop may already have made an <strong>Initial commit</strong>.</li>
+<li>Click that commit. Check that it includes <code>pom.xml</code>, <code>README.md</code>, <code>.gitignore</code>, and <code>src/main/java/finalproject/StarterApp.java</code>.</li>
+<li>If those files are already in History and <strong>Changes</strong> is empty, your first commit is done. Go to “Upload and invite” below.</li>
+<li>If starter files are still listed under <strong>Changes</strong>, review them and select their checkboxes. Enter <code>Add JavaFX starter</code> in <strong>Summary (required)</strong> at the bottom left. Click <strong>Commit to main</strong>, then check History again.</li>
+</ol>
+<p><strong>You should see:</strong> the starter files in your commit. You should not see <code>target/</code>, <code>.class</code>, generated <code>.jar</code> files, or <code>.idea/</code>. If you do, ask for help before uploading. Java source, app resources, and your planning files should stay in the repository.</p>
+<p>This first setup commit on <code>main</code> is the exception. After setup, everyone makes changes on feature branches.</p>
+<h3>Upload and invite</h3>
+<ol>
+<li>Click <strong>Publish repository</strong> in Desktop. Enter your agreed team repository name and visibility, then confirm <strong>Publish Repository</strong>. If your instructor has not specified visibility, keep it private.</li>
+<li>Wait for the upload. If <strong>Push origin</strong> appears afterward, click it to send any remaining commits.</li>
+<li>Choose <strong>Repository → View on GitHub</strong>. On the <code>main</code> branch, check that <code>pom.xml</code> and <code>src/</code> are visible immediately, rather than inside another folder.</li>
+<li>On GitHub, open <strong>Settings → Collaborators</strong> (or Collaborators and teams). Invite every teammate by username. Invite your instructor if they need access.</li>
+<li>Send your teammates the repository URL and tell them they can start Step 4.</li>
+</ol>
+<p><strong>You are ready when:</strong> the files are visible on GitHub and every teammate has an invitation. Keep using your existing local folder; you do not need to clone it again.</p>
+<p><strong>Remember:</strong> Publish repository is the first upload. Later, <strong>Push origin</strong> uploads new commits. A new feature branch uses <strong>Publish branch</strong> the first time you share it.</p>
+<h2 id="step-4">4. Other teammates: accept, clone, and run</h2>
+<p><strong>Start only after the lead sends your invitation and the team URL.</strong> Do not download the starter ZIP or use New Repository.</p>
+<ol>
+<li>In your browser, sign in to your own GitHub account and accept the invitation. Open the team URL and check that you can see the files.</li>
+<li>Open <strong>GitHub Desktop</strong> and sign in with the same account. Check your Git name and email in its settings.</li>
+<li>Choose <strong>File → Clone repository → URL</strong>. Paste the URL your lead sent.</li>
+<li>Set <strong>Local path</strong> to the full destination, including the new project folder at the end:</li>
+</ol>
+<ul>
+<li><strong>Windows:</strong> <code>C:\Users\YourName\CSSE220FinalProject\Milestone1Starter</code></li>
+<li><strong>macOS:</strong> <code>/Users/YourName/CSSE220FinalProject/Milestone1Starter</code></li>
+</ul>
+<ol start="5">
+<li>Read the complete path before clicking <strong>Clone</strong>. If Choose selected only <code>CSSE220FinalProject</code>, add <code>Milestone1Starter</code> at the end. If Desktop already added the project folder name, do not add it again. Let Desktop create this new folder; do not clone into an extracted starter or another Git repository.</li>
+<li>Click <strong>Clone</strong> and wait. If Desktop says the destination is not empty, choose a new, unused location or ask for help. Do not overwrite your files.</li>
+<li>Check <strong>Current Repository</strong> is the team repository and <strong>Current Branch</strong> is <code>main</code>.</li>
+<li>Choose <strong>Repository → Show in Finder / Show in Explorer</strong>. You should immediately see <code>pom.xml</code>, <code>README.md</code>, <code>.gitignore</code>, and <code>src/</code>.</li>
+<li>In <strong>IntelliJ → File → Open</strong>, select <strong>that same folder containing <code>pom.xml</code></strong>. Let Maven load, select JDK 21, and run <code>clean javafx:run</code> as described in Step 2.</li>
+</ol>
+<p><strong>You should see:</strong> the same working starter window as your lead. Your clone is now your working project; use it for the rest of the milestone. The repository’s name on GitHub may differ from your local folder name. That is fine as long as everyone uses the same team URL.</p>
+<h2 id="step-5">5. Everyone: choose your file and create a branch</h2>
+<p>For this first practice, give each person a different file. You will create these files; they are not in the ZIP.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Person</th><th scope="col">Example branch</th><th scope="col">File they create</th></tr></thead><tbody>
 <tr><td>Alex</td><td><code>alex-project-idea</code></td><td><code>docs/idea.md</code></td></tr>
 <tr><td>Sam</td><td><code>sam-design</code></td><td><code>docs/design.md</code></td></tr>
 <tr><td>Jo</td><td><code>jo-team-plan</code></td><td><code>docs/team-plan.md</code></td></tr>
 </tbody></table></div>
-<p>Adapt names to your team. For larger teams use another unique file, such as <code>docs/testing-plan.md</code>. The shared folder name <code>docs/</code> is fine; each student must own a different file. Assign one owner for shared files such as <code>StarterApp.java</code>, <code>pom.xml</code>, and README during this exercise.</p>
+<p>Use your own names. If you have more teammates, assign another file such as <code>docs/testing-plan.md</code>. Pick one owner for shared files like <code>StarterApp.java</code> and <code>pom.xml</code> so everyone is not editing them at once.</p>
 <ol>
-<li>Save files and check Desktop&#x27;s Changes tab. Finish and commit any intended work on its existing branch before switching; if unexpected changes are present, stop and ask for help. Do not discard them.</li>
-<li>In <strong>GitHub Desktop</strong>, select Current Branch at the top of the window → <code>main</code>.</li>
-<li>Click <strong>Fetch origin</strong>, then <strong>Pull origin</strong> if it appears. Fetch checks for updates; pull downloads them into your local branch. Fetch alone does not update your working files.</li>
-<li>Stay in <strong>GitHub Desktop</strong>. At the top of its window, click <strong>Current Branch → New Branch</strong>. Enter your branch name, choose <code>main</code> as the base, and click <strong>Create Branch</strong>. Create this branch in GitHub Desktop, not in IntelliJ or on the GitHub website.</li>
-<li>In <strong>GitHub Desktop</strong>, verify Current Branch shows your feature branch. Then return to <strong>IntelliJ</strong> to edit the files. IntelliJ uses the branch selected in Desktop because both apps are using the same local repository folder.</li>
-</ol>
-<h2>6. Everyone: edit, commit, and push your own branch</h2>
-<ol>
-<li>In the repository folder open in IntelliJ, create <code>docs/</code> if needed and your assigned Markdown file. Add a short contribution: idea/user/first interaction, class responsibilities, or team tasks. Save it.</li>
-<li>In GitHub Desktop verify both repository and branch. Inspect Changes: only your intended file should appear. Stop if you see generated files or files you did not mean to edit.</li>
-<li>Select your file, enter a message such as <code>Add initial class responsibilities</code>, and click <strong>Commit to [your branch]</strong>.</li>
-<li>Click <strong>Publish branch</strong> the first time, or <strong>Push origin</strong> for later commits.</li>
-<li>View the branch on GitHub and check that your file and commit appear there.</li>
-</ol>
-<p>A commit saves locally; push uploads commits. Neither action merges your work into <code>main</code>.</p>
-<h2>7. Everyone: open a pull request</h2>
-<ol>
-<li>In Desktop choose Create Pull Request, or Preview Pull Request then Create Pull Request if offered. On GitHub you can also use Pull requests → New pull request.</li>
-<li>Set <strong>base: main</strong> and <strong>compare: your branch</strong> in the shared team repository.</li>
-<li>Check Files changed. It should show your intended file, not another teammate&#x27;s changes.</li>
-<li>Give the PR a short title and explain what you changed and how you checked it. Request a teammate&#x27;s review. Each student opens their own PR using their own account.</li>
-</ol>
-<h2>8. Team: review and merge one PR at a time</h2>
-<ol>
-<li>A different teammate opens the PR and reads Files changed. Check the content, the file ownership agreement, and any requested corrections. For Java changes, first commit any outstanding local work, click Fetch origin in Desktop, select the author’s branch under Current Branch, and run it in IntelliJ before approving. Return to your own branch afterward. For this documentation-only exercise, read the changed file on GitHub.</li>
-<li>If corrections are needed, the author edits on the same feature branch, commits, and pushes again. The existing PR updates automatically.</li>
-<li>When approved, the designated reviewer or setup lead uses <strong>Merge pull request</strong> on GitHub and confirms the merge. If the repository offers a different enabled merge method, use the instructor&#x27;s chosen method. Wait for the PR to show <strong>Merged</strong> before handling the next PR.</li>
-<li>Recheck the next PR against the now-current <code>main</code>. For this practice, separate new documentation files should combine automatically. Different files reduce text conflicts but do not guarantee that Java features will work together.</li>
-<li>If GitHub reports a conflict, leave the PR open and ask the instructor for help. Do not overwrite one version, discard work, or force-push. If a repository rule requires the branch to be updated first, use the update procedure below.</li>
-</ol>
-<h2>9. Team integration checkpoint: everyone agrees, then merge one branch at a time</h2>
-<p>Suppose Alex and Sam each have a feature branch and edited different files. The team agrees Alex’s change is ready first. Use this order: <strong>Alex’s PR → main → everyone pulls main → Sam updates Sam’s branch from main → Sam’s PR → main → everyone pulls again</strong>.</p>
-<p><strong>Two merge directions have different purposes:</strong> feature branch <strong>into main</strong> shares reviewed work with the team (use a PR). Main <strong>into your feature branch</strong> brings the team’s latest work into your unfinished task (use GitHub Desktop). Check the direction before clicking Merge.</p>
-<h3>A. Everyone: finish a small checkpoint and pause</h3>
-<ol>
-<li>Agree who goes first and which files each person owns. Pause edits to shared files during integration. Different files reduce text conflicts; changes to class interfaces can still break the combined app.</li>
-<li>Each person saves files in IntelliJ, then in <strong>GitHub Desktop</strong> checks their own feature branch, reviews Changes, commits intended edits, and clicks <strong>Push origin</strong> (or Publish branch for the first upload).</li>
-<li>Confirm each person has no uncommitted changes before switching branches. Do not move unfinished edits onto main.</li>
-</ol>
-<h3>B. First author and reviewer: merge Alex’s work into main</h3>
-<ol>
-<li>Alex opens a PR with <strong>base: main</strong>, <strong>compare: Alex’s feature branch</strong>. A teammate reviews the files and checks the app as described in Step 8.</li>
-<li>When the team agrees, <strong>one designated reviewer/lead</strong> clicks <strong>Merge pull request</strong> on GitHub and confirms it. Wait for the PR to say <strong>Merged</strong>. This updates the shared main on GitHub.</li>
-<li>Do not also merge Alex’s branch directly into main in Desktop. For this course, PRs provide the review step and participation evidence. The remaining Git navigation happens in Desktop.</li>
-</ol>
-<h3>C. Everyone, including Alex: receive updated main in Desktop</h3>
-<ol>
-<li>Open <strong>GitHub Desktop</strong> and verify Current Repository is the team repository.</li>
-<li>Select <strong>Current Branch → main</strong>.</li>
+<li>In <strong>GitHub Desktop</strong>, check <strong>Changes</strong>. If you just finished setup, it should say <strong>No local changes</strong>. If you already have edits, save and commit them on their own branch before switching; use Step 6 below for the commit buttons. Ask for help if the edits are unexpected.</li>
+<li>Click <strong>Current Branch → main</strong>.</li>
 <li>Click <strong>Fetch origin</strong>, then <strong>Pull origin</strong> if it appears. If no incoming commits are offered, main is already current.</li>
-<li>In IntelliJ, inspect Alex’s merged file in the same project folder and run <code>clean javafx:run</code>. Your local main now includes Alex’s work. Do not edit main directly.</li>
+<li>Click <strong>Current Branch → New Branch</strong>. Enter your branch name, choose <code>main</code> as its base, and click <strong>Create Branch</strong>.</li>
+<li>Check the top of Desktop: it should now show <strong>your feature branch</strong>, such as <code>sam-design</code>.</li>
 </ol>
-<h3>D. Next author: bring updated main into the existing feature branch</h3>
-<p>Sam still has unmerged work on <code>sam-design</code>. Sam now does the following in <strong>GitHub Desktop</strong>:</p>
+<p>Now return to IntelliJ to edit. You create and switch branches in <strong>GitHub Desktop</strong>. Both apps use the same project folder, so IntelliJ shows the branch you selected in Desktop.</p>
+<h2 id="step-6">6. Everyone: make a change, commit, and push</h2>
 <ol>
-<li>Complete Part C first so the local <strong>main</strong> contains Alex’s merged work.</li>
-<li>Select <strong>Current Branch → sam-design</strong>. Confirm the top of Desktop now shows <strong>sam-design</strong>, not main.</li>
+<li>In IntelliJ, create the <code>docs</code> folder in your project, then create your assigned file. Add a short contribution: your user and idea, planned class responsibilities, or the team’s next tasks.</li>
+<li>Choose <strong>File → Save All</strong> in IntelliJ.</li>
+<li>Open <strong>GitHub Desktop</strong>. Check the repository and your feature branch at the top.</li>
+<li>Click <strong>Changes</strong> on the left. Click each changed file and read what you changed. Select the checkboxes for the files you want in this commit.</li>
+<li>In <strong>Summary (required)</strong> at the bottom left, write a short message such as <code>Add class responsibilities</code>.</li>
+<li>Click <strong>Commit to [your branch]</strong>. Your change is now saved in local Git history.</li>
+<li>Click <strong>Publish branch</strong> for the first upload of this branch, or <strong>Push origin</strong> for later commits. Wait for it to finish.</li>
+</ol>
+<p><strong>You should see:</strong> your branch and its new file on GitHub. Commit saves locally; push uploads. Your change is still on your branch and has not joined <code>main</code> yet.</p>
+<h2 id="step-7">7. Ask a teammate to review your change</h2>
+<p>A <strong>pull request (PR)</strong> asks the team to review your branch before adding it to <code>main</code>. Each student opens their own PR.</p>
+<ol>
+<li>In Desktop, choose <strong>Create Pull Request</strong>, or <strong>Preview Pull Request → Create Pull Request</strong> if that is what your version shows. This opens GitHub in your browser.</li>
+<li>Check <strong>base: main</strong> and <strong>compare: your feature branch</strong>. This means “add my branch’s changes to main.”</li>
+<li>Open <strong>Files changed</strong> and check that it shows your intended file.</li>
+<li>Give the PR a short title. Say what you changed and how you checked it. Ask a teammate to review it.</li>
+<li>The reviewer reads the change. For this first documentation exercise, read the file on GitHub. For Java changes, save/commit any current work, fetch in Desktop, switch to the author’s branch, and run the app before approving.</li>
+<li>If the reviewer requests a correction, edit the file on the same feature branch, commit, and push again. The PR updates automatically.</li>
+</ol>
+<p><strong>You are ready to merge when:</strong> a teammate has reviewed your work and the change is ready to share.</p>
+<h2 id="step-8">8. Everyone: get the latest main</h2>
+<p>Use these steps <strong>after a PR is merged</strong> and <strong>before starting a new task</strong>. Keep using the same folder; you do not need to clone again.</p>
+<ol>
+<li><strong>Save in IntelliJ:</strong> choose <strong>File → Save All</strong>.</li>
+<li><strong>Keep your current work safe:</strong> open Desktop and check your feature branch. If files are listed under Changes, review and commit them using Step 6, then publish/push. If Changes says No local changes, skip the commit. If your edits are on main or an unexpected branch, ask for help before switching.</li>
+<li><strong>Switch to main:</strong> in Desktop, click <strong>Current Branch → main</strong>. Check that the top now says main. The files in IntelliJ may change; your committed feature work is still saved on its branch.</li>
+<li><strong>Check for updates:</strong> click <strong>Fetch origin</strong> and wait. Fetch checks GitHub; it does not update the files you are editing.</li>
+<li><strong>Bring updates into your folder:</strong> if <strong>Pull origin</strong> appears, click it and wait. If no incoming commits are offered, you already have the latest main. You do not need to commit the downloaded changes.</li>
+<li><strong>Check in IntelliJ:</strong> find your teammate’s merged changes and run <code>clean javafx:run</code>. If the changes are missing or the app fails, check with your teammate before adding more work.</li>
+<li><strong>Choose your next step:</strong> for a new task, use <strong>Current Branch → New Branch</strong> in Desktop and start from this updated main. To continue an unfinished branch, follow Step 9C instead.</li>
+</ol>
+<p><strong>You should see:</strong> the team’s merged changes on your local main, and a working app. Choose your task’s feature branch before you start editing again.</p>
+<h2 id="step-9">9. Team: combine everyone’s work, one branch at a time</h2>
+<p>Suppose Alex and Sam edited different files. The team agrees to merge Alex’s work first. Follow this example, replacing the names with your own.</p>
+<h3>A. Agree, review, and merge the first PR</h3>
+<ol>
+<li>Agree on the merge order. Everyone saves, commits, and pushes their feature-branch work. Pause edits to shared files while you combine changes.</li>
+<li>A teammate reviews Alex’s PR as described in Step 7.</li>
+<li>When it is ready, <strong>one designated reviewer/lead</strong> clicks <strong>Merge pull request</strong> on GitHub and confirms. Wait until the PR says <strong>Merged</strong>.</li>
+</ol>
+<p>Alex’s work is now in the shared main on GitHub. Use a PR for this step; do not also merge Alex’s branch directly into main in Desktop.</p>
+<h3>B. Everyone: pull the updated main</h3>
+<p>Follow <strong>Step 8</strong> on every computer, including Alex’s. Check that you can see Alex’s change and run the app.</p>
+<p>If your own branch has been merged, start your next task on a <strong>new branch from updated main</strong>. Sam’s work has not been merged yet, so Sam continues below.</p>
+<h3>C. Next author: bring main into your unfinished branch</h3>
+<p>Sam needs Alex’s changes on <code>sam-design</code> before sharing the next change. Sam does these steps in <strong>GitHub Desktop</strong>:</p>
+<ol>
+<li>Finish Step 8 first so your local main is current and you have no uncommitted edits.</li>
+<li>Choose <strong>Current Branch → sam-design</strong>. Check that the top says <strong>sam-design</strong>.</li>
 <li>Click <strong>Current Branch → Choose a branch to merge into sam-design</strong>.</li>
-<li>Select <strong>main</strong>, then click <strong>Merge main into sam-design</strong>. Read the direction: <strong>main → sam-design</strong>. This keeps Sam’s work and adds the latest main changes to Sam’s branch; it does not publish Sam’s work to main.</li>
-<li>If there are no new changes to merge, Desktop may report the branch is already up to date. Otherwise let the merge finish. If a conflict appears, stop and ask the instructor; do not guess which version to keep or discard either teammate’s work.</li>
-<li>In IntelliJ check that both Alex’s and Sam’s files are present, run the app, and check their interactions. A merge without text conflicts is not proof that the combined code works.</li>
-<li>Click <strong>Push origin</strong> in Desktop to upload the updated feature branch. A successful ordinary merge is recorded by Git; any further code fixes must be saved, reviewed in Changes, committed to sam-design, and pushed too. If Sam already has an open PR, it updates automatically.</li>
+<li>Select <strong>main</strong>, then click <strong>Merge main into sam-design</strong>.</li>
+<li>If Desktop says the branch is already up to date, there is nothing new to merge. Otherwise, let the merge finish. If a conflict appears, keep both people’s work and ask your instructor for help deciding what to change.</li>
+<li>Return to IntelliJ. Check that both changes are present and run the app. Fix any problems on <code>sam-design</code>, then save and commit those fixes.</li>
+<li>Click <strong>Push origin</strong> in Desktop. The merge is saved in Git automatically; code fixes need their own commit. If your PR is already open, it updates when you push.</li>
 </ol>
-<h3>E. Merge the next PR, then repeat</h3>
-<ol>
-<li>Review Sam’s PR with <strong>base: main</strong>, <strong>compare: sam-design</strong>. When approved, the designated reviewer/lead merges it on GitHub.</li>
-<li><strong>Everyone repeats Part C:</strong> Current Branch → main → Fetch origin → Pull origin. Run the combined app again.</li>
-<li>For another unfinished feature branch, its author repeats Part D using their own branch name, then requests review. Merge only one PR at a time.</li>
-<li>Once your own branch has been merged, start the next task on a <strong>new branch from updated main</strong>. Do not keep adding work to the already-merged branch. Record each student’s merged PR URL.</li>
-</ol>
-<p><strong>Switching branches:</strong> save your edits in IntelliJ, commit them on the correct branch in GitHub Desktop, then use <strong>GitHub Desktop → Current Branch → the desired branch</strong>. Desktop changes the files in the same local folder; IntelliJ should show those changes. You do not download or open a separate folder for each branch. If Desktop offers to carry uncommitted edits between branches and you are unsure where they belong, cancel and get help.</p>
-<h2>Quick recovery checks</h2>
+<p><strong>Check the direction:</strong> <code>main → sam-design</code> adds the team’s work to Sam’s branch. It does not put Sam’s work into main. That happens through Sam’s PR.</p>
+<h3>D. Review the next PR and repeat</h3>
+<p>Review and merge Sam’s PR. Everyone follows Step 8 again to get the combined main. Repeat Step 9C for the next unfinished branch, then review its PR. Handle one PR at a time.</p>
+<p>Different files usually make merging easier, but the combined code still needs testing. Check that the app runs after each merge. Keep each student’s merged PR URL for your milestone submission.</p>
+<h2>If something looks wrong</h2>
 <ul>
-<li>Cannot clone/push: check the exact team URL, accepted invitation, signed-in account, and write access. Do not create a substitute repository.</li>
-<li>Changes missing: save in IntelliJ; verify its open folder matches Desktop&#x27;s repository folder and check Current Branch.</li>
-<li>Branch missing on another computer: author must publish/push; others fetch. An unpublished branch exists only on its author&#x27;s machine.</li>
-<li>Hundreds of generated files: inspect <code>.gitignore</code> before committing. Ignoring a file does not untrack something already committed; ask for help if generated files are in history.</li>
-<li>“JavaFX runtime components are missing”: use Maven <code>clean javafx:run</code> and check JDK 21.</li>
-<li>Local changes prevent switching/pulling: keep them intact; ask for help choosing the correct branch. Never use force push or delete <code>.git</code> as a repair.</li>
+<li><strong>You cannot clone or push:</strong> check the team URL, accepted invitation, and signed-in account. Ask the lead to check your access. Do not make a replacement repository.</li>
+<li><strong>Your edits are missing:</strong> save in IntelliJ and check that IntelliJ’s folder matches Desktop’s Show in Finder/Explorer folder. Also check Current Branch.</li>
+<li><strong>Your branch is missing on a teammate’s computer:</strong> publish/push your branch; your teammate then clicks Fetch origin.</li>
+<li><strong>Lots of generated files appear:</strong> check that the supplied <code>.gitignore</code> is present. If those files were already committed, ask for help; adding an ignore rule does not remove them from Git history.</li>
+<li><strong>JavaFX will not launch:</strong> use the Maven goal <code>clean javafx:run</code>, check JDK 21, and share the exact error with your instructor.</li>
+<li><strong>Desktop will not let you switch, pull, or merge:</strong> keep your work and ask for help. Do not discard files, force-push, or delete <code>.git</code> to fix it.</li>
 </ul>
-<h2>Vocabulary</h2>
-<p>Repository = files plus history. Clone = create a local working copy. Branch = a line of work. Commit = local snapshot. Push = upload commits. Pull request = proposal to review and merge. Merge = combine histories/changes. Fetch = check/download remote history without changing working files. Pull = bring remote changes into the current local branch.</p>
-<h2>Official references</h2>
+<h2>A few words you will see</h2>
+<ul>
+<li><strong>Clone:</strong> make your first local copy of the team repository.</li>
+<li><strong>Branch:</strong> your own line of work within that repository.</li>
+<li><strong>Commit:</strong> save a snapshot in Git on your computer.</li>
+<li><strong>Push:</strong> upload your commits to GitHub.</li>
+<li><strong>Pull request:</strong> ask for review before merging your branch.</li>
+<li><strong>Merge:</strong> combine changes from two branches.</li>
+<li><strong>Fetch:</strong> check/download GitHub’s history without changing your working files.</li>
+<li><strong>Pull:</strong> bring GitHub’s changes into the branch you have selected locally.</li>
+</ul>
+<h2>More help</h2>
 <ul>
 <li><a href="https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop">Create and publish a repository</a></li>
-<li><a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/adding-a-repository-from-your-local-computer-to-github-desktop">Add a local repository</a></li>
-<li><a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/managing-branches-in-github-desktop">Manage and switch branches</a></li>
-<li><a href="https://docs.github.com/en/desktop/working-with-your-remote-repository-on-github-or-github-enterprise/syncing-your-branch-in-github-desktop">Sync branches and merge main into a feature branch</a></li>
+<li><a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop">Clone the team repository</a></li>
+<li><a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/managing-branches-in-github-desktop">Create and switch branches</a></li>
+<li><a href="https://docs.github.com/en/desktop/working-with-your-remote-repository-on-github-or-github-enterprise/syncing-your-branch-in-github-desktop">Pull updates and merge main into your branch</a></li>
 </ul>
 </main></body></html>

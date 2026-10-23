@@ -126,12 +126,14 @@
     <h1>Final Project: Milestone 1</h1>
     <p class="subtitle">Idea, OO Design, and Team Launch</p>
     <div class="panel">
-      <h2>Start here: one team repository</h2>
-      <p><strong>The starter folder becomes your project folder.</strong> Keep <code>CSSE220FinalProject/Milestone1Starter</code> as the one working folder containing <code>pom.xml</code> and <code>src/</code>. GitHub Desktop manages it and IntelliJ opens it. The parent <code>CSSE220FinalProject</code> is only for organization.</p>
-      <p><strong>Choose one setup lead.</strong> <strong>Only the team lead</strong> downloads and runs the starter, uses <strong>GitHub Desktop → File → New Repository</strong> to initialize Git in that existing folder, publishes it to GitHub, and invites teammates. Other teammates do not use New Repository. <strong>Everyone else waits until the lead sends an invitation and the repository URL.</strong> Accept the invitation in your browser first; only then begin cloning in GitHub Desktop. The lead keeps using the original local folder.</p>
-      <p><strong>Use a local folder outside OneDrive and other cloud-sync folders.</strong> Create a <code>CSSE220FinalProject</code> folder directly in your user/home folder. Desktop and Documents may be synced automatically; check the full path. See the guide for Windows and macOS examples.</p>
-      <p><strong>Create and switch branches in GitHub Desktop:</strong> use <strong>Current Branch → New Branch</strong>. Then edit the project files in IntelliJ.</p>
-      <p><a href="./github-desktop-guide.html"><strong>Follow the numbered GitHub setup guide in order</strong></a>. The guide shows the first commit, first upload with Publish repository, and later Push origin / Pull origin steps. Stop at each checkpoint before continuing. Do not create separate repositories for each teammate.</p>
+      <h2>Start here: choose one setup lead</h2>
+      <p>Your first goal is to get the same starter running on every teammate’s computer. Then each person will share one small change.</p>
+      <ul>
+        <li><strong>Team lead:</strong> download and unzip the starter, run it, then create and publish the team repository in GitHub Desktop. Invite your teammates after you can see the files on GitHub.</li>
+        <li><strong>Other teammates:</strong> wait for the invitation. Accept it in your browser, then clone the team repository in GitHub Desktop. You do not need the ZIP or a new repository.</li>
+      </ul>
+      <p><a href="./github-desktop-guide.html"><strong>Start the GitHub walkthrough</strong></a>. Follow the steps for your role. It shows the exact folders and buttons, including the first commit, upload, and later updates.</p>
+      <p><strong>One folder to work in:</strong> the starter becomes your project. Keep <code>CSSE220FinalProject/Milestone1Starter</code> outside OneDrive and other cloud-sync folders. GitHub Desktop and IntelliJ should both use the folder containing <code>pom.xml</code> and <code>src/</code>.</p>
     </div>
 
     <div class="tabbar">
@@ -145,24 +147,24 @@
     <div class="panel" style="margin-bottom: 22px; background: #f7f7f7; border-left: 4px solid #2b2b2b;">
       <p style="margin: 0 0 8px;"><strong>Start your team working document:</strong></p>
       <p style="margin: 0 0 8px;"><a href="https://docs.google.com/document/d/1qhYn23wkNBUIu8p5gGl_M02tAjUVRxzEazWIZ1Bk-y0/edit?usp=sharing" target="_blank" rel="noopener"><strong>Open the Google Docs project template</strong></a></p>
-      <p style="margin: 0;">Make a copy for your team and paste in the milestone sections below: project idea, user, first interaction, planned classes, team roles, and the branch workflow checklist.</p>
+      <p style="margin: 0;">Make one copy for your team. Use it to record your idea, user, first interaction, planned classes, who is doing what, and your GitHub progress.</p>
     </div>
 
     <section id="idea">
-      <h2>What is required now vs. later</h2>
+      <h2>What you are building for this milestone</h2>
       <div class="grid">
         <div class="panel">
-          <h3>Milestone 1 focus</h3>
+          <h3>Do this now</h3>
           <ul>
-            <li>Choose a user and a small meaningful interaction.</li>
-            <li>Draft the main classes, data, and responsibilities.</li>
-            <li>Get the JavaFX starter running in a shared team repo.</li>
-            <li>Practice a safe branch → review → merge workflow.</li>
+            <li>Choose who will use your app and one useful thing they can do.</li>
+            <li>Sketch your main classes and explain what each one does.</li>
+            <li>Get the JavaFX starter running on every teammate’s computer.</li>
+            <li>Have each person share a small change using a branch and a reviewed pull request.</li>
             <li>Submit a clear design summary and team plan.</li>
           </ul>
         </div>
         <div class="panel">
-          <h3>Later project work</h3>
+          <h3>Save this for later</h3>
           <ul>
             <li>More game/app features</li>
             <li>Polished UI or animations</li>
@@ -174,34 +176,26 @@
     </section>
 
     <section>
-      <h2>Milestone steps</h2>
+      <h2>Work through these four steps</h2>
       <ol>
         <li><strong>Step 1: Define the user.</strong> State who the app is for, what problem it solves, and the first 30 seconds of the experience. Ask: What does the user do first? What should the app show immediately?</li>
-        <li><strong>Step 2: UML draft.</strong> Sketch the main classes, fields, methods, and relationships. Write a short explanation for why the design makes sense.</li>
-        <li><strong>Step 3: Starter and Git setup.</strong> One setup lead downloads and runs the starter, initializes and publishes the team repository, and invites teammates. Other teammates accept, clone, open, and run that repository.</li>
-        <li><strong>Step 4: Branch workflow.</strong> Each person should create a feature branch, make a small independent change, commit, push, open a PR, review, merge, and sync main.</li>
+        <li><strong>Step 2: UML draft.</strong> Sketch your main classes, their fields and methods, and how they work together. Explain why you gave each class its responsibilities.</li>
+        <li><strong>Step 3: Starter and Git setup.</strong> Follow the GitHub walkthrough for your role. The lead sets up the shared repository first; invited teammates clone it. Everyone checks that the starter runs.</li>
+        <li><strong>Step 4: Branch workflow.</strong> Each person creates a branch and edits a different file. Save a commit, push it, and ask a teammate to review a pull request. Merge one PR at a time, then everyone pulls the updated main.</li>
       </ol>
       <p class="small">This milestone is about building an initial product direction and a working team process. You are not expected to finish a polished game yet.</p>
     </section>
 
     <section id="design">
-      <h2>Helpful team template</h2>
-      <p>Your team should keep a shared Google Doc or planning sheet with:</p>
-      <ul>
-        <li>Project title and target user</li>
-        <li>Core user actions and the first interaction</li>
-        <li>Primary classes and responsibilities</li>
-        <li>Team member ownership table</li>
-        <li>Next tasks and branch owners</li>
-      </ul>
-      <p><strong>Suggested copy for the shared document:</strong></p>
+      <h2>Put your team’s plan in the shared document</h2>
+      <p>Use the Google Docs template above. Talk through these questions together and write down your answers:</p>
       <ol>
-        <li>Project name and target user.</li>
-        <li>What the user will do in the first 30 seconds and what the app shows immediately.</li>
-        <li>Three to five key classes, with a short responsibility for each.</li>
-        <li>Team ownership table: who is building UI, model/data classes, GitHub workflow, and testing.</li>
-        <li>Branch plan for the next milestone: one branch per teammate or per task, with a merge review step.</li>
+        <li><strong>Who is your app for?</strong> Give your project a title and describe its user.</li>
+        <li><strong>What happens first?</strong> Describe the user’s first 30 seconds: what they do and how the app responds.</li>
+        <li><strong>Which objects do you need?</strong> Start with three to five classes. Give each a clear job and include your UML sketch.</li>
+        <li><strong>Who is doing what next?</strong> List each teammate’s current task, file, and branch. Choose someone to review each change.</li>
       </ol>
+      <p>The table below is an example. Adjust the jobs to fit your project. Everyone still practices their own branch, commit, and pull request.</p>
 
       <table>
         <thead>
@@ -227,9 +221,9 @@
           </tr>
           <tr>
             <td>Student 3</td>
-            <td>GitHub / workflow</td>
-            <td>Set up repo, branches</td>
-            <td>Verify PR and merge flow</td>
+            <td>Setup lead / GitHub practice</td>
+            <td>Set up repo and invite teammates</td>
+            <td>Help the team review and merge PRs</td>
           </tr>
         </tbody>
       </table>
@@ -242,14 +236,15 @@
         <li><a href="./Milestone1Starter.zip">Download the JavaFX starter ZIP (Milestone1Starter.zip)</a></li>
         <li><a href="./resources.html">Course resources and setup links</a></li>
       </ul>
-      <p>Only the setup lead downloads and extracts the starter. Open the folder containing <code>pom.xml</code> in IntelliJ, select JDK 21, let Maven load, and run Maven goal <code>clean javafx:run</code>. Check that the window opens and its button changes the status message. IntelliJ bundles Maven. Other teammates clone the published team repository and open their cloned folder. <a href="github-desktop-guide.html">Follow the numbered GitHub setup guide</a>.</p>
+      <p><strong>Team lead:</strong> use the ZIP link above and follow the walkthrough to unzip, open, and run it. <strong>Other teammates:</strong> use the invitation and team repository URL from your lead. The walkthrough shows how to clone and open your copy.</p>
+      <p>You should all see the starter window, and its button should change the message. Use IntelliJ’s Maven goal <code>clean javafx:run</code>; IntelliJ includes Maven.</p>
     </section>
 
     <section id="github">
-      <h2>GitHub Desktop branch workflow</h2>
-      <p><strong>Follow the guide in order:</strong> the setup lead downloads → runs → initializes → publishes → invites. Teammates accept → clone → open → run. Everyone then creates a branch from updated main, edits a different file, commits, pushes, and opens a pull request.</p>
-      <p><a href="github-desktop-guide.html"><strong>Open the step-by-step GitHub Desktop guide</strong></a>. It includes separate setup paths, branch switching, file ownership examples, review and sequential merges, and pulling the combined result.</p>
-      <p>For the first exercise, create separate files such as <code>docs/idea.md</code>, <code>docs/design.md</code>, and <code>docs/team-plan.md</code>. These are not included in the starter. Do not all edit <code>StarterApp.java</code>. Each student should show their own commit and merged PR; different files reduce conflicts but the combined app must still be checked.</p>
+      <h2>Share one small change each</h2>
+      <p>Start with different files, such as <code>docs/idea.md</code>, <code>docs/design.md</code>, and <code>docs/team-plan.md</code>. You will create these during the exercise; they are not in the starter. This lets you practice sharing work without everyone editing <code>StarterApp.java</code>.</p>
+      <p>Create and switch branches in <strong>GitHub Desktop</strong>, then edit the files in <strong>IntelliJ</strong>. Review and merge pull requests on the <strong>GitHub website</strong>. Each person should be able to show their own commit and merged PR.</p>
+      <p><a href="github-desktop-guide.html"><strong>Follow the GitHub walkthrough</strong></a> for the buttons, review steps, and how everyone gets the merged work. Different files make merging easier; run the app after combining changes.</p>
     </section>
 
     <section id="submission">
