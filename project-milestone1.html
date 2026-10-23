@@ -6,6 +6,7 @@
   <title>CSSE220 Final Project — Milestone 1</title>
   <link rel="stylesheet" href="./syllabus_files/screen.css">
   <link rel="icon" href="favicon.ico">
+  <link rel="canonical" href="https://obscrivn.github.io/csse220web/project-milestone1.html">
   <style>
     body {
       margin: 0;
@@ -139,6 +140,13 @@
   <main>
     <h1>Final Project: Milestone 1</h1>
     <p class="subtitle">Idea, OO Design, and Team Launch</p>
+    <div class="panel">
+      <h2>Start here: one team repository</h2>
+      <p><strong>Choose one setup lead.</strong> The lead downloads and runs the starter, initializes Git in that folder, publishes it to GitHub, and invites teammates. <strong>Everyone else waits until the lead sends an invitation and the repository URL.</strong> Accept the invitation in your browser first; only then begin cloning in GitHub Desktop. The lead keeps using the original local folder.</p>
+      <p><strong>Use a local folder outside OneDrive and other cloud-sync folders.</strong> Create a <code>CSSE220</code> folder directly in your user/home folder. Desktop and Documents may be synced automatically; check the full path. See the guide for Windows and macOS examples.</p>
+      <p><strong>Create and switch branches in GitHub Desktop:</strong> use <strong>Current Branch → New Branch</strong>. Then edit the project files in IntelliJ.</p>
+      <p><a href="./github-desktop-guide.html"><strong>Follow the numbered GitHub setup guide in order</strong></a>. Stop at each checkpoint before continuing. Do not create separate repositories for each teammate.</p>
+    </div>
 
     <div class="tabbar">
       <a href="#idea">Idea</a>
@@ -146,8 +154,6 @@
       <a href="#starter">Starter</a>
       <a href="#github">GitHub</a>
       <a href="#submission">Submission</a>
-      <a href="#demo">Demo</a>
-      <a href="#ai">AI Coach</a>
     </div>
 
     <div class="pipeline">
@@ -157,6 +163,12 @@
       <div class="step-card">4. Branch workflow</div>
       <div class="step-card">5. Team integration</div>
       <div class="step-card">6. Showcase</div>
+    </div>
+
+    <div class="panel" style="margin-bottom: 22px; background: #f7f7f7; border-left: 4px solid #2b2b2b;">
+      <p style="margin: 0 0 8px;"><strong>Start your team working document:</strong></p>
+      <p style="margin: 0 0 8px;"><a href="https://docs.google.com/document/d/1qhYn23wkNBUIu8p5gGl_M02tAjUVRxzEazWIZ1Bk-y0/edit?usp=sharing" target="_blank" rel="noopener"><strong>Open the Google Docs project template</strong></a></p>
+      <p style="margin: 0;">Make a copy for your team and paste in the milestone sections below: project idea, user, first interaction, planned classes, team roles, and the branch workflow checklist.</p>
     </div>
 
     <section id="idea">
@@ -189,7 +201,7 @@
       <ol>
         <li><strong>Step 1: Define the user.</strong> State who the app is for, what problem it solves, and the first 30 seconds of the experience. Ask: What does the user do first? What should the app show immediately?</li>
         <li><strong>Step 2: UML draft.</strong> Sketch the main classes, fields, methods, and relationships. Write a short explanation for why the design makes sense.</li>
-        <li><strong>Step 3: Starter and Git setup.</strong> Clone or create the shared repo, import the starter, and verify the app launches.</li>
+        <li><strong>Step 3: Starter and Git setup.</strong> One setup lead downloads and runs the starter, initializes and publishes the team repository, and invites teammates. Other teammates accept, clone, open, and run that repository.</li>
         <li><strong>Step 4: Branch workflow.</strong> Each person should create a feature branch, make a small independent change, commit, push, open a PR, review, merge, and sync main.</li>
       </ol>
       <p class="small">This milestone is about building an initial product direction and a working team process. You are not expected to finish a polished game yet.</p>
@@ -205,6 +217,14 @@
         <li>Team member ownership table</li>
         <li>Next tasks and branch owners</li>
       </ul>
+      <p><strong>Suggested copy for the shared document:</strong></p>
+      <ol>
+        <li>Project name and target user.</li>
+        <li>What the user will do in the first 30 seconds and what the app shows immediately.</li>
+        <li>Three to five key classes, with a short responsibility for each.</li>
+        <li>Team ownership table: who is building UI, model/data classes, GitHub workflow, and testing.</li>
+        <li>Branch plan for the next milestone: one branch per teammate or per task, with a merge review step.</li>
+      </ol>
 
       <table>
         <thead>
@@ -242,28 +262,17 @@
       <h2>Starter, templates, and documentation</h2>
       <ul>
         <li><a href="./project.html">Back to Final Project landing page</a></li>
-        <li><a href="./labs/Lab10.zip">Starter / resource archive</a> (if provided in the course site)</li>
+        <li><a href="./Milestone1Starter.zip">Download the JavaFX starter ZIP (Milestone1Starter.zip)</a></li>
         <li><a href="./resources.html">Course resources and setup links</a></li>
       </ul>
-      <p>Start by importing the JavaFX starter project and confirming that the app launches before you add project-specific code. If a teammate created the repo, everyone should <strong>clone</strong> it instead of creating a second copy.</p>
+      <p>Only the setup lead downloads and extracts the starter. Open the folder containing <code>pom.xml</code> in IntelliJ, select JDK 21, let Maven load, and run Maven goal <code>clean javafx:run</code>. Check that the window opens and its button changes the status message. IntelliJ bundles Maven. Other teammates clone the published team repository and open their cloned folder. <a href="github-desktop-guide.html">Follow the numbered GitHub setup guide</a>.</p>
     </section>
 
     <section id="github">
       <h2>GitHub Desktop branch workflow</h2>
-      <ol>
-        <li>Accept the team repository invitation or confirm the repo exists.</li>
-        <li>Clone the shared repository.</li>
-        <li>Open it in your IDE and make sure the main branch is current.</li>
-        <li>Create a named feature branch such as <code>ui-start-screen</code> or <code>uml-notes</code>.</li>
-        <li>Make a small independent edit.</li>
-        <li>Review the changed files.</li>
-        <li>Commit locally.</li>
-        <li>Publish or push the branch.</li>
-        <li>Create a pull request on GitHub.</li>
-        <li>Have a teammate review it.</li>
-        <li>Merge the PR and then sync main locally.</li>
-      </ol>
-      <p>Important: <strong>commit</strong> saves your work locally, while <strong>push</strong> sends it to the remote repository. A <strong>pull request</strong> is not the same as a pull command. Use <strong>main</strong> as the shared baseline, not as the place for ad hoc direct edits.</p>
+      <p><strong>Follow the guide in order:</strong> the setup lead downloads → runs → initializes → publishes → invites. Teammates accept → clone → open → run. Everyone then creates a branch from updated main, edits a different file, commits, pushes, and opens a pull request.</p>
+      <p><a href="github-desktop-guide.html"><strong>Open the step-by-step GitHub Desktop guide</strong></a>. It includes separate setup paths, branch switching, file ownership examples, review and sequential merges, and pulling the combined result.</p>
+      <p>For the first exercise, create separate files such as <code>docs/idea.md</code>, <code>docs/design.md</code>, and <code>docs/team-plan.md</code>. These are not included in the starter. Do not all edit <code>StarterApp.java</code>. Each student should show their own commit and merged PR; different files reduce conflicts but the combined app must still be checked.</p>
     </section>
 
     <section id="submission">
@@ -275,7 +284,7 @@
         <li>Team ownership and next-task table</li>
         <li>GitHub repo URL</li>
         <li>Evidence that the starter app runs</li>
-        <li>PR URL or merge evidence for branch workflow</li>
+        <li>Each teammate’s merged PR URL, labeled with their name</li>
       </ul>
       <p>Use the team submission process already used in the course. One member should submit the work, and the team should confirm the correct names are visible.</p>
 
@@ -298,32 +307,6 @@
       </table>
     </section>
 
-    <section id="demo">
-      <h2>Instructor GitHub demo guide</h2>
-      <p>During class, the instructor can demonstrate the flow in a few minutes:</p>
-      <ol>
-        <li>Create a throwaway demo repo from the starter.</li>
-        <li>Invite a second account or teammate as a collaborator.</li>
-        <li>Clone the project and open it in the IDE.</li>
-        <li>Create a feature branch.</li>
-        <li>Change a small file such as a note or label.</li>
-        <li>Commit, push, and open a pull request.</li>
-        <li>Review the change on GitHub.</li>
-        <li>Merge the branch and pull the updated main branch.</li>
-      </ol>
-      <p>Keep the demonstration small and focused so students see the exact workflow without relying on a perfect project implementation.</p>
-    </section>
-
-    <section id="ai">
-      <h2>AI Team Coach</h2>
-      <p>Your team may use AI as a tutor, but the idea and design should come from your own discussion. Use AI to ask clarifying questions, explain a class relationship, or help debug a small Java issue. Do not let AI write the plan for you.</p>
-      <ul>
-        <li>Ask AI to explain one class relationship at a time.</li>
-        <li>Require the AI to justify suggestions.</li>
-        <li>Explain the result back to the team before implementing it.</li>
-        <li>Keep an AI usage log if your instructor requires one.</li>
-      </ul>
-    </section>
-  </main>
+</main>
 </body>
 </html>
