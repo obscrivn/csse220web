@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CSSE220 Final Project: Milestone 2</title>
+  <link rel="stylesheet" href="./syllabus_files/screen.css">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+    #header {
+      background: #1c1515;
+      color: white;
+      padding: 0;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    #header a {
+      position: relative;
+      font-weight: bold;
+      float: left;
+      margin-left: 1em;
+      margin-right: 1em;
+      padding: 1em;
+      color: #f0f0f0;
+      background: #1c1515;
+      text-decoration: none;
+    }
+    #header a:hover {
+      background: #222;
+    }
+    main {
+      max-width: 980px;
+      margin: 30px auto;
+      background: white;
+      padding: 26px 28px 44px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h1, h2, h3 {
+      color: #2b2b2b;
+    }
+    .subtitle {
+      font-size: 1.1em;
+      margin-top: -8px;
+      color: #4a5568;
+    }
+    .tabbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 24px;
+    }
+    .tabbar a {
+      background: #eee;
+      color: #2b2b2b;
+      border: 1px solid #ccc;
+      border-radius: 999px;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .panel {
+      border: 1px solid #d9d9d9;
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: #f8f8f8;
+    }
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+    .checklist li::before {
+      content: "☐ ";
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #d9e2ec;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .small {
+      font-size: 0.95em;
+      color: #425466;
+    }
+    a { color: #245780; }
+    summary { cursor: pointer; padding: 10px 0; font-weight: bold; }
+    pre { background: #f3f3f3; padding: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    section { margin-top: 28px; }
+    th { background: #f3f3f3; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #245780; outline-offset: 3px; }
+    .table-wrap { overflow-x: auto; }
+    ul, ol { padding-left: 1.4em; }
+    @media (max-width: 700px) {
+      main { padding: 18px; }
+      #header a { display: inline-block; margin: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a href="./index.html">CSSE 220</a>
+    <a href="./syllabus.html">Syllabus</a>
+    <a href="./schedule.html">Schedule</a>
+    <a href="./design.html">Design</a>
+    <a href="./labs.html">Labs</a>
+    <a href="./homework.html">Homework</a>
+    <a href="./exams.html">Exams</a>
+    <a href="./project.html">Final Project</a>
+    <a href="graphics/index.html">Graphics</a>
+    <a href="./resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <h1>Milestone 2: Build Your Functional Alpha</h1>
+    <p class="subtitle">This week: make one small workflow work from beginning to end.</p>
+    <div class="panel">
+      <p><strong>Live check-in: Monday, November 9, 2026, in class.</strong> All four teammates demonstrate and explain the running app. The instructor assigns the grade during check-in. No separate Canvas submission.</p>
+      <p><strong>Friday: full-day team development.</strong> Work together in your <a href="https://docs.google.com/spreadsheets/d/1y9VZ5pFAAT6tp7HEtBa8DCF80r4u8SNvxtAt9Ta6QYc/edit?usp=sharing">dedicated pod (see team assignments)</a>. Use the Friday plan below.</p>
+    </div>
+    <nav class="tabbar" aria-label="Milestone sections"><a href="#focus">Your target</a><a href="#skills">Required skills</a><a href="#build">Week and Friday plan</a><a href="#submission">Check-in</a><a href="ai-skills.html">AI Skills Hub</a></nav>
+    <section id="focus">
+      <h2>1. Focus on one workflow</h2>
+      <p>Use your existing JavaFX project. Choose <strong>two small, connected core actions</strong> from your approved idea. The first changes your model; the second uses that changed state. Keep one usable screen and enough feedback to see what happened.</p>
+      <p><strong>Write your target:</strong> “The user can ___, then ___; the app shows ___.” Agree on what counts as working before coding.</p>
+      <table><thead><tr><th scope="col">Project</th><th scope="col">A realistic connected pair</th></tr></thead><tbody>
+        <tr><td>Game</td><td>Move to collect one item → use that item to open one gate.</td></tr>
+        <tr><td>Math solver / learning app</td><td>Solve one supported problem → revisit its result in session history. Or answer a question → see progress update.</td></tr>
+        <tr><td>Simulation</td><td>Set a parameter → step the simulation and see its effect.</td></tr>
+        <tr><td>Utility</td><td>Add a task → mark that same task complete.</td></tr>
+        <tr><td>Visualization</td><td>Filter a dataset → select a remaining item to see its details.</td></tr>
+      </tbody></table>
+      <p>These are examples, not additional requirements. A greeting button, static mockup, or two unrelated demos is insufficient. Leave extra levels, screens, sound, persistence, and visual polish for later unless essential to your chosen workflow.</p>
+    </section>
+    <section id="skills">
+      <h2>2. Skills you MUST demonstrate for Milestone 2</h2>
+      <p>Each teammate must be able to explain their part and follow the shared workflow. The team demonstrates these skills in one integrated app.</p>
+      <ul class="checklist">
+        <li><strong>Run and share:</strong> open the existing project, run it in IntelliJ, and get the latest main through GitHub Desktop.</li>
+        <li><strong>Connect events to objects:</strong> trace a user action → model method/state change → visible result.</li>
+        <li><strong>Assign responsibilities:</strong> explain which object owns the data/rule; update UML for the classes you actually implemented.</li>
+        <li><strong>Use AI for an unfamiliar feature:</strong> give a small task with context and boundaries; explain what you accepted, changed, or rejected.</li>
+        <li><strong>Verify and debug:</strong> predict a result, reproduce a failure, and check normal, edge, and repeated use.</li>
+        <li><strong>Integrate safely:</strong> commit your work, review a teammate’s change, merge through a PR, and rerun the combined app.</li>
+      </ul>
+      <p><a href="ai-skills.html"><strong>Open the AI Skills Hub</strong></a> for a worked learning process, good task examples, and reusable agent instructions. No extra framework, class quota, or installed skill pack is required.</p>
+    </section>
+    <section id="build">
+      <h2>3. Use your one week well</h2>
+      <ol>
+        <li><strong>Before Friday:</strong> choose the workflow, sketch class responsibilities, and agree on method inputs/outputs. Split work across four teammates: first action/model, second action/model, GUI connection, and integration/testing. Everyone contributes and reviews; the integration role is active work, not waiting.</li>
+        <li><strong>Friday opening:</strong> meet in your dedicated pod. Everyone runs the same main. Confirm the workflow and file owners; identify one unfamiliar technique to investigate with AI.</li>
+        <li><strong>Friday build:</strong> implement and test small changes on branches. Use the AI Hub’s learn → try → verify routine. Merge the first action early, then connect the second to the same state.</li>
+        <li><strong>Friday integration:</strong> stop adding features. Merge reviewed work one PR at a time; all four pull main and run the whole workflow. Fix broken connections before polishing.</li>
+        <li><strong>Before Monday:</strong> repeat the three checks below, update UML, and rehearse the check-in. List remaining work with owners. Do not add a new feature at the cost of the working demo.</li>
+      </ol>
+      <p>Use the <a href="github-desktop-guide.html#step-9">GitHub integration walkthrough</a>. Need a technique? See <a href="labs/lab12.html">events/state (Lab 12)</a>, <a href="labs/lab13.html">animation/reset (Lab 13)</a>, <a href="labs/lab15.html">keyboard/object interactions (Lab 15)</a>, or the <a href="uml-tools.html">UML guide</a>.</p>
+    </section>
+    <section id="verify">
+      <h2>4. Run three checks</h2>
+      <p>Keep one short table: <strong>input/action | expected | actual | fix/retest</strong>.</p>
+      <ol>
+        <li><strong>Normal:</strong> complete both actions in order; confirm that action two uses action one’s state.</li>
+        <li><strong>Edge:</strong> try one relevant invalid input, unavailable action, or boundary. The state stays consistent and the user gets useful feedback.</li>
+        <li><strong>Repeat:</strong> run again or reset/restart. Check for stale results, duplicate effects, or state that failed to reset.</li>
+      </ol>
+      <p>Manual GUI checks are enough; show existing automated tests if useful. For the AI-assisted change, work out the expected result yourself and include it in these checks.</p>
+    </section>
+    <section id="submission">
+      <h2>5. Monday check-in: show these five things</h2>
+      <ul class="checklist">
+        <li><strong>Working app:</strong> run latest main and demonstrate your two connected actions on a usable screen.</li>
+        <li><strong>Objects:</strong> show updated UML and trace one action through the actual source.</li>
+        <li><strong>Checks:</strong> show the normal, edge, and repeat results.</li>
+        <li><strong>Team and AI:</strong> each teammate explains their contribution; show commits/reviewed PRs and one verified AI-assisted feature. Keep Help Citation and <code>AI-LEARNING-LOG.md</code> current under the <a href="syllabus.html">syllabus policy</a>.</li>
+        <li><strong>Next:</strong> name the unfinished core work, its owners, and any blocker.</li>
+      </ul>
+      <p>Keep these in your existing repository/shared document. No separate slide deck or new report is required. Be ready to explain your code, not just run it.</p>
+    </section>
+    <p><a href="project.html">Final Project Hub</a> · <a href="ai-skills.html">AI Skills Hub</a></p>
+  </main>
+</body>
+</html>

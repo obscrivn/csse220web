@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CSSE220 AI Skills Hub</title>
+  <link rel="stylesheet" href="./syllabus_files/screen.css">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+    #header {
+      background: #1c1515;
+      color: white;
+      padding: 0;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    #header a {
+      position: relative;
+      font-weight: bold;
+      float: left;
+      margin-left: 1em;
+      margin-right: 1em;
+      padding: 1em;
+      color: #f0f0f0;
+      background: #1c1515;
+      text-decoration: none;
+    }
+    #header a:hover {
+      background: #222;
+    }
+    main {
+      max-width: 980px;
+      margin: 30px auto;
+      background: white;
+      padding: 26px 28px 44px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h1, h2, h3 {
+      color: #2b2b2b;
+    }
+    .subtitle {
+      font-size: 1.1em;
+      margin-top: -8px;
+      color: #4a5568;
+    }
+    .tabbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 24px;
+    }
+    .tabbar a {
+      background: #eee;
+      color: #2b2b2b;
+      border: 1px solid #ccc;
+      border-radius: 999px;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .panel {
+      border: 1px solid #d9d9d9;
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: #f8f8f8;
+    }
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+    .checklist li::before {
+      content: "☐ ";
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #d9e2ec;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .small {
+      font-size: 0.95em;
+      color: #425466;
+    }
+    a { color: #245780; }
+    summary { cursor: pointer; padding: 10px 0; font-weight: bold; }
+    pre { background: #f3f3f3; padding: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    section { margin-top: 28px; }
+    th { background: #f3f3f3; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #245780; outline-offset: 3px; }
+    .table-wrap { overflow-x: auto; }
+    ul, ol { padding-left: 1.4em; }
+    @media (max-width: 700px) {
+      main { padding: 18px; }
+      #header a { display: inline-block; margin: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a href="./index.html">CSSE 220</a>
+    <a href="./syllabus.html">Syllabus</a>
+    <a href="./schedule.html">Schedule</a>
+    <a href="./design.html">Design</a>
+    <a href="./labs.html">Labs</a>
+    <a href="./homework.html">Homework</a>
+    <a href="./exams.html">Exams</a>
+    <a href="./project.html">Final Project</a>
+    <a href="graphics/index.html">Graphics</a>
+    <a href="./resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <h1>AI Skills Hub</h1>
+    <p class="subtitle">Learn an unfamiliar technique, implement one small feature, and prove it works.</p>
+    <p>Use this hub while building <a href="project-milestone2.html">Milestone 2</a>. You choose the design and remain responsible for the code. AI can explain, propose changes, and help investigate bugs; running code is only the first check.</p>
+    <nav class="tabbar" aria-label="AI hub sections"><a href="#setup">Connect your project</a><a href="#start">Learn a feature</a><a href="#tasks">Good tasks</a><a href="#practice">Good / bad practice</a><a href="#agent-skills">Skill files</a><a href="#git-lab">Git practice task</a><a href="#ready">Ready to merge?</a></nav>
+    <section id="setup">
+      <h2>Connect your existing project: choose one route</h2>
+      <p>Use the same local folder in IntelliJ, GitHub Desktop, and your AI tool: <code>CSSE220FinalProject/Milestone1Starter</code>, containing <code>pom.xml</code>, <code>src/</code>, and the repository. Do not create a second repository or upload a fresh starter. Save your files before switching tools.</p>
+      <p>Choose an option your account and installed version support. You do not need all three. A normal browser chat does not automatically see or edit your local project; a connected coding agent works in the folder you select. Sign in through the tool, and keep review/approval prompts enabled while learning.</p>
+      <details open><summary>Route A: GitHub Copilot inside IntelliJ</summary>
+        <ol><li>Open IntelliJ <strong>Settings → Plugins → Marketplace</strong>. Search for <strong>GitHub Copilot</strong>, install it, and restart if requested.</li><li>Open Copilot Chat and follow the GitHub sign-in prompts using your own account.</li><li>Start with a question about the open project. Select relevant code or attach/reference files using the chat’s context controls. Use Agent mode for coordinated edits when available; check which files it proposes to change.</li><li>Paste the read-only orientation task below, then a small feature or Git task. Confirm the response refers to your real files.</li></ol>
+        <p><a href="https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/set-up-copilot/install-copilot-extension?tool=jetbrains">Official Copilot installation</a>. Feature and skill support depends on plugin/version and account access.</p>
+      </details>
+      <details><summary>Route B: Codex alongside IntelliJ, or in AI Assistant</summary>
+        <ol><li>In the Codex desktop app, add/open a <strong>local project</strong> and select the existing repository folder above. Start a local chat for that project.</li><li>Keep the same folder open in IntelliJ. Ask Codex to identify the root and entry class before edits. IntelliJ remains where you run and inspect the app.</li><li>If your IntelliJ AI Assistant offers Codex, complete its setup, select Codex in AI Chat, and attach additional files with <code>@</code> as needed. Do not assume all open files are automatically included.</li></ol>
+        <p><a href="https://learn.chatgpt.com/docs/projects">Official local project guidance</a> · <a href="https://www.jetbrains.com/help/ai-assistant/codex-agent.html">JetBrains Codex setup</a>. Use an available account sign-in route; this assignment does not require API-key configuration.</p>
+      </details>
+      <details><summary>Route C: Claude Code with IntelliJ</summary>
+        <ol><li>Follow the <a href="https://code.claude.com/docs/en/quickstart">official Claude Code quickstart</a> to install the CLI and sign in with an account that has access.</li><li>Install the <strong>Claude Code</strong> plugin from IntelliJ’s Marketplace and restart. The plugin needs the CLI; installing only the plugin is insufficient.</li><li>Open IntelliJ’s Terminal at the existing project root and run <code>claude</code>. For an external terminal, start in the same root and use <code>/ide</code> to connect.</li><li>Send the orientation task below, then give one bounded task. Inspect proposed changes in the diff viewer.</li></ol>
+        <p><a href="https://code.claude.com/docs/en/jetbrains">Official Claude Code / JetBrains instructions</a>. Claude Code is the local coding tool; adding files to a regular Claude chat is a different workflow.</p>
+      </details>
+      <details><summary>First message: verify project access without editing</summary><pre>Read-only orientation: do not edit files or run Git mutations.
+Identify this repository's root, current branch, pom.xml, JavaFX entry class,
+and one model class if present. Summarize how the app starts.
+List the files you actually inspected. If you cannot access the folder,
+say so and tell me which relevant files to attach. Do not invent their contents.</pre></details>
+      <p><strong>You should see:</strong> the correct project path and actual class names. If not, fix the folder/context before assigning code changes. If setup is blocked, use your existing approved tool with attached relevant files and ask your instructor for help; do not spend the development day configuring multiple assistants.</p>
+    </section>
+    <section id="start">
+      <h2>1. When you do not know how to implement a feature</h2>
+      <p><strong>Example:</strong> your solver already computes an answer. You do not know how to let a user select a previous result and restore its inputs.</p>
+      <ol>
+        <li><strong>Describe what exists.</strong> Identify the actual files/classes, current behavior, JDK 21/JavaFX setup, and the one missing behavior. Use your real names in place of the illustrative names below.</li>
+        <li><strong>Ask for a small explanation first.</strong> “Explain how selection events could connect our history list to the selected result. What should the session model own? Show a short sketch; do not edit yet.”</li>
+        <li><strong>Predict the behavior.</strong> Solve A, solve B, select A: A’s inputs and answer should return. Select nothing: no crash and no invented result. Write these expectations before accepting code.</li>
+        <li><strong>Try one limited change.</strong> On a feature branch, ask the agent to connect selection to the existing model and view. Name allowed files and preserve agreed public methods. Inspect the diff before proceeding.</li>
+        <li><strong>Read and explain.</strong> Identify the event, model object, state change, and display update. Ask about unfamiliar lines, then explain them yourself to a teammate.</li>
+        <li><strong>Verify independently.</strong> Run your expected cases. Also solve C after selecting A: no old result should leak into the new calculation. If something fails, report the exact steps and expected/actual behavior.</li>
+        <li><strong>Review, share, and cite.</strong> Keep the useful change, correct or reject the rest, and open a reviewed PR. Record the tool, assistance, and what you learned in your AI Learning Log.</li>
+      </ol>
+      <details><summary>A task prompt you can adapt</summary><pre>Goal: selecting a previous result restores its inputs and answer.
+Context: Java 21 / JavaFX; our existing Maven project already runs.
+Relevant files: [actual view file], [session model], [result class].
+Current behavior: solving works; selecting history does nothing.
+Explain the event-to-model-to-display path before editing.
+Then make the smallest change in these files. Preserve our agreed APIs.
+Do not add libraries, rewrite the app, or change unrelated files.
+Checks: solve A then B, select A; empty selection; solve again.
+Report changes, checks actually run, and any checks I must run manually.</pre></details>
+      <p>If the assistant cannot see your repository, provide the relevant methods and exact error text. Do not expect it to know files you have not shared. Keep passwords, API keys, private team/student information, and unrelated files out of prompts.</p>
+    </section>
+    <section id="tasks">
+      <h2>2. Good tasks are small and checkable</h2>
+      <p>Assign a task with one observable outcome, relevant context, edit boundaries, and checks. These are examples; use the one your project needs.</p>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Task to give an agent</th><th scope="col">Proof you supply or check</th></tr></thead><tbody>
+        <tr><td>“Our game can collect a key. Implement opening one gate only when the player has the key. Put the rule in the model; change only these agreed files.”</td><td>No key: gate stays shut. Key: gate opens. Repeat: no duplicate reward/effect.</td></tr>
+        <tr><td>“Explain and help add input validation to our existing linear solver. Preserve the calculation class and handle empty/nonnumeric entries.”</td><td>Known answer works; invalid input gives feedback; next valid input replaces the error.</td></tr>
+        <tr><td>“Wire our simulation’s Step control to one model update using the selected parameter. Explain where state belongs.”</td><td>A predictable initial state gives the expected next state; repeat and reset work.</td></tr>
+        <tr><td>“Our task objects already have completion state. Connect the selected-task button to that method and refresh the displayed list.”</td><td>Only the selected task changes; no selection is safe; clicking again stays consistent.</td></tr>
+        <tr><td>“Review this visualization filter. Find why details still show an item after it is filtered out. Suggest the smallest fix.”</td><td>Filter to zero/one/many matches; stale selection is cleared or updated correctly.</td></tr>
+      </tbody></table></div>
+      <p><strong>Task template:</strong> goal → current behavior → relevant files → allowed change → expected checks → explanation of the result.</p>
+    </section>
+    <section id="practice">
+      <h2>3. Good practice and bad practice</h2>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Avoid</th><th scope="col">Do this instead</th></tr></thead><tbody>
+        <tr><td>“Build our whole game/app.”</td><td>Ask for one feature with a concrete completion check; integrate it before expanding.</td></tr>
+        <tr><td>Paste a large answer over working code.</td><td>Save a working commit, use a branch, and inspect each changed file.</td></tr>
+        <tr><td>“It crashes. Fix it.”</td><td>Give reproduction steps, exact error/stack trace, expected result, actual result, and relevant code.</td></tr>
+        <tr><td>Accept new frameworks, patterns, or a giant class without question.</td><td>Keep the existing stack; ask which object owns the rule and why the change is needed.</td></tr>
+        <tr><td>Trust a generated answer or test because AI says it is correct.</td><td>Compute expected values yourself; run the app and compare. Treat unrun checks as unverified.</td></tr>
+        <tr><td>Repeatedly ask for another patch without understanding the failure.</td><td>Reproduce the bug, form a hypothesis, test one change, and recheck the original behavior.</td></tr>
+        <tr><td>Let multiple teammates/agents change the same files independently.</td><td>Agree on file ownership and method contracts; merge and test one PR at a time.</td></tr>
+        <tr><td>Merge code no teammate can explain or omit its source.</td><td>Review the diff, explain the event/model/display path, and update citations and the AI Learning Log.</td></tr>
+      </tbody></table></div>
+    </section>
+    <section id="agent-skills">
+      <h2>4. Reusable skills to give your agent</h2>
+      <p>A <strong>task</strong> states today’s goal. A <strong>skill</strong> stores a repeatable workflow. A skill is <strong>not an entirely YAML file</strong>: it is a folder containing <code>SKILL.md</code>, with YAML front matter between <code>---</code> lines, followed by Markdown instructions. Our examples provide both <code>name</code> and <code>description</code>.</p>
+      <p><a href="Milestone2-AI-Skills.zip" download><strong>Download the ready-to-use skill examples</strong></a>. Unzip; each named folder contains one complete <code>SKILL.md</code>. Use one copy per tool location below. Installing a skill does not connect the assistant to your project or give it Git permissions.</p>
+      <table><thead><tr><th scope="col">Tool</th><th scope="col">Put a skill folder here, inside your project</th><th scope="col">Try it</th></tr></thead><tbody>
+        <tr><td>Codex</td><td><code>.agents/skills/feature-coach/SKILL.md</code></td><td>Start a new session; use <code>$feature-coach</code> with your task.</td></tr>
+        <tr><td>Claude Code</td><td><code>.claude/skills/feature-coach/SKILL.md</code></td><td>Use <code>/feature-coach</code> with your task.</td></tr>
+        <tr><td>Copilot</td><td><code>.github/skills/feature-coach/SKILL.md</code></td><td>In a supported agent surface, ask it to use <code>feature-coach</code>; confirm it loaded the file.</td></tr>
+      </tbody></table>
+      <p><a href="https://learn.chatgpt.com/docs/build-skills">Codex skill format and discovery</a> · <a href="https://code.claude.com/docs/en/skills">Claude Code skills</a> · <a href="https://docs.github.com/en/copilot/concepts/customizations/agent-skills">Copilot skills and supported surfaces</a>. If discovery fails, explicitly attach the file and ask the assistant to follow it; do not assume it loaded. Tool-specific instructions files such as <code>AGENTS.md</code>, <code>CLAUDE.md</code>, and Copilot repository instructions are separate from a skill.</p>
+      <p><strong>For Milestone 2:</strong> try Feature Coach on your AI-assisted feature. The Git experiment below is a useful first exercise, but does not replace learning and verifying project functionality. No separate skill-file submission is required.</p>
+<details><summary>Skill A: Feature Coach — learn and implement a small feature</summary><p><a href="ai-skills/feature-coach/SKILL.md" download="SKILL.md">Download SKILL.md</a></p><pre>---
+name: feature-coach
+description: Help students learn and implement a small JavaFX feature when they need an unfamiliar technique.
+---
+
+# Feature Coach
+
+Use when: we need a feature or technique we do not yet understand.
+1. Read the named code and restate current and desired behavior.
+2. Identify the model object that should own the state/rule.
+3. Explain the unfamiliar technique briefly; identify assumptions.
+4. Suggest the smallest input-to-model-to-display increment.
+5. Stay within the task&#x27;s files, agreed APIs, and Java 21/JavaFX stack.
+6. Implement that increment; do not add unrelated features or libraries.
+7. Explain the diff and give normal, edge, and repeat checks.
+8. Report checks actually run separately from manual checks still needed.
+Done when: we can explain the change and verify the stated behavior.
+</pre></details>
+<details><summary>Skill B: Bug Investigator — diagnose before patching</summary><p><a href="ai-skills/bug-investigator/SKILL.md" download="SKILL.md">Download SKILL.md</a></p><pre>---
+name: bug-investigator
+description: Diagnose and fix a reproducible JavaFX bug using expected and actual behavior.
+---
+
+# Bug Investigator
+
+Use when: a reproducible feature fails.
+1. Record steps, exact error, expected result, and actual result.
+2. Trace the event, model state, and display; locate the first mismatch.
+3. State one likely cause and a check that could disprove it.
+4. Make the smallest justified fix in the agreed files.
+5. Rerun the failing case and a previously working case.
+6. Explain cause, fix, evidence, and remaining uncertainty.
+Do not rewrite the app, hide exceptions, or remove checks to claim success.
+</pre></details>
+<details><summary>Skill C: Behavior Checker — verify against expectations</summary><p><a href="ai-skills/behavior-checker/SKILL.md" download="SKILL.md">Download SKILL.md</a></p><pre>---
+name: behavior-checker
+description: Verify a completed feature with independent normal, edge, and repeated-use expectations.
+---
+
+# Behavior Checker
+
+Use when: a feature is ready for verification.
+1. Restate the written behavior, without assuming the code is correct.
+2. Propose normal, edge, and repeated-use cases with concrete inputs.
+3. Ask us to confirm expected results independently of generated code.
+4. Check the two connected actions together, including state after reuse.
+5. Use existing tests when useful; list manual GUI actions explicitly.
+6. Record expected versus actual and fixes/retests.
+Do not weaken expected behavior to match a failing implementation.
+Do not claim GUI checks passed if you did not perform them.
+</pre></details>
+<details><summary>Skill D: Team Reviewer — inspect a small change before merging</summary><p><a href="ai-skills/team-reviewer/SKILL.md" download="SKILL.md">Download SKILL.md</a></p><pre>---
+name: team-reviewer
+description: Review a scoped team change before a human merges its pull request.
+---
+
+# Team Reviewer
+
+Use when: a teammate opens a feature PR.
+1. Read the task and diff; check scope and agreed method contracts.
+2. Check state ownership, duplicated rules, and unnecessary coupling.
+3. Look for stale UI state, invalid input, and repeat/reset problems.
+4. Confirm no unrelated files, credentials, or generated build output appear.
+5. List concrete issues and checks; avoid broad style rewrites.
+6. Let the human teammate review/merge; then test the combined main.
+Done when: the reviewer understands the change and integration checks pass.
+</pre></details>
+      <p><strong>Make skills specific:</strong> name your real files, model objects, method contracts, and expected behavior in the task that follows the card. “Be a Java expert” alone gives the agent no useful boundaries or evidence standard.</p>
+    </section>
+    <section id="git-lab">
+      <h2>Practical experiment: let AI coach your Git workflow</h2>
+      <p>Work in pairs at your pod: one student operates, one reviews. Keep GitHub Desktop open on the same repository. Start with inspection; you do not need a conflict to complete the exercise. Do not deliberately break main.</p>
+      <p><a href="ai-skills/team-git-check/SKILL.md" download="SKILL.md">Download team-git-check/SKILL.md</a>. Install it in your tool’s skills folder as described above, or attach it to the chat. In Codex invoke <code>$team-git-check</code>; in Claude Code use <code>/team-git-check</code>; in Copilot ask it to follow the attached skill.</p>
+      <details open><summary>Task 1: repository health check — paste this first</summary><pre>Use team-git-check for this existing project. Inspect only; do not edit,
+commit, switch branches, fetch, pull, push, or merge yet.
+Report the repository root, current branch, modified/untracked files,
+remote and upstream branch, and any unfinished merge.
+Explain whether ahead/behind information may be stale.
+Tell me the next safe step and why. Do not assume my branch is main.</pre></details>
+      <ol>
+        <li><strong>Inspect together.</strong> Compare the report with GitHub Desktop. If files are changed, review and commit intentional work on its feature branch before switching. Do not discard work just to obtain a clean tree.</li>
+        <li><strong>Get updated main.</strong> Ask for the phase below. Confirm the working tree is clean; let the agent explain the exact action before you approve it or perform it in Desktop.</li>
+        <li><strong>Share a small change.</strong> Create a fresh feature branch in Desktop. Add one useful run instruction to the project README, review it, and commit it. Ask for the named-branch push phase.</li>
+        <li><strong>Review and merge.</strong> Open a PR; your partner reviews it on GitHub. If main advanced, use the integration phase below first. The human reviewer merges the PR, then everyone updates main and runs the app.</li>
+      </ol>
+      <details><summary>Task 2: pull / push / integration phases — send one at a time</summary><pre>PULL PHASE:
+Help me update main. Inspect first, then explain the exact action and wait
+for my confirmation. With a clean tree, verify the upstream, fetch, and use
+a fast-forward-only pull. Stop if main has diverged. Report what changed.
+
+PUSH PHASE (replace the branch name with the actual name):
+Help push my committed feature branch [actual branch]. Inspect its diff,
+commits and upstream first. Explain the destination and wait for confirmation.
+Push only this feature branch; do not push main or merge the PR.
+
+INTEGRATION PHASE:
+Help update my existing feature branch from updated main before PR review.
+Verify both branch names and a clean tree. Explain main INTO feature and
+wait for confirmation. If conflicts arise, show both intents and propose a
+resolution; do not choose a side blindly. Help us test before completing
+and pushing the merge. Feature INTO main will use a human-reviewed PR.</pre></details>
+      <p><strong>If a conflict occurs:</strong> read both changes, identify the intended combined behavior, inspect the resolved diff, and rerun the affected feature. A conflict-free merge can still break behavior. If the agent cannot run Git or authenticate, ask it to coach the equivalent <a href="github-desktop-guide.html#step-8">Desktop pull</a> and <a href="github-desktop-guide.html#step-9">integration steps</a>.</p>
+      <p><strong>Experiment complete:</strong> both partners can explain pull versus push and the merge direction; the reviewed change is on main; the app still runs. Keep a brief note of what the agent recommended and what you verified. Continue to your real feature next.</p>
+    </section>
+    <section id="ready">
+      <h2>5. Required before merging AI-assisted work</h2>
+      <ul class="checklist">
+        <li>We can explain the new behavior and each changed responsibility.</li>
+        <li>The diff stays within the task and fits the existing project.</li>
+        <li>We independently checked normal, edge, and repeated-use results.</li>
+        <li>A teammate reviewed the change; the integrated main still runs.</li>
+        <li>We recorded the tool, assistance, what we learned, and help citation.</li>
+      </ul>
+      <p>Follow <a href="syllabus.html">Help Citation and AI Learning Log Policy</a>. Use the <a href="resources_files/AI%20Learning%20Log.md">existing log template</a>. At check-in, explain one suggestion you accepted, changed, or rejected and the evidence behind that decision. The goal is verified learning, not a count of prompts.</p>
+      <p><a href="project-milestone2.html#skills">Milestone 2 required student skills</a> · <a href="project.html">Final Project Hub</a></p>
+    </section>
+  </main>
+</body>
+</html>
