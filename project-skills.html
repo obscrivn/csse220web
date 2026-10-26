@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CSSE220 Coding Skills Hub</title>
+  <link rel="stylesheet" href="./syllabus_files/screen.css">
+  <link rel="stylesheet" href="./skills/skills.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <div id="header">
+    <a href="./index.html">CSSE 220</a>
+    <a href="./syllabus.html">Syllabus</a>
+    <a href="./schedule.html">Schedule</a>
+    <a href="./design.html">Design</a>
+    <a href="./labs.html">Labs</a>
+    <a href="./homework.html">Homework</a>
+    <a href="./exams.html">Exams</a>
+    <a href="./project.html">Final Project</a>
+    <a href="graphics/index.html">Graphics</a>
+    <a href="./resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <p class="crumbs"><a href="project.html#coding-skills">Final Project</a> › Coding Skills Hub</p>
+    <h1>Coding Skills Hub</h1>
+    <p class="subtitle">Learn one new technique at a time and add it to your own JavaFX project.</p>
+    <p>Each skill is a short guided lesson. It explains the idea, shows a few small code fragments, and walks you through building the feature yourself. The first skills build on the <a href="labs/lab15.html">Lab 15 Drone Arena</a> code you already finished. Every skill also explains how the same idea works in math solvers, quizzes, simulations, and utilities.</p>
+    <div class="callout">
+      <p><strong>These are not finished solutions.</strong> You will not find a complete game or app here. Each guide gives you the concept, a plan, hints, and tests. You write the code and fit it to your own classes. These guides do not change any milestone requirement or grading policy. For those, see <a href="project-milestone2.html">Milestone 2</a> and the <a href="project.html">Final Project Hub</a>.</p>
+    </div>
+
+    <nav class="tabbar" aria-label="Skills hub sections">
+      <a href="#how">How to use a skill</a>
+      <a href="#choose">Choose by project type</a>
+      <a href="#animation">Animation</a>
+      <a href="#mechanics">Game mechanics</a>
+      <a href="#screens">Screens</a>
+      <a href="#data">Data and input</a>
+      <a href="#logic">Application logic</a>
+      <a href="#debugging">Debugging</a>
+      <a href="#ai">AI coaches and agents</a>
+      <a href="#portfolio">My Skills Acquired</a>
+    </nav>
+
+    <section id="how" class="category">
+      <h2>How to use a skill</h2>
+      <p>Every skill page uses the same ten sections, so you always know where to look.</p>
+      <div class="grid">
+        <div class="panel">
+          <h3>Understand</h3>
+          <ol>
+            <li><strong>Mission:</strong> what you will build and why.</li>
+            <li><strong>What you already know:</strong> the labs and Java ideas you will reuse.</li>
+            <li><strong>Learn the concept:</strong> a short explanation, a diagram, and small code fragments.</li>
+            <li><strong>Connect to Lab 15:</strong> where the idea fits in <code>ArrowApp</code> and <code>SceneToken</code>, or in a non-game app.</li>
+          </ol>
+        </div>
+        <div class="panel">
+          <h3>Build</h3>
+          <ol start="5">
+            <li><strong>Design before coding:</strong> decide on state, classes, fields, methods, and who owns what.</li>
+            <li><strong>Guided implementation:</strong> numbered steps with hints, not code to paste.</li>
+            <li><strong>Test your skill:</strong> a normal check, an edge case, and a repeat/reset check.</li>
+          </ol>
+        </div>
+        <div class="panel">
+          <h3>Grow and record</h3>
+          <ol start="8">
+            <li><strong>Extend the skill:</strong> one optional harder challenge.</li>
+            <li><strong>Ask your AI Coach:</strong> a prompt you can copy that coaches you instead of doing the work.</li>
+            <li><strong>Skill Unlocked:</strong> three things you should now be able to explain or show.</li>
+          </ol>
+          <p class="small">Then record what you learned in <a href="skills/my-skills-acquired.html">My Skills Acquired</a>.</p>
+        </div>
+      </div>
+      <div class="callout ok">
+        <p><strong>Before you start any skill:</strong> commit your working project on a feature branch, as in the <a href="github-desktop-guide.html">GitHub Desktop walkthrough</a>. If an experiment goes wrong, you can always get back to working code.</p>
+      </div>
+    </section>
+
+    <section id="choose" class="category">
+      <h2>Choose by project type</h2>
+      <p>You do not need every skill. Pick the ones your <a href="project-milestone2.html">Milestone 2 workflow</a> actually needs, and add others later. Everyone should read <a href="skills/debugging.html">Skill 08</a>.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Your project</th><th>Start with</th><th>Useful next</th></tr></thead>
+          <tbody>
+            <tr><td>Real-time game (arcade, drone, dodging)</td><td><a href="skills/drone-animation.html">01 Animation</a>, <a href="skills/score-system.html">04 Score</a></td><td><a href="skills/new-level.html">02 Levels</a>, <a href="skills/welcome-screen.html">03 Welcome screen</a></td></tr>
+            <tr><td>Board, maze, or turn-based game</td><td><a href="skills/grid-world.html">05 Grid world</a>, <a href="skills/score-system.html">04 Score</a></td><td><a href="skills/new-level.html">02 Levels</a>, <a href="skills/welcome-screen.html">03 Welcome screen</a></td></tr>
+            <tr><td>Math solver or calculator</td><td><a href="skills/user-input.html">06 User input</a>, <a href="skills/math-solver.html">07 Math solver</a></td><td><a href="skills/welcome-screen.html">03 Screens</a> (for example, choose a problem type)</td></tr>
+            <tr><td>Quiz or learning app</td><td><a href="skills/user-input.html">06 User input</a>, <a href="skills/score-system.html">04 Score</a></td><td><a href="skills/new-level.html">02 Levels</a> (as question sets), <a href="skills/welcome-screen.html">03 Screens</a></td></tr>
+            <tr><td>Simulation</td><td><a href="skills/drone-animation.html">01 Animation</a> (Timeline as a clock), <a href="skills/user-input.html">06 User input</a></td><td><a href="skills/math-solver.html">07 Model/GUI separation</a>, <a href="skills/grid-world.html">05 Grid world</a></td></tr>
+            <tr><td>Utility or visualization</td><td><a href="skills/user-input.html">06 User input</a></td><td><a href="skills/grid-world.html">05 Grid of data</a>, <a href="skills/math-solver.html">07 Testable logic</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="animation" class="category">
+      <h2>Animation and movement</h2>
+      <p class="muted">Make things change over time, not only when the user clicks.</p>
+      <div class="card-grid">
+        <article class="skill-card">
+          <div><span class="tag">Skill 01</span><span class="level level-intermediate">Intermediate</span></div>
+          <h3><a href="skills/drone-animation.html">Make the Drone Move Continuously</a></h3>
+          <p>Steer smoothly while a key is held. Add pause, reset, and boundaries using the one Lab 15 Timeline.</p>
+          <dl>
+            <dt>Java / JavaFX concepts</dt><dd><code>Timeline</code>, <code>KeyFrame</code>, <code>setOnKeyPressed</code>, <code>setOnKeyReleased</code>, fields as state</dd>
+            <dt>Prerequisites</dt><dd>Lab 13, Lab 15</dd>
+            <dt>Estimated effort</dt><dd>About 1–2 hours</dd>
+          </dl>
+          <a class="open" href="skills/drone-animation.html">Open learning guide</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="mechanics" class="category">
+      <h2>Game mechanics and levels</h2>
+      <p class="muted">Add goals, progress, and consequences. These ideas also work for quiz rounds and question sets.</p>
+      <div class="card-grid">
+        <article class="skill-card">
+          <div><span class="tag">Skill 02</span><span class="level level-intermediate">Intermediate</span></div>
+          <h3><a href="skills/new-level.html">Add a New Level</a></h3>
+          <p>Describe each level as data, track the current level, and reset everything cleanly when a new level begins.</p>
+          <dl>
+            <dt>Java / JavaFX concepts</dt><dd>Data class, <code>ArrayList</code>, current index, a <code>loadLevel</code> method, <code>Rectangle</code> obstacles</dd>
+            <dt>Prerequisites</dt><dd>Lab 15, ArrayList</dd>
+            <dt>Estimated effort</dt><dd>About 1.5–3 hours</dd>
+          </dl>
+          <a class="open" href="skills/new-level.html">Open learning guide</a>
+        </article>
+        <article class="skill-card">
+          <div><span class="tag">Skill 04</span><span class="level level-beginner">Beginner</span></div>
+          <h3><a href="skills/score-system.html">Add a Score System</a></h3>
+          <p>Keep score as model state, award points exactly once, show the score in a <code>Label</code>, and reset it.</p>
+          <dl>
+            <dt>Java / JavaFX concepts</dt><dd>Encapsulated model class, guard conditions, <code>Label.setText</code>, a display-update helper</dd>
+            <dt>Prerequisites</dt><dd>Lab 12, Lab 15</dd>
+            <dt>Estimated effort</dt><dd>About 1 hour</dd>
+          </dl>
+          <a class="open" href="skills/score-system.html">Open learning guide</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="screens" class="category">
+      <h2>Screens and interfaces</h2>
+      <p class="muted">Organize your app into screens, and know when one screen is enough.</p>
+      <div class="card-grid">
+        <article class="skill-card">
+          <div><span class="tag">Skill 03</span><span class="level level-beginner">Beginner</span></div>
+          <h3><a href="skills/welcome-screen.html">Add a Welcome Screen</a></h3>
+          <p>Add a start screen with a Play button and a Menu button that returns. Decide whether to keep or reset progress.</p>
+          <dl>
+            <dt>Java / JavaFX concepts</dt><dd><code>Stage</code>, <code>Scene</code>, root <code>Parent</code>, <code>VBox</code>, <code>setScene</code> vs. <code>setRoot</code>, focus</dd>
+            <dt>Prerequisites</dt><dd>Lab 12, <a href="graphics/javafx-layout.html">JavaFX layout reference</a></dd>
+            <dt>Estimated effort</dt><dd>About 1 hour</dd>
+          </dl>
+          <a class="open" href="skills/welcome-screen.html">Open learning guide</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="data" class="category">
+      <h2>Data and user input</h2>
+      <p class="muted">Store structured data and accept typed or selected values safely.</p>
+      <div class="card-grid">
+        <article class="skill-card">
+          <div><span class="tag">Skill 05</span><span class="level level-challenge">Challenge</span></div>
+          <h3><a href="skills/grid-world.html">Build a Grid World</a></h3>
+          <p>Use a 2D array for a tile map. Convert rows and columns to pixels, block walls, and move one cell at a time.</p>
+          <dl>
+            <dt>Java / JavaFX concepts</dt><dd>2D arrays, nested loops, row/column ↔ x/y, bounds checks, <code>Rectangle</code> tiles</dd>
+            <dt>Prerequisites</dt><dd>2D arrays, Lab 15 keyboard input</dd>
+            <dt>Estimated effort</dt><dd>About 2–4 hours</dd>
+          </dl>
+          <a class="open" href="skills/grid-world.html">Open learning guide</a>
+        </article>
+        <article class="skill-card">
+          <div><span class="tag">Skill 06</span><span class="level level-beginner">Beginner</span></div>
+          <h3><a href="skills/user-input.html">Read Input from the User</a></h3>
+          <p>Let the user choose a drone level and type a speed. Check the input, convert it, and handle bad entries politely.</p>
+          <dl>
+            <dt>Java / JavaFX concepts</dt><dd><code>TextField</code>, <code>ComboBox</code>, <code>Integer.parseInt</code>, <code>NumberFormatException</code>, validation</dd>
+            <dt>Prerequisites</dt><dd>Lab 12, Errors &amp; Exceptions (Week 8)</dd>
+            <dt>Estimated effort</dt><dd>About 1–2 hours</dd>
+          </dl>
+          <a class="open" href="skills/user-input.html">Open learning guide</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="logic" class="category">
+      <h2>Application logic</h2>
+      <p class="muted">Keep calculations in their own classes so you can test them without the GUI.</p>
+      <div class="card-grid">
+        <article class="skill-card">
+          <div><span class="tag">Skill 07</span><span class="level level-intermediate">Intermediate</span></div>
+          <h3><a href="skills/math-solver.html">Build a Math Solver Interface</a></h3>
+          <p>Solve <em>ax + b = c</em> in a plain Java class. Connect it to text fields, handle special cases, and check it without the GUI.</p>
+          <dl>
+            <dt>Java / JavaFX concepts</dt><dd>Model/view separation, <code>double</code> math, special cases, <code>String.format</code>, checks with <code>main</code></dd>
+            <dt>Prerequisites</dt><dd>Lab 12; Skill 06 recommended</dd>
+            <dt>Estimated effort</dt><dd>About 1.5–3 hours</dd>
+          </dl>
+          <a class="open" href="skills/math-solver.html">Open learning guide</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="debugging" class="category">
+      <h2>Debugging and software design</h2>
+      <p class="muted">For every team, all quarter long.</p>
+      <div class="card-grid">
+        <article class="skill-card">
+          <div><span class="tag">Skill 08</span><span class="level level-beginner">Beginner</span></div>
+          <h3><a href="skills/debugging.html">Debug, Test, and Improve AI-Assisted Java Code</a></h3>
+          <p>Read compiler errors and stack traces, reproduce bugs, use breakpoints, test edge cases, and review AI-written code before you commit.</p>
+          <dl>
+            <dt>Java / JavaFX concepts</dt><dd>Compile vs. runtime vs. logic errors, stack traces, IntelliJ debugger, <code>println</code>, diffs</dd>
+            <dt>Prerequisites</dt><dd>None. Use it any time.</dd>
+            <dt>Estimated effort</dt><dd>About 1 hour, then keep using it</dd>
+          </dl>
+          <a class="open" href="skills/debugging.html">Open learning guide</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="ai" class="category">
+      <h2>Learning with AI coaches and coding agents</h2>
+      <p>Every skill page ends with a prompt you can copy. It works with ChatGPT, Claude, Gemini, Copilot, or another assistant. The prompts ask the AI to <strong>coach</strong> you: explain the idea, help with one step at a time, and have you test each step. You can still learn every skill without AI, because each page has everything you need.</p>
+      <div class="grid">
+        <div class="panel">
+          <h3>Using a chat assistant (any browser)</h3>
+          <ul>
+            <li>A chat cannot see your project. Paste only the classes or methods it needs, and use your real class names.</li>
+            <li>Say what already works, what is missing, and what you expect to happen.</li>
+            <li>Ask for an explanation and a plan <em>before</em> any code.</li>
+            <li>Type the code yourself, run it, and report what actually happened.</li>
+            <li>Never paste passwords, API keys, or other students' information.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Using a coding agent (Copilot agent, Codex, Claude Code)</h3>
+          <p class="small">Optional. You do not need one. Setup routes are in the <a href="ai-skills.html#setup">AI Skills Hub</a>.</p>
+          <ol>
+            <li><strong>Give context:</strong> the repository root, the classes involved, and the feature.</li>
+            <li><strong>Keep the task narrow:</strong> one behavior and a list of files it may change.</li>
+            <li><strong>Plan first:</strong> ask it to explain the planned changes before editing.</li>
+            <li><strong>Review the diff:</strong> read every changed file in GitHub Desktop or IntelliJ.</li>
+            <li><strong>Run and test:</strong> use the skill's three tests yourself.</li>
+            <li><strong>Commit only what you understand</strong> and can explain to a teammate.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="callout">
+        <p><strong>Course AI policy still applies.</strong> Add a Help Citation to files where you got help, and add an entry to <code>AI-LEARNING-LOG.md</code>, as described in the <a href="syllabus.html">syllabus</a>. You are not graded on how often you use AI. You are responsible for every line you commit and must be able to explain it.</p>
+      </div>
+    </section>
+
+    <section id="portfolio" class="category">
+      <h2>My Skills Acquired</h2>
+      <p>After each skill, record what you learned: why your team needed it, where it lives in your code, how you tested it, and what you can now do on your own. Skills you learned elsewhere count too, as long as you give the same kind of evidence.</p>
+      <p><a class="btn" href="skills/my-skills-acquired.html" style="text-decoration:none;display:inline-block;">Open My Skills Acquired</a></p>
+    </section>
+
+    <p class="pager"><a href="project.html#coding-skills">← Final Project Hub</a><a href="ai-skills.html">AI Skills Hub →</a></p>
+  </main>
+</body>
+</html>

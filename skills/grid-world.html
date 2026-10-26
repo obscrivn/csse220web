@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Skill 05: Build a Grid World | CSSE220</title>
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <link rel="stylesheet" href="skills.css">
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body>
+  <div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+    <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../graphics/index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <p class="crumbs"><a href="../project.html">Final Project</a> › <a href="../project-skills.html">Coding Skills Hub</a> › Skill 05</p>
+    <h1>Skill 05: Build a Grid World</h1>
+    <p class="subtitle">Store a tile map in a 2D array, draw it, block walls, and move the drone one cell at a time.</p>
+    <ul class="facts">
+      <li><strong>Category</strong>Data and user input</li>
+      <li><strong>Difficulty</strong><span class="level level-challenge">Challenge</span></li>
+      <li><strong>Concepts</strong>2D arrays, nested loops, row/col ↔ x/y, bounds checks, <code>Rectangle</code> tiles</li>
+      <li><strong>Prerequisites</strong>2D arrays (early weeks), <a href="../labs/lab15.html">Lab 15</a> keyboard input</li>
+      <li><strong>Effort</strong>About 2–4 hours</li>
+    </ul>
+
+    <nav class="tabbar" aria-label="Skill sections">
+      <a href="#mission">1 Mission</a><a href="#know">2 Already know</a><a href="#concept">3 Concept</a><a href="#lab15">4 Lab 15</a><a href="#design">5 Design</a><a href="#build">6 Build</a><a href="#test">7 Test</a><a href="#extend">8 Extend</a><a href="#coach">9 AI Coach</a><a href="#unlocked">10 Unlocked</a>
+    </nav>
+
+    <section id="mission" class="skill-section">
+      <h2><span class="step-no">1</span> Mission</h2>
+      <p>Many projects are not about smooth pixels. They are about <strong>cells</strong>: a maze, a board game, a tile puzzle, a seating chart, a heat map. In a grid world, positions are whole numbers (row, column), and the rules ask questions like "is that cell open?"</p>
+      <p><strong>Your mission:</strong> turn the Drone Arena into a 5 × 3 grid. Walls block movement, each arrow key moves exactly one cell, and the drone can reach the orb only through open cells.</p>
+    </section>
+
+    <section id="know" class="skill-section">
+      <h2><span class="step-no">2</span> What you already know</h2>
+      <ul>
+        <li><strong>2D arrays</strong> (early weeks): <code>int[][] grid = new int[rows][cols];</code>, <code>grid.length</code> is the number of rows, <code>grid[0].length</code> is the number of columns, and nested <code>for</code> loops visit every cell.</li>
+        <li><strong>Graphics Hub / Homework Scenes:</strong> drawing <code>Rectangle</code>s at computed positions in a loop; <a href="../graphics/javafx-layout.html"><code>GridPane</code></a> exists for laying out controls.</li>
+        <li><strong>Lab 15:</strong> arrow keys in <code>setOnKeyPressed</code>; the 500 × 300 <code>canvas</code> Pane; the 90 × 90 drone in <code>SceneToken</code>.</li>
+      </ul>
+    </section>
+
+    <section id="concept" class="skill-section">
+      <h2><span class="step-no">3</span> Learn the concept</h2>
+
+      <h3>Rows go down, columns go across</h3>
+      <p>Store the map as <code>cells[row][col]</code>. The <strong>row</strong> is like y (down the screen) and the <strong>column</strong> is like x (across). This order is the opposite of (x, y), and mixing them up is the most common grid bug.</p>
+<pre><code>// 0 = open, 1 = wall
+int[][] cells = {
+    {0, 0, 0, 1, 0},     // row 0    . . . # .
+    {0, 1, 0, 1, 0},     // row 1    . # . # .
+    {0, 1, 0, 0, 0}      // row 2    . # . . .
+};                       //   col:   0 1 2 3 4
+cells.length      // 3 rows
+cells[0].length   // 5 columns
+cells[1][3]       // row 1, col 3 -&gt; 1 (a wall)</code></pre>
+
+      <h3>Grid position ↔ screen position</h3>
+      <p>With square tiles of size <code>TILE</code> pixels, the top-left corner of a cell is at:</p>
+<pre><code>x = col * TILE;      // column → x
+y = row * TILE;      // row    → y
+
+col = (int) (x / TILE);   // a mouse click at (x, y) → which cell?
+row = (int) (y / TILE);</code></pre>
+      <figure>
+        <svg viewBox="0 0 640 330" role="img" aria-labelledby="gTitle gDesc">
+          <title id="gTitle">5 by 3 grid with 100 pixel tiles on the 500 by 300 arena</title>
+          <desc id="gDesc">Columns 0 to 4 start at x 0, 100, 200, 300, 400. Rows 0 to 2 start at y 0, 100, 200. Walls are at row 0 col 3, row 1 col 1, row 1 col 3, row 2 col 1. The highlighted cell row 1, col 2 has its top-left corner at x 200, y 100. The drone starts in row 0, col 0 and the orb is in row 0, col 4.</desc>
+          <rect x="0" y="0" width="640" height="330" fill="#fff"/>
+          <g font-family="Arial" font-size="12" fill="#4a5568" text-anchor="middle">
+            <text x="120" y="16">col 0</text><text x="220" y="16">col 1</text><text x="320" y="16">col 2</text><text x="420" y="16">col 3</text><text x="520" y="16">col 4</text>
+            <text x="70" y="324">x=0</text><text x="170" y="324">100</text><text x="270" y="324">200</text><text x="370" y="324">300</text><text x="470" y="324">400</text><text x="570" y="324">500</text>
+          </g>
+          <g font-family="Arial" font-size="12" fill="#4a5568" text-anchor="end">
+            <text x="60" y="76">row 0</text><text x="60" y="176">row 1</text><text x="60" y="276">row 2</text>
+            <text x="606" y="30" text-anchor="start">y=0</text><text x="606" y="130" text-anchor="start">100</text><text x="606" y="230" text-anchor="start">200</text><text x="606" y="314" text-anchor="start">300</text>
+          </g>
+          <g transform="translate(70,26)">
+            <rect x="0" y="0" width="500" height="130" fill="#cfe9fb"/>
+            <rect x="0" y="130" width="500" height="170" fill="#d4f2d4"/>
+            <rect x="300" y="0" width="100" height="100" fill="#6b6b6b"/>
+            <rect x="100" y="100" width="100" height="100" fill="#6b6b6b"/>
+            <rect x="300" y="100" width="100" height="100" fill="#6b6b6b"/>
+            <rect x="100" y="200" width="100" height="100" fill="#6b6b6b"/>
+            <rect x="200" y="100" width="100" height="100" fill="#fde68a" stroke="#b26a00" stroke-width="3"/>
+            <g stroke="#ffffff" stroke-width="2">
+              <line x1="100" y1="0" x2="100" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="400" y1="0" x2="400" y2="300"/>
+              <line x1="0" y1="100" x2="500" y2="100"/><line x1="0" y1="200" x2="500" y2="200"/>
+            </g>
+            <rect x="0" y="0" width="500" height="300" fill="none" stroke="#2b2b2b" stroke-width="2"/>
+            <circle cx="200" cy="100" r="5" fill="#b42318"/>
+            <text x="250" y="145" font-family="Arial" font-size="13" font-weight="bold" fill="#5c3d00" text-anchor="middle">(row 1, col 2)</text>
+            <text x="250" y="163" font-family="Arial" font-size="12" fill="#5c3d00" text-anchor="middle">x = 2·100 = 200</text>
+            <text x="250" y="179" font-family="Arial" font-size="12" fill="#5c3d00" text-anchor="middle">y = 1·100 = 100</text>
+            <rect x="5" y="5" width="90" height="90" rx="12" fill="none" stroke="#245780" stroke-width="3" stroke-dasharray="6 4"/>
+            <text x="50" y="55" font-family="Arial" font-size="12" font-weight="bold" fill="#245780" text-anchor="middle">drone</text>
+            <circle cx="450" cy="50" r="14" fill="#00bfff"/>
+            <text x="450" y="85" font-family="Arial" font-size="12" fill="#23415f" text-anchor="middle">orb</text>
+          </g>
+        </svg>
+        <figcaption>The Lab 15 arena is 500 × 300, so <code>TILE = 100</code> gives exactly 5 columns × 3 rows. The red dot marks the top-left corner of cell (row 1, col 2): x = 200, y = 100. Gray cells are walls.</figcaption>
+      </figure>
+
+      <h3>Drawing the tiles: one Rectangle per cell</h3>
+<pre><code>for (int row = 0; row &lt; /* number of rows */; row++) {
+    for (int col = 0; col &lt; /* number of cols */; col++) {
+        Rectangle tile = new Rectangle(col * TILE, row * TILE, TILE, TILE);
+        // choose a fill based on the cell value; add tile to the Pane
+    }
+}</code></pre>
+
+      <h3>Moving means "ask the model, then redraw"</h3>
+      <p>The model decides whether a move is legal. The view only places the drone where the model says it is. Each direction is a change in (row, col): Up is <code>(-1, 0)</code>, Down <code>(+1, 0)</code>, Left <code>(0, -1)</code>, Right <code>(0, +1)</code>.</p>
+<pre><code>/** Move one cell if the target is open; return whether the player moved. */
+public boolean tryMove(int dRow, int dCol) {
+    int newRow = playerRow + dRow;
+    int newCol = playerCol + dCol;
+    // TODO: return false if (newRow, newCol) is out of bounds OR a wall
+    // TODO: otherwise update the position and return true
+}</code></pre>
+      <div class="callout warn">
+        <p><strong>Check the bounds <em>before</em> you read the array.</strong> <code>cells[-1][0]</code> or <code>cells[3][0]</code> throws <code>ArrayIndexOutOfBoundsException</code>. Valid rows are <code>0</code> to <code>rows - 1</code>, so use <code>&lt;</code>, not <code>&lt;=</code>.</p>
+      </div>
+    </section>
+
+    <section id="lab15" class="skill-section">
+      <h2><span class="step-no">4</span> Connect to Lab 15</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Existing code</th><th>Role in this skill</th></tr></thead>
+          <tbody>
+            <tr><td><code>Pane canvas</code>, fixed at 500 × 300</td><td>Choose <code>TILE</code> so it divides evenly: 100 → 5 × 3, or 50 → 10 × 6.</td></tr>
+            <tr><td>Order of children in <code>canvas</code></td><td>Later children draw on top: sky and ground, then tiles, then the drone and orb.</td></tr>
+            <tr><td><code>SceneToken</code>: 90 × 90 drone, rotation pivot at (45, 45)</td><td>Fits inside a 100-pixel tile, centered with a 5-pixel offset. For 50-pixel tiles, shrink it by changing <code>setFitWidth(90)</code> <em>and</em> both pivot values together in the constructor, or use a simple shape for the player.</td></tr>
+            <tr><td><code>SceneToken.moveBy(...)</code></td><td>Moves by <em>pixels</em> and clamps. A grid needs <em>absolute</em> placement. Add a small method to <code>SceneToken</code>, which owns the view's position, such as <code>placeAt(double x, double y)</code>.</td></tr>
+            <tr><td><code>canvas.setOnKeyPressed(...)</code></td><td>Replace the <code>moveBy(±10, ...)</code> calls with model moves, then re-place the drone.</td></tr>
+            <tr><td><code>flight</code> Timeline and Start</td><td>Auto-flight does not fit a grid. Remove or disable Start in grid mode, or make each tick a one-cell step.</td></tr>
+            <tr><td><code>canvas.setOnMouseClicked(...)</code></td><td>Already requests focus. You could also use <code>event.getX()</code> and <code>event.getY()</code> to find the clicked cell.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details>
+        <summary>Not a game? How this transfers</summary>
+        <ul>
+          <li><strong>Board games:</strong> tic-tac-toe and Connect Four are grids, with "occupied" meaning which player owns the cell.</li>
+          <li><strong>Simulation:</strong> Conway's Game of Life is a grid updated on each Timeline tick (see <a href="drone-animation.html">Skill 01</a>).</li>
+          <li><strong>Math:</strong> a Sudoku checker, a matrix visualizer, or a grid of function values colored as a heat map.</li>
+          <li><strong>Utility:</strong> a seating chart or calendar month view: click a cell, and the model updates.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="design" class="skill-section">
+      <h2><span class="step-no">5</span> Design before coding</h2>
+      <ol>
+        <li><strong>Cell values:</strong> what can a cell hold? Open or wall only? A goal? An item? Choose <code>int</code> codes with named constants (<code>OPEN</code>, <code>WALL</code>), or <code>boolean[][] blocked</code> if there are only two kinds.</li>
+        <li><strong>Model class:</strong> a <code>GridWorld</code> class with no JavaFX could own the array and the player's row and column. Which methods does it need? Consider <code>getRows()</code>, <code>getCols()</code>, <code>isInBounds(r, c)</code>, <code>isOpen(r, c)</code>, <code>tryMove(dRow, dCol)</code>, and a reset.</li>
+        <li><strong>View responsibilities:</strong> which class draws tiles and converts (row, col) to pixels? Where does <code>TILE</code> live?</li>
+        <li><strong>Reset:</strong> both the <em>model</em> position and the <em>view</em> position must return to the start. What happens if you reset only one of them?</li>
+      </ol>
+    </section>
+
+    <section id="build" class="skill-section">
+      <h2><span class="step-no">6</span> Guided implementation</h2>
+      <ol class="steps">
+        <li><strong>Create <code>GridWorld.java</code></strong> with the array, the player's row and column, the start position, and the methods from your design. Write <code>isInBounds</code> first, and <code>isOpen</code> should call it.
+          <p class="check">Check: it compiles. Strongly recommended: write a <code>GridWorldCheck</code> class now that prints PASS or FAIL for edges, corners, and walls. It uses the same pattern as <a href="score-system.html#build">Skill 04, Step 6</a>, and needs no setup.</p></li>
+        <li><strong>Add a field and a constant to <code>ArrowApp</code>:</strong> a <code>GridWorld</code> built from your layout and start cell, and <code>TILE</code>.</li>
+        <li><strong>Draw the tiles</strong> with the nested loop above, right after the canvas is created and <em>before</em> the drone is added. Walls get a solid fill. Open cells can be transparent with a light stroke so you can see the grid.
+          <p class="check">Check: you see the grid lines and walls in the correct cells. Compare with your array literal one cell at a time.</p></li>
+        <li><strong>Add <code>placeAt(x, y)</code> to <code>SceneToken</code></strong> and a helper in <code>ArrowApp</code> that converts the model's (row, col) to pixels, including the centering offset, and calls it. Call the helper once at startup.
+          <details><summary>Hint: the centering offset</summary><p>The tile is 100 pixels and the drone is 90, so <code>(TILE - 90) / 2</code> = 5 pixels on each side. Cell (row 0, col 0) puts the drone at (5, 5).</p></details></li>
+        <li><strong>Move with the keys.</strong> In <code>setOnKeyPressed</code>, each arrow calls <code>tryMove</code> with its (dRow, dCol). If it returns <code>true</code>, re-place the drone and call <code>checkCollision</code>. If it returns <code>false</code>, give feedback such as "Blocked."
+          <p class="check">Check: each tap moves exactly one cell, walls and edges block, and no exceptions appear in the Run window.</p></li>
+        <li><strong>Put the orb in a cell</strong> by setting its center to the middle of a tile: <code>col * TILE + TILE / 2</code>. Your existing collision check still works.</li>
+        <li><strong>Reset both model and view.</strong> Reset calls the model's reset and then your placement helper.</li>
+      </ol>
+    </section>
+
+    <section id="test" class="skill-section">
+      <h2><span class="step-no">7</span> Test your skill</h2>
+      <ul class="tests">
+        <li><span class="kind">Normal</span>Walk an open path to the orb. Each key press moves exactly one cell in the expected direction, and the orb is collected when you enter its cell.</li>
+        <li><span class="kind">Edge</span>From each corner, press both arrow keys that point outward: no movement, no exception. Try to enter every wall from every side. In your check class: <code>isInBounds(rows - 1, cols - 1)</code> is true, and <code>isInBounds(rows, 0)</code> is false.</li>
+        <li><span class="kind">Repeat / reset</span>Move, then Reset: the drone is back at the start cell on screen, and the next move starts from there, which proves the model was reset too. Hold an arrow key: key repeat moves one cell per repeat and stops at walls.</li>
+      </ul>
+    </section>
+
+    <section id="extend" class="skill-section">
+      <h2><span class="step-no">8</span> Extend the skill</h2>
+      <div class="panel">
+        <h3>Challenge: build the map from text</h3>
+        <p>Write the layout as strings, such as <code>"...#."</code>, <code>".#.#."</code>, <code>".#..."</code>, and convert them into the 2D array in a constructor, using <code>charAt(col)</code> or <code>toCharArray()</code>. Add a goal character such as <code>'G'</code> so the orb position comes from the map too. Then a new level (see <a href="new-level.html">Skill 02</a>) is just a different array of strings. Watch out for rows of different lengths.</p>
+      </div>
+    </section>
+
+    <section id="coach" class="skill-section">
+      <h2><span class="step-no">9</span> Ask your AI Coach</h2>
+      <div class="prompt-box">
+<pre>I am a CSSE220 student building a Java 21 / JavaFX 21 project. I want to LEARN how to build a grid world: a 2D array tile map, drawn on screen, where the player moves one cell at a time and walls block movement.
+
+My app is based on the CSSE220 Lab 15 Drone Arena: a 500 x 300 Pane named canvas, a SceneToken class that owns a 90 x 90 drone image (it has moveBy for pixel movement and reset), and arrow keys handled in canvas.setOnKeyPressed.
+[Describe your grid (size, cell types) and paste your key handler when asked.]
+
+Please coach me. Do not write the whole solution.
+1. Explain rows vs columns, cells[row][col], and how (row, col) maps to (x, y) pixels with a tile size. Quiz me with one small example.
+2. Help me design a GridWorld model class with no JavaFX, and decide which class converts grid positions to pixels.
+3. Give me a short step-by-step plan, and help me with one step at a time. After each step, tell me what I should see and wait for my report.
+4. When I write bounds checks, ask me to explain why I used &lt; or &lt;=.
+5. Help me write a small check class with a main method that prints PASS or FAIL for edges, corners, and walls. No JUnit and no Maven changes.
+6. Help me test: a normal path, blocked edges and walls, and Reset (model and view).
+Do not replace my project, add libraries, or change pom.xml.</pre>
+      </div>
+      <details>
+        <summary>Using a coding agent instead?</summary>
+        <ol>
+          <li><strong>Context:</strong> the repository root, <code>ArrowApp.java</code>, <code>SceneToken.java</code>, and your grid size and tile size.</li>
+          <li><strong>Narrow task:</strong> "Create a GridWorld model with isInBounds/isOpen/tryMove and a GridWorldCheck class whose main prints PASS/FAIL. Do not change pom.xml or any GUI code yet." Do the GUI wiring as a second task.</li>
+          <li><strong>Plan first:</strong> ask it to show the array layout it will use and the expected result of three moves.</li>
+          <li><strong>Review the diff:</strong> look for <code>[x][y]</code> indexing and <code>&lt;=</code> in bounds checks.</li>
+          <li><strong>Run the check class and the three manual checks</strong>, then commit and log the help.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section id="unlocked" class="skill-section unlocked">
+      <h2><span class="step-no">10</span> Skill Unlocked</h2>
+      <ol>
+        <li><strong>Convert</strong> between (row, col) and (x, y) for any cell, and explain why <code>cells[row][col]</code> is not <code>cells[x][y]</code>.</li>
+        <li><strong>Demonstrate</strong> one-cell movement that is blocked by walls and edges without exceptions.</li>
+        <li><strong>Explain</strong> why the grid rules live in a model class and how you tested them separately from the GUI.</li>
+      </ol>
+      <p>Record it: <a href="my-skills-acquired.html">My Skills Acquired</a>.</p>
+    </section>
+
+    <p class="pager"><a href="score-system.html">← Skill 04: Score System</a><a href="user-input.html">Skill 06: User Input →</a></p>
+  </main>
+  <script src="skills.js"></script>
+</body>
+</html>

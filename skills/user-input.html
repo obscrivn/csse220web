@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Skill 06: Read Input from the User | CSSE220</title>
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <link rel="stylesheet" href="skills.css">
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body>
+  <div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+    <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../graphics/index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <p class="crumbs"><a href="../project.html">Final Project</a> › <a href="../project-skills.html">Coding Skills Hub</a> › Skill 06</p>
+    <h1>Skill 06: Read Input from the User</h1>
+    <p class="subtitle">Let the user choose a drone level and type a speed. Check the input, convert it, and respond helpfully to bad entries.</p>
+    <ul class="facts">
+      <li><strong>Category</strong>Data and user input</li>
+      <li><strong>Difficulty</strong><span class="level level-beginner">Beginner</span></li>
+      <li><strong>Concepts</strong><code>TextField</code>, <code>ComboBox</code>, <code>Integer.parseInt</code>, <code>NumberFormatException</code>, validation</li>
+      <li><strong>Prerequisites</strong><a href="../labs/lab12.html">Lab 12</a>, Errors &amp; Exceptions (Week 8)</li>
+      <li><strong>Effort</strong>About 1–2 hours</li>
+    </ul>
+
+    <nav class="tabbar" aria-label="Skill sections">
+      <a href="#mission">1 Mission</a><a href="#know">2 Already know</a><a href="#concept">3 Concept</a><a href="#lab15">4 Lab 15</a><a href="#design">5 Design</a><a href="#build">6 Build</a><a href="#test">7 Test</a><a href="#extend">8 Extend</a><a href="#coach">9 AI Coach</a><a href="#unlocked">10 Unlocked</a>
+    </nav>
+
+    <section id="mission" class="skill-section">
+      <h2><span class="step-no">1</span> Mission</h2>
+      <p>So far, users talk to your app only with buttons and arrow keys. Most projects also need <strong>values</strong>: a level to play, a speed, an answer, a coefficient, a task name. Users make typos, leave boxes empty, and type "fast" where you expected a number.</p>
+      <p><strong>Your mission:</strong> add a level picker (<code>ComboBox</code>) and a speed box (<code>TextField</code>) with an Apply button. Valid input changes the drone. Invalid input shows a helpful message and never crashes the app.</p>
+      <p class="muted">This is the most transferable skill in the hub: math solvers, quizzes, converters, and planners all read and validate input the same way.</p>
+    </section>
+
+    <section id="know" class="skill-section">
+      <h2><span class="step-no">2</span> What you already know</h2>
+      <ul>
+        <li><strong>Lab 12:</strong> <code>Button</code> + <code>setOnAction</code>, a <code>Label</code> for feedback, and controls added to a <code>VBox</code>.</li>
+        <li><strong>Lab 15:</strong> <code>canvas.requestFocus()</code> sends keys back to the arena after a button click.</li>
+        <li><strong>Errors &amp; Exceptions (Week 8):</strong> a <code>try</code> / <code>catch</code> block lets your program recover from an exception instead of stopping.</li>
+        <li><strong>Strings:</strong> <code>trim()</code>, <code>isEmpty()</code>, <code>equals</code> / <code>equalsIgnoreCase</code>.</li>
+      </ul>
+    </section>
+
+    <section id="concept" class="skill-section">
+      <h2><span class="step-no">3</span> Learn the concept</h2>
+
+      <h3>Two new controls</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Control</th><th>Create and configure</th><th>Read the value</th><th>React</th></tr></thead>
+          <tbody>
+            <tr><td><code>TextField</code><br><span class="small">free typing</span></td><td><code>new TextField("3")</code> (starting text)<br><code>setPromptText("1-10")</code> (gray hint)<br><code>setPrefColumnCount(4)</code> (width)</td><td><code>getText()</code>, which <em>always returns a String</em>, even for numbers</td><td><code>setOnAction</code> runs when the user presses <kbd>Enter</kbd> in the box</td></tr>
+            <tr><td><code>ComboBox&lt;String&gt;</code><br><span class="small">pick one item</span></td><td><code>getItems().addAll("Level 1", "Level 2")</code><br><code>setValue("Level 1")</code> (default)</td><td><code>getValue()</code> gives the item; <code>getSelectionModel().getSelectedIndex()</code> gives its position (0, 1, ...)</td><td><code>setOnAction</code> runs when the selection changes</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small"><code>ChoiceBox&lt;T&gt;</code> works almost the same as <code>ComboBox</code> and is fine for short lists. Both are in <code>javafx.scene.control</code>, and so is <code>TextField</code>.</p>
+
+      <h3>Choosing beats typing</h3>
+      <p>If there is a fixed set of valid answers (levels, units, difficulty), use a <code>ComboBox</code>. The user <em>cannot</em> enter something invalid. Use a <code>TextField</code> only when the value is truly open-ended.</p>
+
+      <h3>Validate in three gates</h3>
+      <figure>
+        <svg viewBox="0 0 720 150" role="img" aria-labelledby="vTitle vDesc">
+          <title id="vTitle">Three validation gates</title>
+          <desc id="vDesc">Text passes through three checks in order: not empty after trim, parses as a number, and is in the allowed range. Failing any gate shows a message and stops. Passing all three updates the model.</desc>
+          <rect width="720" height="150" fill="#fff"/>
+          <defs><marker id="arr6" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+          <text x="10" y="62" font-family="Arial" font-size="13" font-weight="bold" fill="#2b2b2b">getText()</text>
+          <line x1="80" y1="58" x2="108" y2="58" stroke="#555" stroke-width="2" marker-end="url(#arr6)"/>
+          <rect x="110" y="30" width="140" height="56" rx="8" fill="#edf4ff" stroke="#245780"/>
+          <text x="180" y="54" font-family="Arial" font-size="13" font-weight="bold" fill="#245780" text-anchor="middle">1. Empty?</text>
+          <text x="180" y="72" font-family="Arial" font-size="11" fill="#23415f" text-anchor="middle">trim(), isEmpty()</text>
+          <line x1="252" y1="58" x2="278" y2="58" stroke="#555" stroke-width="2" marker-end="url(#arr6)"/>
+          <rect x="280" y="30" width="150" height="56" rx="8" fill="#edf4ff" stroke="#245780"/>
+          <text x="355" y="54" font-family="Arial" font-size="13" font-weight="bold" fill="#245780" text-anchor="middle">2. A number?</text>
+          <text x="355" y="72" font-family="Arial" font-size="11" fill="#23415f" text-anchor="middle">try parseInt / catch</text>
+          <line x1="432" y1="58" x2="458" y2="58" stroke="#555" stroke-width="2" marker-end="url(#arr6)"/>
+          <rect x="460" y="30" width="130" height="56" rx="8" fill="#edf4ff" stroke="#245780"/>
+          <text x="525" y="54" font-family="Arial" font-size="13" font-weight="bold" fill="#245780" text-anchor="middle">3. In range?</text>
+          <text x="525" y="72" font-family="Arial" font-size="11" fill="#23415f" text-anchor="middle">1 ≤ speed ≤ 10</text>
+          <line x1="592" y1="58" x2="618" y2="58" stroke="#18794e" stroke-width="2" marker-end="url(#arr6)"/>
+          <text x="625" y="54" font-family="Arial" font-size="13" font-weight="bold" fill="#18794e">use it</text>
+          <text x="625" y="72" font-family="Arial" font-size="11" fill="#18794e">update model</text>
+          <g stroke="#b42318" stroke-width="2"><line x1="180" y1="88" x2="180" y2="112"/><line x1="355" y1="88" x2="355" y2="112"/><line x1="525" y1="88" x2="525" y2="112"/></g>
+          <text x="355" y="134" font-family="Arial" font-size="12" fill="#b42318" text-anchor="middle">fail → show a specific message in a Label, keep the old value, return</text>
+        </svg>
+      </figure>
+      <span class="code-label">The middle gate: converting text to a number</span>
+<pre><code>int speed;
+try {
+    speed = Integer.parseInt(text);        // "7" → 7
+} catch (NumberFormatException e) {        // "abc", "3.5", "" all land here
+    feedback.setText("\"" + text + "\" is not a whole number.");
+    return;                                // stop; keep the old speed
+}</code></pre>
+      <ul>
+        <li><code>Integer.parseInt(" 7")</code> <strong>throws</strong>, because the spaces are not digits. Always <code>trim()</code> first.</li>
+        <li><code>Double.parseDouble</code> reads decimals and throws the same <code>NumberFormatException</code> for text like <code>"abc"</code>. It happens to ignore surrounding spaces, but trim anyway so every field behaves the same way.</li>
+        <li>Catch the <em>specific</em> exception. An empty <code>catch (Exception e) {}</code> hides real bugs.</li>
+      </ul>
+
+      <h3>The focus trap</h3>
+      <div class="callout warn">
+        <p>When the user types in a <code>TextField</code>, it has keyboard focus, so the arrow keys move the text cursor, not the drone. After applying input, call <code>canvas.requestFocus()</code>, just as Lab 15 does after each button.</p>
+      </div>
+    </section>
+
+    <section id="lab15" class="skill-section">
+      <h2><span class="step-no">4</span> Connect to Lab 15</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Existing code</th><th>Role in this skill</th></tr></thead>
+          <tbody>
+            <tr><td><code>SceneToken.SPEED</code> is <code>private static final</code></td><td>A <code>final</code> value cannot change at runtime. To let the user set the speed, change it to a normal <code>private double speed</code> field with a <code>setSpeed(double)</code> method, and use it in <code>step(...)</code>. Decide whether Reset restores the default.</td></tr>
+            <tr><td><code>crystal.setCenterX/Y</code> (orb position)</td><td>Selecting "Level 2" moves the orb to that level's position. If you did <a href="new-level.html">Skill 02</a>, the ComboBox just calls <code>loadLevel(selectedIndex, ...)</code>.</td></tr>
+            <tr><td><code>VBox controls</code> and <code>Label status</code></td><td>Put the new controls with small labels ("Level", "Speed") in <code>controls</code>, and show feedback in a <code>Label</code> next to them or in <code>status</code>.</td></tr>
+            <tr><td><code>new Scene(root, 640, 400)</code> + <code>setResizable(false)</code></td><td>Extra controls may not fit. Enlarge the scene slightly or put the inputs in the <code>header</code> HBox.</td></tr>
+            <tr><td><code>canvas.requestFocus()</code></td><td>Call it after a valid Apply and after a level choice.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details open>
+        <summary>Not a game? How this transfers</summary>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>App</th><th>Control</th><th>Gates</th></tr></thead>
+            <tbody>
+              <tr><td>Math solver</td><td>One <code>TextField</code> per coefficient</td><td>Empty? → <code>Double.parseDouble</code> → special cases (see <a href="math-solver.html">Skill 07</a>)</td></tr>
+              <tr><td>Quiz</td><td><code>TextField</code> answer, or a <code>ComboBox</code> of choices</td><td>Empty? → compare with <code>trim().equalsIgnoreCase(...)</code> → score once (<a href="score-system.html">Skill 04</a>)</td></tr>
+              <tr><td>Unit converter</td><td><code>TextField</code> amount + two <code>ComboBox</code>es of units</td><td>Number? → non-negative? → convert</td></tr>
+              <tr><td>Planner / to-do</td><td><code>TextField</code> task name</td><td>Not empty? → not a duplicate? → add to the list</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section id="design" class="skill-section">
+      <h2><span class="step-no">5</span> Design before coding</h2>
+      <ol>
+        <li><strong>Choose vs. type:</strong> for each value your app needs, should the user choose it or type it?</li>
+        <li><strong>Rules:</strong> for each typed value, write the gates: required? whole number or decimal? range? Write the exact message for each failure.</li>
+        <li><strong>When to read:</strong> on an Apply button, on Enter (<code>TextField.setOnAction</code>), or both? Reading on every keystroke is usually unnecessary.</li>
+        <li><strong>Where the rules live:</strong> GUI code reads text and shows messages. Should "speed must be 1–10" live in the model, such as <code>SceneToken</code> or a settings class, so it is enforced no matter who sets the speed?</li>
+        <li><strong>Bad input:</strong> keep the previous valid value, or reset to a default?</li>
+      </ol>
+    </section>
+
+    <section id="build" class="skill-section">
+      <h2><span class="step-no">6</span> Guided implementation</h2>
+      <ol class="steps">
+        <li><strong>Make speed changeable</strong> in <code>SceneToken</code>: replace the constant with an instance field and add a setter (and a getter if useful). Update <code>step(...)</code> to use the field.
+          <p class="check">Check: the app behaves exactly as before at speed 3.</p></li>
+        <li><strong>Add the level picker.</strong> Create a <code>ComboBox&lt;String&gt;</code>, add your level names, and set a default with <code>setValue</code>. Add it to <code>controls</code> with a small <code>Label</code>. Import <code>javafx.scene.control.ComboBox</code>.</li>
+        <li><strong>React to a choice.</strong> In the ComboBox's <code>setOnAction</code>, read <code>getSelectionModel().getSelectedIndex()</code>, then stop flight, reset the drone, move or show the orb for that level (or call <code>loadLevel</code>), update <code>status</code>, and request canvas focus.
+          <details><summary>Hint: where do the orb positions come from?</summary><p>If you have not done Skill 02, two small arrays indexed by level are enough, such as <code>{390, 440, 60}</code> for x. If you have, use your <code>Level</code> objects.</p></details>
+          <p class="check">Check: choosing Level 2 moves the orb and puts the drone back at the start.</p></li>
+        <li><strong>Add the speed box and an Apply button</strong> plus a feedback <code>Label</code>.</li>
+        <li><strong>Write one method that applies the speed</strong>, such as <code>applySpeed(String raw, ...)</code>, and call it from both Apply and the TextField's <code>setOnAction</code> (Enter) so the logic is not duplicated. Inside it: trim → empty gate → parse gate (try/catch) → range gate → set the speed → success message → <code>canvas.requestFocus()</code>.
+          <p class="check">Check: typing <code>7</code> and pressing Enter makes Start fly faster, and the arrow keys work immediately afterward.</p></li>
+        <li><strong>Make the messages specific.</strong> "Enter a speed from 1 to 10." is more helpful than "Invalid input."</li>
+      </ol>
+    </section>
+
+    <section id="test" class="skill-section">
+      <h2><span class="step-no">7</span> Test your skill</h2>
+      <p>Fill in a table like this before you test, then compare:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Typed</th><th>Expected</th><th>Actual</th></tr></thead>
+          <tbody>
+            <tr><td><code>7</code></td><td>Speed set to 7, faster flight</td><td></td></tr>
+            <tr><td><code>&nbsp;7&nbsp;</code> (spaces)</td><td>?</td><td></td></tr>
+            <tr><td>(empty)</td><td>?</td><td></td></tr>
+            <tr><td><code>abc</code>, <code>3.5</code></td><td>?</td><td></td></tr>
+            <tr><td><code>0</code>, <code>11</code>, <code>-2</code></td><td>?</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="tests">
+        <li><span class="kind">Normal</span>Choose each level: the orb moves and the drone resets. Enter a valid speed: Start's flight speed changes accordingly.</li>
+        <li><span class="kind">Edge</span>Every row of the table above shows the correct message, nothing crashes, and the Run window shows no exception. After a <em>bad</em> entry, the previous speed is still in effect.</li>
+        <li><span class="kind">Repeat / reset</span>Apply several speeds in a row, switch levels in the middle of a flight, then press Reset: everything matches your design. The arrow keys still steer after each action, so focus returned to the canvas.</li>
+      </ul>
+    </section>
+
+    <section id="extend" class="skill-section">
+      <h2><span class="step-no">8</span> Extend the skill</h2>
+      <div class="panel">
+        <h3>Challenge: validation you can test without a GUI</h3>
+        <p>Move the three gates into a plain Java method, such as <code>static int parseSpeed(String text)</code> in a small class with no JavaFX, that returns the speed or throws an <code>IllegalArgumentException</code> whose message is the user-facing text. The GUI then has a single <code>try</code> / <code>catch</code> that shows <code>e.getMessage()</code>. Then write a small check class (the <a href="score-system.html#build">Skill 04, Step 6</a> pattern) that prints PASS or FAIL for every row of your table. This is exactly the separation that <a href="math-solver.html">Skill 07</a> relies on.</p>
+      </div>
+    </section>
+
+    <section id="coach" class="skill-section">
+      <h2><span class="step-no">9</span> Ask your AI Coach</h2>
+      <div class="prompt-box">
+<pre>I am a CSSE220 student building a Java 21 / JavaFX 21 project. I want to LEARN how to read user input with TextField and ComboBox, validate it, convert strings to numbers, and handle invalid entries without crashing.
+
+My app is based on the CSSE220 Lab 15 Drone Arena: ArrowApp builds a VBox named controls and a status Label, and calls canvas.requestFocus() so arrow keys reach the arena. SceneToken has SPEED as a private static final constant.
+[Describe the values your app needs from the user. Paste the relevant part of start() when asked.]
+
+Please coach me. Do not write the whole solution.
+1. Explain TextField vs ComboBox and when to choose instead of type. Ask me which values I need.
+2. Help me write the validation rules (empty, number, range) and the exact user messages BEFORE any code.
+3. Explain Integer.parseInt / Double.parseDouble and NumberFormatException with a tiny example, then let me write the try/catch.
+4. Guide me one step at a time. After each step, tell me what I should see, and wait for my result.
+5. Remind me about keyboard focus if my arrow keys stop working.
+6. Help me build a test table of inputs (normal, empty, spaces, letters, decimals, out of range) and check each one.
+Do not replace my project or add libraries.</pre>
+      </div>
+      <details>
+        <summary>Using a coding agent instead?</summary>
+        <ol>
+          <li><strong>Context:</strong> the repository root, the class that builds your controls, and the class that owns the value.</li>
+          <li><strong>Narrow task:</strong> "Add a speed TextField with an Apply button. Validate empty/non-numeric/out-of-range input with specific messages. Do not change unrelated controls."</li>
+          <li><strong>Plan first:</strong> ask it to list the validation rules and messages it will implement.</li>
+          <li><strong>Review the diff:</strong> look for empty <code>catch</code> blocks and duplicated parsing code.</li>
+          <li><strong>Run your input table</strong>, then commit and log the help.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section id="unlocked" class="skill-section unlocked">
+      <h2><span class="step-no">10</span> Skill Unlocked</h2>
+      <ol>
+        <li><strong>Choose</strong> between TextField and ComboBox for a value, and justify the choice.</li>
+        <li><strong>Demonstrate</strong> the three validation gates with a specific message for each failure and no crash.</li>
+        <li><strong>Explain</strong> what <code>NumberFormatException</code> is, why you trim before parsing, and why focus must return to the canvas.</li>
+      </ol>
+      <p>Record it: <a href="my-skills-acquired.html">My Skills Acquired</a>.</p>
+    </section>
+
+    <p class="pager"><a href="grid-world.html">← Skill 05: Grid World</a><a href="math-solver.html">Skill 07: Math Solver →</a></p>
+  </main>
+  <script src="skills.js"></script>
+</body>
+</html>

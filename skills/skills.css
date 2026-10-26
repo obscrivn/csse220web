@@ -1,0 +1,342 @@
+/* CSSE220 Coding Skills Hub: shared styles for project-skills.html and skills/*.html.
+   Matches the Final Project / AI Skills Hub page family (header bar, Arial, white main panel). */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #1f2933;
+  line-height: 1.6;
+}
+#header {
+  background: #1c1515;
+  color: white;
+  padding: 0;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+#header a {
+  position: relative;
+  font-weight: bold;
+  float: left;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 1em;
+  color: #f0f0f0;
+  background: #1c1515;
+  text-decoration: none;
+}
+#header a:hover { background: #222; }
+
+main {
+  max-width: 1000px;
+  margin: 30px auto;
+  background: white;
+  padding: 26px 30px 44px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+h1, h2, h3, h4 { color: #2b2b2b; line-height: 1.25; }
+h1 { margin-bottom: 4px; }
+h2 { margin-top: 0; }
+a { color: #245780; }
+a:focus-visible, summary:focus-visible, button:focus-visible {
+  outline: 3px solid #245780;
+  outline-offset: 3px;
+}
+ul, ol { padding-left: 1.5em; }
+li { margin-left: 0; margin-bottom: 0.35em; }
+.subtitle { font-size: 1.1em; margin-top: 4px; color: #4a5568; }
+.muted, .small { color: #4a5568; }
+.small { font-size: 0.93em; }
+.crumbs { font-size: 0.92em; margin: 0 0 14px; color: #4a5568; }
+
+/* ---------- section tab bar (same pattern as ai-skills.html) ---------- */
+.tabbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 22px;
+}
+.tabbar a {
+  background: #eee;
+  color: #2b2b2b;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  padding: 6px 11px;
+  font-size: 0.9em;
+  text-decoration: none;
+  font-weight: 700;
+}
+.tabbar a:hover { background: #e2e2e2; }
+
+/* ---------- skill page sections ---------- */
+.skill-section {
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid #ddd;
+}
+.skill-section > h2 { display: flex; align-items: baseline; gap: 10px; }
+.step-no {
+  display: inline-block;
+  min-width: 1.9em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #1c1515;
+  color: #fff;
+  font-size: 0.7em;
+  text-align: center;
+}
+
+/* ---------- facts strip ---------- */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0 6px;
+  padding: 0;
+  list-style: none;
+}
+.facts li {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background: #f8f8f8;
+  font-size: 0.93em;
+}
+.facts strong { display: block; color: #2b2b2b; }
+
+/* ---------- difficulty and tags ---------- */
+.tag, .level {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 0 4px 6px 0;
+}
+.tag { background: #ececec; color: #2b2b2b; }
+.level { border: 1px solid; }
+.level-beginner { background: #ecf8f2; color: #18794e; border-color: #a9d5c1; }
+.level-intermediate { background: #edf4ff; color: #245780; border-color: #b7c8df; }
+.level-challenge { background: #fff8e6; color: #8a5a00; border-color: #ecd28b; }
+
+/* ---------- hub cards ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 14px;
+}
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  background: #f3f3f3;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  padding: 18px 18px 14px;
+  color: #1f2933;
+}
+.skill-card h3 { margin: 4px 0 6px; font-size: 1.25rem; }
+.skill-card h3 a { color: #2b2b2b; text-decoration: none; }
+.skill-card h3 a:hover { text-decoration: underline; }
+.skill-card p { margin: 4px 0 8px; }
+.skill-card dl { margin: 6px 0 10px; font-size: 0.92em; }
+.skill-card dt { font-weight: 700; color: #2b2b2b; }
+.skill-card dd { margin: 0 0 6px; color: #425466; }
+.skill-card .open {
+  margin-top: auto;
+  align-self: flex-start;
+  background: #1c1515;
+  color: #fff;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.skill-card .open:hover { background: #3a3030; }
+.category { margin-top: 30px; padding-top: 12px; border-top: 1px solid #ddd; }
+.category h2 { margin-bottom: 2px; }
+
+/* ---------- panels, callouts ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.panel {
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: #f8f8f8;
+}
+.panel h3, .panel h4 { margin-top: 0; }
+.callout {
+  margin: 14px 0;
+  padding: 11px 14px;
+  border-left: 4px solid #245780;
+  border-radius: 6px;
+  background: #edf4ff;
+  color: #23415f;
+}
+.callout.warn { border-left-color: #b26a00; background: #fff8e6; color: #5c3d00; }
+.callout.ok { border-left-color: #18794e; background: #ecf8f2; color: #134e35; }
+.callout p { margin: 4px 0; }
+
+/* ---------- code ---------- */
+code {
+  font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+  background: #eef1f6;
+  color: #7a1a3e;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+pre {
+  margin: 10px 0 14px;
+  overflow-x: auto;
+  background: #f7f9fc;
+  border: 1px solid #ced8e8;
+  border-left: 4px solid #245780;
+  border-radius: 6px;
+  padding: 12px 14px;
+  line-height: 1.45;
+}
+pre code { background: none; color: #172033; padding: 0; font-size: 0.9em; }
+:not(pre) > code { overflow-wrap: anywhere; }
+pre.bad { border-left-color: #b42318; background: #fff6f5; }
+pre.output { border-left-color: #6b7280; background: #f4f4f5; }
+.code-label {
+  display: block;
+  margin: 12px 0 -6px;
+  font-size: 0.82em;
+  font-weight: 700;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- tables ---------- */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 10px; border: 1px solid #d9e2ec; }
+th, td { border: 1px solid #d9e2ec; padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f3f3; }
+
+/* ---------- disclosures ---------- */
+details {
+  margin: 10px 0;
+  padding: 4px 12px;
+  border-left: 4px solid #8c98aa;
+  border-radius: 6px;
+  background: #f7f8fa;
+}
+summary { cursor: pointer; padding: 8px 0; font-weight: bold; color: #435064; }
+
+/* ---------- implementation steps ---------- */
+ol.steps { counter-reset: none; padding-left: 1.6em; }
+ol.steps > li { margin-bottom: 14px; }
+ol.steps > li > strong:first-child { color: #2b2b2b; }
+.check { color: #18794e; font-weight: 700; }
+
+/* ---------- tests ---------- */
+.tests { list-style: none; padding-left: 0; }
+.tests li {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background: #fbfbfb;
+}
+.tests .kind {
+  display: inline-block;
+  min-width: 5.5em;
+  margin-right: 6px;
+  font-weight: 700;
+  color: #245780;
+}
+
+/* ---------- AI prompt box ---------- */
+.prompt-box { position: relative; }
+.prompt-box pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  border-left-color: #6d28d9;
+  background: #f7f4ff;
+  padding-top: 40px;
+}
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: 1px solid #b9a8e8;
+  background: #fff;
+  color: #4c1d95;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.copy-btn:hover { background: #efe9ff; }
+
+/* ---------- unlocked ---------- */
+.unlocked {
+  border: 2px solid #18794e;
+  background: #ecf8f2;
+  border-radius: 10px;
+  padding: 14px 18px;
+}
+.unlocked h2 { color: #134e35; }
+
+/* ---------- prev/next ---------- */
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid #ddd;
+  font-weight: 700;
+}
+
+/* ---------- diagrams ---------- */
+figure { margin: 14px 0; }
+figure svg { display: block; width: 100%; height: auto; max-width: 720px; }
+figcaption { font-size: 0.9em; color: #4a5568; margin-top: 6px; }
+
+/* ---------- portfolio form ---------- */
+.field { margin: 0 0 12px; }
+.field label { display: block; font-weight: 700; margin-bottom: 4px; color: #2b2b2b; }
+.field .hint { display: block; font-weight: normal; font-size: 0.9em; color: #4a5568; }
+.field input, .field textarea, .field select {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid #c4ccd8;
+  border-radius: 6px;
+  background: #fff;
+}
+.field textarea { min-height: 4.5em; resize: vertical; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.btn {
+  border: 1px solid #1c1515;
+  background: #1c1515;
+  color: #fff;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn.secondary { background: #fff; color: #1c1515; }
+
+@media (max-width: 700px) {
+  main { padding: 18px 16px; margin: 20px 0; }
+  #header a { display: inline-block; float: none; margin: 4px 6px; padding: 0.7em; }
+}
+@media print {
+  #header, .tabbar, .copy-btn, .pager, .btn-row { display: none; }
+  main { box-shadow: none; margin: 0; max-width: none; }
+  details { border: none; }
+}

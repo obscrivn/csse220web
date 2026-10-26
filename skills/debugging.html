@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Skill 08: Debug, Test, and Improve AI-Assisted Java Code | CSSE220</title>
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <link rel="stylesheet" href="skills.css">
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body>
+  <div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+    <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../graphics/index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <p class="crumbs"><a href="../project.html">Final Project</a> › <a href="../project-skills.html">Coding Skills Hub</a> › Skill 08</p>
+    <h1>Skill 08: Debug, Test, and Improve AI-Assisted Java Code</h1>
+    <p class="subtitle">Read the error, reproduce the bug, find the cause with evidence, and review every change before you commit it, whether you wrote it or an AI did.</p>
+    <ul class="facts">
+      <li><strong>Category</strong>Debugging and software design</li>
+      <li><strong>Difficulty</strong><span class="level level-beginner">Beginner</span> (for everyone)</li>
+      <li><strong>Concepts</strong>Compile vs. runtime vs. logic errors, stack traces, <code>println</code>, IntelliJ debugger, test cases, diffs</li>
+      <li><strong>Prerequisites</strong>None. Use it any time.</li>
+      <li><strong>Effort</strong>About 1 hour, then keep using it</li>
+    </ul>
+
+    <nav class="tabbar" aria-label="Skill sections">
+      <a href="#mission">1 Mission</a><a href="#know">2 Already know</a><a href="#concept">3 Concept</a><a href="#lab15">4 Lab 15</a><a href="#design">5 Design</a><a href="#build">6 Bug hunt</a><a href="#test">7 Test</a><a href="#extend">8 Extend</a><a href="#coach">9 AI Coach</a><a href="#unlocked">10 Unlocked</a>
+    </nav>
+
+    <section id="mission" class="skill-section">
+      <h2><span class="step-no">1</span> Mission</h2>
+      <p>Every feature in this hub will break at least once while you build it. AI assistants make this more important, not less: they produce code that <em>looks</em> right, compiles, and still does the wrong thing. The skill that separates a working team from a stuck one is <strong>debugging with evidence</strong> instead of guessing or asking for "another fix".</p>
+      <p><strong>Your mission:</strong> learn to classify an error, read Java's messages, reproduce and diagnose a real bug planted in Drone Arena code, and review AI-written changes before they reach <code>main</code>.</p>
+    </section>
+
+    <section id="know" class="skill-section">
+      <h2><span class="step-no">2</span> What you already know</h2>
+      <ul>
+        <li><strong>Homework tests:</strong> a failing test tells you <em>expected</em> vs. <em>actual</em>.</li>
+        <li><strong>Lab 13 and Lab 15 "If something does not work" sections:</strong> each one maps a symptom to a cause. That is debugging.</li>
+        <li><strong>Milestone 2 checks:</strong> the input/action | expected | actual | fix/retest table.</li>
+        <li><strong>Errors &amp; Exceptions (Week 8):</strong> what an exception is and how <code>try</code> / <code>catch</code> works.</li>
+      </ul>
+    </section>
+
+    <section id="concept" class="skill-section">
+      <h2><span class="step-no">3</span> Learn the concept</h2>
+
+      <h3>Three kinds of errors</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Kind</th><th>When you see it</th><th>What it looks like</th><th>First move</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Compilation error</strong></td><td>Before the program runs</td><td>Red underline in IntelliJ; <code>javafx:run</code> fails with <code>error:</code> lines</td><td>Read the <em>first</em> error: file, line, message</td></tr>
+            <tr><td><strong>Runtime exception</strong></td><td>While running</td><td>A stack trace in the Run window; the app may not open, or a feature stops working</td><td>Find the deepest <code>Caused by:</code> and the first line in <em>your</em> package</td></tr>
+            <tr><td><strong>Logic error</strong></td><td>While running</td><td>No message at all. The app just does the wrong thing.</td><td>Reproduce it, then gather evidence</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Reading a compiler error</h3>
+      <p>These are real messages produced by small mistakes in the Lab 15 code:</p>
+      <span class="code-label">Mistake: token.moveBy(-10, 0);  (forgot the width and height)</span>
+<pre class="output"><code>demo/ArrowApp.java:76: error: method moveBy in class SceneToken cannot be applied to given types;
+                token.moveBy(-10, 0);
+                     ^
+  required: double,double,double,double
+  found:    int,int
+  reason: actual and formal argument lists differ in length</code></pre>
+      <p><strong>Read it as:</strong> file <code>ArrowApp.java</code>, line 76. <code>moveBy</code> needs four <code>double</code>s, and you passed two values. Open <code>SceneToken.moveBy</code> and compare the parameter list.</p>
+      <span class="code-label">Mistake: crystl.setVisible(false);  (typo)</span>
+<pre class="output"><code>demo/ArrowApp.java:108: error: cannot find symbol
+            crystl.setVisible(false);
+            ^
+  symbol:   variable crystl
+  location: class ArrowApp</code></pre>
+      <p><strong>"cannot find symbol"</strong> means Java does not know that name: a typo, a missing import, a variable used outside its scope, or a method that does not exist. AI tools sometimes invent methods. This message is how you catch them.</p>
+      <div class="callout"><p>Fix the <strong>first</strong> compiler error, then recompile. One mistake can cause several follow-on errors that disappear on their own.</p></div>
+
+      <h3>Reading a stack trace</h3>
+      <p>Here is the real output when the drone image path is wrong. <code>getResource("/drone.png")</code> is missing the <code>images</code> folder. Some JavaFX-internal lines are removed.</p>
+<pre class="output"><code>Exception in Application start method
+java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(...)
+	...
+Caused by: java.lang.RuntimeException: Exception in Application start method
+	at javafx.graphics@21.0.8/com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:893)
+	...
+<strong>Caused by: java.lang.NullPointerException: Cannot invoke "java.net.URL.toExternalForm()"
+    because the return value of "java.lang.Class.getResource(String)" is null
+	at demo.SceneToken.&lt;init&gt;(SceneToken.java:18)
+	at demo.ArrowApp.start(ArrowApp.java:25)</strong>
+	at javafx.graphics@21.0.8/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(...)
+	...
+Exception running application demo.ArrowApp</code></pre>
+      <ol>
+        <li><strong>Skip to the last <code>Caused by:</code>.</strong> The earlier ones are JavaFX wrapping the real problem.</li>
+        <li><strong>Read the message.</strong> <code>getResource(...)</code> returned <code>null</code>, which means the file was not found at that path.</li>
+        <li><strong>Find the first line in <em>your</em> package</strong> (<code>demo.</code>): <code>SceneToken.java:18</code>. <code>&lt;init&gt;</code> means "inside the constructor".</li>
+        <li><strong>The next line is the caller:</strong> <code>ArrowApp.start</code>, line 25, which is <code>new SceneToken()</code>.</li>
+        <li><strong>Fix the cause, not the symptom:</strong> correct the path to <code>/images/drone.png</code>. Do not wrap the line in <code>try</code> / <code>catch</code> to hide it.</li>
+      </ol>
+      <details>
+        <summary>Two setup errors that are not bugs in your code</summary>
+        <ul>
+          <li><code>Error: JavaFX runtime components are missing, and are required to run this application</code>: you started your <em>app</em> class (the one that <code>extends Application</code>) with the green Run arrow. Start the app with the Maven goal <code>javafx:run</code>, as in every JavaFX lab. The green arrow is fine for check classes with no JavaFX in them.</li>
+          <li><strong>The image works on your laptop but not on a teammate's:</strong> check the file name's capitalization. <code>Drone.png</code> and <code>drone.png</code> can look the same on some computers and differ on others. Match the name exactly.</li>
+        </ul>
+      </details>
+
+      <h3>Finding a logic error: the debugging loop</h3>
+      <ol>
+        <li><strong>Reproduce:</strong> write the exact steps that make the bug happen every time.</li>
+        <li><strong>Predict:</strong> state what <em>should</em> happen at each step.</li>
+        <li><strong>Observe:</strong> collect evidence about what actually happens, using print statements or the debugger.</li>
+        <li><strong>Hypothesize:</strong> "I think X happens because Y." Make one claim you can test.</li>
+        <li><strong>Change one thing,</strong> then rerun the reproduction steps.</li>
+        <li><strong>Retest everything nearby</strong> (normal, edge, repeat) so the fix did not break something else.</li>
+      </ol>
+
+      <h3>Two ways to observe</h3>
+      <div class="grid">
+        <div class="panel">
+          <h4>Print statements (always work)</h4>
+<pre><code>System.out.println("checkCollision: visible="
+        + crystal.isVisible() + " score=" + score.getScore());</code></pre>
+          <p class="small">Output appears in IntelliJ's Run window while <code>javafx:run</code> is running. Print the values your hypothesis is about. Remove the prints before you commit.</p>
+        </div>
+        <div class="panel">
+          <h4>Breakpoints (IntelliJ debugger)</h4>
+          <ul class="small">
+            <li>Click the gutter next to a line number to set a red breakpoint.</li>
+            <li>Click the green arrow next to <code>main</code> in a check class (such as <code>ScoreKeeperCheck</code> from <a href="score-system.html#build">Skill 04</a>) and choose <strong>Debug</strong>. Execution pauses at the breakpoint, and the Variables panel shows every field and local.</li>
+            <li><strong>Step Over</strong> (F8) runs one line; <strong>Step Into</strong> (F7) enters a method call; <strong>Resume</strong> continues.</li>
+            <li><code>javafx:run</code> starts your app in a separate process, so breakpoints in GUI code usually do not stop there. Debug your <em>model</em> classes through a check class, and use prints for GUI handlers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Inspecting AI-generated code</h3>
+      <p>Before accepting any suggestion, ask:</p>
+      <ul>
+        <li>Does it use <strong>my</strong> class, field, and method names, or did it invent some? (Look for "cannot find symbol".)</li>
+        <li>Does it add a second Timeline, a new library, a new framework, or a giant new class?</li>
+        <li>Which object now owns the state? Does that match our design?</li>
+        <li>Are there empty <code>catch</code> blocks, magic numbers, or copied code?</li>
+        <li>Does it handle the edge cases I listed, such as empty input, the last level, or a reset?</li>
+        <li>Can I explain every line to a teammate?</li>
+      </ul>
+    </section>
+
+    <section id="lab15" class="skill-section">
+      <h2><span class="step-no">4</span> Connect to Lab 15</h2>
+      <p>The Lab 15 Help section is a debugging table. Each row is a symptom → cause → fix you can generalize:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Lab 15 symptom</th><th>Real cause</th><th>General lesson</th></tr></thead>
+          <tbody>
+            <tr><td>Keys do nothing</td><td>A button has keyboard focus</td><td>Events go to the node that has focus. Check where they are going.</td></tr>
+            <tr><td>Up moves down</td><td>Wrong sign: screen y grows downward</td><td>Check your coordinate assumptions.</td></tr>
+            <tr><td>Orb follows the drone</td><td>Orb added to the drone's <code>Group</code></td><td>Check the parent/child structure of the scene graph.</td></tr>
+            <tr><td>Message gets replaced</td><td>The Timeline kept running after collection</td><td>Ask "what else still runs after this event?"</td></tr>
+            <tr><td>Collected more than once</td><td>A hidden node still has bounds</td><td>Look for a missing guard condition (the bug hunt below).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details>
+        <summary>Not a game? The same skills apply</summary>
+        <ul>
+          <li><strong>Solvers:</strong> logic errors hide in formulas. A check with a hand-computed answer is your best evidence (see <a href="math-solver.html">Skill 07</a>).</li>
+          <li><strong>Input apps:</strong> runtime exceptions such as <code>NumberFormatException</code> mean that validation is missing (see <a href="user-input.html">Skill 06</a>).</li>
+          <li><strong>Data apps:</strong> <code>IndexOutOfBoundsException</code> in a stack trace points to the exact list or array access.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="design" class="skill-section">
+      <h2><span class="step-no">5</span> Design before coding (and before debugging)</h2>
+      <p>Good design makes bugs easier to find. Before you change code to fix a bug, answer:</p>
+      <ol>
+        <li><strong>Where is the single place this state changes?</strong> If the score can change in three places, that is your first suspect.</li>
+        <li><strong>Who calls this method, and how often?</strong> In Lab 15, <code>checkCollision</code> runs on every tick, every arrow key, and every Rotate.</li>
+        <li><strong>What is the expected value at each step?</strong> Write it down <em>before</em> you print or debug, so the evidence has something to be compared with.</li>
+        <li><strong>Can I reproduce this in a test?</strong> If the bug is in a model class, a check that prints FAIL is the best bug report.</li>
+      </ol>
+    </section>
+
+    <section id="build" class="skill-section">
+      <h2><span class="step-no">6</span> Guided practice: the bug hunt</h2>
+      <section id="bug-hunt">
+        <p>A teammate added scoring to Drone Arena. It compiles and runs, but players report that one orb is worth way too many points. Here is their <code>checkCollision</code>. <em>Do not fix it yet.</em></p>
+        <span class="code-label">Buggy on purpose</span>
+<pre class="bad"><code>private void checkCollision(SceneToken token, Label status) {
+    boolean touching = token.getView().getBoundsInParent()
+            .intersects(crystal.getBoundsInParent());
+    if (touching) {
+        crystal.setVisible(false);
+        score.addPoints(ORB_POINTS);       // ORB_POINTS is 10
+        updateScoreLabel();
+        status.setText("Energy collected!");
+    }
+}</code></pre>
+        <ol class="steps">
+          <li><strong>Reproduce.</strong> Write the steps: "Reset, press Start, do not steer, wait until the drone passes the orb." In our test run, the score reached <strong>390</strong> for a single orb.</li>
+          <li><strong>Predict.</strong> How many times should points be awarded? Which call sites run <code>checkCollision</code>? (Look at the Timeline callback, the key handler, and Rotate.)</li>
+          <li><strong>Observe.</strong> Add one print as the first line inside the <code>if</code>:
+<pre><code>System.out.println("award! visible=" + crystal.isVisible());</code></pre>
+            Run the reproduction steps. How many lines appear? What does <code>visible</code> say after the first one?</li>
+          <li><strong>Hypothesize.</strong> Finish this sentence with your evidence: "Points are awarded repeatedly because ___, even though the orb is hidden."
+            <details><summary>Check your hypothesis</summary><p>A hidden node still has bounds, so <code>intersects</code> keeps returning <code>true</code>. The Timeline is still running (this version never calls <code>flight.stop()</code>), so every 20 ms tick while the drone overlaps the orb awards 10 more points. The missing piece is a <strong>guard condition</strong>.</p></details></li>
+          <li><strong>Change one thing.</strong> Add the guard that makes the award happen only once. Decide whether the flight should also stop, as it did in Lab 15.</li>
+          <li><strong>Retest</strong> with the three checks in section 7, then remove the print statement.</li>
+        </ol>
+
+        <h3>Practice 2: review an AI suggestion</h3>
+        <p>A student asked an assistant "add scoring to my drone game" and received this. It <strong>compiles</strong>. Find at least four problems before reading the hints.</p>
+        <span class="code-label">AI-generated suggestion</span>
+<pre class="bad"><code>// AI suggestion: "Here's how to add scoring!"
+Timeline scoreTimer = new Timeline(new KeyFrame(Duration.millis(20), e -&gt; {
+    try {
+        if (token.getView().getBoundsInParent()
+                .intersects(crystal.getBoundsInParent())) {
+            score = score + 10;
+            new Label("Score: " + score);
+        }
+    } catch (Exception ex) { }
+}));
+scoreTimer.setCycleCount(Timeline.INDEFINITE);
+scoreTimer.play();</code></pre>
+        <details><summary>Hints: problems to look for</summary>
+          <ul>
+            <li>A <strong>second Timeline</strong>. It runs even before Start, and it is not stopped by Reset.</li>
+            <li><strong>No guard</strong>, so the same duplicate scoring as above.</li>
+            <li><code>new Label(...)</code> creates a label that is <strong>never added</strong> to the scene, so nothing on screen changes.</li>
+            <li>An <strong>empty <code>catch</code></strong> silently hides any exception.</li>
+            <li>The score is a bare <code>int</code> changed inside a timer, not a model with rules (<a href="score-system.html">Skill 04</a>).</li>
+          </ul>
+        </details>
+
+        <h3>Practice 3: review before you commit</h3>
+        <ol>
+          <li>In <strong>GitHub Desktop → Changes</strong>, click each changed file and read the green and red lines of the diff.</li>
+          <li>Uncheck files you did not mean to change, such as IDE settings or build output.</li>
+          <li>Remove debugging prints and commented-out experiments.</li>
+          <li>Make sure there are no new dependencies in <code>pom.xml</code> that the team did not agree on.</li>
+          <li>Run the app and your tests <em>after</em> the final edit, not before it.</li>
+          <li>Write a commit message that says what changed and why. Then push and open a pull request for review, as in the <a href="../github-desktop-guide.html">GitHub Desktop walkthrough</a>.</li>
+        </ol>
+      </section>
+    </section>
+
+    <section id="test" class="skill-section">
+      <h2><span class="step-no">7</span> Test your skill</h2>
+      <p>Apply these to your bug-hunt fix:</p>
+      <ul class="tests">
+        <li><span class="kind">Normal</span>Reset, then Start: the score becomes exactly 10 when the orb is collected. Collect it by steering instead: also exactly 10.</li>
+        <li><span class="kind">Edge</span>After collecting, press arrows, Rotate, and steer back over the orb's old position: the score stays at 10, and no stray prints are left in the Run window.</li>
+        <li><span class="kind">Repeat / reset</span>Collect → Reset → collect, three times: the score behaves as your team designed, every time. Write the result in your checks table: input/action | expected | actual | fix/retest.</li>
+      </ul>
+    </section>
+
+    <section id="extend" class="skill-section">
+      <h2><span class="step-no">8</span> Extend the skill</h2>
+      <div class="panel">
+        <h3>Challenge: turn a bug into a regression test</h3>
+        <p>Next time you find a bug in a model class, add a line to its check class that prints <strong>FAIL</strong> because of the bug, <em>before</em> you fix it. Fix the code, watch it change to PASS, and keep the check. If anyone (or any AI) reintroduces the bug later, rerunning the check catches it. Try it now: add a check showing that <code>ScoreKeeper.addPoints(-5)</code> must not lower the score, make it fail, then make it pass.</p>
+      </div>
+    </section>
+
+    <section id="coach" class="skill-section">
+      <h2><span class="step-no">9</span> Ask your AI Coach</h2>
+      <p>For debugging, ask the AI to coach you toward the cause instead of handing you a patch.</p>
+      <div class="prompt-box">
+<pre>I am a CSSE220 student working on a Java 21 / JavaFX 21 project. I want to LEARN to debug this problem myself. Please act as a debugging coach.
+
+What I expected: [expected behavior]
+What actually happens: [actual behavior]
+Steps to reproduce: [exact steps, every time]
+Error message or stack trace (if any): [paste the full text]
+Relevant code: [paste only the methods involved, with real class names]
+What I already tried: [your attempts and what happened]
+
+Please:
+1. First tell me what kind of error this is (compile, runtime, or logic) and how you can tell.
+2. If there is a stack trace, show me how to find the line in MY code that matters. Let me find it first.
+3. Ask me questions that help me form a hypothesis. Do not give me the fix immediately.
+4. Suggest one print statement or breakpoint that would test my hypothesis, and wait for my results.
+5. After I propose a fix, ask me how I will retest normal, edge, and repeat/reset behavior.
+6. If my code came from an AI, help me review it for invented methods, duplicated timers, empty catch blocks, and state in the wrong class.
+Do not rewrite my whole project.</pre>
+      </div>
+      <details>
+        <summary>Using a coding agent to investigate?</summary>
+        <ol>
+          <li><strong>Context:</strong> the repository root, the exact reproduction steps, and the full error text.</li>
+          <li><strong>Narrow task:</strong> "Investigate only. Do not edit files. Explain the most likely cause and point to file:line evidence."</li>
+          <li><strong>Plan first:</strong> ask for the smallest fix and which tests would prove it, before any edit.</li>
+          <li><strong>Review the diff:</strong> a one-line bug usually has a small fix. Be suspicious of large rewrites.</li>
+          <li><strong>Run your reproduction steps and the three checks,</strong> then commit with a message describing the bug, and log the help.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section id="unlocked" class="skill-section unlocked">
+      <h2><span class="step-no">10</span> Skill Unlocked</h2>
+      <ol>
+        <li><strong>Classify</strong> an error as compile, runtime, or logic, and read a compiler message or stack trace down to the line in your own code.</li>
+        <li><strong>Demonstrate</strong> the debugging loop on a real bug: reproduction steps, evidence, hypothesis, one change, retest.</li>
+        <li><strong>Review</strong> an AI-generated change and name specific problems before you accept, edit, or reject it.</li>
+      </ol>
+      <p>Record it: <a href="my-skills-acquired.html">My Skills Acquired</a>.</p>
+    </section>
+
+    <p class="pager"><a href="math-solver.html">← Skill 07: Math Solver</a><a href="my-skills-acquired.html">My Skills Acquired →</a></p>
+  </main>
+  <script src="skills.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Skill 03: Add a Welcome Screen | CSSE220</title>
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <link rel="stylesheet" href="skills.css">
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body>
+  <div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+    <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../graphics/index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <p class="crumbs"><a href="../project.html">Final Project</a> › <a href="../project-skills.html">Coding Skills Hub</a> › Skill 03</p>
+    <h1>Skill 03: Add a Welcome Screen</h1>
+    <p class="subtitle">Open on a start screen, play the game, and return to the menu without losing track of your app's state.</p>
+    <ul class="facts">
+      <li><strong>Category</strong>Screens and interfaces</li>
+      <li><strong>Difficulty</strong><span class="level level-beginner">Beginner</span></li>
+      <li><strong>Concepts</strong><code>Stage</code>, <code>Scene</code>, root <code>Parent</code>, <code>VBox</code>, <code>setScene</code> / <code>setRoot</code>, focus</li>
+      <li><strong>Prerequisites</strong><a href="../labs/lab12.html">Lab 12</a>, <a href="../graphics/javafx-layout.html">JavaFX layout reference</a></li>
+      <li><strong>Effort</strong>About 1 hour</li>
+    </ul>
+
+    <nav class="tabbar" aria-label="Skill sections">
+      <a href="#mission">1 Mission</a><a href="#know">2 Already know</a><a href="#concept">3 Concept</a><a href="#lab15">4 Lab 15</a><a href="#design">5 Design</a><a href="#build">6 Build</a><a href="#test">7 Test</a><a href="#extend">8 Extend</a><a href="#coach">9 AI Coach</a><a href="#unlocked">10 Unlocked</a>
+    </nav>
+
+    <section id="mission" class="skill-section">
+      <h2><span class="step-no">1</span> Mission</h2>
+      <p>Your Drone Arena drops the player straight into the game. Many apps start with a <strong>welcome screen</strong> that shows the title, short instructions, and a <strong>Play</strong> button. A <strong>Menu</strong> button in the game returns to it.</p>
+      <p><strong>Your mission:</strong> add a welcome screen and the two-way navigation. Then make a deliberate decision about whether the game keeps or resets its state when the player comes back.</p>
+      <div class="callout">
+        <p><strong>Milestone 2 reminder:</strong> one usable screen is enough for your alpha. Add screens <em>after</em> your core workflow works, unless a second screen is essential to that workflow.</p>
+      </div>
+    </section>
+
+    <section id="know" class="skill-section">
+      <h2><span class="step-no">2</span> What you already know</h2>
+      <ul>
+        <li><strong>Lab 12:</strong> <code>Application</code>, <code>Stage</code>, <code>Scene</code>, and <code>VBox</code>; <code>Button.setOnAction</code> runs a lambda when clicked.</li>
+        <li><strong>Graphics Hub:</strong> layout containers (<a href="../graphics/javafx-layout.html">VBox, HBox, BorderPane, GridPane</a>) and the <a href="../graphics/javafx-basics.html">Stage → Scene → root</a> structure.</li>
+        <li><strong>Lab 15:</strong> after a button click, <code>canvas.requestFocus()</code> sends the arrow keys back to the arena.</li>
+      </ul>
+    </section>
+
+    <section id="concept" class="skill-section">
+      <h2><span class="step-no">3</span> Learn the concept</h2>
+      <h3>Stage, Scene, root</h3>
+      <figure>
+        <svg viewBox="0 0 720 210" role="img" aria-labelledby="scTitle scDesc">
+          <title id="scTitle">One Stage can show different Scenes</title>
+          <desc id="scDesc">The Stage is the window. It shows one Scene at a time. The welcome Scene's root is a VBox; the game Scene's root is the Lab 15 BorderPane. setScene switches which Scene the Stage shows.</desc>
+          <rect x="0" y="0" width="720" height="210" fill="#fff"/>
+          <rect x="250" y="10" width="220" height="48" rx="8" fill="#1c1515"/>
+          <text x="360" y="32" font-family="Arial" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">Stage (the window)</text>
+          <text x="360" y="50" font-family="Arial" font-size="12" fill="#ddd" text-anchor="middle">shows ONE scene at a time</text>
+          <defs><marker id="arr3" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+          <line x1="300" y1="60" x2="180" y2="98" stroke="#555" stroke-width="2" marker-end="url(#arr3)"/>
+          <line x1="420" y1="60" x2="540" y2="98" stroke="#555" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arr3)"/>
+          <text x="360" y="92" font-family="Arial" font-size="12" fill="#245780" text-anchor="middle">stage.setScene(...)</text>
+          <rect x="40" y="100" width="280" height="100" rx="10" fill="#edf4ff" stroke="#245780"/>
+          <text x="180" y="124" font-family="Arial" font-size="14" font-weight="bold" fill="#245780" text-anchor="middle">welcomeScene</text>
+          <text x="180" y="146" font-family="Arial" font-size="12" fill="#23415f" text-anchor="middle">root: VBox</text>
+          <text x="180" y="166" font-family="Arial" font-size="12" fill="#23415f" text-anchor="middle">title Label · instructions · Play Button</text>
+          <rect x="400" y="100" width="280" height="100" rx="10" fill="#f3f3f3" stroke="#999"/>
+          <text x="540" y="124" font-family="Arial" font-size="14" font-weight="bold" fill="#2b2b2b" text-anchor="middle">gameScene</text>
+          <text x="540" y="146" font-family="Arial" font-size="12" fill="#333" text-anchor="middle">root: BorderPane (Lab 15)</text>
+          <text x="540" y="166" font-family="Arial" font-size="12" fill="#333" text-anchor="middle">canvas · controls + Menu · status</text>
+        </svg>
+        <figcaption>The window stays the same. Switching scenes swaps everything inside it.</figcaption>
+      </figure>
+      <ul>
+        <li>A <strong>Stage</strong> is the window, which you receive in <code>start(Stage stage)</code>.</li>
+        <li>A <strong>Scene</strong> holds everything shown in the window. It has exactly one <strong>root</strong>, such as a <code>VBox</code> or <code>BorderPane</code>.</li>
+        <li>A node can be in only <strong>one place at a time</strong>. A root can belong to only one Scene. If you reuse a root in a second Scene, JavaFX throws an <code>IllegalArgumentException</code> saying it "is already set as root of another scene".</li>
+      </ul>
+
+      <h3>Three ways to change what the user sees</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Technique</th><th>Code</th><th>Use when</th></tr></thead>
+          <tbody>
+            <tr><td><strong>A. Switch scenes</strong></td><td><code>stage.setScene(gameScene);</code></td><td>Screens are completely different, such as a menu vs. gameplay. This is the clearest choice for this skill.</td></tr>
+            <tr><td><strong>B. One scene, swap its root</strong></td><td><code>scene.setRoot(gameRoot);</code></td><td>Same idea as A, but the window keeps one Scene object. Handy when you want the window size to follow one scene.</td></tr>
+            <tr><td><strong>C. Change content inside one layout</strong></td><td><code>root.setCenter(otherPane);</code> or <code>label.setText(...)</code></td><td>Most of the screen stays the same, such as the header and buttons, and only one region changes. This is not a new screen.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>A welcome screen is a small layout</h3>
+<pre><code>Label title = new Label("Drone Arena");
+Button play = new Button("Play");
+VBox welcome = new VBox(16, title, /* instructions, */ play);
+welcome.setAlignment(Pos.CENTER);           // import javafx.geometry.Pos
+play.setOnAction(event -&gt; { /* show the game; give the arena focus */ });</code></pre>
+
+      <h3>When are multiple screens a good idea?</h3>
+      <div class="grid">
+        <div class="panel"><h4>Good reasons</h4><ul><li>Different <em>modes</em> with different controls: menu, play, results, settings</li><li>The user moves between them on purpose</li><li>Mixing them on one screen would be crowded or confusing</li></ul></div>
+        <div class="panel"><h4>Probably not needed</h4><ul><li>Showing a message: use a <code>Label</code></li><li>One small choice: use a <code>ComboBox</code> (<a href="user-input.html">Skill 06</a>)</li><li>Information shown next to the main view: use a <code>BorderPane</code> region</li><li>"It looks more professional." Get the core working first.</li></ul></div>
+      </div>
+    </section>
+
+    <section id="lab15" class="skill-section">
+      <h2><span class="step-no">4</span> Connect to Lab 15</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Existing code in <code>ArrowApp.start(Stage stage)</code></th><th>Role in this skill</th></tr></thead>
+          <tbody>
+            <tr><td><code>BorderPane root</code> holding <code>canvas</code>, <code>controls</code>, <code>header</code>, <code>status</code></td><td>Becomes the root of your <strong>game scene</strong>. Leave its contents alone.</td></tr>
+            <tr><td><code>stage.setScene(new Scene(root, 640, 400));</code></td><td>Keep a reference to this Scene, for example <code>Scene gameScene = ...</code>. The stage should show your <em>welcome</em> scene first.</td></tr>
+            <tr><td><code>stage.setResizable(false);</code></td><td>Give both scenes the same size (640 × 400) so the window does not jump.</td></tr>
+            <tr><td><code>VBox controls = new VBox(15, start, reset, rotate);</code></td><td>Add a Menu button here.</td></tr>
+            <tr><td><code>canvas.requestFocus();</code> (last line of <code>start</code>)</td><td>Must also run whenever you <em>switch to</em> the game. Otherwise the keys go to nothing.</td></tr>
+            <tr><td><code>flight</code> Timeline</td><td>Should it keep running while the welcome screen is visible? Usually not. Stop or pause it when you leave.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details>
+        <summary>Not a game? How this transfers</summary>
+        <ul>
+          <li><strong>Math solver:</strong> a home screen where the user picks a problem type (linear, quadratic, unit conversion) and each solver screen has a Back button.</li>
+          <li><strong>Utility:</strong> a list screen and a detail/edit screen. Coming back should show the updated list, so you <em>preserve</em> state.</li>
+          <li><strong>Quiz:</strong> start → question → results. "Try again" is a <em>reset</em>.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="design" class="skill-section">
+      <h2><span class="step-no">5</span> Design before coding</h2>
+      <ol>
+        <li><strong>Screens:</strong> sketch each screen and the buttons that move between them, as boxes and arrows.</li>
+        <li><strong>Build once or rebuild?</strong> If you build the game scene <em>once</em> and reuse it, everything is preserved: drone position, orb, and level. If you build a new one every time, everything starts fresh. Which do you want? You can also reuse it and call your reset code.</li>
+        <li><strong>What pauses?</strong> When the player leaves the game, what should happen to the Timeline?</li>
+        <li><strong>References:</strong> the Play handler needs the game scene, and the Menu handler needs the welcome scene. Will you keep them as local variables inside <code>start</code> or as fields? (See the hint in Step 4.)</li>
+        <li><strong>Readability:</strong> <code>start</code> is already long. Would helper methods such as <code>buildWelcomeView()</code> and <code>buildGameView()</code> that each return a <code>Parent</code> make it easier to read?</li>
+      </ol>
+    </section>
+
+    <section id="build" class="skill-section">
+      <h2><span class="step-no">6</span> Guided implementation</h2>
+      <ol class="steps">
+        <li><strong>Name the game scene.</strong> Replace <code>stage.setScene(new Scene(root, 640, 400));</code> with a variable, such as <code>Scene gameScene = new Scene(root, 640, 400);</code>, followed by <code>stage.setScene(gameScene);</code>.
+          <p class="check">Check: nothing changes when you run. This is a safe first refactor.</p></li>
+
+        <li><strong>Build the welcome layout.</strong> Create a title <code>Label</code>, a one-line instructions <code>Label</code>, and a Play <code>Button</code> inside a <code>VBox</code>, centered with <code>setAlignment(Pos.CENTER)</code>. Wrap it in a <code>Scene</code> of the same size.
+          <details><summary>Optional: bigger title text</summary><p><code>title.setStyle("-fx-font-size: 32px; -fx-font-weight: bold;");</code> uses JavaFX CSS on one node. It is optional, and you do not need a stylesheet file.</p></details></li>
+
+        <li><strong>Open on the welcome screen.</strong> Call <code>stage.setScene(...)</code> with the welcome scene instead of the game scene.</li>
+
+        <li><strong>Play shows the game.</strong> In the Play handler, switch the stage to the game scene, then call <code>canvas.requestFocus()</code>.
+          <details><summary>Hint: "variable might not have been initialized"</summary><p>A lambda can use a local variable only if the variable already has its value and never changes (it is "effectively final"). Create both scenes <em>first</em>, then call <code>play.setOnAction(...)</code> and <code>menu.setOnAction(...)</code>, or store the scenes in fields. You can register a handler at any time after the button exists.</p></details>
+          <p class="check">Check: Play opens the arena, and the arrow keys work right away without a click.</p></li>
+
+        <li><strong>Add a Menu button.</strong> Add it to the <code>controls</code> VBox. Its handler should follow your Step 5 decision: stop or pause <code>flight</code>, then show the welcome scene.</li>
+
+        <li><strong>Decide preserve vs. reset, on purpose.</strong> Reusing the same game scene preserves state. To make Play start fresh instead, have it run the same reset logic as the Reset button. If you did <a href="new-level.html">Skill 02</a>, that is <code>loadLevel(...)</code>. Avoid copying those lines into a second place.</li>
+      </ol>
+    </section>
+
+    <section id="test" class="skill-section">
+      <h2><span class="step-no">7</span> Test your skill</h2>
+      <ul class="tests">
+        <li><span class="kind">Normal</span>The app opens on the welcome screen. Play shows the arena, and the arrow keys work immediately. All Lab 15 controls still work.</li>
+        <li><span class="kind">Edge</span>Press Menu <em>while the drone is flying</em>: the welcome screen appears and the drone does not keep moving in the background. (Wait a few seconds, return, and check its position.) Press arrow keys on the welcome screen: nothing breaks.</li>
+        <li><span class="kind">Repeat / reset</span>Play → Menu → Play five times: state is preserved or reset exactly as you designed, the speed never increases, and the window size never changes.</li>
+      </ul>
+    </section>
+
+    <section id="extend" class="skill-section">
+      <h2><span class="step-no">8</span> Extend the skill</h2>
+      <div class="panel">
+        <h3>Challenge: a results screen that receives data</h3>
+        <p>When the orb (or the last level) is collected, switch to a third screen that shows a result such as "Collected in 4.2 seconds" or your score from <a href="score-system.html">Skill 04</a>. It should have <strong>Play again</strong> and <strong>Menu</strong> buttons. The design question: how does the results screen get the value? Consider a method like <code>showResults(int score)</code> that updates a results <code>Label</code> before switching scenes.</p>
+      </div>
+    </section>
+
+    <section id="coach" class="skill-section">
+      <h2><span class="step-no">9</span> Ask your AI Coach</h2>
+      <div class="prompt-box">
+<pre>I am a CSSE220 student building a Java 21 / JavaFX 21 project. I want to LEARN how to add a welcome screen with a Play button, and a Menu button that returns to it.
+
+My app is based on the CSSE220 Lab 15 Drone Arena: ArrowApp.start(Stage stage) builds a BorderPane root (canvas in the center, a VBox of buttons on the left, a status Label at the bottom), uses one Timeline named flight, and calls canvas.requestFocus() so arrow keys reach the arena.
+[Describe your current screens. Paste the end of your start method when asked.]
+
+Please coach me. Do not write the whole solution.
+1. Explain Stage vs Scene vs root, and the difference between stage.setScene, scene.setRoot, and changing one region of a BorderPane. Ask me which fits my app.
+2. Ask whether returning to the game should preserve or reset state, and explain the consequences of each choice.
+3. Give me a short step-by-step plan that keeps my existing game layout intact.
+4. Help me one step at a time. After each step, tell me what I should see and wait for my report.
+5. Explain focus problems and "effectively final" lambda errors if I hit them.
+6. Help me test: Play, Menu while flying, and repeating Play/Menu several times.
+Do not rewrite my whole application or add libraries/FXML.</pre>
+      </div>
+      <details>
+        <summary>Using a coding agent instead?</summary>
+        <ol>
+          <li><strong>Context:</strong> the repository root and <code>ArrowApp.java</code> (or your main application class).</li>
+          <li><strong>Narrow task:</strong> "Add a welcome scene and a Menu button. Do not change the game layout or SceneToken."</li>
+          <li><strong>Plan first:</strong> ask whether it will preserve or reset state, and why.</li>
+          <li><strong>Review the diff:</strong> check that it did not create a second Timeline or rebuild the game on every click by accident.</li>
+          <li><strong>Run the three tests</strong>, then commit and log the help.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section id="unlocked" class="skill-section unlocked">
+      <h2><span class="step-no">10</span> Skill Unlocked</h2>
+      <ol>
+        <li><strong>Explain</strong> Stage vs. Scene vs. root, and when to switch scenes vs. change content inside one scene.</li>
+        <li><strong>Demonstrate</strong> Play and Menu navigation with the arrow keys working right away after Play.</li>
+        <li><strong>Justify</strong> your preserve-or-reset choice and show where the Timeline is stopped or paused when leaving the game.</li>
+      </ol>
+      <p>Record it: <a href="my-skills-acquired.html">My Skills Acquired</a>.</p>
+    </section>
+
+    <p class="pager"><a href="new-level.html">← Skill 02: Add a New Level</a><a href="score-system.html">Skill 04: Score System →</a></p>
+  </main>
+  <script src="skills.js"></script>
+</body>
+</html>

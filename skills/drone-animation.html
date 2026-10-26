@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Skill 01: Make the Drone Move Continuously | CSSE220</title>
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <link rel="stylesheet" href="skills.css">
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body>
+  <div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+    <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../graphics/index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <p class="crumbs"><a href="../project.html">Final Project</a> › <a href="../project-skills.html">Coding Skills Hub</a> › Skill 01</p>
+    <h1>Skill 01: Make the Drone Move Continuously</h1>
+    <p class="subtitle">Hold a key to glide. Let go to stop. Pause, resume, and reset with the one Timeline you already have.</p>
+    <ul class="facts">
+      <li><strong>Category</strong>Animation and movement</li>
+      <li><strong>Difficulty</strong><span class="level level-intermediate">Intermediate</span></li>
+      <li><strong>Concepts</strong><code>Timeline</code>, <code>setOnKeyReleased</code>, velocity fields, <code>Animation.Status</code></li>
+      <li><strong>Prerequisites</strong><a href="../labs/lab13.html">Lab 13</a>, <a href="../labs/lab15.html">Lab 15</a></li>
+      <li><strong>Effort</strong>About 1–2 hours</li>
+    </ul>
+
+    <nav class="tabbar" aria-label="Skill sections">
+      <a href="#mission">1 Mission</a><a href="#know">2 Already know</a><a href="#concept">3 Concept</a><a href="#lab15">4 Lab 15</a><a href="#design">5 Design</a><a href="#build">6 Build</a><a href="#test">7 Test</a><a href="#extend">8 Extend</a><a href="#coach">9 AI Coach</a><a href="#unlocked">10 Unlocked</a>
+    </nav>
+
+    <section id="mission" class="skill-section">
+      <h2><span class="step-no">1</span> Mission</h2>
+      <p>In your finished Lab 15 app, each arrow-key press moves the drone 10 pixels. If you <em>hold</em> a key, the drone jumps once, waits, and then stutters. That pattern comes from your computer's key-repeat setting, not from your code. Meanwhile, <strong>Start</strong> moves the drone smoothly, because the Timeline moves it a little every 20 milliseconds.</p>
+      <p><strong>Your mission:</strong> combine the two. The drone should glide while an arrow key is held and stop the moment you let go. It should also pause and resume, reset cleanly, and never leave the arena.</p>
+      <p class="muted">Why you might need this: player movement in real-time games, objects drifting in a simulation, or a visualization that animates one step at a time.</p>
+    </section>
+
+    <section id="know" class="skill-section">
+      <h2><span class="step-no">2</span> What you already know</h2>
+      <ul>
+        <li><strong>Lab 12:</strong> a <em>field</em> keeps its value between events. A local variable inside a handler starts over every time.</li>
+        <li><strong>Lab 13:</strong> one <code>Timeline</code> with a 20 ms <code>KeyFrame</code> calls <code>token.step(...)</code> again and again. <code>play()</code> starts it, <code>stop()</code> stops it, and the optional Pause step used <code>pause()</code>.</li>
+        <li><strong>Lab 15:</strong> <code>setOnKeyPressed</code> and <code>event.getCode()</code> pick a direction, and <code>token.moveBy(...)</code> keeps the drone inside all four edges.</li>
+        <li><strong>Java:</strong> <code>if / else if</code> chains, <code>double</code> fields, getters and setters.</li>
+      </ul>
+    </section>
+
+    <section id="concept" class="skill-section">
+      <h2><span class="step-no">3</span> Learn the concept</h2>
+
+      <h3>Event-driven vs. time-driven change</h3>
+      <p>An <strong>event</strong> happens once, such as a key going down, a key coming up, or a click. A <strong>tick</strong> happens again and again on a clock. Continuous movement uses both. <em>Key events change what the drone intends to do. Ticks change where the drone actually is.</em></p>
+      <figure>
+        <svg viewBox="0 0 720 230" role="img" aria-labelledby="evtTitle evtDesc">
+          <title id="evtTitle">Key events versus timeline ticks</title>
+          <desc id="evtDesc">A key press sets velocity to 3; every 20 millisecond tick adds velocity to position; a key release sets velocity back to 0, so position stops changing.</desc>
+          <rect x="0" y="0" width="720" height="230" fill="#ffffff"/>
+          <text x="10" y="42" font-family="Arial" font-size="14" font-weight="bold" fill="#2b2b2b">Key events</text>
+          <line x1="130" y1="38" x2="700" y2="38" stroke="#c4ccd8" stroke-width="2"/>
+          <circle cx="200" cy="38" r="8" fill="#245780"/>
+          <text x="160" y="24" font-family="Arial" font-size="12" fill="#245780">Right pressed</text>
+          <circle cx="560" cy="38" r="8" fill="#b42318"/>
+          <text x="515" y="24" font-family="Arial" font-size="12" fill="#b42318">Right released</text>
+          <text x="10" y="92" font-family="Arial" font-size="14" font-weight="bold" fill="#2b2b2b">Velocity (vx)</text>
+          <polyline points="130,100 200,100 200,74 560,74 560,100 700,100" fill="none" stroke="#6d28d9" stroke-width="3"/>
+          <text x="345" y="68" font-family="Arial" font-size="12" fill="#6d28d9">vx = 3</text>
+          <text x="140" y="116" font-family="Arial" font-size="12" fill="#6d28d9">vx = 0</text>
+          <text x="10" y="158" font-family="Arial" font-size="14" font-weight="bold" fill="#2b2b2b">Ticks (20 ms)</text>
+          <g stroke="#8c98aa" stroke-width="2">
+            <line x1="140" y1="146" x2="140" y2="162"/><line x1="170" y1="146" x2="170" y2="162"/><line x1="200" y1="146" x2="200" y2="162"/><line x1="230" y1="146" x2="230" y2="162"/><line x1="260" y1="146" x2="260" y2="162"/><line x1="290" y1="146" x2="290" y2="162"/><line x1="320" y1="146" x2="320" y2="162"/><line x1="350" y1="146" x2="350" y2="162"/><line x1="380" y1="146" x2="380" y2="162"/><line x1="410" y1="146" x2="410" y2="162"/><line x1="440" y1="146" x2="440" y2="162"/><line x1="470" y1="146" x2="470" y2="162"/><line x1="500" y1="146" x2="500" y2="162"/><line x1="530" y1="146" x2="530" y2="162"/><line x1="560" y1="146" x2="560" y2="162"/><line x1="590" y1="146" x2="590" y2="162"/><line x1="620" y1="146" x2="620" y2="162"/><line x1="650" y1="146" x2="650" y2="162"/><line x1="680" y1="146" x2="680" y2="162"/>
+          </g>
+          <text x="10" y="208" font-family="Arial" font-size="14" font-weight="bold" fill="#2b2b2b">Position (x)</text>
+          <polyline points="130,212 200,212 560,184 700,184" fill="none" stroke="#18794e" stroke-width="3"/>
+          <text x="300" y="222" font-family="Arial" font-size="12" fill="#18794e">each tick: x = x + vx</text>
+        </svg>
+        <figcaption>The key events only flip velocity on and off. Each tick of the Timeline turns velocity into movement.</figcaption>
+      </figure>
+
+      <h3>Velocity is just two fields</h3>
+      <p><em>Velocity</em> is how many pixels to move on each tick. The value 3 matches Lab 13's <code>SPEED</code>. Positive x moves right. Positive y moves <em>down</em>, because screen y grows downward.</p>
+      <span class="code-label">Idea, not final code</span>
+<pre><code>private double vx = 0;   // pixels per tick, left/right
+private double vy = 0;   // pixels per tick, up/down
+
+// on every tick:   move by (vx, vy)
+// key pressed:     set vx or vy to the speed
+// key released:    set that axis back to 0</code></pre>
+
+      <h3>A new event: key released</h3>
+      <p>You already use <code>setOnKeyPressed</code>. JavaFX also has <code>setOnKeyReleased</code>, which runs once when a key comes back up. It works the same way: register a lambda, then read <code>event.getCode()</code>.</p>
+<pre><code>canvas.setOnKeyReleased(event -&gt; {
+    KeyCode code = event.getCode();
+    // which axis should stop?
+});</code></pre>
+
+      <h3>Two JavaFX animation tools</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th><code>Timeline</code> + <code>KeyFrame</code> (you have this)</th><th><code>AnimationTimer</code></th></tr></thead>
+          <tbody>
+            <tr><td>Runs your code</td><td>On the interval you choose, such as every 20 ms</td><td>Once per screen frame, usually about 60 times a second</td></tr>
+            <tr><td>Control</td><td><code>play()</code>, <code>pause()</code>, <code>stop()</code>, <code>getStatus()</code></td><td><code>start()</code>, <code>stop()</code> (no pause or status)</td></tr>
+            <tr><td>How you write it</td><td>A lambda inside <code>new KeyFrame(Duration.millis(20), event -&gt; { ... })</code></td><td>A subclass that overrides <code>handle(long now)</code>; <code>now</code> is in nanoseconds</td></tr>
+            <tr><td>Use in this course</td><td><strong>Recommended.</strong> Keep the one Lab 15 Timeline.</td><td>Optional. Useful if you need very smooth, frame-rate-based motion.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn">
+        <p><strong>One clock only.</strong> Do not add a second Timeline for the keys. Two clocks moving the same drone make movement depend on two timers, and bugs get hard to reproduce. Put everything that changes per tick in the one KeyFrame callback.</p>
+      </div>
+
+      <h3>Controlling the Timeline</h3>
+      <ul>
+        <li><code>flight.play()</code> starts the Timeline, or resumes it after a pause. Calling it while it is already running does nothing, so it does not speed up.</li>
+        <li><code>flight.pause()</code> freezes it. The next <code>play()</code> continues.</li>
+        <li><code>flight.stop()</code> stops it. <strong>Stopping does not move the drone back.</strong> Your <code>token.reset()</code> does that.</li>
+        <li><code>flight.getStatus() == Animation.Status.RUNNING</code> tells you whether it is running right now. This needs <code>import javafx.animation.Animation;</code>.</li>
+      </ul>
+    </section>
+
+    <section id="lab15" class="skill-section">
+      <h2><span class="step-no">4</span> Connect to Lab 15</h2>
+      <p>These are the real names in <code>src/main/java/demo/</code> of your finished Drone Arena project.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Existing code</th><th>What it does today</th><th>Role in this skill</th></tr></thead>
+          <tbody>
+            <tr><td><code>ArrowApp.flight</code></td><td>The one <code>Timeline</code>. Its 20 ms KeyFrame callback calls <code>token.step(...)</code>, then <code>checkCollision(token, status)</code>.</td><td>Becomes your <strong>game loop</strong>: each tick applies velocity.</td></tr>
+            <tr><td><code>SceneToken.step(double playWidth)</code></td><td>Moves right by <code>SPEED</code> and returns <code>true</code> at the right wall.</td><td>The current automatic flight. You decide whether to keep it (Step 5).</td></tr>
+            <tr><td><code>SceneToken.moveBy(dx, dy, width, height)</code></td><td>Moves by any amount, then calls <code>keepInArena(...)</code>.</td><td><strong>Reuse it</strong> on every tick so boundaries keep working, even when rotated.</td></tr>
+            <tr><td><code>SceneToken.SPEED</code></td><td><code>private static final double</code>, 3 pixels per tick.</td><td>A good steering speed. It is private, so use it inside <code>SceneToken</code> or add a getter.</td></tr>
+            <tr><td><code>SceneToken.reset()</code></td><td>Puts the drone back at (180, 160) with angle 0.</td><td>Must also clear velocity.</td></tr>
+            <tr><td><code>canvas.setOnKeyPressed(...)</code></td><td>Calls <code>moveBy(±10, ...)</code> for the four arrow keys, then <code>checkCollision</code>.</td><td>Will set velocity instead, at least while the game is running.</td></tr>
+            <tr><td>Reset button handler</td><td><code>flight.stop()</code>, <code>token.reset()</code>, <code>crystal.setVisible(true)</code>, and focus.</td><td>Already correct once <code>reset()</code> clears velocity.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details>
+        <summary>Not a game? How this transfers</summary>
+        <ul>
+          <li><strong>Simulation:</strong> the Timeline is your clock. Each tick calls a <code>tick()</code> or <code>step()</code> method on your model, such as moving particles or growing a population. A <em>Step</em> button can call the same method once, which makes testing easy.</li>
+          <li><strong>Algorithm visualization:</strong> each tick performs one step, such as one swap in a sort, and redraws. Pause and Reset work exactly as above.</li>
+          <li><strong>Math apps:</strong> you often do not need animation. A Step button, or updating as the user types, is usually clearer.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="design" class="skill-section">
+      <h2><span class="step-no">5</span> Design before coding</h2>
+      <p>Answer these with your team <em>before</em> you edit code. Write the answers in a comment or your design notes.</p>
+      <ol>
+        <li><strong>State:</strong> what new values must the program remember between ticks? Fill in a table like the one below.</li>
+        <li><strong>Ownership:</strong> <code>SceneToken</code> already owns the drone's position and boundary rules. Should it also own velocity? What would go wrong if <code>ArrowApp</code> kept velocity and changed <code>translateX</code> itself?</li>
+        <li><strong>Meaning of Start:</strong> today Start flies right until the wall, and then <code>flight.stop()</code> runs. If steering runs on the same Timeline, what happens to steering after the drone reaches the right wall? Choose one: Start begins the game loop and steering replaces auto-flight, <em>or</em> auto-flight continues and the wall no longer stops the Timeline.</li>
+        <li><strong>Old controls:</strong> should the arrow keys still nudge 10 pixels when the game is stopped or paused?</li>
+        <li><strong>Reset:</strong> list everything Reset must restore.</li>
+      </ol>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>State</th><th>Owner (class)</th><th>Changed by</th><th>Read by</th></tr></thead>
+          <tbody>
+            <tr><td>Horizontal velocity</td><td>?</td><td>key pressed / released, reset</td><td>each tick</td></tr>
+            <tr><td>Vertical velocity</td><td>?</td><td>?</td><td>?</td></tr>
+            <tr><td>Running / paused</td><td>The Timeline itself (<code>getStatus()</code>)</td><td>Start, Pause, Reset, collection</td><td>key handler (if you keep the nudge)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">Design principle: <em>Tell, Don't Ask.</em> The key handler should <strong>tell</strong> the drone "steer right". It should not read the drone's position, do the math, and set it back.</p>
+    </section>
+
+    <section id="build" class="skill-section">
+      <h2><span class="step-no">6</span> Guided implementation</h2>
+      <p>Work on a branch. Run the app after every step, and close the window before running <code>javafx:run</code> again.</p>
+      <ol class="steps">
+        <li><strong>Add velocity state to <code>SceneToken</code>.</strong> Declare two <code>private double</code> fields that start at 0. They change during the game, so they are <em>not</em> <code>final</code> or <code>static</code>, unlike <code>SPEED</code>.
+          <p class="check">Check: the project still compiles and behaves exactly like Lab 15.</p></li>
+
+        <li><strong>Give <code>SceneToken</code> methods to set velocity and to move one tick.</strong> One setter per axis works well, because pressing Up should not cancel Right. Then add a tick method:
+<pre><code>/** Move one tick using the current velocity; stay inside the arena. */
+public void tick(double width, double height) {
+    // TODO: reuse moveBy(...) so keepInArena(...) still runs
+}</code></pre>
+          <details><summary>Hint</summary><p>Your tick method should contain a single call to an existing method. If you find yourself copying the bounds code from <code>keepInArena</code>, stop and reuse it.</p></details></li>
+
+        <li><strong>Make the Timeline apply velocity.</strong> In <code>ArrowApp.start(...)</code>, edit the KeyFrame callback so each tick calls your tick method with <code>canvas.getWidth()</code> and <code>canvas.getHeight()</code>. Keep <code>checkCollision(token, status)</code> after the movement. Use your Step 5 decision to decide what happens to <code>token.step(...)</code>.
+          <p class="check">Check: Start runs with no visible change yet, because velocity is still 0. Collection still works if you nudge into the orb.</p></li>
+
+        <li><strong>Pressing a key sets velocity.</strong> In <code>canvas.setOnKeyPressed</code>, change each direction so it sets velocity instead of calling <code>moveBy(±10, ...)</code>. Here is one branch:
+<pre><code>if (code == KeyCode.RIGHT) {
+    token.setVelocityX(/* positive speed */);
+}
+// LEFT, UP, DOWN: which sign, which axis?</code></pre>
+          <p>Keep the existing block at the end that calls <code>checkCollision</code> and <code>event.consume()</code>.</p></li>
+
+        <li><strong>Releasing a key stops that axis.</strong> Register <code>canvas.setOnKeyReleased(...)</code> right after the pressed handler. LEFT or RIGHT clears horizontal velocity, and UP or DOWN clears vertical.
+          <p class="check">Check: Start, hold Right, and the drone glides. Let go, and it stops. Hold Up and Right together, and it moves diagonally.</p></li>
+
+        <li><strong>Add Pause.</strong> Create a <code>Button</code> named Pause, add it to the <code>controls</code> VBox, and in its handler call <code>flight.pause()</code> and then <code>canvas.requestFocus()</code>. Start's existing <code>play()</code> already resumes.
+          <details><summary>Why requestFocus?</summary><p>Clicking a button gives the button keyboard focus. Without <code>canvas.requestFocus()</code>, the arrow keys go to the button and not to your arena. Lab 15 does this in every handler for the same reason.</p></details></li>
+
+        <li><strong>Make Reset clear velocity.</strong> Set both velocity fields to 0 inside <code>SceneToken.reset()</code>. The Reset button already calls it, so you do not need to change <code>ArrowApp</code>.</li>
+
+        <li><strong>Keep the old controls working (your Step 5 decision).</strong> If arrows should still nudge while stopped or paused, check <code>flight.getStatus() == Animation.Status.RUNNING</code> in the pressed handler. Set velocity when it is running, and call the existing <code>moveBy(±10, ...)</code> when it is not.
+          <p class="check">Check: Pause, then tap Left, and the drone moves 10 pixels. Press Start and hold Left, and it glides.</p></li>
+      </ol>
+    </section>
+
+    <section id="test" class="skill-section">
+      <h2><span class="step-no">7</span> Test your skill</h2>
+      <p>Predict each result first, then run it. Record anything surprising.</p>
+      <ul class="tests">
+        <li><span class="kind">Normal</span>Start, then hold Right for one second: smooth movement with no first-press jump. Release: the drone stops on that tick. Hold Up and Right: diagonal movement. Steer into the orb: it is still collected.</li>
+        <li><span class="kind">Edge</span>Hold Up against the top edge for two seconds: the whole drone stays visible and does not shake. Rotate at the wall and keep holding: it stays inside. Then hold Left, press and release Right, and keep holding Left. What happens, and <em>why</em>? (See the harder challenge.)</li>
+        <li><span class="kind">Repeat / reset</span>Hold Right, click Reset while still holding, release, then click Start: the drone must not drift. Click Start five times: the speed does not change. Pause, then Start: the drone continues from the same place.</li>
+      </ul>
+    </section>
+
+    <section id="extend" class="skill-section">
+      <h2><span class="step-no">8</span> Extend the skill</h2>
+      <div class="panel">
+        <h3>Mini-challenge: fly where you face</h3>
+        <p>Change how Start's flight behaves without breaking the arrow keys or Reset. The drone should fly forward <em>in the direction it is facing</em>, so Rotate steers it.</p>
+        <ul>
+          <li>The angle lives in <code>SceneToken</code>'s <code>turn</code> field. Read it with <code>turn.getAngle()</code> in degrees, and convert it with <code>Math.toRadians(...)</code>.</li>
+          <li>One tick forward moves <code>SPEED * Math.cos(angle)</code> in x and <code>SPEED * Math.sin(angle)</code> in y. Because screen y points down, positive JavaFX angles turn clockwise, so 90° means "down".</li>
+          <li>Predict, then test: Rotate six times (90°) and press Start. Which way should the drone go?</li>
+        </ul>
+      </div>
+      <div class="panel" style="margin-top:12px;">
+        <h3>Harder challenge: overlapping keys</h3>
+        <p>Fix the edge-case test: holding Left while pressing and releasing Right should keep moving left. Keep a <code>Set&lt;KeyCode&gt;</code> (for example, a <code>HashSet</code>) of keys that are currently held. Add on press, remove on release, and work out velocity from the set on every tick.</p>
+      </div>
+    </section>
+
+    <section id="coach" class="skill-section">
+      <h2><span class="step-no">9</span> Ask your AI Coach</h2>
+      <p>Copy this into ChatGPT, Claude, Gemini, Copilot Chat, or another assistant. Replace the brackets with your real information and paste <em>only</em> the methods it asks about.</p>
+      <div class="prompt-box">
+<pre>I am a CSSE220 student building a Java 21 / JavaFX 21 project. I want to LEARN how to make an object move continuously while an arrow key is held, then stop when the key is released.
+
+My project is based on the CSSE220 Lab 15 Drone Arena. It has:
+- ArrowApp (extends Application) with one Timeline field named flight (KeyFrame every 20 ms)
+- SceneToken, which owns the drone view and has moveBy(dx, dy, width, height) that keeps it inside the arena
+[Describe any changes your team has made. Paste the KeyFrame callback, the key handler, and SceneToken when asked.]
+
+Please coach me. Do not write the whole solution.
+1. First explain the difference between event-driven and tick-driven updates, and which class should own the velocity state and why.
+2. Ask me to describe my current code before suggesting changes.
+3. Give me a short implementation plan (4–6 steps) that keeps ONE Timeline and reuses moveBy.
+4. Help me complete one step at a time. After each step, tell me what I should see when I run the app, and wait for me to report the result.
+5. Explain any JavaFX method I have not used before (for example setOnKeyReleased, pause, getStatus).
+6. At the end, help me test: normal movement, holding a key at the edge, overlapping keys, and Reset while a key is held.
+Do not replace my entire project, add libraries, or add a second Timeline.</pre>
+      </div>
+      <details>
+        <summary>Using a coding agent instead? (Copilot agent, Codex, Claude Code)</summary>
+        <ol>
+          <li><strong>Context:</strong> "Repository root is [folder]. Relevant files: ArrowApp.java and SceneToken.java in src/main/java/demo (or your package)."</li>
+          <li><strong>Narrow task:</strong> "Add held-key steering using the existing flight Timeline. Change only ArrowApp.java and SceneToken.java."</li>
+          <li><strong>Plan first:</strong> "Explain your planned changes and wait for my approval before editing."</li>
+          <li><strong>Review:</strong> read every changed line in the diff. Ask about anything you cannot explain.</li>
+          <li><strong>Run and test:</strong> run the three tests above yourself. Do not trust "it should work".</li>
+          <li><strong>Commit</strong> only after you understand the change, and record it in your AI Learning Log.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section id="unlocked" class="skill-section unlocked">
+      <h2><span class="step-no">10</span> Skill Unlocked</h2>
+      <p>You should now be able to:</p>
+      <ol>
+        <li><strong>Explain</strong> why key events should change velocity while Timeline ticks change position.</li>
+        <li><strong>Demonstrate</strong> start, pause, resume, and reset with a single Timeline, including Reset while a key is held.</li>
+        <li><strong>Explain</strong> which class owns velocity and boundaries, and why reusing <code>moveBy</code> keeps the drone inside the arena.</li>
+      </ol>
+      <p>Record it: <a href="my-skills-acquired.html">My Skills Acquired</a>.</p>
+    </section>
+
+    <p class="pager"><a href="../project-skills.html">← Skills Hub</a><a href="new-level.html">Skill 02: Add a New Level →</a></p>
+  </main>
+  <script src="skills.js"></script>
+</body>
+</html>

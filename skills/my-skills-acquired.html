@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My Skills Acquired | CSSE220</title>
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <link rel="stylesheet" href="skills.css">
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body>
+  <div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+    <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../graphics/index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <p class="crumbs"><a href="../project.html">Final Project</a> › <a href="../project-skills.html">Coding Skills Hub</a> › My Skills Acquired</p>
+    <h1>My Skills Acquired</h1>
+    <p class="subtitle">A short record of each new skill you learned during the final project, with evidence.</p>
+    <p>Every time you learn a technique your team needed, write one entry. A good entry shows <em>where</em> the skill lives in your code, <em>how</em> you know it works, and what you can now do on your own. It is also the best preparation for explaining your work at check-ins and the final demo.</p>
+    <div class="callout">
+      <p><strong>How this fits the course:</strong> this record is for you and your team. It does not add or change any milestone requirement or grading policy; follow your <a href="../project.html">milestone pages</a> for those. No certificates, badges, or outside accounts are needed. <strong>Skills you learned outside this hub count too</strong> (from a lab, documentation, a teammate, or an AI coach) as long as you give the same kind of evidence.</p>
+    </div>
+
+    <nav class="tabbar" aria-label="Portfolio sections">
+      <a href="#fields">What to record</a><a href="#example">Completed example</a><a href="#template">Markdown template</a><a href="#builder">Entry builder</a>
+    </nav>
+
+    <section id="fields" class="skill-section">
+      <h2>What to record for each skill</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Field</th><th>What a strong answer includes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Skill name</strong></td><td>A specific name: "Held-key steering with one Timeline", not "JavaFX".</td></tr>
+            <tr><td><strong>Why the team needed it</strong></td><td>The feature or problem in <em>your</em> project that required it.</td></tr>
+            <tr><td><strong>What I learned</strong></td><td>The concept in your own words, plus any new classes or methods you used.</td></tr>
+            <tr><td><strong>Where it appears in the code</strong></td><td>File, class, and method names (and a commit or pull request if you have one).</td></tr>
+            <tr><td><strong>How I tested it</strong></td><td>Your normal, edge, and repeat/reset checks, and any check classes or tests. Include expected vs. actual.</td></tr>
+            <tr><td><strong>Did AI help? How?</strong></td><td>The tool, what you asked, and what you accepted, changed, or rejected. "No AI used" is a complete answer. Keep your <a href="../syllabus.html">AI-LEARNING-LOG.md and Help Citation</a> consistent with this.</td></tr>
+            <tr><td><strong>What I can now explain or do independently</strong></td><td>Something you could do again <em>without</em> help, such as rebuild it, explain it, or apply it to a new feature.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="example" class="skill-section">
+      <h2>Completed example</h2>
+      <p class="muted">An illustrative entry for a drone-game team. Your entries can be shorter, but they should be just as specific.</p>
+      <div class="panel">
+        <h3>Skill: Score that is awarded exactly once (Skill 04)</h3>
+        <dl>
+          <dt><strong>Why the team needed it</strong></dt>
+          <dd>Our Milestone 2 workflow is "collect an orb, then use the points to unlock the gate". The gate check needs a reliable score, and our first version gave hundreds of points for one orb.</dd>
+          <dt><strong>What I learned</strong></dt>
+          <dd>Score is model state, so I created a <code>ScoreKeeper</code> class with <code>addPoints</code>, <code>getScore</code>, and <code>reset</code>, and no JavaFX imports. <code>checkCollision</code> runs on every Timeline tick, every arrow key, and every Rotate, so the award needs a <em>guard</em>. A hidden <code>Circle</code> still has bounds, so <code>crystal.isVisible()</code> is what makes the award happen once. The view refreshes the label from the model with an <code>updateScoreLabel()</code> helper, the same pattern as Lab 12.</dd>
+          <dt><strong>Where it appears in the code</strong></dt>
+          <dd><code>src/main/java/demo/ScoreKeeper.java</code>; <code>ArrowApp.checkCollision(...)</code> (award inside the visible-orb block); <code>ArrowApp.updateScoreLabel()</code>; the Reset handler in <code>ArrowApp.start(...)</code>. Pull request #7, "Award orb points once".</dd>
+          <dt><strong>How I tested it</strong></dt>
+          <dd>
+            <ul>
+              <li>Normal: Start with no steering → Score 10 (expected 10). ✔</li>
+              <li>Edge: after collecting, pressed arrows and Rotate 10 times → still 10 (before the fix: 390). ✔</li>
+              <li>Repeat: collect → Reset → collect, three times → 10 each time, as our design says. ✔</li>
+              <li>Check class: <code>ScoreKeeperCheck</code>, 4 checks including "reset clears score" and "negative points ignored". All print PASS.</li>
+            </ul>
+          </dd>
+          <dt><strong>Did AI help? How?</strong></dt>
+          <dd>Yes. I used the Skill 08 debugging prompt with ChatGPT and pasted my <code>checkCollision</code> plus the reproduction steps. It asked how often <code>checkCollision</code> runs, which led me to add a print statement and find the repeated awards. I rejected its first suggestion (a second Timeline just for scoring) because our design keeps one Timeline. The guard condition is my own fix. Logged in <code>AI-LEARNING-LOG.md</code>, Week 8.</dd>
+          <dt><strong>What I can now explain or do independently</strong></dt>
+          <dd>I can explain why a guard condition prevents duplicate rewards and point to it in our code. I can add a new scoring event (finishing a level) the same way without help, and write a check for <code>ScoreKeeper</code> first.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="template" class="skill-section">
+      <h2>Markdown template</h2>
+      <p>Copy this into a document your team already uses, or into a file in your repository such as <code>SKILLS-ACQUIRED.md</code>. Add one block per skill.</p>
+      <div class="prompt-box" data-copy-label="Copy template">
+<pre>## Skill: [specific skill name]   (Skills Hub #__ or "learned elsewhere: [source]")
+Date: [date]   Student: [your name]
+
+**Why the team needed it:**
+[feature or problem in our project]
+
+**What I learned:**
+[concept in my own words; new classes/methods I used]
+
+**Where it appears in the code:**
+[file → class → method; commit or PR]
+
+**How I tested it:**
+- Normal: [action] → expected [ ] / actual [ ]
+- Edge: [action] → expected [ ] / actual [ ]
+- Repeat/reset: [action] → expected [ ] / actual [ ]
+- Check class (if any): [class name / what it checks]
+
+**Did AI help? How?**
+[tool, what I asked, what I accepted / changed / rejected, or "No AI used"]
+
+**What I can now explain or do independently:**
+[something I could redo or explain without help]</pre>
+      </div>
+    </section>
+
+    <section id="builder" class="skill-section">
+      <h2>Entry builder (optional)</h2>
+      <p>Fill in the boxes, then copy the finished Markdown. Your draft is kept only in this browser. Nothing is sent anywhere, so save the result in your own document or repository.</p>
+      <form id="entry-form" onsubmit="return false;">
+        <div class="field">
+          <label for="f-skill">Skill name</label>
+          <input id="f-skill" list="hub-skills" placeholder="e.g., Held-key steering with one Timeline">
+          <datalist id="hub-skills">
+            <option value="Skill 01: Continuous movement"></option>
+            <option value="Skill 02: Levels"></option>
+            <option value="Skill 03: Welcome screen"></option>
+            <option value="Skill 04: Score system"></option>
+            <option value="Skill 05: Grid world"></option>
+            <option value="Skill 06: User input and validation"></option>
+            <option value="Skill 07: Math solver with tested model"></option>
+            <option value="Skill 08: Debugging and code review"></option>
+          </datalist>
+        </div>
+        <div class="field"><label for="f-why">Why the team needed it</label><textarea id="f-why"></textarea></div>
+        <div class="field"><label for="f-learned">What I learned</label><textarea id="f-learned"></textarea></div>
+        <div class="field"><label for="f-where">Where it appears in the code <span class="hint">File → class → method, plus a commit or PR if you have one</span></label><textarea id="f-where"></textarea></div>
+        <div class="field"><label for="f-tested">How I tested it <span class="hint">Normal, edge, repeat/reset (expected vs. actual) and any check classes</span></label><textarea id="f-tested"></textarea></div>
+        <div class="field"><label for="f-ai">Did AI help? How? <span class="hint">Tool, what you asked, and what you accepted/changed/rejected, or "No AI used"</span></label><textarea id="f-ai"></textarea></div>
+        <div class="field"><label for="f-now">What I can now explain or do independently</label><textarea id="f-now"></textarea></div>
+        <div class="btn-row">
+          <button type="button" class="btn" id="build-entry">Build entry</button>
+          <button type="button" class="btn secondary" id="clear-entry">Clear form</button>
+        </div>
+      </form>
+      <div class="prompt-box" data-copy-label="Copy entry" id="entry-output" hidden>
+<pre id="entry-text"></pre>
+      </div>
+    </section>
+
+    <p class="pager"><a href="debugging.html">← Skill 08: Debugging</a><a href="../project-skills.html">Skills Hub →</a></p>
+  </main>
+  <script src="skills.js"></script>
+  <script>
+    (function () {
+      var ids = ['f-skill', 'f-why', 'f-learned', 'f-where', 'f-tested', 'f-ai', 'f-now'];
+      var KEY = 'csse220-skills-acquired-draft';
+      function el(id) { return document.getElementById(id); }
+      try {
+        var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+        ids.forEach(function (id) { if (saved[id]) el(id).value = saved[id]; });
+      } catch (e) { /* storage unavailable: start empty */ }
+      function save() {
+        try {
+          var data = {};
+          ids.forEach(function (id) { data[id] = el(id).value; });
+          localStorage.setItem(KEY, JSON.stringify(data));
+        } catch (e) { /* ignore */ }
+      }
+      ids.forEach(function (id) { el(id).addEventListener('input', save); });
+      function v(id) { return el(id).value.trim() || '[to fill in]'; }
+      el('build-entry').addEventListener('click', function () {
+        var md = '## Skill: ' + v('f-skill') + '\n' +
+          'Date: ' + new Date().toLocaleDateString() + '\n\n' +
+          '**Why the team needed it:**\n' + v('f-why') + '\n\n' +
+          '**What I learned:**\n' + v('f-learned') + '\n\n' +
+          '**Where it appears in the code:**\n' + v('f-where') + '\n\n' +
+          '**How I tested it:**\n' + v('f-tested') + '\n\n' +
+          '**Did AI help? How?**\n' + v('f-ai') + '\n\n' +
+          '**What I can now explain or do independently:**\n' + v('f-now') + '\n';
+        el('entry-text').textContent = md;
+        el('entry-output').hidden = false;
+        el('entry-output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+      el('clear-entry').addEventListener('click', function () {
+        ids.forEach(function (id) { el(id).value = ''; });
+        save();
+        el('entry-output').hidden = true;
+      });
+    })();
+  </script>
+</body>
+</html>
