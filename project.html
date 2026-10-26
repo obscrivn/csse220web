@@ -100,6 +100,45 @@
       vertical-align: top;
     }
     .muted { color: #4a5568; }
+    .skills-section {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #ddd;
+    }
+    .skills-section h2 { margin-bottom: 4px; }
+    .skills-card {
+      margin-top: 14px;
+      border-left: 6px solid #245780;
+      background: #edf4ff;
+    }
+    .skills-card .tag { background: #fff; color: #245780; }
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 14px;
+    }
+    .skill-chips li {
+      margin: 0;
+      padding: 4px 10px;
+      border: 1px solid #b7c8df;
+      border-radius: 999px;
+      background: #fff;
+      color: #23415f;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .skills-open {
+      display: inline-block;
+      background: #1c1515;
+      color: #fff;
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-weight: 700;
+    }
+    .small-note { font-size: 0.95em; color: #4a5568; }
     @media (max-width: 700px) {
       main { padding: 18px; margin: 24px 10px; }
       #header a { display: inline-block; margin: 5px 8px; }
@@ -141,12 +180,29 @@
         <h3>Build Your Functional Alpha</h3>
         <p>One week: build two connected actions, test the workflow, and prepare for the November 2 live check-in.</p>
       </a>
-      <a class="project-card" id="coding-skills" href="./project-skills.html">
-        <div class="tag">Skills Hub</div>
-        <h3>Coding Skills Hub</h3>
-        <p>Eight guided skills built on Lab 15: movement, levels, screens, score, grid worlds, user input, a math solver, and debugging. Record what you learn in My Skills Acquired.</p>
-      </a>
     </div>
+
+    <section id="coding-skills" class="skills-section">
+      <h2>Coding Skills Hub</h2>
+      <p class="muted">Learn a new technique for your project, one guided skill at a time.</p>
+      <a class="project-card skills-card" href="./project-skills.html">
+        <div class="tag">Skills Hub</div>
+        <h3>Open the Coding Skills Hub</h3>
+        <p>Eight guided skills built on the Lab 15 Drone Arena, for game and non-game projects. Each one explains the concept, walks you through building it yourself, gives three tests, and ends with a prompt for your AI coach.</p>
+        <ul class="skill-chips">
+          <li>01 Continuous movement</li>
+          <li>02 New level</li>
+          <li>03 Welcome screen</li>
+          <li>04 Score system</li>
+          <li>05 Grid world</li>
+          <li>06 User input</li>
+          <li>07 Math solver</li>
+          <li>08 Debugging AI-assisted code</li>
+        </ul>
+        <span class="skills-open">Open the hub →</span>
+      </a>
+      <p class="small-note">After each skill, record what you learned in <a href="skills/my-skills-acquired.html">My Skills Acquired</a>.</p>
+    </section>
 
     <section style="margin-top: 32px;">
       <h2>Project goals</h2>
