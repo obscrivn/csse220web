@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CSSE220: Share Your Branch and Get Team Updates</title>
+  <link rel="stylesheet" href="./syllabus_files/screen.css">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+    #header {
+      background: #1c1515;
+      color: white;
+      padding: 0;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    #header a {
+      position: relative;
+      font-weight: bold;
+      float: left;
+      margin-left: 1em;
+      margin-right: 1em;
+      padding: 1em;
+      color: #f0f0f0;
+      background: #1c1515;
+      text-decoration: none;
+    }
+    #header a:hover {
+      background: #222;
+    }
+    main {
+      max-width: 980px;
+      margin: 30px auto;
+      background: white;
+      padding: 26px 28px 44px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h1, h2, h3 {
+      color: #2b2b2b;
+    }
+    .subtitle {
+      font-size: 1.1em;
+      margin-top: -8px;
+      color: #4a5568;
+    }
+    .tabbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 24px;
+    }
+    .tabbar a {
+      background: #eee;
+      color: #2b2b2b;
+      border: 1px solid #ccc;
+      border-radius: 999px;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .panel {
+      border: 1px solid #d9d9d9;
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: #f8f8f8;
+    }
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+    .checklist li::before {
+      content: "☐ ";
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #d9e2ec;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .small {
+      font-size: 0.95em;
+      color: #425466;
+    }
+    a { color: #245780; }
+    summary { cursor: pointer; padding: 10px 0; font-weight: bold; }
+    pre { background: #f3f3f3; padding: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    section { margin-top: 28px; }
+    th { background: #f3f3f3; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #245780; outline-offset: 3px; }
+    .table-wrap { overflow-x: auto; }
+    ul, ol { padding-left: 1.4em; }
+    @media (max-width: 700px) {
+      main { padding: 18px; }
+      #header a { display: inline-block; margin: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a href="./index.html">CSSE 220</a>
+    <a href="./syllabus.html">Syllabus</a>
+    <a href="./schedule.html">Schedule</a>
+    <a href="./design.html">Design</a>
+    <a href="./labs.html">Labs</a>
+    <a href="./homework.html">Homework</a>
+    <a href="./exams.html">Exams</a>
+    <a href="./project.html">Final Project</a>
+    <a href="graphics/index.html">Graphics</a>
+    <a href="./resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <h1>Share Your Branch and Get Team Updates</h1>
+    <p class="subtitle">A GitHub Desktop checklist for teams already working on branches.</p>
+    <div class="panel">
+      <p><strong>To get teammates’ work into your unfinished branch:</strong> save your work → update local main → merge main into your branch. Follow A, B, then C.</p>
+      <p><strong>To put your finished work into main:</strong> follow A–C first, then open a reviewed pull request in D. After it is merged, everyone follows B.</p>
+      <p><strong>Example:</strong> your branch is <code>sam-score</code>. Replace that name below with your actual branch name.</p>
+    </div>
+    <nav class="tabbar" aria-label="Guide steps"><a href="#save">A. Save</a><a href="#pull">B. Get main</a><a href="#merge">C. Update my branch</a><a href="#share">D. Share my work</a><a href="#next">E. Next task</a><a href="#help">If stuck</a></nav>
+    <p>Use <strong>GitHub Desktop</strong> for Git steps, <strong>IntelliJ</strong> to edit/run, and the <strong>GitHub website</strong> to review/merge a pull request. Keep using the same project folder. Do not clone again or copy files between branches.</p>
+    <section id="save">
+      <h2>A. Save your branch work first</h2>
+      <ol>
+        <li><strong>IntelliJ:</strong> choose <strong>File → Save All</strong>.</li>
+        <li><strong>Desktop:</strong> check <strong>Current Repository</strong> and <strong>Current Branch</strong>. The branch should be your own, such as <code>sam-score</code>.</li>
+        <li>Open <strong>Changes</strong>. Review your files, select the intended changes, enter a short <strong>Summary</strong>, and click <strong>Commit to sam-score</strong>. If there are no local changes, skip this commit.</li>
+        <li>Click <strong>Publish branch</strong> if this branch has never been uploaded; otherwise click <strong>Push origin</strong> when offered. Wait for completion.</li>
+      </ol>
+      <p class="panel"><strong>Ready:</strong> Changes says <strong>No local changes</strong>, and your commits are uploaded to your branch. Commit saves on your computer; push uploads to GitHub. Neither adds your work to main.</p>
+      <p>If your edits are on main or an unexpected branch, stop and ask for help before switching. Do not discard edits.</p>
+    </section>
+    <section id="pull">
+      <h2>B. Get teammates’ merged work onto your local main</h2>
+      <p><strong>Before you start:</strong> your teammate’s PR must say <strong>Merged</strong> on GitHub. Work still only on their feature branch is not in main yet.</p>
+      <ol>
+        <li><strong>Desktop:</strong> click <strong>Current Branch</strong>, then select <strong>main</strong>.</li>
+        <li>Check the top: <strong>Current Branch = main</strong>.</li>
+        <li>Click <strong>Fetch origin</strong> and wait.</li>
+        <li>If <strong>Pull origin</strong> appears, click it and wait. If no incoming updates are offered, your local main is current.</li>
+        <li><strong>IntelliJ:</strong> check for your teammate’s change and run the app using <code>clean javafx:run</code>.</li>
+      </ol>
+      <p class="panel"><strong>Result:</strong> your local main now contains the team’s merged changes. Your own branch has not received them yet. Continue to C if your task is unfinished.</p>
+      <p>Fetch checks/downloads remote history. Pull updates the branch currently selected. Clicking Pull while on <code>sam-score</code> does not automatically bring main into it. No new commit is needed just to save pulled commits.</p>
+    </section>
+    <section id="merge">
+      <h2>C. Bring updated main INTO your unfinished branch</h2>
+      <p><strong>Do B first.</strong> Local main must be up to date, and Changes must show no local changes.</p>
+      <ol>
+        <li><strong>Desktop:</strong> click <strong>Current Branch → sam-score</strong>.</li>
+        <li>Check the top: <strong>Current Branch = sam-score</strong>. This is the branch receiving the changes.</li>
+        <li>Open <strong>Current Branch</strong> again. At the bottom, click <strong>Choose a branch to merge into sam-score</strong>.</li>
+        <li>Select <strong>main</strong>. Check the button says <strong>Merge main into sam-score</strong>, then click it. If the branch is already up to date, skip the merge.</li>
+        <li>If a conflict appears, stop and use the help below with your teammate. Otherwise let the merge finish.</li>
+        <li><strong>IntelliJ:</strong> check that your work and your teammate’s work are both present. Run the app and test both features together.</li>
+        <li>If you fixed code, save and commit those fixes on <code>sam-score</code>. Click <strong>Push origin</strong> to upload the merge and any fixes. A completed ordinary merge is already recorded by Git.</li>
+      </ol>
+      <p class="panel"><strong>Direction:</strong> <code>main → sam-score</code>. You are adding team updates to your branch. Your work still reaches main through the PR in D.</p>
+    </section>
+    <section id="share">
+      <h2>D. Put your finished branch INTO main</h2>
+      <ol>
+        <li>Stay on <strong>sam-score</strong>. Confirm your changes are committed, pushed, and tested with the latest main from C.</li>
+        <li><strong>Desktop:</strong> click <strong>Preview Pull Request → Create Pull Request</strong> (or <strong>Create Pull Request</strong> if shown). This opens the GitHub website.</li>
+        <li><strong>GitHub website:</strong> check <strong>base: main</strong> and <strong>compare: sam-score</strong>. The base receives your work.</li>
+        <li>Write what changed and how you tested it. Click <strong>Create pull request</strong>. If a PR already exists for your branch, open it; new pushed commits update it automatically.</li>
+        <li>Ask a teammate to review <strong>Files changed</strong> and test the feature. Make requested fixes on the same branch, then commit/push them.</li>
+        <li>When reviewed and ready, the designated reviewer clicks <strong>Merge pull request → Confirm merge</strong> on GitHub. Wait until it says <strong>Merged</strong>.</li>
+        <li><strong>Everyone, including you:</strong> follow B to pull the new main. Teammates with unfinished branches then follow C.</li>
+      </ol>
+      <p class="panel"><strong>Result:</strong> <code>sam-score → main</code> through the reviewed PR. Publishing/pushing a branch or merely opening a PR is not a completed merge.</p>
+      <p><strong>One PR at a time:</strong> after the first is merged, the next author repeats B and C, tests, and then asks for their PR to be merged. If main changes during review, refresh your branch with B/C and test again.</p>
+    </section>
+    <section id="next">
+      <h2>E. Start the next task from updated main</h2>
+      <ol>
+        <li>After your PR is merged, follow B and stay on <strong>main</strong>.</li>
+        <li>In Desktop choose <strong>Current Branch → New Branch</strong>. Give the new task a clear name and create it from updated main.</li>
+        <li>Check the new branch name before editing in IntelliJ.</li>
+      </ol>
+      <p>Use a fresh branch for a new task. Keep an unfinished branch only when continuing its current task.</p>
+    </section>
+    <section id="help">
+      <h2>If something looks wrong</h2>
+      <ul>
+        <li><strong>Switching asks what to do with local changes:</strong> cancel the switch and return to A. Save/commit intentional work before trying again.</li>
+        <li><strong>Teammate’s update is missing:</strong> check their PR says Merged, then B updates main and C updates your branch. Check IntelliJ and Desktop use the same folder.</li>
+        <li><strong>Merge conflict:</strong> pause. With the author of the other change, inspect the conflicting file in IntelliJ. Decide the combined behavior and keep the needed parts of both changes. If unsure, ask the instructor before completing the merge. Follow Desktop’s conflict-resolution prompts only after reviewing the resolved file; test before pushing.</li>
+        <li><strong>Git merges without a conflict, but the app breaks:</strong> integration still needs testing. Fix it on the feature branch before merging its PR.</li>
+        <li><strong>No merge button, blocked pull, or unexpected history:</strong> ask for help. Do not discard files, force-push, or delete the repository to get past the problem.</li>
+      </ul>
+      <p><a href="github-desktop-guide.html">Original team setup guide</a> · <a href="https://docs.github.com/en/desktop/working-with-your-remote-repository-on-github-or-github-enterprise/syncing-your-branch-in-github-desktop">Official GitHub Desktop sync reference</a></p>
+    </section>
+    <p><a href="project.html">Back to Final Project</a></p>
+  </main>
+</body>
+</html>
