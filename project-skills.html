@@ -88,12 +88,12 @@
         <table>
           <thead><tr><th>Your project</th><th>Start with</th><th>Useful next</th></tr></thead>
           <tbody>
-            <tr><td>Real-time game (arcade, drone, dodging)</td><td><a href="skills/drone-animation.html">01 Animation</a>, <a href="skills/score-system.html">04 Score</a></td><td><a href="skills/new-level.html">02 Levels</a>, <a href="skills/welcome-screen.html">03 Welcome screen</a></td></tr>
-            <tr><td>Board, maze, or turn-based game</td><td><a href="skills/grid-world.html">05 Grid world</a>, <a href="skills/score-system.html">04 Score</a></td><td><a href="skills/new-level.html">02 Levels</a>, <a href="skills/welcome-screen.html">03 Welcome screen</a></td></tr>
+            <tr><td>Real-time game (arcade, drone, dodging)</td><td><a href="skills/drone-animation.html">01 Animation</a>, <a href="skills/score-system.html">04 Score</a></td><td><a href="skills/new-level.html">02 Levels</a>, <a href="skills/level-file.html">09 Levels from a file</a>, <a href="skills/welcome-screen.html">03 Welcome screen</a></td></tr>
+            <tr><td>Board, maze, or turn-based game</td><td><a href="skills/grid-world.html">05 Grid world</a>, <a href="skills/tile-map.html">10 Tile map from a file</a></td><td><a href="skills/score-system.html">04 Score</a>, <a href="skills/new-level.html">02 Levels</a>, <a href="skills/welcome-screen.html">03 Welcome screen</a></td></tr>
             <tr><td>Math solver or calculator</td><td><a href="skills/user-input.html">06 User input</a>, <a href="skills/math-solver.html">07 Math solver</a></td><td><a href="skills/welcome-screen.html">03 Screens</a> (for example, choose a problem type)</td></tr>
-            <tr><td>Quiz or learning app</td><td><a href="skills/user-input.html">06 User input</a>, <a href="skills/score-system.html">04 Score</a></td><td><a href="skills/new-level.html">02 Levels</a> (as question sets), <a href="skills/welcome-screen.html">03 Screens</a></td></tr>
-            <tr><td>Simulation</td><td><a href="skills/drone-animation.html">01 Animation</a> (Timeline as a clock), <a href="skills/user-input.html">06 User input</a></td><td><a href="skills/math-solver.html">07 Model/GUI separation</a>, <a href="skills/grid-world.html">05 Grid world</a></td></tr>
-            <tr><td>Utility or visualization</td><td><a href="skills/user-input.html">06 User input</a></td><td><a href="skills/grid-world.html">05 Grid of data</a>, <a href="skills/math-solver.html">07 Testable logic</a></td></tr>
+            <tr><td>Quiz or learning app</td><td><a href="skills/user-input.html">06 User input</a>, <a href="skills/score-system.html">04 Score</a></td><td><a href="skills/new-level.html">02 Levels</a> (as question sets), <a href="skills/level-file.html">09 Questions from a file</a>, <a href="skills/welcome-screen.html">03 Screens</a></td></tr>
+            <tr><td>Simulation</td><td><a href="skills/drone-animation.html">01 Animation</a> (Timeline as a clock), <a href="skills/user-input.html">06 User input</a></td><td><a href="skills/math-solver.html">07 Model/GUI separation</a>, <a href="skills/grid-world.html">05 Grid world</a>, <a href="skills/tile-map.html">10 Starting grid from a file</a></td></tr>
+            <tr><td>Utility or visualization</td><td><a href="skills/user-input.html">06 User input</a></td><td><a href="skills/level-file.html">09 Data from a file</a>, <a href="skills/grid-world.html">05 Grid of data</a>, <a href="skills/math-solver.html">07 Testable logic</a></td></tr>
           </tbody>
         </table>
       </div>
@@ -166,7 +166,7 @@
 
     <section id="data" class="category">
       <h2>Data and user input</h2>
-      <p class="muted">Store structured data and accept typed or selected values safely.</p>
+      <p class="muted">Store structured data, load it from files, and accept typed or selected values safely.</p>
       <div class="card-grid">
         <article class="skill-card">
           <div><span class="tag">Skill 05</span><span class="level level-challenge">Challenge</span></div>
@@ -189,6 +189,28 @@
             <dt>Estimated effort</dt><dd>About 1–2 hours</dd>
           </dl>
           <a class="open" href="skills/user-input.html">Open learning guide</a>
+        </article>
+        <article class="skill-card">
+          <div><span class="tag">Skill 09</span><span class="level level-intermediate">Intermediate</span></div>
+          <h3><a href="skills/level-file.html">Load Levels and Game Objects from a File</a></h3>
+          <p>Keep level data in a text file. Read it, turn each line into an orb or wall object, and report bad lines with their line numbers.</p>
+          <dl>
+            <dt>Java / JavaFX concepts</dt><dd><code>getResourceAsStream</code>, <code>Scanner</code>, <code>split</code>, parsing, error messages</dd>
+            <dt>Prerequisites</dt><dd>Skill 02 recommended, Lab 13 resources folder, Errors &amp; Exceptions</dd>
+            <dt>Estimated effort</dt><dd>About 2–3 hours</dd>
+          </dl>
+          <a class="open" href="skills/level-file.html">Open learning guide</a>
+        </article>
+        <article class="skill-card">
+          <div><span class="tag">Skill 10</span><span class="level level-challenge">Challenge</span></div>
+          <h3><a href="skills/tile-map.html">Build a Tile Map from a Text File</a></h3>
+          <p>Draw a maze in a text file, one character per tile. Load it into a grid with a start and orbs, check it for mistakes, and draw it to fit the arena.</p>
+          <dl>
+            <dt>Java / JavaFX concepts</dt><dd><code>char[][]</code>, <code>charAt</code>, map validation, tile size, nested-loop drawing</dd>
+            <dt>Prerequisites</dt><dd>Skill 05, Skill 09</dd>
+            <dt>Estimated effort</dt><dd>About 2–3 hours</dd>
+          </dl>
+          <a class="open" href="skills/tile-map.html">Open learning guide</a>
         </article>
       </div>
     </section>

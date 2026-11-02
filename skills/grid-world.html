@@ -203,8 +203,8 @@ public boolean tryMove(int dRow, int dCol) {
     <section id="extend" class="skill-section">
       <h2><span class="step-no">8</span> Extend the skill</h2>
       <div class="panel">
-        <h3>Challenge: build the map from text</h3>
-        <p>Write the layout as strings, such as <code>"...#."</code>, <code>".#.#."</code>, <code>".#..."</code>, and convert them into the 2D array in a constructor, using <code>charAt(col)</code> or <code>toCharArray()</code>. Add a goal character such as <code>'G'</code> so the orb position comes from the map too. Then a new level (see <a href="new-level.html">Skill 02</a>) is just a different array of strings. Watch out for rows of different lengths.</p>
+        <h3>Challenge: build the map from a text file</h3>
+        <p>Instead of typing the array into Java, draw the maze in a text file, one character per tile (<code>W</code> for walls, <code>D</code> for the start, <code>O</code> for orbs). <a href="tile-map.html">Skill 10: Build a Tile Map from a Text File</a> shows how to read it, check it for mistakes, size the tiles, and connect it to the <code>GridWorld</code> you built here.</p>
       </div>
     </section>
 

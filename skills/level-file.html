@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Skill 09: Load Levels and Game Objects from a File | CSSE220</title>
+  <link rel="stylesheet" href="../syllabus_files/screen.css">
+  <link rel="stylesheet" href="skills.css">
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body>
+  <div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+    <a href="../design.html">Design</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../graphics/index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <main>
+    <p class="crumbs"><a href="../project.html">Final Project</a> › <a href="../project-skills.html">Coding Skills Hub</a> › Skill 09</p>
+    <h1>Skill 09: Load Levels and Game Objects from a File</h1>
+    <p class="subtitle">Move level data out of Java code and into a text file. Read it, turn each line into an object, and report bad lines clearly.</p>
+    <ul class="facts">
+      <li><strong>Category</strong>Data and user input</li>
+      <li><strong>Difficulty</strong><span class="level level-intermediate">Intermediate</span></li>
+      <li><strong>Concepts</strong><code>getResourceAsStream</code>, <code>Scanner</code>, <code>split</code>, parsing, error messages with line numbers</li>
+      <li><strong>Prerequisites</strong><a href="new-level.html">Skill 02</a> recommended, <a href="../labs/lab13.html">Lab 13</a> resources folder, Errors &amp; Exceptions (Week 8)</li>
+      <li><strong>Effort</strong>About 2–3 hours</li>
+    </ul>
+
+    <nav class="tabbar" aria-label="Skill sections">
+      <a href="#mission">1 Mission</a><a href="#know">2 Already know</a><a href="#concept">3 Concept</a><a href="#lab15">4 Lab 15</a><a href="#design">5 Design</a><a href="#build">6 Build</a><a href="#test">7 Test</a><a href="#extend">8 Extend</a><a href="#coach">9 AI Coach</a><a href="#unlocked">10 Unlocked</a>
+    </nav>
+
+    <section id="mission" class="skill-section">
+      <h2><span class="step-no">1</span> Mission</h2>
+      <p>In <a href="new-level.html">Skill 02</a>, each level is a line of Java code. Adding or moving one orb means editing Java, recompiling, and hoping nothing else broke. Real games keep that data in <strong>files</strong>. A teammate can design levels in a text editor while you work on the code.</p>
+      <p><strong>Your mission:</strong> put the Drone Arena's levels in a text file. Each level can have <em>any number</em> of orbs and walls. Read the file when the app starts, build objects from each line, and show a clear message (with the line number) when the file has a mistake.</p>
+      <p class="muted">Why you might need this: game levels, quiz questions, practice problems for a solver, starting data for a simulation, or a sample task list for a planner.</p>
+    </section>
+
+    <section id="know" class="skill-section">
+      <h2><span class="step-no">2</span> What you already know</h2>
+      <ul>
+        <li><strong>Lab 13 Setup B:</strong> files in <code>src/main/resources</code> are found at runtime with a path that starts at <code>/</code>, such as <code>/images/drone.png</code>. Text files work the same way.</li>
+        <li><strong>Skill 02:</strong> a plain <code>Level</code> data class, a list of levels, a current index, and one <code>loadLevel</code> method.</li>
+        <li><strong>Skill 06:</strong> <code>trim()</code>, <code>Double.parseDouble</code>, and catching <code>NumberFormatException</code>.</li>
+        <li><strong>Errors &amp; Exceptions (Week 8):</strong> throwing an exception with a helpful message.</li>
+        <li><strong>Java basics:</strong> <code>Scanner</code>, <code>ArrayList</code>, <code>for</code> loops over a list, <code>String.split</code>.</li>
+      </ul>
+    </section>
+
+    <section id="concept" class="skill-section">
+      <h2><span class="step-no">3</span> Learn the concept</h2>
+
+      <h3>Where the file lives</h3>
+      <p>Put data files next to your images, in <code>src/main/resources</code>. Maven copies everything there into the running program, so the same path works on every teammate's computer.</p>
+<pre><code>src/
+  main/
+    java/demo/ArrowApp.java ...
+    resources/
+      images/drone.png        → found as "/images/drone.png"
+      levels/levels.txt       → found as "/levels/levels.txt"</code></pre>
+
+      <h3>Design a file format people can read</h3>
+      <p>One object per line, starting with a <strong>keyword</strong> that says what kind of object it is. Comments and blank lines make the file easy to edit.</p>
+      <span class="code-label">src/main/resources/levels/levels.txt</span>
+<pre><code># Drone Arena levels. Lines starting with # are comments.
+# LEVEL name          starts a new level
+# ORB x y             an energy orb centered at (x, y)
+# WALL x y w h        a wall rectangle
+
+LEVEL Warm-up
+ORB 390 205
+
+LEVEL The Wall
+ORB 440 60
+ORB 60 40
+WALL 320 0 20 200</code></pre>
+
+      <h3>Three layers: text → data objects → shapes on screen</h3>
+      <figure>
+        <svg viewBox="0 0 720 190" role="img" aria-labelledby="fTitle fDesc">
+          <title id="fTitle">From a text file to shapes on screen</title>
+          <desc id="fDesc">levels.txt holds lines of text. LevelLoader reads and parses them into Level objects that contain Orb and Wall data. ArrowApp's loadLevel turns one Level into Circle and Rectangle nodes on the canvas.</desc>
+          <rect width="720" height="190" fill="#fff"/>
+          <defs><marker id="arr9" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+          <rect x="10" y="30" width="170" height="130" rx="10" fill="#f3f3f3" stroke="#999"/>
+          <text x="95" y="54" font-family="Arial" font-size="14" font-weight="bold" fill="#2b2b2b" text-anchor="middle">levels.txt</text>
+          <text x="24" y="80" font-family="Menlo, monospace" font-size="12" fill="#333">LEVEL The Wall</text>
+          <text x="24" y="100" font-family="Menlo, monospace" font-size="12" fill="#333">ORB 440 60</text>
+          <text x="24" y="120" font-family="Menlo, monospace" font-size="12" fill="#333">ORB 60 40</text>
+          <text x="24" y="140" font-family="Menlo, monospace" font-size="12" fill="#333">WALL 320 0 20 200</text>
+          <line x1="182" y1="95" x2="236" y2="95" stroke="#555" stroke-width="2" marker-end="url(#arr9)"/>
+          <text x="209" y="86" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">read</text>
+          <rect x="238" y="30" width="220" height="130" rx="10" fill="#ecf8f2" stroke="#18794e"/>
+          <text x="348" y="54" font-family="Arial" font-size="14" font-weight="bold" fill="#134e35" text-anchor="middle">LevelLoader (no JavaFX)</text>
+          <text x="252" y="80" font-family="Arial" font-size="12" fill="#134e35">readLines("/levels/levels.txt")</text>
+          <text x="252" y="102" font-family="Arial" font-size="12" fill="#134e35">parse(lines) → List&lt;Level&gt;</text>
+          <text x="252" y="124" font-family="Arial" font-size="12" fill="#134e35">Level: name, Orbs, Walls</text>
+          <text x="252" y="146" font-family="Arial" font-size="12" fill="#134e35">bad line → "Line 7: ..."</text>
+          <line x1="460" y1="95" x2="514" y2="95" stroke="#555" stroke-width="2" marker-end="url(#arr9)"/>
+          <rect x="516" y="30" width="194" height="130" rx="10" fill="#edf4ff" stroke="#245780"/>
+          <text x="613" y="54" font-family="Arial" font-size="14" font-weight="bold" fill="#245780" text-anchor="middle">ArrowApp.loadLevel</text>
+          <text x="530" y="80" font-family="Arial" font-size="12" fill="#23415f">remove old shapes</text>
+          <text x="530" y="102" font-family="Arial" font-size="12" fill="#23415f">Orb → new Circle</text>
+          <text x="530" y="124" font-family="Arial" font-size="12" fill="#23415f">Wall → new Rectangle</text>
+          <text x="530" y="146" font-family="Arial" font-size="12" fill="#23415f">add to canvas</text>
+        </svg>
+        <figcaption>Reading and parsing happen in a class with no JavaFX, so you can check it without opening a window. Only the last step creates shapes.</figcaption>
+      </figure>
+
+      <h3>Reading every line of a resource file</h3>
+      <p><code>getResourceAsStream</code> is the text-file partner of the <code>getResource</code> call that loads <code>drone.png</code>. It returns <code>null</code> when the file is not found, so check for that and say what is wrong.</p>
+<pre><code>public static List&lt;String&gt; readLines(String resourcePath) {
+    InputStream in = LevelLoader.class.getResourceAsStream(resourcePath);   // import java.io.InputStream
+    if (in == null) {
+        throw new IllegalArgumentException("Cannot find " + resourcePath
+                + ". Is it inside src/main/resources?");
+    }
+    List&lt;String&gt; lines = new ArrayList&lt;&gt;();
+    Scanner scanner = new Scanner(in);
+    while (scanner.hasNextLine()) {
+        lines.add(scanner.nextLine());
+    }
+    scanner.close();
+    return lines;
+}</code></pre>
+
+      <h3>Parsing one line</h3>
+<pre><code>String line = lines.get(i).trim();
+if (line.isEmpty() || line.startsWith("#")) {
+    continue;                                  // skip blanks and comments
+}
+String[] parts = line.split("\\s+");           // "ORB 440 60" → ["ORB", "440", "60"]
+String keyword = parts[0].toUpperCase();
+if (keyword.equals("ORB")) {
+    // TODO: check that there are exactly 3 parts
+    current.addOrb(new Orb(Double.parseDouble(parts[1]), Double.parseDouble(parts[2])));
+} else if (keyword.equals("WALL")) {
+    // TODO
+} // ...</code></pre>
+      <p><code>"\\s+"</code> means "one or more spaces or tabs", so extra spaces between numbers do not matter.</p>
+
+      <h3>Bad lines must not crash the game silently</h3>
+      <p>People make typos in data files. Your loader should stop at the first problem and say exactly where it is. These are the real messages from a working loader:</p>
+<pre class="output"><code>Line 2: not a number in "ORB 1 two"
+Line 2: expected "ORB x y"
+Line 3: unknown keyword "TREE"
+Line 1: ORB appears before any LEVEL line
+Level "A" has no ORB
+Cannot find /levels/nope.txt. Is it inside src/main/resources?</code></pre>
+      <div class="callout warn">
+        <p><strong>Variable numbers of objects change the reset rule.</strong> In Skill 02 you added the orb and wall to the canvas <em>once</em> and moved them. Now each level can have a different number of orbs and walls, so <code>loadLevel</code> must <strong>remove the previous level's shapes</strong> before adding new ones. Keep them in a list such as <code>List&lt;Circle&gt; orbNodes</code>, then call <code>canvas.getChildren().removeAll(orbNodes)</code> and <code>orbNodes.clear()</code>.</p>
+      </div>
+    </section>
+
+    <section id="lab15" class="skill-section">
+      <h2><span class="step-no">4</span> Connect to Lab 15</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Existing code</th><th>Role in this skill</th></tr></thead>
+          <tbody>
+            <tr><td><code>SceneToken</code> loads <code>"/images/drone.png"</code> with <code>getResource</code></td><td>The same resource system finds <code>"/levels/levels.txt"</code>. Use <code>getResourceAsStream</code> to read text.</td></tr>
+            <tr><td><code>private final Circle crystal</code> (one orb)</td><td>Becomes a <code>List&lt;Circle&gt;</code>, one per <code>ORB</code> line in the current level.</td></tr>
+            <tr><td><code>checkCollision(SceneToken token, Label status)</code></td><td>Loops over the orb list and the wall list. The level is complete when no orb is still visible.</td></tr>
+            <tr><td>Skill 02's <code>Level</code> and <code>loadLevel</code></td><td><code>Level</code> now holds lists of <code>Orb</code> and <code>Wall</code> data objects; <code>loadLevel</code> rebuilds the shapes.</td></tr>
+            <tr><td><code>ArrowApp.start(Stage stage)</code></td><td>Reads the file once, before building the arena. If loading fails, show the message in a <code>Label</code> instead of the game.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details open>
+        <summary>Not a game? How this transfers</summary>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>App</th><th>Example lines</th><th>Objects you build</th></tr></thead>
+            <tbody>
+              <tr><td>Quiz</td><td><code>Q What is 7 * 8?</code> / <code>A 56</code></td><td><code>Question</code> objects with text and answer</td></tr>
+              <tr><td>Math practice</td><td><code>LINEAR 2 3 11</code></td><td><code>LinearEquation</code> objects (<a href="math-solver.html">Skill 07</a>)</td></tr>
+              <tr><td>Simulation</td><td><code>RABBITS 50</code> / <code>FOXES 4</code></td><td>Starting values for the model</td></tr>
+              <tr><td>Planner</td><td><code>TASK Finish the UML diagram</code></td><td><code>Task</code> objects in a list</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section id="design" class="skill-section">
+      <h2><span class="step-no">5</span> Design before coding</h2>
+      <ol>
+        <li><strong>Format:</strong> write a sample file by hand <em>before</em> any code. Which keywords? Which numbers, in which order? Write the format in comments at the top of the file.</li>
+        <li><strong>Classes:</strong> which classes hold the data (<code>Level</code>, <code>Orb</code>, <code>Wall</code>)? Which class reads and parses the file? None of these needs JavaFX. Which class turns data into shapes?</li>
+        <li><strong>Errors:</strong> list what can go wrong (missing file, bad number, wrong count, unknown keyword, a level with nothing in it) and the message for each.</li>
+        <li><strong>When to read:</strong> once at startup, or every time a level loads? Once is simpler and catches mistakes before anyone plays.</li>
+        <li><strong>Failure:</strong> if the file is broken, what does the player see?</li>
+      </ol>
+    </section>
+
+    <section id="build" class="skill-section">
+      <h2><span class="step-no">6</span> Guided implementation</h2>
+      <ol class="steps">
+        <li><strong>Create the file.</strong> In IntelliJ's Project view, right-click <code>src/main/resources</code> → New → Directory → <code>levels</code>, then right-click <code>levels</code> → New → File → <code>levels.txt</code>. Write two levels in your format. Make Level 1 match Lab 15: one orb at (390, 205).</li>
+        <li><strong>Create the data classes</strong> with no JavaFX imports: small <code>Orb</code> and <code>Wall</code> classes with final fields and getters, and a <code>Level</code> with a name and two lists, with methods such as <code>addOrb</code> and <code>getOrbs</code>.</li>
+        <li><strong>Create <code>LevelLoader</code></strong> with the <code>readLines</code> method above.
+          <p class="check">Check: a quick check class that prints <code>readLines("/levels/levels.txt").size()</code> shows the number of lines in your file.</p></li>
+        <li><strong>Write <code>parse(List&lt;String&gt; lines)</code>.</strong> Loop with an index so you know the line number (<code>i + 1</code>). Skip blanks and comments. <code>LEVEL</code> starts a new <code>Level</code> and adds it to the result list. <code>ORB</code> and <code>WALL</code> add to the <em>current</em> level.
+          <details><summary>Hint: the level name can contain spaces</summary><p>"LEVEL The Wall" splits into three parts. Use <code>line.substring(parts[0].length()).trim()</code> to get everything after the keyword.</p></details></li>
+        <li><strong>Add the error messages.</strong> Start every message with <code>"Line " + (i + 1) + ": "</code>. Wrap the branches in <code>try</code> and turn a <code>NumberFormatException</code> into your own message. After the loop, reject a file with no levels and a level with no orbs.</li>
+        <li><strong>Check the loader without the GUI.</strong> Use the <a href="score-system.html#build">Skill 04 check-class pattern</a>. <code>List.of(...)</code> lets you write a small "file" right in the check, so you can test bad lines without creating bad files:
+<pre><code>List&lt;Level&gt; levels = LevelLoader.parse(List.of("LEVEL A", "ORB 1 2"));
+check("one level", levels.size() == 1);
+
+try {
+    LevelLoader.parse(List.of("LEVEL A", "ORB 1 two"));
+    check("bad number is rejected", false);
+} catch (IllegalArgumentException e) {
+    check("bad number -&gt; " + e.getMessage(), e.getMessage().contains("Line 2"));
+}</code></pre>
+          <p class="check">Check: every check prints PASS, including one for each error in your Step 5 design list.</p></li>
+        <li><strong>Load at startup.</strong> At the top of <code>ArrowApp.start</code>, call the loader inside <code>try</code>. On <code>IllegalArgumentException</code>, show a <code>Label</code> with the message in a simple scene, then <code>return</code>.</li>
+        <li><strong>Rebuild shapes in <code>loadLevel</code>.</strong> Remove the old orb and wall shapes from <code>canvas</code> and clear your lists. Then create one <code>Circle</code> per <code>Orb</code> and one <code>Rectangle</code> per <code>Wall</code>, add them to your lists, and add the lists to <code>canvas</code>. Reset the drone and update the level label.</li>
+        <li><strong>Update <code>checkCollision</code></strong> to loop over the walls (crash) and the orbs (hide each one touched). When no orb is visible, load the next level, or show a win message after the last one.
+          <p class="check">Check: Level 2 from your file appears with all of its orbs and walls, exactly where the file says.</p></li>
+      </ol>
+    </section>
+
+    <section id="test" class="skill-section">
+      <h2><span class="step-no">7</span> Test your skill</h2>
+      <ul class="tests">
+        <li><span class="kind">Normal</span>Levels appear in file order, with every orb and wall where the file says. Now <strong>edit only the text file</strong> (move an orb, add a third level) and rerun: the game changes without any Java edit.</li>
+        <li><span class="kind">Edge</span>Break the file on purpose, one mistake at a time: <code>ORB 1 two</code>, <code>ORB 1</code>, <code>TREE 3 4</code>, a level with no orb, and a misspelled file name. Each one shows a clear message with the line number, and nothing crashes. Fix the file afterward.</li>
+        <li><span class="kind">Repeat / reset</span>Press Reset five times on a level with walls, then temporarily print <code>canvas.getChildren().size()</code>: the number must not grow. Finish every level, including the last one.</li>
+      </ul>
+    </section>
+
+    <section id="extend" class="skill-section">
+      <h2><span class="step-no">8</span> Extend the skill</h2>
+      <div class="panel">
+        <h3>Challenge: choose a level pack</h3>
+        <p>Create two files, such as <code>levels/easy.txt</code> and <code>levels/hard.txt</code>. Add a <code>ComboBox</code> on a welcome screen (<a href="user-input.html">Skill 06</a>, <a href="welcome-screen.html">Skill 03</a>) that chooses which file to load. The loader does not change at all; only the path does. That is the payoff of keeping reading and parsing separate from the GUI.</p>
+        <p class="small"><strong>Reading vs. saving:</strong> files in <code>src/main/resources</code> are part of your program, so treat them as read-only. Saving player data, such as a best score, needs a file somewhere else, like the user's home folder. That is a different skill, so ask your instructor before adding it.</p>
+      </div>
+    </section>
+
+    <section id="coach" class="skill-section">
+      <h2><span class="step-no">9</span> Ask your AI Coach</h2>
+      <div class="prompt-box">
+<pre>I am a CSSE220 student building a Java 21 / JavaFX 21 project with Maven in IntelliJ. I want to LEARN how to load levels or game objects from a text file in src/main/resources, so the data is not hard-coded in Java.
+
+My app is based on the CSSE220 Lab 15 Drone Arena: ArrowApp builds a 500 x 300 Pane named canvas, checkCollision(SceneToken token, Label status) handles collisions, and SceneToken loads "/images/drone.png" with getResource.
+[Describe what your file should contain, and paste your sample file when asked.]
+
+Please coach me. Do not write the whole solution.
+1. Help me design a readable line-based file format first. Ask me what objects each level needs.
+2. Explain getResourceAsStream and Scanner, and why the path starts with "/".
+3. Help me plan which classes hold the data, which class parses (no JavaFX), and which class creates the shapes.
+4. Guide me one step at a time through reading lines, splitting them, and building objects. Wait for my results after each step.
+5. Help me write error messages that include the line number, and a check class (main method, prints PASS/FAIL) that feeds bad lines with List.of(...). No JUnit and no Maven changes.
+6. Help me test: editing only the file, broken lines, a missing file, and replaying a level without duplicating shapes.
+Do not replace my project, add libraries, or change pom.xml.</pre>
+      </div>
+      <details>
+        <summary>Using a coding agent instead?</summary>
+        <ol>
+          <li><strong>Context:</strong> the repository root, <code>ArrowApp.java</code>, your <code>Level</code> class, and your sample <code>levels.txt</code>.</li>
+          <li><strong>Narrow task 1:</strong> "Create LevelLoader with readLines and parse for this exact format, plus a LevelLoaderCheck class. Do not touch any JavaFX code or pom.xml."</li>
+          <li><strong>Narrow task 2:</strong> "Change loadLevel to rebuild orb and wall shapes from the loaded Level."</li>
+          <li><strong>Review the diff:</strong> look for absolute file paths like <code>C:\Users\...</code> (they only work on one computer), empty <code>catch</code> blocks, and shapes added without removing the old ones.</li>
+          <li><strong>Run the check class and the three tests</strong>, then commit and log the help.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section id="unlocked" class="skill-section unlocked">
+      <h2><span class="step-no">10</span> Skill Unlocked</h2>
+      <ol>
+        <li><strong>Explain</strong> where a resource file lives, why its path starts with <code>/</code>, and how it reaches the running program.</li>
+        <li><strong>Demonstrate</strong> changing the game by editing only the text file, and a broken line producing a clear message with its line number.</li>
+        <li><strong>Explain</strong> why parsing lives in a class without JavaFX, and why <code>loadLevel</code> must remove old shapes when levels have different numbers of objects.</li>
+      </ol>
+      <p>Record it: <a href="my-skills-acquired.html">My Skills Acquired</a>.</p>
+    </section>
+
+    <p class="pager"><a href="debugging.html">← Skill 08: Debugging</a><a href="tile-map.html">Skill 10: Tile Map from a File →</a></p>
+  </main>
+  <script src="skills.js"></script>
+</body>
+</html>
