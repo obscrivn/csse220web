@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>CSSE220 Final Project</title>
   <link rel="stylesheet" href="./syllabus_files/screen.css">
-  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="./favicon.ico">
   <style>
     body {
       margin: 0;
@@ -155,7 +155,7 @@
     <a href="./homework.html">Homework</a>
     <a href="./exams.html">Exams</a>
     <a href="./project.html">Final Project</a>
-    <a href="graphics/index.html">Graphics</a>
+    <a href="./graphics/index.html">Graphics</a>
     <a href="./resources.html">Resources</a>
     <div style="clear:both;"></div>
   </div>
@@ -165,6 +165,12 @@
     <p class="muted">Build a Java interactive GUI project that applies object-oriented design. Your team may create a game, app, simulation, utility, or visualization.</p>
 
     <div class="card-grid">
+      <a class="project-card skills-card" href="#final-project-specification">
+        <div class="tag">Milestone 3 · Final deliverable</div>
+        <h3>Final Project Specification</h3>
+        <p>See the must-have features, what you need for 100%, and the demo checklist.</p>
+        <span class="skills-open">Open the final project requirements &rarr;</span>
+      </a>
       <a class="project-card" href="./Milestone0.html">
         <div class="tag">Milestone 0</div>
         <h3>Pitch Your Idea</h3>
@@ -181,6 +187,75 @@
         <p>One week: build two connected actions, test the workflow, and prepare for the November 2 live check-in.</p>
       </a>
     </div>
+
+
+    <section id="final-project-specification" class="milestone-section" aria-labelledby="final-spec-heading">
+      <h2 id="final-spec-heading">Milestone 3: Final Project Specification</h2>
+      <p>Your project may be a game, solver, simulation, utility, or another interactive application.</p>
+
+      <h3>Must-have features: the baseline application</h3>
+      <ul>
+        <li><strong>A working JavaFX GUI with graphics or a designed layout.</strong> The submitted project launches with usable controls and a visible result. Show JavaFX visual work: a game board or sprites, an interactive map, or a solver layout with clearly grouped inputs, controls, and results. A console program or unchanged starter window does not meet this requirement.</li>
+        <li><strong>Meaningful user interaction.</strong> A user action runs your project’s actual logic. Buttons, mouse clicks, text entry, and keyboard input are options; use the controls that fit your application.</li>
+        <li><strong>Meaningful application state.</strong> The app remembers data that matters to its task, and later actions use or change that data. Examples include a board, collected items, current problem, result, or session history. The display agrees with the data.</li>
+        <li><strong>One complete workflow.</strong> A user can begin a task, perform connected actions, and reach a useful outcome. The result must come from the user’s actions and your logic.</li>
+      </ul>
+      <p><strong>A window alone is not a complete project.</strong> A renamed Drone Arena with moving graphics, but no working project rules or outcome, shows partial progress. Likewise, a solver screen with text fields and a fixed answer has no complete solving workflow. Partial work receives credit for the implemented behavior, working connections, and design you can demonstrate; identify what works and what remains incomplete.</p>
+
+      <h3>What you need for 100%</h3>
+      <p>Complete the baseline and every requirement below. Use the project examples to see how levels, progress displays, and screens apply to your application.</p>
+      <ol>
+        <li><strong>Build a complete screen flow.</strong> Include a welcome/instructions screen, the main game or application screen, and a game-over/results/summary screen. Provide working controls to start, navigate, and play or use the app again. You may switch JavaFX scenes or replace content within one window.</li>
+        <li><strong>Add levels or staged content.</strong> Provide at least two playable levels, quiz rounds, map challenges, or supported solver problem types. The second must change the content, rules, difficulty, or calculation; changing only the title or background is insufficient. Show which level, round, challenge, or problem type is active.</li>
+        <li><strong>Display score, progress, or results.</strong> Keep a visible display that updates from the model as the user acts: score and level for an arcade game, correct answers and question progress for a quiz, completed locations for a map activity, or the current problem and computed result for a solver. Show the final outcome on the results screen.</li>
+        <li><strong>Finish the graphics and layout.</strong> Arcade games must use image sprites for the player and relevant game objects rather than only placeholder rectangles or circles. A quiz needs clearly arranged questions, answer choices, and feedback. A campus map needs a visible map with selectable locations and clear selection feedback. A solver needs aligned, labeled inputs and readable results. Include required image files in the repository and credit their sources.</li>
+        <li><strong>Make the application readable during the demo.</strong> Test the app at the size you will present. Enlarge the window and fonts so the audience can read instructions, controls, scores, and results. Nothing essential may be clipped, overlap, or require the audience to read tiny text. Check this before presenting.</li>
+        <li><strong>Complete and connect the core mechanics.</strong> Every core feature listed in your team document works in the combined app. For example, collisions update score once, quiz answers update progress once, map selections show the correct location information, and solver inputs produce computed answers. Discuss changes to the agreed core with the instructor.</li>
+        <li><strong>Handle errors and reset correctly.</strong> Check an invalid action or input, a boundary or special case, and another complete use. Give helpful feedback and preserve valid state. Restart must reset the appropriate score, round, selected location, inputs, and results. For timed games, stop updates at game over and avoid duplicate timers after restarting.</li>
+        <li><strong>Show the Java objects behind the interface.</strong> Keep rules, calculations, and application data in model objects rather than putting the whole program in screen setup or button handlers. Update your UML. During the demo, identify the responsible classes and trace one user action from the control to the model and back to the display.</li>
+        <li><strong>Record concrete correctness checks.</strong> In your team document, show input/action, expected result, actual result, and fix/retest for a normal workflow, an invalid action or boundary, and restart/repeated use. Check both levels, rounds, challenges, or problem types. Use known answers for calculations. Manual checks are acceptable.</li>
+        <li><strong>Finish the code and project record.</strong> Push the final source and resources to GitHub. Include README launch instructions and the final commit identifier. Update the Google Doc with screenshots, current UML or a link to it, test results, challenges, remaining limitations, and individual work logs. Each log records dates, time spent, specific tasks, and links to the related code, commits, or reviewed pull requests. Keep Help Citations and AI learning documentation current under the <a href="./syllabus.html">course policy</a>.</li>
+        <li><strong>Present the application in class.</strong> Give a short sales pitch: who the app is for, what it does, and why someone would use or play it. Run the app and walk through its game mechanics or application workflow, including screen transitions, levels/content, score or results, and restart. Each teammate identifies their contribution and can explain their code. <strong>No slides needed.</strong></li>
+      </ol>
+      <p><strong>Weekly work expectation:</strong> each team member must spend at least <strong>6 hours per week</strong> working on the project, including in-class project time and outside-class meetings/work. Record actual time and completed tasks in individual work logs.</p>
+
+      <h3>What this looks like in different projects</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th scope="col">Requirement</th><th scope="col">Arcade game</th><th scope="col">Math solver</th><th scope="col">Quiz or clickable campus map</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Baseline: GUI, interaction, and state</th><td>A visible play area responds to controls. Collecting an item updates inventory, opens a gate, and leads to an outcome.</td><td>A designed JavaFX layout groups labeled inputs, Solve/Clear controls, and results. User input produces a computed answer; changing the problem updates the displayed result.</td><td>Quiz: selectable answers produce feedback and update question state. Map: clicking a location highlights it and displays its information; selecting another location updates the selection and details.</td></tr>
+          <tr><th scope="row">Screens and repeated use</th><td>Welcome/instructions → gameplay → game over/results → restart.</td><td>Welcome/help → problem entry and solving → solution summary → another problem.</td><td>Quiz: welcome → questions → score summary → new attempt. Map: welcome → map exploration/challenge → visited-location or challenge summary → new exploration.</td></tr>
+          <tr><th scope="row">Levels or staged content</th><td>At least two levels with different layouts, obstacles, rules, or difficulty.</td><td>At least two supported problem types, each with working inputs, mathematical logic, and correct results.</td><td>Quiz: at least two rounds with different question sets or difficulty. Map: at least two campus exploration challenges or tours with different target locations and completion conditions.</td></tr>
+          <tr><th scope="row">Score, progress, or result display</th><td>Visible score and level update correctly; final score appears at game over.</td><td>Active problem type, entered problem, and computed result are clear; summary shows the answer and relevant explanation.</td><td>Quiz: correct-answer count and question progress, followed by final score. Map: visited/target location count and a final completion summary.</td></tr>
+          <tr><th scope="row">Graphics and demo readability</th><td>Image sprites represent the player and relevant game objects; play area, score, and controls are visible to the audience.</td><td>Aligned inputs, readable mathematical symbols, clear spacing, and large result text; no clipped answers or tiny labels.</td><td>Quiz: readable questions, answer choices, and feedback. Map: visible map, clickable targets, selected-location highlight, and readable information panel.</td></tr>
+          <tr><th scope="row">Errors, boundaries, and restart</th><td>Check collisions/bounds, prevent repeated scoring, stop at game over, and reset level, player, score, and timers.</td><td>Check empty/nonnumeric input and applicable mathematical special cases. Solve another problem without showing stale answers.</td><td>Quiz: prevent duplicate scoring and reset answers/progress. Map: selecting a visited location does not count twice; a new tour resets the appropriate targets and progress.</td></tr>
+          <tr><th scope="row">Design and evidence</th><td>Explain objects owning game rules, player state, levels, and display; show checks and individual work logs.</td><td>Explain objects owning validation, calculations, results, and display; show known-answer checks and individual work logs.</td><td>Explain objects owning questions/answers or locations/tour progress, and how controls update them; show checks and individual work logs.</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>How the earlier milestones fit</h3>
+      <ul>
+        <li><a href="./Milestone0.html">Milestone 0: proposal</a> — identify the user, actions, screen, and core versus stretch features.</li>
+        <li><a href="./project-milestone1.html">Milestone 1: design and team launch</a> — initial UML, running starter, shared repository, and each teammate’s branch/PR practice.</li>
+        <li><a href="./project-milestone2.html">Milestone 2: functional alpha</a> — two connected actions, updated design, normal/edge/repeat checks, and the live check-in.</li>
+      </ul>
+
+      <h3>Monday: architecture-review agent demo</h3>
+      <p>On Monday, November 9, we plan to demonstrate an agent that reviews a Java project’s architecture: class responsibilities, model/GUI separation, object collaboration, and exception handling. You will see how to ask for feedback supported by references to your code and how to evaluate its recommendations.</p>
+      <p>The review is intended to help your team identify improvements before Friday’s demo. Use your judgment to choose useful changes, then check that your application still works after refactoring. This is feedback, not an automatic grade. Review-kit instructions will be shared after the class demonstration.</p>
+
+      <h3>Before your demo and final report</h3>
+      <ul>
+        <li>Run the final JavaFX app from the latest code on GitHub; include every required resource and verify the README launch steps.</li>
+        <li>Update the Google Doc with supported scope, screenshots of the real application, current UML or a link to it, checks and results, challenges, limitations, and each teammate’s work log with evidence links.</li>
+        <li>Identify the final commit in the report so the demonstrated and submitted code can be matched.</li>
+        <li>Rehearse your short sales pitch and live walkthrough in class. Show mechanics/workflow, screen transitions, levels or content, score/results, and restart. Test the window size and fonts for audience readability. No slides needed.</li>
+        <li>Use the <a href="./project-skills.html"><strong>Coding Skills Hub</strong></a> if a guide helps. In your team document, name any starter or guide you actually used, what you adapted, and where it appears in your code. “We used no Coding Skills Hub resources” is a complete answer. Using a Hub resource is optional.</li>
+      </ul>
+      <p><strong>Dates on the <a href="./schedule.html">course schedule</a>:</strong> November 9, 2026: check-ins; November 11: team project work; November 13: demo; November 15: Milestone 3 Final Report (no extensions). Follow instructor instructions for the presentation slot, demo length, report submission location, and exact cutoff time.</p>
+    </section>
 
     <section id="team-git" style="margin-top: 32px;">
       <h2>GitHub Desktop: share work and get team updates</h2>
@@ -213,7 +288,7 @@
         </ul>
         <span class="skills-open">Open the hub →</span>
       </a>
-      <p class="small-note">After each skill, record what you learned in <a href="skills/my-skills-acquired.html">My Skills Acquired</a>.</p>
+      <p class="small-note">After each skill, record what you learned in <a href="./skills/my-skills-acquired.html">My Skills Acquired</a>.</p>
     </section>
 
     <section style="margin-top: 32px;">
@@ -223,7 +298,7 @@
     </section>
     <section style="margin-top: 32px;">
       <h2>Build with AI: learn, implement, verify</h2>
-      <p><a href="ai-skills.html"><strong>Open the AI Skills Hub</strong></a> for small feature tasks, good and bad practices, and reusable instructions for your agent.</p>
+      <p><a href="./ai-skills.html"><strong>Open the AI Skills Hub</strong></a> for small feature tasks, good and bad practices, and reusable instructions for your agent.</p>
       <p>Need a technique your team has not learned yet? Use the <a href="#coding-skills">Coding Skills Hub</a>.</p>
     </section>
   </main>
