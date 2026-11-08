@@ -64,10 +64,58 @@
   <div id="content"><main class="container" id="top">
 <h1>Bonus Homework: LinkedList (Optional)</h1>
 <p class="meta">Homework 7 · Individual work · Seven operations</p>
-<p class="note">Optional bonus work. The instructor will confirm the bonus point value, deadline, and any replacement policy. The legacy 70-point policy does not apply automatically.</p>
+<p class="note">Optional bonus work.</p>
 <div class="actions"><a href="LinkedListBonus.zip">Download IntelliJ starter ZIP</a></div>
 <section><h2>Learning objectives</h2><ul><li>Traverse a singly linked list using node references.</li><li>Maintain first and last references during insertion and removal.</li><li>Test empty lists, single-node lists, repeated values, and invalid indices.</li></ul></section>
 <section><h2>Start here</h2><ol><li>Extract the ZIP. In IntelliJ, open the <code>LinkedListBonus</code> folder containing <code>pom.xml</code>. Select JDK 21 and let Maven load.</li><li>Open <code>src/main/java/sll/SinglyLinkedList.java</code>. Add your name and help citations.</li><li>Implement TODOs 01 through 07, starting with <code>add</code>, then <code>size</code>. Read each method's Javadoc.</li></ol></section>
+<section id="linked-list-review"><h2>LinkedList coding review</h2>
+<p>Use this review to get started if we did not reach the coding examples in class. The examples use the supplied <code>ListNode</code> and <code>SinglyLinkedList</code> classes.</p>
+<h3>1. Create and connect nodes</h3>
+<p>A node stores an <code>Integer element</code> and a <code>ListNode next</code> reference. The reference tells us which node comes next. A <code>null</code> next reference marks the end.</p>
+<pre><code>ListNode first = new ListNode(10);
+ListNode second = new ListNode(20);
+first.next = second;</code></pre>
+<p><code>new ListNode(10)</code> creates a node containing 10 with <code>next == null</code>. Assigning <code>first.next = second</code> connects the two nodes. It does not copy the second node.</p>
+<pre>first → [10 | next] → [20 | null]
+                      ↑
+                    second</pre>
+<p>The two-argument constructor can connect a new node to an existing chain:</p>
+<pre><code>ListNode start = new ListNode(5, first);
+// start → [5] → [10] → [20] → null</code></pre>
+<p>Here <code>first</code> still refers to the node containing 10. Creating <code>start</code> does not automatically change another reference. These local variables illustrate nodes; inside your list class, <code>this.first</code> and <code>this.last</code> record the list's endpoints.</p>
+<h3>2. Traverse with a while loop</h3>
+<p>Start a temporary reference at the first node. Process its value, then follow <code>next</code>. Stop when the reference becomes <code>null</code>.</p>
+<pre><code>ListNode current = start;
+while (current != null) {
+    System.out.println(current.element);
+    current = current.next;
+}</code></pre>
+<p>For the chain above, this prints 5, 10, and 20 on separate lines. The assignment moves <code>current</code>; it does not move nodes or change their links. Keep the starting reference so the list remains accessible.</p>
+<details><summary>Predict and explain</summary><p>What happens if the chain is empty? What happens if you omit <code>current = current.next</code>? Why would <code>while (current.next != null)</code> miss the final value?</p><details><summary>Check your reasoning</summary><p>An empty chain starts with current null, so the body runs zero times. Without the update, a nonempty chain repeats the same node forever. Checking current.next stops before processing the last node and dereferences null on an empty chain.</p></details></details>
+<h3>3. Use the list's methods</h3>
+<p>These examples show the expected behavior <strong>after you implement the relevant TODOs</strong>. They are calls to your custom list, not <code>java.util.LinkedList</code>. You can try them in a separate scratch main method or your own test.</p>
+<pre><code>SinglyLinkedList numbers = new SinglyLinkedList();
+numbers.add(10);
+numbers.add(30);
+numbers.insertAtIndex(1, 20);      // [10, 20, 30]
+System.out.println(numbers.size());        // 3
+System.out.println(numbers.contains(20));  // true
+System.out.println(numbers.indexOf(30));   // 2
+Integer previous = numbers.set(1, 25);     // returns 20; [10, 25, 30]
+boolean removed = numbers.remove(10);      // returns true; [25, 30]</code></pre>
+<p>Indices start at zero. Inserting makes room for a new element; setting replaces an existing element. Removing uses a <strong>value</strong>, not an index.</p>
+<pre><code>SinglyLinkedList repeated = new SinglyLinkedList();
+repeated.add(8);
+repeated.add(8);
+repeated.add(3);
+repeated.remove(8);              // [8, 3]; removes the first 8 only
+int position = repeated.indexOf(8);  // 0
+boolean found = repeated.remove(99); // false; list stays [8, 3]</code></pre>
+<p>Bracketed comments show element order. The supplied <code>toString()</code> also displays first and last values for a nonempty list.</p>
+<h3>4. Plan one operation at a time</h3>
+<p>Start with <code>add</code>, then <code>size</code>. Before changing links, draw an empty list, a single-node list, and a longer list. Identify which references must change and which must stay the same. Implement one TODO, run its tests, then compare the result with your drawing.</p>
+<p>When searching, compare Integer values with <code>equals</code>, such as <code>current.element.equals(target)</code> for the non-null inputs in this homework. Using <code>==</code> compares object identities and can appear to work for some small Integers while failing for other equal values.</p>
+</section>
 <section><h2>The seven operations</h2><ul>
 <li><code>add(Integer element)</code>: append the element.</li>
 <li><code>size()</code>: return the number of nodes.</li>
@@ -80,7 +128,7 @@
 <pre>[2, 6] → insertAtIndex(1, 7) → [2, 7, 6]
 [2, 7, 6] → set(1, 9) returns 7 → [2, 9, 6]
 [2, 9, 6] → remove(2) returns true → [9, 6]</pre></section>
-<section><h2>Keep the representation consistent</h2><p>Use the supplied nodes. Keep package declarations, public signatures, node classes, and supplied methods unchanged. An empty list has both first and last null; a single-node list has both references pointing to the same node. The final node's next reference is null.</p><details><summary>Predict before testing</summary><p>Draw first and last before and after removing the only element. What must change when you next append? Compare your prediction with your implementation.</p></details><p>There is no additional algorithms package or written submission.</p></section>
+<section><h2>Keep the representation consistent</h2><p>Use the supplied nodes. Keep package declarations, public signatures, node classes, and supplied methods unchanged. An empty list has both first and last null; a single-node list has both references pointing to the same node. The final node's next reference is null.</p><details><summary>Predict before testing</summary><p>Draw first and last before and after removing the only element. What must change when you next append? Compare your prediction with your implementation.</p></details></section>
 <section><h2>Run JUnit tests</h2><ol><li>Open <code>src/test/java/sllTest/RunAllTests.java</code>.</li><li>Right-click inside the file and choose <strong>Run 'RunAllTests'</strong>.</li><li>Read failures, fix the relevant TODO, and rerun. You can also run individual test classes.</li></ol><p>Unfinished TODOs initially fail with <code>UnsupportedOperationException</code>. Tests for other operations may also depend on add. Do not edit tests. From the project folder, <code>mvn test</code> runs the same public suite.</p></section>
-<section><h2>Submit to Gradescope</h2><ol><li>Run the full public suite and fix failures.</li><li>Upload only <code>SinglyLinkedList.java</code> to the optional LinkedList bonus assignment on Gradescope.</li></ol><p>Additional instructor checks use the same contract. Partial credit is based on passing behavioral checks. Course bonus points and deadline will be announced by the instructor; no point value is finalized on this page.</p></section>
+<section><h2>Submit to Gradescope</h2><ol><li>Run the full public suite and fix failures.</li><li>Upload only <code>SinglyLinkedList.java</code> to the optional LinkedList bonus assignment on Gradescope.</li></ol></section>
 </main></div></body></html>
