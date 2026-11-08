@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bonus Homework: LinkedList (Optional)</title>
+  <link rel="stylesheet" type="text/css" href="../syllabus_files/schedule.css">
+  <link rel="stylesheet" type="text/css" href="../syllabus_files/screen.css">
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; color: #333; }
+    #header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+    #header a { color: #fff; margin-right: 15px; text-decoration: none; }
+    #header a:hover { text-decoration: underline; }
+    #content { padding: 20px; margin-top: 100px; margin-bottom: 50px; }
+    .container { max-width: 800px; margin: 0 auto; background-color: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+    p { line-height: 1.6; }
+    code { background-color: #e0e0e0; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    pre { overflow-x: auto; background-color: #f5f5f5; padding: 12px; border-radius: 4px; }
+    .note { background-color: #fffbcc; border: 1px solid #ffe58f; padding: 10px; border-radius: 4px; }
+    .uml-diagram { display: block; max-width: 100%; height: auto; margin: 16px auto; border: 1px solid #ccc; }
+
+    html { scroll-padding-top: 130px; }
+    #header::after { content: ''; display: block; clear: both; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #1769aa; outline-offset: 3px; }
+    .actions { margin: 16px 0; } .actions a { margin-right: 18px; }
+    .problem-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 24px; }
+    .problem-card { flex: 1 1 120px; padding: 10px; border: 1px solid #ccc; background: #f5f5f5; border-radius: 4px; line-height: 1.4; }
+    .problem-card span { display: block; font-size: .8em; color: #555; }
+    .problem-card strong { font-size: .9em; }
+    .problem-card:hover { background: #e7f3fe; }
+    section { margin: 24px 0; padding-top: 12px; border-top: 1px solid #ddd; }
+    h2 { font-size: 1.4em; } .location, .check, .back { font-size: .9em; }
+    .method { display: block; overflow-wrap: anywhere; } code { overflow-wrap: anywhere; background: transparent; padding: 0;
+      border-radius: 0; font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size: .95em; color: inherit; }
+    pre code { padding: 0; background: transparent; }
+    summary { cursor: pointer; font-weight: bold; } details { margin: 12px 0; }
+    .extra { padding: 12px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9; }
+    .back { float: right; } .meta, footer { color: #555; }
+    @media (max-width: 700px) {
+      body { padding: 10px; } #header { position: static; }
+      #header a { margin: 0; padding: 12px; }
+      #content { margin-top: 16px; padding: 0; max-width: 100%; width: 100%; }
+      .container { padding: 18px; } html { scroll-padding-top: 12px; }
+      h1 { font-size: 1.8em; } .back { float: none; display: block; margin-bottom: 8px; }
+    }
+    @media print { #header, .problem-nav, .actions, .back { display: none; }
+      #content { margin: 0; padding: 0; } .container { box-shadow: none; padding: 0; }
+    }
+  </style>
+</head>
+<body><div id="header">
+    <a href="../index.html">CSSE 220</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../schedule.html">Schedule</a>
+    <a href="../worksheets.html">Quizzes</a>
+    <a href="../labs.html">Labs</a>
+    <a href="../homework.html">Homework</a>
+    <a href="../exams.html">Exams</a>
+    <a href="../project.html">Final Project</a>
+    <a href="../graphics/index.html">Graphics</a>
+    <a href="../resources.html">Resources</a>
+  </div>
+  <div id="content"><main class="container" id="top">
+<h1>Bonus Homework: LinkedList (Optional)</h1>
+<p class="meta">Homework 7 · Individual work · Seven operations</p>
+<p class="note">Optional bonus work. The instructor will confirm the bonus point value, deadline, and any replacement policy. The legacy 70-point policy does not apply automatically.</p>
+<div class="actions"><a href="LinkedListBonus.zip">Download IntelliJ starter ZIP</a></div>
+<section><h2>Learning objectives</h2><ul><li>Traverse a singly linked list using node references.</li><li>Maintain first and last references during insertion and removal.</li><li>Test empty lists, single-node lists, repeated values, and invalid indices.</li></ul></section>
+<section><h2>Start here</h2><ol><li>Extract the ZIP. In IntelliJ, open the <code>LinkedListBonus</code> folder containing <code>pom.xml</code>. Select JDK 21 and let Maven load.</li><li>Open <code>src/main/java/sll/SinglyLinkedList.java</code>. Add your name and help citations.</li><li>Implement TODOs 01 through 07, starting with <code>add</code>, then <code>size</code>. Read each method's Javadoc.</li></ol></section>
+<section><h2>The seven operations</h2><ul>
+<li><code>add(Integer element)</code>: append the element.</li>
+<li><code>size()</code>: return the number of nodes.</li>
+<li><code>insertAtIndex(int index, Integer element)</code>: insert at index 0 through size inclusive. Insertion at size appends; invalid indices throw <code>IndexOutOfBoundsException</code>.</li>
+<li><code>contains(Integer element)</code>: return whether an equal Integer value is present.</li>
+<li><code>remove(Integer element)</code>: remove the first matching value and return true; return false if absent.</li>
+<li><code>indexOf(Integer element)</code>: return the first matching index, or -1 if absent.</li>
+<li><code>set(int index, Integer element)</code>: replace at index 0 through size minus one and return the old value. Invalid indices throw <code>IndexOutOfBoundsException</code>.</li></ul>
+<p>Compare Integer values rather than object identities. Invalid-index operations leave the list unchanged. Graded inputs use non-null Integers; null handling is not an additional requirement.</p>
+<pre>[2, 6] → insertAtIndex(1, 7) → [2, 7, 6]
+[2, 7, 6] → set(1, 9) returns 7 → [2, 9, 6]
+[2, 9, 6] → remove(2) returns true → [9, 6]</pre></section>
+<section><h2>Keep the representation consistent</h2><p>Use the supplied nodes. Keep package declarations, public signatures, node classes, and supplied methods unchanged. An empty list has both first and last null; a single-node list has both references pointing to the same node. The final node's next reference is null.</p><details><summary>Predict before testing</summary><p>Draw first and last before and after removing the only element. What must change when you next append? Compare your prediction with your implementation.</p></details><p>There is no additional algorithms package or written submission.</p></section>
+<section><h2>Run JUnit tests</h2><ol><li>Open <code>src/test/java/sllTest/RunAllTests.java</code>.</li><li>Right-click inside the file and choose <strong>Run 'RunAllTests'</strong>.</li><li>Read failures, fix the relevant TODO, and rerun. You can also run individual test classes.</li></ol><p>Unfinished TODOs initially fail with <code>UnsupportedOperationException</code>. Tests for other operations may also depend on add. Do not edit tests. From the project folder, <code>mvn test</code> runs the same public suite.</p></section>
+<section><h2>Submit to Gradescope</h2><ol><li>Run the full public suite and fix failures.</li><li>Upload only <code>SinglyLinkedList.java</code> to the optional LinkedList bonus assignment on Gradescope.</li></ol><p>Additional instructor checks use the same contract. Partial credit is based on passing behavioral checks. Course bonus points and deadline will be announced by the instructor; no point value is finalized on this page.</p></section>
+</main></div></body></html>
