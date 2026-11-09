@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CSSE220 Final Project Report</title>
+  <link rel="stylesheet" href="./syllabus_files/screen.css">
+  <link rel="icon" href="./favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+    #header {
+      background: #1c1515;
+      color: white;
+      padding: 0;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    #header a {
+      position: relative;
+      font-weight: bold;
+      float: left;
+      margin-left: 1em;
+      margin-right: 1em;
+      padding: 1em;
+      color: #f0f0f0;
+      background: #1c1515;
+      text-decoration: none;
+    }
+    #header a:hover {
+      background: #222;
+    }
+    main {
+      max-width: 1000px;
+      margin: 32px auto;
+      background: white;
+      padding: 28px 30px 44px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h1, h2, h3 {
+      color: #2b2b2b;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .project-card {
+      display: block;
+      background: #f3f3f3;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      padding: 22px 20px;
+      text-decoration: none;
+      color: #1f2933;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.11);
+    }
+    .project-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.4rem;
+    }
+    .tag {
+      display: inline-block;
+      background: #ececec;
+      color: #2b2b2b;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .milestone-section {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #ddd;
+    }
+    .milestone-section h2 {
+      margin-bottom: 8px;
+    }
+    .milestone-section table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    .milestone-section th, .milestone-section td {
+      border: 1px solid #d9d9d9;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .muted { color: #4a5568; }
+    .skills-section {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #ddd;
+    }
+    .skills-section h2 { margin-bottom: 4px; }
+    .skills-card {
+      margin-top: 14px;
+      border-left: 6px solid #245780;
+      background: #edf4ff;
+    }
+    .skills-card .tag { background: #fff; color: #245780; }
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 14px;
+    }
+    .skill-chips li {
+      margin: 0;
+      padding: 4px 10px;
+      border: 1px solid #b7c8df;
+      border-radius: 999px;
+      background: #fff;
+      color: #23415f;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .skills-open {
+      display: inline-block;
+      background: #1c1515;
+      color: #fff;
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-weight: 700;
+    }
+    .small-note { font-size: 0.95em; color: #4a5568; }
+    @media (max-width: 700px) {
+      main { padding: 18px; margin: 24px 10px; }
+      #header a { display: inline-block; margin: 5px 8px; }
+    }
+  table {width:100%;border-collapse:collapse} th,td {border:1px solid #d9d9d9;padding:10px;text-align:left;vertical-align:top} .table-wrap {overflow-x:auto} .notice {padding:16px;background:#edf4ff;border-left:5px solid #245780} li {margin-bottom:8px} @media print {#header,.copy-help {display:none} main {box-shadow:none;margin:0;padding:0}} </style>
+</head>
+<body>
+  <div id="header">
+    <a href="./index.html">CSSE 220</a>
+    <a href="./syllabus.html">Syllabus</a>
+    <a href="./schedule.html">Schedule</a>
+    <a href="./design.html">Design</a>
+    <a href="./labs.html">Labs</a>
+    <a href="./homework.html">Homework</a>
+    <a href="./exams.html">Exams</a>
+    <a href="project.html">Final Project</a>
+    <a href="./graphics/index.html">Graphics</a>
+    <a href="./resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+<main><p><a href="project.html">Final Project Hub</a> · Milestone 3</p><h1>Final Project Report</h1><p class="notice"><strong>Milestone 3 · 40 points.</strong> Due November 15, 2026 (no extensions), as listed on the course schedule. Follow instructor instructions for the submission location and exact cutoff time.</p><p>Update your existing team Google Doc. Reuse existing evidence and sections; you do not need a second report. <a href="https://docs.google.com/document/d/1qhYn23wkNBUIu8p5gGl_M02tAjUVRxzEazWIZ1Bk-y0/edit?tab=t.mdd34ooyn8v7"><strong>Open the Milestone 3 Google Doc template</strong></a>. Copy the new Milestone 3 section into your existing team Google Doc and fill it in. Continue using the same team document; do not create or submit a separate report document.</p>
+<h2>Explain the application logic explicitly</h2><p>The demo shows functionality through the interface. Your report must explain a complete workflow: <strong>user action/input → responsible classes and methods → validation and rules/calculations → state changes → displayed result</strong>. Include a concrete input/action and expected/actual result, with links or references to the final code. Explain how your implementation works; the testing table separately records evidence that it works.</p><h2>Report rubric: 40 points</h2><p>Use the template mapping below to find each category. Full credit requires the complete evidence described; partial credit reflects the amount of accurate, complete evidence present. Manual correctness checks are acceptable.</p><div class="table-wrap"><table><thead><tr><th scope="col">Criterion</th><th scope="col">Points</th><th scope="col">Full credit</th><th scope="col">Partial credit</th><th scope="col">Zero credit</th></tr></thead><tbody><tr><th scope="row">Application documentation and screenshots</th><td>8</td><td>Purpose, users, implemented scope, limitations, and captioned real screenshots explain the final app.</td><td>1–7: documentation or screen evidence is incomplete.</td><td>No meaningful application documentation.</td></tr><tr><th scope="row">Updated UML and technical design</th><td>10</td><td>Current UML, class responsibilities, design rationale, and an explicit code-referenced logic workflow explain the implementation.</td><td>1–9: some design evidence is accurate; UML, rationale, or workflow has gaps.</td><td>No meaningful technical design evidence.</td></tr><tr><th scope="row">Testing and error handling</th><td>8</td><td>Recorded expected/actual results and fixes/retests cover normal workflow, invalid/boundary behavior, restart/reuse, and both content variants.</td><td>1–7: some cases or results are documented; coverage or retesting is incomplete.</td><td>No meaningful correctness-check evidence.</td></tr><tr><th scope="row">Final commit and launch instructions</th><td>5</td><td>Repository, final commit, reproducible README launch steps, and required resources are identified.</td><td>1–4: version or launch information is incomplete.</td><td>No usable version/launch evidence.</td></tr><tr><th scope="row">Individual work logs and contributions</th><td>5</td><td>Every member has actual dated times, specific contributions, and traceable code/commit/review evidence.</td><td>1–4: records exist but dates, times, tasks, or evidence links are incomplete.</td><td>No usable contribution records.</td></tr><tr><th scope="row">Challenges, lessons, and resources</th><td>4</td><td>Specific challenge/response, learning, improvements, and truthful resource/AI reflection with verification and policy documentation.</td><td>1–3: some reflection is specific; remaining explanation or citations/log links are incomplete.</td><td>No meaningful reflection.</td></tr></tbody><tfoot><tr><th scope="row">Total</th><td>40</td><td colspan="3">Award points for observable evidence.</td></tr></tfoot></table></div><h2>Team evidence and resources</h2><p>Keep actual work logs for each member, including the published expectation of at least 6 hours per week per member, counting class and outside work. Record actual time and tasks. Participation points in the demo rubric are shared by the team and based on this report; work-log points here assess documentation quality. An incomplete record does not automatically incur duplicate deductions.</p><p>AI and Skill Hub use are optional. Truthful non-use can earn full credit. Keep Help Citations and AI learning documentation current under the <a href="./syllabus.html">course policy</a>. Link existing logs instead of copying them again. Include credits for image/resource sources.</p><p><a href="https://docs.google.com/document/d/1qhYn23wkNBUIu8p5gGl_M02tAjUVRxzEazWIZ1Bk-y0/edit?tab=t.mdd34ooyn8v7">Milestone 3 Google Doc template</a> · <a href="project-demo.html">Demo instructions and rubric</a></p></main></body></html>

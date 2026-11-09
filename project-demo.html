@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CSSE220 Final Project Demo</title>
+  <link rel="stylesheet" href="./syllabus_files/screen.css">
+  <link rel="icon" href="./favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+    #header {
+      background: #1c1515;
+      color: white;
+      padding: 0;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    #header a {
+      position: relative;
+      font-weight: bold;
+      float: left;
+      margin-left: 1em;
+      margin-right: 1em;
+      padding: 1em;
+      color: #f0f0f0;
+      background: #1c1515;
+      text-decoration: none;
+    }
+    #header a:hover {
+      background: #222;
+    }
+    main {
+      max-width: 1000px;
+      margin: 32px auto;
+      background: white;
+      padding: 28px 30px 44px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h1, h2, h3 {
+      color: #2b2b2b;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .project-card {
+      display: block;
+      background: #f3f3f3;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      padding: 22px 20px;
+      text-decoration: none;
+      color: #1f2933;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.11);
+    }
+    .project-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.4rem;
+    }
+    .tag {
+      display: inline-block;
+      background: #ececec;
+      color: #2b2b2b;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .milestone-section {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #ddd;
+    }
+    .milestone-section h2 {
+      margin-bottom: 8px;
+    }
+    .milestone-section table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    .milestone-section th, .milestone-section td {
+      border: 1px solid #d9d9d9;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .muted { color: #4a5568; }
+    .skills-section {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #ddd;
+    }
+    .skills-section h2 { margin-bottom: 4px; }
+    .skills-card {
+      margin-top: 14px;
+      border-left: 6px solid #245780;
+      background: #edf4ff;
+    }
+    .skills-card .tag { background: #fff; color: #245780; }
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 14px;
+    }
+    .skill-chips li {
+      margin: 0;
+      padding: 4px 10px;
+      border: 1px solid #b7c8df;
+      border-radius: 999px;
+      background: #fff;
+      color: #23415f;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .skills-open {
+      display: inline-block;
+      background: #1c1515;
+      color: #fff;
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-weight: 700;
+    }
+    .small-note { font-size: 0.95em; color: #4a5568; }
+    @media (max-width: 700px) {
+      main { padding: 18px; margin: 24px 10px; }
+      #header a { display: inline-block; margin: 5px 8px; }
+    }
+  table {width:100%;border-collapse:collapse} th,td {border:1px solid #d9d9d9;padding:10px;text-align:left;vertical-align:top} .table-wrap {overflow-x:auto} .notice {padding:16px;background:#edf4ff;border-left:5px solid #245780} li {margin-bottom:8px} @media print {#header,.copy-help {display:none} main {box-shadow:none;margin:0;padding:0}} </style>
+</head>
+<body>
+  <div id="header">
+    <a href="./index.html">CSSE 220</a>
+    <a href="./syllabus.html">Syllabus</a>
+    <a href="./schedule.html">Schedule</a>
+    <a href="./design.html">Design</a>
+    <a href="./labs.html">Labs</a>
+    <a href="./homework.html">Homework</a>
+    <a href="./exams.html">Exams</a>
+    <a href="project.html">Final Project</a>
+    <a href="./graphics/index.html">Graphics</a>
+    <a href="./resources.html">Resources</a>
+    <div style="clear:both;"></div>
+  </div>
+
+<main><p><a href="project.html">Final Project Hub</a> · Milestone 3</p><h1>Final Project Demo</h1><p class="notice"><strong>Milestone 3 · 60 points.</strong> Present your JavaFX application in class on November 13, 2026. <strong>No slides needed.</strong> An 8–10 minute slot including questions is proposed; follow the instructor’s confirmed slot and duration.</p>
+<h2>Prepare your walkthrough</h2><ol><li><strong>Introduce the app.</strong> Give its name, purpose, audience, and a short sales pitch.</li><li><strong>Run the app.</strong> Show its main workflow, required screens, both levels or equivalent content, progress/results, a relevant invalid input or boundary, and restart/repeated use. Assessable functionality must work on screen; describing an unfinished feature does not demonstrate it.</li><li><strong>Explain the design briefly.</strong> Identify the main classes and one OOP decision. Trace one control → model → display interaction. Put the explicit step-by-step logic workflow in the <a href="project-report.html">final report</a>.</li><li><strong>Discuss a challenge and highlight.</strong> Explain what you tried, how you solved and checked it, and what you would improve.</li><li><strong>Describe resources and learning.</strong> Identify actual AI tools, Skill Hub guides, starter examples, or other resources used and one example of adaptation and verification. AI and Hub use are optional; explain your actual independent process if you did not use them.</li><li><strong>Share the presentation.</strong> Every member speaks, identifies their contribution, and is ready to answer questions about their code.</li></ol>
+<h2>Check the UI before class</h2><p>A polished game UI has no broken or missing images, broken/clipped/overlapping layout, or missing or hard-to-read text and buttons. Test at presentation size. Arcade games still require the published image sprites; other applications need the designed layout appropriate to their task. Additional decorative effects and stretch features are optional.</p><p>Run the final GitHub version with all resources and verified README instructions. Rehearse the order and handoffs. Keep screenshots and known limitations in your report, but screenshots do not substitute for working live functionality.</p>
+<h2>Demo rubric: 60 points</h2><p>The five functionality rows total 25; the two technical rows total 10. Full credit requires all evidence in that row. Within a partial-credit range, award more points as more of the stated evidence is accurate and complete. Functionality is assessed through screens, controls, and displayed results. Use the <a href="project.html#final-project-specification">published project specification</a> for the existing scope.</p><div class="table-wrap"><table><thead><tr><th scope="col">Criterion</th><th scope="col">Points</th><th scope="col">Full credit</th><th scope="col">Partial credit</th><th scope="col">Zero credit</th></tr></thead><tbody><tr><th scope="row">Application overview and purpose</th><td>5</td><td>Name, intended users, purpose, and reason to use/play the app are clear.</td><td>1–4: some of these are clear; others are missing or vague.</td><td>No meaningful introduction.</td></tr><tr><th scope="row">Launch and core screen flow</th><td>5</td><td>App launches and welcome/instructions, main, and results screens support a complete user workflow with working controls and readable layout.</td><td>1–4: credit working screens/actions; reduce for broken navigation, incomplete workflow, or unreadable/missing controls.</td><td>App cannot launch and no working flow is demonstrated.</td></tr><tr><th scope="row">Two levels or equivalent content</th><td>5</td><td>Two working levels, rounds, challenges, or problem types differ meaningfully in content, rules, difficulty, or calculation.</td><td>1–4: one works, or the second is only partly functional.</td><td>Neither is demonstrated working.</td></tr><tr><th scope="row">Progress and results</th><td>5</td><td>Visible state/progress and final results update correctly from user actions and application logic.</td><td>1–4: some updates/results work; others are wrong, stale, or missing.</td><td>No working progress/results demonstrated.</td></tr><tr><th scope="row">Restart/reset</th><td>5</td><td>A second use works with appropriate state reset; timed games stop and restart without duplicate updates.</td><td>1–4: repeated use works partly, with stale state or reset defects.</td><td>No working restart/repeated-use path.</td></tr><tr><th scope="row">Error handling</th><td>5</td><td>A relevant invalid input/action or boundary produces appropriate feedback and preserves valid state.</td><td>1–4: some relevant checks work, but feedback or recovery is incomplete.</td><td>No working relevant error/boundary behavior demonstrated.</td></tr><tr><th scope="row">Control → model → display trace</th><td>5</td><td>Briefly connects one visible action to the responsible model operation and resulting display.</td><td>1–4: some connections are explained accurately.</td><td>No accurate connection explained.</td></tr><tr><th scope="row">Classes and OOP design</th><td>5</td><td>Identifies main responsibilities and explains an important design decision with reference to actual code.</td><td>1–4: responsibilities or rationale are partly explained.</td><td>No accurate explanation of the design.</td></tr><tr><th scope="row">Challenges and implementation highlights</th><td>10</td><td>Explains a concrete challenge, attempted approach, solution/check, implemented highlight, and useful next improvement.</td><td>1–9: award credit for specific, supported parts of this explanation.</td><td>No meaningful challenge or implementation explanation.</td></tr><tr><th scope="row">AI tools and learning resources</th><td>5</td><td>Truthfully identifies resources used or non-use; explains a concrete adaptation/verification or an independent learning/checking approach.</td><td>1–4: process is identified but example or verification is unclear.</td><td>No process reflection provided.</td></tr><tr><th scope="row">Team participation and contributions</th><td>5</td><td>Final report provides specific evidence of meaningful participation by every member.</td><td>1–4: report supports some participation but shows limited or uneven involvement.</td><td>No meaningful team participation is supported by the report.</td></tr></tbody><tfoot><tr><th scope="row">Total</th><td>60</td><td colspan="3">Award points for observable evidence.</td></tr></tfoot></table></div><p>Scores are shared by the team. The 5 participation points are determined from final-report evidence after the report is submitted; all members receive the same participation score. The report’s work-log points assess documentation completeness and traceability. Do not automatically deduct twice for the same missing item.</p><p>Demonstrate the requirements relevant to your application; non-game apps do not need arcade mechanics. Partial work earns credit for working behavior. This live demo does not add a recorded-video submission.</p></main></body></html>
